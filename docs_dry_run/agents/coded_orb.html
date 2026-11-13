@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Intraday ORB (Flat by Close) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill active" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#2 of 10</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-2">Rank #2</span>
+            <h1>3. Intraday ORB (Flat by Close)</h1>
+            <span class="cat-pill cat-coded">Coded</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Trades breakouts above the first 30-minute opening range and liquidates all positions before the closing bell.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>coded_orb</code>)</div>
+        <p>Intraday Opening Range Breakout (ORB). Establishes the high and low of the first 30-minute bar of the US session (9:30–10:00 AM ET). Buys when price breaks above the opening range high on strong volume with a stop at the opening range midpoint. Automatically flattens all positions in the final cycle before market close.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>Yes (Intraday Only)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,597.90</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,597.90</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$597.90</div>
+        <div class="kpi-sub pos"><strong>+5.98%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+3.92%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$10,597.90</div>
+        <div class="kpi-sub">Invested: $0.00 (0 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.25%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">91.2%</div>
+        <div class="kpi-sub">31W / 3L (34 closed, 68 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">36.42</div>
+        <div class="kpi-sub">Friction paid: $95.04</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$19.34</span> / <span class="neg">-$5.49</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,037</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,224</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,411</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,598</text><line x1="78" y1="227.1" x2="932" y2="227.1" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#c084fc" stroke-width="3.0" points="78.0,227.1 90.9,227.1 103.9,227.5 116.8,226.6 129.8,226.1 142.7,228.1 155.6,220.2 168.6,211.4 181.5,197.1 194.5,199.0 207.4,201.1 220.3,201.2 233.3,202.2 246.2,196.3 259.2,196.3 272.1,196.7 285.0,195.8 298.0,194.8 310.9,200.6 323.8,199.2 336.8,188.1 349.7,179.2 362.7,178.6 375.6,171.8 388.5,180.6 401.5,167.5 414.4,171.3 427.4,171.3 440.3,171.8 453.2,168.3 466.2,169.0 479.1,168.3 492.1,166.4 505.0,152.7 517.9,139.7 530.9,137.6 543.8,134.2 556.8,127.6 569.7,127.2 582.6,129.0 595.6,129.0 608.5,129.4 621.5,121.7 634.4,121.3 647.3,114.0 660.3,112.3 673.2,105.3 686.2,103.0 699.1,98.1 712.0,92.1 725.0,85.9 737.9,83.5 750.8,78.7 763.8,78.7 776.7,79.2 789.7,71.3 802.6,69.6 815.5,65.6 828.5,64.7 841.4,56.0 854.4,47.8 867.3,46.3 880.2,49.5 893.2,39.5 906.1,35.9 919.1,24.0 932.0,227.1"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="227.1" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,227.1 90.9,229.1 103.9,229.6 116.8,222.2 129.8,218.5 142.7,229.8 155.6,220.9 168.6,223.3 181.5,221.9 194.5,222.8 207.4,225.9 220.3,225.4 233.3,226.9 246.2,218.6 259.2,216.8 272.1,214.1 285.0,213.1 298.0,211.7 310.9,219.4 323.8,218.4 336.8,214.6 349.7,213.5 362.7,215.9 375.6,211.7 388.5,224.2 401.5,216.3 414.4,217.8 427.4,223.4 440.3,235.1 453.2,244.2 466.2,245.6 479.1,247.9 492.1,244.1 505.0,241.7 517.9,237.5 530.9,239.7 543.8,231.7 556.8,228.7 569.7,229.8 582.6,230.5 595.6,238.3 608.5,230.7 621.5,230.4 634.4,225.4 647.3,216.5 660.3,219.1 673.2,220.9 686.2,221.5 699.1,214.6 712.0,213.9 725.0,212.5 737.9,210.0 750.8,204.8 763.8,196.6 776.7,189.1 789.7,189.5 802.6,183.0 815.5,185.6 828.5,179.8 841.4,177.0 854.4,179.6 867.3,175.2 880.2,179.9 893.2,171.5 906.1,168.1 919.1,157.3 932.0,227.1"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="227.1" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-12 08:08 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (0 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="9" class="empty-state">100% in Virtual Cash — No open positions currently held by this agent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 3. Intraday ORB (Flat by Close) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,436.72</strong></span> &rarr;
+              <span>End: <strong>$10,597.90</strong></span>
+              <span class="journal-pnl pos">(+$161.18 / +1.54%)</span>
+              <span class="journal-counts">19 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,436.72 to $10,597.90 (+$161.18, +1.54%). Executed 19 trade(s) — Buys: AVGO ($2,109), NVDA ($2,104), AXP ($2,098), XOM ($2,095), UNH ($2,096), MA ($2,066), ABBV ($2,099); Sells: MRK (TAKE_PROFIT, +$29.75), ISRG (TAKE_PROFIT, +$11.77), AXP (EOD_FLAT, +$41.34), NKE (EOD_FLAT, +$4.24), XLB (EOD_FLAT, +$0.14), AVGO (TAKE_PROFIT, +$23.04), AXP (TAKE_PROFIT, +$36.73), NVDA (TAKE_PROFIT, +$51.79), XOM (EOD_FLAT, +$23.80), UNH (EOD_FLAT, +$9.33), MA (EOD_FLAT, +$4.86), ABBV (EOD_FLAT, +$11.63).</p>
+          <ul class="journal-highlights"><li>BUY 9.2074 AVGO @ $229.10 ($2109.46, stop $224.17) — Buying AVGO on 30-min Opening Range Breakout: price $226.70 cleared ORH $224.61 (ORL $223.73) on 1.30x relative volume. Stop placed at opening range midpoint ($224.17) with 2R intraday target at $231.77.</li><li>BUY 11.5950 NVDA @ $181.47 ($2104.17, stop $176.97) — Buying NVDA on 30-min Opening Range Breakout: price $180.00 cleared ORH $177.34 (ORL $176.61) on 1.30x relative volume. Stop placed at opening range midpoint ($176.97) with 2R intraday target at $186.05.</li><li>BUY 5.8002 AXP @ $361.63 ($2097.52, stop $356.82) — Buying AXP on 30-min Opening Range Breakout: price $360.62 cleared ORH $357.31 (ORL $356.33) on 1.36x relative volume. Stop placed at opening range midpoint ($356.82) with 2R intraday target at $368.22.</li><li>BUY 16.8232 XOM @ $124.52 ($2094.86, stop $123.36) — Buying XOM on 30-min Opening Range Breakout: price $124.40 cleared ORH $123.58 (ORL $123.15) on 1.39x relative volume. Stop placed at opening range midpoint ($123.36) with 2R intraday target at $126.47.</li><li>BUY 3.2222 UNH @ $650.62 ($2096.41, stop $643.84) — Buying UNH on 30-min Opening Range Breakout: price $650.19 cleared ORH $645.12 (ORL $642.56) on 1.14x relative volume. Stop placed at opening range midpoint ($643.84) with 2R intraday target at $662.90.</li><li>BUY 3.6188 MA @ $570.79 ($2065.59, stop $561.93) — Buying MA on 30-min Opening Range Breakout: price $570.71 cleared ORH $563.38 (ORL $560.47) on 1.15x relative volume. Stop placed at opening range midpoint ($561.93) with 2R intraday target at $588.28.</li><li>BUY 11.2824 ABBV @ $186.02 ($2098.80, stop $183.61) — Buying ABBV on 30-min Opening Range Breakout: price $186.20 cleared ORH $184.07 (ORL $183.16) on 1.37x relative volume. Stop placed at opening range midpoint ($183.61) with 2R intraday target at $191.37.</li><li>SELL 19.6970 MRK @ $106.42 [TAKE_PROFIT: +$29.75 (+1.44%)] — Take-profit triggered at $106.49 (intrabar high $106.84 &gt;= target $106.49)</li><li>SELL 3.5370 ISRG @ $586.54 [TAKE_PROFIT: +$11.77 (+0.57%)] — Take-profit triggered at $586.95 (intrabar high $587.49 &gt;= target $586.95)</li><li>SELL 5.9172 AXP @ $356.62 [EOD_FLAT: +$41.34 (+2.00%)] — End-of-day mandatory flatten for AXP (5.9172 shares)</li><li>SELL 25.5525 NKE @ $81.34 [EOD_FLAT: +$4.24 (+0.20%)] — End-of-day mandatory flatten for NKE (25.5525 shares)</li><li>SELL 21.5890 XLB @ $96.23 [EOD_FLAT: +$0.14 (+0.01%)] — End-of-day mandatory flatten for XLB (21.5890 shares)</li><li>SELL 9.2074 AVGO @ $231.61 [TAKE_PROFIT: +$23.04 (+1.09%)] — Take-profit triggered at $231.77 (intrabar high $231.96 &gt;= target $231.77)</li><li>SELL 5.8002 AXP @ $367.96 [TAKE_PROFIT: +$36.73 (+1.75%)] — Take-profit triggered at $368.22 (intrabar high $368.64 &gt;= target $368.22)</li><li>SELL 11.5950 NVDA @ $185.94 [TAKE_PROFIT: +$51.79 (+2.46%)] — Take-profit triggered at $186.05 (intrabar high $186.54 &gt;= target $186.05)</li><li>SELL 16.8232 XOM @ $125.94 [EOD_FLAT: +$23.80 (+1.14%)] — End-of-day mandatory flatten for XOM (16.8232 shares)</li><li>SELL 3.2222 UNH @ $653.51 [EOD_FLAT: +$9.33 (+0.45%)] — End-of-day mandatory flatten for UNH (3.2222 shares)</li><li>SELL 3.6188 MA @ $572.14 [EOD_FLAT: +$4.86 (+0.24%)] — End-of-day mandatory flatten for MA (3.6188 shares)</li><li>SELL 11.2824 ABBV @ $187.06 [EOD_FLAT: +$11.63 (+0.55%)] — End-of-day mandatory flatten for ABBV (11.2824 shares)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,288.81</strong></span> &rarr;
+              <span>End: <strong>$10,436.72</strong></span>
+              <span class="journal-pnl pos">(+$147.91 / +1.44%)</span>
+              <span class="journal-counts">16 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,288.81 to $10,436.72 (+$147.91, +1.44%). Executed 16 trade(s) — Buys: META ($2,083), NVDA ($2,075), AXP ($2,069), NKE ($2,074), MRK ($2,066), CRM ($2,021), XLB ($2,077), ISRG ($2,063); Sells: META (TAKE_PROFIT, +$43.96), XLF (EOD_FLAT, +$32.58), LLY (EOD_FLAT, +$0.53), SMH (EOD_FLAT, +$10.25), XLY (EOD_FLAT, $-12.61), META (TAKE_PROFIT, +$22.71), CRM (AGENT_SIGNAL, $-0.60), NVDA (TAKE_PROFIT, +$36.08).</p>
+          <ul class="journal-highlights"><li>BUY 2.8991 META @ $718.55 ($2083.15, stop $701.28) — Buying META on 30-min Opening Range Breakout: price $709.79 cleared ORH $709.19 (ORL $707.31) on 1.28x relative volume. Stop placed at 1.2% below entry ($701.28) with 2R intraday target at $726.82.</li><li>BUY 11.9479 NVDA @ $173.69 ($2075.28, stop $169.90) — Buying NVDA on 30-min Opening Range Breakout: price $172.21 cleared ORH $170.19 (ORL $169.61) on 1.27x relative volume. Stop placed at opening range midpoint ($169.90) with 2R intraday target at $176.82.</li><li>BUY 5.9172 AXP @ $349.63 ($2068.86, stop $342.87) — Buying AXP on 30-min Opening Range Breakout: price $348.48 cleared ORH $343.35 (ORL $342.39) on 1.32x relative volume. Stop placed at opening range midpoint ($342.87) with 2R intraday target at $359.71.</li><li>BUY 25.5525 NKE @ $81.17 ($2074.13, stop $80.26) — Buying NKE on 30-min Opening Range Breakout: price $80.71 cleared ORH $80.33 (ORL $80.19) on 1.23x relative volume. Stop placed at opening range midpoint ($80.26) with 2R intraday target at $81.60.</li><li>BUY 19.6970 MRK @ $104.91 ($2066.32, stop $104.13) — Buying MRK on 30-min Opening Range Breakout: price $104.92 cleared ORH $104.27 (ORL $103.99) on 1.38x relative volume. Stop placed at opening range midpoint ($104.13) with 2R intraday target at $106.49.</li><li>BUY 5.8387 CRM @ $346.15 ($2021.07, stop $342.74) — Buying CRM on 30-min Opening Range Breakout: price $346.91 cleared ORH $346.60 (ORL $345.54) on 1.16x relative volume. Stop placed at 1.2% below entry ($342.74) with 2R intraday target at $355.24.</li><li>BUY 21.5890 XLB @ $96.22 ($2077.35, stop $95.19) — Buying XLB on 30-min Opening Range Breakout: price $96.02 cleared ORH $95.31 (ORL $95.07) on 1.34x relative volume. Stop placed at opening range midpoint ($95.19) with 2R intraday target at $97.69.</li><li>BUY 3.5370 ISRG @ $583.21 ($2062.82, stop $579.67) — Buying ISRG on 30-min Opening Range Breakout: price $582.10 cleared ORH $581.17 (ORL $578.16) on 1.32x relative volume. Stop placed at opening range midpoint ($579.67) with 2R intraday target at $586.95.</li><li>SELL 2.9362 META @ $708.49 [TAKE_PROFIT: +$43.96 (+2.16%)] — Take-profit triggered at $708.92 (intrabar high $709.19 &gt;= target $708.92)</li><li>SELL 37.1702 XLF @ $55.68 [EOD_FLAT: +$32.58 (+1.60%)] — End-of-day mandatory flatten for XLF (37.1702 shares)</li><li>SELL 2.0894 LLY @ $985.97 [EOD_FLAT: +$0.53 (+0.03%)] — End-of-day mandatory flatten for LLY (2.0894 shares)</li><li>SELL 6.8850 SMH @ $299.63 [EOD_FLAT: +$10.25 (+0.50%)] — End-of-day mandatory flatten for SMH (6.8850 shares)</li><li>SELL 9.1241 XLY @ $220.96 [EOD_FLAT: $-12.61 (-0.62%)] — End-of-day mandatory flatten for XLY (9.1241 shares)</li><li>SELL 2.8991 META @ $726.38 [TAKE_PROFIT: +$22.71 (+1.09%)] — Take-profit triggered at $726.82 (intrabar high $727.10 &gt;= target $726.82)</li><li>SELL 5.8387 CRM @ $346.05 [AGENT_SIGNAL: $-0.60 (-0.03%)] — Exiting CRM intraday ORB position: price ($345.91) fell back below the opening range midpoint ($346.07; ORH $346.60 / ORL $345.54).</li><li>SELL 11.9479 NVDA @ $176.71 [TAKE_PROFIT: +$36.08 (+1.74%)] — Take-profit triggered at $176.82 (intrabar high $177.14 &gt;= target $176.82)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,164.20</strong></span> &rarr;
+              <span>End: <strong>$10,288.81</strong></span>
+              <span class="journal-pnl pos">(+$124.61 / +1.23%)</span>
+              <span class="journal-counts">14 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,164.20 to $10,288.81 (+$124.61, +1.23%). Executed 14 trade(s) — Buys: PLTR ($2,040), NVDA ($2,048), META ($2,036), XLF ($2,037), LLY ($2,060), SMH ($2,053), XLY ($2,029); Sells: NVDA (EOD_FLAT, +$21.53), LLY (EOD_FLAT, +$23.14), DIS (EOD_FLAT, +$6.06), XLF (EOD_FLAT, +$22.27), JPM (EOD_FLAT, $-3.25), NVDA (TAKE_PROFIT, +$8.98), PLTR (TAKE_PROFIT, +$40.70).</p>
+          <ul class="journal-highlights"><li>BUY 29.7848 PLTR @ $68.47 ($2039.50, stop $67.43) — Buying PLTR on 30-min Opening Range Breakout: price $68.25 cleared ORH $68.16 (ORL $67.92) on 1.29x relative volume. Stop placed at 1.2% below entry ($67.43) with 2R intraday target at $69.89.</li><li>BUY 12.2557 NVDA @ $167.10 ($2047.88, stop $164.80) — Buying NVDA on 30-min Opening Range Breakout: price $165.84 cleared ORH $165.01 (ORL $164.59) on 1.24x relative volume. Stop placed at opening range midpoint ($164.80) with 2R intraday target at $167.93.</li><li>BUY 2.9362 META @ $693.52 ($2036.32, stop $684.92) — Buying META on 30-min Opening Range Breakout: price $692.92 cleared ORH $685.94 (ORL $683.91) on 1.28x relative volume. Stop placed at opening range midpoint ($684.92) with 2R intraday target at $708.92.</li><li>BUY 37.1702 XLF @ $54.80 ($2036.89, stop $54.08) — Buying XLF on 30-min Opening Range Breakout: price $54.74 cleared ORH $54.68 (ORL $54.56) on 1.16x relative volume. Stop placed at 1.2% below entry ($54.08) with 2R intraday target at $56.05.</li><li>BUY 2.0894 LLY @ $985.71 ($2059.55, stop $969.66) — Buying LLY on 30-min Opening Range Breakout: price $978.12 cleared ORH $971.99 (ORL $967.33) on 1.33x relative volume. Stop placed at opening range midpoint ($969.66) with 2R intraday target at $995.05.</li><li>BUY 6.8850 SMH @ $298.14 ($2052.69, stop $293.77) — Buying SMH on 30-min Opening Range Breakout: price $297.95 cleared ORH $294.48 (ORL $293.06) on 1.29x relative volume. Stop placed at opening range midpoint ($293.77) with 2R intraday target at $306.32.</li><li>BUY 9.1241 XLY @ $222.34 ($2028.65, stop $219.49) — Buying XLY on 30-min Opening Range Breakout: price $222.16 cleared ORH $221.76 (ORL $221.01) on 1.35x relative volume. Stop placed at 1.2% below entry ($219.49) with 2R intraday target at $227.50.</li><li>SELL 12.4609 NVDA @ $164.70 [EOD_FLAT: +$21.53 (+1.06%)] — End-of-day mandatory flatten for NVDA (12.4609 shares)</li><li>SELL 2.1101 LLY @ $968.14 [EOD_FLAT: +$23.14 (+1.15%)] — End-of-day mandatory flatten for LLY (2.1101 shares)</li><li>SELL 16.9761 DIS @ $119.21 [EOD_FLAT: +$6.06 (+0.30%)] — End-of-day mandatory flatten for DIS (16.9761 shares)</li><li>SELL 37.3752 XLF @ $54.59 [EOD_FLAT: +$22.27 (+1.10%)] — End-of-day mandatory flatten for XLF (37.3752 shares)</li><li>SELL 7.4402 JPM @ $269.50 [EOD_FLAT: $-3.25 (-0.16%)] — End-of-day mandatory flatten for JPM (7.4402 shares)</li><li>SELL 12.2557 NVDA @ $167.83 [TAKE_PROFIT: +$8.98 (+0.44%)] — Take-profit triggered at $167.93 (intrabar high $168.64 &gt;= target $167.93)</li><li>SELL 29.7848 PLTR @ $69.84 [TAKE_PROFIT: +$40.70 (+2.00%)] — Take-profit triggered at $69.89 (intrabar high $69.99 &gt;= target $69.89)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,090.68</strong></span> &rarr;
+              <span>End: <strong>$10,164.20</strong></span>
+              <span class="journal-pnl pos">(+$73.52 / +0.73%)</span>
+              <span class="journal-counts">12 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,090.68 to $10,164.20 (+$73.52, +0.73%). Executed 12 trade(s) — Buys: NVDA ($2,041), NVDA ($2,031), LLY ($2,020), DIS ($2,018), XLF ($2,018), JPM ($2,008); Sells: AVGO (EOD_FLAT, +$25.34), ORCL (EOD_FLAT, +$20.21), WFC (EOD_FLAT, +$0.35), CAT (EOD_FLAT, +$21.93), XLF (EOD_FLAT, +$9.20), NVDA (TAKE_PROFIT, +$2.50).</p>
+          <ul class="journal-highlights"><li>BUY 12.5935 NVDA @ $162.03 ($2040.58, stop $159.21) — Buying NVDA on 30-min Opening Range Breakout: price $160.25 cleared ORH $159.58 (ORL $158.84) on 1.32x relative volume. Stop placed at opening range midpoint ($159.21) with 2R intraday target at $162.33.</li><li>BUY 12.4609 NVDA @ $162.98 ($2030.82, stop $159.21) — Buying NVDA on 30-min Opening Range Breakout: price $161.94 cleared ORH $159.58 (ORL $158.84) on 1.29x relative volume. Stop placed at opening range midpoint ($159.21) with 2R intraday target at $167.39.</li><li>BUY 2.1101 LLY @ $957.17 ($2019.72, stop $945.85) — Buying LLY on 30-min Opening Range Breakout: price $956.51 cleared ORH $948.41 (ORL $943.28) on 1.28x relative volume. Stop placed at opening range midpoint ($945.85) with 2R intraday target at $977.84.</li><li>BUY 16.9761 DIS @ $118.85 ($2017.64, stop $117.75) — Buying DIS on 30-min Opening Range Breakout: price $118.93 cleared ORH $118.26 (ORL $117.24) on 1.18x relative volume. Stop placed at opening range midpoint ($117.75) with 2R intraday target at $121.29.</li><li>BUY 37.3752 XLF @ $53.99 ($2017.92, stop $53.14) — Buying XLF on 30-min Opening Range Breakout: price $53.93 cleared ORH $53.34 (ORL $52.94) on 1.13x relative volume. Stop placed at opening range midpoint ($53.14) with 2R intraday target at $55.50.</li><li>BUY 7.4402 JPM @ $269.93 ($2008.35, stop $268.24) — Buying JPM on 30-min Opening Range Breakout: price $269.57 cleared ORH $269.37 (ORL $267.11) on 1.14x relative volume. Stop placed at opening range midpoint ($268.24) with 2R intraday target at $272.23.</li><li>SELL 10.2289 AVGO @ $200.42 [EOD_FLAT: +$25.34 (+1.25%)] — End-of-day mandatory flatten for AVGO (10.2289 shares)</li><li>SELL 9.8322 ORCL @ $206.04 [EOD_FLAT: +$20.21 (+1.01%)] — End-of-day mandatory flatten for ORCL (9.8322 shares)</li><li>SELL 26.5870 WFC @ $75.08 [EOD_FLAT: +$0.35 (+0.02%)] — End-of-day mandatory flatten for WFC (26.5870 shares)</li><li>SELL 4.6694 CAT @ $435.03 [EOD_FLAT: +$21.93 (+1.09%)] — End-of-day mandatory flatten for CAT (4.6694 shares)</li><li>SELL 37.3781 XLF @ $53.17 [EOD_FLAT: +$9.20 (+0.47%)] — End-of-day mandatory flatten for XLF (37.3781 shares)</li><li>SELL 12.5935 NVDA @ $162.23 [TAKE_PROFIT: +$2.50 (+0.12%)] — Take-profit triggered at $162.33 (intrabar high $163.42 &gt;= target $162.33)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,090.68</strong></span>
+              <span class="journal-pnl pos">(+$90.68 / +0.91%)</span>
+              <span class="journal-counts">7 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,090.68 (+$90.68, +0.91%). Executed 7 trade(s) — Buys: AVGO ($2,021), AVGO ($2,025), ORCL ($2,006), WFC ($1,996), CAT ($2,009), XLF ($1,978); Sells: AVGO (TAKE_PROFIT, +$2.68).</p>
+          <ul class="journal-highlights"><li>BUY 10.3287 AVGO @ $195.63 ($2020.64, stop $192.44) — Buying AVGO on 30-min Opening Range Breakout: price $193.64 cleared ORH $192.73 (ORL $192.14) on 1.57x relative volume. Stop placed at opening range midpoint ($192.44) with 2R intraday target at $196.03.</li><li>BUY 10.2289 AVGO @ $197.94 ($2024.73, stop $192.44) — Buying AVGO on 30-min Opening Range Breakout: price $195.50 cleared ORH $192.73 (ORL $192.14) on 1.52x relative volume. Stop placed at opening range midpoint ($192.44) with 2R intraday target at $201.61.</li><li>BUY 9.8322 ORCL @ $203.98 ($2005.59, stop $200.49) — Buying ORCL on 30-min Opening Range Breakout: price $203.44 cleared ORH $201.46 (ORL $199.52) on 1.38x relative volume. Stop placed at opening range midpoint ($200.49) with 2R intraday target at $209.33.</li><li>BUY 26.5870 WFC @ $75.07 ($1995.81, stop $74.61) — Buying WFC on 30-min Opening Range Breakout: price $75.25 cleared ORH $74.95 (ORL $74.27) on 1.20x relative volume. Stop placed at opening range midpoint ($74.61) with 2R intraday target at $76.52.</li><li>BUY 4.6694 CAT @ $430.33 ($2009.40, stop $420.92) — Buying CAT on 30-min Opening Range Breakout: price $428.19 cleared ORH $422.17 (ORL $419.68) on 1.21x relative volume. Stop placed at opening range midpoint ($420.92) with 2R intraday target at $442.72.</li><li>BUY 37.3781 XLF @ $52.92 ($1978.12, stop $51.84) — Buying XLF on 30-min Opening Range Breakout: price $52.59 cleared ORH $51.95 (ORL $51.74) on 1.17x relative volume. Stop placed at opening range midpoint ($51.84) with 2R intraday target at $54.09.</li><li>SELL 10.3287 AVGO @ $195.89 [TAKE_PROFIT: +$2.68 (+0.13%)] — Take-profit triggered at $196.03 (intrabar high $199.13 &gt;= target $196.03)</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (68 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">ABBV</td>
+              <td class="num">11.2824</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$187.19</td>
+              <td class="num strong">$187.06</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$11.63</strong><div class="sub-num">(+0.55%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for ABBV (11.2824 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MA</td>
+              <td class="num">3.6188</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$572.54</td>
+              <td class="num strong">$572.14</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$4.86</strong><div class="sub-num">(+0.24%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for MA (3.6188 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">UNH</td>
+              <td class="num">3.2222</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$653.97</td>
+              <td class="num strong">$653.51</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$9.33</strong><div class="sub-num">(+0.45%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for UNH (3.2222 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XOM</td>
+              <td class="num">16.8232</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$126.02</td>
+              <td class="num strong">$125.94</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$23.80</strong><div class="sub-num">(+1.14%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XOM (16.8232 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">11.5950</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$186.05</td>
+              <td class="num strong">$185.94</td>
+              <td class="num neg">$0.22</td>
+              <td class="num neg">$1.08</td>
+              <td class="num pos"><strong>+$51.79</strong><div class="sub-num">(+2.46%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $186.05 (intrabar high $186.54 &gt;= target $186.05)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ABBV</td>
+              <td class="num">11.2824</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 13:00:00 EST</div>
+                <div>Fill: 2026-11-11 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$185.89</td>
+              <td class="num strong">$186.02</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying ABBV on 30-min Opening Range Breakout: price $186.20 cleared ORH $184.07 (ORL $183.16) on 1.37x relative volume. Stop placed at opening range midpoint ($183.61) with 2R intraday target at $191.37.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.8002</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 13:00:00 EST</div>
+                <div>Fill: 2026-11-11 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$368.22</td>
+              <td class="num strong">$367.96</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num pos"><strong>+$36.73</strong><div class="sub-num">(+1.75%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $368.22 (intrabar high $368.64 &gt;= target $368.22)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MA</td>
+              <td class="num">3.6188</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:30:00 EST</div>
+                <div>Fill: 2026-11-11 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$570.40</td>
+              <td class="num strong">$570.79</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying MA on 30-min Opening Range Breakout: price $570.71 cleared ORH $563.38 (ORL $560.47) on 1.15x relative volume. Stop placed at opening range midpoint ($561.93) with 2R intraday target at $588.28.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">UNH</td>
+              <td class="num">3.2222</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:00:00 EST</div>
+                <div>Fill: 2026-11-11 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$650.16</td>
+              <td class="num strong">$650.62</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">Buying UNH on 30-min Opening Range Breakout: price $650.19 cleared ORH $645.12 (ORL $642.56) on 1.14x relative volume. Stop placed at opening range midpoint ($643.84) with 2R intraday target at $662.90.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XOM</td>
+              <td class="num">16.8232</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:30:00 EST</div>
+                <div>Fill: 2026-11-11 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$124.43</td>
+              <td class="num strong">$124.52</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying XOM on 30-min Opening Range Breakout: price $124.40 cleared ORH $123.58 (ORL $123.15) on 1.39x relative volume. Stop placed at opening range midpoint ($123.36) with 2R intraday target at $126.47.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.8002</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:00:00 EST</div>
+                <div>Fill: 2026-11-11 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$361.38</td>
+              <td class="num strong">$361.63</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying AXP on 30-min Opening Range Breakout: price $360.62 cleared ORH $357.31 (ORL $356.33) on 1.36x relative volume. Stop placed at opening range midpoint ($356.82) with 2R intraday target at $368.22.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">11.5950</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$181.36</td>
+              <td class="num strong">$181.47</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying NVDA on 30-min Opening Range Breakout: price $180.00 cleared ORH $177.34 (ORL $176.61) on 1.30x relative volume. Stop placed at opening range midpoint ($176.97) with 2R intraday target at $186.05.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">9.2074</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$231.77</td>
+              <td class="num strong">$231.61</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num pos"><strong>+$23.04</strong><div class="sub-num">(+1.09%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $231.77 (intrabar high $231.96 &gt;= target $231.77)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">9.2074</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$228.94</td>
+              <td class="num strong">$229.10</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying AVGO on 30-min Opening Range Breakout: price $226.70 cleared ORH $224.61 (ORL $223.73) on 1.30x relative volume. Stop placed at opening range midpoint ($224.17) with 2R intraday target at $231.77.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLB</td>
+              <td class="num">21.5890</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$96.30</td>
+              <td class="num strong">$96.23</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$0.14</strong><div class="sub-num">(+0.01%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XLB (21.5890 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NKE</td>
+              <td class="num">25.5525</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$81.39</td>
+              <td class="num strong">$81.34</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$4.24</strong><div class="sub-num">(+0.20%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for NKE (25.5525 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.9172</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$356.87</td>
+              <td class="num strong">$356.62</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$41.34</strong><div class="sub-num">(+2.00%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for AXP (5.9172 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">ISRG</td>
+              <td class="num">3.5370</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$586.95</td>
+              <td class="num strong">$586.54</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$11.77</strong><div class="sub-num">(+0.57%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $586.95 (intrabar high $587.49 &gt;= target $586.95)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MRK</td>
+              <td class="num">19.6970</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$106.49</td>
+              <td class="num strong">$106.42</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$29.75</strong><div class="sub-num">(+1.44%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $106.49 (intrabar high $106.84 &gt;= target $106.49)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 14:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 04:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ISRG</td>
+              <td class="num">3.5370</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 14:00:00 EST</div>
+                <div>Fill: 2026-11-10 14:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$582.80</td>
+              <td class="num strong">$583.21</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying ISRG on 30-min Opening Range Breakout: price $582.10 cleared ORH $581.17 (ORL $578.16) on 1.32x relative volume. Stop placed at opening range midpoint ($579.67) with 2R intraday target at $586.95.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLB</td>
+              <td class="num">21.5890</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 13:30:00 EST</div>
+                <div>Fill: 2026-11-10 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$96.16</td>
+              <td class="num strong">$96.22</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying XLB on 30-min Opening Range Breakout: price $96.02 cleared ORH $95.31 (ORL $95.07) on 1.34x relative volume. Stop placed at opening range midpoint ($95.19) with 2R intraday target at $97.69.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">11.9479</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 13:30:00 EST</div>
+                <div>Fill: 2026-11-10 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$176.82</td>
+              <td class="num strong">$176.71</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$36.08</strong><div class="sub-num">(+1.74%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $176.82 (intrabar high $177.14 &gt;= target $176.82)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">CRM</td>
+              <td class="num">5.8387</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 13:00:00 EST</div>
+                <div>Fill: 2026-11-10 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$346.29</td>
+              <td class="num strong">$346.05</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neg"><strong>-$0.60</strong><div class="sub-num">(-0.03%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">85%</td>
+              <td class="reasoning-cell">Exiting CRM intraday ORB position: price ($345.91) fell back below the opening range midpoint ($346.07; ORH $346.60 / ORL $345.54).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CRM</td>
+              <td class="num">5.8387</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 12:30:00 EST</div>
+                <div>Fill: 2026-11-10 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$345.91</td>
+              <td class="num strong">$346.15</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying CRM on 30-min Opening Range Breakout: price $346.91 cleared ORH $346.60 (ORL $345.54) on 1.16x relative volume. Stop placed at 1.2% below entry ($342.74) with 2R intraday target at $355.24.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MRK</td>
+              <td class="num">19.6970</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 12:00:00 EST</div>
+                <div>Fill: 2026-11-10 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$104.83</td>
+              <td class="num strong">$104.91</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying MRK on 30-min Opening Range Breakout: price $104.92 cleared ORH $104.27 (ORL $103.99) on 1.38x relative volume. Stop placed at opening range midpoint ($104.13) with 2R intraday target at $106.49.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NKE</td>
+              <td class="num">25.5525</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:30:00 EST</div>
+                <div>Fill: 2026-11-10 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$81.11</td>
+              <td class="num strong">$81.17</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying NKE on 30-min Opening Range Breakout: price $80.71 cleared ORH $80.33 (ORL $80.19) on 1.23x relative volume. Stop placed at opening range midpoint ($80.26) with 2R intraday target at $81.60.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.9172</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:00:00 EST</div>
+                <div>Fill: 2026-11-10 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$349.39</td>
+              <td class="num strong">$349.63</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying AXP on 30-min Opening Range Breakout: price $348.48 cleared ORH $343.35 (ORL $342.39) on 1.32x relative volume. Stop placed at opening range midpoint ($342.87) with 2R intraday target at $359.71.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">11.9479</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$173.59</td>
+              <td class="num strong">$173.69</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying NVDA on 30-min Opening Range Breakout: price $172.21 cleared ORH $170.19 (ORL $169.61) on 1.27x relative volume. Stop placed at opening range midpoint ($169.90) with 2R intraday target at $176.82.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.8991</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$726.82</td>
+              <td class="num strong">$726.38</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$22.71</strong><div class="sub-num">(+1.09%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $726.82 (intrabar high $727.10 &gt;= target $726.82)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.8991</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:00:00 EST</div>
+                <div>Fill: 2026-11-10 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$718.12</td>
+              <td class="num strong">$718.55</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying META on 30-min Opening Range Breakout: price $709.79 cleared ORH $709.19 (ORL $707.31) on 1.28x relative volume. Stop placed at 1.2% below entry ($701.28) with 2R intraday target at $726.82.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.1241</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$221.11</td>
+              <td class="num strong">$220.96</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neg"><strong>-$12.61</strong><div class="sub-num">(-0.62%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XLY (9.1241 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SMH</td>
+              <td class="num">6.8850</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$299.84</td>
+              <td class="num strong">$299.63</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$10.25</strong><div class="sub-num">(+0.50%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for SMH (6.8850 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.0894</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$986.66</td>
+              <td class="num strong">$985.97</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$0.53</strong><div class="sub-num">(+0.03%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for LLY (2.0894 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.1702</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$55.71</td>
+              <td class="num strong">$55.68</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$32.58</strong><div class="sub-num">(+1.60%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XLF (37.1702 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.9362</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$708.92</td>
+              <td class="num strong">$708.49</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$43.96</strong><div class="sub-num">(+2.16%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $708.92 (intrabar high $709.19 &gt;= target $708.92)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.1241</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 14:30:00 EST</div>
+                <div>Fill: 2026-11-09 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$222.18</td>
+              <td class="num strong">$222.34</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying XLY on 30-min Opening Range Breakout: price $222.16 cleared ORH $221.76 (ORL $221.01) on 1.35x relative volume. Stop placed at 1.2% below entry ($219.49) with 2R intraday target at $227.50.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SMH</td>
+              <td class="num">6.8850</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:30:00 EST</div>
+                <div>Fill: 2026-11-09 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$297.93</td>
+              <td class="num strong">$298.14</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying SMH on 30-min Opening Range Breakout: price $297.95 cleared ORH $294.48 (ORL $293.06) on 1.29x relative volume. Stop placed at opening range midpoint ($293.77) with 2R intraday target at $306.32.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.0894</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$985.02</td>
+              <td class="num strong">$985.71</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying LLY on 30-min Opening Range Breakout: price $978.12 cleared ORH $971.99 (ORL $967.33) on 1.33x relative volume. Stop placed at opening range midpoint ($969.66) with 2R intraday target at $995.05.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">PLTR</td>
+              <td class="num">29.7848</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$69.89</td>
+              <td class="num strong">$69.84</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$40.70</strong><div class="sub-num">(+2.00%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $69.89 (intrabar high $69.99 &gt;= target $69.89)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.2557</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:30:00 EST</div>
+                <div>Fill: 2026-11-09 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$167.93</td>
+              <td class="num strong">$167.83</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$8.98</strong><div class="sub-num">(+0.44%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $167.93 (intrabar high $168.64 &gt;= target $167.93)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.1702</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:00:00 EST</div>
+                <div>Fill: 2026-11-09 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$54.76</td>
+              <td class="num strong">$54.80</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying XLF on 30-min Opening Range Breakout: price $54.74 cleared ORH $54.68 (ORL $54.56) on 1.16x relative volume. Stop placed at 1.2% below entry ($54.08) with 2R intraday target at $56.05.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.9362</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:00:00 EST</div>
+                <div>Fill: 2026-11-09 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$693.11</td>
+              <td class="num strong">$693.52</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying META on 30-min Opening Range Breakout: price $692.92 cleared ORH $685.94 (ORL $683.91) on 1.28x relative volume. Stop placed at opening range midpoint ($684.92) with 2R intraday target at $708.92.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.2557</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$167.00</td>
+              <td class="num strong">$167.10</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying NVDA on 30-min Opening Range Breakout: price $165.84 cleared ORH $165.01 (ORL $164.59) on 1.24x relative volume. Stop placed at opening range midpoint ($164.80) with 2R intraday target at $167.93.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">PLTR</td>
+              <td class="num">29.7848</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$68.43</td>
+              <td class="num strong">$68.47</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying PLTR on 30-min Opening Range Breakout: price $68.25 cleared ORH $68.16 (ORL $67.92) on 1.29x relative volume. Stop placed at 1.2% below entry ($67.43) with 2R intraday target at $69.89.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">7.4402</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$269.68</td>
+              <td class="num strong">$269.50</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$3.25</strong><div class="sub-num">(-0.16%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for JPM (7.4402 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.3752</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$54.62</td>
+              <td class="num strong">$54.59</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$22.27</strong><div class="sub-num">(+1.10%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XLF (37.3752 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">DIS</td>
+              <td class="num">16.9761</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$119.29</td>
+              <td class="num strong">$119.21</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$6.06</strong><div class="sub-num">(+0.30%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for DIS (16.9761 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.1101</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$968.81</td>
+              <td class="num strong">$968.14</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$23.14</strong><div class="sub-num">(+1.15%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for LLY (2.1101 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.4609</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$164.80</td>
+              <td class="num strong">$164.70</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$21.53</strong><div class="sub-num">(+1.06%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for NVDA (12.4609 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">7.4402</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:30:00 EST</div>
+                <div>Fill: 2026-11-06 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$269.74</td>
+              <td class="num strong">$269.93</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">Buying JPM on 30-min Opening Range Breakout: price $269.57 cleared ORH $269.37 (ORL $267.11) on 1.14x relative volume. Stop placed at opening range midpoint ($268.24) with 2R intraday target at $272.23.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.3752</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:00:00 EST</div>
+                <div>Fill: 2026-11-06 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$53.95</td>
+              <td class="num strong">$53.99</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">Buying XLF on 30-min Opening Range Breakout: price $53.93 cleared ORH $53.34 (ORL $52.94) on 1.13x relative volume. Stop placed at opening range midpoint ($53.14) with 2R intraday target at $55.50.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">DIS</td>
+              <td class="num">16.9761</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 11:30:00 EST</div>
+                <div>Fill: 2026-11-06 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$118.77</td>
+              <td class="num strong">$118.85</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying DIS on 30-min Opening Range Breakout: price $118.93 cleared ORH $118.26 (ORL $117.24) on 1.18x relative volume. Stop placed at opening range midpoint ($117.75) with 2R intraday target at $121.29.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.1101</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 11:00:00 EST</div>
+                <div>Fill: 2026-11-06 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$956.50</td>
+              <td class="num strong">$957.17</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying LLY on 30-min Opening Range Breakout: price $956.51 cleared ORH $948.41 (ORL $943.28) on 1.28x relative volume. Stop placed at opening range midpoint ($945.85) with 2R intraday target at $977.84.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.4609</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:30:00 EST</div>
+                <div>Fill: 2026-11-06 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$162.88</td>
+              <td class="num strong">$162.98</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying NVDA on 30-min Opening Range Breakout: price $161.94 cleared ORH $159.58 (ORL $158.84) on 1.29x relative volume. Stop placed at opening range midpoint ($159.21) with 2R intraday target at $167.39.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.5935</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:30:00 EST</div>
+                <div>Fill: 2026-11-06 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$162.33</td>
+              <td class="num strong">$162.23</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$2.50</strong><div class="sub-num">(+0.12%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $162.33 (intrabar high $163.42 &gt;= target $162.33)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NVDA</td>
+              <td class="num">12.5935</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:00:00 EST</div>
+                <div>Fill: 2026-11-06 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$161.94</td>
+              <td class="num strong">$162.03</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Buying NVDA on 30-min Opening Range Breakout: price $160.25 cleared ORH $159.58 (ORL $158.84) on 1.32x relative volume. Stop placed at opening range midpoint ($159.21) with 2R intraday target at $162.33.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.3781</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$53.21</td>
+              <td class="num strong">$53.17</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$0.99</td>
+              <td class="num pos"><strong>+$9.20</strong><div class="sub-num">(+0.47%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for XLF (37.3781 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.6694</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$435.33</td>
+              <td class="num strong">$435.03</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$21.93</strong><div class="sub-num">(+1.09%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for CAT (4.6694 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">WFC</td>
+              <td class="num">26.5870</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$75.13</td>
+              <td class="num strong">$75.08</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num pos"><strong>+$0.35</strong><div class="sub-num">(+0.02%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for WFC (26.5870 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.8322</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$206.18</td>
+              <td class="num strong">$206.04</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$20.21</strong><div class="sub-num">(+1.01%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for ORCL (9.8322 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">10.2289</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$200.56</td>
+              <td class="num strong">$200.42</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$25.34</strong><div class="sub-num">(+1.25%)</div></td>
+              <td><span class="exit-pill">EOD_FLAT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for AVGO (10.2289 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.3781</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 12:30:00 EST</div>
+                <div>Fill: 2026-11-05 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$52.88</td>
+              <td class="num strong">$52.92</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$0.99</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying XLF on 30-min Opening Range Breakout: price $52.59 cleared ORH $51.95 (ORL $51.74) on 1.17x relative volume. Stop placed at opening range midpoint ($51.84) with 2R intraday target at $54.09.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.6694</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 12:00:00 EST</div>
+                <div>Fill: 2026-11-05 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$430.03</td>
+              <td class="num strong">$430.33</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying CAT on 30-min Opening Range Breakout: price $428.19 cleared ORH $422.17 (ORL $419.68) on 1.21x relative volume. Stop placed at opening range midpoint ($420.92) with 2R intraday target at $442.72.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">WFC</td>
+              <td class="num">26.5870</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:30:00 EST</div>
+                <div>Fill: 2026-11-05 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$75.01</td>
+              <td class="num strong">$75.07</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying WFC on 30-min Opening Range Breakout: price $75.25 cleared ORH $74.95 (ORL $74.27) on 1.20x relative volume. Stop placed at opening range midpoint ($74.61) with 2R intraday target at $76.52.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.8322</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$203.84</td>
+              <td class="num strong">$203.98</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying ORCL on 30-min Opening Range Breakout: price $203.44 cleared ORH $201.46 (ORL $199.52) on 1.38x relative volume. Stop placed at opening range midpoint ($200.49) with 2R intraday target at $209.33.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">10.2289</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$197.80</td>
+              <td class="num strong">$197.94</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Buying AVGO on 30-min Opening Range Breakout: price $195.50 cleared ORH $192.73 (ORL $192.14) on 1.52x relative volume. Stop placed at opening range midpoint ($192.44) with 2R intraday target at $201.61.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">10.3287</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$196.03</td>
+              <td class="num strong">$195.89</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$2.68</strong><div class="sub-num">(+0.13%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $196.03 (intrabar high $199.13 &gt;= target $196.03)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AVGO</td>
+              <td class="num">10.3287</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$195.50</td>
+              <td class="num strong">$195.63</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">80%</td>
+              <td class="reasoning-cell">Buying AVGO on 30-min Opening Range Breakout: price $193.64 cleared ORH $192.73 (ORL $192.14) on 1.57x relative volume. Stop placed at opening range midpoint ($192.44) with 2R intraday target at $196.03.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 3. Intraday ORB (Flat by Close) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-12 08:08 ET"], "datasets": [{"label": "3. Intraday ORB (Flat by Close)", "data": [10000.0, 10000.0, 9998.59, 10001.27, 10002.77, 9996.89, 10020.19, 10046.09, 10088.27, 10082.72, 10076.41, 10075.99, 10073.1, 10090.68, 10090.68, 10089.45, 10091.96, 10094.91, 10077.91, 10082.14, 10114.84, 10140.87, 10142.78, 10162.65, 10136.87, 10175.37, 10164.2, 10164.2, 10162.77, 10172.87, 10170.92, 10172.95, 10178.48, 10218.88, 10257.17, 10263.36, 10273.38, 10292.99, 10293.94, 10288.81, 10288.81, 10287.56, 10310.28, 10311.29, 10332.8, 10337.92, 10358.46, 10365.23, 10379.79, 10397.36, 10415.57, 10422.61, 10436.72, 10436.72, 10435.24, 10458.49, 10463.75, 10475.27, 10477.93, 10503.8, 10527.76, 10532.17, 10522.74, 10552.27, 10562.9, 10597.9, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

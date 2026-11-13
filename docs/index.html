@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Trading Arena — 10-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-live">LIVE - Day 1 of 10</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>1 / 10 US Trading Days</strong> (10%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 10.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-13 19:25:04 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-13 05:25:04 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="index.html" class="nav-link active">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Summary KPI Strip -->
+    <section class="kpi-strip" aria-label="Competition Summary KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Best Performing Agent</div>
+        <div class="kpi-value"><a href="agents/coded_trend.html">1. Trend Follower (MA / Breakout)</a></div>
+        <div class="kpi-sub neutral">
+          <strong>$10,000.00</strong> (+$0.00 / +0.00%)
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">S&amp;P 500 (<code>ctrl_spy</code>) Benchmark</div>
+        <div class="kpi-value neutral">+0.00%</div>
+        <div class="kpi-sub">
+          Equity: <strong>$10,000.00</strong> &bull; 0 of 9 active agents beating SPY
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Agent Risk Status</div>
+        <div class="kpi-value">10 Active / 10 Total</div>
+        <div class="kpi-sub">
+          <span class="pos">10 Active</span> &bull;
+          <span class="warn">0 Daily Halted (-3%)</span> &bull;
+          <span class="neg">0 Blown Up (-10%)</span>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Total Virtual Trades Executed</div>
+        <div class="kpi-value">0 Fills</div>
+        <div class="kpi-sub">
+          0 Closed Round-Trips &bull; $0.00 Spread + 5 bps Slippage
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Risk Manager Saves / Rejections</div>
+        <div class="kpi-value">0 Blocked</div>
+        <div class="kpi-sub">
+          Enforcing 1% Max Risk, 20% Cap, Max 5 Pos, No Look-Ahead
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard Table -->
+    <section class="panel" id="leaderboard">
+      <div class="panel-header">
+        <div>
+          <h2>&#127942; 10-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
+          <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
+        </div>
+        <div class="panel-actions">
+          <a href="final_report.html" class="btn-secondary">View 10-Day Final Analysis &amp; Luck vs. Skill &rarr;</a>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Agent Name &amp; Category</th>
+              <th>Status</th>
+              <th class="num">Equity</th>
+              <th class="num">Net Profit ($ / %)</th>
+              <th class="num">Return vs SPY</th>
+              <th class="num">Max Drawdown</th>
+              <th class="num">Trades</th>
+              <th class="num">Win Rate</th>
+              <th class="num">Profit Factor</th>
+              <th class="num">Avg Win / Avg Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-1">#1</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#38bdf8"></span>
+                  <div>
+                    <a href="agents/coded_trend.html" class="agent-link">1. Trend Follower (MA / Breakout)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">coded_trend</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-2">#2</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#818cf8"></span>
+                  <div>
+                    <a href="agents/coded_mean_rev.html" class="agent-link">2. Mean Reversion (RSI / Bollinger)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">coded_mean_rev</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-3">#3</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#c084fc"></span>
+                  <div>
+                    <a href="agents/coded_orb.html" class="agent-link">3. Intraday ORB (Flat by Close)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">coded_orb</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-4">#4</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#2dd4bf"></span>
+                  <div>
+                    <a href="agents/coded_sector.html" class="agent-link">4. Sector ETF Rotation</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">coded_sector</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-5">#5</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#34d399"></span>
+                  <div>
+                    <a href="agents/llm_technical.html" class="agent-link">5. Technical Analyst (Gemini Flash)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-llm">Gemini Flash LLM</span>
+                      <span class="agent-id-code">llm_technical</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-6">#6</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f472b6"></span>
+                  <div>
+                    <a href="agents/llm_catalyst.html" class="agent-link">6. News &amp; Catalyst Trader (Gemini Flash)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-llm">Gemini Flash LLM</span>
+                      <span class="agent-id-code">llm_catalyst</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-7">#7</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fb923c"></span>
+                  <div>
+                    <a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-llm">Gemini Flash LLM</span>
+                      <span class="agent-id-code">llm_macro</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-8">#8</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#facc15"></span>
+                  <div>
+                    <a href="agents/llm_cautious.html" class="agent-link">8. Cautious Risk-First Trader (Gemini Flash)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-llm">Gemini Flash LLM</span>
+                      <span class="agent-id-code">llm_cautious</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-9">#9</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#ffffff"></span>
+                  <div>
+                    <a href="agents/ctrl_spy.html" class="agent-link">9. Buy-and-Hold SPY (Benchmark)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-control">Control</span>
+                      <span class="agent-id-code">ctrl_spy</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-10">#10</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#94a3b8"></span>
+                  <div>
+                    <a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-control">Control</span>
+                      <span class="agent-id-code">ctrl_random</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Equity Curves Chart -->
+    <section class="panel" id="equity-curves">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; All 10 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
+          <p class="panel-sub">Interactive mark-to-market trajectory net of bid/ask half-spread and 5 bps slippage on every fill. Toggle cohorts or hover any point for exact equity.</p>
+        </div>
+        <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
+          <button type="button" class="btn-filter active" data-filter="all">All 10 Agents</button>
+          <button type="button" class="btn-filter" data-filter="Coded">4 Coded</button>
+          <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
+          <button type="button" class="btn-filter" data-filter="Control">2 Controls (SPY &amp; Random)</button>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="equityChart" height="360"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Equity Curve Snapshot (Zero-JS / Print View)</summary>
+        <div class="svg-wrap">
+          <svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,925</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,000</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,075</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,150</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace"></text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-13 05:25 ET</text>
+        </svg>
+        </div>
+      </details>
+    </section>
+
+    <!-- Recent Arena Activity Feed -->
+    <section class="panel" id="recent-activity">
+      <div class="panel-header">
+        <div>
+          <h2>&#9889; Recent Arena Trade Activity Feed</h2>
+          <p class="panel-sub">Latest virtual executions across all 10 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET / KST)</th>
+              <th>Agent</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Shares</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Realized P&amp;L</th>
+              <th>Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="8" class="empty-state">No virtual trades executed yet — competition is initialized and ready for market open.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bug Fixes & Strategy Integrity Log -->
+    <section class="panel" id="integrity-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128274; Bug Fixes &amp; Strategy Code-Freeze Integrity Log</h2>
+          <p class="panel-sub">Strict fair-competition audit: all 10 agent playbooks, indicator parameters, and prompts are locked at Day 1. Any technical bug fix during the 10-day window is logged publicly below (`state/bug_fixes_log.json`).</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Timestamp (KST)</th>
+              <th>Category</th>
+              <th>File / Component</th>
+              <th>Description</th>
+              <th>Strategy Integrity</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Mid-Competition Bug Fixes or Code Modifications Logged — All 10 Agent Strategies Running Unmodified Since Day 1 Freeze.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-heading">Locked Strategy &amp; Risk Engine SHA-256 Fingerprints</h3>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Source Module</th>
+              <th>SHA-256 Integrity Digest</th>
+              <th>Freeze Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono">coded_agents.py</td>
+              <td class="mono hash-cell"><code>7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">llm_agents.py</td>
+              <td class="mono hash-cell"><code>b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">risk_manager.py</td>
+              <td class="mono hash-cell"><code>d9300d8b85aa2b9751b1f498387ec245f3c53a965076c892114f830a8810b0f8</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">simulator.py</td>
+              <td class="mono hash-cell"><code>b06ac1f5f6798ac66b60c450f17feabf8735371841d29f10e15f2e2572474ad9</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Static Dashboard &bull; Updated 2026-11-13 19:25:04 KST / 2026-11-13 05:25:04 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-13 05:25 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('equityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      const ctx = canvas.getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: payload.labels,
+          datasets: payload.datasets
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#e2e8f0', boxWidth: 14, padding: 14, font: { size: 12 } }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(15, 23, 42, 0.96)',
+              titleColor: '#f8fafc',
+              bodyColor: '#e2e8f0',
+              borderColor: '#334155',
+              borderWidth: 1,
+              callbacks: {
+                label: function(context) {
+                  const v = context.parsed.y;
+                  const diff = v - 10000;
+                  const sign = diff >= 0 ? '+' : '-';
+                  const pct = (diff / 100.0).toFixed(2);
+                  return context.dataset.label + ': $' + v.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' (' + sign + Math.abs(pct) + '%)';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#94a3b8', maxRotation: 25, autoSkip: true, maxTicksLimit: 12 },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            },
+            y: {
+              ticks: {
+                color: '#94a3b8',
+                callback: function(val) { return '$' + Number(val).toLocaleString('en-US'); }
+              },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+
+      document.querySelectorAll('.btn-filter').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          chart.data.datasets.forEach(function(ds, idx) {
+            const meta = chart.getDatasetMeta(idx);
+            if (filter === 'all') {
+              meta.hidden = false;
+            } else {
+              meta.hidden = (ds.category !== filter && ds.agent_id !== 'ctrl_spy');
+            }
+          });
+          chart.update();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

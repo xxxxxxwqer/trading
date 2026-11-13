@@ -1,0 +1,21 @@
+{
+  "status": "READY",
+  "mode": "LIVE",
+  "trading_days_completed": 0,
+  "total_trading_days": 10,
+  "active_trading_dates": [],
+  "cycles_run": 0,
+  "strategy_hashes": {
+    "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
+    "llm_agents.py": "b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189",
+    "risk_manager.py": "d9300d8b85aa2b9751b1f498387ec245f3c53a965076c892114f830a8810b0f8",
+    "simulator.py": "b06ac1f5f6798ac66b60c450f17feabf8735371841d29f10e15f2e2572474ad9"
+  },
+  "strategy_integrity_verified": true,
+  "started_at_utc": "",
+  "completed_at_utc": "",
+  "last_updated_utc": "2026-11-13T10:25:04Z",
+  "last_decision_timestamp_utc": "",
+  "current_trading_date_et": "",
+  "regime_summary": "Ready for Day 1 market open."
+}

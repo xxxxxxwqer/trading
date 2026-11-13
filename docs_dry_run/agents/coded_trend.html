@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Trend Follower (MA / Breakout) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill active" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#3 of 10</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-3">Rank #3</span>
+            <h1>1. Trend Follower (MA / Breakout)</h1>
+            <span class="cat-pill cat-coded">Coded</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Buys liquid stocks breaking above 20-bar highs with 10-SMA &gt; 30-SMA momentum confirmation.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>coded_trend</code>)</div>
+        <p>Systematic trend-following strategy. Scans the universe for stocks where the fast SMA(10) is above the slow SMA(30), price breaks above the 20-bar high with above-average volume, and sets a trailing/initial stop-loss 2x ATR below entry with a 3x ATR profit target.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,512.38</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,512.38</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$512.38</div>
+        <div class="kpi-sub pos"><strong>+5.12%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+3.07%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$20.61</div>
+        <div class="kpi-sub">Invested: $10,491.77 (5 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.96%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">66.7%</div>
+        <div class="kpi-sub">12W / 6L (18 closed, 41 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">5.50</div>
+        <div class="kpi-sub">Friction paid: $57.52</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$41.18</span> / <span class="neg">-$14.98</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,016</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,181</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,347</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,512</text><line x1="78" y1="220.5" x2="932" y2="220.5" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#38bdf8" stroke-width="3.0" points="78.0,220.5 90.9,221.0 103.9,217.5 116.8,203.5 129.8,200.6 142.7,210.7 155.6,196.1 168.6,184.0 181.5,170.2 194.5,168.9 207.4,167.8 220.3,166.1 233.3,168.7 246.2,157.3 259.2,149.0 272.1,136.8 285.0,131.4 298.0,128.0 310.9,138.1 323.8,137.5 336.8,128.8 349.7,131.2 362.7,133.4 375.6,126.9 388.5,135.3 401.5,124.0 414.4,125.4 427.4,135.0 440.3,148.3 453.2,161.1 466.2,160.2 479.1,161.3 492.1,161.9 505.0,157.9 517.9,154.9 530.9,153.3 543.8,144.7 556.8,139.5 569.7,143.4 582.6,143.6 595.6,147.2 608.5,127.3 621.5,111.4 634.4,103.4 647.3,87.1 660.3,89.8 673.2,91.8 686.2,94.8 699.1,91.7 712.0,88.0 725.0,88.0 737.9,85.9 750.8,81.7 763.8,69.3 776.7,59.2 789.7,58.2 802.6,52.3 815.5,58.1 828.5,53.7 841.4,51.1 854.4,48.0 867.3,39.1 880.2,43.9 893.2,38.6 906.1,35.2 919.1,24.0 932.0,220.5"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="220.5" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,220.5 90.9,222.7 103.9,223.3 116.8,215.0 129.8,210.8 142.7,223.6 155.6,213.6 168.6,216.3 181.5,214.7 194.5,215.7 207.4,219.2 220.3,218.6 233.3,220.3 246.2,210.9 259.2,208.8 272.1,205.9 285.0,204.8 298.0,203.2 310.9,211.9 323.8,210.8 336.8,206.5 349.7,205.2 362.7,207.9 375.6,203.2 388.5,217.2 401.5,208.3 414.4,210.1 427.4,216.3 440.3,229.6 453.2,239.9 466.2,241.5 479.1,244.0 492.1,239.7 505.0,237.0 517.9,232.3 530.9,234.8 543.8,225.7 556.8,222.4 569.7,223.6 582.6,224.4 595.6,233.2 608.5,224.5 621.5,224.2 634.4,218.6 647.3,208.6 660.3,211.5 673.2,213.6 686.2,214.2 699.1,206.5 712.0,205.6 725.0,204.0 737.9,201.2 750.8,195.3 763.8,186.1 776.7,177.7 789.7,178.1 802.6,170.7 815.5,173.6 828.5,167.2 841.4,163.9 854.4,166.9 867.3,161.9 880.2,167.2 893.2,157.7 906.1,154.0 919.1,141.7 932.0,220.5"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="220.5" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-12 08:08 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (5 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">GOOGL</td>
+              <td class="num">10.9922</td>
+              <td class="num">$191.38</td>
+              <td class="num">$191.25</td>
+              <td class="num strong">$2,102.20</td>
+              <td class="num neg">$187.87</td>
+              <td class="num pos">$196.46</td>
+              <td class="num neg">
+                <strong>-$1.47</strong>
+                <div class="sub-num">(-0.07%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Buying GOOGL on momentum breakout: price $190.74 is at/near 20-bar high ($190.96) with 10-SMA ($190.21) &gt; 30-SMA ($188.85), RSI(14) at 71.0, and volume ratio 1.77x. Stop set at $187.87 and target at $196.46.</div>
+                <div class="sub-num">Opened: 2026-11-11 15:35:00 EST / 2026-11-12 05:35:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">ISRG</td>
+              <td class="num">3.5341</td>
+              <td class="num">$589.71</td>
+              <td class="num">$598.82</td>
+              <td class="num strong">$2,116.29</td>
+              <td class="num neg">$577.59</td>
+              <td class="num pos">$603.98</td>
+              <td class="num pos">
+                <strong>+$32.21</strong>
+                <div class="sub-num">(+1.55%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Buying ISRG on momentum breakout: price $586.39 is at/near 20-bar high ($585.30) with 10-SMA ($582.18) &gt; 30-SMA ($575.22), RSI(14) at 67.5, and volume ratio 1.38x. Stop set at $577.59 and target at $603.98.</div>
+                <div class="sub-num">Opened: 2026-11-11 10:00:00 EST / 2026-11-12 00:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">MS</td>
+              <td class="num">14.9847</td>
+              <td class="num">$139.81</td>
+              <td class="num">$140.32</td>
+              <td class="num strong">$2,102.61</td>
+              <td class="num neg">$137.19</td>
+              <td class="num pos">$143.45</td>
+              <td class="num pos">
+                <strong>+$7.64</strong>
+                <div class="sub-num">(+0.36%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Buying MS on momentum breakout: price $139.27 is at/near 20-bar high ($139.55) with 10-SMA ($138.27) &gt; 30-SMA ($137.07), RSI(14) at 74.8, and volume ratio 1.12x. Stop set at $137.19 and target at $143.45.</div>
+                <div class="sub-num">Opened: 2026-11-11 13:00:00 EST / 2026-11-12 03:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLP</td>
+              <td class="num">24.3043</td>
+              <td class="num">$83.62</td>
+              <td class="num">$85.13</td>
+              <td class="num strong">$2,068.92</td>
+              <td class="num neg">$82.29</td>
+              <td class="num pos">$86.05</td>
+              <td class="num pos">
+                <strong>+$36.56</strong>
+                <div class="sub-num">(+1.80%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Buying XLP on momentum breakout: price $83.55 is at/near 20-bar high ($83.76) with 10-SMA ($83.50) &gt; 30-SMA ($83.31), RSI(14) at 58.9, and volume ratio 1.17x. Stop set at $82.29 and target at $86.05.</div>
+                <div class="sub-num">Opened: 2026-11-09 13:00:00 EST / 2026-11-10 03:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLRE</td>
+              <td class="num">46.8057</td>
+              <td class="num">$44.20</td>
+              <td class="num">$44.90</td>
+              <td class="num strong">$2,101.75</td>
+              <td class="num neg">$43.55</td>
+              <td class="num pos">$45.54</td>
+              <td class="num pos">
+                <strong>+$32.75</strong>
+                <div class="sub-num">(+1.58%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Buying XLRE on momentum breakout: price $44.22 is at/near 20-bar high ($44.25) with 10-SMA ($44.04) &gt; 30-SMA ($44.01), RSI(14) at 69.9, and volume ratio 1.14x. Stop set at $43.55 and target at $45.54.</div>
+                <div class="sub-num">Opened: 2026-11-10 12:30:00 EST / 2026-11-11 02:30:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 1. Trend Follower (MA / Breakout) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,362.04</strong></span> &rarr;
+              <span>End: <strong>$10,512.38</strong></span>
+              <span class="journal-pnl pos">(+$150.34 / +1.45%)</span>
+              <span class="journal-counts">8 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,362.04 to $10,512.38 (+$150.34, +1.45%). Executed 8 trade(s) — Buys: ISRG ($2,084), XLY ($2,089), MS ($2,095), GOOGL ($2,104); Sells: XLY (AGENT_SIGNAL, $-13.19), MU (TAKE_PROFIT, +$55.44), XLY (AGENT_SIGNAL, $-6.61), TSLA (TAKE_PROFIT, +$50.49).</p>
+          <ul class="journal-highlights"><li>BUY 3.5341 ISRG @ $589.71 ($2084.08, stop $577.59) — Buying ISRG on momentum breakout: price $586.39 is at/near 20-bar high ($585.30) with 10-SMA ($582.18) &gt; 30-SMA ($575.22), RSI(14) at 67.5, and volume ratio 1.38x. Stop set at $577.59 and target at $603.98.</li><li>BUY 9.3851 XLY @ $222.61 ($2089.18, stop $218.79) — Buying XLY on momentum breakout: price $222.12 is at/near 20-bar high ($222.82) with 10-SMA ($221.74) &gt; 30-SMA ($221.27), RSI(14) at 60.7, and volume ratio 1.06x. Stop set at $218.79 and target at $228.78.</li><li>BUY 14.9847 MS @ $139.81 ($2094.97, stop $137.19) — Buying MS on momentum breakout: price $139.27 is at/near 20-bar high ($139.55) with 10-SMA ($138.27) &gt; 30-SMA ($137.07), RSI(14) at 74.8, and volume ratio 1.12x. Stop set at $137.19 and target at $143.45.</li><li>BUY 10.9922 GOOGL @ $191.38 ($2103.67, stop $187.87) — Buying GOOGL on momentum breakout: price $190.74 is at/near 20-bar high ($190.96) with 10-SMA ($190.21) &gt; 30-SMA ($188.85), RSI(14) at 71.0, and volume ratio 1.77x. Stop set at $187.87 and target at $196.46.</li><li>SELL 9.0390 XLY @ $220.88 [AGENT_SIGNAL: $-13.19 (-0.66%)] — Exiting XLY on trend breakdown: last price ($221.07) fell below 20-SMA ($221.41).</li><li>SELL 18.2859 MU @ $115.78 [TAKE_PROFIT: +$55.44 (+2.69%)] — Take-profit triggered at $115.86 (intrabar high $115.93 &gt;= target $115.86)</li><li>SELL 9.3851 XLY @ $221.90 [AGENT_SIGNAL: $-6.61 (-0.32%)] — Exiting XLY on trend breakdown: last price ($221.55) fell below 20-SMA ($221.66).</li><li>SELL 5.8947 TSLA @ $357.74 [TAKE_PROFIT: +$50.49 (+2.45%)] — Take-profit triggered at $357.95 (intrabar high $359.59 &gt;= target $357.95)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,200.58</strong></span> &rarr;
+              <span>End: <strong>$10,362.04</strong></span>
+              <span class="journal-pnl pos">(+$161.46 / +1.58%)</span>
+              <span class="journal-counts">6 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,200.58 to $10,362.04 (+$161.46, +1.58%). Executed 6 trade(s) — Buys: TSLA ($2,058), MU ($2,062), XLRE ($2,069); Sells: XLF (TAKE_PROFIT, +$57.19), ORCL (TAKE_PROFIT, +$59.03), XLI (TAKE_PROFIT, +$47.70).</p>
+          <ul class="journal-highlights"><li>BUY 5.8947 TSLA @ $349.17 ($2058.25, stop $342.32) — Buying TSLA on momentum breakout: price $347.53 is at/near 20-bar high ($346.43) with 10-SMA ($345.12) &gt; 30-SMA ($343.10), RSI(14) at 65.7, and volume ratio 1.39x. Stop set at $342.32 and target at $357.95.</li><li>BUY 18.2859 MU @ $112.75 ($2061.68, stop $110.80) — Buying MU on momentum breakout: price $112.48 is at/near 20-bar high ($112.44) with 10-SMA ($111.51) &gt; 30-SMA ($110.98), RSI(14) at 70.7, and volume ratio 1.37x. Stop set at $110.80 and target at $115.86.</li><li>BUY 46.8057 XLRE @ $44.20 ($2069.00, stop $43.55) — Buying XLRE on momentum breakout: price $44.22 is at/near 20-bar high ($44.25) with 10-SMA ($44.04) &gt; 30-SMA ($44.01), RSI(14) at 69.9, and volume ratio 1.14x. Stop set at $43.55 and target at $45.54.</li><li>SELL 37.1017 XLF @ $56.34 [TAKE_PROFIT: +$57.19 (+2.81%)] — Take-profit triggered at $56.38 (intrabar high $56.48 &gt;= target $56.38)</li><li>SELL 9.5479 ORCL @ $219.29 [TAKE_PROFIT: +$59.03 (+2.90%)] — Take-profit triggered at $219.44 (intrabar high $220.09 &gt;= target $219.44)</li><li>SELL 13.1627 XLI @ $158.95 [TAKE_PROFIT: +$47.70 (+2.33%)] — Take-profit triggered at $159.06 (intrabar high $159.22 &gt;= target $159.06)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,248.05</strong></span> &rarr;
+              <span>End: <strong>$10,200.58</strong></span>
+              <span class="journal-pnl neg">(-$47.47 / -0.46%)</span>
+              <span class="journal-counts">11 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,248.05 to $10,200.58 ($-47.47, -0.46%). Executed 11 trade(s) — Buys: LMT ($2,048), XLF ($2,033), XLP ($2,032), XLI ($2,044), ORCL ($2,035), XLY ($2,010); Sells: JPM (AGENT_SIGNAL, +$13.19), LMT (STOP_LOSS, $-29.61), AMZN (AGENT_SIGNAL, $-10.02), DIS (AGENT_SIGNAL, +$18.44), BAC (AGENT_SIGNAL, $-18.97).</p>
+          <ul class="journal-highlights"><li>BUY 3.5979 LMT @ $569.16 ($2047.77, stop $561.32) — Buying LMT on momentum breakout: price $569.86 is at/near 20-bar high ($571.99) with 10-SMA ($569.08) &gt; 30-SMA ($568.55), RSI(14) at 58.3, and volume ratio 1.76x. Stop set at $561.32 and target at $586.96.</li><li>BUY 37.1017 XLF @ $54.80 ($2033.14, stop $53.92) — Buying XLF on momentum breakout: price $54.74 is at/near 20-bar high ($54.83) with 10-SMA ($54.60) &gt; 30-SMA ($53.71), RSI(14) at 74.6, and volume ratio 1.16x. Stop set at $53.92 and target at $56.38.</li><li>BUY 24.3043 XLP @ $83.62 ($2032.36, stop $82.29) — Buying XLP on momentum breakout: price $83.55 is at/near 20-bar high ($83.76) with 10-SMA ($83.50) &gt; 30-SMA ($83.31), RSI(14) at 58.9, and volume ratio 1.17x. Stop set at $82.29 and target at $86.05.</li><li>BUY 13.1627 XLI @ $155.32 ($2044.49, stop $152.11) — Buying XLI on momentum breakout: price $154.43 is at/near 20-bar high ($154.16) with 10-SMA ($153.41) &gt; 30-SMA ($151.50), RSI(14) at 73.2, and volume ratio 1.30x. Stop set at $152.11 and target at $159.06.</li><li>BUY 9.5479 ORCL @ $213.10 ($2034.69, stop $209.86) — Buying ORCL on momentum breakout: price $213.05 is at/near 20-bar high ($213.17) with 10-SMA ($211.47) &gt; 30-SMA ($208.98), RSI(14) at 60.3, and volume ratio 1.25x. Stop set at $209.86 and target at $219.44.</li><li>BUY 9.0390 XLY @ $222.34 ($2009.72, stop $218.83) — Buying XLY on momentum breakout: price $222.16 is at/near 20-bar high ($222.30) with 10-SMA ($220.53) &gt; 30-SMA ($219.67), RSI(14) at 67.1, and volume ratio 1.35x. Stop set at $218.83 and target at $228.82.</li><li>SELL 7.2840 JPM @ $267.85 [AGENT_SIGNAL: +$13.19 (+0.68%)] — Exiting JPM on trend breakdown: last price ($268.67) fell below 20-SMA ($268.84).</li><li>SELL 3.5979 LMT @ $560.93 [STOP_LOSS: $-29.61 (-1.45%)] — Stop-loss triggered at $561.32 (intrabar low $560.91 &lt;= stop $561.32)</li><li>SELL 8.8783 AMZN @ $228.26 [AGENT_SIGNAL: $-10.02 (-0.49%)] — Exiting AMZN on trend breakdown: last price ($228.98) fell below 20-SMA ($229.53).</li><li>SELL 17.2465 DIS @ $118.55 [AGENT_SIGNAL: +$18.44 (+0.91%)] — Exiting DIS on trend breakdown: last price ($118.55) fell below 20-SMA ($118.65).</li><li>SELL 43.9453 BAC @ $46.04 [AGENT_SIGNAL: $-18.97 (-0.93%)] — Exiting BAC on trend breakdown: last price ($46.11) fell below 20-SMA ($46.41).</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,164.89</strong></span> &rarr;
+              <span>End: <strong>$10,248.05</strong></span>
+              <span class="journal-pnl pos">(+$83.16 / +0.82%)</span>
+              <span class="journal-counts">9 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,164.89 to $10,248.05 (+$83.16, +0.82%). Executed 9 trade(s) — Buys: AMZN ($2,037), BAC ($2,042), XLE ($2,053), HD ($2,044); Sells: META (TAKE_PROFIT, +$39.73), ORCL (TAKE_PROFIT, +$44.90), CAT (TAKE_PROFIT, +$49.30), XLE (AGENT_SIGNAL, $-11.50), HD (AGENT_SIGNAL, +$7.46).</p>
+          <ul class="journal-highlights"><li>BUY 8.8783 AMZN @ $229.39 ($2036.60, stop $225.55) — Buying AMZN on momentum breakout: price $228.98 is at/near 20-bar high ($229.49) with 10-SMA ($228.09) &gt; 30-SMA ($226.46), RSI(14) at 64.5, and volume ratio 1.58x. Stop set at $225.55 and target at $235.85.</li><li>BUY 43.9453 BAC @ $46.48 ($2042.37, stop $45.81) — Buying BAC on momentum breakout: price $46.50 is at/near 20-bar high ($46.51) with 10-SMA ($46.33) &gt; 30-SMA ($46.17), RSI(14) at 74.0, and volume ratio 1.35x. Stop set at $45.81 and target at $47.90.</li><li>BUY 21.4144 XLE @ $95.88 ($2053.12, stop $94.13) — Buying XLE on momentum breakout: price $95.57 is at/near 20-bar high ($95.91) with 10-SMA ($95.40) &gt; 30-SMA ($94.80), RSI(14) at 73.2, and volume ratio 1.06x. Stop set at $94.13 and target at $98.43.</li><li>BUY 4.8533 HD @ $421.06 ($2043.51, stop $415.81) — Buying HD on momentum breakout: price $422.14 is at/near 20-bar high ($424.11) with 10-SMA ($422.35) &gt; 30-SMA ($420.92), RSI(14) at 58.2, and volume ratio 1.05x. Stop set at $415.81 and target at $434.81.</li><li>SELL 3.0862 META @ $666.98 [TAKE_PROFIT: +$39.73 (+1.97%)] — Take-profit triggered at $667.38 (intrabar high $669.67 &gt;= target $667.38)</li><li>SELL 9.8994 ORCL @ $208.11 [TAKE_PROFIT: +$44.90 (+2.23%)] — Take-profit triggered at $208.26 (intrabar high $209.27 &gt;= target $208.26)</li><li>SELL 4.7000 CAT @ $439.93 [TAKE_PROFIT: +$49.30 (+2.44%)] — Take-profit triggered at $440.24 (intrabar high $441.97 &gt;= target $440.24)</li><li>SELL 21.4144 XLE @ $95.34 [AGENT_SIGNAL: $-11.50 (-0.56%)] — Exiting XLE on trend breakdown: last price ($95.38) fell below 20-SMA ($95.41).</li><li>SELL 4.8533 HD @ $422.59 [AGENT_SIGNAL: +$7.46 (+0.36%)] — Exiting HD on trend breakdown: last price ($420.76) fell below 20-SMA ($421.47).</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,164.89</strong></span>
+              <span class="journal-pnl pos">(+$164.89 / +1.65%)</span>
+              <span class="journal-counts">7 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,164.89 (+$164.89, +1.65%). Executed 7 trade(s) — Buys: AXP ($2,007), META ($2,019), ORCL ($2,015), CAT ($2,018), JPM ($1,938), DIS ($2,026); Sells: AXP (TAKE_PROFIT, +$51.29).</p>
+          <ul class="journal-highlights"><li>BUY 6.3241 AXP @ $317.40 ($2007.28, stop $311.50) — Buying AXP on momentum breakout: price $316.25 is at/near 20-bar high ($317.34) with 10-SMA ($314.84) &gt; 30-SMA ($310.25), RSI(14) at 74.9, and volume ratio 1.50x. Stop set at $311.50 and target at $325.74.</li><li>BUY 3.0862 META @ $654.10 ($2018.70, stop $638.22) — Buying META on momentum breakout: price $647.94 is at/near 20-bar high ($643.21) with 10-SMA ($639.66) &gt; 30-SMA ($631.04), RSI(14) at 72.5, and volume ratio 1.52x. Stop set at $638.22 and target at $667.38.</li><li>BUY 9.8994 ORCL @ $203.58 ($2015.31, stop $199.16) — Buying ORCL on momentum breakout: price $202.19 is at/near 20-bar high ($201.75) with 10-SMA ($199.79) &gt; 30-SMA ($197.23), RSI(14) at 74.9, and volume ratio 1.42x. Stop set at $199.16 and target at $208.26.</li><li>BUY 4.7000 CAT @ $429.44 ($2018.38, stop $421.00) — Buying CAT on momentum breakout: price $427.41 is at/near 20-bar high ($425.89) with 10-SMA ($421.02) &gt; 30-SMA ($418.61), RSI(14) at 73.4, and volume ratio 1.43x. Stop set at $421.00 and target at $440.24.</li><li>BUY 7.2840 JPM @ $266.04 ($1937.86, stop $262.20) — Buying JPM on momentum breakout: price $266.19 is at/near 20-bar high ($266.88) with 10-SMA ($265.63) &gt; 30-SMA ($262.27), RSI(14) at 64.4, and volume ratio 1.06x. Stop set at $262.20 and target at $274.18.</li><li>BUY 17.2465 DIS @ $117.48 ($2026.16, stop $115.31) — Buying DIS on momentum breakout: price $117.07 is at/near 20-bar high ($117.36) with 10-SMA ($116.66) &gt; 30-SMA ($115.89), RSI(14) at 68.7, and volume ratio 1.21x. Stop set at $115.31 and target at $120.58.</li><li>SELL 6.3241 AXP @ $325.51 [TAKE_PROFIT: +$51.29 (+2.56%)] — Take-profit triggered at $325.74 (intrabar high $326.38 &gt;= target $325.74)</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (41 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">GOOGL</td>
+              <td class="num">10.9922</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$191.25</td>
+              <td class="num strong">$191.38</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">85%</td>
+              <td class="reasoning-cell">Buying GOOGL on momentum breakout: price $190.74 is at/near 20-bar high ($190.96) with 10-SMA ($190.21) &gt; 30-SMA ($188.85), RSI(14) at 71.0, and volume ratio 1.77x. Stop set at $187.87 and target at $196.46.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">TSLA</td>
+              <td class="num">5.8947</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$357.95</td>
+              <td class="num strong">$357.74</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$50.49</strong><div class="sub-num">(+2.45%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $357.95 (intrabar high $359.59 &gt;= target $357.95)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MS</td>
+              <td class="num">14.9847</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:30:00 EST</div>
+                <div>Fill: 2026-11-11 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$139.71</td>
+              <td class="num strong">$139.81</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">Buying MS on momentum breakout: price $139.27 is at/near 20-bar high ($139.55) with 10-SMA ($138.27) &gt; 30-SMA ($137.07), RSI(14) at 74.8, and volume ratio 1.12x. Stop set at $137.19 and target at $143.45.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3851</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:00:00 EST</div>
+                <div>Fill: 2026-11-11 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$222.06</td>
+              <td class="num strong">$221.90</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neg"><strong>-$6.61</strong><div class="sub-num">(-0.32%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting XLY on trend breakdown: last price ($221.55) fell below 20-SMA ($221.66).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3851</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:00:00 EST</div>
+                <div>Fill: 2026-11-11 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$222.45</td>
+              <td class="num strong">$222.61</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">71%</td>
+              <td class="reasoning-cell">Buying XLY on momentum breakout: price $222.12 is at/near 20-bar high ($222.82) with 10-SMA ($221.74) &gt; 30-SMA ($221.27), RSI(14) at 60.7, and volume ratio 1.06x. Stop set at $218.79 and target at $228.78.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MU</td>
+              <td class="num">18.2859</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$115.86</td>
+              <td class="num strong">$115.78</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$55.44</strong><div class="sub-num">(+2.69%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $115.86 (intrabar high $115.93 &gt;= target $115.86)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ISRG</td>
+              <td class="num">3.5341</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 09:30:00 EST</div>
+                <div>Fill: 2026-11-11 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$589.29</td>
+              <td class="num strong">$589.71</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">86%</td>
+              <td class="reasoning-cell">Buying ISRG on momentum breakout: price $586.39 is at/near 20-bar high ($585.30) with 10-SMA ($582.18) &gt; 30-SMA ($575.22), RSI(14) at 67.5, and volume ratio 1.38x. Stop set at $577.59 and target at $603.98.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.0390</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$221.03</td>
+              <td class="num strong">$220.88</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$13.19</strong><div class="sub-num">(-0.66%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting XLY on trend breakdown: last price ($221.07) fell below 20-SMA ($221.41).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLRE</td>
+              <td class="num">46.8057</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 12:00:00 EST</div>
+                <div>Fill: 2026-11-10 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$44.17</td>
+              <td class="num strong">$44.20</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">73%</td>
+              <td class="reasoning-cell">Buying XLRE on momentum breakout: price $44.22 is at/near 20-bar high ($44.25) with 10-SMA ($44.04) &gt; 30-SMA ($44.01), RSI(14) at 69.9, and volume ratio 1.14x. Stop set at $43.55 and target at $45.54.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.1627</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:30:00 EST</div>
+                <div>Fill: 2026-11-10 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$159.06</td>
+              <td class="num strong">$158.95</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$47.70</strong><div class="sub-num">(+2.33%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $159.06 (intrabar high $159.22 &gt;= target $159.06)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MU</td>
+              <td class="num">18.2859</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:00:00 EST</div>
+                <div>Fill: 2026-11-10 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$112.67</td>
+              <td class="num strong">$112.75</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Buying MU on momentum breakout: price $112.48 is at/near 20-bar high ($112.44) with 10-SMA ($111.51) &gt; 30-SMA ($110.98), RSI(14) at 70.7, and volume ratio 1.37x. Stop set at $110.80 and target at $115.86.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.5479</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:00:00 EST</div>
+                <div>Fill: 2026-11-10 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$219.44</td>
+              <td class="num strong">$219.29</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$59.03</strong><div class="sub-num">(+2.90%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $219.44 (intrabar high $220.09 &gt;= target $219.44)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">TSLA</td>
+              <td class="num">5.8947</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$348.96</td>
+              <td class="num strong">$349.17</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">87%</td>
+              <td class="reasoning-cell">Buying TSLA on momentum breakout: price $347.53 is at/near 20-bar high ($346.43) with 10-SMA ($345.12) &gt; 30-SMA ($343.10), RSI(14) at 65.7, and volume ratio 1.39x. Stop set at $342.32 and target at $357.95.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.1017</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$56.38</td>
+              <td class="num strong">$56.34</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num pos"><strong>+$57.19</strong><div class="sub-num">(+2.81%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $56.38 (intrabar high $56.48 &gt;= target $56.38)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.0390</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 14:30:00 EST</div>
+                <div>Fill: 2026-11-09 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$222.18</td>
+              <td class="num strong">$222.34</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Buying XLY on momentum breakout: price $222.16 is at/near 20-bar high ($222.30) with 10-SMA ($220.53) &gt; 30-SMA ($219.67), RSI(14) at 67.1, and volume ratio 1.35x. Stop set at $218.83 and target at $228.82.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.5479</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:30:00 EST</div>
+                <div>Fill: 2026-11-09 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$212.95</td>
+              <td class="num strong">$213.10</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">91%</td>
+              <td class="reasoning-cell">Buying ORCL on momentum breakout: price $213.05 is at/near 20-bar high ($213.17) with 10-SMA ($211.47) &gt; 30-SMA ($208.98), RSI(14) at 60.3, and volume ratio 1.25x. Stop set at $209.86 and target at $219.44.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.1627</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$155.22</td>
+              <td class="num strong">$155.32</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">91%</td>
+              <td class="reasoning-cell">Buying XLI on momentum breakout: price $154.43 is at/near 20-bar high ($154.16) with 10-SMA ($153.41) &gt; 30-SMA ($151.50), RSI(14) at 73.2, and volume ratio 1.30x. Stop set at $152.11 and target at $159.06.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLP</td>
+              <td class="num">24.3043</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:30:00 EST</div>
+                <div>Fill: 2026-11-09 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$83.56</td>
+              <td class="num strong">$83.62</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">73%</td>
+              <td class="reasoning-cell">Buying XLP on momentum breakout: price $83.55 is at/near 20-bar high ($83.76) with 10-SMA ($83.50) &gt; 30-SMA ($83.31), RSI(14) at 58.9, and volume ratio 1.17x. Stop set at $82.29 and target at $86.05.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.1017</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:00:00 EST</div>
+                <div>Fill: 2026-11-09 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$54.76</td>
+              <td class="num strong">$54.80</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">88%</td>
+              <td class="reasoning-cell">Buying XLF on momentum breakout: price $54.74 is at/near 20-bar high ($54.83) with 10-SMA ($54.60) &gt; 30-SMA ($53.71), RSI(14) at 74.6, and volume ratio 1.16x. Stop set at $53.92 and target at $56.38.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.9453</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:30:00 EST</div>
+                <div>Fill: 2026-11-09 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$46.08</td>
+              <td class="num strong">$46.04</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neg"><strong>-$18.97</strong><div class="sub-num">(-0.93%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting BAC on trend breakdown: last price ($46.11) fell below 20-SMA ($46.41).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">DIS</td>
+              <td class="num">17.2465</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:00:00 EST</div>
+                <div>Fill: 2026-11-09 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$118.63</td>
+              <td class="num strong">$118.55</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$18.44</strong><div class="sub-num">(+0.91%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting DIS on trend breakdown: last price ($118.55) fell below 20-SMA ($118.65).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">8.8783</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$228.40</td>
+              <td class="num strong">$228.26</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neg"><strong>-$10.02</strong><div class="sub-num">(-0.49%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting AMZN on trend breakdown: last price ($228.98) fell below 20-SMA ($229.53).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">LMT</td>
+              <td class="num">3.5979</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$561.32</td>
+              <td class="num strong">$560.93</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neg"><strong>-$29.61</strong><div class="sub-num">(-1.45%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $561.32 (intrabar low $560.91 &lt;= stop $561.32)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">7.2840</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$268.04</td>
+              <td class="num strong">$267.85</td>
+              <td class="num neg">$0.39</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$13.19</strong><div class="sub-num">(+0.68%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting JPM on trend breakdown: last price ($268.67) fell below 20-SMA ($268.84).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">LMT</td>
+              <td class="num">3.5979</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$568.76</td>
+              <td class="num strong">$569.16</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Buying LMT on momentum breakout: price $569.86 is at/near 20-bar high ($571.99) with 10-SMA ($569.08) &gt; 30-SMA ($568.55), RSI(14) at 58.3, and volume ratio 1.76x. Stop set at $561.32 and target at $586.96.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 15:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 05:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">HD</td>
+              <td class="num">4.8533</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:00:00 EST</div>
+                <div>Fill: 2026-11-06 15:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$422.89</td>
+              <td class="num strong">$422.59</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$7.46</strong><div class="sub-num">(+0.36%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting HD on trend breakdown: last price ($420.76) fell below 20-SMA ($421.47).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">HD</td>
+              <td class="num">4.8533</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 14:30:00 EST</div>
+                <div>Fill: 2026-11-06 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$420.76</td>
+              <td class="num strong">$421.06</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">71%</td>
+              <td class="reasoning-cell">Buying HD on momentum breakout: price $422.14 is at/near 20-bar high ($424.11) with 10-SMA ($422.35) &gt; 30-SMA ($420.92), RSI(14) at 58.2, and volume ratio 1.05x. Stop set at $415.81 and target at $434.81.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 14:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 04:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLE</td>
+              <td class="num">21.4144</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 14:00:00 EST</div>
+                <div>Fill: 2026-11-06 14:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$95.41</td>
+              <td class="num strong">$95.34</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neg"><strong>-$11.50</strong><div class="sub-num">(-0.56%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">82%</td>
+              <td class="reasoning-cell">Exiting XLE on trend breakdown: last price ($95.38) fell below 20-SMA ($95.41).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLE</td>
+              <td class="num">21.4144</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 11:00:00 EST</div>
+                <div>Fill: 2026-11-06 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$95.81</td>
+              <td class="num strong">$95.88</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">73%</td>
+              <td class="reasoning-cell">Buying XLE on momentum breakout: price $95.57 is at/near 20-bar high ($95.91) with 10-SMA ($95.40) &gt; 30-SMA ($94.80), RSI(14) at 73.2, and volume ratio 1.06x. Stop set at $94.13 and target at $98.43.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.9453</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:30:00 EST</div>
+                <div>Fill: 2026-11-06 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$46.44</td>
+              <td class="num strong">$46.48</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">78%</td>
+              <td class="reasoning-cell">Buying BAC on momentum breakout: price $46.50 is at/near 20-bar high ($46.51) with 10-SMA ($46.33) &gt; 30-SMA ($46.17), RSI(14) at 74.0, and volume ratio 1.35x. Stop set at $45.81 and target at $47.90.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.7000</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:30:00 EST</div>
+                <div>Fill: 2026-11-06 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$440.24</td>
+              <td class="num strong">$439.93</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$49.30</strong><div class="sub-num">(+2.44%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $440.24 (intrabar high $441.97 &gt;= target $440.24)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.8994</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 10:30:00 EST</div>
+                <div>Fill: 2026-11-06 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$208.26</td>
+              <td class="num strong">$208.11</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$44.90</strong><div class="sub-num">(+2.23%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $208.26 (intrabar high $209.27 &gt;= target $208.26)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">8.8783</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 09:30:00 EST</div>
+                <div>Fill: 2026-11-06 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$229.25</td>
+              <td class="num strong">$229.39</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">88%</td>
+              <td class="reasoning-cell">Buying AMZN on momentum breakout: price $228.98 is at/near 20-bar high ($229.49) with 10-SMA ($228.09) &gt; 30-SMA ($226.46), RSI(14) at 64.5, and volume ratio 1.58x. Stop set at $225.55 and target at $235.85.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">3.0862</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 09:30:00 EST</div>
+                <div>Fill: 2026-11-06 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$667.38</td>
+              <td class="num strong">$666.98</td>
+              <td class="num neg">$0.21</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$39.73</strong><div class="sub-num">(+1.97%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $667.38 (intrabar high $669.67 &gt;= target $667.38)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">DIS</td>
+              <td class="num">17.2465</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 13:00:00 EST</div>
+                <div>Fill: 2026-11-05 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$117.40</td>
+              <td class="num strong">$117.48</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Buying DIS on momentum breakout: price $117.07 is at/near 20-bar high ($117.36) with 10-SMA ($116.66) &gt; 30-SMA ($115.89), RSI(14) at 68.7, and volume ratio 1.21x. Stop set at $115.31 and target at $120.58.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">6.3241</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 13:00:00 EST</div>
+                <div>Fill: 2026-11-05 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$325.74</td>
+              <td class="num strong">$325.51</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$51.29</strong><div class="sub-num">(+2.56%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $325.74 (intrabar high $326.38 &gt;= target $325.74)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">7.2840</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:30:00 EST</div>
+                <div>Fill: 2026-11-05 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$265.86</td>
+              <td class="num strong">$266.04</td>
+              <td class="num neg">$0.39</td>
+              <td class="num neg">$0.97</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">81%</td>
+              <td class="reasoning-cell">Buying JPM on momentum breakout: price $266.19 is at/near 20-bar high ($266.88) with 10-SMA ($265.63) &gt; 30-SMA ($262.27), RSI(14) at 64.4, and volume ratio 1.06x. Stop set at $262.20 and target at $274.18.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.7000</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$429.14</td>
+              <td class="num strong">$429.44</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">88%</td>
+              <td class="reasoning-cell">Buying CAT on momentum breakout: price $427.41 is at/near 20-bar high ($425.89) with 10-SMA ($421.02) &gt; 30-SMA ($418.61), RSI(14) at 73.4, and volume ratio 1.43x. Stop set at $421.00 and target at $440.24.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">ORCL</td>
+              <td class="num">9.8994</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$203.44</td>
+              <td class="num strong">$203.58</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">92%</td>
+              <td class="reasoning-cell">Buying ORCL on momentum breakout: price $202.19 is at/near 20-bar high ($201.75) with 10-SMA ($199.79) &gt; 30-SMA ($197.23), RSI(14) at 74.9, and volume ratio 1.42x. Stop set at $199.16 and target at $208.26.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">3.0862</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$653.71</td>
+              <td class="num strong">$654.10</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">92%</td>
+              <td class="reasoning-cell">Buying META on momentum breakout: price $647.94 is at/near 20-bar high ($643.21) with 10-SMA ($639.66) &gt; 30-SMA ($631.04), RSI(14) at 72.5, and volume ratio 1.52x. Stop set at $638.22 and target at $667.38.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">6.3241</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$317.18</td>
+              <td class="num strong">$317.40</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">88%</td>
+              <td class="reasoning-cell">Buying AXP on momentum breakout: price $316.25 is at/near 20-bar high ($317.34) with 10-SMA ($314.84) &gt; 30-SMA ($310.25), RSI(14) at 74.9, and volume ratio 1.50x. Stop set at $311.50 and target at $325.74.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 1. Trend Follower (MA / Breakout) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-12 08:08 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "data": [10000.0, 9998.59, 10007.87, 10044.27, 10051.79, 10025.4, 10063.63, 10095.12, 10131.09, 10134.53, 10137.47, 10141.74, 10135.0, 10164.89, 10186.49, 10218.32, 10232.37, 10241.22, 10214.89, 10216.38, 10239.07, 10232.89, 10227.12, 10244.07, 10222.19, 10251.68, 10248.05, 10222.93, 10188.11, 10154.81, 10157.2, 10154.21, 10152.78, 10163.3, 10171.04, 10175.24, 10197.51, 10211.13, 10201.09, 10200.58, 10191.04, 10242.93, 10284.43, 10305.34, 10347.8, 10340.75, 10335.56, 10327.82, 10335.76, 10345.43, 10345.61, 10350.98, 10362.04, 10394.12, 10420.53, 10423.09, 10438.48, 10423.58, 10435.01, 10441.61, 10449.84, 10472.92, 10460.46, 10474.24, 10483.07, 10512.38, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

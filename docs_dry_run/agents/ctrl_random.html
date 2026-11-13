@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Random Trader (Luck Control) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill active" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#5 of 10</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-5">Rank #5</span>
+            <h1>10. Random Trader (Luck Control)</h1>
+            <span class="cat-pill cat-control">Control</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Randomly buys and sells liquid universe stocks within the shared risk rules to show what luck alone produces.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>ctrl_random</code>)</div>
+        <p>Null-hypothesis scientific control. Uses a seeded pseudo-random generator each cycle to randomly hold, buy a random universe stock with a random 1.5%–3.5% stop-loss and 2x take-profit, or exit an existing position—all subject to the exact same shared risk manager as the AI and coded agents.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,217.39</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,217.39</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$217.39</div>
+        <div class="kpi-sub pos"><strong>+2.17%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+0.12%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$6,104.77</div>
+        <div class="kpi-sub">Invested: $4,112.62 (2 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.74%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">62.5%</div>
+        <div class="kpi-sub">10W / 6L (16 closed, 34 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">3.73</div>
+        <div class="kpi-sub">Friction paid: $47.02</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$20.28</span> / <span class="neg">-$9.06</span></div>
+        <div class="kpi-sub">Rejections: 14</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,942</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,034</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,126</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,217</text><line x1="78" y1="174.3" x2="932" y2="174.3" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#94a3b8" stroke-width="3.0" points="78.0,174.3 90.9,175.3 103.9,175.9 116.8,176.8 129.8,176.6 142.7,185.5 155.6,177.1 168.6,180.7 181.5,176.6 194.5,178.7 207.4,184.0 220.3,190.2 233.3,192.9 246.2,172.6 259.2,168.5 272.1,154.7 285.0,149.2 298.0,145.7 310.9,157.2 323.8,160.5 336.8,145.2 349.7,140.1 362.7,139.0 375.6,131.8 388.5,146.8 401.5,126.0 414.4,126.4 427.4,138.5 440.3,155.5 453.2,167.8 466.2,169.5 479.1,177.6 492.1,167.1 505.0,163.3 517.9,150.6 530.9,162.2 543.8,155.1 556.8,151.9 569.7,150.9 582.6,157.0 595.6,165.1 608.5,150.8 621.5,148.2 634.4,142.3 647.3,116.8 660.3,124.8 673.2,132.2 686.2,132.1 699.1,125.3 712.0,122.0 725.0,116.7 737.9,117.8 750.8,103.1 763.8,92.9 776.7,86.3 789.7,86.8 802.6,80.8 815.5,76.7 828.5,74.2 841.4,55.3 854.4,45.3 867.3,37.6 880.2,41.0 893.2,33.8 906.1,28.9 919.1,24.0 932.0,174.3"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="174.3" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,174.3 90.9,178.4 103.9,179.4 116.8,164.4 129.8,156.8 142.7,180.0 155.6,161.8 168.6,166.7 181.5,163.9 194.5,165.7 207.4,171.9 220.3,170.8 233.3,174.1 246.2,157.0 259.2,153.3 272.1,148.0 285.0,146.0 298.0,143.1 310.9,158.8 323.8,156.8 336.8,149.0 349.7,146.8 362.7,151.6 375.6,143.1 388.5,168.5 401.5,152.4 414.4,155.5 427.4,166.8 440.3,190.7 453.2,209.3 466.2,212.1 479.1,216.8 492.1,208.9 505.0,204.1 517.9,195.6 530.9,200.1 543.8,183.8 556.8,177.7 569.7,179.9 582.6,181.4 595.6,197.3 608.5,181.6 621.5,181.0 634.4,170.8 647.3,152.9 660.3,158.0 673.2,161.8 686.2,162.9 699.1,149.0 712.0,147.4 725.0,144.6 737.9,139.5 750.8,128.9 763.8,112.3 776.7,97.1 789.7,97.9 802.6,84.6 815.5,89.8 828.5,78.2 841.4,72.4 854.4,77.7 867.3,68.7 880.2,78.3 893.2,61.2 906.1,54.4 919.1,32.2 932.0,174.3"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="174.3" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-12 08:08 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (2 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">CVX</td>
+              <td class="num">12.6790</td>
+              <td class="num">$157.81</td>
+              <td class="num">$162.88</td>
+              <td class="num strong">$2,065.11</td>
+              <td class="num neg">$154.95</td>
+              <td class="num pos">$163.77</td>
+              <td class="num pos">
+                <strong>+$64.18</strong>
+                <div class="sub-num">(+3.21%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Null-hypothesis random control: deterministic cycle seed (208592e9) rolled 0.570 to randomly buy CVX at $157.89 with a 1.86% stop ($154.95) and 2R target ($163.77).</div>
+                <div class="sub-num">Opened: 2026-11-09 11:30:00 EST / 2026-11-10 01:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">GOOGL</td>
+              <td class="num">10.7062</td>
+              <td class="num">$191.38</td>
+              <td class="num">$191.25</td>
+              <td class="num strong">$2,047.51</td>
+              <td class="num neg">$186.98</td>
+              <td class="num pos">$198.25</td>
+              <td class="num neg">
+                <strong>-$1.43</strong>
+                <div class="sub-num">(-0.07%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Null-hypothesis random control: deterministic cycle seed (720ae198) rolled 0.353 to randomly buy GOOGL at $190.74 with a 1.97% stop ($186.98) and 2R target ($198.25).</div>
+                <div class="sub-num">Opened: 2026-11-11 15:35:00 EST / 2026-11-12 05:35:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 10. Random Trader (Luck Control) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,103.05</strong></span> &rarr;
+              <span>End: <strong>$10,217.39</strong></span>
+              <span class="journal-pnl pos">(+$114.34 / +1.13%)</span>
+              <span class="journal-counts">11 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,103.05 to $10,217.39 (+$114.34, +1.13%). Executed 11 trade(s) — Buys: AXP ($2,031), INTC ($1,998), TLT ($2,035), GOOGL ($2,049); Sells: CRM (AGENT_SIGNAL, +$12.55), XLV (AGENT_SIGNAL, +$7.13), INTC (AGENT_SIGNAL, +$0.76), HON (AGENT_SIGNAL, +$21.12), AXP (AGENT_SIGNAL, +$28.14), TLT (AGENT_SIGNAL, +$3.89), MS (TAKE_PROFIT, +$60.22).</p>
+          <ul class="journal-highlights"><li>BUY 5.6162 AXP @ $361.63 ($2030.98, stop $351.93) — Null-hypothesis random control: deterministic cycle seed (8cf7b583) rolled 0.670 to randomly buy AXP at $360.62 with a 2.41% stop ($351.93) and 2R target ($378.00).</li><li>BUY 77.2284 INTC @ $25.87 ($1998.28, stop $25.31) — Null-hypothesis random control: deterministic cycle seed (4ec485bc) rolled 0.289 to randomly buy INTC at $25.81 with a 1.96% stop ($25.31) and 2R target ($26.82).</li><li>BUY 22.1952 TLT @ $91.70 ($2035.32, stop $90.13) — Null-hypothesis random control: deterministic cycle seed (d0e4ea6a) rolled 0.686 to randomly buy TLT at $91.66 with a 1.67% stop ($90.13) and 2R target ($94.72).</li><li>BUY 10.7062 GOOGL @ $191.38 ($2048.94, stop $186.98) — Null-hypothesis random control: deterministic cycle seed (720ae198) rolled 0.353 to randomly buy GOOGL at $190.74 with a 1.97% stop ($186.98) and 2R target ($198.25).</li><li>SELL 5.7740 CRM @ $348.07 [AGENT_SIGNAL: +$12.55 (+0.63%)] — Null-hypothesis random control: deterministic cycle seed (536755c8) rolled 0.026 (&lt; 0.25) to randomly exit held position CRM.</li><li>SELL 13.2722 XLV @ $151.64 [AGENT_SIGNAL: +$7.13 (+0.36%)] — Null-hypothesis random control: deterministic cycle seed (548a8a7e) rolled 0.154 (&lt; 0.25) to randomly exit held position XLV.</li><li>SELL 77.2284 INTC @ $25.88 [AGENT_SIGNAL: +$0.76 (+0.04%)] — Null-hypothesis random control: deterministic cycle seed (4d799a1c) rolled 0.009 (&lt; 0.25) to randomly exit held position INTC.</li><li>SELL 8.6269 HON @ $234.96 [AGENT_SIGNAL: +$21.12 (+1.05%)] — Null-hypothesis random control: deterministic cycle seed (8eaf205b) rolled 0.059 (&lt; 0.25) to randomly exit held position HON.</li><li>SELL 5.6162 AXP @ $366.64 [AGENT_SIGNAL: +$28.14 (+1.39%)] — Null-hypothesis random control: deterministic cycle seed (acb7d663) rolled 0.202 (&lt; 0.25) to randomly exit held position AXP.</li><li>SELL 22.1952 TLT @ $91.88 [AGENT_SIGNAL: +$3.89 (+0.19%)] — Null-hypothesis random control: deterministic cycle seed (81237d6a) rolled 0.039 (&lt; 0.25) to randomly exit held position TLT.</li><li>SELL 14.7046 MS @ $140.41 [TAKE_PROFIT: +$60.22 (+3.00%)] — Take-profit triggered at $140.51 (intrabar high $140.54 &gt;= target $140.51)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,025.07</strong></span> &rarr;
+              <span>End: <strong>$10,103.05</strong></span>
+              <span class="journal-pnl pos">(+$77.98 / +0.78%)</span>
+              <span class="journal-counts">3 fills &bull; 6 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,025.07 to $10,103.05 (+$77.98, +0.78%). Executed 3 trade(s) — Buys: XLV ($2,005), CRM ($1,997); Sells: BAC (AGENT_SIGNAL, $-10.30). Risk Manager blocked 6 order(s) (HD: Max open positions (5) reached; PANW: Max open positions (5) reached).</p>
+          <ul class="journal-highlights"><li>BUY 13.2722 XLV @ $151.10 ($2005.41, stop $148.14) — Null-hypothesis random control: deterministic cycle seed (2189a996) rolled 0.585 to randomly buy XLV at $151.07 with a 1.94% stop ($148.14) and 2R target ($156.92).</li><li>BUY 5.7740 CRM @ $345.90 ($1997.23, stop $339.39) — Null-hypothesis random control: deterministic cycle seed (51d46554) rolled 0.620 to randomly buy CRM at $346.26 with a 1.98% stop ($339.39) and 2R target ($360.00).</li><li>SELL 43.2775 BAC @ $46.29 [AGENT_SIGNAL: $-10.30 (-0.51%)] — Null-hypothesis random control: deterministic cycle seed (97109690) rolled 0.117 (&lt; 0.25) to randomly exit held position BAC.</li><li>REJECTED BUY HD: Max open positions (5) reached</li><li>REJECTED BUY PANW: Max open positions (5) reached</li><li>REJECTED BUY WMT: Max open positions (5) reached</li><li>REJECTED BUY XLI: Max open positions (5) reached</li><li>REJECTED BUY UNP: Max open positions (5) reached</li><li>REJECTED BUY META: Max open positions (5) reached</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,069.33</strong></span> &rarr;
+              <span>End: <strong>$10,025.07</strong></span>
+              <span class="journal-pnl neg">(-$44.26 / -0.44%)</span>
+              <span class="journal-counts">9 fills &bull; 2 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,069.33 to $10,025.07 ($-44.26, -0.44%). Executed 9 trade(s) — Buys: BAC ($2,014), AMZN ($1,965), CVX ($2,001), MS ($2,006), MS ($2,004); Sells: SMH (AGENT_SIGNAL, +$57.32), AMZN (AGENT_SIGNAL, $-4.81), WFC (AGENT_SIGNAL, $-24.36), MS (AGENT_SIGNAL, +$3.77). Risk Manager blocked 2 order(s) (XLE: Max open positions (5) reached; DIS: Max open positions (5) reached).</p>
+          <ul class="journal-highlights"><li>BUY 43.2775 BAC @ $46.53 ($2013.69, stop $45.62) — Null-hypothesis random control: deterministic cycle seed (e61eea3b) rolled 0.328 to randomly buy BAC at $46.54 with a 1.97% stop ($45.62) and 2R target ($48.37).</li><li>BUY 8.5778 AMZN @ $229.11 ($1965.29, stop $223.74) — Null-hypothesis random control: deterministic cycle seed (9c216c3c) rolled 0.618 to randomly buy AMZN at $229.77 with a 2.62% stop ($223.74) and 2R target ($241.83).</li><li>BUY 12.6790 CVX @ $157.81 ($2000.93, stop $154.95) — Null-hypothesis random control: deterministic cycle seed (208592e9) rolled 0.570 to randomly buy CVX at $157.89 with a 1.86% stop ($154.95) and 2R target ($163.77).</li><li>BUY 14.7482 MS @ $136.04 ($2006.32, stop $133.49) — Null-hypothesis random control: deterministic cycle seed (30e9084e) rolled 0.254 to randomly buy MS at $135.55 with a 1.52% stop ($133.49) and 2R target ($139.66).</li><li>BUY 14.7046 MS @ $136.32 ($2004.48, stop $134.33) — Null-hypothesis random control: deterministic cycle seed (9376922a) rolled 0.394 to randomly buy MS at $136.39 with a 1.51% stop ($134.33) and 2R target ($140.51).</li><li>SELL 7.0471 SMH @ $293.29 [AGENT_SIGNAL: +$57.32 (+2.85%)] — Null-hypothesis random control: deterministic cycle seed (430f2a82) rolled 0.216 (&lt; 0.25) to randomly exit held position SMH.</li><li>SELL 8.5778 AMZN @ $228.55 [AGENT_SIGNAL: $-4.81 (-0.25%)] — Null-hypothesis random control: deterministic cycle seed (84213a2b) rolled 0.113 (&lt; 0.25) to randomly exit held position AMZN.</li><li>SELL 26.5707 WFC @ $74.15 [AGENT_SIGNAL: $-24.36 (-1.22%)] — Null-hypothesis random control: deterministic cycle seed (495a377c) rolled 0.118 (&lt; 0.25) to randomly exit held position WFC.</li><li>SELL 14.7482 MS @ $136.29 [AGENT_SIGNAL: +$3.77 (+0.19%)] — Null-hypothesis random control: deterministic cycle seed (28337333) rolled 0.221 (&lt; 0.25) to randomly exit held position MS.</li><li>REJECTED BUY XLE: Max open positions (5) reached</li><li>REJECTED BUY DIS: Max open positions (5) reached</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,002.52</strong></span> &rarr;
+              <span>End: <strong>$10,069.33</strong></span>
+              <span class="journal-pnl pos">(+$66.81 / +0.67%)</span>
+              <span class="journal-counts">2 fills &bull; 6 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,002.52 to $10,069.33 (+$66.81, +0.67%). Executed 2 trade(s) — Buys: none; Sells: NKE (AGENT_SIGNAL, $-9.23), WMT (AGENT_SIGNAL, +$7.91). Risk Manager blocked 6 order(s) (AMZN: Max open positions (5) reached; TMO: Max open positions (5) reached).</p>
+          <ul class="journal-highlights"><li>SELL 24.7083 NKE @ $80.56 [AGENT_SIGNAL: $-9.23 (-0.46%)] — Null-hypothesis random control: deterministic cycle seed (fb8337ac) rolled 0.002 (&lt; 0.25) to randomly exit held position NKE.</li><li>SELL 23.0384 WMT @ $86.61 [AGENT_SIGNAL: +$7.91 (+0.40%)] — Null-hypothesis random control: deterministic cycle seed (1e7ef3f2) rolled 0.178 (&lt; 0.25) to randomly exit held position WMT.</li><li>REJECTED BUY AMZN: Max open positions (5) reached</li><li>REJECTED BUY TMO: Max open positions (5) reached</li><li>REJECTED BUY GOOGL: Max open positions (5) reached</li><li>REJECTED BUY CRM: Max open positions (5) reached</li><li>REJECTED BUY MA: Max open positions (5) reached</li><li>REJECTED BUY ADBE: Max open positions (5) reached</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,002.52</strong></span>
+              <span class="journal-pnl pos">(+$2.52 / +0.03%)</span>
+              <span class="journal-counts">9 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,002.52 (+$2.52, +0.03%). Executed 9 trade(s) — Buys: XLP ($2,003), WMT ($2,002), HON ($2,006), WFC ($1,995), NKE ($2,000), SMH ($2,010), WMT ($1,987); Sells: XLP (AGENT_SIGNAL, $-2.27), WMT (AGENT_SIGNAL, $-3.40).</p>
+          <ul class="journal-highlights"><li>BUY 24.1633 XLP @ $82.91 ($2003.26, stop $80.54) — Null-hypothesis random control: deterministic cycle seed (9fff753c) rolled 0.315 to randomly buy XLP at $82.77 with a 2.70% stop ($80.54) and 2R target ($87.23).</li><li>BUY 23.2133 WMT @ $86.24 ($2001.82, stop $84.31) — Null-hypothesis random control: deterministic cycle seed (f0ce00ee) rolled 0.368 to randomly buy WMT at $86.14 with a 2.12% stop ($84.31) and 2R target ($89.79).</li><li>BUY 8.6269 HON @ $232.51 ($2005.84, stop $226.17) — Null-hypothesis random control: deterministic cycle seed (b3964f4a) rolled 0.428 to randomly buy HON at $231.75 with a 2.41% stop ($226.17) and 2R target ($242.90).</li><li>BUY 26.5707 WFC @ $75.07 ($1994.59, stop $73.11) — Null-hypothesis random control: deterministic cycle seed (1dffddc4) rolled 0.433 to randomly buy WFC at $75.25 with a 2.83% stop ($73.11) and 2R target ($79.52).</li><li>BUY 24.7083 NKE @ $80.93 ($1999.69, stop $79.37) — Null-hypothesis random control: deterministic cycle seed (932985ed) rolled 0.427 to randomly buy NKE at $80.91 with a 1.91% stop ($79.37) and 2R target ($83.99).</li><li>BUY 7.0471 SMH @ $285.16 ($2009.54, stop $275.77) — Null-hypothesis random control: deterministic cycle seed (22dd88c1) rolled 0.327 to randomly buy SMH at $283.54 with a 2.74% stop ($275.77) and 2R target ($299.08).</li><li>BUY 23.0384 WMT @ $86.27 ($1987.44, stop $84.07) — Null-hypothesis random control: deterministic cycle seed (24eb1169) rolled 0.353 to randomly buy WMT at $86.09 with a 2.35% stop ($84.07) and 2R target ($90.12).</li><li>SELL 24.1633 XLP @ $82.81 [AGENT_SIGNAL: $-2.27 (-0.11%)] — Null-hypothesis random control: deterministic cycle seed (33bda04e) rolled 0.207 (&lt; 0.25) to randomly exit held position XLP.</li><li>SELL 23.2133 WMT @ $86.09 [AGENT_SIGNAL: $-3.40 (-0.17%)] — Null-hypothesis random control: deterministic cycle seed (cde78a6e) rolled 0.232 (&lt; 0.25) to randomly exit held position WMT.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (34 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">GOOGL</td>
+              <td class="num">10.7062</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$191.25</td>
+              <td class="num strong">$191.38</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (720ae198) rolled 0.353 to randomly buy GOOGL at $190.74 with a 1.97% stop ($186.98) and 2R target ($198.25).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MS</td>
+              <td class="num">14.7046</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$140.51</td>
+              <td class="num strong">$140.41</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$60.22</strong><div class="sub-num">(+3.00%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $140.51 (intrabar high $140.54 &gt;= target $140.51)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">TLT</td>
+              <td class="num">22.1952</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:00:00 EST</div>
+                <div>Fill: 2026-11-11 15:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$91.93</td>
+              <td class="num strong">$91.88</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num pos"><strong>+$3.89</strong><div class="sub-num">(+0.19%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (81237d6a) rolled 0.039 (&lt; 0.25) to randomly exit held position TLT.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 14:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 04:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.6162</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 14:00:00 EST</div>
+                <div>Fill: 2026-11-11 14:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$366.90</td>
+              <td class="num strong">$366.64</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$28.14</strong><div class="sub-num">(+1.39%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (acb7d663) rolled 0.202 (&lt; 0.25) to randomly exit held position AXP.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">TLT</td>
+              <td class="num">22.1952</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 13:00:00 EST</div>
+                <div>Fill: 2026-11-11 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$91.65</td>
+              <td class="num strong">$91.70</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (d0e4ea6a) rolled 0.686 to randomly buy TLT at $91.66 with a 1.67% stop ($90.13) and 2R target ($94.72).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">HON</td>
+              <td class="num">8.6269</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:30:00 EST</div>
+                <div>Fill: 2026-11-11 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$235.12</td>
+              <td class="num strong">$234.96</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$21.12</strong><div class="sub-num">(+1.05%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (8eaf205b) rolled 0.059 (&lt; 0.25) to randomly exit held position HON.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">INTC</td>
+              <td class="num">77.2284</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 12:00:00 EST</div>
+                <div>Fill: 2026-11-11 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$25.90</td>
+              <td class="num strong">$25.88</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num pos"><strong>+$0.76</strong><div class="sub-num">(+0.04%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (4d799a1c) rolled 0.009 (&lt; 0.25) to randomly exit held position INTC.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">INTC</td>
+              <td class="num">77.2284</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:30:00 EST</div>
+                <div>Fill: 2026-11-11 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$25.86</td>
+              <td class="num strong">$25.87</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (4ec485bc) rolled 0.289 to randomly buy INTC at $25.81 with a 1.96% stop ($25.31) and 2R target ($26.82).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.6162</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:00:00 EST</div>
+                <div>Fill: 2026-11-11 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$361.38</td>
+              <td class="num strong">$361.63</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (8cf7b583) rolled 0.670 to randomly buy AXP at $360.62 with a 2.41% stop ($351.93) and 2R target ($378.00).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLV</td>
+              <td class="num">13.2722</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 09:30:00 EST</div>
+                <div>Fill: 2026-11-11 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$151.74</td>
+              <td class="num strong">$151.64</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$7.13</strong><div class="sub-num">(+0.36%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (548a8a7e) rolled 0.154 (&lt; 0.25) to randomly exit held position XLV.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">CRM</td>
+              <td class="num">5.7740</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$348.32</td>
+              <td class="num strong">$348.07</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$12.55</strong><div class="sub-num">(+0.63%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (536755c8) rolled 0.026 (&lt; 0.25) to randomly exit held position CRM.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CRM</td>
+              <td class="num">5.7740</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$345.66</td>
+              <td class="num strong">$345.90</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (51d46554) rolled 0.620 to randomly buy CRM at $346.26 with a 1.98% stop ($339.39) and 2R target ($360.00).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLV</td>
+              <td class="num">13.2722</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 09:30:00 EST</div>
+                <div>Fill: 2026-11-10 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$150.99</td>
+              <td class="num strong">$151.10</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (2189a996) rolled 0.585 to randomly buy XLV at $151.07 with a 1.94% stop ($148.14) and 2R target ($156.92).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.2775</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$46.32</td>
+              <td class="num strong">$46.29</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$10.30</strong><div class="sub-num">(-0.51%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (97109690) rolled 0.117 (&lt; 0.25) to randomly exit held position BAC.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MS</td>
+              <td class="num">14.7046</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 14:30:00 EST</div>
+                <div>Fill: 2026-11-09 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$136.22</td>
+              <td class="num strong">$136.32</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (9376922a) rolled 0.394 to randomly buy MS at $136.39 with a 1.51% stop ($134.33) and 2R target ($140.51).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 14:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 04:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MS</td>
+              <td class="num">14.7482</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 14:00:00 EST</div>
+                <div>Fill: 2026-11-09 14:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$136.39</td>
+              <td class="num strong">$136.29</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$3.77</strong><div class="sub-num">(+0.19%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (28337333) rolled 0.221 (&lt; 0.25) to randomly exit held position MS.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">WFC</td>
+              <td class="num">26.5707</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:30:00 EST</div>
+                <div>Fill: 2026-11-09 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$74.20</td>
+              <td class="num strong">$74.15</td>
+              <td class="num neg">$0.39</td>
+              <td class="num neg">$0.99</td>
+              <td class="num neg"><strong>-$24.36</strong><div class="sub-num">(-1.22%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (495a377c) rolled 0.118 (&lt; 0.25) to randomly exit held position WFC.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MS</td>
+              <td class="num">14.7482</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:00:00 EST</div>
+                <div>Fill: 2026-11-09 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$135.94</td>
+              <td class="num strong">$136.04</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (30e9084e) rolled 0.254 to randomly buy MS at $135.55 with a 1.52% stop ($133.49) and 2R target ($139.66).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">8.5778</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:30:00 EST</div>
+                <div>Fill: 2026-11-09 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$228.69</td>
+              <td class="num strong">$228.55</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neg"><strong>-$4.81</strong><div class="sub-num">(-0.25%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (84213a2b) rolled 0.113 (&lt; 0.25) to randomly exit held position AMZN.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CVX</td>
+              <td class="num">12.6790</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:00:00 EST</div>
+                <div>Fill: 2026-11-09 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$157.70</td>
+              <td class="num strong">$157.81</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (208592e9) rolled 0.570 to randomly buy CVX at $157.89 with a 1.86% stop ($154.95) and 2R target ($163.77).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SMH</td>
+              <td class="num">7.0471</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$293.50</td>
+              <td class="num strong">$293.29</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$57.32</strong><div class="sub-num">(+2.85%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (430f2a82) rolled 0.216 (&lt; 0.25) to randomly exit held position SMH.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">8.5778</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$228.98</td>
+              <td class="num strong">$229.11</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (9c216c3c) rolled 0.618 to randomly buy AMZN at $229.77 with a 2.62% stop ($223.74) and 2R target ($241.83).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.2775</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$46.50</td>
+              <td class="num strong">$46.53</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (e61eea3b) rolled 0.328 to randomly buy BAC at $46.54 with a 1.97% stop ($45.62) and 2R target ($48.37).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 15:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 05:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">23.0384</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:00:00 EST</div>
+                <div>Fill: 2026-11-06 15:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$86.67</td>
+              <td class="num strong">$86.61</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num pos"><strong>+$7.91</strong><div class="sub-num">(+0.40%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (1e7ef3f2) rolled 0.178 (&lt; 0.25) to randomly exit held position WMT.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">NKE</td>
+              <td class="num">24.7083</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 13:00:00 EST</div>
+                <div>Fill: 2026-11-06 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$80.61</td>
+              <td class="num strong">$80.56</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$9.23</strong><div class="sub-num">(-0.46%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (fb8337ac) rolled 0.002 (&lt; 0.25) to randomly exit held position NKE.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">23.0384</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 14:30:00 EST</div>
+                <div>Fill: 2026-11-05 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$86.21</td>
+              <td class="num strong">$86.27</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$0.99</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (24eb1169) rolled 0.353 to randomly buy WMT at $86.09 with a 2.35% stop ($84.07) and 2R target ($90.12).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SMH</td>
+              <td class="num">7.0471</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 13:00:00 EST</div>
+                <div>Fill: 2026-11-05 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$284.96</td>
+              <td class="num strong">$285.16</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (22dd88c1) rolled 0.327 to randomly buy SMH at $283.54 with a 2.74% stop ($275.77) and 2R target ($299.08).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">NKE</td>
+              <td class="num">24.7083</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 12:30:00 EST</div>
+                <div>Fill: 2026-11-05 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$80.88</td>
+              <td class="num strong">$80.93</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (932985ed) rolled 0.427 to randomly buy NKE at $80.91 with a 1.91% stop ($79.37) and 2R target ($83.99).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">23.2133</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 12:00:00 EST</div>
+                <div>Fill: 2026-11-05 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$86.15</td>
+              <td class="num strong">$86.09</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$3.40</strong><div class="sub-num">(-0.17%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (cde78a6e) rolled 0.232 (&lt; 0.25) to randomly exit held position WMT.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">WFC</td>
+              <td class="num">26.5707</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:30:00 EST</div>
+                <div>Fill: 2026-11-05 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$75.01</td>
+              <td class="num strong">$75.07</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (1dffddc4) rolled 0.433 to randomly buy WFC at $75.25 with a 2.83% stop ($73.11) and 2R target ($79.52).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">HON</td>
+              <td class="num">8.6269</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$232.35</td>
+              <td class="num strong">$232.51</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (b3964f4a) rolled 0.428 to randomly buy HON at $231.75 with a 2.41% stop ($226.17) and 2R target ($242.90).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">23.2133</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$86.18</td>
+              <td class="num strong">$86.24</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (f0ce00ee) rolled 0.368 to randomly buy WMT at $86.14 with a 2.12% stop ($84.31) and 2R target ($89.79).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLP</td>
+              <td class="num">24.1633</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$82.87</td>
+              <td class="num strong">$82.81</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neg"><strong>-$2.27</strong><div class="sub-num">(-0.11%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (33bda04e) rolled 0.207 (&lt; 0.25) to randomly exit held position XLP.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLP</td>
+              <td class="num">24.1633</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$82.85</td>
+              <td class="num strong">$82.91</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">50%</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (9fff753c) rolled 0.315 to randomly buy XLP at $82.77 with a 2.70% stop ($80.54) and 2R target ($87.23).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (14 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 15:00:00 EST</div>
+                <div class="sub-num">2026-11-11 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">$720.51</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (f81cac7b) rolled 0.592 to randomly buy META at $738.43 with a 2.43% stop ($720.51) and 2R target ($774.26).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 14:00:00 EST</div>
+                <div class="sub-num">2026-11-11 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">UNP</td>
+              <td class="num">$242.11</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (d8c865a5) rolled 0.579 to randomly buy UNP at $246.47 with a 1.77% stop ($242.11) and 2R target ($255.20).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 13:30:00 EST</div>
+                <div class="sub-num">2026-11-11 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">$156.76</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (7547bd62) rolled 0.258 to randomly buy XLI at $159.87 with a 1.95% stop ($156.76) and 2R target ($166.09).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 13:00:00 EST</div>
+                <div class="sub-num">2026-11-11 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">$84.28</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (5112dfe2) rolled 0.273 to randomly buy WMT at $86.55 with a 2.62% stop ($84.28) and 2R target ($91.10).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 11:30:00 EST</div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">PANW</td>
+              <td class="num">$390.14</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (3964494e) rolled 0.421 to randomly buy PANW at $399.67 with a 2.38% stop ($390.14) and 2R target ($418.74).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-10 11:00:00 EST</div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">HD</td>
+              <td class="num">$406.79</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (2ecac1db) rolled 0.644 to randomly buy HD at $418.07 with a 2.70% stop ($406.79) and 2R target ($440.63).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-09 13:00:00 EST</div>
+                <div class="sub-num">2026-11-10 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">DIS</td>
+              <td class="num">$116.63</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (233d77f9) rolled 0.639 to randomly buy DIS at $118.46 with a 1.54% stop ($116.63) and 2R target ($122.11).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-09 12:30:00 EST</div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">XLE</td>
+              <td class="num">$92.80</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (8efee027) rolled 0.579 to randomly buy XLE at $94.74 with a 2.05% stop ($92.80) and 2R target ($98.62).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 12:30:00 EST</div>
+                <div class="sub-num">2026-11-07 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">ADBE</td>
+              <td class="num">$545.15</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (6c83e230) rolled 0.375 to randomly buy ADBE at $554.37 with a 1.66% stop ($545.15) and 2R target ($572.81).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 12:00:00 EST</div>
+                <div class="sub-num">2026-11-07 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">MA</td>
+              <td class="num">$518.11</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (6db9e947) rolled 0.260 to randomly buy MA at $530.93 with a 2.41% stop ($518.11) and 2R target ($556.56).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 11:30:00 EST</div>
+                <div class="sub-num">2026-11-07 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">CRM</td>
+              <td class="num">$323.55</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (d73db809) rolled 0.376 to randomly buy CRM at $331.21 with a 2.31% stop ($323.55) and 2R target ($346.52).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 10:30:00 EST</div>
+                <div class="sub-num">2026-11-07 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">GOOGL</td>
+              <td class="num">$187.98</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (82f108db) rolled 0.277 to randomly buy GOOGL at $191.21 with a 1.69% stop ($187.98) and 2R target ($197.66).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 10:00:00 EST</div>
+                <div class="sub-num">2026-11-07 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">TMO</td>
+              <td class="num">$547.98</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (6bc64dc8) rolled 0.633 to randomly buy TMO at $560.60 with a 2.25% stop ($547.98) and 2R target ($585.84).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-06 09:30:00 EST</div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">BUY</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">$224.65</td>
+              <td class="neg strong">Max open positions (5) reached</td>
+              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (8cc21908) rolled 0.271 to randomly buy AMZN at $228.98 with a 1.89% stop ($224.65) and 2R target ($237.64).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 10. Random Trader (Luck Control) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-12 08:08 ET"], "datasets": [{"label": "10. Random Trader (Luck Control)", "data": [10000.0, 9998.6, 9997.73, 9996.33, 9996.63, 9983.79, 9995.88, 9990.76, 9996.61, 9993.59, 9986.0, 9977.05, 9973.05, 10002.52, 10008.42, 10028.38, 10036.34, 10041.4, 10024.79, 10019.95, 10042.03, 10049.46, 10051.09, 10061.49, 10039.7, 10069.9, 10069.33, 10051.72, 10027.16, 10009.41, 10006.99, 9995.28, 10010.34, 10015.87, 10034.27, 10017.49, 10027.82, 10032.41, 10033.86, 10025.07, 10013.3, 10033.97, 10037.79, 10046.33, 10083.2, 10071.61, 10060.9, 10060.97, 10070.84, 10075.71, 10083.37, 10081.71, 10103.05, 10117.77, 10127.28, 10126.58, 10135.24, 10141.11, 10144.79, 10172.18, 10186.64, 10197.75, 10192.86, 10203.23, 10210.27, 10217.39, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

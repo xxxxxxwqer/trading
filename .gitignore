@@ -1,0 +1,37 @@
+# ============================================================================
+# Hard Security Rule: NEVER commit API keys or local environment files
+# ============================================================================
+.env
+.env.*
+!.env.example
+
+# Python virtual environments & caches
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing & packaging artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+src/*.egg-info/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Note: `state/` and `docs/` are intentionally tracked in Git so GitHub Actions
+# can persist agent ledgers and publish the GitHub Pages dashboard each cycle.

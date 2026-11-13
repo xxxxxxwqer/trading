@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Sector ETF Rotation — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill active" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#1 of 10</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-1">Rank #1</span>
+            <h1>4. Sector ETF Rotation</h1>
+            <span class="cat-pill cat-coded">Coded</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Rotates into the top SPDR Sector ETFs exhibiting the strongest relative strength vs SPY.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>coded_sector</code>)</div>
+        <p>Relative-strength sector rotation across the 11 SPDR Sector ETFs (XLK, XLF, XLV, XLE, XLY, XLP, XLI, XLU, XLB, XLRE, XLC). Computes risk-adjusted return over the lookback window relative to SPY, holds the top leaders with positive momentum, and rotates out of laggards.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,814.69</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,814.69</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$814.69</div>
+        <div class="kpi-sub pos"><strong>+8.15%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+6.09%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$2,077.03</div>
+        <div class="kpi-sub">Invested: $8,737.66 (4 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.19%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">92.3%</div>
+        <div class="kpi-sub">12W / 1L (13 closed, 30 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">922.57</div>
+        <div class="kpi-sub">Friction paid: $43.86</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$55.35</span> / <span class="neg">-$0.72</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,091</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,332</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,574</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,815</text><line x1="78" y1="238.5" x2="932" y2="238.5" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#2dd4bf" stroke-width="3.0" points="78.0,238.5 90.9,238.9 103.9,235.8 116.8,229.9 129.8,227.4 142.7,231.9 155.6,226.4 168.6,219.7 181.5,212.5 194.5,212.0 207.4,211.5 220.3,212.0 233.3,213.5 246.2,208.4 259.2,203.9 272.1,194.3 285.0,187.6 298.0,186.0 310.9,189.9 323.8,186.6 336.8,179.3 349.7,176.9 362.7,179.2 375.6,174.3 388.5,179.5 401.5,171.0 414.4,170.2 427.4,169.2 440.3,172.4 453.2,170.4 466.2,171.2 479.1,172.7 492.1,169.4 505.0,162.3 517.9,153.9 530.9,152.6 543.8,145.6 556.8,144.0 569.7,145.3 582.6,146.6 595.6,149.1 608.5,134.9 621.5,126.4 634.4,121.5 647.3,112.8 660.3,110.7 673.2,105.4 686.2,98.0 699.1,93.4 712.0,90.8 725.0,86.7 737.9,84.8 750.8,80.2 763.8,75.5 776.7,67.9 789.7,64.9 802.6,62.8 815.5,61.1 828.5,60.3 841.4,51.6 854.4,41.2 867.3,38.0 880.2,40.8 893.2,38.4 906.1,34.3 919.1,24.0 932.0,238.5"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,238.5 90.9,240.1 103.9,240.4 116.8,234.7 129.8,231.8 142.7,240.7 155.6,233.8 168.6,235.6 181.5,234.5 194.5,235.2 207.4,237.6 220.3,237.2 233.3,238.4 246.2,231.9 259.2,230.5 272.1,228.5 285.0,227.7 298.0,226.6 310.9,232.6 323.8,231.8 336.8,228.9 349.7,228.0 362.7,229.9 375.6,226.6 388.5,236.3 401.5,230.2 414.4,231.3 427.4,235.7 440.3,244.8 453.2,251.8 466.2,252.9 479.1,254.7 492.1,251.7 505.0,249.8 517.9,246.6 530.9,248.3 543.8,242.1 556.8,239.8 569.7,240.6 582.6,241.2 595.6,247.3 608.5,241.3 621.5,241.1 634.4,237.2 647.3,230.3 660.3,232.3 673.2,233.8 686.2,234.2 699.1,228.9 712.0,228.3 725.0,227.2 737.9,225.3 750.8,221.2 763.8,214.9 776.7,209.1 789.7,209.4 802.6,204.3 815.5,206.3 828.5,201.9 841.4,199.7 854.4,201.7 867.3,198.3 880.2,201.9 893.2,195.4 906.1,192.8 919.1,184.4 932.0,238.5"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-12 08:08 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (4 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">XLF</td>
+              <td class="num">36.4509</td>
+              <td class="num">$58.66</td>
+              <td class="num">$60.24</td>
+              <td class="num strong">$2,195.90</td>
+              <td class="num neg">$57.36</td>
+              <td class="num pos">$60.60</td>
+              <td class="num pos">
+                <strong>+$57.79</strong>
+                <div class="sub-num">(+2.70%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Rotating into top-ranked sector ETF XLF (rank #1 of 11, composite RS score +9.72%, RS vs SPY +7.01%, 5d change +13.78%) trading at $58.27 above 20-SMA ($56.68). Stop at $57.36, target at $60.60.</div>
+                <div class="sub-num">Opened: 2026-11-11 10:30:00 EST / 2026-11-12 00:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.0104</td>
+              <td class="num">$164.53</td>
+              <td class="num">$167.45</td>
+              <td class="num strong">$2,178.58</td>
+              <td class="num neg">$160.99</td>
+              <td class="num pos">$170.23</td>
+              <td class="num pos">
+                <strong>+$37.97</strong>
+                <div class="sub-num">(+1.77%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +8.73%, RS vs SPY +6.29%, 5d change +12.39%) trading at $163.68 above 20-SMA ($158.83). Stop at $160.99, target at $170.23.</div>
+                <div class="sub-num">Opened: 2026-11-11 11:00:00 EST / 2026-11-12 01:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.6429</td>
+              <td class="num">$280.90</td>
+              <td class="num">$287.43</td>
+              <td class="num strong">$2,196.80</td>
+              <td class="num neg">$274.74</td>
+              <td class="num pos">$290.08</td>
+              <td class="num pos">
+                <strong>+$49.90</strong>
+                <div class="sub-num">(+2.32%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Rotating into top-ranked sector ETF XLK (rank #3 of 11, composite RS score +8.57%, RS vs SPY +6.20%, 5d change +12.13%) trading at $278.93 above 20-SMA ($271.06). Stop at $274.74, target at $290.08.</div>
+                <div class="sub-num">Opened: 2026-11-11 11:30:00 EST / 2026-11-12 01:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.6475</td>
+              <td class="num">$223.98</td>
+              <td class="num">$224.55</td>
+              <td class="num strong">$2,166.38</td>
+              <td class="num neg">$219.71</td>
+              <td class="num pos">$231.98</td>
+              <td class="num pos">
+                <strong>+$5.50</strong>
+                <div class="sub-num">(+0.25%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +1.83%, RS vs SPY +0.75%, 5d change +3.46%) trading at $223.06 above 20-SMA ($222.05). Stop at $219.71, target at $231.98.</div>
+                <div class="sub-num">Opened: 2026-11-11 15:30:00 EST / 2026-11-12 05:30:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 4. Sector ETF Rotation did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,601.14</strong></span> &rarr;
+              <span>End: <strong>$10,814.69</strong></span>
+              <span class="journal-pnl pos">(+$213.55 / +2.01%)</span>
+              <span class="journal-counts">10 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,601.14 to $10,814.69 (+$213.55, +2.01%). Executed 10 trade(s) — Buys: XLRE ($2,124), XLF ($2,138), XLI ($2,141), XLK ($2,147), XLY ($2,161); Sells: XLY (AGENT_SIGNAL, +$2.98), XLK (TAKE_PROFIT, +$71.96), XLF (TAKE_PROFIT, +$70.25), XLI (TAKE_PROFIT, +$72.48), XLRE (AGENT_SIGNAL, +$5.37).</p>
+          <ul class="journal-highlights"><li>BUY 47.7830 XLRE @ $44.46 ($2124.50, stop $43.71) — Rotating into top-ranked sector ETF XLRE (rank #5 of 11, composite RS score +1.34%, RS vs SPY +0.81%, 5d change +2.13%) trading at $44.37 above 20-SMA ($44.07). Stop at $43.71, target at $46.15.</li><li>BUY 36.4509 XLF @ $58.66 ($2138.11, stop $57.36) — Rotating into top-ranked sector ETF XLF (rank #1 of 11, composite RS score +9.72%, RS vs SPY +7.01%, 5d change +13.78%) trading at $58.27 above 20-SMA ($56.68). Stop at $57.36, target at $60.60.</li><li>BUY 13.0104 XLI @ $164.53 ($2140.61, stop $160.99) — Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +8.73%, RS vs SPY +6.29%, 5d change +12.39%) trading at $163.68 above 20-SMA ($158.83). Stop at $160.99, target at $170.23.</li><li>BUY 7.6429 XLK @ $280.90 ($2146.90, stop $274.74) — Rotating into top-ranked sector ETF XLK (rank #3 of 11, composite RS score +8.57%, RS vs SPY +6.20%, 5d change +12.13%) trading at $278.93 above 20-SMA ($271.06). Stop at $274.74, target at $290.08.</li><li>BUY 9.6475 XLY @ $223.98 ($2160.88, stop $219.71) — Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +1.83%, RS vs SPY +0.75%, 5d change +3.46%) trading at $223.06 above 20-SMA ($222.05). Stop at $219.71, target at $231.98.</li><li>SELL 9.3323 XLY @ $220.88 [AGENT_SIGNAL: +$2.98 (+0.15%)] — Rotating out of sector ETF XLY: price ($221.07) broke below 20-SMA ($221.41).</li><li>SELL 7.7880 XLK @ $277.40 [TAKE_PROFIT: +$71.96 (+3.45%)] — Take-profit triggered at $277.59 (intrabar high $279.56 &gt;= target $277.59)</li><li>SELL 37.0353 XLF @ $58.51 [TAKE_PROFIT: +$70.25 (+3.35%)] — Take-profit triggered at $58.55 (intrabar high $58.83 &gt;= target $58.55)</li><li>SELL 13.2006 XLI @ $164.45 [TAKE_PROFIT: +$72.48 (+3.45%)] — Take-profit triggered at $164.57 (intrabar high $164.88 &gt;= target $164.57)</li><li>SELL 47.7830 XLRE @ $44.57 [AGENT_SIGNAL: +$5.37 (+0.25%)] — Rotating out of sector ETF XLRE: relative-strength rank slipped to #6 of 11 (composite score +1.10%).</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,349.09</strong></span> &rarr;
+              <span>End: <strong>$10,601.14</strong></span>
+              <span class="journal-pnl pos">(+$252.05 / +2.44%)</span>
+              <span class="journal-counts">6 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,349.09 to $10,601.14 (+$252.05, +2.44%). Executed 6 trade(s) — Buys: XLK ($2,088), XLF ($2,097), XLI ($2,098); Sells: XLK (TAKE_PROFIT, +$65.27), XLF (TAKE_PROFIT, +$80.42), XLI (TAKE_PROFIT, +$69.27).</p>
+          <ul class="journal-highlights"><li>BUY 7.7880 XLK @ $268.16 ($2088.40, stop $262.91) — Rotating into top-ranked sector ETF XLK (rank #3 of 11, composite RS score +6.82%, RS vs SPY +4.82%, 5d change +9.82%) trading at $266.91 above 20-SMA ($263.11). Stop at $262.91, target at $277.59.</li><li>BUY 37.0353 XLF @ $56.61 ($2096.65, stop $55.46) — Rotating into top-ranked sector ETF XLF (rank #1 of 11, composite RS score +8.82%, RS vs SPY +6.49%, 5d change +12.31%) trading at $56.30 above 20-SMA ($55.13). Stop at $55.46, target at $58.55.</li><li>BUY 13.2006 XLI @ $158.96 ($2098.42, stop $155.87) — Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +7.79%, RS vs SPY +5.80%, 5d change +10.77%) trading at $158.24 above 20-SMA ($154.81). Stop at $155.87, target at $164.57.</li><li>SELL 7.9015 XLK @ $268.24 [TAKE_PROFIT: +$65.27 (+3.18%)] — Take-profit triggered at $268.43 (intrabar high $268.50 &gt;= target $268.43)</li><li>SELL 37.6128 XLF @ $56.55 [TAKE_PROFIT: +$80.42 (+3.93%)] — Take-profit triggered at $56.59 (intrabar high $56.72 &gt;= target $56.59)</li><li>SELL 13.3991 XLI @ $158.61 [TAKE_PROFIT: +$69.27 (+3.37%)] — Take-profit triggered at $158.72 (intrabar high $159.22 &gt;= target $158.72)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,259.53</strong></span> &rarr;
+              <span>End: <strong>$10,349.09</strong></span>
+              <span class="journal-pnl pos">(+$89.56 / +0.87%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,259.53 to $10,349.09 (+$89.56, +0.87%). Executed 4 trade(s) — Buys: XLY ($2,050), XLY ($2,058); Sells: XLY (AGENT_SIGNAL, +$18.03), XLY (AGENT_SIGNAL, $-0.72).</p>
+          <ul class="journal-highlights"><li>BUY 9.3262 XLY @ $219.86 ($2050.41, stop $216.63) — Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +3.29%, RS vs SPY +2.03%, 5d change +5.18%) trading at $219.93 above 20-SMA ($219.74). Stop at $216.63, target at $228.73.</li><li>BUY 9.3323 XLY @ $220.56 ($2058.33, stop $216.63) — Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +3.33%, RS vs SPY +2.01%, 5d change +5.31%) trading at $219.93 above 20-SMA ($219.88). Stop at $216.63, target at $228.73.</li><li>SELL 9.2146 XLY @ $219.78 [AGENT_SIGNAL: +$18.03 (+0.90%)] — Rotating out of sector ETF XLY: price ($219.59) broke below 20-SMA ($219.67).</li><li>SELL 9.3262 XLY @ $219.78 [AGENT_SIGNAL: $-0.72 (-0.04%)] — Rotating out of sector ETF XLY: price ($219.70) broke below 20-SMA ($219.80).</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,114.26</strong></span> &rarr;
+              <span>End: <strong>$10,259.53</strong></span>
+              <span class="journal-pnl pos">(+$145.27 / +1.44%)</span>
+              <span class="journal-counts">6 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,114.26 to $10,259.53 (+$145.27, +1.44%). Executed 6 trade(s) — Buys: XLK ($2,054), XLI ($2,056), XLF ($2,047); Sells: XLK (TAKE_PROFIT, +$76.88), XLF (TAKE_PROFIT, +$70.83), XLI (TAKE_PROFIT, +$60.51).</p>
+          <ul class="journal-highlights"><li>BUY 7.9015 XLK @ $259.98 ($2054.24, stop $254.23) — Rotating into top-ranked sector ETF XLK (rank #1 of 11, composite RS score +6.53%, RS vs SPY +4.45%, 5d change +9.66%) trading at $258.11 above 20-SMA ($254.23). Stop at $254.23, target at $268.43.</li><li>BUY 13.3991 XLI @ $153.44 ($2055.95, stop $150.33) — Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +6.12%, RS vs SPY +4.24%, 5d change +8.93%) trading at $152.62 above 20-SMA ($149.61). Stop at $150.33, target at $158.72.</li><li>BUY 37.6128 XLF @ $54.41 ($2046.60, stop $53.60) — Rotating into top-ranked sector ETF XLF (rank #2 of 11, composite RS score +6.69%, RS vs SPY +4.76%, 5d change +9.59%) trading at $54.42 above 20-SMA ($53.26). Stop at $53.60, target at $56.59.</li><li>SELL 8.0235 XLK @ $259.06 [TAKE_PROFIT: +$76.88 (+3.84%)] — Take-profit triggered at $259.24 (intrabar high $260.88 &gt;= target $259.24)</li><li>SELL 38.4765 XLF @ $54.01 [TAKE_PROFIT: +$70.83 (+3.53%)] — Take-profit triggered at $54.05 (intrabar high $54.23 &gt;= target $54.05)</li><li>SELL 13.6376 XLI @ $152.57 [TAKE_PROFIT: +$60.51 (+3.00%)] — Take-profit triggered at $152.68 (intrabar high $153.02 &gt;= target $152.68)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,114.26</strong></span>
+              <span class="journal-pnl pos">(+$114.26 / +1.14%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,114.26 (+$114.26, +1.14%). Executed 4 trade(s) — Buys: XLK ($2,002), XLF ($2,007), XLI ($2,020), XLY ($2,007); Sells: none.</p>
+          <ul class="journal-highlights"><li>BUY 8.0235 XLK @ $249.48 ($2001.68, stop $245.53) — Rotating into top-ranked sector ETF XLK (rank #1 of 11, composite RS score +4.35%, RS vs SPY +2.53%, 5d change +7.09%) trading at $249.26 above 20-SMA ($247.61). Stop at $245.53, target at $259.24.</li><li>BUY 38.4765 XLF @ $52.17 ($2007.37, stop $51.19) — Rotating into top-ranked sector ETF XLF (rank #2 of 11, composite RS score +3.62%, RS vs SPY +2.02%, 5d change +6.03%) trading at $51.97 above 20-SMA ($51.36). Stop at $51.19, target at $54.05.</li><li>BUY 13.6376 XLI @ $148.14 ($2020.22, stop $144.60) — Rotating into top-ranked sector ETF XLI (rank #3 of 11, composite RS score +3.61%, RS vs SPY +2.11%, 5d change +5.86%) trading at $146.80 above 20-SMA ($145.16). Stop at $144.60, target at $152.68.</li><li>BUY 9.2146 XLY @ $217.82 ($2007.13, stop $214.49) — Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +2.69%, RS vs SPY +1.40%, 5d change +4.63%) trading at $217.75 above 20-SMA ($215.74). Stop at $214.49, target at $226.46.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (30 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.6475</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:00:00 EST</div>
+                <div>Fill: 2026-11-11 15:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$223.83</td>
+              <td class="num strong">$223.98</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.08</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +1.83%, RS vs SPY +0.75%, 5d change +3.46%) trading at $223.06 above 20-SMA ($222.05). Stop at $219.71, target at $231.98.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLRE</td>
+              <td class="num">47.7830</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 14:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$44.61</td>
+              <td class="num strong">$44.57</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num pos"><strong>+$5.37</strong><div class="sub-num">(+0.25%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Rotating out of sector ETF XLRE: relative-strength rank slipped to #6 of 11 (composite score +1.10%).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.6429</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 11:00:00 EST</div>
+                <div>Fill: 2026-11-11 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$280.71</td>
+              <td class="num strong">$280.90</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLK (rank #3 of 11, composite RS score +8.57%, RS vs SPY +6.20%, 5d change +12.13%) trading at $278.93 above 20-SMA ($271.06). Stop at $274.74, target at $290.08.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.0104</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$164.42</td>
+              <td class="num strong">$164.53</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +8.73%, RS vs SPY +6.29%, 5d change +12.39%) trading at $163.68 above 20-SMA ($158.83). Stop at $160.99, target at $170.23.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.2006</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$164.57</td>
+              <td class="num strong">$164.45</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.09</td>
+              <td class="num pos"><strong>+$72.48</strong><div class="sub-num">(+3.45%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $164.57 (intrabar high $164.88 &gt;= target $164.57)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">36.4509</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$58.62</td>
+              <td class="num strong">$58.66</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.07</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLF (rank #1 of 11, composite RS score +9.72%, RS vs SPY +7.01%, 5d change +13.78%) trading at $58.27 above 20-SMA ($56.68). Stop at $57.36, target at $60.60.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.0353</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$58.55</td>
+              <td class="num strong">$58.51</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.09</td>
+              <td class="num pos"><strong>+$70.25</strong><div class="sub-num">(+3.35%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $58.55 (intrabar high $58.83 &gt;= target $58.55)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.7880</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$277.59</td>
+              <td class="num strong">$277.40</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.08</td>
+              <td class="num pos"><strong>+$71.96</strong><div class="sub-num">(+3.45%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $277.59 (intrabar high $279.56 &gt;= target $277.59)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLRE</td>
+              <td class="num">47.7830</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 09:30:00 EST</div>
+                <div>Fill: 2026-11-11 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$44.43</td>
+              <td class="num strong">$44.46</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.06</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">77%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLRE (rank #5 of 11, composite RS score +1.34%, RS vs SPY +0.81%, 5d change +2.13%) trading at $44.37 above 20-SMA ($44.07). Stop at $43.71, target at $46.15.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3323</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$221.03</td>
+              <td class="num strong">$220.88</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num pos"><strong>+$2.98</strong><div class="sub-num">(+0.15%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Rotating out of sector ETF XLY: price ($221.07) broke below 20-SMA ($221.41).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.2006</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:30:00 EST</div>
+                <div>Fill: 2026-11-10 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$158.85</td>
+              <td class="num strong">$158.96</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +7.79%, RS vs SPY +5.80%, 5d change +10.77%) trading at $158.24 above 20-SMA ($154.81). Stop at $155.87, target at $164.57.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.3991</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:30:00 EST</div>
+                <div>Fill: 2026-11-10 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$158.72</td>
+              <td class="num strong">$158.61</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$69.27</strong><div class="sub-num">(+3.37%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $158.72 (intrabar high $159.22 &gt;= target $158.72)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.0353</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:00:00 EST</div>
+                <div>Fill: 2026-11-10 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$56.57</td>
+              <td class="num strong">$56.61</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLF (rank #1 of 11, composite RS score +8.82%, RS vs SPY +6.49%, 5d change +12.31%) trading at $56.30 above 20-SMA ($55.13). Stop at $55.46, target at $58.55.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.6128</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 11:00:00 EST</div>
+                <div>Fill: 2026-11-10 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$56.59</td>
+              <td class="num strong">$56.55</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$80.42</strong><div class="sub-num">(+3.93%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $56.59 (intrabar high $56.72 &gt;= target $56.59)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.7880</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$267.97</td>
+              <td class="num strong">$268.16</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLK (rank #3 of 11, composite RS score +6.82%, RS vs SPY +4.82%, 5d change +9.82%) trading at $266.91 above 20-SMA ($263.11). Stop at $262.91, target at $277.59.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.9015</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$268.43</td>
+              <td class="num strong">$268.24</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$65.27</strong><div class="sub-num">(+3.18%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $268.43 (intrabar high $268.50 &gt;= target $268.43)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3323</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:30:00 EST</div>
+                <div>Fill: 2026-11-09 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$220.41</td>
+              <td class="num strong">$220.56</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">85%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +3.33%, RS vs SPY +2.01%, 5d change +5.31%) trading at $219.93 above 20-SMA ($219.88). Stop at $216.63, target at $228.73.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3262</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:00:00 EST</div>
+                <div>Fill: 2026-11-09 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$219.93</td>
+              <td class="num strong">$219.78</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neg"><strong>-$0.72</strong><div class="sub-num">(-0.04%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Rotating out of sector ETF XLY: price ($219.70) broke below 20-SMA ($219.80).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.3262</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:30:00 EST</div>
+                <div>Fill: 2026-11-09 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$219.70</td>
+              <td class="num strong">$219.86</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">85%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +3.29%, RS vs SPY +2.03%, 5d change +5.18%) trading at $219.93 above 20-SMA ($219.74). Stop at $216.63, target at $228.73.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.2146</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:00:00 EST</div>
+                <div>Fill: 2026-11-09 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$219.93</td>
+              <td class="num strong">$219.78</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.01</td>
+              <td class="num pos"><strong>+$18.03</strong><div class="sub-num">(+0.90%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Rotating out of sector ETF XLY: price ($219.59) broke below 20-SMA ($219.67).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">37.6128</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 13:30:00 EST</div>
+                <div>Fill: 2026-11-06 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$54.37</td>
+              <td class="num strong">$54.41</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLF (rank #2 of 11, composite RS score +6.69%, RS vs SPY +4.76%, 5d change +9.59%) trading at $54.42 above 20-SMA ($53.26). Stop at $53.60, target at $56.59.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.3991</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 13:00:00 EST</div>
+                <div>Fill: 2026-11-06 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$153.33</td>
+              <td class="num strong">$153.44</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLI (rank #2 of 11, composite RS score +6.12%, RS vs SPY +4.24%, 5d change +8.93%) trading at $152.62 above 20-SMA ($149.61). Stop at $150.33, target at $158.72.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">7.9015</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:30:00 EST</div>
+                <div>Fill: 2026-11-06 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$259.80</td>
+              <td class="num strong">$259.98</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.03</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLK (rank #1 of 11, composite RS score +6.53%, RS vs SPY +4.45%, 5d change +9.66%) trading at $258.11 above 20-SMA ($254.23). Stop at $254.23, target at $268.43.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.6376</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:30:00 EST</div>
+                <div>Fill: 2026-11-06 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$152.68</td>
+              <td class="num strong">$152.57</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$60.51</strong><div class="sub-num">(+3.00%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $152.68 (intrabar high $153.02 &gt;= target $152.68)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">38.4765</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:30:00 EST</div>
+                <div>Fill: 2026-11-06 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$54.05</td>
+              <td class="num strong">$54.01</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$70.83</strong><div class="sub-num">(+3.53%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $54.05 (intrabar high $54.23 &gt;= target $54.05)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 13:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 03:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">8.0235</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 12:30:00 EST</div>
+                <div>Fill: 2026-11-06 13:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$259.24</td>
+              <td class="num strong">$259.06</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num pos"><strong>+$76.88</strong><div class="sub-num">(+3.84%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $259.24 (intrabar high $260.88 &gt;= target $259.24)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">9.2146</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$217.67</td>
+              <td class="num strong">$217.82</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">83%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLY (rank #4 of 11, composite RS score +2.69%, RS vs SPY +1.40%, 5d change +4.63%) trading at $217.75 above 20-SMA ($215.74). Stop at $214.49, target at $226.46.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLI</td>
+              <td class="num">13.6376</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$148.03</td>
+              <td class="num strong">$148.14</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">86%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLI (rank #3 of 11, composite RS score +3.61%, RS vs SPY +2.11%, 5d change +5.86%) trading at $146.80 above 20-SMA ($145.16). Stop at $144.60, target at $152.68.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLF</td>
+              <td class="num">38.4765</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$52.13</td>
+              <td class="num strong">$52.17</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">86%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLF (rank #2 of 11, composite RS score +3.62%, RS vs SPY +2.02%, 5d change +6.03%) trading at $51.97 above 20-SMA ($51.36). Stop at $51.19, target at $54.05.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLK</td>
+              <td class="num">8.0235</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$249.30</td>
+              <td class="num strong">$249.48</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">89%</td>
+              <td class="reasoning-cell">Rotating into top-ranked sector ETF XLK (rank #1 of 11, composite RS score +4.35%, RS vs SPY +2.53%, 5d change +7.09%) trading at $249.26 above 20-SMA ($247.61). Stop at $245.53, target at $259.24.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 4. Sector ETF Rotation &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-12 08:08 ET"], "datasets": [{"label": "4. Sector ETF Rotation", "data": [10000.0, 9998.6, 10010.3, 10032.5, 10042.03, 10024.93, 10046.05, 10071.55, 10098.87, 10100.75, 10102.62, 10100.62, 10095.09, 10114.26, 10131.36, 10167.75, 10193.25, 10199.4, 10184.69, 10197.13, 10224.68, 10233.98, 10225.32, 10243.83, 10224.11, 10256.43, 10259.53, 10263.41, 10251.1, 10258.69, 10255.69, 10249.81, 10262.38, 10289.29, 10321.4, 10326.17, 10352.67, 10358.89, 10353.92, 10349.09, 10339.66, 10393.47, 10425.88, 10444.28, 10477.34, 10485.41, 10505.45, 10533.71, 10551.2, 10561.14, 10576.68, 10583.79, 10601.14, 10619.16, 10647.98, 10659.21, 10667.45, 10673.79, 10676.68, 10709.99, 10749.52, 10761.34, 10750.8, 10759.97, 10775.44, 10814.69, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

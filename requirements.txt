@@ -1,0 +1,6 @@
+# AI Trading Arena Dependencies
+# Core trading, Alpaca Paper REST client, Gemini Flash REST client, and static
+# dashboard generator use Python 3.11+ standard library modules for zero-friction
+# execution in GitHub Actions and local environments.
+tzdata>=2024.1
+pytest>=8.0.0

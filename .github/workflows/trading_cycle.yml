@@ -1,0 +1,94 @@
+name: AI Trading Arena — 30-Min Paper Trading Cycle
+
+on:
+  schedule:
+    # Exact US Standard Time (EST = UTC-5) regular market hours: 09:30–16:00 EST = 14:30–21:00 UTC, Monday–Friday.
+    # Inside each run, `python -m arena.cli run-cycle` queries Alpaca's live market clock
+    # and calendar to verify whether the US stock market is open (handling US Thanksgiving
+    # holiday and Black Friday 13:00 EST / 18:00 UTC early close).
+    - cron: "30 14 * * 1-5"
+    - cron: "0,30 15-20 * * 1-5"
+    - cron: "0 21 * * 1-5"
+
+  # Allows manual one-click execution from the GitHub "Actions" tab -> "Run workflow"
+  workflow_dispatch:
+    inputs:
+      force_open_check:
+        description: "Set to 'true' to force a test cycle even when the US market is closed"
+        required: false
+        default: "false"
+
+# Strictly prevent overlapping cycles: if a previous run is still finishing,
+# queue the next run rather than running concurrently or canceling in-progress state updates.
+concurrency:
+  group: ai-trading-arena-cycle
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run-trading-cycle:
+    name: Execute 30-Min Virtual Trading Cycle & Update Dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set Up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run AI Trading Arena Cycle (Paper Only)
+        env:
+          PYTHONPATH: src
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL: https://paper-api.alpaca.markets
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          FORCE_OPEN_CHECK: ${{ github.event.inputs.force_open_check || 'false' }}
+        run: |
+          if [ "$FORCE_OPEN_CHECK" = "true" ]; then
+            python -m arena.cli run-cycle --force-open-check
+          else
+            python -m arena.cli run-cycle
+          fi
+
+      - name: Commit & Push Updated State and Dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add state/ docs/
+
+          if git diff --staged --quiet; then
+            echo "No state or dashboard changes to commit."
+            exit 0
+          fi
+
+          TIMESTAMP_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          git commit -m "chore(arena): update trading cycle state & dashboard [${TIMESTAMP_UTC}]"
+
+          # Retry push with rebase safety in case another commit landed on main
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Successfully pushed state and dashboard on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; waiting 3 seconds before retrying..."
+            sleep 3
+          done
+
+          echo "Failed to push after 3 attempts."
+          exit 1

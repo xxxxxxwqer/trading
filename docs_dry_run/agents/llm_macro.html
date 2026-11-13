@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. Macro &amp; Sector Strategist (Gemini Flash) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill active" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#8 of 10</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-8">Rank #8</span>
+            <h1>7. Macro &amp; Sector Strategist (Gemini Flash)</h1>
+            <span class="cat-pill cat-llm">Gemini Flash LLM</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">AI top-down strategist reading SPY/QQQ/TLT/GLD regime signals to allocate into favored sectors and leaders.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>llm_macro</code>)</div>
+        <p>You are a top-down global macro and sector strategist. First diagnose the market regime using SPY (equities), QQQ (growth), IWM (small caps), TLT (rates/bonds), and GLD (gold). In risk-on regimes, buy top sector ETFs and mega-cap leaders; in risk-off or rising-yield regimes, rotate into defensive sectors (XLV, XLP, XLU, GLD) or cash.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,105.92</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,105.92</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$105.92</div>
+        <div class="kpi-sub pos"><strong>+1.06%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value neg">-1.00%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$2,793.15</div>
+        <div class="kpi-sub">Invested: $7,312.77 (4 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-1.26%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">40.0%</div>
+        <div class="kpi-sub">4W / 6L (10 closed, 24 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">0.98</div>
+        <div class="kpi-sub">Friction paid: $28.55</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$28.60</span> / <span class="neg">-$19.54</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,939</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,028</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,117</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,206</text><line x1="78" y1="170.8" x2="932" y2="170.8" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#fb923c" stroke-width="3.0" points="78.0,170.8 90.9,171.6 103.9,159.5 116.8,158.2 129.8,152.5 142.7,166.6 155.6,151.5 168.6,140.3 181.5,136.0 194.5,128.1 207.4,119.2 220.3,116.1 233.3,127.4 246.2,110.2 259.2,108.0 272.1,103.7 285.0,103.1 298.0,96.4 310.9,111.6 323.8,108.7 336.8,99.1 349.7,101.9 362.7,109.0 375.6,104.4 388.5,119.5 401.5,96.4 414.4,95.7 427.4,120.3 440.3,150.1 453.2,171.5 466.2,173.5 479.1,171.7 492.1,165.2 505.0,167.1 517.9,163.8 530.9,169.0 543.8,163.1 556.8,157.0 569.7,151.8 582.6,154.0 595.6,172.2 608.5,182.2 621.5,187.0 634.4,184.9 647.3,170.5 660.3,168.2 673.2,172.8 686.2,174.5 699.1,171.3 712.0,164.2 725.0,159.5 737.9,164.2 750.8,160.1 763.8,151.0 776.7,142.8 789.7,149.5 802.6,140.1 815.5,140.9 828.5,137.1 841.4,133.7 854.4,128.9 867.3,118.2 880.2,128.5 893.2,117.9 906.1,109.3 919.1,95.2 932.0,170.8"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="170.8" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,170.8 90.9,175.0 103.9,176.1 116.8,160.6 129.8,152.8 142.7,176.7 155.6,158.0 168.6,163.0 181.5,160.1 194.5,162.0 207.4,168.4 220.3,167.3 233.3,170.6 246.2,153.0 259.2,149.2 272.1,143.7 285.0,141.6 298.0,138.6 310.9,154.8 323.8,152.7 336.8,144.7 349.7,142.4 362.7,147.4 375.6,138.6 388.5,164.8 401.5,148.2 414.4,151.4 427.4,163.1 440.3,187.8 453.2,207.0 466.2,209.9 479.1,214.7 492.1,206.6 505.0,201.6 517.9,192.9 530.9,197.5 543.8,180.6 556.8,174.3 569.7,176.6 582.6,178.2 595.6,194.6 608.5,178.4 621.5,177.8 634.4,167.3 647.3,148.7 660.3,154.0 673.2,158.0 686.2,159.1 699.1,144.7 712.0,143.1 725.0,140.2 737.9,134.9 750.8,123.9 763.8,106.8 776.7,91.1 789.7,91.9 802.6,78.1 815.5,83.6 828.5,71.5 841.4,65.5 854.4,71.0 867.3,61.7 880.2,71.7 893.2,54.0 906.1,46.9 919.1,24.0 932.0,170.8"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="170.8" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-12 08:08 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (4 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">COST</td>
+              <td class="num">1.8209</td>
+              <td class="num">$989.28</td>
+              <td class="num">$1,008.90</td>
+              <td class="num strong">$1,837.10</td>
+              <td class="num neg">$979.43</td>
+              <td class="num pos">$1,017.75</td>
+              <td class="num pos">
+                <strong>+$35.72</strong>
+                <div class="sub-num">(+1.98%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Defensive/Risk-Off regime (SPY -0.56%, GLD -0.33%, TLT +0.07%): allocating into COST on top-decile relative strength vs SPY (+0.97%) and 5d momentum (+3.35%); stop $979.43, target $1017.75.</div>
+                <div class="sub-num">Opened: 2026-11-09 11:00:00 EST / 2026-11-10 01:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">WMT</td>
+              <td class="num">20.9008</td>
+              <td class="num">$86.24</td>
+              <td class="num">$87.48</td>
+              <td class="num strong">$1,828.37</td>
+              <td class="num neg">$85.39</td>
+              <td class="num pos">$87.87</td>
+              <td class="num pos">
+                <strong>+$25.83</strong>
+                <div class="sub-num">(+1.43%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Defensive/Risk-Off regime (SPY -0.76%, GLD -0.50%, TLT +0.24%): allocating into WMT on top-decile relative strength vs SPY (+0.10%) and 5d momentum (+1.97%); stop $85.39, target $87.87.</div>
+                <div class="sub-num">Opened: 2026-11-09 13:30:00 EST / 2026-11-10 03:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLV</td>
+              <td class="num">11.9157</td>
+              <td class="num">$151.11</td>
+              <td class="num">$153.07</td>
+              <td class="num strong">$1,823.90</td>
+              <td class="num neg">$149.85</td>
+              <td class="num pos">$154.21</td>
+              <td class="num pos">
+                <strong>+$23.35</strong>
+                <div class="sub-num">(+1.30%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Defensive/Risk-Off regime (SPY -0.64%, GLD -0.57%, TLT +0.20%): allocating into XLV on top-decile relative strength vs SPY (-0.04%) and 5d momentum (+1.64%); stop $149.85, target $154.21.</div>
+                <div class="sub-num">Opened: 2026-11-09 14:00:00 EST / 2026-11-10 04:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">XLY</td>
+              <td class="num">8.1201</td>
+              <td class="num">$221.62</td>
+              <td class="num">$224.55</td>
+              <td class="num strong">$1,823.40</td>
+              <td class="num neg">$219.18</td>
+              <td class="num pos">$226.02</td>
+              <td class="num pos">
+                <strong>+$23.84</strong>
+                <div class="sub-num">(+1.32%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Risk-On regime (SPY -0.03%, QQQ +0.97%, TLT +0.01%): allocating into XLY on top-decile relative strength vs SPY (+1.53%) and 5d momentum (+4.50%); stop $219.18, target $226.02.</div>
+                <div class="sub-num">Opened: 2026-11-10 11:00:00 EST / 2026-11-11 01:00:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 7. Macro &amp; Sector Strategist (Gemini Flash) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,014.98</strong></span> &rarr;
+              <span>End: <strong>$10,105.92</strong></span>
+              <span class="journal-pnl pos">(+$90.94 / +0.91%)</span>
+              <span class="journal-counts">1 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,014.98 to $10,105.92 (+$90.94, +0.91%). Executed 1 trade(s) — Buys: none; Sells: XLP (TAKE_PROFIT, +$33.58).</p>
+          <ul class="journal-highlights"><li>SELL 21.5768 XLP @ $85.01 [TAKE_PROFIT: +$33.58 (+1.87%)] — Take-profit triggered at $85.07 (intrabar high $85.14 &gt;= target $85.07)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,023.53</strong></span> &rarr;
+              <span>End: <strong>$10,014.98</strong></span>
+              <span class="journal-pnl neg">(-$8.55 / -0.09%)</span>
+              <span class="journal-counts">2 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,023.53 to $10,014.98 ($-8.55, -0.09%). Executed 2 trade(s) — Buys: XLY ($1,800); Sells: AMZN (STOP_LOSS, $-22.43).</p>
+          <ul class="journal-highlights"><li>BUY 8.1201 XLY @ $221.62 ($1799.56, stop $219.18) — Risk-On regime (SPY -0.03%, QQQ +0.97%, TLT +0.01%): allocating into XLY on top-decile relative strength vs SPY (+1.53%) and 5d momentum (+4.50%); stop $219.18, target $226.02.</li><li>SELL 7.9680 AMZN @ $223.80 [STOP_LOSS: $-22.43 (-1.24%)] — Stop-loss triggered at $223.93 (intrabar low $223.76 &lt;= stop $223.93)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,105.24</strong></span> &rarr;
+              <span>End: <strong>$10,023.53</strong></span>
+              <span class="journal-pnl neg">(-$81.71 / -0.81%)</span>
+              <span class="journal-counts">12 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,105.24 to $10,023.53 ($-81.71, -0.81%). Executed 12 trade(s) — Buys: SPY ($1,817), DIA ($1,807), COST ($1,801), XLP ($1,801), WMT ($1,803), XLV ($1,801); Sells: XLY (AGENT_SIGNAL, +$34.23), MSFT (STOP_LOSS, $-23.38), XLC (STOP_LOSS, $-25.27), XLE (STOP_LOSS, $-19.38), SPY (STOP_LOSS, $-15.53), DIA (STOP_LOSS, $-11.22).</p>
+          <ul class="journal-highlights"><li>BUY 3.0157 SPY @ $602.51 ($1816.99, stop $597.72) — Balanced macro regime (SPY -0.05%, QQQ -0.03%, GLD -0.05%): allocating into SPY on top-decile relative strength vs SPY (-0.00%) and 5d momentum (+2.17%); stop $597.72, target $615.09.</li><li>BUY 3.9983 DIA @ $451.84 ($1806.58, stop $449.30) — Balanced macro regime (SPY -0.21%, QQQ +0.12%, GLD -0.04%): allocating into DIA on top-decile relative strength vs SPY (+0.38%) and 5d momentum (+2.65%); stop $449.30, target $462.36.</li><li>BUY 1.8209 COST @ $989.28 ($1801.38, stop $979.43) — Defensive/Risk-Off regime (SPY -0.56%, GLD -0.33%, TLT +0.07%): allocating into COST on top-decile relative strength vs SPY (+0.97%) and 5d momentum (+3.35%); stop $979.43, target $1017.75.</li><li>BUY 21.5768 XLP @ $83.45 ($1800.67, stop $82.66) — Defensive/Risk-Off regime (SPY -0.84%, GLD -0.28%, TLT +0.18%): allocating into XLP on top-decile relative strength vs SPY (+0.50%) and 5d momentum (+2.17%); stop $82.66, target $85.07.</li><li>BUY 20.9008 WMT @ $86.24 ($1802.54, stop $85.39) — Defensive/Risk-Off regime (SPY -0.76%, GLD -0.50%, TLT +0.24%): allocating into WMT on top-decile relative strength vs SPY (+0.10%) and 5d momentum (+1.97%); stop $85.39, target $87.87.</li><li>BUY 11.9157 XLV @ $151.11 ($1800.55, stop $149.85) — Defensive/Risk-Off regime (SPY -0.64%, GLD -0.57%, TLT +0.20%): allocating into XLV on top-decile relative strength vs SPY (-0.04%) and 5d momentum (+1.64%); stop $149.85, target $154.21.</li><li>SELL 8.2906 XLY @ $221.37 [AGENT_SIGNAL: +$34.23 (+1.90%)] — Risk-On regime (SPY +0.32%, QQQ +1.49%, TLT -0.14%): locking in +1.86% sector rotation gain on XLY with RSI(14) extended at 74.4.</li><li>SELL 3.9373 MSFT @ $453.58 [STOP_LOSS: $-23.38 (-1.29%)] — Stop-loss triggered at $453.85 (intrabar low $448.19 &lt;= stop $453.85)</li><li>SELL 18.4144 XLC @ $96.75 [STOP_LOSS: $-25.27 (-1.40%)] — Stop-loss triggered at $96.82 (intrabar low $96.75 &lt;= stop $96.82)</li><li>SELL 19.0347 XLE @ $94.45 [STOP_LOSS: $-19.38 (-1.07%)] — Stop-loss triggered at $94.52 (intrabar low $94.28 &lt;= stop $94.52)</li><li>SELL 3.0157 SPY @ $597.36 [STOP_LOSS: $-15.53 (-0.85%)] — Stop-loss triggered at $597.72 (intrabar low $597.44 &lt;= stop $597.72)</li><li>SELL 3.9983 DIA @ $449.03 [STOP_LOSS: $-11.22 (-0.62%)] — Stop-loss triggered at $449.30 (intrabar low $448.36 &lt;= stop $449.30)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,084.89</strong></span> &rarr;
+              <span>End: <strong>$10,105.24</strong></span>
+              <span class="journal-pnl pos">(+$20.35 / +0.20%)</span>
+              <span class="journal-counts">2 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,084.89 to $10,105.24 (+$20.35, +0.20%). Executed 2 trade(s) — Buys: XLE ($1,817); Sells: JPM (AGENT_SIGNAL, +$29.51).</p>
+          <ul class="journal-highlights"><li>BUY 19.0347 XLE @ $95.47 ($1817.28, stop $94.52) — Risk-On regime (SPY +0.33%, QQQ +1.45%, TLT -0.10%): allocating into XLE on top-decile relative strength vs SPY (+0.75%) and 5d momentum (+4.17%); stop $94.52, target $97.27.</li><li>SELL 6.7888 JPM @ $269.39 [AGENT_SIGNAL: +$29.51 (+1.64%)] — Risk-On regime (SPY +0.40%, QQQ +1.48%, TLT -0.22%): locking in +1.80% sector rotation gain on JPM with RSI(14) extended at 96.2.</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,084.89</strong></span>
+              <span class="journal-pnl pos">(+$84.89 / +0.85%)</span>
+              <span class="journal-counts">7 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,084.89 (+$84.89, +0.85%). Executed 7 trade(s) — Buys: META ($1,817), JPM ($1,799), AMZN ($1,806), MSFT ($1,809), XLY ($1,801), XLC ($1,807); Sells: META (TAKE_PROFIT, +$17.07).</p>
+          <ul class="journal-highlights"><li>BUY 2.8033 META @ $648.33 ($1817.46, stop $636.32) — Risk-On regime (SPY +0.09%, QQQ +0.06%, TLT +0.00%): allocating into META on top-decile relative strength vs SPY (+2.83%) and 5d momentum (+7.70%); stop $636.32, target $654.81.</li><li>BUY 6.7888 JPM @ $265.04 ($1799.31, stop $262.46) — Risk-On regime (SPY +0.17%, QQQ +0.65%, TLT -0.07%): allocating into JPM on top-decile relative strength vs SPY (+3.31%) and 5d momentum (+9.02%); stop $262.46, target $270.95.</li><li>BUY 7.9680 AMZN @ $226.61 ($1805.63, stop $223.93) — Risk-On regime (SPY +0.15%, QQQ +1.23%, TLT -0.06%): allocating into AMZN on top-decile relative strength vs SPY (+2.21%) and 5d momentum (+6.75%); stop $223.93, target $231.38.</li><li>BUY 3.9373 MSFT @ $459.52 ($1809.25, stop $453.85) — Risk-On regime (SPY +0.38%, QQQ +1.94%, TLT -0.06%): allocating into MSFT on top-decile relative strength vs SPY (+1.87%) and 5d momentum (+6.11%); stop $453.85, target $467.04.</li><li>BUY 8.2906 XLY @ $217.24 ($1801.05, stop $215.47) — Risk-On regime (SPY +0.49%, QQQ +1.89%, TLT -0.04%): allocating into XLY on top-decile relative strength vs SPY (+1.31%) and 5d momentum (+4.43%); stop $215.47, target $222.50.</li><li>BUY 18.4144 XLC @ $98.12 ($1806.90, stop $96.82) — Risk-On regime (SPY +0.14%, QQQ +1.50%, TLT -0.11%): allocating into XLC on top-decile relative strength vs SPY (+0.13%) and 5d momentum (+2.52%); stop $96.82, target $99.99.</li><li>SELL 2.8033 META @ $654.42 [TAKE_PROFIT: +$17.07 (+0.94%)] — Take-profit triggered at $654.81 (intrabar high $657.03 &gt;= target $654.81)</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (24 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLP</td>
+              <td class="num">21.5768</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 14:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$85.07</td>
+              <td class="num strong">$85.01</td>
+              <td class="num neg">$0.37</td>
+              <td class="num neg">$0.92</td>
+              <td class="num pos"><strong>+$33.58</strong><div class="sub-num">(+1.87%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $85.07 (intrabar high $85.14 &gt;= target $85.07)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">8.1201</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$221.46</td>
+              <td class="num strong">$221.62</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY -0.03%, QQQ +0.97%, TLT +0.01%): allocating into XLY on top-decile relative strength vs SPY (+1.53%) and 5d momentum (+4.50%); stop $219.18, target $226.02.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">7.9680</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 10:30:00 EST</div>
+                <div>Fill: 2026-11-10 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$223.93</td>
+              <td class="num strong">$223.80</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.89</td>
+              <td class="num neg"><strong>-$22.43</strong><div class="sub-num">(-1.24%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $223.93 (intrabar low $223.76 &lt;= stop $223.93)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLV</td>
+              <td class="num">11.9157</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:30:00 EST</div>
+                <div>Fill: 2026-11-09 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$151.00</td>
+              <td class="num strong">$151.11</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Defensive/Risk-Off regime (SPY -0.64%, GLD -0.57%, TLT +0.20%): allocating into XLV on top-decile relative strength vs SPY (-0.04%) and 5d momentum (+1.64%); stop $149.85, target $154.21.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">WMT</td>
+              <td class="num">20.9008</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$86.18</td>
+              <td class="num strong">$86.24</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Defensive/Risk-Off regime (SPY -0.76%, GLD -0.50%, TLT +0.24%): allocating into WMT on top-decile relative strength vs SPY (+0.10%) and 5d momentum (+1.97%); stop $85.39, target $87.87.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLP</td>
+              <td class="num">21.5768</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 11:00:00 EST</div>
+                <div>Fill: 2026-11-09 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$83.40</td>
+              <td class="num strong">$83.45</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Defensive/Risk-Off regime (SPY -0.84%, GLD -0.28%, TLT +0.18%): allocating into XLP on top-decile relative strength vs SPY (+0.50%) and 5d momentum (+2.17%); stop $82.66, target $85.07.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">COST</td>
+              <td class="num">1.8209</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$988.59</td>
+              <td class="num strong">$989.28</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Defensive/Risk-Off regime (SPY -0.56%, GLD -0.33%, TLT +0.07%): allocating into COST on top-decile relative strength vs SPY (+0.97%) and 5d momentum (+3.35%); stop $979.43, target $1017.75.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">DIA</td>
+              <td class="num">3.9983</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$449.30</td>
+              <td class="num strong">$449.03</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neg"><strong>-$11.22</strong><div class="sub-num">(-0.62%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $449.30 (intrabar low $448.36 &lt;= stop $449.30)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.0157</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$597.72</td>
+              <td class="num strong">$597.36</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neg"><strong>-$15.53</strong><div class="sub-num">(-0.85%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $597.72 (intrabar low $597.44 &lt;= stop $597.72)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLE</td>
+              <td class="num">19.0347</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:30:00 EST</div>
+                <div>Fill: 2026-11-09 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$94.52</td>
+              <td class="num strong">$94.45</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neg"><strong>-$19.38</strong><div class="sub-num">(-1.07%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $94.52 (intrabar low $94.28 &lt;= stop $94.52)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">DIA</td>
+              <td class="num">3.9983</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$451.57</td>
+              <td class="num strong">$451.84</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Balanced macro regime (SPY -0.21%, QQQ +0.12%, GLD -0.04%): allocating into DIA on top-decile relative strength vs SPY (+0.38%) and 5d momentum (+2.65%); stop $449.30, target $462.36.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLC</td>
+              <td class="num">18.4144</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$96.82</td>
+              <td class="num strong">$96.75</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.89</td>
+              <td class="num neg"><strong>-$25.27</strong><div class="sub-num">(-1.40%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $96.82 (intrabar low $96.75 &lt;= stop $96.82)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">MSFT</td>
+              <td class="num">3.9373</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 10:00:00 EST</div>
+                <div>Fill: 2026-11-09 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$453.85</td>
+              <td class="num strong">$453.58</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.89</td>
+              <td class="num neg"><strong>-$23.38</strong><div class="sub-num">(-1.29%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $453.85 (intrabar low $448.19 &lt;= stop $453.85)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.0157</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 09:30:00 EST</div>
+                <div>Fill: 2026-11-09 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$602.15</td>
+              <td class="num strong">$602.51</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.91</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Balanced macro regime (SPY -0.05%, QQQ -0.03%, GLD -0.05%): allocating into SPY on top-decile relative strength vs SPY (-0.00%) and 5d momentum (+2.17%); stop $597.72, target $615.09.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">8.2906</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$221.52</td>
+              <td class="num strong">$221.37</td>
+              <td class="num neg">$0.37</td>
+              <td class="num neg">$0.92</td>
+              <td class="num pos"><strong>+$34.23</strong><div class="sub-num">(+1.90%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.32%, QQQ +1.49%, TLT -0.14%): locking in +1.86% sector rotation gain on XLY with RSI(14) extended at 74.4.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 14:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 04:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLE</td>
+              <td class="num">19.0347</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 14:00:00 EST</div>
+                <div>Fill: 2026-11-06 14:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$95.41</td>
+              <td class="num strong">$95.47</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.91</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.33%, QQQ +1.45%, TLT -0.10%): allocating into XLE on top-decile relative strength vs SPY (+0.75%) and 5d momentum (+4.17%); stop $94.52, target $97.27.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 14:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 04:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">6.7888</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 13:30:00 EST</div>
+                <div>Fill: 2026-11-06 14:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$269.58</td>
+              <td class="num strong">$269.39</td>
+              <td class="num neg">$0.37</td>
+              <td class="num neg">$0.92</td>
+              <td class="num pos"><strong>+$29.51</strong><div class="sub-num">(+1.64%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">76%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.40%, QQQ +1.48%, TLT -0.22%): locking in +1.80% sector rotation gain on JPM with RSI(14) extended at 96.2.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLC</td>
+              <td class="num">18.4144</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 12:00:00 EST</div>
+                <div>Fill: 2026-11-05 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$98.06</td>
+              <td class="num strong">$98.12</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.14%, QQQ +1.50%, TLT -0.11%): allocating into XLC on top-decile relative strength vs SPY (+0.13%) and 5d momentum (+2.52%); stop $96.82, target $99.99.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">XLY</td>
+              <td class="num">8.2906</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:30:00 EST</div>
+                <div>Fill: 2026-11-05 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$217.09</td>
+              <td class="num strong">$217.24</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.49%, QQQ +1.89%, TLT -0.04%): allocating into XLY on top-decile relative strength vs SPY (+1.31%) and 5d momentum (+4.43%); stop $215.47, target $222.50.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MSFT</td>
+              <td class="num">3.9373</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$459.24</td>
+              <td class="num strong">$459.52</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.38%, QQQ +1.94%, TLT -0.06%): allocating into MSFT on top-decile relative strength vs SPY (+1.87%) and 5d momentum (+6.11%); stop $453.85, target $467.04.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AMZN</td>
+              <td class="num">7.9680</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$226.47</td>
+              <td class="num strong">$226.61</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.15%, QQQ +1.23%, TLT -0.06%): allocating into AMZN on top-decile relative strength vs SPY (+2.21%) and 5d momentum (+6.75%); stop $223.93, target $231.38.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">JPM</td>
+              <td class="num">6.7888</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$264.86</td>
+              <td class="num strong">$265.04</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.17%, QQQ +0.65%, TLT -0.07%): allocating into JPM on top-decile relative strength vs SPY (+3.31%) and 5d momentum (+9.02%); stop $262.46, target $270.95.</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.8033</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$654.81</td>
+              <td class="num strong">$654.42</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.92</td>
+              <td class="num pos"><strong>+$17.07</strong><div class="sub-num">(+0.94%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $654.81 (intrabar high $657.03 &gt;= target $654.81)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.8033</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$647.94</td>
+              <td class="num strong">$648.33</td>
+              <td class="num neg">$0.18</td>
+              <td class="num neg">$0.91</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">79%</td>
+              <td class="reasoning-cell">Risk-On regime (SPY +0.09%, QQQ +0.06%, TLT +0.00%): allocating into META on top-decile relative strength vs SPY (+2.83%) and 5d momentum (+7.70%); stop $636.32, target $654.81.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 7. Macro &amp; Sector Strategist (Gemini Flash) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-12 08:08 ET"], "datasets": [{"label": "7. Macro & Sector Strategist (Gemini Flash)", "data": [10000.0, 9998.91, 10015.81, 10017.75, 10025.61, 10005.94, 10027.05, 10042.77, 10048.74, 10059.8, 10072.28, 10076.69, 10060.77, 10084.89, 10087.98, 10093.94, 10094.81, 10104.2, 10082.91, 10086.99, 10100.41, 10096.52, 10086.63, 10092.97, 10071.89, 10104.23, 10105.24, 10070.77, 10029.03, 9999.03, 9996.28, 9998.85, 10007.93, 10005.26, 10009.91, 10002.63, 10010.89, 10019.4, 10026.71, 10023.53, 9998.13, 9984.15, 9977.42, 9980.25, 10000.52, 10003.73, 9997.31, 9994.88, 9999.33, 10009.29, 10015.92, 10009.31, 10014.98, 10027.76, 10039.18, 10029.8, 10043.04, 10041.88, 10047.28, 10052.04, 10058.66, 10073.71, 10059.29, 10074.09, 10086.11, 10105.92, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
