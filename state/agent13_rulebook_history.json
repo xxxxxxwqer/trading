@@ -1,0 +1,11 @@
+{
+  "agent_id": "llm_own_strategy",
+  "agent_name": "13. Own Strategy (Autonomous Gemini Flash)",
+  "pre_declared_revision_policy": "Declared before competition start: Agent 13 writes its own rulebook blindly without suggested indicators or styles, and may review its own results and revise its rulebook at most once per trading day AFTER market close (never during market hours). Every past version and change reason is permanently archived.",
+  "current_version": 0,
+  "generated_by": "PENDING_GEMINI_API_KEY",
+  "blind_creation_verified": true,
+  "versions": [],
+  "daily_reviews": [],
+  "last_reviewed_date_et": ""
+}

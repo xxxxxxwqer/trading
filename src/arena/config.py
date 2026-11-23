@@ -231,6 +231,19 @@ AGENT_SPECS: List[AgentSpec] = [
             "under the shared risk manager."
         ),
     ),
+    AgentSpec(
+        agent_id="llm_own_strategy",
+        name="13. Own Strategy (Autonomous Gemini Flash)",
+        category="Autonomous LLM (Gemini Flash)",
+        short_description="Self-directed Gemini Flash trader given NO persona and NO suggested strategy — authors its own plain-language rulebook blindly before launch and may revise it once daily after market close.",
+        playbook=(
+            "Pre-declared autonomous strategy: given ONLY starting cash ($10,000), hard risk/universe rules "
+            "(US stocks >$5, >1M avg daily volume, 1% risk/trade, 20% max position, max 5 positions, -3% daily / -10% total limits), "
+            "available data fields, 10 trading days, and the goal of highest net return. Authors its own rulebook blindly without "
+            "seeing dry-run prices, sees only its own rulebook/positions/trades (never other agents or leaderboard), may tighten "
+            "(never loosen) limits, and is explicitly permitted to review results and revise its rulebook once per day AFTER market close."
+        ),
+    ),
 ]
 
 AGENT_SPECS_BY_ID: Dict[str, AgentSpec] = {spec.agent_id: spec for spec in AGENT_SPECS}

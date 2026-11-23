@@ -9,13 +9,17 @@
     "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
     "llm_agents.py": "b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189",
     "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
-    "risk_manager.py": "eaac768c9e2048ccfc8acc0a49c77d03bb75cb4fc537afe058e66ca595f3f545",
+    "own_strategy_agent.py": "f2a074c0ac8ea94432b182fd1992138d982e689430778894a8d26275fff86490",
+    "risk_manager.py": "5c0039cf492408d6e8ed9d734ed8921003713150faddef21e15679439d840e14",
     "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
   },
   "strategy_integrity_verified": true,
+  "pre_declared_exceptions": [
+    "Agent 13 (Own Strategy) is explicitly permitted to review its own results and revise its own rulebook once per day AFTER market close (never during market hours); every version and change reason is permanently archived on the dashboard."
+  ],
   "started_at_utc": "",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-23T04:59:41Z",
+  "last_updated_utc": "2026-11-23T05:12:01Z",
   "last_decision_timestamp_utc": "",
   "current_trading_date_et": "",
   "regime_summary": "Ready for Day 1 market open."

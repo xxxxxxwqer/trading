@@ -137,6 +137,7 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
         "coded_agents.py": _ARENA_DIR / "agents" / "coded_agents.py",
         "llm_agents.py": _ARENA_DIR / "agents" / "llm_agents.py",
         "style_agents.py": _ARENA_DIR / "agents" / "style_agents.py",
+        "own_strategy_agent.py": _ARENA_DIR / "agents" / "own_strategy_agent.py",
     }
     for name, path in engine_files.items():
         if hashes.get(name) in (None, "", "MISSING") and path.exists() and path.is_file():
@@ -147,18 +148,24 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
 def build_competition_agents(
     allow_offline_llm_simulation: bool = False,
     force_offline_llm: bool = False,
+    state_dir: Path = STATE_DIR,
 ) -> List[BaseAgent]:
-    """Instantiate all 10 competition agents in canonical AGENT_SPECS order.
+    """Instantiate all 13 competition agents in canonical AGENT_SPECS order."""
+    from arena.agents.own_strategy_agent import OwnStrategyAgent
 
-    Uses the persona-specific LLM subclasses (`TechnicalLLMAgent`, `CatalystLLMAgent`,
-    `MacroLLMAgent`, `CautiousLLMAgent`) so both live Gemini Flash calls and offline
-    dry-run simulations reflect each persona's exact playbook.
-    """
     agents: List[BaseAgent] = []
     for spec in AGENT_SPECS:
         if spec.agent_id in CODED_AND_CONTROL_AGENT_CLASSES:
             cls = CODED_AND_CONTROL_AGENT_CLASSES[spec.agent_id]
             agents.append(cls(spec=spec))
+        elif spec.agent_id == "llm_own_strategy":
+            agent13 = OwnStrategyAgent(
+                spec=spec,
+                state_dir=state_dir,
+                allow_offline_simulation=allow_offline_llm_simulation,
+                api_key="" if force_offline_llm else None,
+            )
+            agents.append(agent13)
         elif spec.agent_id in LLM_AGENT_CLASSES:
             agent = create_llm_agent(
                 agent_id=spec.agent_id,
@@ -339,6 +346,9 @@ def init_or_reset_state(
         "cycles_run": 0,
         "strategy_hashes": compute_all_strategy_hashes(),
         "strategy_integrity_verified": True,
+        "pre_declared_exceptions": [
+            "Agent 13 (Own Strategy) is explicitly permitted to review its own results and revise its own rulebook once per day AFTER market close (never during market hours); every version and change reason is permanently archived on the dashboard."
+        ],
         "started_at_utc": "",
         "completed_at_utc": "",
         "last_updated_utc": now_iso,
@@ -347,6 +357,15 @@ def init_or_reset_state(
         "regime_summary": "Ready for Day 1 market open.",
     }
     save_competition_state(comp_state, state_dir=state_dir)
+
+    # Reset / initialize Agent 13 blind rulebook BEFORE seeing any dry-run or competition prices
+    from arena.agents.own_strategy_agent import OwnStrategyAgent
+
+    agent13_init = OwnStrategyAgent(
+        state_dir=state_dir,
+        allow_offline_simulation=(mode == "DRY_RUN"),
+    )
+    agent13_init.ensure_initial_rulebook(overwrite=True, mode=mode)
 
     bug_fixes_path = _bug_fixes_log_path(state_dir)
     if preserve_bug_fixes and bug_fixes_path.exists():
@@ -614,33 +633,49 @@ def run_single_cycle(
             if not signal.decision_timestamp:
                 signal.decision_timestamp = snapshot.decision_timestamp
 
-            # Step 5: Pass OrderSignal through shared RiskManager
+            # Step 5: Pass OrderSignal through shared RiskManager (plus Agent 13's hard stock/volume filter & stricter limits)
             ticker = (signal.ticker or "").strip().upper()
             decision_quote: Optional[Quote] = (
                 snapshot.quotes_by_ticker.get(ticker) or effective_quotes.get(ticker)
                 if ticker
                 else None
             )
-            risk_result = risk_manager.evaluate(
-                signal=signal,
-                state=state,
-                quote=decision_quote,
-                bypass_position_cap=spec.bypass_position_cap,
-            )
 
-            # Step 6: If approved, simulate fill at fill_timestamp (> decision_timestamp) and record in ledger
-            if risk_result.approved and signal.action in ("BUY", "SELL"):
-                fill_quote = effective_quotes.get(ticker) or decision_quote
-                if fill_quote is not None:
-                    trade = simulator.simulate_fill(
-                        order_or_check=risk_result,
-                        fill_quote_or_bar=fill_quote,
-                        fill_timestamp=fill_timestamp,
-                        state=state,
-                        exit_reason="AGENT_SIGNAL",
-                        decision_timestamp=snapshot.decision_timestamp,
-                    )
-                    ledger.apply_trade(state, trade)
+            extra_stricter_limits = None
+            pre_rejected = False
+            if agent.agent_id == "llm_own_strategy":
+                from arena.agents.own_strategy_agent import OwnStrategyAgent, is_eligible_agent13_stock
+
+                if isinstance(agent, OwnStrategyAgent):
+                    extra_stricter_limits = agent.get_effective_stricter_limits()
+                if signal.action == "BUY":
+                    ok_elig, elig_reason = is_eligible_agent13_stock(snapshot, ticker)
+                    if not ok_elig:
+                        risk_manager._record_rejection(state=state, signal=signal, reason=elig_reason, record_rejection=True)
+                        pre_rejected = True
+
+            if not pre_rejected:
+                risk_result = risk_manager.evaluate(
+                    signal=signal,
+                    state=state,
+                    quote=decision_quote,
+                    bypass_position_cap=spec.bypass_position_cap,
+                    stricter_limits=extra_stricter_limits,
+                )
+
+                # Step 6: If approved, simulate fill at fill_timestamp (> decision_timestamp) and record in ledger
+                if risk_result.approved and signal.action in ("BUY", "SELL"):
+                    fill_quote = effective_quotes.get(ticker) or decision_quote
+                    if fill_quote is not None:
+                        trade = simulator.simulate_fill(
+                            order_or_check=risk_result,
+                            fill_quote_or_bar=fill_quote,
+                            fill_timestamp=fill_timestamp,
+                            state=state,
+                            exit_reason="AGENT_SIGNAL",
+                            decision_timestamp=snapshot.decision_timestamp,
+                        )
+                        ledger.apply_trade(state, trade)
 
         # Step 7: Update mark-to-market equity and enforce -3% daily / -10% blown-up circuit breakers
         ledger.update_mark_to_market(
@@ -673,6 +708,18 @@ def run_single_cycle(
             trading_date_et=snapshot.trading_date_et,
             trading_day_number=snapshot.trading_day_number,
         )
+
+        # Step 8b: Agent 13 once-daily post-close self-review (NEVER during regular market hours)
+        if agent.agent_id == "llm_own_strategy" and snapshot.is_near_market_close:
+            from arena.agents.own_strategy_agent import OwnStrategyAgent
+
+            if isinstance(agent, OwnStrategyAgent):
+                agent.run_daily_post_close_review(
+                    state=state,
+                    trading_date_et=snapshot.trading_date_et,
+                    trading_day_number=snapshot.trading_day_number,
+                    is_market_closed_or_closing=True,
+                )
 
         # Step 9: Save AgentLedgerState
         ledger.save_agent_state(state)
@@ -820,8 +867,27 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
         return 0
 
-    # 3. If market is closed and --force-open-check was not passed, log clearly and refresh dashboard timestamps
+    # 3. If market is closed and --force-open-check was not passed, run Agent 13 pre-start/post-close hooks and refresh dashboard
     if not is_open and not force_open:
+        from arena.agents.own_strategy_agent import OwnStrategyAgent
+
+        a13_agent = OwnStrategyAgent(state_dir=state_dir, allow_offline_simulation=False)
+        # Pre-start blind v1 creation if GEMINI_API_KEY is now configured and v1 is pending
+        a13_hist = a13_agent.load_history()
+        if not a13_hist.get("versions") and a13_agent._get_api_key():
+            a13_agent.ensure_initial_rulebook(overwrite=False, mode="LIVE")
+        # Catch-up post-close self-review after a completed trading session (at most once per trading day)
+        if active_dates:
+            last_active_date = active_dates[-1]
+            a13_state = next((s for s in agent_states if s.agent_id == "llm_own_strategy"), None)
+            if a13_state is not None:
+                a13_agent.run_daily_post_close_review(
+                    state=a13_state,
+                    trading_date_et=last_active_date,
+                    trading_day_number=len(active_dates),
+                    is_market_closed_or_closing=True,
+                )
+
         next_open = clock.get("next_open", "unknown")
         is_holiday_or_weekend = not any(c.get("date") == today_et for c in calendar)
         reason_str = (
@@ -995,11 +1061,17 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
         output_dir=DOCS_DIR,
     )
 
-    # Also save a snapshot of dry-run JSON ledgers inside `docs_dry_run/state_snapshot/`
+    # Also save a snapshot of dry-run JSON ledgers & Agent 13 rulebook history inside `docs_dry_run/state_snapshot/`
     snapshot_dir = DRY_RUN_DOCS_DIR / "state_snapshot"
     snapshot_dir.mkdir(parents=True, exist_ok=True)
     with (snapshot_dir / "competition_state.json").open("w", encoding="utf-8") as f:
         json.dump(comp_state, f, indent=2)
+    a13_hist_src = STATE_DIR / "agent13_rulebook_history.json"
+    if a13_hist_src.exists():
+        (snapshot_dir / "agent13_rulebook_history.json").write_text(
+            a13_hist_src.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
 
     print(
         format_leaderboard_table(

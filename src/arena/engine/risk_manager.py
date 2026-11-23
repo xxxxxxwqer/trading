@@ -132,14 +132,48 @@ class RiskManager:
         reference_price: Optional[float] = None,
         bypass_position_cap: Optional[bool] = None,
         record_rejection: bool = True,
+        stricter_limits: Optional[dict] = None,
     ) -> RiskCheckResult:
-        """Evaluate an OrderSignal against the agent's ledger state and current market quote."""
+        """Evaluate an OrderSignal against the agent's ledger state and current market quote.
+
+        If `stricter_limits` is supplied (e.g. from Agent 13's self-authored rulebook),
+        each limit is clamped so it can ONLY be equal to or STRICTER than the hard rules,
+        never looser.
+        """
         # Support either (signal, state, ...) or (state, signal, ...) argument ordering
         if isinstance(signal, AgentLedgerState) and isinstance(state, OrderSignal):
             signal, state = state, signal
 
         assert isinstance(signal, OrderSignal)
         assert isinstance(state, AgentLedgerState)
+
+        # Compute effective limits: stricter_limits can ONLY tighten, never loosen hard rules
+        eff_max_risk_pct = self.max_risk_per_trade_pct
+        eff_max_pos_pct = self.max_position_equity_pct
+        eff_max_open_pos = self.max_open_positions
+        eff_daily_loss_100 = self.daily_loss_limit_pct_100
+        if isinstance(stricter_limits, dict):
+            if stricter_limits.get("max_risk_per_trade_pct") is not None:
+                eff_max_risk_pct = min(
+                    self.max_risk_per_trade_pct,
+                    max(0.001, float(stricter_limits["max_risk_per_trade_pct"]) / 100.0),
+                )
+            if stricter_limits.get("max_position_equity_pct") is not None:
+                eff_max_pos_pct = min(
+                    self.max_position_equity_pct,
+                    max(0.02, float(stricter_limits["max_position_equity_pct"]) / 100.0),
+                )
+            if stricter_limits.get("max_open_positions") is not None:
+                eff_max_open_pos = min(
+                    self.max_open_positions,
+                    max(1, int(stricter_limits["max_open_positions"])),
+                )
+            if stricter_limits.get("daily_loss_limit_pct") is not None:
+                own_dl = float(stricter_limits["daily_loss_limit_pct"])
+                if own_dl > 0:
+                    own_dl = -own_dl
+                # Closer to 0 is stricter (e.g. -2.0% is stricter than -3.0%; -5.0% is clamped back to -3.0%)
+                eff_daily_loss_100 = max(self.daily_loss_limit_pct_100, min(-0.5, own_dl))
 
         action = (signal.action or "HOLD").upper()
         ticker = (signal.ticker or "").strip().upper()
@@ -210,12 +244,12 @@ class RiskManager:
                 record_rejection=record_rejection,
             )
 
-        # Rule 2: Daily loss limit check (-3.0% daily PnL)
-        if state.status == "DAILY_HALTED" or state.daily_pnl_pct <= self.daily_loss_limit_pct_100 + 1e-9:
+        # Rule 2: Daily loss limit check (-3.0% hard limit, or stricter agent limit)
+        if state.status == "DAILY_HALTED" or state.daily_pnl_pct <= eff_daily_loss_100 + 1e-9:
             return self._record_rejection(
                 state=state,
                 signal=signal,
-                reason="Daily loss limit (-3.0%) reached; no new trades allowed today",
+                reason=f"Daily loss limit ({eff_daily_loss_100:.1f}%) reached; no new trades allowed today",
                 record_rejection=record_rejection,
             )
 
@@ -236,14 +270,14 @@ class RiskManager:
                 record_rejection=record_rejection,
             )
 
-        # Rule 4: Max open positions (5)
+        # Rule 4: Max open positions (5 hard limit, or stricter agent limit)
         open_positions_count = sum(1 for p in state.positions.values() if p.shares > 0)
         has_existing_position = ticker in state.positions and state.positions[ticker].shares > 0
-        if not has_existing_position and open_positions_count >= self.max_open_positions:
+        if not has_existing_position and open_positions_count >= eff_max_open_pos:
             return self._record_rejection(
                 state=state,
                 signal=signal,
-                reason=f"Max open positions ({self.max_open_positions}) reached",
+                reason=f"Max open positions ({eff_max_open_pos}) reached",
                 record_rejection=record_rejection,
             )
 
@@ -289,8 +323,8 @@ class RiskManager:
                 record_rejection=record_rejection,
             )
 
-        # Rule 6: Risk per trade (1% of equity) & max position cap (20% of equity, or 98% cash for ctrl_spy)
-        max_risk_dollars = max(0.0, state.equity * self.max_risk_per_trade_pct)
+        # Rule 6: Risk per trade (<= 1% of equity) & max position cap (<= 20% of equity, or 98% cash for ctrl_spy)
+        max_risk_dollars = max(0.0, state.equity * eff_max_risk_pct)
         risk_sized_shares = max_risk_dollars / stop_distance
 
         if bypass_position_cap is None:
@@ -311,7 +345,7 @@ class RiskManager:
             position_cap_shares = max_position_dollars / entry_price
             raw_shares = position_cap_shares
         else:
-            max_position_dollars = max(0.0, state.equity * self.max_position_equity_pct - existing_mv)
+            max_position_dollars = max(0.0, state.equity * eff_max_pos_pct - existing_mv)
             position_cap_shares = max_position_dollars / entry_price
             raw_shares = min(risk_sized_shares, position_cap_shares)
 

@@ -41,20 +41,21 @@ from arena.models import (
     TradeRecord,
 )
 
-# High-contrast, distinct palette for all 12 agents
+# High-contrast, distinct palette for all 13 agents
 AGENT_COLORS: Dict[str, str] = {
-    "coded_trend": "#38bdf8",     # Sky Blue
-    "coded_mean_rev": "#818cf8",  # Indigo
-    "coded_orb": "#c084fc",       # Purple
-    "coded_sector": "#2dd4bf",    # Teal
-    "llm_technical": "#34d399",   # Emerald
-    "llm_catalyst": "#f472b6",    # Pink
-    "llm_macro": "#fb923c",       # Orange
-    "llm_cautious": "#facc15",    # Amber Yellow
-    "ctrl_spy": "#ffffff",        # Crisp White (Benchmark)
-    "ctrl_random": "#94a3b8",     # Slate Grey (Luck Control)
-    "style_berkshire": "#22c55e", # Classic Value Green
-    "style_congress": "#f43f5e",  # Capitol Rose Red
+    "coded_trend": "#38bdf8",      # Sky Blue
+    "coded_mean_rev": "#818cf8",   # Indigo
+    "coded_orb": "#c084fc",        # Purple
+    "coded_sector": "#2dd4bf",     # Teal
+    "llm_technical": "#34d399",    # Emerald
+    "llm_catalyst": "#f472b6",     # Pink
+    "llm_macro": "#fb923c",        # Orange
+    "llm_cautious": "#facc15",     # Amber Yellow
+    "ctrl_spy": "#ffffff",         # Crisp White (Benchmark)
+    "ctrl_random": "#94a3b8",      # Slate Grey (Luck Control)
+    "style_berkshire": "#22c55e",  # Classic Value Green
+    "style_congress": "#f43f5e",   # Capitol Rose Red
+    "llm_own_strategy": "#06b6d4", # Autonomous Cyan
 }
 
 
@@ -169,6 +170,8 @@ def _short_category_label(category: str) -> Tuple[str, str]:
     cat_lower = (category or "").lower()
     if "coded" in cat_lower:
         return "Coded", "cat-coded"
+    if "autonomous" in cat_lower:
+        return "Autonomous LLM", "cat-autonomous"
     if "llm" in cat_lower or "gemini" in cat_lower:
         return "Gemini Flash LLM", "cat-llm"
     if "filing" in cat_lower or "style" in cat_lower:
@@ -225,6 +228,7 @@ class DashboardBuilder:
         cohort_stats = self._compute_cohort_analysis(sorted_metrics)
         luck_stats = self._compute_luck_vs_skill(sorted_metrics, normalized_agents)
         learned_patterns = self._load_learned_patterns()
+        agent13_history = self._load_agent13_history()
 
         # 1. Write styles.css
         (target_dir / "styles.css").write_text(self._render_styles_css(), encoding="utf-8")
@@ -244,6 +248,7 @@ class DashboardBuilder:
             "cohort_analysis": cohort_stats,
             "luck_vs_skill": luck_stats,
             "learned_patterns": learned_patterns,
+            "agent13_rulebook_history": agent13_history,
             "bug_fixes": bug_fix_list,
             "strategy_hashes": strategy_hashes,
             "agents": {a.agent_id: a.to_dict() for a in normalized_agents},
@@ -626,11 +631,197 @@ class DashboardBuilder:
       </div>
     </section>"""
 
+    def _load_agent13_history(self) -> Dict[str, Any]:
+        """Load Agent 13's self-authored rulebook versions and daily post-close reviews."""
+        path = PROJECT_ROOT / "state" / "agent13_rulebook_history.json"
+        if path.exists():
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    return data
+            except Exception:
+                pass
+        return {}
+
+    def _render_agent13_section(self, history: Dict[str, Any]) -> str:
+        """Render Agent 13's Current Rulebook, Every Past Version (with diffs), and Daily Self-Reviews."""
+        versions = list(history.get("versions") or [])
+        reviews = list(history.get("daily_reviews") or [])
+        policy = history.get(
+            "pre_declared_revision_policy",
+            "Pre-declared exception: Agent 13 writes its own rulebook blindly and may revise it once daily AFTER market close.",
+        )
+
+        if not versions:
+            return f"""
+    <section class="panel" id="agent13-rulebook">
+      <div class="panel-header">
+        <div>
+          <h2>&#129504; Agent 13 — Self-Authored Rulebook &amp; Daily Self-Review Log</h2>
+          <p class="panel-sub">{_esc(policy)}</p>
+        </div>
+        <span class="status-pill status-halted">PENDING LIVE GEMINI_API_KEY</span>
+      </div>
+      <p class="empty-state">Agent 13 has not generated its live Version 1 rulebook yet because <code>GEMINI_API_KEY</code> is not configured in this environment. As soon as the first cycle or pre-open run executes with <code>GEMINI_API_KEY</code>, Gemini Flash will blindly author Version 1 (without seeing any market prices) and publish it here.</p>
+    </section>"""
+
+        latest = versions[-1]
+        rb = latest.get("rulebook") or {}
+        lim = rb.get("stricter_limits") or {}
+
+        field_labels = [
+            ("what_it_looks_for", "What It Looks For"),
+            ("when_it_buys", "When It Buys"),
+            ("when_it_sells", "When It Sells"),
+            ("position_sizing", "How It Sizes Positions"),
+            ("when_it_stays_in_cash", "When It Stays in Cash"),
+            ("why_it_thinks_this_works", "Why It Thinks This Works"),
+            ("what_would_prove_it_wrong", "What Result Would Prove It Wrong"),
+        ]
+        current_items_html = []
+        for fkey, flabel in field_labels:
+            current_items_html.append(
+                f"""          <div class="rulebook-item">
+            <div class="rulebook-item-label">{_esc(flabel)}</div>
+            <p>{_esc(rb.get(fkey, '—'))}</p>
+          </div>"""
+            )
+
+        # Past & current version timeline (newest first)
+        version_cards = []
+        for v in reversed(versions):
+            vnum = v.get("version", 1)
+            vrb = v.get("rulebook") or {}
+            vlim = vrb.get("stricter_limits") or {}
+            changes = v.get("changes_from_previous") or []
+            changes_li = "".join(f"<li>{_esc(ch)}</li>" for ch in changes)
+            is_curr = vnum == latest.get("version")
+            badge_html = '<span class="status-pill status-active">ACTIVE VERSION</span>' if is_curr else '<span class="status-pill status-completed">ARCHIVED VERSION</span>'
+            v_fields_li = "".join(
+                f"<li><strong>{_esc(lbl)}:</strong> {_esc(vrb.get(k, ''))}</li>"
+                for k, lbl in field_labels
+            )
+            version_cards.append(
+                f"""        <details class="version-card" {"open" if is_curr else ""}>
+          <summary class="version-card-summary">
+            <div class="version-card-title">
+              <span class="day-badge">Rulebook v{vnum}</span>
+              <strong>{_esc(vrb.get('strategy_title', 'Own Strategy'))}</strong>
+              {badge_html}
+            </div>
+            <div class="sub-num">
+              Trigger: <code>{_esc(v.get('trigger', ''))}</code> &bull; Date: {_esc(v.get('trading_date_et', ''))} &bull;
+              Self Limits: {vlim.get('max_risk_per_trade_pct', 1.0)}% risk / {vlim.get('max_position_equity_pct', 20.0)}% cap / {vlim.get('max_open_positions', 5)} pos / {vlim.get('daily_loss_limit_pct', -3.0)}% day
+            </div>
+          </summary>
+          <div class="version-card-body">
+            <p><strong>Why this version was written / changed:</strong> {_esc(v.get('change_reason', ''))}</p>
+            <div class="rules-heading">What Changed:</div>
+            <ul class="learned-rules-list">{changes_li}</ul>
+            <div class="rules-heading">Full Rulebook v{vnum} Text:</div>
+            <ul class="learned-rules-list">{v_fields_li}</ul>
+          </div>
+        </details>"""
+            )
+
+        # Daily Post-Close Self-Review cards
+        review_cards = []
+        for rev in reversed(reviews):
+            did_rev = bool(rev.get("revised_rulebook", False))
+            rev_badge = (
+                f'<span class="status-pill status-halted">REVISED &rarr; v{rev.get("rulebook_version_after")}</span>'
+                if did_rev
+                else f'<span class="status-pill status-active">KEPT v{rev.get("rulebook_version_after")} UNCHANGED</span>'
+            )
+            ch_html = ""
+            if rev.get("changes_summary"):
+                ch_li = "".join(f"<li>{_esc(c)}</li>" for c in rev["changes_summary"])
+                ch_html = f'<div class="rules-heading">Changes Made After Close:</div><ul class="learned-rules-list">{ch_li}</ul>'
+            review_cards.append(
+                f"""        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Post-Close Review &bull; Day {rev.get('trading_day_number')}</span>
+              <strong>{_esc(rev.get('trading_date_et', ''))}</strong>
+              {rev_badge}
+            </div>
+            <div class="journal-metrics">
+              <span>Close Equity: <strong>{_fmt_money(float(rev.get('equity_at_close', 10000.0)))}</strong></span>
+              <span class="{_pnl_class(float(rev.get('daily_pnl_pct', 0.0)))}">({_fmt_pct(float(rev.get('daily_pnl_pct', 0.0)))})</span>
+              <span>{rev.get('trades_today', 0)} fills</span>
+            </div>
+          </div>
+          <p class="journal-summary">{_esc(rev.get('review_summary', ''))}</p>
+          <div class="review-split">
+            <div><strong>What Worked:</strong> {_esc(rev.get('what_worked', ''))}</div>
+            <div><strong>What Did Not:</strong> {_esc(rev.get('what_did_not', ''))}</div>
+            <div><strong>Decision Rationale:</strong> {_esc(rev.get('change_reason', ''))}</div>
+          </div>
+          {ch_html}
+        </article>"""
+            )
+        if not review_cards:
+            review_cards.append(
+                '<p class="empty-state">No post-close reviews executed yet. Agent 13 conducts at most one self-review per trading day AFTER market close (never during market hours).</p>'
+            )
+
+        return f"""
+    <!-- Agent 13 Current Rulebook -->
+    <section class="panel" id="agent13-rulebook">
+      <div class="panel-header">
+        <div>
+          <h2>&#129504; Current Self-Authored Rulebook — Version {latest.get('version', 1)}: {_esc(rb.get('strategy_title', 'Own Strategy'))}</h2>
+          <p class="panel-sub">{_esc(policy)}</p>
+        </div>
+        <span class="status-pill status-active">v{latest.get('version', 1)} ACTIVE &bull; {len(versions)} TOTAL VERSION(S)</span>
+      </div>
+
+      <div class="oos-strip">
+        <span><strong>Generated By:</strong> <code>{_esc(latest.get('generated_by', 'gemini-flash'))}</code></span>
+        <span><strong>Self Risk/Trade:</strong> {lim.get('max_risk_per_trade_pct', 1.0)}% (hard &le; 1.0%)</span>
+        <span><strong>Self Max Pos:</strong> {lim.get('max_position_equity_pct', 20.0)}% (hard &le; 20.0%)</span>
+        <span><strong>Self Max Open:</strong> {lim.get('max_open_positions', 5)} (hard &le; 5)</span>
+        <span><strong>Self Daily Halt:</strong> {lim.get('daily_loss_limit_pct', -3.0)}% (hard &ge; -3.0%)</span>
+        <span><strong>Eligible Stocks:</strong> US stocks &gt;$5, &gt;1M avg daily vol</span>
+      </div>
+
+      <div class="rulebook-grid">
+{chr(10).join(current_items_html)}
+      </div>
+    </section>
+
+    <!-- Agent 13 Daily Post-Close Self-Reviews -->
+    <section class="panel" id="agent13-reviews">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Post-Close Self-Reviews (1 Review/Day After Close, Never Intraday)</h2>
+          <p class="panel-sub">Agent 13 sees only its own trades and equity (never other agents or the leaderboard) and decides after close whether to revise its rulebook.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+{chr(10).join(review_cards)}
+      </div>
+    </section>
+
+    <!-- Agent 13 Full Rulebook Version History -->
+    <section class="panel" id="agent13-versions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128214; Complete Rulebook Version Archive (v1 &rarr; v{latest.get('version', 1)}) — What Changed &amp; Why</h2>
+          <p class="panel-sub">Every version ever authored by Agent 13 is permanently archived here with exact diffs and revision rationale.</p>
+        </div>
+      </div>
+      <div class="versions-list">
+{chr(10).join(version_cards)}
+      </div>
+    </section>"""
+
     def _compute_cohort_analysis(self, sorted_metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Compute aggregated performance breakdown across Coded, Gemini Flash LLM, Filing-Style, SPY, and Random."""
+        """Compute aggregated performance breakdown across Coded, Gemini Flash LLM, Autonomous LLM, Filing-Style, SPY, and Random."""
         groups = {
             "Coded": [m for m in sorted_metrics if m["short_category"] == "Coded"],
             "Gemini Flash LLM": [m for m in sorted_metrics if m["short_category"] == "Gemini Flash LLM"],
+            "Autonomous LLM": [m for m in sorted_metrics if m["short_category"] == "Autonomous LLM"],
             "Filing-Style Learned": [m for m in sorted_metrics if m["short_category"] == "Filing-Style"],
             "Buy-and-Hold SPY": [m for m in sorted_metrics if m["agent_id"] == "ctrl_spy"],
             "Random Trader (Luck Control)": [m for m in sorted_metrics if m["agent_id"] == "ctrl_random"],
@@ -1241,9 +1432,10 @@ class DashboardBuilder:
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
           <button type="button" class="btn-filter active" data-filter="all">All {total_agents} Agents</button>
           <button type="button" class="btn-filter" data-filter="Coded">4 Coded</button>
-          <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
+          <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Persona LLMs</button>
+          <button type="button" class="btn-filter" data-filter="Autonomous LLM">1 Own Strategy LLM</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
-          <button type="button" class="btn-filter" data-filter="Control">2 Controls (SPY &amp; Random)</button>
+          <button type="button" class="btn-filter" data-filter="Control">2 Controls</button>
         </div>
       </div>
 
@@ -1651,6 +1843,7 @@ class DashboardBuilder:
       </div>
     </section>
 {self._render_learned_patterns_panel({agent.agent_id: self._load_learned_patterns()[agent.agent_id]}, root_prefix="../") if agent.agent_id in self._load_learned_patterns() else ""}
+{self._render_agent13_section(self._load_agent13_history()) if agent.agent_id == "llm_own_strategy" else ""}
 
     <!-- Agent KPI Strip -->
     <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
@@ -2697,8 +2890,85 @@ code, .mono {
 
 .cat-coded { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
 .cat-llm { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+.cat-autonomous { background: rgba(6, 182, 212, 0.18); color: #22d3ee; }
 .cat-style { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
 .cat-control { background: rgba(148, 163, 184, 0.18); color: #cbd5e1; }
+
+.rulebook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.rulebook-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.rulebook-item-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #22d3ee;
+  margin-bottom: 6px;
+}
+
+.rulebook-item p {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.versions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.version-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.version-card-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.version-card-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.version-card-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.review-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin: 8px 0;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
 
 .style-patterns-grid {
   display: grid;

@@ -514,8 +514,85 @@ code, .mono {
 
 .cat-coded { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
 .cat-llm { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+.cat-autonomous { background: rgba(6, 182, 212, 0.18); color: #22d3ee; }
 .cat-style { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
 .cat-control { background: rgba(148, 163, 184, 0.18); color: #cbd5e1; }
+
+.rulebook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.rulebook-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.rulebook-item-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #22d3ee;
+  margin-bottom: 6px;
+}
+
+.rulebook-item p {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.versions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.version-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.version-card-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.version-card-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.version-card-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.review-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin: 8px 0;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
 
 .style-patterns-grid {
   display: grid;

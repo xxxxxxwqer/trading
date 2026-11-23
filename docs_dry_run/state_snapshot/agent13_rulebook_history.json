@@ -1,0 +1,148 @@
+{
+  "agent_id": "llm_own_strategy",
+  "agent_name": "13. Own Strategy (Autonomous Gemini Flash)",
+  "pre_declared_revision_policy": "Declared before competition start: Agent 13 writes its own rulebook blindly without suggested indicators or styles, and may review its own results and revise its rulebook at most once per trading day AFTER market close (never during market hours). Every past version and change reason is permanently archived.",
+  "current_version": 2,
+  "generated_by": "offline-blind-simulation (awaiting live GEMINI_API_KEY)",
+  "blind_creation_verified": true,
+  "versions": [
+    {
+      "version": 1,
+      "created_at_utc": "2026-11-23T05:11:25Z",
+      "trading_date_et": "PRE_START",
+      "trigger": "INITIAL_BLIND_DESIGN",
+      "generated_by": "offline-blind-simulation (awaiting live GEMINI_API_KEY)",
+      "change_reason": "Blind v1 rulebook created in offline dry-run mode (GEMINI_API_KEY not set locally) without seeing any dry-run prices. When live with GEMINI_API_KEY, Gemini Flash authors v1 directly.",
+      "changes_from_previous": [
+        "Initial rulebook authored before seeing competition or dry-run price data."
+      ],
+      "rulebook": {
+        "strategy_title": "Selective Liquidity-Filtered Leader & Risk-Asymmetry System",
+        "what_it_looks_for": "Liquid US-listed individual stocks above $5 with >1M average daily volume showing clean short-term relative outperformance, expanding participation (volume above recent average), and controlled volatility so stops stay well-defined.",
+        "when_it_buys": "Buy an eligible stock when price is trading above its short and medium moving averages with positive relative strength, volume ratio >= 1.05, and room before recent resistance. Place an initial stop-loss ~1.8x recent average true range below entry and set a take-profit target at least 2.2x the stop distance.",
+        "when_it_sells": "Exit automatically at the stop-loss or take-profit target, or proactively sell if price closes decisively below its 20-bar average while short-term strength fades, protecting gains and cutting stalled positions.",
+        "position_sizing": "Size each trade using 0.85% equity risk divided by stop distance (stricter than the 1.0% hard cap), capped at 18% of equity per stock and at most 4 concurrent positions to reserve dry powder.",
+        "when_it_stays_in_cash": "Stay in cash when broad participation weakens, no eligible stock offers >= 2.2:1 reward-to-risk after spread and 5 bps slippage, or daily drawdown approaches -2.5%.",
+        "why_it_thinks_this_works": "Over a short 10-trading-day window, transaction friction (spread + 5 bps slippage each way) punishes overtrading. Concentrating on a few liquid leaders with asymmetric 2.2:1+ targets and stricter 0.85% risk sizing lets winners compound while keeping drawdowns well away from the -3% daily / -10% total stops.",
+        "what_would_prove_it_wrong": "Two consecutive losing days, a win rate below 35% after 5+ closed trades, or repeated premature stop-outs caused by intraday noise would show the entry filter is chasing extensions or stops are too tight.",
+        "stricter_limits": {
+          "max_risk_per_trade_pct": 0.85,
+          "max_position_equity_pct": 18.0,
+          "max_open_positions": 4,
+          "daily_loss_limit_pct": -2.5,
+          "max_total_drawdown_pct": -10.0
+        }
+      }
+    },
+    {
+      "version": 2,
+      "created_at_utc": "2026-11-23T05:11:50Z",
+      "trading_date_et": "2026-11-06",
+      "trigger": "POST_CLOSE_REVIEW_DAY_2",
+      "generated_by": "offline-blind-simulation (awaiting live GEMINI_API_KEY)",
+      "change_reason": "After reviewing Day 2 fills and spread/slippage friction, tightened entry selectivity and raised reward-to-risk target from 2.2R to 2.4R for tomorrow.",
+      "changes_from_previous": [
+        "Tightened entry volume confirmation to >= 1.15x to cut marginal trades and friction.",
+        "Raised target asymmetry from 2.2R to 2.4R while tightening max risk/trade to 0.80%."
+      ],
+      "rulebook": {
+        "strategy_title": "Selective Liquidity-Filtered Leader & Risk-Asymmetry System",
+        "what_it_looks_for": "Liquid US-listed individual stocks above $5 with >1M average daily volume showing clean short-term relative outperformance, expanding participation (volume above recent average), and controlled volatility so stops stay well-defined.",
+        "when_it_buys": "Require stricter volume confirmation (volume ratio >= 1.15x) and clean relative strength on eligible >$5, >1M volume US stocks; target 2.4R reward-to-risk to better clear 5 bps slippage + spread.",
+        "when_it_sells": "Exit automatically at the stop-loss or take-profit target, or proactively sell if price closes decisively below its 20-bar average while short-term strength fades, protecting gains and cutting stalled positions.",
+        "position_sizing": "Size each trade using 0.85% equity risk divided by stop distance (stricter than the 1.0% hard cap), capped at 18% of equity per stock and at most 4 concurrent positions to reserve dry powder.",
+        "when_it_stays_in_cash": "Stay in cash when broad participation weakens, no eligible stock offers >= 2.2:1 reward-to-risk after spread and 5 bps slippage, or daily drawdown approaches -2.5%.",
+        "why_it_thinks_this_works": "Over a short 10-trading-day window, transaction friction (spread + 5 bps slippage each way) punishes overtrading. Concentrating on a few liquid leaders with asymmetric 2.2:1+ targets and stricter 0.85% risk sizing lets winners compound while keeping drawdowns well away from the -3% daily / -10% total stops.",
+        "what_would_prove_it_wrong": "Two consecutive losing days, a win rate below 35% after 5+ closed trades, or repeated premature stop-outs caused by intraday noise would show the entry filter is chasing extensions or stops are too tight.",
+        "stricter_limits": {
+          "max_risk_per_trade_pct": 0.8,
+          "max_position_equity_pct": 17.5,
+          "max_open_positions": 4,
+          "daily_loss_limit_pct": -2.5,
+          "max_total_drawdown_pct": -10.0
+        }
+      }
+    }
+  ],
+  "daily_reviews": [
+    {
+      "trading_date_et": "2026-11-05",
+      "trading_day_number": 1,
+      "reviewed_at_utc": "2026-11-23T05:11:48Z",
+      "equity_at_close": 10106.25,
+      "daily_pnl_pct": 1.06,
+      "trades_today": 4,
+      "revised_rulebook": false,
+      "rulebook_version_after": 1,
+      "review_summary": "Day 1 (2026-11-05) closed at $10,106.25 (+1.06% today, 4 fills). Rulebook v1 performed within expected bounds; keeping rules unchanged.",
+      "what_worked": "Current filters and risk limits operated as designed without excessive churn.",
+      "what_did_not": "No falsification trigger breached today.",
+      "change_reason": "No rulebook change needed; preserving consistency to avoid overfitting to a single session.",
+      "changes_summary": []
+    },
+    {
+      "trading_date_et": "2026-11-06",
+      "trading_day_number": 2,
+      "reviewed_at_utc": "2026-11-23T05:11:50Z",
+      "equity_at_close": 10158.77,
+      "daily_pnl_pct": 0.52,
+      "trades_today": 4,
+      "revised_rulebook": true,
+      "rulebook_version_after": 2,
+      "review_summary": "Day 2 (2026-11-06) closed at $10,158.77 (+0.52% today, 4 fills: 2W/0L closed). Publishing Rulebook v2 for tomorrow.",
+      "what_worked": "2 winning closed trade(s) and disciplined risk sizing kept drawdown controlled.",
+      "what_did_not": "Early trade friction (spread + 5 bps slippage) warrants slightly higher entry selectivity.",
+      "change_reason": "After reviewing Day 2 fills and spread/slippage friction, tightened entry selectivity and raised reward-to-risk target from 2.2R to 2.4R for tomorrow.",
+      "changes_summary": [
+        "Tightened entry volume confirmation to >= 1.15x to cut marginal trades and friction.",
+        "Raised target asymmetry from 2.2R to 2.4R while tightening max risk/trade to 0.80%."
+      ]
+    },
+    {
+      "trading_date_et": "2026-11-09",
+      "trading_day_number": 3,
+      "reviewed_at_utc": "2026-11-23T05:11:53Z",
+      "equity_at_close": 10128.08,
+      "daily_pnl_pct": -0.3,
+      "trades_today": 5,
+      "revised_rulebook": false,
+      "rulebook_version_after": 2,
+      "review_summary": "Day 3 (2026-11-09) closed at $10,128.08 (-0.30% today, 5 fills). Rulebook v2 performed within expected bounds; keeping rules unchanged.",
+      "what_worked": "Current filters and risk limits operated as designed without excessive churn.",
+      "what_did_not": "No falsification trigger breached today.",
+      "change_reason": "No rulebook change needed; preserving consistency to avoid overfitting to a single session.",
+      "changes_summary": []
+    },
+    {
+      "trading_date_et": "2026-11-10",
+      "trading_day_number": 4,
+      "reviewed_at_utc": "2026-11-23T05:11:56Z",
+      "equity_at_close": 10216.36,
+      "daily_pnl_pct": 0.87,
+      "trades_today": 5,
+      "revised_rulebook": false,
+      "rulebook_version_after": 2,
+      "review_summary": "Day 4 (2026-11-10) closed at $10,216.36 (+0.87% today, 5 fills). Rulebook v2 performed within expected bounds; keeping rules unchanged.",
+      "what_worked": "Current filters and risk limits operated as designed without excessive churn.",
+      "what_did_not": "No falsification trigger breached today.",
+      "change_reason": "No rulebook change needed; preserving consistency to avoid overfitting to a single session.",
+      "changes_summary": []
+    },
+    {
+      "trading_date_et": "2026-11-11",
+      "trading_day_number": 5,
+      "reviewed_at_utc": "2026-11-23T05:12:00Z",
+      "equity_at_close": 10339.93,
+      "daily_pnl_pct": 1.21,
+      "trades_today": 2,
+      "revised_rulebook": false,
+      "rulebook_version_after": 2,
+      "review_summary": "Day 5 (2026-11-11) closed at $10,339.93 (+1.21% today, 2 fills). Rulebook v2 performed within expected bounds; keeping rules unchanged.",
+      "what_worked": "Current filters and risk limits operated as designed without excessive churn.",
+      "what_did_not": "No falsification trigger breached today.",
+      "change_reason": "No rulebook change needed; preserving consistency to avoid overfitting to a single session.",
+      "changes_summary": []
+    }
+  ],
+  "last_reviewed_date_et": "2026-11-11"
+}
