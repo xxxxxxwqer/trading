@@ -206,6 +206,31 @@ AGENT_SPECS: List[AgentSpec] = [
             "subject to the exact same shared risk manager as the AI and coded agents."
         ),
     ),
+    AgentSpec(
+        agent_id="style_berkshire",
+        name="11. Berkshire Style (13F Pattern)",
+        category="Filing-Style Learned",
+        short_description="Learns Berkshire Hathaway's 5-year 13F buying style (sectors, size, valuation, 52w-high distance, 3m trend, dividend, concentration) and applies those rules to today's universe without copying filings.",
+        playbook=(
+            "Never buys a stock because it appeared in a 13F filing, and never infers timing from quarterly 13F dates. "
+            "Measures Berkshire Hathaway's 5-year 13F style strictly from filings public before launch, converts the pattern "
+            "into explicit rules (preferred sectors, large/mega-cap size, reasonable P/E, 52-week high pullback window, "
+            "steady 3-month trend, cash dividend, concentrated low-turnover holds), and applies those rules to our liquid universe "
+            "under the shared risk manager."
+        ),
+    ),
+    AgentSpec(
+        agent_id="style_congress",
+        name="12. Congress Style (House PTR Pattern)",
+        category="Filing-Style Learned",
+        short_description="Learns US House members' 2-year stock-buying style (sectors, size, 30-day pre-trade move, typical buy-to-sell hold time) from cached PTR PDFs and applies those rules to today's universe without copying trades.",
+        playbook=(
+            "Never buys a stock because a member of Congress traded it. Parses 2 years of US House PTR PDFs (shares only, "
+            "all members, filings public before launch) once into cache to measure sector mix, company size, 30-day pre-trade "
+            "price momentum, and typical purchase-to-sale hold time, then screens our liquid universe with those explicit rules "
+            "under the shared risk manager."
+        ),
+    ),
 ]
 
 AGENT_SPECS_BY_ID: Dict[str, AgentSpec] = {spec.agent_id: spec for spec in AGENT_SPECS}

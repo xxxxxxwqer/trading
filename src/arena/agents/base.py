@@ -66,8 +66,9 @@ def compute_strategy_hashes() -> Dict[str, str]:
     target_files = {
         "coded_agents.py": agents_dir / "coded_agents.py",
         "llm_agents.py": agents_dir / "llm_agents.py",
-        "risk_manager.py": arena_dir / "risk_manager.py",
-        "simulator.py": arena_dir / "simulator.py",
+        "style_agents.py": agents_dir / "style_agents.py",
+        "risk_manager.py": arena_dir / "engine" / "risk_manager.py",
+        "simulator.py": arena_dir / "engine" / "simulator.py",
     }
 
     hashes: Dict[str, str] = {}

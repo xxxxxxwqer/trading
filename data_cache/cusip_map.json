@@ -1,0 +1,358 @@
+{
+  "037833100": {
+    "ticker": "AAPL",
+    "issuer_name": "APPLE INC"
+  },
+  "060505104": {
+    "ticker": "BAC",
+    "issuer_name": "BANK AMER CORP"
+  },
+  "025816109": {
+    "ticker": "AXP",
+    "issuer_name": "AMERICAN EXPRESS CO"
+  },
+  "191216100": {
+    "ticker": "KO",
+    "issuer_name": "COCA COLA CO"
+  },
+  "500754106": {
+    "ticker": "KHC",
+    "issuer_name": "KRAFT HEINZ CO"
+  },
+  "615369105": {
+    "ticker": "MCO",
+    "issuer_name": "MOODYS CORP"
+  },
+  "92343V104": {
+    "ticker": "VZ",
+    "issuer_name": "VERIZON COMMUNICATIONS INC"
+  },
+  "902973304": {
+    "ticker": "USB",
+    "issuer_name": "US BANCORP DEL"
+  },
+  "166764100": {
+    "ticker": "CVX",
+    "issuer_name": "CHEVRON CORP NEW"
+  },
+  "064058100": {
+    "ticker": "BNY",
+    "issuer_name": "BANK OF NEW YORK MELLON CORP"
+  },
+  "23918K108": {
+    "ticker": "DVA",
+    "issuer_name": "DAVITA INC"
+  },
+  "37045V100": {
+    "ticker": "GM",
+    "issuer_name": "GENERAL MTRS CO"
+  },
+  "92343E102": {
+    "ticker": "VRSN",
+    "issuer_name": "VERISIGN INC"
+  },
+  "501044101": {
+    "ticker": "KR",
+    "issuer_name": "KROGER CO"
+  },
+  "16119P108": {
+    "ticker": "CHTR",
+    "issuer_name": "CHARTER COMMUNICATIONS INC N"
+  },
+  "833445109": {
+    "ticker": "SNOW",
+    "issuer_name": "SNOWFLAKE INC"
+  },
+  "92826C839": {
+    "ticker": "V",
+    "issuer_name": "VISA INC"
+  },
+  "023135106": {
+    "ticker": "AMZN",
+    "issuer_name": "AMAZON COM INC"
+  },
+  "57636Q104": {
+    "ticker": "MA",
+    "issuer_name": "MASTERCARD INC"
+  },
+  "74967X103": {
+    "ticker": "RH",
+    "issuer_name": "RH"
+  },
+  "872590104": {
+    "ticker": "TMUS",
+    "issuer_name": "T-MOBILE US INC"
+  },
+  "37959E102": {
+    "ticker": "GL",
+    "issuer_name": "GLOBE LIFE INC"
+  },
+  "00287Y109": {
+    "ticker": "ABBV",
+    "issuer_name": "ABBVIE INC"
+  },
+  "110122108": {
+    "ticker": "BMY",
+    "issuer_name": "BRISTOL-MYERS SQUIBB CO"
+  },
+  "339750101": {
+    "ticker": "FND",
+    "issuer_name": "FLOOR & DECOR HLDGS INC"
+  },
+  "571748102": {
+    "ticker": "MRSH",
+    "issuer_name": "MARSH & MCLENNAN COS INC"
+  },
+  "478160104": {
+    "ticker": "JNJ",
+    "issuer_name": "JOHNSON & JOHNSON"
+  },
+  "742718109": {
+    "ticker": "PG",
+    "issuer_name": "PROCTER & GAMBLE CO"
+  },
+  "609207105": {
+    "ticker": "MDLZ",
+    "issuer_name": "MONDELEZ INTL INC"
+  },
+  "949746101": {
+    "ticker": "WFC",
+    "issuer_name": "WELLS FARGO & CO NEW"
+  },
+  "78462F103": {
+    "ticker": "SPY",
+    "issuer_name": "SPDR S&P 500 ETF TR"
+  },
+  "922908363": {
+    "ticker": "VOO",
+    "issuer_name": "VANGUARD INDEX FDS"
+  },
+  "911312106": {
+    "ticker": "UPS",
+    "issuer_name": "UNITED PARCEL SERVICE INC"
+  },
+  "674599105": {
+    "ticker": "OXY",
+    "issuer_name": "OCCIDENTAL PETE CORP"
+  },
+  "40434L105": {
+    "ticker": "HPQ",
+    "issuer_name": "HP INC"
+  },
+  "172967424": {
+    "ticker": "C",
+    "issuer_name": "CITIGROUP INC"
+  },
+  "150870103": {
+    "ticker": "CE",
+    "issuer_name": "CELANESE CORP DEL"
+  },
+  "58155Q103": {
+    "ticker": "MCK",
+    "issuer_name": "MCKESSON CORP"
+  },
+  "570535104": {
+    "ticker": "MKL",
+    "issuer_name": "MARKEL CORP"
+  },
+  "02005N100": {
+    "ticker": "ALLY",
+    "issuer_name": "ALLY FINL INC"
+  },
+  "874039100": {
+    "ticker": "TSM",
+    "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD"
+  },
+  "546347105": {
+    "ticker": "LPX",
+    "issuer_name": "LOUISIANA PAC CORP"
+  },
+  "47233W109": {
+    "ticker": "JEF",
+    "issuer_name": "JEFFERIES FINL GROUP INC"
+  },
+  "14040H105": {
+    "ticker": "COF",
+    "issuer_name": "CAPITAL ONE FINL CORP"
+  },
+  "25243Q205": {
+    "ticker": "DEO",
+    "issuer_name": "DIAGEO P L C"
+  },
+  "92852X103": {
+    "ticker": "VTS",
+    "issuer_name": "VITESSE ENERGY INC"
+  },
+  "23331A109": {
+    "ticker": "DHI",
+    "issuer_name": "D R HORTON INC"
+  },
+  "62944T105": {
+    "ticker": "NVR",
+    "issuer_name": "NVR INC"
+  },
+  "526057302": {
+    "ticker": "LEN.B",
+    "issuer_name": "LENNAR CORP"
+  },
+  "047726302": {
+    "ticker": "BATRK",
+    "issuer_name": "ATLANTA BRAVES HLDGS INC"
+  },
+  "90384S303": {
+    "ticker": "ULTA",
+    "issuer_name": "ULTA BEAUTY INC"
+  },
+  "422806208": {
+    "ticker": "HEI.A",
+    "issuer_name": "HEICO CORP NEW"
+  },
+  "829933100": {
+    "ticker": "SIRI",
+    "issuer_name": "SIRIUS XM HOLDINGS INC"
+  },
+  "25754A201": {
+    "ticker": "DPZ",
+    "issuer_name": "DOMINOS PIZZA INC"
+  },
+  "73278L105": {
+    "ticker": "POOL",
+    "issuer_name": "POOL CORP"
+  },
+  "21036P108": {
+    "ticker": "STZ",
+    "issuer_name": "CONSTELLATION BRANDS INC"
+  },
+  "531229607": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DELAWARE"
+  },
+  "G0403H108": {
+    "ticker": "AON",
+    "issuer_name": "AON PLC"
+  },
+  "531229409": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DELAWARE"
+  },
+  "G6693N103": {
+    "ticker": null,
+    "issuer_name": "NU HLDGS LTD"
+  },
+  "00507V109": {
+    "ticker": null,
+    "issuer_name": "ACTIVISION BLIZZARD INC"
+  },
+  "862121100": {
+    "ticker": null,
+    "issuer_name": "STORE CAP CORP"
+  },
+  "G7709Q104": {
+    "ticker": "RPRX",
+    "issuer_name": "ROYALTY PHARMA PLC"
+  },
+  "G85158106": {
+    "ticker": "STNE",
+    "issuer_name": "STONECO LTD"
+  },
+  "531229854": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "G9001E102": {
+    "ticker": "LILA",
+    "issuer_name": "LIBERTY LATIN AMERICA LTD"
+  },
+  "G9001E128": {
+    "ticker": "LILA",
+    "issuer_name": "LIBERTY LATIN AMERICA LTD"
+  },
+  "92556H206": {
+    "ticker": null,
+    "issuer_name": "PARAMOUNT GLOBAL"
+  },
+  "G6683N103": {
+    "ticker": null,
+    "issuer_name": "NU HLDGS LTD"
+  },
+  "531229789": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "531229813": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "531229722": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "531229748": {
+    "ticker": null,
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "82968B103": {
+    "ticker": "SIRI",
+    "issuer_name": "SIRIUS XM HOLDINGS INC"
+  },
+  "H1467J104": {
+    "ticker": "CB",
+    "issuer_name": "CHUBB LIMITED"
+  },
+  "91324P102": {
+    "ticker": "UNH",
+    "issuer_name": "UNITEDHEALTH GROUP INC"
+  },
+  "670346105": {
+    "ticker": "NUE",
+    "issuer_name": "NUCOR CORP"
+  },
+  "526057104": {
+    "ticker": "LEN",
+    "issuer_name": "LENNAR CORP"
+  },
+  "512816109": {
+    "ticker": "LAMR",
+    "issuer_name": "LAMAR ADVERTISING CO NEW"
+  },
+  "02079K305": {
+    "ticker": "GOOGL",
+    "issuer_name": "ALPHABET INC"
+  },
+  "530909308": {
+    "ticker": "LLYVK",
+    "issuer_name": "LIBERTY LIVE HOLDINGS INC"
+  },
+  "530909100": {
+    "ticker": "LLYVA",
+    "issuer_name": "LIBERTY LIVE HOLDINGS INC"
+  },
+  "650111107": {
+    "ticker": "NYT",
+    "issuer_name": "NEW YORK TIMES CO MTN BE"
+  },
+  "531229755": {
+    "ticker": "FWONK",
+    "issuer_name": "LIBERTY MEDIA CORP DEL"
+  },
+  "247361702": {
+    "ticker": "DAL",
+    "issuer_name": "DELTA AIR LINES INC"
+  },
+  "02079K107": {
+    "ticker": "GOOG",
+    "issuer_name": "ALPHABET INC"
+  },
+  "55616P104": {
+    "ticker": "M",
+    "issuer_name": "MACYS INC"
+  },
+  "G0176J109": {
+    "ticker": "ALLE",
+    "issuer_name": "ALLEGION PLC"
+  },
+  "T19377109": {
+    "ticker": null,
+    "issuer_name": "BENDING SPOONS SPA"
+  }
+}

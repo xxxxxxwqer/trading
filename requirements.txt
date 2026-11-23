@@ -3,4 +3,5 @@
 # dashboard generator use Python 3.11+ standard library modules for zero-friction
 # execution in GitHub Actions and local environments.
 tzdata>=2024.1
+pypdf>=5.0.0
 pytest>=8.0.0

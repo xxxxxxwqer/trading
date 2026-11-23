@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>12. Congress Style (House PTR Pattern) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 50.0%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+          <a href="../agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
+          <a href="../agents/style_congress.html" class="agent-pill active" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#3 of 12</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-3">Rank #3</span>
+            <h1>12. Congress Style (House PTR Pattern)</h1>
+            <span class="cat-pill cat-style">Filing-Style</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Learns US House members&#x27; 2-year stock-buying style (sectors, size, 30-day pre-trade move, typical buy-to-sell hold time) from cached PTR PDFs and applies those rules to today&#x27;s universe without copying trades.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>style_congress</code>)</div>
+        <p>Never buys a stock because a member of Congress traded it. Parses 2 years of US House PTR PDFs (shares only, all members, filings public before launch) once into cache to measure sector mix, company size, 30-day pre-trade price momentum, and typical purchase-to-sale hold time, then screens our liquid universe with those explicit rules under the shared risk manager.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learned Filing-Style Patterns (Plain Language + Out-of-Sample vs SPY) -->
+    <section class="panel" id="learned-patterns">
+      <div class="panel-header">
+        <div>
+          <h2>&#128218; Filing-Style Agents (#11 Berkshire &amp; #12 Congress) — Learned Pattern Rules &amp; Pre-Live Test vs. SPY</h2>
+          <p class="panel-sub">Neither agent ever copies stocks from filings. Each learned explicit, testable style rules from older public filings, then tested those rules out-of-sample on the most recent history using normal price data across our universe.</p>
+        </div>
+      </div>
+      <div class="style-patterns-grid">
+        <article class="style-pattern-card">
+          <div class="style-pattern-header">
+            <div>
+              <h3><a href="../agents/style_congress.html">12. Congress Style (House PTR Pattern)</a></h3>
+              <div class="sub-num">US House Clerk Periodic Transaction Reports (Shares Only [ST], All Members, Last 2 Years)</div>
+            </div>
+            <span class="status-pill status-active">BEAT SPY IN OOS TEST</span>
+          </div>
+          <div class="oos-strip">
+            <span><strong>OOS Test (2026-03-30 &rarr; 2026-11-20):</strong></span>
+            <span class="pos">Pattern: <strong>+9.66%</strong></span>
+            <span>vs SPY: <strong>+7.89%</strong></span>
+            <span class="pos">Excess: <strong>+1.77%</strong></span>
+            <span class="neg">Max DD: <strong>-8.79%</strong></span>
+          </div>
+          <p class="oos-verdict-text">YES — Beat SPY in out-of-sample test (2026-03-30 to 2026-11-20): Congress Style returned +9.66% vs SPY +7.89% (+1.77% excess, max drawdown -8.79%).</p>
+          <div class="rules-heading">Explicit Learned Rules Applied to Today's Universe (Never Copies Filings):</div>
+          <ul class="learned-rules-list"><li>Focus on the top 5 sectors most frequently bought by US House members: Technology, Health Care, Consumer Discretionary, Financials, Industrials (never copy a ticker because a lawmaker bought it).</li><li>Target liquid large/mega-cap companies with market cap at least $50.0B (measured median House purchase size: $193.8B).</li><li>Match Congress&#x27;s pre-trade 30-day price setup (neutral / steady price action): enter stocks whose 30-day return is between -8.0% and +9.6% (historical median before trade date: +0.3%, 51% bought after positive 30-day moves).</li><li>Follow the measured purchase-to-sale holding cadence: median time between a member&#x27;s buy and subsequent sale of the same stock is 59 days (IQR 26–146 days across 2853 matched buy-&gt;sale pairs). Hold positions with medium-term patience unless the stop-loss, take-profit, or trend/momentum breakdown triggers.</li></ul>
+          <div class="sub-num">No Look-Ahead Cutoff: filings public strictly before <code>2026-11-23</code> &bull; Parsed 1,058 House PTR PDFs once into cache (shares only, all members).</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,552.55</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,552.55</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$552.55</div>
+        <div class="kpi-sub pos"><strong>+5.53%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+3.47%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$203.03</div>
+        <div class="kpi-sub">Invested: $10,349.52 (5 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.65%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">100.0%</div>
+        <div class="kpi-sub">3W / 0L (3 closed, 11 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">∞</div>
+        <div class="kpi-sub">Friction paid: $15.82</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$115.30</span> / <span class="neg">$0.00</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,026</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,201</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,377</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,553</text><line x1="78" y1="223.8" x2="932" y2="223.8" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#f43f5e" stroke-width="3.0" points="78.0,223.8 90.9,224.3 103.9,222.3 116.8,218.5 129.8,216.4 142.7,228.1 155.6,218.5 168.6,216.0 181.5,209.7 194.5,208.2 207.4,210.1 220.3,212.3 233.3,214.7 246.2,206.9 259.2,201.3 272.1,188.7 285.0,184.7 298.0,183.9 310.9,188.9 323.8,183.3 336.8,175.4 349.7,173.4 362.7,175.0 375.6,171.6 388.5,183.6 401.5,170.2 414.4,169.4 427.4,173.3 440.3,177.9 453.2,183.8 466.2,189.1 479.1,193.3 492.1,189.8 505.0,187.9 517.9,179.9 530.9,182.5 543.8,172.4 556.8,169.4 569.7,176.9 582.6,175.8 595.6,177.6 608.5,158.7 621.5,146.0 634.4,141.8 647.3,126.7 660.3,129.2 673.2,127.9 686.2,121.9 699.1,118.0 712.0,112.2 725.0,110.0 737.9,109.4 750.8,102.1 763.8,89.0 776.7,75.0 789.7,71.1 802.6,68.8 815.5,69.6 828.5,65.2 841.4,60.6 854.4,58.1 867.3,52.7 880.2,57.9 893.2,45.6 906.1,38.1 919.1,24.0 932.0,223.8"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="223.8" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,223.8 90.9,225.9 103.9,226.4 116.8,218.6 129.8,214.6 142.7,226.7 155.6,217.3 168.6,219.8 181.5,218.3 194.5,219.3 207.4,222.5 220.3,222.0 233.3,223.6 246.2,214.7 259.2,212.8 272.1,210.0 285.0,208.9 298.0,207.5 310.9,215.7 323.8,214.6 336.8,210.6 349.7,209.4 362.7,211.9 375.6,207.5 388.5,220.7 401.5,212.3 414.4,213.9 427.4,219.9 440.3,232.4 453.2,242.0 466.2,243.5 479.1,246.0 492.1,241.9 505.0,239.3 517.9,234.9 530.9,237.3 543.8,228.7 556.8,225.5 569.7,226.7 582.6,227.5 595.6,235.8 608.5,227.6 621.5,227.3 634.4,222.0 647.3,212.6 660.3,215.3 673.2,217.2 686.2,217.8 699.1,210.5 712.0,209.7 725.0,208.3 737.9,205.6 750.8,200.0 763.8,191.4 776.7,183.4 789.7,183.8 802.6,176.9 815.5,179.6 828.5,173.5 841.4,170.5 854.4,173.3 867.3,168.5 880.2,173.6 893.2,164.6 906.1,161.0 919.1,149.5 932.0,223.8"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="223.8" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-22 23:59 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (5 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.9936</td>
+              <td class="num">$47.36</td>
+              <td class="num">$47.84</td>
+              <td class="num strong">$2,104.80</td>
+              <td class="num neg">$46.38</td>
+              <td class="num pos">$50.41</td>
+              <td class="num pos">
+                <strong>+$21.38</strong>
+                <div class="sub-num">(+1.03%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B &gt;= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).</div>
+                <div class="sub-num">Opened: 2026-11-11 11:00:00 EST / 2026-11-12 01:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">HON</td>
+              <td class="num">8.4485</td>
+              <td class="num">$231.75</td>
+              <td class="num">$238.04</td>
+              <td class="num strong">$2,011.07</td>
+              <td class="num neg">$227.70</td>
+              <td class="num pos">$247.45</td>
+              <td class="num pos">
+                <strong>+$53.16</strong>
+                <div class="sub-num">(+2.72%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B &gt;= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d).</div>
+                <div class="sub-num">Opened: 2026-11-05 12:00:00 EST / 2026-11-06 02:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">LMT</td>
+              <td class="num">3.5135</td>
+              <td class="num">$570.59</td>
+              <td class="num">$589.66</td>
+              <td class="num strong">$2,071.76</td>
+              <td class="num neg">$558.65</td>
+              <td class="num pos">$607.11</td>
+              <td class="num pos">
+                <strong>+$66.99</strong>
+                <div class="sub-num">(+3.34%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B &gt;= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).</div>
+                <div class="sub-num">Opened: 2026-11-05 11:30:00 EST / 2026-11-06 01:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">PFE</td>
+              <td class="num">72.4279</td>
+              <td class="num">$27.69</td>
+              <td class="num">$28.40</td>
+              <td class="num strong">$2,057.26</td>
+              <td class="num neg">$27.06</td>
+              <td class="num pos">$29.40</td>
+              <td class="num pos">
+                <strong>+$51.93</strong>
+                <div class="sub-num">(+2.59%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Health Care&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B &gt;= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).</div>
+                <div class="sub-num">Opened: 2026-11-05 10:30:00 EST / 2026-11-06 00:30:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">QCOM</td>
+              <td class="num">11.1938</td>
+              <td class="num">$186.84</td>
+              <td class="num">$188.02</td>
+              <td class="num strong">$2,104.63</td>
+              <td class="num neg">$181.62</td>
+              <td class="num pos">$197.38</td>
+              <td class="num pos">
+                <strong>+$13.19</strong>
+                <div class="sub-num">(+0.63%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Technology&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B &gt;= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).</div>
+                <div class="sub-num">Opened: 2026-11-11 10:30:00 EST / 2026-11-12 00:30:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 12. Congress Style (House PTR Pattern) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,336.40</strong></span> &rarr;
+              <span>End: <strong>$10,552.55</strong></span>
+              <span class="journal-pnl pos">(+$216.15 / +2.09%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,336.40 to $10,552.55 (+$216.15, +2.09%). Executed 4 trade(s) — Buys: QCOM ($2,091), BAC ($2,083); Sells: QCOM (TAKE_PROFIT, +$121.96), AXP (TAKE_PROFIT, +$113.55).</p>
+          <ul class="journal-highlights"><li>BUY 11.1938 QCOM @ $186.84 ($2091.44, stop $181.62) — Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Technology&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B &gt;= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).</li><li>BUY 43.9936 BAC @ $47.36 ($2083.42, stop $46.38) — Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B &gt;= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).</li><li>SELL 11.3874 QCOM @ $186.92 [TAKE_PROFIT: +$121.96 (+6.08%)] — Take-profit triggered at $187.05 (intrabar high $187.50 &gt;= target $187.05)</li><li>SELL 5.9743 AXP @ $359.81 [TAKE_PROFIT: +$113.55 (+5.58%)] — Take-profit triggered at $360.06 (intrabar high $361.10 &gt;= target $360.06)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,132.68</strong></span> &rarr;
+              <span>End: <strong>$10,336.40</strong></span>
+              <span class="journal-pnl pos">(+$203.72 / +2.01%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,132.68 to $10,336.40 (+$203.72, +2.01%). No new trades executed; held existing position(s): QCOM (11.39 sh, +4.57%), PFE (72.43 sh, +0.43%), LMT (3.51 sh, +0.67%), HON (8.45 sh, +0.82%), AXP (5.97 sh, +4.72%).</p>
+          
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,150.51</strong></span> &rarr;
+              <span>End: <strong>$10,132.68</strong></span>
+              <span class="journal-pnl neg">(-$17.83 / -0.18%)</span>
+              <span class="journal-counts">2 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,150.51 to $10,132.68 ($-17.83, -0.18%). Executed 2 trade(s) — Buys: AXP ($2,036); Sells: AXP (TAKE_PROFIT, +$110.39).</p>
+          <ul class="journal-highlights"><li>BUY 5.9743 AXP @ $340.80 ($2036.05, stop $331.32) — Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $226.7B &gt;= $50.0B floor; 30-day price move +4.5% within learned [-8.0%, +9.6%]. Stop at $331.32, target $360.06 (typical hold ~59d).</li><li>SELL 6.2753 AXP @ $339.32 [TAKE_PROFIT: +$110.39 (+5.47%)] — Take-profit triggered at $339.56 (intrabar high $341.93 &gt;= target $339.56)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,046.53</strong></span> &rarr;
+              <span>End: <strong>$10,150.51</strong></span>
+              <span class="journal-pnl pos">(+$103.98 / +1.03%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,046.53 to $10,150.51 (+$103.98, +1.03%). No new trades executed; held existing position(s): QCOM (11.39 sh, +1.30%), PFE (72.43 sh, +0.57%), AXP (6.28 sh, +4.48%), LMT (3.51 sh, -0.32%), HON (8.45 sh, +1.47%).</p>
+          
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,046.53</strong></span>
+              <span class="journal-pnl pos">(+$46.53 / +0.47%)</span>
+              <span class="journal-counts">5 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,046.53 (+$46.53, +0.47%). Executed 5 trade(s) — Buys: QCOM ($2,007), PFE ($2,005), AXP ($2,019), LMT ($2,005), HON ($1,958); Sells: none.</p>
+          <ul class="journal-highlights"><li>BUY 11.3874 QCOM @ $176.21 ($2006.56, stop $172.12) — Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Technology&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $187.9B &gt;= $50.0B floor; 30-day price move -1.3% within learned [-8.0%, +9.6%]. Stop at $172.12, target $187.05 (typical hold ~59d).</li><li>BUY 72.4279 PFE @ $27.69 ($2005.33, stop $27.06) — Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Health Care&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B &gt;= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).</li><li>BUY 6.2753 AXP @ $321.73 ($2018.96, stop $312.46) — Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $213.8B &gt;= $50.0B floor; 30-day price move -1.5% within learned [-8.0%, +9.6%]. Stop at $312.46, target $339.56 (typical hold ~59d).</li><li>BUY 3.5135 LMT @ $570.59 ($2004.77, stop $558.65) — Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B &gt;= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).</li><li>BUY 8.4485 HON @ $231.75 ($1957.91, stop $227.70) — Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B &gt;= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d).</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (11 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">BAC</td>
+              <td class="num">43.9936</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:30:00 EST</div>
+                <div>Fill: 2026-11-11 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$47.32</td>
+              <td class="num strong">$47.36</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.04</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B &gt;= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QCOM</td>
+              <td class="num">11.1938</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$186.71</td>
+              <td class="num strong">$186.84</td>
+              <td class="num neg">$0.42</td>
+              <td class="num neg">$1.05</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Technology&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B &gt;= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.9743</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$360.06</td>
+              <td class="num strong">$359.81</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.08</td>
+              <td class="num pos"><strong>+$113.55</strong><div class="sub-num">(+5.58%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $360.06 (intrabar high $361.10 &gt;= target $360.06)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">QCOM</td>
+              <td class="num">11.3874</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 10:00:00 EST</div>
+                <div>Fill: 2026-11-11 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$187.05</td>
+              <td class="num strong">$186.92</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$121.96</strong><div class="sub-num">(+6.08%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $187.05 (intrabar high $187.50 &gt;= target $187.05)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">5.9743</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$340.56</td>
+              <td class="num strong">$340.80</td>
+              <td class="num neg">$0.41</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $226.7B &gt;= $50.0B floor; 30-day price move +4.5% within learned [-8.0%, +9.6%]. Stop at $331.32, target $360.06 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 13:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 03:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">6.2753</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 13:00:00 EST</div>
+                <div>Fill: 2026-11-09 13:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$339.56</td>
+              <td class="num strong">$339.32</td>
+              <td class="num neg">$0.43</td>
+              <td class="num neg">$1.06</td>
+              <td class="num pos"><strong>+$110.39</strong><div class="sub-num">(+5.47%)</div></td>
+              <td><span class="exit-pill">TAKE_PROFIT</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Take-profit triggered at $339.56 (intrabar high $341.93 &gt;= target $339.56)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 12:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 02:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">HON</td>
+              <td class="num">8.4485</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:30:00 EST</div>
+                <div>Fill: 2026-11-05 12:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$231.58</td>
+              <td class="num strong">$231.75</td>
+              <td class="num neg">$0.39</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B &gt;= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">LMT</td>
+              <td class="num">3.5135</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 11:00:00 EST</div>
+                <div>Fill: 2026-11-05 11:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$570.19</td>
+              <td class="num strong">$570.59</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Industrials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B &gt;= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 11:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 01:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">AXP</td>
+              <td class="num">6.2753</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:30:00 EST</div>
+                <div>Fill: 2026-11-05 11:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$321.51</td>
+              <td class="num strong">$321.73</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.01</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Financials&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $213.8B &gt;= $50.0B floor; 30-day price move -1.5% within learned [-8.0%, +9.6%]. Stop at $312.46, target $339.56 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">PFE</td>
+              <td class="num">72.4279</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 10:00:00 EST</div>
+                <div>Fill: 2026-11-05 10:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$27.67</td>
+              <td class="num strong">$27.69</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Health Care&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B &gt;= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QCOM</td>
+              <td class="num">11.3874</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$176.09</td>
+              <td class="num strong">$176.21</td>
+              <td class="num neg">$0.40</td>
+              <td class="num neg">$1.00</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector &#x27;Technology&#x27; matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $187.9B &gt;= $50.0B floor; 30-day price move -1.3% within learned [-8.0%, +9.6%]. Stop at $172.12, target $187.05 (typical hold ~59d).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 12. Congress Style (House PTR Pattern) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-22 23:59 ET"], "datasets": [{"label": "12. Congress Style (House PTR Pattern)", "data": [10000.0, 9998.6, 10004.09, 10014.5, 10020.43, 9988.11, 10014.56, 10021.61, 10038.87, 10043.04, 10037.73, 10031.76, 10025.14, 10046.53, 10062.05, 10096.88, 10107.95, 10110.36, 10096.58, 10112.0, 10133.81, 10139.2, 10134.84, 10144.18, 10111.24, 10148.15, 10150.51, 10139.63, 10126.77, 10110.61, 10095.94, 10084.16, 10094.04, 10099.21, 10121.21, 10114.06, 10142.0, 10150.27, 10129.72, 10132.68, 10127.58, 10179.97, 10215.18, 10226.85, 10268.54, 10261.5, 10265.15, 10281.71, 10292.43, 10308.46, 10314.78, 10316.22, 10336.4, 10372.7, 10411.37, 10422.29, 10428.75, 10426.41, 10438.7, 10451.19, 10458.2, 10473.09, 10458.92, 10492.74, 10513.42, 10552.55, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

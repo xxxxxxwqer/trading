@@ -6,12 +6,12 @@ import uuid
 from datetime import datetime, timezone
 from typing import Dict, List, Optional, Union
 
-from src.arena.config import (
+from ..config import (
     COMMISSION_DOLLARS,
     DEFAULT_SPREAD_BPS,
     SLIPPAGE_RATE,
 )
-from src.arena.models import (
+from ..models import (
     AgentLedgerState,
     Bar,
     OrderSignal,

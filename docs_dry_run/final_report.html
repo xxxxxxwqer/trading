@@ -65,6 +65,8 @@
           <a href="agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
           <a href="agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
           <a href="agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+          <a href="agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
+          <a href="agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
       </div>
     </nav>
   </header>
@@ -116,19 +118,19 @@
       </div>
       <div class="podium-card podium-bronze">
         <div class="podium-medal">Bronze #3</div>
-        <h3><a href="agents/coded_trend.html">1. Trend Follower (MA / Breakout)</a></h3>
-        <div class="podium-cat"><span class="cat-pill cat-coded">Coded</span></div>
-        <div class="podium-equity">$10,512.38</div>
+        <h3><a href="agents/style_congress.html">12. Congress Style (House PTR Pattern)</a></h3>
+        <div class="podium-cat"><span class="cat-pill cat-style">Filing-Style</span></div>
+        <div class="podium-equity">$10,552.55</div>
         <div class="podium-ret pos">
-          +$512.38 (+5.12%) &bull; +3.07% vs SPY
+          +$552.55 (+5.53%) &bull; +3.47% vs SPY
         </div>
         <div class="podium-stats">
-          <span>Max DD: <strong>-0.96%</strong></span>
-          <span>Win Rate: <strong>66.7%</strong></span>
-          <span>PF: <strong>5.50</strong></span>
-          <span>Fills: <strong>41</strong></span>
+          <span>Max DD: <strong>-0.65%</strong></span>
+          <span>Win Rate: <strong>100.0%</strong></span>
+          <span>PF: <strong>∞</strong></span>
+          <span>Fills: <strong>11</strong></span>
         </div>
-        <p class="podium-desc">Buys liquid stocks breaking above 20-bar highs with 10-SMA &gt; 30-SMA momentum confirmation.</p>
+        <p class="podium-desc">Learns US House members&#x27; 2-year stock-buying style (sectors, size, 30-day pre-trade move, typical buy-to-sell hold time) from cached PTR PDFs and applies those rules to today&#x27;s universe without copying trades.</p>
       </div>
       </div>
     </section>
@@ -193,6 +195,21 @@
             </tr>
             <tr>
               <td class="num"><span class="rank-pill rank-3">#3</span></td>
+              <td><a href="agents/style_congress.html" class="agent-link">12. Congress Style (House PTR Pattern)</a></td>
+              <td><span class="cat-pill cat-style">Filing-Style</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,552.55</td>
+              <td class="num pos">+$552.55 (+5.53%)</td>
+              <td class="num pos">+3.47%</td>
+              <td class="num neg">-0.65%</td>
+              <td class="num">100.0% (3 closed)</td>
+              <td class="num">∞</td>
+              <td class="num neg">$4.52</td>
+              <td class="num neg">$11.30</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-4">#4</span></td>
               <td><a href="agents/coded_trend.html" class="agent-link">1. Trend Follower (MA / Breakout)</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -207,7 +224,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-4">#4</span></td>
+              <td class="num"><span class="rank-pill rank-5">#5</span></td>
               <td><a href="agents/llm_catalyst.html" class="agent-link">6. News &amp; Catalyst Trader (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -222,7 +239,22 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-5">#5</span></td>
+              <td class="num"><span class="rank-pill rank-6">#6</span></td>
+              <td><a href="agents/style_berkshire.html" class="agent-link">11. Berkshire Style (13F Pattern)</a></td>
+              <td><span class="cat-pill cat-style">Filing-Style</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,233.91</td>
+              <td class="num pos">+$233.91 (+2.34%)</td>
+              <td class="num pos">+0.28%</td>
+              <td class="num neg">-1.00%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$2.00</td>
+              <td class="num neg">$5.00</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-7">#7</span></td>
               <td><a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a></td>
               <td><span class="cat-pill cat-control">Control</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -237,7 +269,7 @@
               <td class="num">14</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-6">#6</span></td>
+              <td class="num"><span class="rank-pill rank-8">#8</span></td>
               <td><a href="agents/ctrl_spy.html" class="agent-link">9. Buy-and-Hold SPY (Benchmark)</a></td>
               <td><span class="cat-pill cat-control">Control</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -252,7 +284,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-7">#7</span></td>
+              <td class="num"><span class="rank-pill rank-9">#9</span></td>
               <td><a href="agents/coded_mean_rev.html" class="agent-link">2. Mean Reversion (RSI / Bollinger)</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -267,7 +299,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-8">#8</span></td>
+              <td class="num"><span class="rank-pill rank-10">#10</span></td>
               <td><a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -282,7 +314,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-9">#9</span></td>
+              <td class="num"><span class="rank-pill rank-11">#11</span></td>
               <td><a href="agents/llm_technical.html" class="agent-link">5. Technical Analyst (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -297,7 +329,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-10">#10</span></td>
+              <td class="num"><span class="rank-pill rank-12">#12</span></td>
               <td><a href="agents/llm_cautious.html" class="agent-link">8. Cautious Risk-First Trader (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -362,6 +394,17 @@
               <td class="num neg">$140.47</td>
               <td class="num">0</td>
               <td>6. News &amp; Catalyst Trader (Gemini Flash) (+2.46%)</td>
+            </tr>
+            <tr>
+              <td class="strong">Filing-Style Learned (2)</td>
+              <td class="num strong">$10,393.23</td>
+              <td class="num pos"><strong>+3.94%</strong></td>
+              <td class="num neg">-0.82%</td>
+              <td class="num">50.0%</td>
+              <td class="num">16 (3 closed)</td>
+              <td class="num neg">$22.81</td>
+              <td class="num">0</td>
+              <td>12. Congress Style (House PTR Pattern) (+5.53%)</td>
             </tr>
             <tr>
               <td class="strong">Buy-and-Hold SPY (1)</td>
@@ -524,6 +567,18 @@
             </tr>
             <tr>
               <td class="num">#3</td>
+              <td><a href="agents/style_congress.html" class="agent-link">12. Congress Style (House PTR Pattern)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+5.53%</strong></td>
+              <td class="num">+1.084% &plusmn; 0.981%</td>
+              <td class="num">&plusmn;2.19%</td>
+              <td class="num">[+1.23%, +9.83%]</td>
+              <td class="num pos">+3.36% (<strong>+3.56 SE</strong>)</td>
+              <td class="num pos">+3.47% (+1.58 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#4</td>
               <td><a href="agents/coded_trend.html" class="agent-link">1. Trend Follower (MA / Breakout)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+5.12%</strong></td>
@@ -535,7 +590,7 @@
               <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
             </tr>
             <tr>
-              <td class="num">#4</td>
+              <td class="num">#5</td>
               <td><a href="agents/llm_catalyst.html" class="agent-link">6. News &amp; Catalyst Trader (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.46%</strong></td>
@@ -547,7 +602,19 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#5</td>
+              <td class="num">#6</td>
+              <td><a href="agents/style_berkshire.html" class="agent-link">11. Berkshire Style (13F Pattern)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+2.34%</strong></td>
+              <td class="num">+0.466% &plusmn; 0.697%</td>
+              <td class="num">&plusmn;1.56%</td>
+              <td class="num">[-0.71%, +5.39%]</td>
+              <td class="num pos">+0.17% (<strong>+0.16 SE</strong>)</td>
+              <td class="num pos">+0.28% (+0.18 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#7</td>
               <td><a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.17%</strong></td>
@@ -559,7 +626,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#6</td>
+              <td class="num">#8</td>
               <td><a href="agents/ctrl_spy.html" class="agent-link">9. Buy-and-Hold SPY (Benchmark)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.06%</strong></td>
@@ -571,7 +638,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#7</td>
+              <td class="num">#9</td>
               <td><a href="agents/coded_mean_rev.html" class="agent-link">2. Mean Reversion (RSI / Bollinger)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.04%</strong></td>
@@ -583,7 +650,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#8</td>
+              <td class="num">#10</td>
               <td><a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+1.06%</strong></td>
@@ -595,7 +662,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#9</td>
+              <td class="num">#11</td>
               <td><a href="agents/llm_technical.html" class="agent-link">5. Technical Analyst (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+0.29%</strong></td>
@@ -607,7 +674,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#10</td>
+              <td class="num">#12</td>
               <td><a href="agents/llm_cautious.html" class="agent-link">8. Cautious Risk-First Trader (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num neg"><strong>-0.07%</strong></td>

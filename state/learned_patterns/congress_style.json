@@ -1,0 +1,133 @@
+{
+  "agent_id": "style_congress",
+  "agent_name": "12. Congress Style (House PTR Pattern)",
+  "source": "US House Clerk Periodic Transaction Reports (Shares Only [ST], All Members, Last 2 Years)",
+  "agent_start_date": "2026-11-23",
+  "generated_at_utc": "2026-11-23T04:51:00Z",
+  "no_lookahead_verified": true,
+  "never_copy_filings": true,
+  "shares_only": true,
+  "pdf_cache_path": "data_cache/congress_ptr_parsed.json",
+  "ptr_corpus_stats": {
+    "eligible_pdfs": 1058,
+    "parsed_ok_pdfs": 1058,
+    "total_share_transactions": 9824,
+    "purchase_transactions": 4720,
+    "sale_transactions": 5104,
+    "unique_members": 110,
+    "unique_tickers": 1269
+  },
+  "train_split": {
+    "filing_date_cutoff": "2026-03-28",
+    "transactions_count": 7775,
+    "learned_rules": {
+      "never_copy_filings": true,
+      "shares_only": true,
+      "preferred_sectors": [
+        "Technology",
+        "Health Care",
+        "Consumer Discretionary",
+        "Financials",
+        "Industrials"
+      ],
+      "min_market_cap_usd": 50000000000.0,
+      "min_pre_trade_30d_move_pct": -7.8,
+      "max_pre_trade_30d_move_pct": 9.7,
+      "target_pre_trade_30d_move_pct": 0.53,
+      "typical_hold_days": 49,
+      "stop_loss_atr_mult": 2.0,
+      "take_profit_pct": 6.5
+    }
+  },
+  "out_of_sample_test": {
+    "test_period": [
+      "2026-03-30",
+      "2026-11-20"
+    ],
+    "trading_days": 165,
+    "start_equity": 10000.0,
+    "end_equity": 10965.93,
+    "pattern_return_pct": 9.66,
+    "spy_return_pct": 7.89,
+    "excess_return_vs_spy_pct": 1.77,
+    "beat_spy": true,
+    "max_drawdown_pct": -8.79,
+    "trades_count": 67,
+    "closed_trades_count": 33,
+    "win_rate_pct": 54.5,
+    "plain_verdict": "YES \u2014 Beat SPY in out-of-sample test (2026-03-30 to 2026-11-20): Congress Style returned +9.66% vs SPY +7.89% (+1.77% excess, max drawdown -8.79%)."
+  },
+  "full_2y_pattern": {
+    "sector_purchase_share_pct": {
+      "Technology": 32.43,
+      "Health Care": 13.93,
+      "Consumer Discretionary": 12.82,
+      "Financials": 11.22,
+      "Industrials": 9.42,
+      "Communication Services": 8.78,
+      "Consumer Staples": 5.04,
+      "Energy": 2.82,
+      "Materials": 1.37,
+      "Real Estate": 1.37,
+      "Utilities": 0.8
+    },
+    "sector_purchase_counts": {
+      "Technology": 850,
+      "Health Care": 365,
+      "Consumer Discretionary": 336,
+      "Financials": 294,
+      "Industrials": 247,
+      "Communication Services": 230,
+      "Consumer Staples": 132,
+      "Energy": 74,
+      "Materials": 36,
+      "Real Estate": 36,
+      "Utilities": 21
+    },
+    "company_size_distribution": {
+      "Mega-Cap ($200B+)": 1276,
+      "Large-Cap ($10B-$200B)": 1233,
+      "Mid-Cap ($2B-$10B)": 90,
+      "Small-Cap (<$2B)": 22
+    },
+    "median_purchase_market_cap_usd": 193768155871.48,
+    "pre_trade_30d_move": {
+      "median_pct": 0.33,
+      "p25_pct": -6.0,
+      "p75_pct": 7.55,
+      "positive_30d_share_pct": 51.3,
+      "sample_size": 2620
+    },
+    "purchase_to_sale_hold_days": {
+      "median_days": 59.0,
+      "avg_days": 105.7,
+      "p25_days": 26.0,
+      "p75_days": 146.0,
+      "matched_pairs": 2853
+    }
+  },
+  "learned_rules": {
+    "never_copy_filings": true,
+    "shares_only": true,
+    "preferred_sectors": [
+      "Technology",
+      "Health Care",
+      "Consumer Discretionary",
+      "Financials",
+      "Industrials"
+    ],
+    "min_market_cap_usd": 50000000000.0,
+    "min_pre_trade_30d_move_pct": -8.0,
+    "max_pre_trade_30d_move_pct": 9.6,
+    "target_pre_trade_30d_move_pct": 0.33,
+    "typical_hold_days": 59,
+    "stop_loss_atr_mult": 2.0,
+    "take_profit_pct": 6.5
+  },
+  "plain_language_rules": [
+    "Focus on the top 5 sectors most frequently bought by US House members: Technology, Health Care, Consumer Discretionary, Financials, Industrials (never copy a ticker because a lawmaker bought it).",
+    "Target liquid large/mega-cap companies with market cap at least $50.0B (measured median House purchase size: $193.8B).",
+    "Match Congress's pre-trade 30-day price setup (neutral / steady price action): enter stocks whose 30-day return is between -8.0% and +9.6% (historical median before trade date: +0.3%, 51% bought after positive 30-day moves).",
+    "Follow the measured purchase-to-sale holding cadence: median time between a member's buy and subsequent sale of the same stock is 59 days (IQR 26\u2013146 days across 2853 matched buy->sale pairs). Hold positions with medium-term patience unless the stop-loss, take-profit, or trend/momentum breakdown triggers."
+  ]
+}

@@ -41,7 +41,7 @@ from arena.models import (
     TradeRecord,
 )
 
-# High-contrast, distinct palette for all 10 agents
+# High-contrast, distinct palette for all 12 agents
 AGENT_COLORS: Dict[str, str] = {
     "coded_trend": "#38bdf8",     # Sky Blue
     "coded_mean_rev": "#818cf8",  # Indigo
@@ -53,6 +53,8 @@ AGENT_COLORS: Dict[str, str] = {
     "llm_cautious": "#facc15",    # Amber Yellow
     "ctrl_spy": "#ffffff",        # Crisp White (Benchmark)
     "ctrl_random": "#94a3b8",     # Slate Grey (Luck Control)
+    "style_berkshire": "#22c55e", # Classic Value Green
+    "style_congress": "#f43f5e",  # Capitol Rose Red
 }
 
 
@@ -169,6 +171,8 @@ def _short_category_label(category: str) -> Tuple[str, str]:
         return "Coded", "cat-coded"
     if "llm" in cat_lower or "gemini" in cat_lower:
         return "Gemini Flash LLM", "cat-llm"
+    if "filing" in cat_lower or "style" in cat_lower:
+        return "Filing-Style", "cat-style"
     return "Control", "cat-control"
 
 
@@ -213,13 +217,14 @@ class DashboardBuilder:
         else:
             bug_fix_list = []
 
-        # Normalize agent states and ensure all 10 agents exist
+        # Normalize agent states and ensure all registered agents exist
         normalized_agents = self._normalize_agents(agent_states)
         metrics_by_id, sorted_metrics = self._compute_all_metrics(normalized_agents)
         header_ctx = self._build_header_context(normalized_agents, comp_state)
         strategy_hashes = self._get_strategy_hashes(comp_state)
         cohort_stats = self._compute_cohort_analysis(sorted_metrics)
         luck_stats = self._compute_luck_vs_skill(sorted_metrics, normalized_agents)
+        learned_patterns = self._load_learned_patterns()
 
         # 1. Write styles.css
         (target_dir / "styles.css").write_text(self._render_styles_css(), encoding="utf-8")
@@ -238,6 +243,7 @@ class DashboardBuilder:
             "leaderboard": sorted_metrics,
             "cohort_analysis": cohort_stats,
             "luck_vs_skill": luck_stats,
+            "learned_patterns": learned_patterns,
             "bug_fixes": bug_fix_list,
             "strategy_hashes": strategy_hashes,
             "agents": {a.agent_id: a.to_dict() for a in normalized_agents},
@@ -541,11 +547,91 @@ class DashboardBuilder:
             hashes["arena.config.AGENT_SPECS"] = hashlib.sha256(payload).hexdigest()
         return hashes
 
+    def _load_learned_patterns(self) -> Dict[str, Dict[str, Any]]:
+        """Load learned filing-style pattern JSONs (Berkshire 13F & Congress PTR) if present."""
+        patterns: Dict[str, Dict[str, Any]] = {}
+        pattern_files = {
+            "style_berkshire": PROJECT_ROOT / "state" / "learned_patterns" / "berkshire_style.json",
+            "style_congress": PROJECT_ROOT / "state" / "learned_patterns" / "congress_style.json",
+        }
+        for aid, path in pattern_files.items():
+            if path.exists():
+                try:
+                    data = json.loads(path.read_text(encoding="utf-8"))
+                    if isinstance(data, dict):
+                        patterns[aid] = data
+                except Exception:
+                    pass
+        return patterns
+
+    def _render_learned_patterns_panel(self, learned_patterns: Dict[str, Dict[str, Any]], root_prefix: str = "") -> str:
+        """Render plain-language learned rules and honest Out-of-Sample vs SPY test cards."""
+        if not learned_patterns:
+            return ""
+        cards: List[str] = []
+        for aid in ("style_berkshire", "style_congress"):
+            pat = learned_patterns.get(aid)
+            if not pat:
+                continue
+            oos = pat.get("out_of_sample_test") or {}
+            beat_spy = bool(oos.get("beat_spy", False))
+            verdict_cls = "status-active" if beat_spy else "status-blown"
+            verdict_badge = "BEAT SPY IN OOS TEST" if beat_spy else "DID NOT BEAT SPY IN OOS TEST"
+            rules_li = "".join(f"<li>{_esc(r)}</li>" for r in (pat.get("plain_language_rules") or []))
+            test_period = oos.get("test_period") or ["?", "?"]
+            p_ret = float(oos.get("pattern_return_pct", 0.0))
+            s_ret = float(oos.get("spy_return_pct", 0.0))
+            ex_ret = float(oos.get("excess_return_vs_spy_pct", 0.0))
+            dd = float(oos.get("max_drawdown_pct", 0.0))
+            extra_note = (
+                "No timing rules learned from 13F (quarterly holdings have no trade dates or prices)."
+                if aid == "style_berkshire"
+                else f"Parsed {int((pat.get('ptr_corpus_stats') or {}).get('parsed_ok_pdfs', 0)):,} House PTR PDFs once into cache (shares only, all members)."
+            )
+            cards.append(
+                f"""        <article class="style-pattern-card">
+          <div class="style-pattern-header">
+            <div>
+              <h3><a href="{root_prefix}agents/{_esc(aid)}.html">{_esc(pat.get('agent_name', aid))}</a></h3>
+              <div class="sub-num">{_esc(pat.get('source', ''))}</div>
+            </div>
+            <span class="status-pill {verdict_cls}">{verdict_badge}</span>
+          </div>
+          <div class="oos-strip">
+            <span><strong>OOS Test ({_esc(test_period[0])} &rarr; {_esc(test_period[1])}):</strong></span>
+            <span class="{_pnl_class(p_ret)}">Pattern: <strong>{_fmt_pct(p_ret)}</strong></span>
+            <span>vs SPY: <strong>{_fmt_pct(s_ret)}</strong></span>
+            <span class="{_pnl_class(ex_ret)}">Excess: <strong>{_fmt_pct(ex_ret)}</strong></span>
+            <span class="neg">Max DD: <strong>{dd:.2f}%</strong></span>
+          </div>
+          <p class="oos-verdict-text">{_esc(oos.get('plain_verdict', ''))}</p>
+          <div class="rules-heading">Explicit Learned Rules Applied to Today's Universe (Never Copies Filings):</div>
+          <ul class="learned-rules-list">{rules_li}</ul>
+          <div class="sub-num">No Look-Ahead Cutoff: filings public strictly before <code>{_esc(pat.get('agent_start_date', ''))}</code> &bull; {_esc(extra_note)}</div>
+        </article>"""
+            )
+        if not cards:
+            return ""
+        return f"""
+    <!-- Learned Filing-Style Patterns (Plain Language + Out-of-Sample vs SPY) -->
+    <section class="panel" id="learned-patterns">
+      <div class="panel-header">
+        <div>
+          <h2>&#128218; Filing-Style Agents (#11 Berkshire &amp; #12 Congress) — Learned Pattern Rules &amp; Pre-Live Test vs. SPY</h2>
+          <p class="panel-sub">Neither agent ever copies stocks from filings. Each learned explicit, testable style rules from older public filings, then tested those rules out-of-sample on the most recent history using normal price data across our universe.</p>
+        </div>
+      </div>
+      <div class="style-patterns-grid">
+{chr(10).join(cards)}
+      </div>
+    </section>"""
+
     def _compute_cohort_analysis(self, sorted_metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Compute aggregated performance breakdown across Coded, Gemini Flash LLM, SPY, and Random."""
+        """Compute aggregated performance breakdown across Coded, Gemini Flash LLM, Filing-Style, SPY, and Random."""
         groups = {
             "Coded": [m for m in sorted_metrics if m["short_category"] == "Coded"],
             "Gemini Flash LLM": [m for m in sorted_metrics if m["short_category"] == "Gemini Flash LLM"],
+            "Filing-Style Learned": [m for m in sorted_metrics if m["short_category"] == "Filing-Style"],
             "Buy-and-Hold SPY": [m for m in sorted_metrics if m["agent_id"] == "ctrl_spy"],
             "Random Trader (Luck Control)": [m for m in sorted_metrics if m["agent_id"] == "ctrl_random"],
         }
@@ -1047,12 +1133,16 @@ class DashboardBuilder:
             </tr>"""
             )
 
+        total_agents = len(normalized_agents)
+        non_spy_agents = max(1, total_agents - 1)
+        learned_patterns_html = self._render_learned_patterns_panel(self._load_learned_patterns(), root_prefix="")
+
         return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Trading Arena — 10-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
+  <title>AI Trading Arena — {total_agents}-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
@@ -1074,13 +1164,13 @@ class DashboardBuilder:
         <div class="kpi-label">S&amp;P 500 (<code>ctrl_spy</code>) Benchmark</div>
         <div class="kpi-value {_pnl_class(spy['net_profit'])}">{_fmt_pct(spy['net_return_pct'])}</div>
         <div class="kpi-sub">
-          Equity: <strong>{_fmt_money(spy['equity'])}</strong> &bull; {beating_spy_count} of 9 active agents beating SPY
+          Equity: <strong>{_fmt_money(spy['equity'])}</strong> &bull; {beating_spy_count} of {non_spy_agents} active agents beating SPY
         </div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-label">Agent Risk Status</div>
-        <div class="kpi-value">{active_count} Active / 10 Total</div>
+        <div class="kpi-value">{active_count} Active / {total_agents} Total</div>
         <div class="kpi-sub">
           <span class="pos">{active_count} Active</span> &bull;
           <span class="warn">{halted_count} Daily Halted (-3%)</span> &bull;
@@ -1109,7 +1199,7 @@ class DashboardBuilder:
     <section class="panel" id="leaderboard">
       <div class="panel-header">
         <div>
-          <h2>&#127942; 10-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
+          <h2>&#127942; {total_agents}-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
           <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
         </div>
         <div class="panel-actions">
@@ -1145,13 +1235,14 @@ class DashboardBuilder:
     <section class="panel" id="equity-curves">
       <div class="panel-header">
         <div>
-          <h2>&#128200; All 10 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
+          <h2>&#128200; All {total_agents} Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
           <p class="panel-sub">Interactive mark-to-market trajectory net of bid/ask half-spread and 5 bps slippage on every fill. Toggle cohorts or hover any point for exact equity.</p>
         </div>
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
-          <button type="button" class="btn-filter active" data-filter="all">All 10 Agents</button>
+          <button type="button" class="btn-filter active" data-filter="all">All {total_agents} Agents</button>
           <button type="button" class="btn-filter" data-filter="Coded">4 Coded</button>
           <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
+          <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
           <button type="button" class="btn-filter" data-filter="Control">2 Controls (SPY &amp; Random)</button>
         </div>
       </div>
@@ -1166,13 +1257,14 @@ class DashboardBuilder:
         </div>
       </details>
     </section>
+{learned_patterns_html}
 
     <!-- Recent Arena Activity Feed -->
     <section class="panel" id="recent-activity">
       <div class="panel-header">
         <div>
           <h2>&#9889; Recent Arena Trade Activity Feed</h2>
-          <p class="panel-sub">Latest virtual executions across all 10 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
+          <p class="panel-sub">Latest virtual executions across all {total_agents} agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
         </div>
       </div>
       <div class="table-wrap">
@@ -1521,7 +1613,7 @@ class DashboardBuilder:
     <div class="breadcrumb-row">
       <a href="../index.html">&larr; Back to Main Leaderboard</a>
       <span>&bull;</span>
-      <span>Rank <strong>#{m['rank']} of 10</strong></span>
+      <span>Rank <strong>#{m['rank']} of {len(sorted_metrics)}</strong></span>
       <span>&bull;</span>
       <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
     </div>
@@ -1558,6 +1650,7 @@ class DashboardBuilder:
         </div>
       </div>
     </section>
+{self._render_learned_patterns_panel({agent.agent_id: self._load_learned_patterns()[agent.agent_id]}, root_prefix="../") if agent.agent_id in self._load_learned_patterns() else ""}
 
     <!-- Agent KPI Strip -->
     <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
@@ -2604,7 +2697,71 @@ code, .mono {
 
 .cat-coded { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
 .cat-llm { background: rgba(192, 132, 252, 0.15); color: #c084fc; }
+.cat-style { background: rgba(34, 197, 94, 0.16); color: #4ade80; }
 .cat-control { background: rgba(148, 163, 184, 0.18); color: #cbd5e1; }
+
+.style-patterns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+}
+
+.style-pattern-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.style-pattern-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.style-pattern-header h3 {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.oos-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--border-subtle);
+  font-size: 12.5px;
+}
+
+.oos-verdict-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.rules-heading {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.learned-rules-list {
+  margin-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
 
 .status-pill {
   font-family: var(--font-mono);

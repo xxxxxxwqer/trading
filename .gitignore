@@ -33,5 +33,11 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 
+# Large raw price/EPS research caches stay local; learned patterns, universe fundamentals,
+# and parsed filing caches (berkshire_13f_raw.json, congress_ptr_parsed.json) are kept.
+data_cache/prices/
+data_cache/sec_eps/
+data_cache/sec_company_tickers.json
+
 # Note: `state/` and `docs/` are intentionally tracked in Git so GitHub Actions
 # can persist agent ledgers and publish the GitHub Pages dashboard each cycle.

@@ -1,0 +1,33 @@
+{
+  "agent_id": "style_berkshire",
+  "name": "11. Berkshire Style (13F Pattern)",
+  "category": "Filing-Style Learned",
+  "status": "ACTIVE",
+  "status_reason": "Trading active",
+  "initial_cash": 10000.0,
+  "cash": 10000.0,
+  "equity": 10000.0,
+  "peak_equity": 10000.0,
+  "max_drawdown_pct": 0.0,
+  "current_drawdown_pct": 0.0,
+  "current_trading_date_et": "",
+  "day_start_equity": 10000.0,
+  "daily_pnl_pct": 0.0,
+  "positions": {},
+  "pending_orders": [],
+  "trades": [],
+  "rejections": [],
+  "equity_curve": [
+    {
+      "timestamp": "2026-11-23T04:59:41Z",
+      "trading_date_et": "2026-11-22",
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "positions_value": 0.0,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
+    }
+  ],
+  "daily_journal": [],
+  "last_updated": "2026-11-23T04:59:41Z"
+}

@@ -1,0 +1,6246 @@
+[
+  {
+    "accession_number": "0000950123-21-015518",
+    "filing_date": "2021-11-15",
+    "report_date": "2021-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 125529681.0,
+        "shares": 887135554.0,
+        "weight_pct": 42.7776
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 42878771.0,
+        "shares": 1010100606.0,
+        "weight_pct": 14.6121
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 25399340.0,
+        "shares": 151610700.0,
+        "weight_pct": 8.6555
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 20988000.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.1522
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 11989874.0,
+        "shares": 325634818.0,
+        "weight_pct": 4.0859
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 8760485.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.9854
+      },
+      {
+        "cusip": "92343V104",
+        "issuer": "VERIZON COMMUNICATIONS INC",
+        "value": 8578115.0,
+        "shares": 158824575.0,
+        "weight_pct": 2.9232
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 7514279.0,
+        "shares": 126417887.0,
+        "weight_pct": 2.5607
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4196471.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.4301
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 3751012.0,
+        "shares": 72357453.0,
+        "weight_pct": 1.2783
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 3162600.0,
+        "shares": 60000000.0,
+        "weight_pct": 1.0777
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 3056207.0,
+        "shares": 4200626.0,
+        "weight_pct": 1.0415
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 2911972.0,
+        "shares": 28703519.0,
+        "weight_pct": 0.9923
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2627329.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8953
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2498086.0,
+        "shares": 61787910.0,
+        "weight_pct": 0.8513
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2130038.0,
+        "shares": 9562460.0,
+        "weight_pct": 0.7259
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 2051097.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.699
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 1852497.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.6313
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1751912.0,
+        "shares": 533300.0,
+        "weight_pct": 0.597
+      },
+      {
+        "cusip": "00287Y109",
+        "issuer": "ABBVIE INC",
+        "value": 1553165.0,
+        "shares": 14398488.0,
+        "weight_pct": 0.5293
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1491077.0,
+        "shares": 4288648.0,
+        "weight_pct": 0.5081
+      },
+      {
+        "cusip": "110122108",
+        "issuer": "BRISTOL-MYERS SQUIBB CO",
+        "value": 1304517.0,
+        "shares": 22046936.0,
+        "weight_pct": 0.4445
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1256244.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.4281
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 1195081.0,
+        "shares": 1791967.0,
+        "weight_pct": 0.4073
+      },
+      {
+        "cusip": "862121100",
+        "issuer": "STORE CAP CORP",
+        "value": 782018.0,
+        "shares": 24415168.0,
+        "weight_pct": 0.2665
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 700963.0,
+        "shares": 14860360.0,
+        "weight_pct": 0.2389
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 669718.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2282
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 565672.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.1928
+      },
+      {
+        "cusip": "G7709Q104",
+        "issuer": "ROYALTY PHARMA PLC",
+        "value": 475093.0,
+        "shares": 13145902.0,
+        "weight_pct": 0.1619
+      },
+      {
+        "cusip": "881624209",
+        "issuer": "TEVA PHARMACEUTICAL INDS LTD",
+        "value": 416768.0,
+        "shares": 42789295.0,
+        "weight_pct": 0.142
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 415184.0,
+        "shares": 2741755.0,
+        "weight_pct": 0.1415
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 371346.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.1265
+      },
+      {
+        "cusip": "82968B103",
+        "issuer": "SIRIUS XM HLDGS INC",
+        "value": 266319.0,
+        "shares": 43658800.0,
+        "weight_pct": 0.0908
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 98669.0,
+        "shares": 816863.0,
+        "weight_pct": 0.0336
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 52827.0,
+        "shares": 327100.0,
+        "weight_pct": 0.018
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 44093.0,
+        "shares": 315400.0,
+        "weight_pct": 0.015
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 34410.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0117
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 33628.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0115
+      },
+      {
+        "cusip": "949746101",
+        "issuer": "WELLS FARGO & CO NEW",
+        "value": 31329.0,
+        "shares": 675054.0,
+        "weight_pct": 0.0107
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 16908.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0058
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 16959.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0058
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 16846.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0057
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 10817.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0037
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-22-002973",
+    "filing_date": "2022-02-14",
+    "report_date": "2021-12-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 157528660.0,
+        "shares": 887135554.0,
+        "weight_pct": 47.5985
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 44939376.0,
+        "shares": 1010100606.0,
+        "weight_pct": 13.5788
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 24803511.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.4946
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 23684001.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.1563
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 11690290.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.5323
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 9635522.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.9114
+      },
+      {
+        "cusip": "92343V104",
+        "issuer": "VERIZON COMMUNICATIONS INC",
+        "value": 8252525.0,
+        "shares": 158824575.0,
+        "weight_pct": 2.4936
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 7100894.0,
+        "shares": 126417887.0,
+        "weight_pct": 2.1456
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 4488055.0,
+        "shares": 38245036.0,
+        "weight_pct": 1.3561
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 4202522.0,
+        "shares": 72357453.0,
+        "weight_pct": 1.2698
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4106232.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.2407
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 3517800.0,
+        "shares": 60000000.0,
+        "weight_pct": 1.0629
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 3252859.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.9829
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2779549.0,
+        "shares": 61412910.0,
+        "weight_pct": 0.8399
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 2496355.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.7543
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 2197142.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.6639
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 2074971.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.627
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1798143.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5433
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1778204.0,
+        "shares": 533300.0,
+        "weight_pct": 0.5373
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1432482.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4328
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1321261.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.3992
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1027561.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.3105
+      },
+      {
+        "cusip": "G6693N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 1004774.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.3036
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 975205.0,
+        "shares": 14658121.0,
+        "weight_pct": 0.2947
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 973561.0,
+        "shares": 1816547.0,
+        "weight_pct": 0.2942
+      },
+      {
+        "cusip": "862121100",
+        "issuer": "STORE CAP CORP",
+        "value": 839882.0,
+        "shares": 24415168.0,
+        "weight_pct": 0.2538
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 607968.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.1837
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 595471.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.1799
+      },
+      {
+        "cusip": "00287Y109",
+        "issuer": "ABBVIE INC",
+        "value": 410744.0,
+        "shares": 3033561.0,
+        "weight_pct": 0.1241
+      },
+      {
+        "cusip": "G7709Q104",
+        "issuer": "ROYALTY PHARMA PLC",
+        "value": 344633.0,
+        "shares": 8648268.0,
+        "weight_pct": 0.1041
+      },
+      {
+        "cusip": "110122108",
+        "issuer": "BRISTOL-MYERS SQUIBB CO",
+        "value": 324387.0,
+        "shares": 5202674.0,
+        "weight_pct": 0.098
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 180325.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0545
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 133989.0,
+        "shares": 2118746.0,
+        "weight_pct": 0.0405
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 109691.0,
+        "shares": 843709.0,
+        "weight_pct": 0.0331
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 70382.0,
+        "shares": 404911.0,
+        "weight_pct": 0.0213
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 55957.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0169
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 51593.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0156
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 38327.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0116
+      },
+      {
+        "cusip": "949746101",
+        "issuer": "WELLS FARGO & CO NEW",
+        "value": 32389.0,
+        "shares": 675054.0,
+        "weight_pct": 0.0098
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 30675.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0093
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 18713.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0057
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 18773.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0057
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 14638.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0044
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 12732.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0038
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-22-006442",
+    "filing_date": "2022-05-16",
+    "report_date": "2022-03-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 155564138.0,
+        "shares": 890923410.0,
+        "weight_pct": 42.7899
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 41636348.0,
+        "shares": 1010100606.0,
+        "weight_pct": 11.4526
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 28351201.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.7984
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 25918973.0,
+        "shares": 159178117.0,
+        "weight_pct": 7.1293
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 24799999.0,
+        "shares": 400000000.0,
+        "weight_pct": 6.8216
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 12826755.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.5282
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 8323829.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.2896
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 7737804.0,
+        "shares": 136373000.0,
+        "weight_pct": 2.1284
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 6719111.0,
+        "shares": 126417887.0,
+        "weight_pct": 1.8482
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 5152292.0,
+        "shares": 64315222.0,
+        "weight_pct": 1.4172
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4082770.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.123
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 3792480.0,
+        "shares": 104476035.0,
+        "weight_pct": 1.0432
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 3591100.0,
+        "shares": 72357453.0,
+        "weight_pct": 0.9878
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3326615.0,
+        "shares": 57985263.0,
+        "weight_pct": 0.915
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2945319.0,
+        "shares": 55155797.0,
+        "weight_pct": 0.8101
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2850961.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.7842
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 2713886.0,
+        "shares": 62045847.0,
+        "weight_pct": 0.7465
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 2606915.0,
+        "shares": 68947760.0,
+        "weight_pct": 0.7171
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 2088764.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.5745
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1975915.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.5435
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1840128.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5062
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1738531.0,
+        "shares": 533300.0,
+        "weight_pct": 0.4782
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1431470.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.3937
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1424748.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.3919
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 1403507.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.3861
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 1125958.0,
+        "shares": 7880998.0,
+        "weight_pct": 0.3097
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 923692.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.2541
+      },
+      {
+        "cusip": "58155Q103",
+        "issuer": "MCKESSON CORP",
+        "value": 894504.0,
+        "shares": 2921975.0,
+        "weight_pct": 0.246
+      },
+      {
+        "cusip": "G6693N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 826957.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.2275
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 707615.0,
+        "shares": 2170000.0,
+        "weight_pct": 0.1946
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 672811.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.1851
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 639185.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.1758
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 620034.0,
+        "shares": 420293.0,
+        "weight_pct": 0.1705
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 539336.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1484
+      },
+      {
+        "cusip": "862121100",
+        "issuer": "STORE CAP CORP",
+        "value": 431283.0,
+        "shares": 14754811.0,
+        "weight_pct": 0.1186
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 389990.0,
+        "shares": 8969420.0,
+        "weight_pct": 0.1073
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 387180.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1065
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 125137.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0344
+      },
+      {
+        "cusip": "92343V104",
+        "issuer": "VERIZON COMMUNICATIONS INC",
+        "value": 70303.0,
+        "shares": 1380111.0,
+        "weight_pct": 0.0193
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 69005.0,
+        "shares": 404911.0,
+        "weight_pct": 0.019
+      },
+      {
+        "cusip": "G7709Q104",
+        "issuer": "ROYALTY PHARMA PLC",
+        "value": 58299.0,
+        "shares": 1496372.0,
+        "weight_pct": 0.016
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 57972.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0159
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 48193.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0133
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 36287.0,
+        "shares": 578000.0,
+        "weight_pct": 0.01
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 25518.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.007
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 17795.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0049
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 17852.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0049
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 12739.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 12314.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0034
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-22-009450",
+    "filing_date": "2022-08-15",
+    "report_date": "2022-06-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 122337373.0,
+        "shares": 894802319.0,
+        "weight_pct": 40.7614
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 31444432.0,
+        "shares": 1010100606.0,
+        "weight_pct": 10.4769
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 25164000.0,
+        "shares": 400000000.0,
+        "weight_pct": 8.3843
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 23373304.0,
+        "shares": 161440149.0,
+        "weight_pct": 7.7877
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 21016276.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.0024
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 12419712.0,
+        "shares": 325634818.0,
+        "weight_pct": 4.1381
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 9335408.0,
+        "shares": 158549729.0,
+        "weight_pct": 3.1104
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 6709439.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.2355
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 5513432.0,
+        "shares": 119805135.0,
+        "weight_pct": 1.837
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 5325713.0,
+        "shares": 68401150.0,
+        "weight_pct": 1.7745
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 3424725.0,
+        "shares": 104476035.0,
+        "weight_pct": 1.1411
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 3018027.0,
+        "shares": 72357453.0,
+        "weight_pct": 1.0056
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 2886202.0,
+        "shares": 36095570.0,
+        "weight_pct": 0.9616
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2536616.0,
+        "shares": 55155797.0,
+        "weight_pct": 0.8452
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2481858.0,
+        "shares": 52437295.0,
+        "weight_pct": 0.8269
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2144436.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.7145
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 1935448.0,
+        "shares": 78421645.0,
+        "weight_pct": 0.6449
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1793974.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.5977
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 1679385.0,
+        "shares": 52877359.0,
+        "weight_pct": 0.5596
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1633687.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5443
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1557660.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.519
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1257708.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4191
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1185514.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.395
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1132836.0,
+        "shares": 10666000.0,
+        "weight_pct": 0.3774
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 1076922.0,
+        "shares": 9156714.0,
+        "weight_pct": 0.3588
+      },
+      {
+        "cusip": "58155Q103",
+        "issuer": "MCKESSON CORP",
+        "value": 1043331.0,
+        "shares": 3198344.0,
+        "weight_pct": 0.3476
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1005300.0,
+        "shares": 30000000.0,
+        "weight_pct": 0.335
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 851795.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.2838
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 728285.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.2427
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 705259.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.235
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 619297.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.2063
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 604738.0,
+        "shares": 467611.0,
+        "weight_pct": 0.2015
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 490143.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1633
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 460605.0,
+        "shares": 2170000.0,
+        "weight_pct": 0.1535
+      },
+      {
+        "cusip": "G6693N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 400624.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.1335
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 300949.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1003
+      },
+      {
+        "cusip": "862121100",
+        "issuer": "STORE CAP CORP",
+        "value": 180693.0,
+        "shares": 6928413.0,
+        "weight_pct": 0.0602
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 82355.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0274
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 62862.0,
+        "shares": 404911.0,
+        "weight_pct": 0.0209
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 58064.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0193
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 45351.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0151
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 35888.0,
+        "shares": 578000.0,
+        "weight_pct": 0.012
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 20520.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0068
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 14864.0,
+        "shares": 39400.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 14916.0,
+        "shares": 43000.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 10843.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0036
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 10003.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0033
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-22-012275",
+    "filing_date": "2022-11-14",
+    "report_date": "2022-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 123661679.0,
+        "shares": 894802319.0,
+        "weight_pct": 41.764
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 30505039.0,
+        "shares": 1010100606.0,
+        "weight_pct": 10.3024
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 23757173.0,
+        "shares": 165359318.0,
+        "weight_pct": 8.0235
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 22407999.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.5678
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 20453800.0,
+        "shares": 151610700.0,
+        "weight_pct": 6.9078
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 11942909.0,
+        "shares": 194351650.0,
+        "weight_pct": 4.0334
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 10859921.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.6677
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 5997470.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.0255
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 4470946.0,
+        "shares": 60141866.0,
+        "weight_pct": 1.51
+      },
+      {
+        "cusip": "874039100",
+        "issuer": "TAIWAN SEMICONDUCTOR MFG LTD",
+        "value": 4117774.0,
+        "shares": 60060880.0,
+        "weight_pct": 1.3907
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 3136420.0,
+        "shares": 77788214.0,
+        "weight_pct": 1.0593
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 2987630.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.009
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 2603542.0,
+        "shares": 104476035.0,
+        "weight_pct": 0.8793
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 2396364.0,
+        "shares": 62210878.0,
+        "weight_pct": 0.8093
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2298341.0,
+        "shares": 55155797.0,
+        "weight_pct": 0.7762
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2226072.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.7518
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2199260.0,
+        "shares": 50268823.0,
+        "weight_pct": 0.7428
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 1736763.0,
+        "shares": 91216510.0,
+        "weight_pct": 0.5866
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1629386.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.5503
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 1604500.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.5419
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1474044.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.4978
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1205258.0,
+        "shares": 10666000.0,
+        "weight_pct": 0.407
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1177556.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.3977
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1161509.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.3923
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1133563.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.3828
+      },
+      {
+        "cusip": "58155Q103",
+        "issuer": "MCKESSON CORP",
+        "value": 1087021.0,
+        "shares": 3198344.0,
+        "weight_pct": 0.3671
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 1041069.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.3516
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 877219.0,
+        "shares": 9710183.0,
+        "weight_pct": 0.2963
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 834901.0,
+        "shares": 30000000.0,
+        "weight_pct": 0.282
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 769307.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.2598
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 703319.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2375
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 633467.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.2139
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 580724.0,
+        "shares": 2360000.0,
+        "weight_pct": 0.1961
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 506993.0,
+        "shares": 467611.0,
+        "weight_pct": 0.1712
+      },
+      {
+        "cusip": "G6693N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 471323.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.1592
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 451764.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1526
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 335843.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1134
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 296692.0,
+        "shares": 5795906.0,
+        "weight_pct": 0.1002
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 101928.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0344
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 60449.0,
+        "shares": 404911.0,
+        "weight_pct": 0.0204
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 53435.0,
+        "shares": 327100.0,
+        "weight_pct": 0.018
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 39819.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0134
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 31692.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0107
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 16285.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0055
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 14073.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0048
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 14117.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0048
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 12790.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0043
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 9595.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0032
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 7897.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0027
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-23-002585",
+    "filing_date": "2023-02-14",
+    "report_date": "2022-12-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 116305043218.0,
+        "shares": 895136175.0,
+        "weight_pct": 38.897
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 33454532071.0,
+        "shares": 1010100606.0,
+        "weight_pct": 11.1885
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 29252521137.0,
+        "shares": 162975771.0,
+        "weight_pct": 9.7832
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 25444000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 8.5095
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 22400480926.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.4916
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 13256593441.0,
+        "shares": 325634818.0,
+        "weight_pct": 4.4335
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 12242210434.0,
+        "shares": 194351650.0,
+        "weight_pct": 4.0943
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 6873493546.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.2988
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 4035492091.0,
+        "shares": 52717075.0,
+        "weight_pct": 1.3496
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 2807271061.0,
+        "shares": 104476035.0,
+        "weight_pct": 0.9389
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 2695256212.0,
+        "shares": 36095570.0,
+        "weight_pct": 0.9014
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2632839535.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8805
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2494696699.0,
+        "shares": 55155797.0,
+        "weight_pct": 0.8343
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2229000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.7455
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1723880290.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5765
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1690740426.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.5655
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 1682000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.5625
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 1580595750.0,
+        "shares": 93637189.0,
+        "weight_pct": 0.5286
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1386277109.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4636
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1319415440.0,
+        "shares": 4396000.0,
+        "weight_pct": 0.4413
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1298393893.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.4342
+      },
+      {
+        "cusip": "064058100",
+        "issuer": "BANK OF NEW YORK MELLON CORP",
+        "value": 1141180346.0,
+        "shares": 25069867.0,
+        "weight_pct": 0.3817
+      },
+      {
+        "cusip": "58155Q103",
+        "issuer": "MCKESSON CORP",
+        "value": 1071160412.0,
+        "shares": 2855514.0,
+        "weight_pct": 0.3582
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 992769110.0,
+        "shares": 9710183.0,
+        "weight_pct": 0.332
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 895944000.0,
+        "shares": 10666000.0,
+        "weight_pct": 0.2996
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 879236471.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.2941
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 794363900.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.2657
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 765941790.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.2562
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 733880000.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2454
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 728610001.0,
+        "shares": 29800000.0,
+        "weight_pct": 0.2437
+      },
+      {
+        "cusip": "74967X103",
+        "issuer": "RH",
+        "value": 630568400.0,
+        "shares": 2360000.0,
+        "weight_pct": 0.2109
+      },
+      {
+        "cusip": "874039100",
+        "issuer": "TAIWAN SEMICONDUCTOR MFG LTD",
+        "value": 617725010.0,
+        "shares": 8292724.0,
+        "weight_pct": 0.2066
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 616072818.0,
+        "shares": 467611.0,
+        "weight_pct": 0.206
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 461648121.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1544
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 435973451.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.1458
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 417058613.0,
+        "shares": 7044909.0,
+        "weight_pct": 0.1395
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 332831400.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1113
+      },
+      {
+        "cusip": "902973304",
+        "issuer": "US BANCORP DEL",
+        "value": 290915115.0,
+        "shares": 6670835.0,
+        "weight_pct": 0.0973
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 100965029.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0338
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 67004672.0,
+        "shares": 404911.0,
+        "weight_pct": 0.0224
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 57782215.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0193
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 47802024.0,
+        "shares": 315400.0,
+        "weight_pct": 0.016
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 38523700.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0129
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 19809864.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0066
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 15107620.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0051
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 14862368.0,
+        "shares": 433558.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 15067742.0,
+        "shares": 39400.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 10326096.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 9758552.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0033
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-23-005270",
+    "filing_date": "2023-05-15",
+    "report_date": "2023-03-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 150975906991.0,
+        "shares": 915560382.0,
+        "weight_pct": 46.4386
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 29539567372.0,
+        "shares": 1032852006.0,
+        "weight_pct": 9.0861
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 25008184965.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.6923
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 24812000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.6319
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 21603623200.0,
+        "shares": 132407595.0,
+        "weight_pct": 6.645
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 13216875439.0,
+        "shares": 211707119.0,
+        "weight_pct": 4.0654
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 12592298412.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.8733
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 7549445464.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.3221
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 4231550856.0,
+        "shares": 49439781.0,
+        "weight_pct": 1.3016
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 3549965209.0,
+        "shares": 120952818.0,
+        "weight_pct": 1.0919
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 2927711683.0,
+        "shares": 36095570.0,
+        "weight_pct": 0.9005
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2708323496.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8331
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2590428532.0,
+        "shares": 55244797.0,
+        "weight_pct": 0.7968
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2468499999.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.7593
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 2091138052.0,
+        "shares": 93730975.0,
+        "weight_pct": 0.6432
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1870745332.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5754
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 1467200000.0,
+        "shares": 40000000.0,
+        "weight_pct": 0.4513
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1448787750.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4456
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1369267591.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.4212
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1366782150.0,
+        "shares": 4335000.0,
+        "weight_pct": 0.4204
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1209400065.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.372
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1089812790.0,
+        "shares": 10551000.0,
+        "weight_pct": 0.3352
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 960302652.0,
+        "shares": 8819016.0,
+        "weight_pct": 0.2954
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 954099520.0,
+        "shares": 9922000.0,
+        "weight_pct": 0.2935
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 945084263.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.2907
+      },
+      {
+        "cusip": "58155Q103",
+        "issuer": "MCKESSON CORP",
+        "value": 815306077.0,
+        "shares": 2289864.0,
+        "weight_pct": 0.2508
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 759251280.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2335
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 739210001.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.2274
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 699037045.0,
+        "shares": 6353727.0,
+        "weight_pct": 0.215
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 602504481.0,
+        "shares": 471661.0,
+        "weight_pct": 0.1853
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 577871009.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1777
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 567633731.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.1746
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 509885412.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.1568
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 469491600.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1444
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 381904517.0,
+        "shares": 7044909.0,
+        "weight_pct": 0.1175
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 102034574.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0314
+      },
+      {
+        "cusip": "571748102",
+        "issuer": "MARSH & MCLENNAN COS INC",
+        "value": 67437927.0,
+        "shares": 404911.0,
+        "weight_pct": 0.0207
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 50700500.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0156
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 46896826.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0144
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 41263745.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0127
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 40298160.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0124
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 21861881.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0067
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 16129966.0,
+        "shares": 39400.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 16171010.0,
+        "shares": 43000.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 13761131.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0042
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 11523006.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 10606005.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0033
+      },
+      {
+        "cusip": "92852X103",
+        "issuer": "VITESSE ENERGY INC",
+        "value": 971025.0,
+        "shares": 51026.0,
+        "weight_pct": 0.0003
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-23-008074",
+    "filing_date": "2023-08-14",
+    "report_date": "2023-06-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 177591247296.0,
+        "shares": 915560382.0,
+        "weight_pct": 51.0035
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 29632524052.0,
+        "shares": 1032852006.0,
+        "weight_pct": 8.5103
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 26410583940.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.585
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 24088000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 6.918
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 19372950883.0,
+        "shares": 123120120.0,
+        "weight_pct": 5.5638
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 13178796490.0,
+        "shares": 224129192.0,
+        "weight_pct": 3.7849
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 11560036039.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.32
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 8578175206.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.4636
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 3714461041.0,
+        "shares": 120952818.0,
+        "weight_pct": 1.0668
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 3626521918.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.0415
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2895944070.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8317
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2543470454.0,
+        "shares": 55244797.0,
+        "weight_pct": 0.7305
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2350000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.6749
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1970480801.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.5659
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1567948658.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4503
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1496442000.0,
+        "shares": 4335000.0,
+        "weight_pct": 0.4298
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 1491259813.0,
+        "shares": 93730975.0,
+        "weight_pct": 0.4283
+      },
+      {
+        "cusip": "531229607",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 1414207364.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.4062
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1406638055.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.404
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1375428360.0,
+        "shares": 10551000.0,
+        "weight_pct": 0.395
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1363956551.0,
+        "shares": 12471030.0,
+        "weight_pct": 0.3917
+      },
+      {
+        "cusip": "00507V109",
+        "issuer": "ACTIVISION BLIZZARD INC",
+        "value": 1235679601.0,
+        "shares": 14658121.0,
+        "weight_pct": 0.3549
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 1077943668.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.3096
+      },
+      {
+        "cusip": "37045V100",
+        "issuer": "GENERAL MTRS CO",
+        "value": 848320000.0,
+        "shares": 22000000.0,
+        "weight_pct": 0.2436
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 845167206.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.2427
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 783290001.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.225
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 728113800.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2091
+      },
+      {
+        "cusip": "23331A109",
+        "issuer": "D R HORTON INC",
+        "value": 726454496.0,
+        "shares": 5969714.0,
+        "weight_pct": 0.2086
+      },
+      {
+        "cusip": "531229409",
+        "issuer": "LIBERTY MEDIA CORP DELAWARE",
+        "value": 663013981.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.1904
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 652392063.0,
+        "shares": 471661.0,
+        "weight_pct": 0.1874
+      },
+      {
+        "cusip": "150870103",
+        "issuer": "CELANESE CORP DEL",
+        "value": 620518352.0,
+        "shares": 5358535.0,
+        "weight_pct": 0.1782
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 581346111.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.167
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 528227277.0,
+        "shares": 7044909.0,
+        "weight_pct": 0.1517
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 496928800.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1427
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 275757222.0,
+        "shares": 2515574.0,
+        "weight_pct": 0.0792
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 136260008.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0391
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 70568089.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0203
+      },
+      {
+        "cusip": "478160104",
+        "issuer": "JOHNSON & JOHNSON",
+        "value": 54141592.0,
+        "shares": 327100.0,
+        "weight_pct": 0.0155
+      },
+      {
+        "cusip": "742718109",
+        "issuer": "PROCTER & GAMBLE CO",
+        "value": 47858796.0,
+        "shares": 315400.0,
+        "weight_pct": 0.0137
+      },
+      {
+        "cusip": "609207105",
+        "issuer": "MONDELEZ INTL INC",
+        "value": 42159320.0,
+        "shares": 578000.0,
+        "weight_pct": 0.0121
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 39510070.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0113
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 23019430.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0066
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 17237585.0,
+        "shares": 152572.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 17465232.0,
+        "shares": 39400.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 17513040.0,
+        "shares": 43000.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 14381119.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0041
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 11068252.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0032
+      },
+      {
+        "cusip": "911312106",
+        "issuer": "UNITED PARCEL SERVICE INC",
+        "value": 10647450.0,
+        "shares": 59400.0,
+        "weight_pct": 0.0031
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-23-010898",
+    "filing_date": "2023-11-14",
+    "report_date": "2023-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 156753093002.0,
+        "shares": 915560382.0,
+        "weight_pct": 50.0397
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 28279487924.0,
+        "shares": 1032852006.0,
+        "weight_pct": 9.0276
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 22618800333.0,
+        "shares": 151610700.0,
+        "weight_pct": 7.2205
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 22392000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.1481
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 18590066491.0,
+        "shares": 110248289.0,
+        "weight_pct": 5.9344
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 14541501977.0,
+        "shares": 224129192.0,
+        "weight_pct": 4.642
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 10954355278.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.4969
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 7799843711.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.4899
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 3412114232.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.0892
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 2634739200.0,
+        "shares": 102519035.0,
+        "weight_pct": 0.8411
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2595546101.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8286
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2272218501.0,
+        "shares": 55244797.0,
+        "weight_pct": 0.7254
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2237500000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.7143
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 1908498775.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.6092
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1684044831.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.5376
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1578353810.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.5039
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1329302000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.4243
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1271200000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.4058
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1210313462.0,
+        "shares": 12471030.0,
+        "weight_pct": 0.3864
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 1209129578.0,
+        "shares": 93730975.0,
+        "weight_pct": 0.386
+      },
+      {
+        "cusip": "531229789",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 1100083089.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.3512
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 935773692.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.2987
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 776611184.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.2479
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 773720000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.247
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 734142100.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.2344
+      },
+      {
+        "cusip": "23331A109",
+        "issuer": "D R HORTON INC",
+        "value": 641565163.0,
+        "shares": 5969714.0,
+        "weight_pct": 0.2048
+      },
+      {
+        "cusip": "531229813",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 514285456.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.1642
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 481108697.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1536
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 432590000.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1381
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 389372120.0,
+        "shares": 7044909.0,
+        "weight_pct": 0.1243
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 357356140.0,
+        "shares": 11132590.0,
+        "weight_pct": 0.1141
+      },
+      {
+        "cusip": "570535104",
+        "issuer": "MARKEL CORP",
+        "value": 233706251.0,
+        "shares": 158715.0,
+        "weight_pct": 0.0746
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 161257223.0,
+        "shares": 5051918.0,
+        "weight_pct": 0.0515
+      },
+      {
+        "cusip": "G85158106",
+        "issuer": "STONECO LTD",
+        "value": 114120430.0,
+        "shares": 10695448.0,
+        "weight_pct": 0.0364
+      },
+      {
+        "cusip": "37959E102",
+        "issuer": "GLOBE LIFE INC",
+        "value": 90356152.0,
+        "shares": 831014.0,
+        "weight_pct": 0.0288
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 66264190.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0212
+      },
+      {
+        "cusip": "82968B103",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 43768172.0,
+        "shares": 9683224.0,
+        "weight_pct": 0.014
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 33975745.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0108
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 21467263.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0069
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 16842712.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0054
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 16886100.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0054
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 15881230.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0051
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 15597436.0,
+        "shares": 152572.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 10477603.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0033
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 7990835.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0026
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-24-002518",
+    "filing_date": "2024-02-14",
+    "report_date": "2023-12-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 174347466800.0,
+        "shares": 905560000.0,
+        "weight_pct": 50.1924
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 34776127042.0,
+        "shares": 1032852006.0,
+        "weight_pct": 10.0116
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 28402748537.0,
+        "shares": 151610700.0,
+        "weight_pct": 8.1768
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 23572000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 6.7861
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 18808080506.0,
+        "shares": 126093326.0,
+        "weight_pct": 5.4146
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 14552270657.0,
+        "shares": 243715804.0,
+        "weight_pct": 4.1894
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 12041975570.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.4667
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 9635028496.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.7738
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 3781371913.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.0886
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 2841792358.0,
+        "shares": 55244797.0,
+        "weight_pct": 0.8181
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2639503654.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.7599
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2285500000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.658
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2160243711.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.6219
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1700345238.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.4895
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1635201454.0,
+        "shares": 12471030.0,
+        "weight_pct": 0.4708
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1519400000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.4374
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1488232788.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.4284
+      },
+      {
+        "cusip": "531229789",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 1243534615.0,
+        "shares": 43208291.0,
+        "weight_pct": 0.358
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 1218949824.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.3509
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1193182000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.3435
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1012680000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.2915
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 936539643.0,
+        "shares": 63322491.0,
+        "weight_pct": 0.2696
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 892299471.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.2569
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 840449860.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.242
+      },
+      {
+        "cusip": "40434L105",
+        "issuer": "HP INC",
+        "value": 687638195.0,
+        "shares": 22852715.0,
+        "weight_pct": 0.198
+      },
+      {
+        "cusip": "531229813",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 580768723.0,
+        "shares": 20207680.0,
+        "weight_pct": 0.1672
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 533256800.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1535
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 498990904.0,
+        "shares": 7044909.0,
+        "weight_pct": 0.1437
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 487518332.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1404
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 416247540.0,
+        "shares": 11132590.0,
+        "weight_pct": 0.1198
+      },
+      {
+        "cusip": "82968B103",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 220129527.0,
+        "shares": 40243058.0,
+        "weight_pct": 0.0634
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 184647602.0,
+        "shares": 5051918.0,
+        "weight_pct": 0.0532
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 77789000.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0224
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 33174065.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0096
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 20452277.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0059
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 19231089.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0055
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 18727214.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0054
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 18782400.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0054
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 17520079.0,
+        "shares": 433558.0,
+        "weight_pct": 0.005
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 9424707.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0027
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8851870.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0025
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-24-005622",
+    "filing_date": "2024-05-15",
+    "report_date": "2024-03-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 135360901805.0,
+        "shares": 789368450.0,
+        "weight_pct": 40.8106
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 39165748068.0,
+        "shares": 1032852006.0,
+        "weight_pct": 11.8083
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 34520240283.0,
+        "shares": 151610700.0,
+        "weight_pct": 10.4077
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 24472000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 7.3782
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 19398897853.0,
+        "shares": 122980207.0,
+        "weight_pct": 5.8487
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 16118698139.0,
+        "shares": 248018128.0,
+        "weight_pct": 4.8597
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 12015924784.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.6227
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 9695962848.0,
+        "shares": 24669778.0,
+        "weight_pct": 2.9233
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 6717644659.0,
+        "shares": 25923840.0,
+        "weight_pct": 2.0253
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4982993438.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.5023
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 3493680962.0,
+        "shares": 55244797.0,
+        "weight_pct": 1.0533
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2856500000.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.8612
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2428686819.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.7322
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2315655137.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.6982
+      },
+      {
+        "cusip": "531229789",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 1945597617.0,
+        "shares": 65486288.0,
+        "weight_pct": 0.5866
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1919850077.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.5788
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1856811657.0,
+        "shares": 12471030.0,
+        "weight_pct": 0.5598
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1803800000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.5438
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1368252000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.4125
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 1277927093.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.3853
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1177110000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.3549
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1112805123.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.3355
+      },
+      {
+        "cusip": "833445109",
+        "issuer": "SNOWFLAKE INC",
+        "value": 989860762.0,
+        "shares": 6125376.0,
+        "weight_pct": 0.2984
+      },
+      {
+        "cusip": "531229813",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 972842033.0,
+        "shares": 32755624.0,
+        "weight_pct": 0.2933
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 855599240.0,
+        "shares": 5242000.0,
+        "weight_pct": 0.258
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 619583600.0,
+        "shares": 4780000.0,
+        "weight_pct": 0.1868
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 553633733.0,
+        "shares": 6597947.0,
+        "weight_pct": 0.1669
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 506592786.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1527
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 487830094.0,
+        "shares": 11132590.0,
+        "weight_pct": 0.1471
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 213948727.0,
+        "shares": 5051918.0,
+        "weight_pct": 0.0645
+      },
+      {
+        "cusip": "82968B103",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 142325819.0,
+        "shares": 36681912.0,
+        "weight_pct": 0.0429
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 90006756.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0271
+      },
+      {
+        "cusip": "92556H206",
+        "issuer": "PARAMOUNT GLOBAL",
+        "value": 88648874.0,
+        "shares": 7531765.0,
+        "weight_pct": 0.0267
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 33875535.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0102
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 23523551.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0071
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 20608958.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0062
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 20670100.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0062
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 19119908.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0058
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 18336620.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0055
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 8975300.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0027
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8735574.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0026
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-24-008740",
+    "filing_date": "2024-08-14",
+    "report_date": "2024-06-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 84248000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 30.0919
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 41076524279.0,
+        "shares": 1032852006.0,
+        "weight_pct": 14.6718
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 35105457585.0,
+        "shares": 151610700.0,
+        "weight_pct": 12.539
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 25460000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 9.0939
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 18553059728.0,
+        "shares": 118610534.0,
+        "weight_pct": 6.6268
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 16090394458.0,
+        "shares": 255281524.0,
+        "weight_pct": 5.7472
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 10491953836.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.7475
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 10384249654.0,
+        "shares": 24669778.0,
+        "weight_pct": 3.7091
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 6895777623.0,
+        "shares": 27033784.0,
+        "weight_pct": 2.463
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 5001763135.0,
+        "shares": 36095570.0,
+        "weight_pct": 1.7865
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 3505834818.0,
+        "shares": 55244797.0,
+        "weight_pct": 1.2522
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2496500001.0,
+        "shares": 50000000.0,
+        "weight_pct": 0.8917
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2278615992.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.8139
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2177834326.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.7779
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1932500000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.6903
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1758749632.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.6282
+      },
+      {
+        "cusip": "531229789",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 1551264198.0,
+        "shares": 70002897.0,
+        "weight_pct": 0.5541
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 1380761126.0,
+        "shares": 107118784.0,
+        "weight_pct": 0.4932
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1359447750.0,
+        "shares": 9819052.0,
+        "weight_pct": 0.4856
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1203678000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.4299
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1150430000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4109
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 1144700201.0,
+        "shares": 3828941.0,
+        "weight_pct": 0.4089
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 823112960.0,
+        "shares": 4672000.0,
+        "weight_pct": 0.294
+      },
+      {
+        "cusip": "531229813",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 779286152.0,
+        "shares": 35182219.0,
+        "weight_pct": 0.2783
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 554780880.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.1982
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 491081408.0,
+        "shares": 5964793.0,
+        "weight_pct": 0.1754
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 417818885.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.1492
+      },
+      {
+        "cusip": "339750101",
+        "issuer": "FLOOR & DECOR HLDGS INC",
+        "value": 395440057.0,
+        "shares": 3977870.0,
+        "weight_pct": 0.1412
+      },
+      {
+        "cusip": "82968B103",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 376045343.0,
+        "shares": 132878213.0,
+        "weight_pct": 0.1343
+      },
+      {
+        "cusip": "90384S303",
+        "issuer": "ULTA BEAUTY INC",
+        "value": 266291202.0,
+        "shares": 690106.0,
+        "weight_pct": 0.0951
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 187046916.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.0668
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 185373840.0,
+        "shares": 1044242.0,
+        "weight_pct": 0.0662
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 84324079.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0301
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 28714720.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0103
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 25281911.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.009
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 21573846.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0077
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 21442268.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0077
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 21505590.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0077
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 21273114.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0076
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 12352272.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0044
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8820558.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0032
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-24-011775",
+    "filing_date": "2024-11-14",
+    "report_date": "2024-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 69900000000.0,
+        "shares": 300000000.0,
+        "weight_pct": 26.2408
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 41116821840.0,
+        "shares": 151610700.0,
+        "weight_pct": 15.4355
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 31652073622.0,
+        "shares": 797683307.0,
+        "weight_pct": 11.8824
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 28744000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 10.7906
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 17467773342.0,
+        "shares": 118610534.0,
+        "weight_pct": 6.5575
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 13157209747.0,
+        "shares": 255281524.0,
+        "weight_pct": 4.9393
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11708029942.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.3953
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 11433038460.0,
+        "shares": 325634818.0,
+        "weight_pct": 4.292
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 7796272968.0,
+        "shares": 27033784.0,
+        "weight_pct": 2.9268
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 5917146790.0,
+        "shares": 36095570.0,
+        "weight_pct": 2.2213
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 3458324292.0,
+        "shares": 55244797.0,
+        "weight_pct": 1.2983
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2865000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.0755
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2486916437.0,
+        "shares": 105155029.0,
+        "weight_pct": 0.9336
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2434453846.0,
+        "shares": 12815613.0,
+        "weight_pct": 0.9139
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2281386627.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.8564
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 1968606782.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.739
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1863300000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.6995
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1418559000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.5325
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1362543000.0,
+        "shares": 9100000.0,
+        "weight_pct": 0.5115
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 1179892309.0,
+        "shares": 86438997.0,
+        "weight_pct": 0.4429
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1032110000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.3875
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 964113920.0,
+        "shares": 4672000.0,
+        "weight_pct": 0.3619
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 914514546.0,
+        "shares": 2821879.0,
+        "weight_pct": 0.3433
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 640976656.0,
+        "shares": 5964793.0,
+        "weight_pct": 0.2406
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 597949381.0,
+        "shares": 7722451.0,
+        "weight_pct": 0.2245
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 560403539.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.2104
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 549398896.0,
+        "shares": 1277256.0,
+        "weight_pct": 0.2062
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 246885972.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.0927
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 213884223.0,
+        "shares": 1049687.0,
+        "weight_pct": 0.0803
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 152248678.0,
+        "shares": 404057.0,
+        "weight_pct": 0.0572
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 109028722.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0409
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 31962435.0,
+        "shares": 227750.0,
+        "weight_pct": 0.012
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 26685495.0,
+        "shares": 433558.0,
+        "weight_pct": 0.01
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 26385802.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0099
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 25202987.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0095
+      },
+      {
+        "cusip": "78462F103",
+        "issuer": "SPDR S&P 500 ETF TR",
+        "value": 22606144.0,
+        "shares": 39400.0,
+        "weight_pct": 0.0085
+      },
+      {
+        "cusip": "922908363",
+        "issuer": "VANGUARD INDEX FDS",
+        "value": 22689810.0,
+        "shares": 43000.0,
+        "weight_pct": 0.0085
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 12185350.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0046
+      },
+      {
+        "cusip": "90384S303",
+        "issuer": "ULTA BEAUTY INC",
+        "value": 9417871.0,
+        "shares": 24203.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8901072.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0033
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-25-002701",
+    "filing_date": "2025-02-14",
+    "report_date": "2024-12-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 75126000000.0,
+        "shares": 300000000.0,
+        "weight_pct": 28.1186
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 44996539653.0,
+        "shares": 151610700.0,
+        "weight_pct": 16.8416
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 29896266149.0,
+        "shares": 680233587.0,
+        "weight_pct": 11.1897
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 24904000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 9.3212
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 17179549745.0,
+        "shares": 118610534.0,
+        "weight_pct": 6.4301
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 13053055436.0,
+        "shares": 264178414.0,
+        "weight_pct": 4.8856
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11677932812.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.3709
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 10000245261.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.743
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 7469434519.0,
+        "shares": 27033784.0,
+        "weight_pct": 2.7957
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 5398092493.0,
+        "shares": 36095570.0,
+        "weight_pct": 2.0204
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3057500001.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.1444
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2746660741.0,
+        "shares": 13271457.0,
+        "weight_pct": 1.028
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2678283465.0,
+        "shares": 117468573.0,
+        "weight_pct": 1.0024
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2622329258.0,
+        "shares": 8297460.0,
+        "weight_pct": 0.9815
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 2193900000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.8211
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 2099249237.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.7857
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1472556000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.5512
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1328484000.0,
+        "shares": 7450000.0,
+        "weight_pct": 0.4972
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 1242975604.0,
+        "shares": 5624324.0,
+        "weight_pct": 0.4652
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1044290001.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.3909
+      },
+      {
+        "cusip": "172967424",
+        "issuer": "CITIGROUP INC",
+        "value": 1030474546.0,
+        "shares": 14639502.0,
+        "weight_pct": 0.3857
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 999868320.0,
+        "shares": 2382000.0,
+        "weight_pct": 0.3742
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 960175500.0,
+        "shares": 4350000.0,
+        "weight_pct": 0.3594
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 743056007.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.2781
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 682715232.0,
+        "shares": 1991759.0,
+        "weight_pct": 0.2555
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 630214018.0,
+        "shares": 6801360.0,
+        "weight_pct": 0.2359
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 586589315.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.2196
+      },
+      {
+        "cusip": "G6683N103",
+        "issuer": "NU HLDGS LTD",
+        "value": 416266540.0,
+        "shares": 40180168.0,
+        "weight_pct": 0.1558
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 331907297.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1242
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 204117028.0,
+        "shares": 598689.0,
+        "weight_pct": 0.0764
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 195325757.0,
+        "shares": 1049687.0,
+        "weight_pct": 0.0731
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 90883937.0,
+        "shares": 11112.0,
+        "weight_pct": 0.034
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 33990947.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0127
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 28953858.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0108
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 20162390.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0075
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 16731838.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0063
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8556657.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0032
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 8140687.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.003
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-25-005701",
+    "filing_date": "2025-05-15",
+    "report_date": "2025-03-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 66639000000.0,
+        "shares": 300000000.0,
+        "weight_pct": 25.7591
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 40790858835.0,
+        "shares": 151610700.0,
+        "weight_pct": 15.7676
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 28648000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 11.0738
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 26355563449.0,
+        "shares": 631573531.0,
+        "weight_pct": 10.1876
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 19842356232.0,
+        "shares": 118610534.0,
+        "weight_pct": 7.67
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 13077509034.0,
+        "shares": 264941431.0,
+        "weight_pct": 5.0551
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11488468917.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.4408
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 9909067512.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.8303
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 8163932430.0,
+        "shares": 27033784.0,
+        "weight_pct": 3.1557
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 5375745012.0,
+        "shares": 35142479.0,
+        "weight_pct": 2.078
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3384499999.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.3083
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 3373901836.0,
+        "shares": 13289880.0,
+        "weight_pct": 1.3042
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2907927832.0,
+        "shares": 8297460.0,
+        "weight_pct": 1.124
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2700365521.0,
+        "shares": 119776692.0,
+        "weight_pct": 1.0438
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 2203891680.0,
+        "shares": 12009000.0,
+        "weight_pct": 0.8519
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 2185161502.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.8447
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 1902600000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.7354
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1636269000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.6325
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1281995000.0,
+        "shares": 7150000.0,
+        "weight_pct": 0.4956
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 1204040643.0,
+        "shares": 2620613.0,
+        "weight_pct": 0.4654
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1057630000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4088
+      },
+      {
+        "cusip": "872590104",
+        "issuer": "T-MOBILE US INC",
+        "value": 1035673603.0,
+        "shares": 3883145.0,
+        "weight_pct": 0.4003
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 743929420.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.2876
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 731258969.0,
+        "shares": 1984259.0,
+        "weight_pct": 0.2827
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 521047660.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.2014
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 466064400.0,
+        "shares": 1464000.0,
+        "weight_pct": 0.1802
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 335298177.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1296
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 316115120.0,
+        "shares": 3512000.0,
+        "weight_pct": 0.1222
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 245165705.0,
+        "shares": 1162088.0,
+        "weight_pct": 0.0948
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 80499662.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0311
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 23865923.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0092
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 23225702.0,
+        "shares": 433558.0,
+        "weight_pct": 0.009
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 16641028.0,
+        "shares": 152572.0,
+        "weight_pct": 0.0064
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 16652913.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0064
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 8948036.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 7973764.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0031
+      }
+    ]
+  },
+  {
+    "accession_number": "0000950123-25-008343",
+    "filing_date": "2025-08-14",
+    "report_date": "2025-06-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 57447600000.0,
+        "shares": 280000000.0,
+        "weight_pct": 22.3079
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 48360781086.0,
+        "shares": 151610700.0,
+        "weight_pct": 18.7793
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 28641252185.0,
+        "shares": 605267375.0,
+        "weight_pct": 11.1219
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 28300000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 10.9894
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 17478457567.0,
+        "shares": 122064792.0,
+        "weight_pct": 6.7872
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 12374113948.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.8051
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 11130189516.0,
+        "shares": 264941431.0,
+        "weight_pct": 4.322
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 8407891001.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.2649
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 7832227900.0,
+        "shares": 27033784.0,
+        "weight_pct": 3.0414
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4814317266.0,
+        "shares": 33796541.0,
+        "weight_pct": 1.8695
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 3838117344.0,
+        "shares": 13289880.0,
+        "weight_pct": 1.4904
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3586500001.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.3927
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2946013173.0,
+        "shares": 8297460.0,
+        "weight_pct": 1.144
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2751270614.0,
+        "shares": 119776692.0,
+        "weight_pct": 1.0684
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 2240256977.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.8699
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 2193900000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.8519
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 2179912000.0,
+        "shares": 13400000.0,
+        "weight_pct": 0.8465
+      },
+      {
+        "cusip": "91324P102",
+        "issuer": "UNITEDHEALTH GROUP INC",
+        "value": 1572192781.0,
+        "shares": 5039564.0,
+        "weight_pct": 0.6105
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1521234000.0,
+        "shares": 7150000.0,
+        "weight_pct": 0.5907
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1462716000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.568
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 1186820921.0,
+        "shares": 2633868.0,
+        "weight_pct": 0.4609
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1129550000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4386
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 1008195800.0,
+        "shares": 3458885.0,
+        "weight_pct": 0.3915
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 886077366.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.3441
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 856792068.0,
+        "shares": 6614112.0,
+        "weight_pct": 0.3327
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 779689116.0,
+        "shares": 7048993.0,
+        "weight_pct": 0.3028
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 487115550.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1892
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 433699170.0,
+        "shares": 1060882.0,
+        "weight_pct": 0.1684
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 396334015.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1539
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 334980855.0,
+        "shares": 1294612.0,
+        "weight_pct": 0.1301
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 315438998.0,
+        "shares": 3018555.0,
+        "weight_pct": 0.1225
+      },
+      {
+        "cusip": "23331A109",
+        "issuer": "D R HORTON INC",
+        "value": 191491322.0,
+        "shares": 1485350.0,
+        "weight_pct": 0.0744
+      },
+      {
+        "cusip": "512816109",
+        "issuer": "LAMAR ADVERTISING CO NEW",
+        "value": 141931370.0,
+        "shares": 1169507.0,
+        "weight_pct": 0.0551
+      },
+      {
+        "cusip": "G0176J109",
+        "issuer": "ALLEGION PLC",
+        "value": 112432768.0,
+        "shares": 780133.0,
+        "weight_pct": 0.0437
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 82069454.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0319
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 23711287.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0092
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 22966310.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0089
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 19042883.0,
+        "shares": 180930.0,
+        "weight_pct": 0.0074
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 16047832.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0062
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 10459877.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0041
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 7986604.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0031
+      }
+    ]
+  },
+  {
+    "accession_number": "0001193125-25-282901",
+    "filing_date": "2025-11-14",
+    "report_date": "2025-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 60656116097.0,
+        "shares": 238212764.0,
+        "weight_pct": 22.6892
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 50359010112.0,
+        "shares": 151610700.0,
+        "weight_pct": 18.8375
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMER CORP",
+        "value": 29306731919.0,
+        "shares": 568070012.0,
+        "weight_pct": 10.9626
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 26528000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 9.9231
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 18955441549.0,
+        "shares": 122064792.0,
+        "weight_pct": 7.0905
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 12518482615.0,
+        "shares": 264941431.0,
+        "weight_pct": 4.6827
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11754655821.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.397
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 8843709614.0,
+        "shares": 31332895.0,
+        "weight_pct": 3.3081
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 8479530661.0,
+        "shares": 325634818.0,
+        "weight_pct": 3.1719
+      },
+      {
+        "cusip": "02079K305",
+        "issuer": "ALPHABET INC",
+        "value": 4338397121.0,
+        "shares": 17846142.0,
+        "weight_pct": 1.6228
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4273176132.0,
+        "shares": 32160579.0,
+        "weight_pct": 1.5984
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3370500001.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.2608
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2904885649.0,
+        "shares": 124807117.0,
+        "weight_pct": 1.0866
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2832586895.0,
+        "shares": 8297460.0,
+        "weight_pct": 1.0596
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2513300752.0,
+        "shares": 8989880.0,
+        "weight_pct": 0.9401
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INC",
+        "value": 2267645249.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.8482
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 2195700000.0,
+        "shares": 10000000.0,
+        "weight_pct": 0.8213
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 1804578000.0,
+        "shares": 13400000.0,
+        "weight_pct": 0.675
+      },
+      {
+        "cusip": "91324P102",
+        "issuer": "UNITEDHEALTH GROUP INC",
+        "value": 1740161449.0,
+        "shares": 5039564.0,
+        "weight_pct": 0.6509
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1519947000.0,
+        "shares": 7150000.0,
+        "weight_pct": 0.5686
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1461978000.0,
+        "shares": 4100000.0,
+        "weight_pct": 0.5469
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 1287335476.0,
+        "shares": 2981945.0,
+        "weight_pct": 0.4815
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1136800000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4252
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 1072496472.0,
+        "shares": 3458885.0,
+        "weight_pct": 0.4012
+      },
+      {
+        "cusip": "531229722",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 1058685587.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.396
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 888701738.0,
+        "shares": 7050950.0,
+        "weight_pct": 0.3324
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 867801447.0,
+        "shares": 6407749.0,
+        "weight_pct": 0.3246
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 503260211.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1883
+      },
+      {
+        "cusip": "531229748",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 470235248.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1759
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 328947963.0,
+        "shares": 1294612.0,
+        "weight_pct": 0.123
+      },
+      {
+        "cusip": "531229854",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 315288070.0,
+        "shares": 3018555.0,
+        "weight_pct": 0.1179
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 291853943.0,
+        "shares": 1060882.0,
+        "weight_pct": 0.1092
+      },
+      {
+        "cusip": "512816109",
+        "issuer": "LAMAR ADVERTISING CO NEW",
+        "value": 147162306.0,
+        "shares": 1202110.0,
+        "weight_pct": 0.055
+      },
+      {
+        "cusip": "G0176J109",
+        "issuer": "ALLEGION PLC",
+        "value": 138356588.0,
+        "shares": 780133.0,
+        "weight_pct": 0.0518
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 89281142.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0334
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 28363364.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0106
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 21809266.0,
+        "shares": 2630792.0,
+        "weight_pct": 0.0082
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO P L C",
+        "value": 21734183.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0081
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 21715790.0,
+        "shares": 180980.0,
+        "weight_pct": 0.0081
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 10837129.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0041
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 9301396.0,
+        "shares": 223645.0,
+        "weight_pct": 0.0035
+      }
+    ]
+  },
+  {
+    "accession_number": "0001193125-26-054580",
+    "filing_date": "2026-02-17",
+    "report_date": "2025-12-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 61961735283.0,
+        "shares": 227917808.0,
+        "weight_pct": 22.6006
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 56088378465.0,
+        "shares": 151610700.0,
+        "weight_pct": 20.4583
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMERICA CORP",
+        "value": 28451276370.0,
+        "shares": 517295934.0,
+        "weight_pct": 10.3776
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 27964000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 10.1999
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORP NEW",
+        "value": 19837131131.0,
+        "shares": 130156362.0,
+        "weight_pct": 7.2356
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 12602556092.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.5968
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 10894391643.0,
+        "shares": 264941431.0,
+        "weight_pct": 3.9737
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 10689854998.0,
+        "shares": 34249183.0,
+        "weight_pct": 3.8991
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 7896644337.0,
+        "shares": 325634818.0,
+        "weight_pct": 2.8803
+      },
+      {
+        "cusip": "02079K305",
+        "issuer": "ALPHABET INC",
+        "value": 5585842446.0,
+        "shares": 17846142.0,
+        "weight_pct": 2.0374
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 3608147375.0,
+        "shares": 31759065.0,
+        "weight_pct": 1.3161
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3124000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.1395
+      },
+      {
+        "cusip": "92826C839",
+        "issuer": "VISA INC",
+        "value": 2910002197.0,
+        "shares": 8297460.0,
+        "weight_pct": 1.0614
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUS XM HOLDINGS INC",
+        "value": 2495518305.0,
+        "shares": 124807117.0,
+        "weight_pct": 0.9102
+      },
+      {
+        "cusip": "57636Q104",
+        "issuer": "MASTERCARD INCORPORATED",
+        "value": 2275897610.0,
+        "shares": 3986648.0,
+        "weight_pct": 0.8301
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2184091346.0,
+        "shares": 8989880.0,
+        "weight_pct": 0.7966
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 1793480000.0,
+        "shares": 13000000.0,
+        "weight_pct": 0.6542
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1732874000.0,
+        "shares": 7150000.0,
+        "weight_pct": 0.6321
+      },
+      {
+        "cusip": "91324P102",
+        "issuer": "UNITEDHEALTH GROUP INC",
+        "value": 1663610472.0,
+        "shares": 5039564.0,
+        "weight_pct": 0.6068
+      },
+      {
+        "cusip": "25754A201",
+        "issuer": "DOMINOS PIZZA INC",
+        "value": 1396347000.0,
+        "shares": 3350000.0,
+        "weight_pct": 0.5093
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1313410001.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4791
+      },
+      {
+        "cusip": "G0403H108",
+        "issuer": "AON PLC",
+        "value": 1271424876.0,
+        "shares": 3602995.0,
+        "weight_pct": 0.4638
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 1045167939.0,
+        "shares": 6407749.0,
+        "weight_pct": 0.3812
+      },
+      {
+        "cusip": "530909308",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 907912688.0,
+        "shares": 10917661.0,
+        "weight_pct": 0.3312
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 724837660.0,
+        "shares": 7050950.0,
+        "weight_pct": 0.2644
+      },
+      {
+        "cusip": "73278L105",
+        "issuer": "POOL CORP",
+        "value": 702007444.0,
+        "shares": 3068885.0,
+        "weight_pct": 0.2561
+      },
+      {
+        "cusip": "023135106",
+        "issuer": "AMAZON COM INC",
+        "value": 525346320.0,
+        "shares": 2276000.0,
+        "weight_pct": 0.1916
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 457488683.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1669
+      },
+      {
+        "cusip": "530909100",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 406406923.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1482
+      },
+      {
+        "cusip": "650111107",
+        "issuer": "NEW YORK TIMES CO",
+        "value": 351663948.0,
+        "shares": 5065744.0,
+        "weight_pct": 0.1283
+      },
+      {
+        "cusip": "422806208",
+        "issuer": "HEICO CORP NEW",
+        "value": 326798907.0,
+        "shares": 1294612.0,
+        "weight_pct": 0.1192
+      },
+      {
+        "cusip": "531229755",
+        "issuer": "LIBERTY MEDIA CORP DEL",
+        "value": 297357853.0,
+        "shares": 3018555.0,
+        "weight_pct": 0.1085
+      },
+      {
+        "cusip": "16119P108",
+        "issuer": "CHARTER COMMUNICATIONS INC N",
+        "value": 221459118.0,
+        "shares": 1060882.0,
+        "weight_pct": 0.0808
+      },
+      {
+        "cusip": "512816109",
+        "issuer": "LAMAR ADVERTISING CO NEW",
+        "value": 152201058.0,
+        "shares": 1202410.0,
+        "weight_pct": 0.0555
+      },
+      {
+        "cusip": "G0176J109",
+        "issuer": "ALLEGION PLC",
+        "value": 124212776.0,
+        "shares": 780133.0,
+        "weight_pct": 0.0453
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 81037260.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0296
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINL GROUP INC",
+        "value": 26867589.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0098
+      },
+      {
+        "cusip": "25243Q205",
+        "issuer": "DIAGEO PLC",
+        "value": 19647993.0,
+        "shares": 227750.0,
+        "weight_pct": 0.0072
+      },
+      {
+        "cusip": "G9001E102",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 17711354.0,
+        "shares": 2396665.0,
+        "weight_pct": 0.0065
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 17214818.0,
+        "shares": 180980.0,
+        "weight_pct": 0.0063
+      },
+      {
+        "cusip": "G9001E128",
+        "issuer": "LIBERTY LATIN AMERICA LTD",
+        "value": 9578789.0,
+        "shares": 1284020.0,
+        "weight_pct": 0.0035
+      },
+      {
+        "cusip": "047726302",
+        "issuer": "ATLANTA BRAVES HLDGS INC",
+        "value": 4553634.0,
+        "shares": 115428.0,
+        "weight_pct": 0.0017
+      }
+    ]
+  },
+  {
+    "accession_number": "0001193125-26-226661",
+    "filing_date": "2026-05-15",
+    "report_date": "2026-03-31",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 57843260493.0,
+        "shares": 227917808.0,
+        "weight_pct": 21.9856
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 45859204536.0,
+        "shares": 151610700.0,
+        "weight_pct": 17.4306
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 30420000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 11.5623
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK AMERICA CORP",
+        "value": 25039178044.0,
+        "shares": 513624165.0,
+        "weight_pct": 9.5171
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORPORATION",
+        "value": 17457364606.0,
+        "shares": 84375856.0,
+        "weight_pct": 6.6354
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 17221193015.0,
+        "shares": 264941431.0,
+        "weight_pct": 6.5456
+      },
+      {
+        "cusip": "02079K305",
+        "issuer": "ALPHABET INC",
+        "value": 15600071913.0,
+        "shares": 54249798.0,
+        "weight_pct": 5.9294
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LTD SWITZ",
+        "value": 11162836215.0,
+        "shares": 34249183.0,
+        "weight_pct": 4.2429
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 10762190653.0,
+        "shares": 24669778.0,
+        "weight_pct": 4.0906
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 7323527057.0,
+        "shares": 325634818.0,
+        "weight_pct": 2.7836
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 4626158909.0,
+        "shares": 30100585.0,
+        "weight_pct": 1.7584
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 3618000000.0,
+        "shares": 50000000.0,
+        "weight_pct": 1.3752
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUSXM HOLDINGS INC",
+        "value": 2880548260.0,
+        "shares": 124807117.0,
+        "weight_pct": 1.0949
+      },
+      {
+        "cusip": "247361702",
+        "issuer": "DELTA AIR LINES INC",
+        "value": 2646532635.0,
+        "shares": 39809456.0,
+        "weight_pct": 1.0059
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2232726597.0,
+        "shares": 8989880.0,
+        "weight_pct": 0.8486
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 1304374500.0,
+        "shares": 7150000.0,
+        "weight_pct": 0.4958
+      },
+      {
+        "cusip": "650111107",
+        "issuer": "NEW YORK TIMES CO MTN BE",
+        "value": 1268219376.0,
+        "shares": 15146535.0,
+        "weight_pct": 0.482
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1137670000.0,
+        "shares": 29000000.0,
+        "weight_pct": 0.4324
+      },
+      {
+        "cusip": "02079K107",
+        "issuer": "ALPHABET INC",
+        "value": 1028454775.0,
+        "shares": 3585215.0,
+        "weight_pct": 0.3909
+      },
+      {
+        "cusip": "530909308",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 996356028.0,
+        "shares": 10587143.0,
+        "weight_pct": 0.3787
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 877052911.0,
+        "shares": 10099642.0,
+        "weight_pct": 0.3334
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 660686383.0,
+        "shares": 3907075.0,
+        "weight_pct": 0.2511
+      },
+      {
+        "cusip": "530909100",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 456970925.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1737
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 412113691.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1566
+      },
+      {
+        "cusip": "21036P108",
+        "issuer": "CONSTELLATION BRANDS INC",
+        "value": 94933500.0,
+        "shares": 632890.0,
+        "weight_pct": 0.0361
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 73226191.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0278
+      },
+      {
+        "cusip": "55616P104",
+        "issuer": "MACYS INC",
+        "value": 54963842.0,
+        "shares": 3038355.0,
+        "weight_pct": 0.0209
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 19995576.0,
+        "shares": 237703.0,
+        "weight_pct": 0.0076
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINANCIAL GROUP IN",
+        "value": 17892939.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0068
+      }
+    ]
+  },
+  {
+    "accession_number": "0001193125-26-352200",
+    "filing_date": "2026-08-14",
+    "report_date": "2026-06-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 65950296923.0,
+        "shares": 227917808.0,
+        "weight_pct": 22.0383
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 51282319275.0,
+        "shares": 151610700.0,
+        "weight_pct": 17.1367
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 32508000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 10.863
+      },
+      {
+        "cusip": "02079K305",
+        "issuer": "ALPHABET INC",
+        "value": 28157599351.0,
+        "shares": 78791167.0,
+        "weight_pct": 9.4093
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK OF AMER CORP",
+        "value": 27543790975.0,
+        "shares": 483394015.0,
+        "weight_pct": 9.2042
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORPORATION",
+        "value": 13986141890.0,
+        "shares": 84375856.0,
+        "weight_pct": 4.6737
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 12868205304.0,
+        "shares": 264941431.0,
+        "weight_pct": 4.3001
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 11670066615.0,
+        "shares": 34249183.0,
+        "weight_pct": 3.8997
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11173435852.0,
+        "shares": 24669778.0,
+        "weight_pct": 3.7338
+      },
+      {
+        "cusip": "02079K107",
+        "issuer": "ALPHABET INC",
+        "value": 9606489032.0,
+        "shares": 27188433.0,
+        "weight_pct": 3.2102
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 7691494401.0,
+        "shares": 325634818.0,
+        "weight_pct": 2.5702
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 6425268898.0,
+        "shares": 28880209.0,
+        "weight_pct": 2.1471
+      },
+      {
+        "cusip": "247361702",
+        "issuer": "DELTA AIR LINES INC",
+        "value": 5368591200.0,
+        "shares": 57320000.0,
+        "weight_pct": 1.794
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUSXM HOLDINGS INC",
+        "value": 3686802237.0,
+        "shares": 124807117.0,
+        "weight_pct": 1.232
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 2261494212.0,
+        "shares": 8989880.0,
+        "weight_pct": 0.7557
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2165670000.0,
+        "shares": 39000000.0,
+        "weight_pct": 0.7237
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1240650000.0,
+        "shares": 27000000.0,
+        "weight_pct": 0.4146
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 1186481443.0,
+        "shares": 13111741.0,
+        "weight_pct": 0.3965
+      },
+      {
+        "cusip": "530909308",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 1118425787.0,
+        "shares": 10587143.0,
+        "weight_pct": 0.3737
+      },
+      {
+        "cusip": "650111107",
+        "issuer": "NEW YORK TIMES CO MTN BE",
+        "value": 1098686000.0,
+        "shares": 15700000.0,
+        "weight_pct": 0.3671
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 601860000.0,
+        "shares": 3000000.0,
+        "weight_pct": 0.2011
+      },
+      {
+        "cusip": "530909100",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 504941901.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1687
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 445592617.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1489
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 413814258.0,
+        "shares": 1857752.0,
+        "weight_pct": 0.1383
+      },
+      {
+        "cusip": "55616P104",
+        "issuer": "MACYS INC",
+        "value": 173031882.0,
+        "shares": 7347426.0,
+        "weight_pct": 0.0578
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 75710501.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0253
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 26445959.0,
+        "shares": 298117.0,
+        "weight_pct": 0.0088
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINANCIAL GROUP IN",
+        "value": 21669229.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0072
+      },
+      {
+        "cusip": "23331A109",
+        "issuer": "D R HORTON INC",
+        "value": 580504.0,
+        "shares": 3564.0,
+        "weight_pct": 0.0002
+      }
+    ]
+  },
+  {
+    "accession_number": "0001193125-26-463399",
+    "filing_date": "2026-11-16",
+    "report_date": "2026-09-30",
+    "holdings": [
+      {
+        "cusip": "037833100",
+        "issuer": "APPLE INC",
+        "value": 75901188420.0,
+        "shares": 227917808.0,
+        "weight_pct": 24.9514
+      },
+      {
+        "cusip": "025816109",
+        "issuer": "AMERICAN EXPRESS CO",
+        "value": 46104813870.0,
+        "shares": 151610700.0,
+        "weight_pct": 15.1563
+      },
+      {
+        "cusip": "191216100",
+        "issuer": "COCA COLA CO",
+        "value": 34432000000.0,
+        "shares": 400000000.0,
+        "weight_pct": 11.319
+      },
+      {
+        "cusip": "02079K305",
+        "issuer": "ALPHABET INC",
+        "value": 27110464741.0,
+        "shares": 78791167.0,
+        "weight_pct": 8.9122
+      },
+      {
+        "cusip": "060505104",
+        "issuer": "BANK OF AMER CORP",
+        "value": 24812509222.0,
+        "shares": 455860908.0,
+        "weight_pct": 8.1567
+      },
+      {
+        "cusip": "166764100",
+        "issuer": "CHEVRON CORPORATION",
+        "value": 17230393553.0,
+        "shares": 84375856.0,
+        "weight_pct": 5.6642
+      },
+      {
+        "cusip": "674599105",
+        "issuer": "OCCIDENTAL PETE CORP",
+        "value": 14656559963.0,
+        "shares": 264941431.0,
+        "weight_pct": 4.8181
+      },
+      {
+        "cusip": "615369105",
+        "issuer": "MOODYS CORP",
+        "value": 11203286284.0,
+        "shares": 24669778.0,
+        "weight_pct": 3.6829
+      },
+      {
+        "cusip": "H1467J104",
+        "issuer": "CHUBB LIMITED",
+        "value": 11139546771.0,
+        "shares": 34249183.0,
+        "weight_pct": 3.662
+      },
+      {
+        "cusip": "02079K107",
+        "issuer": "ALPHABET INC",
+        "value": 9264186660.0,
+        "shares": 27188433.0,
+        "weight_pct": 3.0455
+      },
+      {
+        "cusip": "500754106",
+        "issuer": "KRAFT HEINZ CO",
+        "value": 7398423065.0,
+        "shares": 325634818.0,
+        "weight_pct": 2.4321
+      },
+      {
+        "cusip": "247361702",
+        "issuer": "DELTA AIR LINES INC",
+        "value": 5378997000.0,
+        "shares": 64450000.0,
+        "weight_pct": 1.7683
+      },
+      {
+        "cusip": "23918K108",
+        "issuer": "DAVITA INC",
+        "value": 5019719296.0,
+        "shares": 28697229.0,
+        "weight_pct": 1.6502
+      },
+      {
+        "cusip": "829933100",
+        "issuer": "SIRIUSXM HOLDINGS INC",
+        "value": 3230008188.0,
+        "shares": 124807117.0,
+        "weight_pct": 1.0618
+      },
+      {
+        "cusip": "526057104",
+        "issuer": "LENNAR CORP",
+        "value": 2124149633.0,
+        "shares": 26034436.0,
+        "weight_pct": 0.6983
+      },
+      {
+        "cusip": "501044101",
+        "issuer": "KROGER CO",
+        "value": 2051700000.0,
+        "shares": 35000000.0,
+        "weight_pct": 0.6745
+      },
+      {
+        "cusip": "92343E102",
+        "issuer": "VERISIGN INC",
+        "value": 1670101573.0,
+        "shares": 5922136.0,
+        "weight_pct": 0.549
+      },
+      {
+        "cusip": "530909308",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 1029599657.0,
+        "shares": 10587143.0,
+        "weight_pct": 0.3385
+      },
+      {
+        "cusip": "02005N100",
+        "issuer": "ALLY FINL INC",
+        "value": 1015740001.0,
+        "shares": 27000000.0,
+        "weight_pct": 0.3339
+      },
+      {
+        "cusip": "650111107",
+        "issuer": "NEW YORK TIMES CO MTN BE",
+        "value": 1000090000.0,
+        "shares": 15700000.0,
+        "weight_pct": 0.3288
+      },
+      {
+        "cusip": "T19377109",
+        "issuer": "BENDING SPOONS SPA",
+        "value": 689379305.0,
+        "shares": 20689655.0,
+        "weight_pct": 0.2266
+      },
+      {
+        "cusip": "530909100",
+        "issuer": "LIBERTY LIVE HOLDINGS INC",
+        "value": 471930689.0,
+        "shares": 4986588.0,
+        "weight_pct": 0.1551
+      },
+      {
+        "cusip": "670346105",
+        "issuer": "NUCOR CORP",
+        "value": 369506390.0,
+        "shares": 1580776.0,
+        "weight_pct": 0.1215
+      },
+      {
+        "cusip": "546347105",
+        "issuer": "LOUISIANA PAC CORP",
+        "value": 365662388.0,
+        "shares": 5664793.0,
+        "weight_pct": 0.1202
+      },
+      {
+        "cusip": "14040H105",
+        "issuer": "CAPITAL ONE FINL CORP",
+        "value": 222030500.0,
+        "shares": 1150000.0,
+        "weight_pct": 0.073
+      },
+      {
+        "cusip": "55616P104",
+        "issuer": "MACYS INC",
+        "value": 171658476.0,
+        "shares": 7538800.0,
+        "weight_pct": 0.0564
+      },
+      {
+        "cusip": "62944T105",
+        "issuer": "NVR INC",
+        "value": 68387582.0,
+        "shares": 11112.0,
+        "weight_pct": 0.0225
+      },
+      {
+        "cusip": "526057302",
+        "issuer": "LENNAR CORP",
+        "value": 44234470.0,
+        "shares": 553000.0,
+        "weight_pct": 0.0145
+      },
+      {
+        "cusip": "47233W109",
+        "issuer": "JEFFERIES FINANCIAL GROUP IN",
+        "value": 19826607.0,
+        "shares": 433558.0,
+        "weight_pct": 0.0065
+      },
+      {
+        "cusip": "23331A109",
+        "issuer": "D R HORTON INC",
+        "value": 487021.0,
+        "shares": 3564.0,
+        "weight_pct": 0.0002
+      }
+    ]
+  }
+]

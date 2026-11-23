@@ -136,6 +136,7 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
         "simulator.py": _ARENA_DIR / "engine" / "simulator.py",
         "coded_agents.py": _ARENA_DIR / "agents" / "coded_agents.py",
         "llm_agents.py": _ARENA_DIR / "agents" / "llm_agents.py",
+        "style_agents.py": _ARENA_DIR / "agents" / "style_agents.py",
     }
     for name, path in engine_files.items():
         if hashes.get(name) in (None, "", "MISSING") and path.exists() and path.is_file():
@@ -838,7 +839,18 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
         return 0
 
-    # 4. Market is OPEN (or forced for verification): execute live cycle
+    # 4. Hard live-safety check: NEVER trade on synthetic offline data when Alpaca credentials are missing
+    if not client.has_credentials():
+        logger.error(
+            "ALPACA_API_KEY / ALPACA_SECRET_KEY are NOT configured in environment or GitHub Secrets. "
+            "Refusing to execute live trades on synthetic fallback data. Please add your Alpaca Paper API keys."
+        )
+        comp_state["last_updated_utc"] = format_iso_utc(now_utc)
+        save_competition_state(comp_state, state_dir=state_dir)
+        _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
+        return 0
+
+    # 5. Market is OPEN (or forced for verification): execute live cycle
     decision_timestamp = format_iso_utc(parse_iso_utc(now_iso))
     prospective_dates = sorted(set(active_dates + [today_et]))
     day_number = len(prospective_dates)
@@ -852,34 +864,30 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         force_open,
     )
 
-    if client.has_credentials():
-        snapshot = client.fetch_market_snapshot(
-            decision_timestamp=decision_timestamp,
-            trading_day_number=day_number,
+    snapshot = client.fetch_market_snapshot(
+        decision_timestamp=decision_timestamp,
+        trading_day_number=day_number,
+    )
+    if not snapshot.bars_by_ticker.get("SPY"):
+        logger.error(
+            "Alpaca API returned no live SPY bars for %s (check paper API key validity or market status). "
+            "Skipping trade execution to prevent trading on synthetic data.",
+            decision_timestamp,
         )
-        # If Alpaca IEX feed returned empty bars (e.g. forced check while market closed), fall back to replay snapshot
-        if not snapshot.bars_by_ticker.get("SPY"):
-            logger.info("No live bars returned (market closed / pre-open); using historical provider snapshot.")
-            provider = HistoricalReplayProvider(client=client, offline=False)
-            cycles = provider.get_replay_cycles(num_days=1)
-            snapshot, next_bars, next_quotes, fill_timestamp = cycles[-1]
-        else:
-            next_quotes, next_bars = client.fetch_next_fill_quotes_and_bars(
-                tickers=UNIVERSE,
-                after_decision_timestamp=decision_timestamp,
-            )
-            fill_dt = max(
-                datetime.now(timezone.utc),
-                parse_iso_utc(decision_timestamp) + timedelta(seconds=1),
-            )
-            fill_timestamp = format_iso_utc(fill_dt)
-    else:
-        logger.warning(
-            "Alpaca credentials not configured; executing cycle with deterministic fallback snapshot."
-        )
-        provider = HistoricalReplayProvider(offline=True)
-        cycles = provider.get_replay_cycles(num_days=1)
-        snapshot, next_bars, next_quotes, fill_timestamp = cycles[-1]
+        comp_state["last_updated_utc"] = format_iso_utc(now_utc)
+        save_competition_state(comp_state, state_dir=state_dir)
+        _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
+        return 0
+
+    next_quotes, next_bars = client.fetch_next_fill_quotes_and_bars(
+        tickers=UNIVERSE,
+        after_decision_timestamp=decision_timestamp,
+    )
+    fill_dt = max(
+        datetime.now(timezone.utc),
+        parse_iso_utc(decision_timestamp) + timedelta(seconds=1),
+    )
+    fill_timestamp = format_iso_utc(fill_dt)
 
     agents = build_competition_agents(allow_offline_llm_simulation=False, force_offline_llm=False)
     updated_comp = run_single_cycle(
@@ -1152,6 +1160,32 @@ def cmd_verify_setup(args: argparse.Namespace) -> int:
 # Argument Parser & Entrypoint
 # ---------------------------------------------------------------------------
 
+def cmd_learn_styles(args: argparse.Namespace) -> int:
+    """Learn Berkshire (5y 13F) & Congress (2y House PTR) style patterns with Train/Test vs SPY validation."""
+    from arena.research.berkshire_learner import BerkshireStyleLearner
+    from arena.research.congress_learner import CongressStyleLearner
+    from arena.research.market_history import MarketHistoryCache
+
+    start_date = str(getattr(args, "start_date", "") or datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    offline = bool(getattr(args, "offline", False))
+
+    mc = MarketHistoryCache(offline=offline)
+    cache_as_of = (date.fromisoformat(start_date) - timedelta(days=1)).isoformat()
+    logger.info("Building universe fundamentals snapshot as of %s (strictly before %s)...", cache_as_of, start_date)
+    mc.build_universe_snapshot_cache(cache_as_of)
+
+    b_res = BerkshireStyleLearner(market_cache=mc, offline=offline).train_validate_and_save(agent_start_date=start_date)
+    c_res = CongressStyleLearner(market_cache=mc, offline=offline).train_validate_and_save(agent_start_date=start_date)
+
+    print("=" * 90)
+    print("  LEARNED FILING-STYLE PATTERNS — OUT-OF-SAMPLE BACKTEST VS SPY")
+    print("=" * 90)
+    print(f"  11. Berkshire Style: {b_res['out_of_sample_test']['plain_verdict']}")
+    print(f"  12. Congress Style : {c_res['out_of_sample_test']['plain_verdict']}")
+    print("=" * 90)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m arena.cli",
@@ -1211,6 +1245,20 @@ def build_parser() -> argparse.ArgumentParser:
         help="Check .env keys, Alpaca Paper clock/calendar, Gemini Flash API, and strategy SHA-256 hashes.",
     )
     p_verify.set_defaults(func=cmd_verify_setup)
+
+    # learn-styles
+    p_learn = subparsers.add_parser(
+        "learn-styles",
+        help="Learn Berkshire (5y 13F) & Congress (2y House PTR) style patterns and run Train/Test split vs SPY.",
+    )
+    p_learn.add_argument(
+        "--start-date",
+        type=str,
+        default=None,
+        help="Competition start date YYYY-MM-DD; strictly excludes filings published on/after this date.",
+    )
+    p_learn.add_argument("--offline", action="store_true", help="Use only already-cached filings and prices.")
+    p_learn.set_defaults(func=cmd_learn_styles)
 
     return parser
 

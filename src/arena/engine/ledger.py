@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from src.arena.config import (
+from ..config import (
     AGENT_SPECS,
     AGENT_SPECS_BY_ID,
     AGENTS_STATE_DIR,
@@ -17,8 +17,8 @@ from src.arena.config import (
     MAX_TOTAL_DRAWDOWN_PCT,
     AgentSpec,
 )
-from src.arena.engine.simulator import FillSimulator
-from src.arena.models import (
+from .simulator import FillSimulator
+from ..models import (
     AgentLedgerState,
     Bar,
     DailyJournalEntry,

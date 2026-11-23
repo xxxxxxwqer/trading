@@ -6,7 +6,7 @@ import math
 from datetime import datetime, timezone
 from typing import Optional, Union
 
-from src.arena.config import (
+from ..config import (
     AGENT_SPECS_BY_ID,
     COMMISSION_DOLLARS,
     DAILY_LOSS_LIMIT_PCT,
@@ -19,7 +19,7 @@ from src.arena.config import (
     SLIPPAGE_RATE,
     UNIVERSE_SET,
 )
-from src.arena.models import (
+from ..models import (
     AgentLedgerState,
     Bar,
     OrderSignal,

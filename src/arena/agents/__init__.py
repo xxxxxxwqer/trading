@@ -15,6 +15,7 @@ from .coded_agents import (
     SectorRotationAgent,
     TrendFollowingAgent,
 )
+from .style_agents import BerkshireStyleAgent, CongressStyleAgent
 
 try:
     from .llm_agents import LLMAgent
@@ -29,6 +30,8 @@ CODED_AND_CONTROL_AGENT_CLASSES: Dict[str, Type[BaseAgent]] = {
     "coded_sector": SectorRotationAgent,
     "ctrl_spy": BuyAndHoldSPYAgent,
     "ctrl_random": RandomTraderAgent,
+    "style_berkshire": BerkshireStyleAgent,
+    "style_congress": CongressStyleAgent,
 }
 
 
@@ -77,6 +80,8 @@ __all__ = [
     "SectorRotationAgent",
     "BuyAndHoldSPYAgent",
     "RandomTraderAgent",
+    "BerkshireStyleAgent",
+    "CongressStyleAgent",
     "LLMAgent",
     "build_all_agents",
 ]

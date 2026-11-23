@@ -23,8 +23,9 @@
     "strategy_hashes": {
       "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
       "llm_agents.py": "b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189",
-      "risk_manager.py": "d9300d8b85aa2b9751b1f498387ec245f3c53a965076c892114f830a8810b0f8",
-      "simulator.py": "b06ac1f5f6798ac66b60c450f17feabf8735371841d29f10e15f2e2572474ad9"
+      "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
+      "risk_manager.py": "eaac768c9e2048ccfc8acc0a49c77d03bb75cb4fc537afe058e66ca595f3f545",
+      "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
     },
     "strategy_integrity_verified": true,
     "started_at_utc": "2026-11-05T14:30:00Z",
@@ -126,6 +127,51 @@
       "rank": 2
     },
     {
+      "agent_id": "style_congress",
+      "name": "12. Congress Style (House PTR Pattern)",
+      "category": "Filing-Style Learned",
+      "short_category": "Filing-Style",
+      "category_class": "cat-style",
+      "short_description": "Learns US House members' 2-year stock-buying style (sectors, size, 30-day pre-trade move, typical buy-to-sell hold time) from cached PTR PDFs and applies those rules to today's universe without copying trades.",
+      "playbook": "Never buys a stock because a member of Congress traded it. Parses 2 years of US House PTR PDFs (shares only, all members, filings public before launch) once into cache to measure sector mix, company size, 30-day pre-trade price momentum, and typical purchase-to-sale hold time, then screens our liquid universe with those explicit rules under the shared risk manager.",
+      "flatten_eod": false,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 10552.55,
+      "cash": 203.03,
+      "positions_value": 10349.52,
+      "open_positions_count": 5,
+      "unrealized_pnl": 206.65,
+      "peak_equity": 10552.55,
+      "net_profit": 552.55,
+      "net_return_pct": 5.53,
+      "return_vs_spy_pct": 3.47,
+      "max_drawdown_pct": -0.65,
+      "current_drawdown_pct": 0.0,
+      "daily_pnl_pct": 2.09,
+      "total_fills": 11,
+      "buy_fills_count": 8,
+      "closed_trades_count": 3,
+      "win_count": 3,
+      "loss_count": 0,
+      "win_rate_pct": 100.0,
+      "profit_factor": null,
+      "profit_factor_str": "∞",
+      "avg_win": 115.3,
+      "avg_loss": 0.0,
+      "gross_profit": 345.9,
+      "gross_loss": 0,
+      "total_spread_cost": 4.52,
+      "total_slippage_cost": 11.3,
+      "total_friction_cost": 15.82,
+      "total_notional": 22611.91,
+      "rejections_count": 0,
+      "color": "#f43f5e",
+      "rank": 3
+    },
+    {
       "agent_id": "coded_trend",
       "name": "1. Trend Follower (MA / Breakout)",
       "category": "Coded Strategy",
@@ -168,7 +214,7 @@
       "total_notional": 83944.76,
       "rejections_count": 0,
       "color": "#38bdf8",
-      "rank": 3
+      "rank": 4
     },
     {
       "agent_id": "llm_catalyst",
@@ -213,7 +259,52 @@
       "total_notional": 36710.04,
       "rejections_count": 0,
       "color": "#f472b6",
-      "rank": 4
+      "rank": 5
+    },
+    {
+      "agent_id": "style_berkshire",
+      "name": "11. Berkshire Style (13F Pattern)",
+      "category": "Filing-Style Learned",
+      "short_category": "Filing-Style",
+      "category_class": "cat-style",
+      "short_description": "Learns Berkshire Hathaway's 5-year 13F buying style (sectors, size, valuation, 52w-high distance, 3m trend, dividend, concentration) and applies those rules to today's universe without copying filings.",
+      "playbook": "Never buys a stock because it appeared in a 13F filing, and never infers timing from quarterly 13F dates. Measures Berkshire Hathaway's 5-year 13F style strictly from filings public before launch, converts the pattern into explicit rules (preferred sectors, large/mega-cap size, reasonable P/E, 52-week high pullback window, steady 3-month trend, cash dividend, concentrated low-turnover holds), and applies those rules to our liquid universe under the shared risk manager.",
+      "flatten_eod": false,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 10233.91,
+      "cash": 3.31,
+      "positions_value": 10230.6,
+      "open_positions_count": 5,
+      "unrealized_pnl": 233.91,
+      "peak_equity": 10233.91,
+      "net_profit": 233.91,
+      "net_return_pct": 2.34,
+      "return_vs_spy_pct": 0.28,
+      "max_drawdown_pct": -1.0,
+      "current_drawdown_pct": 0.0,
+      "daily_pnl_pct": 1.1,
+      "total_fills": 5,
+      "buy_fills_count": 5,
+      "closed_trades_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate_pct": 0.0,
+      "profit_factor": null,
+      "profit_factor_str": "N/A",
+      "avg_win": 0.0,
+      "avg_loss": 0.0,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "total_spread_cost": 2.0,
+      "total_slippage_cost": 5.0,
+      "total_friction_cost": 6.99,
+      "total_notional": 9996.69,
+      "rejections_count": 0,
+      "color": "#22c55e",
+      "rank": 6
     },
     {
       "agent_id": "ctrl_random",
@@ -258,7 +349,7 @@
       "total_notional": 68316.67,
       "rejections_count": 14,
       "color": "#94a3b8",
-      "rank": 5
+      "rank": 7
     },
     {
       "agent_id": "ctrl_spy",
@@ -303,7 +394,7 @@
       "total_notional": 9813.15,
       "rejections_count": 0,
       "color": "#ffffff",
-      "rank": 6
+      "rank": 8
     },
     {
       "agent_id": "coded_mean_rev",
@@ -348,7 +439,7 @@
       "total_notional": 80731.83,
       "rejections_count": 0,
       "color": "#818cf8",
-      "rank": 7
+      "rank": 9
     },
     {
       "agent_id": "llm_macro",
@@ -393,7 +484,7 @@
       "total_notional": 43363.45,
       "rejections_count": 0,
       "color": "#fb923c",
-      "rank": 8
+      "rank": 10
     },
     {
       "agent_id": "llm_technical",
@@ -438,7 +529,7 @@
       "total_notional": 103565.41,
       "rejections_count": 0,
       "color": "#34d399",
-      "rank": 9
+      "rank": 11
     },
     {
       "agent_id": "llm_cautious",
@@ -483,7 +574,7 @@
       "total_notional": 28822.7,
       "rejections_count": 0,
       "color": "#facc15",
-      "rank": 10
+      "rank": 12
     }
   ],
   "cohort_analysis": {
@@ -516,6 +607,21 @@
       "best_agent_return_pct": 2.46,
       "worst_agent_name": "8. Cautious Risk-First Trader (Gemini Flash)",
       "worst_agent_return_pct": -0.07
+    },
+    "Filing-Style Learned": {
+      "count": 2,
+      "avg_equity": 10393.23,
+      "avg_return_pct": 3.94,
+      "avg_max_drawdown_pct": -0.82,
+      "avg_win_rate_pct": 50.0,
+      "total_fills": 16,
+      "total_closed_trades": 3,
+      "total_friction_cost": 22.81,
+      "total_rejections": 0,
+      "best_agent_name": "12. Congress Style (House PTR Pattern)",
+      "best_agent_return_pct": 5.53,
+      "worst_agent_name": "11. Berkshire Style (13F Pattern)",
+      "worst_agent_return_pct": 2.34
     },
     "Buy-and-Hold SPY": {
       "count": 1,
@@ -604,6 +710,25 @@
       },
       {
         "rank": 3,
+        "agent_id": "style_congress",
+        "name": "12. Congress Style (House PTR Pattern)",
+        "short_category": "Filing-Style",
+        "n_days": 5,
+        "cum_return_pct": 5.53,
+        "mean_daily_pct": 1.084,
+        "std_daily_pct": 0.981,
+        "se_daily_pct": 0.439,
+        "cum_se_pct": 2.19,
+        "ci_95_low_pct": 1.23,
+        "ci_95_high_pct": 9.83,
+        "diff_vs_random_pct": 3.36,
+        "t_stat_vs_random": 3.56,
+        "diff_vs_spy_pct": 3.47,
+        "t_stat_vs_spy": 1.58,
+        "statistically_significant_95": true
+      },
+      {
+        "rank": 4,
         "agent_id": "coded_trend",
         "name": "1. Trend Follower (MA / Breakout)",
         "short_category": "Coded",
@@ -622,7 +747,7 @@
         "statistically_significant_95": true
       },
       {
-        "rank": 4,
+        "rank": 5,
         "agent_id": "llm_catalyst",
         "name": "6. News & Catalyst Trader (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -641,7 +766,26 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 5,
+        "rank": 6,
+        "agent_id": "style_berkshire",
+        "name": "11. Berkshire Style (13F Pattern)",
+        "short_category": "Filing-Style",
+        "n_days": 5,
+        "cum_return_pct": 2.34,
+        "mean_daily_pct": 0.466,
+        "std_daily_pct": 0.697,
+        "se_daily_pct": 0.312,
+        "cum_se_pct": 1.56,
+        "ci_95_low_pct": -0.71,
+        "ci_95_high_pct": 5.39,
+        "diff_vs_random_pct": 0.17,
+        "t_stat_vs_random": 0.16,
+        "diff_vs_spy_pct": 0.28,
+        "t_stat_vs_spy": 0.18,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 7,
         "agent_id": "ctrl_random",
         "name": "10. Random Trader (Luck Control)",
         "short_category": "Control",
@@ -660,7 +804,7 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 6,
+        "rank": 8,
         "agent_id": "ctrl_spy",
         "name": "9. Buy-and-Hold SPY (Benchmark)",
         "short_category": "Control",
@@ -679,7 +823,7 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 7,
+        "rank": 9,
         "agent_id": "coded_mean_rev",
         "name": "2. Mean Reversion (RSI / Bollinger)",
         "short_category": "Coded",
@@ -698,7 +842,7 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 8,
+        "rank": 10,
         "agent_id": "llm_macro",
         "name": "7. Macro & Sector Strategist (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -717,7 +861,7 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 9,
+        "rank": 11,
         "agent_id": "llm_technical",
         "name": "5. Technical Analyst (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -736,7 +880,7 @@
         "statistically_significant_95": false
       },
       {
-        "rank": 10,
+        "rank": 12,
         "agent_id": "llm_cautious",
         "name": "8. Cautious Risk-First Trader (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -756,12 +900,294 @@
       }
     ]
   },
+  "learned_patterns": {
+    "style_berkshire": {
+      "agent_id": "style_berkshire",
+      "agent_name": "11. Berkshire Style (13F Pattern)",
+      "source": "SEC EDGAR Berkshire Hathaway (CIK 0001067983) 13F-HR Filings (Last 5 Years)",
+      "agent_start_date": "2026-11-23",
+      "generated_at_utc": "2026-11-23T04:45:21Z",
+      "no_lookahead_verified": true,
+      "never_copy_filings": true,
+      "timing_learned_from_13f": false,
+      "train_split": {
+        "quarters": 14,
+        "report_date_range": [
+          "2021-12-31",
+          "2025-03-31"
+        ],
+        "filing_date_range": [
+          "2022-02-14",
+          "2025-05-15"
+        ],
+        "learned_rules": {
+          "never_copy_filings": true,
+          "timing_learned_from_13f": false,
+          "preferred_sectors": [
+            "Technology",
+            "Financials",
+            "Consumer Staples",
+            "Energy",
+            "Consumer Discretionary"
+          ],
+          "min_market_cap_usd": 10000000000.0,
+          "min_pe_ratio": 4.0,
+          "max_pe_ratio": 33.0,
+          "min_dist_from_52w_high_pct": -38.6,
+          "max_dist_from_52w_high_pct": 0.0,
+          "min_trend_3m_pct": -16.8,
+          "max_trend_3m_pct": 28.1,
+          "require_dividend": true,
+          "min_dividend_yield_pct": 1.3,
+          "target_max_positions": 5,
+          "low_turnover_min_hold_days": 5,
+          "stop_loss_atr_mult": 2.5,
+          "take_profit_pct": 8.0
+        }
+      },
+      "out_of_sample_test": {
+        "test_period": [
+          "2025-05-15",
+          "2026-11-20"
+        ],
+        "trading_days": 383,
+        "start_equity": 10000.0,
+        "end_equity": 10897.47,
+        "pattern_return_pct": 8.97,
+        "spy_return_pct": 16.59,
+        "excess_return_vs_spy_pct": -7.62,
+        "beat_spy": false,
+        "max_drawdown_pct": -4.31,
+        "trades_count": 52,
+        "closed_trades_count": 24,
+        "win_rate_pct": 37.5,
+        "plain_verdict": "NO — Did NOT beat SPY in out-of-sample test (2025-05-15 to 2026-11-20): Berkshire Style returned +8.97% vs SPY +16.59% (-7.62% vs SPY, max drawdown -4.31%). The defensive value/dividend rules lagged mega-cap growth leadership in the recent test window."
+      },
+      "full_5y_pattern": {
+        "top5_concentration_median_pct": 73.72,
+        "top5_concentration_avg_pct": 73.72,
+        "holding_quarters_median": 7.0,
+        "holding_quarters_avg": 9.3,
+        "sector_avg_portfolio_weight_pct": {
+          "Technology": 36.36,
+          "Financials": 31.48,
+          "Consumer Staples": 13.59,
+          "Energy": 10.65,
+          "Communication Services": 3.03,
+          "Health Care": 1.66,
+          "Consumer Discretionary": 1.08,
+          "Industrials": 0.48,
+          "Materials": 0.17,
+          "Real Estate": 0.01
+        },
+        "new_addition_sector_counts": {
+          "Communication Services": 8,
+          "Consumer Discretionary": 7,
+          "Financials": 6,
+          "Industrials": 5,
+          "Energy": 2,
+          "Technology": 2,
+          "Materials": 2,
+          "Health Care": 2,
+          "Consumer Staples": 2,
+          "Real Estate": 1
+        },
+        "company_size_distribution": {
+          "Large-Cap ($10B-$200B)": 391,
+          "Mega-Cap ($200B+)": 167,
+          "Mid-Cap ($2B-$10B)": 120,
+          "Small-Cap (<$2B)": 37
+        },
+        "median_holding_market_cap_usd": 42362927451.0,
+        "first_appearance_profile": {
+          "pe_median": 17.79,
+          "pe_p25": 8.7,
+          "pe_p75": 30.56,
+          "pe_sample_size": 34,
+          "dist_from_52w_high_median_pct": -18.08,
+          "dist_from_52w_high_p25_pct": -28.75,
+          "dist_from_52w_high_p75_pct": -7.67,
+          "trend_3m_median_pct": -2.46,
+          "trend_3m_p25_pct": -10.94,
+          "trend_3m_p75_pct": 16.75,
+          "dividend_payer_pct": 81.1,
+          "dividend_yield_median_pct": 1.73
+        }
+      },
+      "learned_rules": {
+        "never_copy_filings": true,
+        "timing_learned_from_13f": false,
+        "preferred_sectors": [
+          "Financials",
+          "Technology",
+          "Communication Services",
+          "Consumer Discretionary",
+          "Consumer Staples"
+        ],
+        "min_market_cap_usd": 10000000000.0,
+        "min_pe_ratio": 4.0,
+        "max_pe_ratio": 33.6,
+        "min_dist_from_52w_high_pct": -38.6,
+        "max_dist_from_52w_high_pct": 0.0,
+        "min_trend_3m_pct": -16.8,
+        "max_trend_3m_pct": 28.1,
+        "require_dividend": true,
+        "min_dividend_yield_pct": 1.11,
+        "target_max_positions": 5,
+        "low_turnover_min_hold_days": 5,
+        "stop_loss_atr_mult": 2.5,
+        "take_profit_pct": 8.0
+      },
+      "plain_language_rules": [
+        "Focus on Berkshire's top learned sectors: Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples (never buy a stock just because it was in a 13F filing).",
+        "Require established large/mega-cap size: market cap at least $10.0B (measured median holding size: $42.4B).",
+        "Require reasonable valuation: trailing P/E between 4.0x and 33.6x (median P/E at first 13F appearance: 17.8x).",
+        "Avoid chasing or falling knives: stock must trade between -38.6% and 0.0% from its 52-week high (median at first appearance: -18.1%) and have a 3-month price trend between -16.8% and +28.1% (median: -2.5%).",
+        "Require a cash dividend of at least 1.11% (81% of new 13F additions paid dividends, median yield 1.73%).",
+        "Concentrated, patient holding style: Berkshire keeps a median 73.7% of its portfolio in its Top 5 positions and holds positions a median 7.0 quarters (avg 9.3 quarters). Accordingly, hold up to 5 high-conviction positions with low turnover, wide risk-managed stops, and zero timing rules inferred from 13F dates."
+      ]
+    },
+    "style_congress": {
+      "agent_id": "style_congress",
+      "agent_name": "12. Congress Style (House PTR Pattern)",
+      "source": "US House Clerk Periodic Transaction Reports (Shares Only [ST], All Members, Last 2 Years)",
+      "agent_start_date": "2026-11-23",
+      "generated_at_utc": "2026-11-23T04:51:00Z",
+      "no_lookahead_verified": true,
+      "never_copy_filings": true,
+      "shares_only": true,
+      "pdf_cache_path": "data_cache/congress_ptr_parsed.json",
+      "ptr_corpus_stats": {
+        "eligible_pdfs": 1058,
+        "parsed_ok_pdfs": 1058,
+        "total_share_transactions": 9824,
+        "purchase_transactions": 4720,
+        "sale_transactions": 5104,
+        "unique_members": 110,
+        "unique_tickers": 1269
+      },
+      "train_split": {
+        "filing_date_cutoff": "2026-03-28",
+        "transactions_count": 7775,
+        "learned_rules": {
+          "never_copy_filings": true,
+          "shares_only": true,
+          "preferred_sectors": [
+            "Technology",
+            "Health Care",
+            "Consumer Discretionary",
+            "Financials",
+            "Industrials"
+          ],
+          "min_market_cap_usd": 50000000000.0,
+          "min_pre_trade_30d_move_pct": -7.8,
+          "max_pre_trade_30d_move_pct": 9.7,
+          "target_pre_trade_30d_move_pct": 0.53,
+          "typical_hold_days": 49,
+          "stop_loss_atr_mult": 2.0,
+          "take_profit_pct": 6.5
+        }
+      },
+      "out_of_sample_test": {
+        "test_period": [
+          "2026-03-30",
+          "2026-11-20"
+        ],
+        "trading_days": 165,
+        "start_equity": 10000.0,
+        "end_equity": 10965.93,
+        "pattern_return_pct": 9.66,
+        "spy_return_pct": 7.89,
+        "excess_return_vs_spy_pct": 1.77,
+        "beat_spy": true,
+        "max_drawdown_pct": -8.79,
+        "trades_count": 67,
+        "closed_trades_count": 33,
+        "win_rate_pct": 54.5,
+        "plain_verdict": "YES — Beat SPY in out-of-sample test (2026-03-30 to 2026-11-20): Congress Style returned +9.66% vs SPY +7.89% (+1.77% excess, max drawdown -8.79%)."
+      },
+      "full_2y_pattern": {
+        "sector_purchase_share_pct": {
+          "Technology": 32.43,
+          "Health Care": 13.93,
+          "Consumer Discretionary": 12.82,
+          "Financials": 11.22,
+          "Industrials": 9.42,
+          "Communication Services": 8.78,
+          "Consumer Staples": 5.04,
+          "Energy": 2.82,
+          "Materials": 1.37,
+          "Real Estate": 1.37,
+          "Utilities": 0.8
+        },
+        "sector_purchase_counts": {
+          "Technology": 850,
+          "Health Care": 365,
+          "Consumer Discretionary": 336,
+          "Financials": 294,
+          "Industrials": 247,
+          "Communication Services": 230,
+          "Consumer Staples": 132,
+          "Energy": 74,
+          "Materials": 36,
+          "Real Estate": 36,
+          "Utilities": 21
+        },
+        "company_size_distribution": {
+          "Mega-Cap ($200B+)": 1276,
+          "Large-Cap ($10B-$200B)": 1233,
+          "Mid-Cap ($2B-$10B)": 90,
+          "Small-Cap (<$2B)": 22
+        },
+        "median_purchase_market_cap_usd": 193768155871.48,
+        "pre_trade_30d_move": {
+          "median_pct": 0.33,
+          "p25_pct": -6.0,
+          "p75_pct": 7.55,
+          "positive_30d_share_pct": 51.3,
+          "sample_size": 2620
+        },
+        "purchase_to_sale_hold_days": {
+          "median_days": 59.0,
+          "avg_days": 105.7,
+          "p25_days": 26.0,
+          "p75_days": 146.0,
+          "matched_pairs": 2853
+        }
+      },
+      "learned_rules": {
+        "never_copy_filings": true,
+        "shares_only": true,
+        "preferred_sectors": [
+          "Technology",
+          "Health Care",
+          "Consumer Discretionary",
+          "Financials",
+          "Industrials"
+        ],
+        "min_market_cap_usd": 50000000000.0,
+        "min_pre_trade_30d_move_pct": -8.0,
+        "max_pre_trade_30d_move_pct": 9.6,
+        "target_pre_trade_30d_move_pct": 0.33,
+        "typical_hold_days": 59,
+        "stop_loss_atr_mult": 2.0,
+        "take_profit_pct": 6.5
+      },
+      "plain_language_rules": [
+        "Focus on the top 5 sectors most frequently bought by US House members: Technology, Health Care, Consumer Discretionary, Financials, Industrials (never copy a ticker because a lawmaker bought it).",
+        "Target liquid large/mega-cap companies with market cap at least $50.0B (measured median House purchase size: $193.8B).",
+        "Match Congress's pre-trade 30-day price setup (neutral / steady price action): enter stocks whose 30-day return is between -8.0% and +9.6% (historical median before trade date: +0.3%, 51% bought after positive 30-day moves).",
+        "Follow the measured purchase-to-sale holding cadence: median time between a member's buy and subsequent sale of the same stock is 59 days (IQR 26–146 days across 2853 matched buy->sale pairs). Hold positions with medium-term patience unless the stop-loss, take-profit, or trend/momentum breakdown triggers."
+      ]
+    }
+  },
   "bug_fixes": [],
   "strategy_hashes": {
     "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
     "llm_agents.py": "b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189",
-    "risk_manager.py": "d9300d8b85aa2b9751b1f498387ec245f3c53a965076c892114f830a8810b0f8",
-    "simulator.py": "b06ac1f5f6798ac66b60c450f17feabf8735371841d29f10e15f2e2572474ad9"
+    "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
+    "risk_manager.py": "eaac768c9e2048ccfc8acc0a49c77d03bb75cb4fc537afe058e66ca595f3f545",
+    "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
   },
   "agents": {
     "coded_trend": {
@@ -849,7 +1275,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_8afc60e8aeb3",
+          "trade_id": "trd_7294c15ca016",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "AXP",
@@ -871,7 +1297,7 @@
           "confidence": 0.88
         },
         {
-          "trade_id": "trd_4f1f4ebfa413",
+          "trade_id": "trd_f2973470b216",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "META",
@@ -893,7 +1319,7 @@
           "confidence": 0.92
         },
         {
-          "trade_id": "trd_5120cedcad19",
+          "trade_id": "trd_8272e5dbf069",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "ORCL",
@@ -915,7 +1341,7 @@
           "confidence": 0.92
         },
         {
-          "trade_id": "trd_2d66314aac15",
+          "trade_id": "trd_f46a90b34f42",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "CAT",
@@ -937,7 +1363,7 @@
           "confidence": 0.88
         },
         {
-          "trade_id": "trd_f16084ec9223",
+          "trade_id": "trd_a71811c3decf",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "JPM",
@@ -959,7 +1385,7 @@
           "confidence": 0.81
         },
         {
-          "trade_id": "trd_26edeace2e6d",
+          "trade_id": "trd_67c6f13305d9",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "AXP",
@@ -981,7 +1407,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_28bebb53bbee",
+          "trade_id": "trd_734b92548556",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "DIS",
@@ -1003,7 +1429,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_61567d8886d5",
+          "trade_id": "trd_3a00bc50b8c4",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "META",
@@ -1025,7 +1451,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_f8c4a92e2584",
+          "trade_id": "trd_0d76c3c81657",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "AMZN",
@@ -1047,7 +1473,7 @@
           "confidence": 0.88
         },
         {
-          "trade_id": "trd_884d7eb641c0",
+          "trade_id": "trd_4000ddbf5080",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "ORCL",
@@ -1069,7 +1495,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_e1202426a6f9",
+          "trade_id": "trd_8ceedd819426",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "CAT",
@@ -1091,7 +1517,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_feee7af0c111",
+          "trade_id": "trd_e2727aa8c11b",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "BAC",
@@ -1113,7 +1539,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_ee5b0f96196a",
+          "trade_id": "trd_d26cfe70006d",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLE",
@@ -1135,7 +1561,7 @@
           "confidence": 0.73
         },
         {
-          "trade_id": "trd_c095734db8a2",
+          "trade_id": "trd_ef811f645aed",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "XLE",
@@ -1157,7 +1583,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_fb1b0332eadb",
+          "trade_id": "trd_5f797b8628b5",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "HD",
@@ -1179,7 +1605,7 @@
           "confidence": 0.71
         },
         {
-          "trade_id": "trd_4272f745d96c",
+          "trade_id": "trd_cc91d8dee4b2",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "HD",
@@ -1201,7 +1627,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_08777499c184",
+          "trade_id": "trd_1c0b619d8674",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "LMT",
@@ -1223,7 +1649,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_8e9b3c571877",
+          "trade_id": "trd_a5d50aa891ad",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "JPM",
@@ -1245,7 +1671,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_499b20c5a9e0",
+          "trade_id": "trd_183d2053407a",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "LMT",
@@ -1267,7 +1693,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_4cb03ac3b0de",
+          "trade_id": "trd_39fbce207d9d",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "AMZN",
@@ -1289,7 +1715,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_7feb9b968060",
+          "trade_id": "trd_01fd9818aa59",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "DIS",
@@ -1311,7 +1737,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_634eeafbb40f",
+          "trade_id": "trd_a0448269f485",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "BAC",
@@ -1333,7 +1759,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_d2897712f744",
+          "trade_id": "trd_fb7baf0610d7",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLF",
@@ -1355,7 +1781,7 @@
           "confidence": 0.88
         },
         {
-          "trade_id": "trd_ec221ef064fe",
+          "trade_id": "trd_9ec0f25fbbad",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLP",
@@ -1377,7 +1803,7 @@
           "confidence": 0.73
         },
         {
-          "trade_id": "trd_85cbed8bdf4f",
+          "trade_id": "trd_27145cfbbc7f",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLI",
@@ -1399,7 +1825,7 @@
           "confidence": 0.91
         },
         {
-          "trade_id": "trd_601a1d07f034",
+          "trade_id": "trd_5fb12db02cc0",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "ORCL",
@@ -1421,7 +1847,7 @@
           "confidence": 0.91
         },
         {
-          "trade_id": "trd_fb0cb0eba67c",
+          "trade_id": "trd_d47963fe92c6",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLY",
@@ -1443,7 +1869,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_a3216e76879e",
+          "trade_id": "trd_5a9948f8d184",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "XLF",
@@ -1465,7 +1891,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_10f26fabb19f",
+          "trade_id": "trd_b4f73e581bc4",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "TSLA",
@@ -1487,7 +1913,7 @@
           "confidence": 0.87
         },
         {
-          "trade_id": "trd_e0d86d1683b8",
+          "trade_id": "trd_ef32fadceeca",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "ORCL",
@@ -1509,7 +1935,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_eb55efa55a0a",
+          "trade_id": "trd_647848f17e00",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "MU",
@@ -1531,7 +1957,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_b0f0149cd891",
+          "trade_id": "trd_ea40c4f5e3bd",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "XLI",
@@ -1553,7 +1979,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_32a9d3d4b662",
+          "trade_id": "trd_feefcc164e6d",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLRE",
@@ -1575,7 +2001,7 @@
           "confidence": 0.73
         },
         {
-          "trade_id": "trd_4603fcd11879",
+          "trade_id": "trd_e4fd488186ee",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "XLY",
@@ -1597,7 +2023,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_5c4875367192",
+          "trade_id": "trd_64eff288c292",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "ISRG",
@@ -1619,7 +2045,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_b9ddd018a3fd",
+          "trade_id": "trd_1fb11f51707c",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "MU",
@@ -1641,7 +2067,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_07d73fb3c24c",
+          "trade_id": "trd_9c7ffc6eca9a",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "XLY",
@@ -1663,7 +2089,7 @@
           "confidence": 0.71
         },
         {
-          "trade_id": "trd_5aa7dfcaeeab",
+          "trade_id": "trd_82727c364e24",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "XLY",
@@ -1685,7 +2111,7 @@
           "confidence": 0.82
         },
         {
-          "trade_id": "trd_abbf68c48147",
+          "trade_id": "trd_cd2b3c0fd90d",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "MS",
@@ -1707,7 +2133,7 @@
           "confidence": 0.75
         },
         {
-          "trade_id": "trd_9da085487783",
+          "trade_id": "trd_7d54541174a8",
           "agent_id": "coded_trend",
           "side": "SELL",
           "ticker": "TSLA",
@@ -1729,7 +2155,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_bb002804bc9b",
+          "trade_id": "trd_8568e3247240",
           "agent_id": "coded_trend",
           "side": "BUY",
           "ticker": "GOOGL",
@@ -1754,8 +2180,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -2477,7 +2903,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_5c84a6438f28",
+          "trade_id": "trd_3daeaf99ed6d",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "BAC",
@@ -2499,7 +2925,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_d47e00381f3e",
+          "trade_id": "trd_af0634155f55",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "XOM",
@@ -2521,7 +2947,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_13d4b4318a18",
+          "trade_id": "trd_4c67702f3040",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "COST",
@@ -2543,7 +2969,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_56da29e954a1",
+          "trade_id": "trd_5909a10f51a1",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "COST",
@@ -2565,7 +2991,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_8be5fe556821",
+          "trade_id": "trd_c54e54447eac",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "BAC",
@@ -2587,7 +3013,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_890d0b0502b7",
+          "trade_id": "trd_de279923cb12",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "XOM",
@@ -2609,7 +3035,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_2beb046fbbcc",
+          "trade_id": "trd_e1d3ff39f86e",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "COST",
@@ -2631,7 +3057,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_4cc7a3bce5ea",
+          "trade_id": "trd_d1ccc84369ab",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "TLT",
@@ -2653,7 +3079,7 @@
           "confidence": 0.66
         },
         {
-          "trade_id": "trd_8dfea9802809",
+          "trade_id": "trd_66e19714382c",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "DIA",
@@ -2675,7 +3101,7 @@
           "confidence": 0.69
         },
         {
-          "trade_id": "trd_c5d4b7601085",
+          "trade_id": "trd_9b9ece190e74",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "LMT",
@@ -2697,7 +3123,7 @@
           "confidence": 0.71
         },
         {
-          "trade_id": "trd_b0e46a8f8b4e",
+          "trade_id": "trd_0b68d3c4e88c",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "COST",
@@ -2719,7 +3145,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_d055168097e0",
+          "trade_id": "trd_a22033afbfd2",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "LMT",
@@ -2741,7 +3167,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_fd2dc0257910",
+          "trade_id": "trd_888aeb0b36d0",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "DIA",
@@ -2763,7 +3189,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_e91b3ed1b33c",
+          "trade_id": "trd_3882f4956cf3",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "ISRG",
@@ -2785,7 +3211,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_b3cf4c4b8235",
+          "trade_id": "trd_9c161f2acb28",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "AAPL",
@@ -2807,7 +3233,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_c0bd53113f3b",
+          "trade_id": "trd_896c4b93bd5c",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "ISRG",
@@ -2829,7 +3255,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_65dc2c308927",
+          "trade_id": "trd_b2d1871281da",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "ISRG",
@@ -2851,7 +3277,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_d9ca0ffbd1fa",
+          "trade_id": "trd_961b48a5d210",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "BLK",
@@ -2873,7 +3299,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_bef61eaa47e6",
+          "trade_id": "trd_34238d1751cf",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "MCD",
@@ -2895,7 +3321,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_1aa13d42b6e0",
+          "trade_id": "trd_4b85ad5df0c1",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "TLT",
@@ -2917,7 +3343,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_856e70752c4f",
+          "trade_id": "trd_f257cebfeb71",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "AAPL",
@@ -2939,7 +3365,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_582c24d9ba6d",
+          "trade_id": "trd_52d7d5c74dd9",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "ISRG",
@@ -2961,7 +3387,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_1cb165a5d48a",
+          "trade_id": "trd_6f4f261568de",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "XLB",
@@ -2983,7 +3409,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_62a52b214262",
+          "trade_id": "trd_8cb37c785c4f",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "XLC",
@@ -3005,7 +3431,7 @@
           "confidence": 0.74
         },
         {
-          "trade_id": "trd_7e1136845dbf",
+          "trade_id": "trd_28380bea976c",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "GOOGL",
@@ -3027,7 +3453,7 @@
           "confidence": 0.71
         },
         {
-          "trade_id": "trd_4070d4f9871d",
+          "trade_id": "trd_29ba87e6c822",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "MCD",
@@ -3049,7 +3475,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_5663a983ed1c",
+          "trade_id": "trd_042608c4b5d1",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "GLD",
@@ -3071,7 +3497,7 @@
           "confidence": 0.87
         },
         {
-          "trade_id": "trd_ee10c7fa29bc",
+          "trade_id": "trd_83728ab1f6c0",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "XLB",
@@ -3093,7 +3519,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_9d36d1e549c7",
+          "trade_id": "trd_404be193e398",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "XLC",
@@ -3115,7 +3541,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_98b58faf2e48",
+          "trade_id": "trd_f60df1c60a61",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "GOOGL",
@@ -3137,7 +3563,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_ac7d9a2a4561",
+          "trade_id": "trd_40be8b0fa616",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "BLK",
@@ -3159,7 +3585,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_edf7a429b97e",
+          "trade_id": "trd_d171abc191a9",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "GLD",
@@ -3181,7 +3607,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_7a7285e613f6",
+          "trade_id": "trd_44bdc942e74d",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "AMZN",
@@ -3203,7 +3629,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_055166aa20cf",
+          "trade_id": "trd_68ac0eaacfd0",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "TLT",
@@ -3225,7 +3651,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_d0bf7fff86d4",
+          "trade_id": "trd_b642351b5b28",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "JPM",
@@ -3247,7 +3673,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_f1ee85e43df0",
+          "trade_id": "trd_e6ec3faf90d4",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "AMZN",
@@ -3269,7 +3695,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_b9c82d1dab7c",
+          "trade_id": "trd_2c3808099613",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "JPM",
@@ -3291,7 +3717,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_b2635c2443fb",
+          "trade_id": "trd_eb7d59aba2fe",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "TLT",
@@ -3313,7 +3739,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_8f7837d2d0e8",
+          "trade_id": "trd_60a777576582",
           "agent_id": "coded_mean_rev",
           "side": "BUY",
           "ticker": "TLT",
@@ -3335,7 +3761,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_9a4e05634bfb",
+          "trade_id": "trd_a7a3194b9644",
           "agent_id": "coded_mean_rev",
           "side": "SELL",
           "ticker": "TLT",
@@ -3360,8 +3786,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -4082,7 +4508,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_a5a0dd1ba865",
+          "trade_id": "trd_e6279227f84b",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "AVGO",
@@ -4104,7 +4530,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_260824b55118",
+          "trade_id": "trd_e58c3215ea42",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "AVGO",
@@ -4126,7 +4552,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_a86f260bb2f9",
+          "trade_id": "trd_535a85c7b3cd",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "AVGO",
@@ -4148,7 +4574,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_952430b7636b",
+          "trade_id": "trd_3b4d7425c8af",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "ORCL",
@@ -4170,7 +4596,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_1d33d9648d9c",
+          "trade_id": "trd_41e272c56cc3",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "WFC",
@@ -4192,7 +4618,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_5a1045e18fdf",
+          "trade_id": "trd_11ff4f0572c8",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "CAT",
@@ -4214,7 +4640,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_0848e0df4a2e",
+          "trade_id": "trd_b51a111068e9",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XLF",
@@ -4236,7 +4662,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_be0a0c99e684",
+          "trade_id": "trd_63ea53f3da71",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "AVGO",
@@ -4258,7 +4684,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_d71ad9d4848a",
+          "trade_id": "trd_aaed9b120745",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "ORCL",
@@ -4280,7 +4706,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_805a23991986",
+          "trade_id": "trd_ecefe96cee5e",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "WFC",
@@ -4302,7 +4728,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_613ce249ef6d",
+          "trade_id": "trd_793fc4d9b071",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "CAT",
@@ -4324,7 +4750,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_af11b59933fe",
+          "trade_id": "trd_8cf8669654ff",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XLF",
@@ -4346,7 +4772,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_9d7bdf89bdc5",
+          "trade_id": "trd_5de6cf2d2712",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NVDA",
@@ -4368,7 +4794,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_321a02bf9d66",
+          "trade_id": "trd_ccc518b2c94d",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NVDA",
@@ -4390,7 +4816,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_14f9af773147",
+          "trade_id": "trd_ac4e9bd206e6",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NVDA",
@@ -4412,7 +4838,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_f1198d19aefc",
+          "trade_id": "trd_b8f4e2243770",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "LLY",
@@ -4434,7 +4860,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_ab424d112039",
+          "trade_id": "trd_aae68dc083b2",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "DIS",
@@ -4456,7 +4882,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_aa6b6570e1ba",
+          "trade_id": "trd_2cf2cb2bcbb8",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XLF",
@@ -4478,7 +4904,7 @@
           "confidence": 0.75
         },
         {
-          "trade_id": "trd_f04abed8afa6",
+          "trade_id": "trd_409ed7ddeed6",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "JPM",
@@ -4500,7 +4926,7 @@
           "confidence": 0.75
         },
         {
-          "trade_id": "trd_e669682a227b",
+          "trade_id": "trd_162cf389eaaa",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NVDA",
@@ -4522,7 +4948,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_c4cdc48aec71",
+          "trade_id": "trd_d0aabe648bca",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "LLY",
@@ -4544,7 +4970,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_95cde2b442d0",
+          "trade_id": "trd_a7a7ec6e656b",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "DIS",
@@ -4566,7 +4992,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_31d34916e32a",
+          "trade_id": "trd_88e255392069",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XLF",
@@ -4588,7 +5014,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_033ccc2c7a73",
+          "trade_id": "trd_b61ace196851",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "JPM",
@@ -4610,7 +5036,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_ad855ffa5730",
+          "trade_id": "trd_66612e5f146f",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "PLTR",
@@ -4632,7 +5058,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_fcf6142daab3",
+          "trade_id": "trd_efeeda2907d2",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NVDA",
@@ -4654,7 +5080,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_6e1d1a8b56a2",
+          "trade_id": "trd_7f3614ed88b3",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "META",
@@ -4676,7 +5102,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_6a918bdcf2f2",
+          "trade_id": "trd_6a554a4b7f8b",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XLF",
@@ -4698,7 +5124,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_e68c59bd8692",
+          "trade_id": "trd_4a73e6a306f7",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NVDA",
@@ -4720,7 +5146,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_c37a3aa40e7b",
+          "trade_id": "trd_3af502a637ed",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "PLTR",
@@ -4742,7 +5168,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_fa6b04a35f67",
+          "trade_id": "trd_6d4b4b166758",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "LLY",
@@ -4764,7 +5190,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_fd61eaded374",
+          "trade_id": "trd_f95c44737ffe",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "SMH",
@@ -4786,7 +5212,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_d4edc0e23918",
+          "trade_id": "trd_ff4e81c265e2",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XLY",
@@ -4808,7 +5234,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_3a64047c1fe1",
+          "trade_id": "trd_f623dd2162ec",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "META",
@@ -4830,7 +5256,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_61f5bc98a918",
+          "trade_id": "trd_590ebfd16854",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XLF",
@@ -4852,7 +5278,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_a7ce46a0fc1e",
+          "trade_id": "trd_a778ddd865b0",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "LLY",
@@ -4874,7 +5300,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_809fb39ba830",
+          "trade_id": "trd_b574c98cee21",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "SMH",
@@ -4896,7 +5322,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_637c81d740d8",
+          "trade_id": "trd_e023bab41d47",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XLY",
@@ -4918,7 +5344,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_7690a4e33d00",
+          "trade_id": "trd_d61d35af16c7",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "META",
@@ -4940,7 +5366,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_dbebe2751672",
+          "trade_id": "trd_db3ddba34aa7",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "META",
@@ -4962,7 +5388,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_48ac12ff112d",
+          "trade_id": "trd_33f282c87a49",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NVDA",
@@ -4984,7 +5410,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_8f40e92cedae",
+          "trade_id": "trd_0e69698d0c68",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "AXP",
@@ -5006,7 +5432,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_214f90f13ced",
+          "trade_id": "trd_fce5fa478cec",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NKE",
@@ -5028,7 +5454,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_d89432aac0a7",
+          "trade_id": "trd_4b0f06e7beba",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "MRK",
@@ -5050,7 +5476,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_0788e04d0826",
+          "trade_id": "trd_566a69913d27",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "CRM",
@@ -5072,7 +5498,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_90ff5c23800e",
+          "trade_id": "trd_297909def64c",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "CRM",
@@ -5094,7 +5520,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_795f54f8b55b",
+          "trade_id": "trd_fa92107db12e",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NVDA",
@@ -5116,7 +5542,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_ef9e10da9d53",
+          "trade_id": "trd_c59c9c1cd414",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XLB",
@@ -5138,7 +5564,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_2291585fc05f",
+          "trade_id": "trd_903d38465874",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "ISRG",
@@ -5160,7 +5586,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_96df4907bcdd",
+          "trade_id": "trd_8b727ee28ea8",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "MRK",
@@ -5182,7 +5608,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_89dd99d51fc5",
+          "trade_id": "trd_28ca3c0c19c3",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "ISRG",
@@ -5204,7 +5630,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_e389ae200995",
+          "trade_id": "trd_36c7c600f06a",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "AXP",
@@ -5226,7 +5652,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_3682f9959764",
+          "trade_id": "trd_cf7742e076b8",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NKE",
@@ -5248,7 +5674,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_4b7e900166c4",
+          "trade_id": "trd_19ad5934a23f",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XLB",
@@ -5270,7 +5696,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_231b1683a74a",
+          "trade_id": "trd_b469d86fe7ac",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "AVGO",
@@ -5292,7 +5718,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_8d629299fae5",
+          "trade_id": "trd_8419608b1e29",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "AVGO",
@@ -5314,7 +5740,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_2367f2c8daf6",
+          "trade_id": "trd_e24e4c4244db",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "NVDA",
@@ -5336,7 +5762,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_caf2a318db01",
+          "trade_id": "trd_c1a299e236ed",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "AXP",
@@ -5358,7 +5784,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_800212c4cd88",
+          "trade_id": "trd_d90df02b964c",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "XOM",
@@ -5380,7 +5806,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_4b521a37a692",
+          "trade_id": "trd_8154c5977c58",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "UNH",
@@ -5402,7 +5828,7 @@
           "confidence": 0.75
         },
         {
-          "trade_id": "trd_6562cbdd225d",
+          "trade_id": "trd_61f6855b70e8",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "MA",
@@ -5424,7 +5850,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_ecf60416c4c6",
+          "trade_id": "trd_d3293d08e10d",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "AXP",
@@ -5446,7 +5872,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_b1bd58b9abef",
+          "trade_id": "trd_4beeba6904fc",
           "agent_id": "coded_orb",
           "side": "BUY",
           "ticker": "ABBV",
@@ -5468,7 +5894,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_59c400ef9069",
+          "trade_id": "trd_3c788093a2e6",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "NVDA",
@@ -5490,7 +5916,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_0f36b7c8c943",
+          "trade_id": "trd_c7ca45eb27bd",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "XOM",
@@ -5512,7 +5938,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_f13d8b4ea0f7",
+          "trade_id": "trd_5aa09bd6f64a",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "UNH",
@@ -5534,7 +5960,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_d717e76fbc08",
+          "trade_id": "trd_65aed242a221",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "MA",
@@ -5556,7 +5982,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_f7521eff5b80",
+          "trade_id": "trd_33499737bb86",
           "agent_id": "coded_orb",
           "side": "SELL",
           "ticker": "ABBV",
@@ -5581,8 +6007,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -6384,7 +6810,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_3744982d86db",
+          "trade_id": "trd_a7a48097e896",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLK",
@@ -6406,7 +6832,7 @@
           "confidence": 0.89
         },
         {
-          "trade_id": "trd_d8e207fd2bd6",
+          "trade_id": "trd_27a75f3e3a79",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLF",
@@ -6428,7 +6854,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_f7ba679c60ca",
+          "trade_id": "trd_43b60e7dc742",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLI",
@@ -6450,7 +6876,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_87ddc0affbe0",
+          "trade_id": "trd_c2a7790519ca",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLY",
@@ -6472,7 +6898,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_b6aa86e5bc50",
+          "trade_id": "trd_b72a2b260852",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLK",
@@ -6494,7 +6920,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_768a2fbe444c",
+          "trade_id": "trd_fda10035592d",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLF",
@@ -6516,7 +6942,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_47ab6d3db1b9",
+          "trade_id": "trd_2c792371f98e",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLI",
@@ -6538,7 +6964,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_609074c360a6",
+          "trade_id": "trd_6189791486c8",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLK",
@@ -6560,7 +6986,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_c4e7791f2cd7",
+          "trade_id": "trd_c48d70fb2896",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLI",
@@ -6582,7 +7008,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_92d83577225a",
+          "trade_id": "trd_3a421711de8a",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLF",
@@ -6604,7 +7030,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_541c8aa43e57",
+          "trade_id": "trd_91123a88922b",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLY",
@@ -6626,7 +7052,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_8dc5d17f341d",
+          "trade_id": "trd_80d14eed6c9f",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLY",
@@ -6648,7 +7074,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_e62de20accc2",
+          "trade_id": "trd_eb6fb18a9b5f",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLY",
@@ -6670,7 +7096,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_2362e6f10287",
+          "trade_id": "trd_340267ffb788",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLY",
@@ -6692,7 +7118,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_6063c175af1f",
+          "trade_id": "trd_9dcab7017faa",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLK",
@@ -6714,7 +7140,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_a36c1b19edb1",
+          "trade_id": "trd_ff61811adb31",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLK",
@@ -6736,7 +7162,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_0eb0df5f07cf",
+          "trade_id": "trd_7ab15a180186",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLF",
@@ -6758,7 +7184,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_6030634cb382",
+          "trade_id": "trd_bff1b4f729f1",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLF",
@@ -6780,7 +7206,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_016904139dd0",
+          "trade_id": "trd_4d490d96bdb8",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLI",
@@ -6802,7 +7228,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_2e87032d0de0",
+          "trade_id": "trd_2fd6708d7e98",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLI",
@@ -6824,7 +7250,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_5fb1337c94bf",
+          "trade_id": "trd_a68147c96a7f",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLY",
@@ -6846,7 +7272,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_bcfeabca7178",
+          "trade_id": "trd_87a23bbb9efb",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLRE",
@@ -6868,7 +7294,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_21685b77b732",
+          "trade_id": "trd_35b7b8801f90",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLK",
@@ -6890,7 +7316,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_4b545b3a5d30",
+          "trade_id": "trd_82980602be86",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLF",
@@ -6912,7 +7338,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_7d4a6d9767dc",
+          "trade_id": "trd_156629fa1efd",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLF",
@@ -6934,7 +7360,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_e43a1563d362",
+          "trade_id": "trd_cbe9b97188ad",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLI",
@@ -6956,7 +7382,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_75ab86dcd379",
+          "trade_id": "trd_a4256e631619",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLI",
@@ -6978,7 +7404,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_a7778b9099bd",
+          "trade_id": "trd_41961f450639",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLK",
@@ -7000,7 +7426,7 @@
           "confidence": 0.9
         },
         {
-          "trade_id": "trd_e7f6ab2c95b2",
+          "trade_id": "trd_7c63e7b74145",
           "agent_id": "coded_sector",
           "side": "SELL",
           "ticker": "XLRE",
@@ -7022,7 +7448,7 @@
           "confidence": 0.83
         },
         {
-          "trade_id": "trd_0cf316831a0d",
+          "trade_id": "trd_79fa0d16ef45",
           "agent_id": "coded_sector",
           "side": "BUY",
           "ticker": "XLY",
@@ -7047,8 +7473,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -7825,7 +8251,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_5752f51b4e9a",
+          "trade_id": "trd_1c373a7423f9",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "NFLX",
@@ -7847,7 +8273,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_524794890c2b",
+          "trade_id": "trd_9f1893783a6b",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "CAT",
@@ -7869,7 +8295,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_1a38c10ce09b",
+          "trade_id": "trd_4340f9ce0650",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "COST",
@@ -7891,7 +8317,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_f38e562a8f33",
+          "trade_id": "trd_60a1d1e25a65",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "COST",
@@ -7913,7 +8339,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_01c524d35242",
+          "trade_id": "trd_fdfc61ac50d1",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "COST",
@@ -7935,7 +8361,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_1e7cc58b1c96",
+          "trade_id": "trd_1385abeea504",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "COST",
@@ -7957,7 +8383,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_92e9433d888c",
+          "trade_id": "trd_819fc372b3c0",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "NFLX",
@@ -7979,7 +8405,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_89b0b2c8cf52",
+          "trade_id": "trd_2e59ad2e5d2d",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "COST",
@@ -8001,7 +8427,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_0ddc01e980f4",
+          "trade_id": "trd_279063c4f21d",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "CAT",
@@ -8023,7 +8449,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_e372217d3e31",
+          "trade_id": "trd_07cc5a45846b",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "COST",
@@ -8045,7 +8471,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_d56bc7285d48",
+          "trade_id": "trd_c68cf6549ade",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "COST",
@@ -8067,7 +8493,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_fef5ca523ef9",
+          "trade_id": "trd_4cb445be39c7",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "COST",
@@ -8089,7 +8515,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_b125dafa56d2",
+          "trade_id": "trd_1cf00bf4e2fd",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "UNH",
@@ -8111,7 +8537,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_365254a33725",
+          "trade_id": "trd_50f9ec5cf41a",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "XLE",
@@ -8133,7 +8559,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_5dc63cc5814a",
+          "trade_id": "trd_506e4728f131",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "MA",
@@ -8155,7 +8581,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_69022b8f4b98",
+          "trade_id": "trd_af546b88761d",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "JPM",
@@ -8177,7 +8603,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_ee2a0ad56618",
+          "trade_id": "trd_9e6d4c2e8925",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "MA",
@@ -8199,7 +8625,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_62467c416d89",
+          "trade_id": "trd_6db0bba5a074",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "MSFT",
@@ -8221,7 +8647,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_702c2effd399",
+          "trade_id": "trd_a8b4368493b4",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "UNH",
@@ -8243,7 +8669,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_3046f537d74d",
+          "trade_id": "trd_05833a6e385e",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "ISRG",
@@ -8265,7 +8691,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_87a7ca48c795",
+          "trade_id": "trd_5461b0d179f8",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "ISRG",
@@ -8287,7 +8713,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_48f6458aadff",
+          "trade_id": "trd_e9cc12807fdb",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "ISRG",
@@ -8309,7 +8735,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_c3c7da62b95e",
+          "trade_id": "trd_af970bd01cb3",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "ISRG",
@@ -8331,7 +8757,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_7e00f15e1550",
+          "trade_id": "trd_c62e9c6c74c7",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "ISRG",
@@ -8353,7 +8779,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_f3ae2130c0bd",
+          "trade_id": "trd_658c68b6bfde",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "ISRG",
@@ -8375,7 +8801,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_b1075b07e4d3",
+          "trade_id": "trd_5b50454813c4",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "BLK",
@@ -8397,7 +8823,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_92a7ede6728d",
+          "trade_id": "trd_89ea0ffe6e9f",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "BLK",
@@ -8419,7 +8845,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_8d7d5073136c",
+          "trade_id": "trd_d61dad9012e7",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "XLB",
@@ -8441,7 +8867,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_2f8912133d73",
+          "trade_id": "trd_7db7dfc17cc8",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "XLB",
@@ -8463,7 +8889,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_b36f4a1c1572",
+          "trade_id": "trd_9a15c891ee89",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "MSFT",
@@ -8485,7 +8911,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_fc8f95f6d276",
+          "trade_id": "trd_9e7914671375",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -8507,7 +8933,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_9a9889199be0",
+          "trade_id": "trd_cb333bb9c588",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "XLE",
@@ -8529,7 +8955,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_d84b1651dddc",
+          "trade_id": "trd_872ad34c049c",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -8551,7 +8977,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_184b4f8f544d",
+          "trade_id": "trd_32837211de73",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "JPM",
@@ -8573,7 +8999,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_bce36457a122",
+          "trade_id": "trd_da375fc5f256",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "MSFT",
@@ -8595,7 +9021,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_8dfa3be3488e",
+          "trade_id": "trd_16f21b78249e",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "MSFT",
@@ -8617,7 +9043,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_da0d5431501e",
+          "trade_id": "trd_0dce5a4b746f",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "MSFT",
@@ -8639,7 +9065,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_53c6574e72b3",
+          "trade_id": "trd_6a77f8e354d5",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "MSFT",
@@ -8661,7 +9087,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_be3f0fa4553b",
+          "trade_id": "trd_24fa529674e1",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "CVX",
@@ -8683,7 +9109,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_48d5295c5514",
+          "trade_id": "trd_85d6c8adb4ac",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "CVX",
@@ -8705,7 +9131,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_0894fe96d838",
+          "trade_id": "trd_61a292413297",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "MSFT",
@@ -8727,7 +9153,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_148ec0e331af",
+          "trade_id": "trd_bd0aa7df8069",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "MSFT",
@@ -8749,7 +9175,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_0be4f7ac13ec",
+          "trade_id": "trd_0953c79b43f7",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "BLK",
@@ -8771,7 +9197,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_a623b1f3b221",
+          "trade_id": "trd_42d0ae99a589",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "BLK",
@@ -8793,7 +9219,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_03b6e5913a11",
+          "trade_id": "trd_dc45e730cd7a",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "BRK.B",
@@ -8815,7 +9241,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_f5ff7bdaee50",
+          "trade_id": "trd_56edc558dfd0",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "BRK.B",
@@ -8837,7 +9263,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_16141264dd04",
+          "trade_id": "trd_9987751b877a",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "HD",
@@ -8859,7 +9285,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_b5fa0b971dc2",
+          "trade_id": "trd_d575689e9539",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "HD",
@@ -8881,7 +9307,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_4cdad2be3be7",
+          "trade_id": "trd_26d037946d62",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -8903,7 +9329,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_d0158217a0d7",
+          "trade_id": "trd_314951b311f0",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -8925,7 +9351,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_7397c417cd72",
+          "trade_id": "trd_5e01d9b38562",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -8947,7 +9373,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_ff346a451610",
+          "trade_id": "trd_ac76ea66a1af",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -8969,7 +9395,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_f7c1a39629e0",
+          "trade_id": "trd_6890733e0acb",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -8991,7 +9417,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_d8431d62e4a9",
+          "trade_id": "trd_1979c66484a0",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -9013,7 +9439,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_dad1aa909f50",
+          "trade_id": "trd_91bc382216f2",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -9035,7 +9461,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_a8fcfc9aef62",
+          "trade_id": "trd_f8953e9416bc",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -9057,7 +9483,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_fe1f102a5da0",
+          "trade_id": "trd_f9fd96682f0e",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AMZN",
@@ -9079,7 +9505,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_0f13fefcbb21",
+          "trade_id": "trd_16d802518b76",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "AMZN",
@@ -9101,7 +9527,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_be0a10141978",
+          "trade_id": "trd_991791a821af",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "ISRG",
@@ -9123,7 +9549,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_6b6dc7a4cd3d",
+          "trade_id": "trd_b61d8e43d506",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "AAPL",
@@ -9145,7 +9571,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_c522f6f8111d",
+          "trade_id": "trd_4b936aa54432",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "WFC",
@@ -9167,7 +9593,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_fa7e9db0053b",
+          "trade_id": "trd_c0519f0f9351",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "CRM",
@@ -9189,7 +9615,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_0335ff66db13",
+          "trade_id": "trd_a80429e631e0",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "UNP",
@@ -9211,7 +9637,7 @@
           "confidence": 0.78
         },
         {
-          "trade_id": "trd_f78859aa6e90",
+          "trade_id": "trd_43b007f53f00",
           "agent_id": "llm_technical",
           "side": "SELL",
           "ticker": "ISRG",
@@ -9233,7 +9659,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_8eb754973432",
+          "trade_id": "trd_5b12c75e2daf",
           "agent_id": "llm_technical",
           "side": "BUY",
           "ticker": "HON",
@@ -9258,8 +9684,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -10045,7 +10471,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_d1d21d8f5198",
+          "trade_id": "trd_4bd6d52b1975",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "SMH",
@@ -10067,7 +10493,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_d22111316e09",
+          "trade_id": "trd_2735db2d8fa8",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "NFLX",
@@ -10089,7 +10515,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_a1d44a464f44",
+          "trade_id": "trd_cc6684efc036",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "MU",
@@ -10111,7 +10537,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_15c88ad813a7",
+          "trade_id": "trd_43420c9fa1b3",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "SPY",
@@ -10133,7 +10559,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_624e9d53f3c6",
+          "trade_id": "trd_62e23c386627",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "WFC",
@@ -10155,7 +10581,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_10029c6e7dd3",
+          "trade_id": "trd_c7f5d06c04f1",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "SMH",
@@ -10177,7 +10603,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_0a3ed7b340c9",
+          "trade_id": "trd_09fe7e6dc04a",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "UNH",
@@ -10199,7 +10625,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_ecc8e4910bcf",
+          "trade_id": "trd_3c8de14686d9",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "NFLX",
@@ -10221,7 +10647,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_677844359a3a",
+          "trade_id": "trd_797a0c4a3b71",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "PANW",
@@ -10243,7 +10669,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_c8d046f9298d",
+          "trade_id": "trd_470687c05a7d",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "WFC",
@@ -10265,7 +10691,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_d09febb70019",
+          "trade_id": "trd_e3469094411b",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "UNH",
@@ -10287,7 +10713,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_ae22f4d935f7",
+          "trade_id": "trd_607972ba4a11",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "MU",
@@ -10309,7 +10735,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_360d2a557a32",
+          "trade_id": "trd_366a64406fef",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "QQQ",
@@ -10331,7 +10757,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_6326d2964ec6",
+          "trade_id": "trd_4d088742940b",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "XLI",
@@ -10353,7 +10779,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_034fd89d3483",
+          "trade_id": "trd_3e3e115a3370",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "TLT",
@@ -10375,7 +10801,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_79ed85462b95",
+          "trade_id": "trd_68b7e79cbc1d",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "PANW",
@@ -10397,7 +10823,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_2af23972ea2c",
+          "trade_id": "trd_031e14527cde",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "XLI",
@@ -10419,7 +10845,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_e7204ca6e1f8",
+          "trade_id": "trd_d2996415cb01",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "QQQ",
@@ -10441,7 +10867,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_40f8efed95a9",
+          "trade_id": "trd_f5c45f55e9e0",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "MSFT",
@@ -10463,7 +10889,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_47bdc8719b72",
+          "trade_id": "trd_4fc4d146e9fd",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "TSLA",
@@ -10485,7 +10911,7 @@
           "confidence": 0.72
         },
         {
-          "trade_id": "trd_82c9dfe0e8fa",
+          "trade_id": "trd_49a41b14b453",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "XLC",
@@ -10507,7 +10933,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_4da579c8b96e",
+          "trade_id": "trd_30108dc0a5e8",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "MSFT",
@@ -10529,7 +10955,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_453c1370a90e",
+          "trade_id": "trd_ede5f39a45e5",
           "agent_id": "llm_catalyst",
           "side": "BUY",
           "ticker": "CRM",
@@ -10551,7 +10977,7 @@
           "confidence": 0.8
         },
         {
-          "trade_id": "trd_07f094aa9449",
+          "trade_id": "trd_70bec2c3285a",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "TSLA",
@@ -10573,7 +10999,7 @@
           "confidence": 0.77
         },
         {
-          "trade_id": "trd_7dce68f2e541",
+          "trade_id": "trd_f9c098622e2f",
           "agent_id": "llm_catalyst",
           "side": "SELL",
           "ticker": "XLC",
@@ -10598,8 +11024,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -11357,7 +11783,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_fcc4d60a2762",
+          "trade_id": "trd_b7e82d36180e",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "META",
@@ -11379,7 +11805,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_05c407969295",
+          "trade_id": "trd_16aa78d36093",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "META",
@@ -11401,7 +11827,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_ee3747e5735d",
+          "trade_id": "trd_638c1669c949",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "JPM",
@@ -11423,7 +11849,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_eae38b8ac963",
+          "trade_id": "trd_996413d90a7b",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "AMZN",
@@ -11445,7 +11871,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_dc084d31d847",
+          "trade_id": "trd_fcd6427d80d9",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "MSFT",
@@ -11467,7 +11893,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_8f78eb245c54",
+          "trade_id": "trd_5b31a340ef42",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLY",
@@ -11489,7 +11915,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_eafc2fb57286",
+          "trade_id": "trd_620eb5168bdc",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLC",
@@ -11511,7 +11937,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_af6b374b8997",
+          "trade_id": "trd_11ee6ce32956",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "JPM",
@@ -11533,7 +11959,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_9a24b21638e3",
+          "trade_id": "trd_cb6f1a69ee37",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLE",
@@ -11555,7 +11981,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_474b18b04d84",
+          "trade_id": "trd_eb3e3a66aac8",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "XLY",
@@ -11577,7 +12003,7 @@
           "confidence": 0.76
         },
         {
-          "trade_id": "trd_62b856d8a12f",
+          "trade_id": "trd_276a605e047d",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "SPY",
@@ -11599,7 +12025,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_96bf50d6c954",
+          "trade_id": "trd_0a7c804ba319",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "MSFT",
@@ -11621,7 +12047,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_28286290e66c",
+          "trade_id": "trd_8e48943bfbb8",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "XLC",
@@ -11643,7 +12069,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_aee187afbf3a",
+          "trade_id": "trd_2261489c6235",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "DIA",
@@ -11665,7 +12091,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_b1b41943ff54",
+          "trade_id": "trd_1e668fda9e60",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "XLE",
@@ -11687,7 +12113,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_abfbfa7fce1f",
+          "trade_id": "trd_cdee61508c4c",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "SPY",
@@ -11709,7 +12135,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_2d4b53abafcc",
+          "trade_id": "trd_9c391825907e",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "DIA",
@@ -11731,7 +12157,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_f186675d36f7",
+          "trade_id": "trd_0a0ed85a7340",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "COST",
@@ -11753,7 +12179,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_6672eb8d3abe",
+          "trade_id": "trd_7473272b17f2",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLP",
@@ -11775,7 +12201,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_527b8e3fdd5d",
+          "trade_id": "trd_82a37755caf8",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "WMT",
@@ -11797,7 +12223,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_94f4b4615cef",
+          "trade_id": "trd_46dcae4474a4",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLV",
@@ -11819,7 +12245,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_4449978bcf7a",
+          "trade_id": "trd_88d9fe6c7b5f",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "AMZN",
@@ -11841,7 +12267,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_87cc1b019395",
+          "trade_id": "trd_e55f7b8f01f8",
           "agent_id": "llm_macro",
           "side": "BUY",
           "ticker": "XLY",
@@ -11863,7 +12289,7 @@
           "confidence": 0.79
         },
         {
-          "trade_id": "trd_abd982fc51d3",
+          "trade_id": "trd_37c0fb627273",
           "agent_id": "llm_macro",
           "side": "SELL",
           "ticker": "XLP",
@@ -11888,8 +12314,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -12594,7 +13020,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_5a056743691a",
+          "trade_id": "trd_bcb03b3d4433",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "AMZN",
@@ -12616,7 +13042,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_f6b23baffdfc",
+          "trade_id": "trd_3851aea144bc",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "AAPL",
@@ -12638,7 +13064,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_90c9319a0fd6",
+          "trade_id": "trd_6b80db1edf25",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "AMZN",
@@ -12660,7 +13086,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_348bbdd33bab",
+          "trade_id": "trd_25e48ff8b08d",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "MSFT",
@@ -12682,7 +13108,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_48dd8acf4215",
+          "trade_id": "trd_25e52e558427",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "MSFT",
@@ -12704,7 +13130,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_be9384c72696",
+          "trade_id": "trd_57860bb19d2d",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "AAPL",
@@ -12726,7 +13152,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_7d4248c8026c",
+          "trade_id": "trd_a9bf92be7f0d",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "GOOGL",
@@ -12748,7 +13174,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_cda22ce6802c",
+          "trade_id": "trd_aae75794b87d",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "AAPL",
@@ -12770,7 +13196,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_58130d888414",
+          "trade_id": "trd_71978596e0cf",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "AAPL",
@@ -12792,7 +13218,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_e218b45db7c9",
+          "trade_id": "trd_80bd603c8116",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "GOOGL",
@@ -12814,7 +13240,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_de6efa6394d4",
+          "trade_id": "trd_03b2ab8493ba",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "MSFT",
@@ -12836,7 +13262,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_f2a6c849375e",
+          "trade_id": "trd_120413edf55e",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "MSFT",
@@ -12858,7 +13284,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_62e56f8ab95d",
+          "trade_id": "trd_ce0022dfbab2",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "AMZN",
@@ -12880,7 +13306,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_d2935c39296b",
+          "trade_id": "trd_321bb6adfe12",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "AMZN",
@@ -12902,7 +13328,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_81f16adbc2e9",
+          "trade_id": "trd_74d317c50d39",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "XLP",
@@ -12924,7 +13350,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_ccc426afa150",
+          "trade_id": "trd_0aba416d1f7f",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "XLP",
@@ -12946,7 +13372,7 @@
           "confidence": 0.85
         },
         {
-          "trade_id": "trd_c1e9b4cec06d",
+          "trade_id": "trd_0d7622c95960",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "QQQ",
@@ -12968,7 +13394,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_52f6f9e36d3c",
+          "trade_id": "trd_044f348b450d",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "QQQ",
@@ -12990,7 +13416,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_000ccdd2aaa6",
+          "trade_id": "trd_37ff5be52f54",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "XLP",
@@ -13012,7 +13438,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_aa4d799a0527",
+          "trade_id": "trd_f3a80bdb38c8",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "XLP",
@@ -13034,7 +13460,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_8051ca39dff8",
+          "trade_id": "trd_3e01c60c5d27",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "XLP",
@@ -13056,7 +13482,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_9ca1b1375892",
+          "trade_id": "trd_1faebb47a842",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "XLP",
@@ -13078,7 +13504,7 @@
           "confidence": 0.84
         },
         {
-          "trade_id": "trd_55fa6e0677f8",
+          "trade_id": "trd_7b4a10f22c46",
           "agent_id": "llm_cautious",
           "side": "BUY",
           "ticker": "AAPL",
@@ -13100,7 +13526,7 @@
           "confidence": 0.86
         },
         {
-          "trade_id": "trd_532d5845605b",
+          "trade_id": "trd_abd9e2371d97",
           "agent_id": "llm_cautious",
           "side": "SELL",
           "ticker": "AAPL",
@@ -13125,8 +13551,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -13845,7 +14271,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_c40b971ff415",
+          "trade_id": "trd_46e2e105f641",
           "agent_id": "ctrl_spy",
           "side": "BUY",
           "ticker": "SPY",
@@ -13870,8 +14296,8 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -14576,7 +15002,7 @@
       "pending_orders": [],
       "trades": [
         {
-          "trade_id": "trd_dc345ea7f2a6",
+          "trade_id": "trd_e427e69562b4",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "XLP",
@@ -14598,7 +15024,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_58a6111387a6",
+          "trade_id": "trd_0a24b3d6e8a8",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "XLP",
@@ -14620,7 +15046,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_911cffc13bf6",
+          "trade_id": "trd_03b08bb10dbe",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "WMT",
@@ -14642,7 +15068,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_2d7c85ac0706",
+          "trade_id": "trd_4b4b22a50029",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "HON",
@@ -14664,7 +15090,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_054dfb7a6622",
+          "trade_id": "trd_54f482fc02dd",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "WFC",
@@ -14686,7 +15112,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_8956e6e2a0e6",
+          "trade_id": "trd_57a1f043561a",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "WMT",
@@ -14708,7 +15134,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_3349b27ad792",
+          "trade_id": "trd_39e16c807c7b",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "NKE",
@@ -14730,7 +15156,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_d7ece2665dd4",
+          "trade_id": "trd_2a700f582ecc",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "SMH",
@@ -14752,7 +15178,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_ebb3b0eace97",
+          "trade_id": "trd_ebaf05a8a071",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "WMT",
@@ -14774,7 +15200,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_0e79c32d5012",
+          "trade_id": "trd_9996b9374e0f",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "NKE",
@@ -14796,7 +15222,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_457b3d53974c",
+          "trade_id": "trd_d9b016375801",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "WMT",
@@ -14818,7 +15244,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_0dd5775efeb1",
+          "trade_id": "trd_220420198b74",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "BAC",
@@ -14840,7 +15266,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_be03b456cf03",
+          "trade_id": "trd_51864159814a",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "AMZN",
@@ -14862,7 +15288,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_f4407bae917b",
+          "trade_id": "trd_836a9d794599",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "SMH",
@@ -14884,7 +15310,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_d19319eda8e1",
+          "trade_id": "trd_a585578fac90",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "CVX",
@@ -14906,7 +15332,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_4634ec2da59d",
+          "trade_id": "trd_0e97bcc47f82",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "AMZN",
@@ -14928,7 +15354,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_dd6f2d1613ec",
+          "trade_id": "trd_c9d3f98253f8",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "MS",
@@ -14950,7 +15376,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_44481e57024f",
+          "trade_id": "trd_8ad5a031fb6e",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "WFC",
@@ -14972,7 +15398,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_995d85d64abe",
+          "trade_id": "trd_d450e57ad8a5",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "MS",
@@ -14994,7 +15420,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_0e93a8107c93",
+          "trade_id": "trd_7fe46d254773",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "MS",
@@ -15016,7 +15442,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_21a3904c8316",
+          "trade_id": "trd_4528207d57c3",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "BAC",
@@ -15038,7 +15464,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_572a62629c6a",
+          "trade_id": "trd_717b04b8ffc6",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "XLV",
@@ -15060,7 +15486,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_71b45fcac34a",
+          "trade_id": "trd_a0907cafdc5b",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "CRM",
@@ -15082,7 +15508,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_349f28ec7053",
+          "trade_id": "trd_f54032c78e78",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "CRM",
@@ -15104,7 +15530,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_5d5ebbcadd2c",
+          "trade_id": "trd_4fc91a4cc65b",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "XLV",
@@ -15126,7 +15552,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_ae0ab4c28686",
+          "trade_id": "trd_a27585f69b07",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "AXP",
@@ -15148,7 +15574,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_7cd56ec50f75",
+          "trade_id": "trd_f32d5abb5941",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "INTC",
@@ -15170,7 +15596,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_10dc52819bd5",
+          "trade_id": "trd_f6fffc3b8165",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "INTC",
@@ -15192,7 +15618,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_f765d55fccdd",
+          "trade_id": "trd_1ac8b271dfd2",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "HON",
@@ -15214,7 +15640,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_1f28b9496721",
+          "trade_id": "trd_78aa77fb6b3d",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "TLT",
@@ -15236,7 +15662,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_1b1feb6f3d36",
+          "trade_id": "trd_40bfe1f505ae",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "AXP",
@@ -15258,7 +15684,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_e2ecf783b28e",
+          "trade_id": "trd_d04eddc53643",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "TLT",
@@ -15280,7 +15706,7 @@
           "confidence": 0.5
         },
         {
-          "trade_id": "trd_cd24df172089",
+          "trade_id": "trd_7d01ce7472e7",
           "agent_id": "ctrl_random",
           "side": "SELL",
           "ticker": "MS",
@@ -15302,7 +15728,7 @@
           "confidence": 1.0
         },
         {
-          "trade_id": "trd_d82e8e1d9f02",
+          "trade_id": "trd_94f3b78976f9",
           "agent_id": "ctrl_random",
           "side": "BUY",
           "ticker": "GOOGL",
@@ -15454,8 +15880,8 @@
       ],
       "equity_curve": [
         {
-          "timestamp": "2026-11-12T13:08:37Z",
-          "trading_date_et": "2026-11-12",
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
           "equity": 10000.0,
           "cash": 10000.0,
           "positions_value": 0.0,
@@ -16160,6 +16586,1870 @@
             "SELL 5.6162 AXP @ $366.64 [AGENT_SIGNAL: +$28.14 (+1.39%)] — Null-hypothesis random control: deterministic cycle seed (acb7d663) rolled 0.202 (< 0.25) to randomly exit held position AXP.",
             "SELL 22.1952 TLT @ $91.88 [AGENT_SIGNAL: +$3.89 (+0.19%)] — Null-hypothesis random control: deterministic cycle seed (81237d6a) rolled 0.039 (< 0.25) to randomly exit held position TLT.",
             "SELL 14.7046 MS @ $140.41 [TAKE_PROFIT: +$60.22 (+3.00%)] — Take-profit triggered at $140.51 (intrabar high $140.54 >= target $140.51)"
+          ]
+        }
+      ],
+      "last_updated": "2026-11-11T20:35:00Z"
+    },
+    "style_berkshire": {
+      "agent_id": "style_berkshire",
+      "name": "11. Berkshire Style (13F Pattern)",
+      "category": "Filing-Style Learned",
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "initial_cash": 10000.0,
+      "cash": 3.31,
+      "equity": 10233.91,
+      "peak_equity": 10233.91,
+      "max_drawdown_pct": -1.0,
+      "current_drawdown_pct": 0.0,
+      "current_trading_date_et": "2026-11-11",
+      "day_start_equity": 10122.71,
+      "daily_pnl_pct": 1.1,
+      "positions": {
+        "WFC": {
+          "ticker": "WFC",
+          "shares": 26.8515,
+          "avg_entry_price": 74.587,
+          "current_price": 75.7665,
+          "stop_loss": 72.62,
+          "take_profit": 80.44,
+          "opened_at": "2026-11-05T15:00:00Z",
+          "entry_reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $223.6B >= $10.0B floor; Valuation P/E 10.4x is within [4.0x, 33.6x]; Distance from 52w high -23.8% within [-38.6%, +0.0%]. Risk-managed stop at $72.62, target $80.44.",
+          "unrealized_pnl": 31.67,
+          "unrealized_pnl_pct": 1.58,
+          "market_value": 2034.44
+        },
+        "QCOM": {
+          "ticker": "QCOM",
+          "shares": 11.3565,
+          "avg_entry_price": 176.8133,
+          "current_price": 188.0171,
+          "stop_loss": 171.68,
+          "take_profit": 190.17,
+          "opened_at": "2026-11-05T15:30:00Z",
+          "entry_reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $188.4B >= $10.0B floor; Valuation P/E 12.6x is within [4.0x, 33.6x]; Distance from 52w high -32.2% within [-38.6%, +0.0%]. Risk-managed stop at $171.68, target $190.17.",
+          "unrealized_pnl": 127.24,
+          "unrealized_pnl_pct": 6.34,
+          "market_value": 2135.22
+        },
+        "PG": {
+          "ticker": "PG",
+          "shares": 11.6839,
+          "avg_entry_price": 171.5754,
+          "current_price": 173.8514,
+          "stop_loss": 166.91,
+          "take_profit": 184.88,
+          "opened_at": "2026-11-05T16:00:00Z",
+          "entry_reasoning": "Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $396.8B >= $10.0B floor; Valuation P/E 23.4x is within [4.0x, 33.6x]; Distance from 52w high -1.4% within [-38.6%, +0.0%]. Risk-managed stop at $166.91, target $184.88.",
+          "unrealized_pnl": 26.59,
+          "unrealized_pnl_pct": 1.33,
+          "market_value": 2031.26
+        },
+        "PEP": {
+          "ticker": "PEP",
+          "shares": 12.1566,
+          "avg_entry_price": 165.0728,
+          "current_price": 167.1396,
+          "stop_loss": 160.64,
+          "take_profit": 177.94,
+          "opened_at": "2026-11-05T16:30:00Z",
+          "entry_reasoning": "Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $224.5B >= $10.0B floor; Valuation P/E 20.6x is within [4.0x, 33.6x]; Distance from 52w high -3.9% within [-38.6%, +0.0%]. Risk-managed stop at $160.64, target $177.94.",
+          "unrealized_pnl": 25.13,
+          "unrealized_pnl_pct": 1.25,
+          "market_value": 2031.85
+        },
+        "MCD": {
+          "ticker": "MCD",
+          "shares": 6.3215,
+          "avg_entry_price": 312.3553,
+          "current_price": 316.0377,
+          "stop_loss": 304.84,
+          "take_profit": 337.67,
+          "opened_at": "2026-11-05T17:00:00Z",
+          "entry_reasoning": "Berkshire Style buy on MCD (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Discretionary' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $220.7B >= $10.0B floor; Valuation P/E 24.4x is within [4.0x, 33.6x]; Distance from 52w high -8.5% within [-38.6%, +0.0%]. Risk-managed stop at $304.84, target $337.67.",
+          "unrealized_pnl": 23.28,
+          "unrealized_pnl_pct": 1.18,
+          "market_value": 1997.83
+        }
+      },
+      "pending_orders": [],
+      "trades": [
+        {
+          "trade_id": "trd_10d2d779b190",
+          "agent_id": "style_berkshire",
+          "side": "BUY",
+          "ticker": "WFC",
+          "shares": 26.8515,
+          "decision_timestamp": "2026-11-05T14:30:00Z",
+          "fill_timestamp": "2026-11-05T15:00:00Z",
+          "reference_price": 74.5348,
+          "fill_price": 74.587,
+          "spread_cost_dollars": 0.4001,
+          "slippage_cost_dollars": 1.0016,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2002.77,
+          "stop_loss": 72.62,
+          "take_profit": 80.44,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $223.6B >= $10.0B floor; Valuation P/E 10.4x is within [4.0x, 33.6x]; Distance from 52w high -23.8% within [-38.6%, +0.0%]. Risk-managed stop at $72.62, target $80.44.",
+          "confidence": 0.92
+        },
+        {
+          "trade_id": "trd_222aa10d3b56",
+          "agent_id": "style_berkshire",
+          "side": "BUY",
+          "ticker": "QCOM",
+          "shares": 11.3565,
+          "decision_timestamp": "2026-11-05T15:00:00Z",
+          "fill_timestamp": "2026-11-05T15:30:00Z",
+          "reference_price": 176.6896,
+          "fill_price": 176.8133,
+          "spread_cost_dollars": 0.4009,
+          "slippage_cost_dollars": 1.0039,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2007.98,
+          "stop_loss": 171.68,
+          "take_profit": 190.17,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $188.4B >= $10.0B floor; Valuation P/E 12.6x is within [4.0x, 33.6x]; Distance from 52w high -32.2% within [-38.6%, +0.0%]. Risk-managed stop at $171.68, target $190.17.",
+          "confidence": 0.92
+        },
+        {
+          "trade_id": "trd_ddb28bb3b5f1",
+          "agent_id": "style_berkshire",
+          "side": "BUY",
+          "ticker": "PG",
+          "shares": 11.6839,
+          "decision_timestamp": "2026-11-05T15:30:00Z",
+          "fill_timestamp": "2026-11-05T16:00:00Z",
+          "reference_price": 171.4554,
+          "fill_price": 171.5754,
+          "spread_cost_dollars": 0.4008,
+          "slippage_cost_dollars": 1.0013,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2004.67,
+          "stop_loss": 166.91,
+          "take_profit": 184.88,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $396.8B >= $10.0B floor; Valuation P/E 23.4x is within [4.0x, 33.6x]; Distance from 52w high -1.4% within [-38.6%, +0.0%]. Risk-managed stop at $166.91, target $184.88.",
+          "confidence": 0.92
+        },
+        {
+          "trade_id": "trd_c44b93ebf762",
+          "agent_id": "style_berkshire",
+          "side": "BUY",
+          "ticker": "PEP",
+          "shares": 12.1566,
+          "decision_timestamp": "2026-11-05T16:00:00Z",
+          "fill_timestamp": "2026-11-05T16:30:00Z",
+          "reference_price": 164.9573,
+          "fill_price": 165.0728,
+          "spread_cost_dollars": 0.4012,
+          "slippage_cost_dollars": 1.0029,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2006.72,
+          "stop_loss": 160.64,
+          "take_profit": 177.94,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $224.5B >= $10.0B floor; Valuation P/E 20.6x is within [4.0x, 33.6x]; Distance from 52w high -3.9% within [-38.6%, +0.0%]. Risk-managed stop at $160.64, target $177.94.",
+          "confidence": 0.92
+        },
+        {
+          "trade_id": "trd_2d731ee0e05e",
+          "agent_id": "style_berkshire",
+          "side": "BUY",
+          "ticker": "MCD",
+          "shares": 6.3215,
+          "decision_timestamp": "2026-11-05T16:30:00Z",
+          "fill_timestamp": "2026-11-05T17:00:00Z",
+          "reference_price": 312.1368,
+          "fill_price": 312.3553,
+          "spread_cost_dollars": 0.3945,
+          "slippage_cost_dollars": 0.9868,
+          "commission_dollars": 0.0,
+          "notional_dollars": 1974.55,
+          "stop_loss": 304.84,
+          "take_profit": 337.67,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Berkshire Style buy on MCD (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Discretionary' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $220.7B >= $10.0B floor; Valuation P/E 24.4x is within [4.0x, 33.6x]; Distance from 52w high -8.5% within [-38.6%, +0.0%]. Risk-managed stop at $304.84, target $337.67.",
+          "confidence": 0.92
+        }
+      ],
+      "rejections": [],
+      "equity_curve": [
+        {
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0.0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-05T15:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 9998.6,
+          "cash": 7997.23,
+          "positions_value": 2001.37,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": -0.01
+        },
+        {
+          "timestamp": "2026-11-05T15:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10000.8,
+          "cash": 5989.25,
+          "positions_value": 4011.55,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.01
+        },
+        {
+          "timestamp": "2026-11-05T16:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10014.82,
+          "cash": 3984.58,
+          "positions_value": 6030.24,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.15
+        },
+        {
+          "timestamp": "2026-11-05T16:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10025.32,
+          "cash": 1977.86,
+          "positions_value": 8047.46,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.25
+        },
+        {
+          "timestamp": "2026-11-05T17:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10007.21,
+          "cash": 3.31,
+          "positions_value": 10003.9,
+          "drawdown_pct": -0.18,
+          "daily_return_pct": 0.07
+        },
+        {
+          "timestamp": "2026-11-05T17:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10036.13,
+          "cash": 3.31,
+          "positions_value": 10032.82,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.36
+        },
+        {
+          "timestamp": "2026-11-05T18:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10030.95,
+          "cash": 3.31,
+          "positions_value": 10027.64,
+          "drawdown_pct": -0.05,
+          "daily_return_pct": 0.31
+        },
+        {
+          "timestamp": "2026-11-05T18:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10031.55,
+          "cash": 3.31,
+          "positions_value": 10028.24,
+          "drawdown_pct": -0.05,
+          "daily_return_pct": 0.32
+        },
+        {
+          "timestamp": "2026-11-05T19:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10016.94,
+          "cash": 3.31,
+          "positions_value": 10013.63,
+          "drawdown_pct": -0.19,
+          "daily_return_pct": 0.17
+        },
+        {
+          "timestamp": "2026-11-05T19:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10005.43,
+          "cash": 3.31,
+          "positions_value": 10002.12,
+          "drawdown_pct": -0.31,
+          "daily_return_pct": 0.05
+        },
+        {
+          "timestamp": "2026-11-05T20:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10000.54,
+          "cash": 3.31,
+          "positions_value": 9997.23,
+          "drawdown_pct": -0.35,
+          "daily_return_pct": 0.01
+        },
+        {
+          "timestamp": "2026-11-05T20:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 9996.67,
+          "cash": 3.31,
+          "positions_value": 9993.36,
+          "drawdown_pct": -0.39,
+          "daily_return_pct": -0.03
+        },
+        {
+          "timestamp": "2026-11-06T14:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10006.76,
+          "cash": 3.31,
+          "positions_value": 10003.45,
+          "drawdown_pct": -0.29,
+          "daily_return_pct": 0.07
+        },
+        {
+          "timestamp": "2026-11-06T15:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10018.74,
+          "cash": 3.31,
+          "positions_value": 10015.43,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.12
+        },
+        {
+          "timestamp": "2026-11-06T15:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10036.16,
+          "cash": 3.31,
+          "positions_value": 10032.85,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.29
+        },
+        {
+          "timestamp": "2026-11-06T16:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10041.07,
+          "cash": 3.31,
+          "positions_value": 10037.76,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.34
+        },
+        {
+          "timestamp": "2026-11-06T16:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10040.28,
+          "cash": 3.31,
+          "positions_value": 10036.97,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": 0.34
+        },
+        {
+          "timestamp": "2026-11-06T17:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10031.28,
+          "cash": 3.31,
+          "positions_value": 10027.97,
+          "drawdown_pct": -0.1,
+          "daily_return_pct": 0.24
+        },
+        {
+          "timestamp": "2026-11-06T17:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10021.87,
+          "cash": 3.31,
+          "positions_value": 10018.56,
+          "drawdown_pct": -0.19,
+          "daily_return_pct": 0.15
+        },
+        {
+          "timestamp": "2026-11-06T18:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10024.44,
+          "cash": 3.31,
+          "positions_value": 10021.13,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.18
+        },
+        {
+          "timestamp": "2026-11-06T18:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10025.5,
+          "cash": 3.31,
+          "positions_value": 10022.19,
+          "drawdown_pct": -0.16,
+          "daily_return_pct": 0.19
+        },
+        {
+          "timestamp": "2026-11-06T19:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10020.49,
+          "cash": 3.31,
+          "positions_value": 10017.18,
+          "drawdown_pct": -0.2,
+          "daily_return_pct": 0.14
+        },
+        {
+          "timestamp": "2026-11-06T19:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10021.85,
+          "cash": 3.31,
+          "positions_value": 10018.54,
+          "drawdown_pct": -0.19,
+          "daily_return_pct": 0.15
+        },
+        {
+          "timestamp": "2026-11-06T20:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 9991.56,
+          "cash": 3.31,
+          "positions_value": 9988.25,
+          "drawdown_pct": -0.49,
+          "daily_return_pct": -0.15
+        },
+        {
+          "timestamp": "2026-11-06T20:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10013.04,
+          "cash": 3.31,
+          "positions_value": 10009.73,
+          "drawdown_pct": -0.28,
+          "daily_return_pct": 0.06
+        },
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10001.22,
+          "cash": 3.31,
+          "positions_value": 9997.91,
+          "drawdown_pct": -0.4,
+          "daily_return_pct": -0.06
+        },
+        {
+          "timestamp": "2026-11-09T15:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9992.47,
+          "cash": 3.31,
+          "positions_value": 9989.16,
+          "drawdown_pct": -0.48,
+          "daily_return_pct": -0.09
+        },
+        {
+          "timestamp": "2026-11-09T15:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9970.68,
+          "cash": 3.31,
+          "positions_value": 9967.37,
+          "drawdown_pct": -0.7,
+          "daily_return_pct": -0.31
+        },
+        {
+          "timestamp": "2026-11-09T16:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9964.85,
+          "cash": 3.31,
+          "positions_value": 9961.54,
+          "drawdown_pct": -0.76,
+          "daily_return_pct": -0.36
+        },
+        {
+          "timestamp": "2026-11-09T16:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9953.06,
+          "cash": 3.31,
+          "positions_value": 9949.75,
+          "drawdown_pct": -0.88,
+          "daily_return_pct": -0.48
+        },
+        {
+          "timestamp": "2026-11-09T17:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9941.0,
+          "cash": 3.31,
+          "positions_value": 9937.69,
+          "drawdown_pct": -1.0,
+          "daily_return_pct": -0.6
+        },
+        {
+          "timestamp": "2026-11-09T17:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9950.24,
+          "cash": 3.31,
+          "positions_value": 9946.93,
+          "drawdown_pct": -0.9,
+          "daily_return_pct": -0.51
+        },
+        {
+          "timestamp": "2026-11-09T18:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9950.38,
+          "cash": 3.31,
+          "positions_value": 9947.07,
+          "drawdown_pct": -0.9,
+          "daily_return_pct": -0.51
+        },
+        {
+          "timestamp": "2026-11-09T18:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9965.34,
+          "cash": 3.31,
+          "positions_value": 9962.03,
+          "drawdown_pct": -0.75,
+          "daily_return_pct": -0.36
+        },
+        {
+          "timestamp": "2026-11-09T19:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9957.87,
+          "cash": 3.31,
+          "positions_value": 9954.56,
+          "drawdown_pct": -0.83,
+          "daily_return_pct": -0.43
+        },
+        {
+          "timestamp": "2026-11-09T19:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9977.25,
+          "cash": 3.31,
+          "positions_value": 9973.94,
+          "drawdown_pct": -0.64,
+          "daily_return_pct": -0.24
+        },
+        {
+          "timestamp": "2026-11-09T20:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9992.02,
+          "cash": 3.31,
+          "positions_value": 9988.71,
+          "drawdown_pct": -0.49,
+          "daily_return_pct": -0.09
+        },
+        {
+          "timestamp": "2026-11-09T20:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9989.72,
+          "cash": 3.31,
+          "positions_value": 9986.41,
+          "drawdown_pct": -0.51,
+          "daily_return_pct": -0.12
+        },
+        {
+          "timestamp": "2026-11-10T14:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 9988.87,
+          "cash": 3.31,
+          "positions_value": 9985.56,
+          "drawdown_pct": -0.52,
+          "daily_return_pct": -0.12
+        },
+        {
+          "timestamp": "2026-11-10T15:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 9987.76,
+          "cash": 3.31,
+          "positions_value": 9984.45,
+          "drawdown_pct": -0.53,
+          "daily_return_pct": -0.01
+        },
+        {
+          "timestamp": "2026-11-10T15:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10027.83,
+          "cash": 3.31,
+          "positions_value": 10024.52,
+          "drawdown_pct": -0.13,
+          "daily_return_pct": 0.39
+        },
+        {
+          "timestamp": "2026-11-10T16:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10051.14,
+          "cash": 3.31,
+          "positions_value": 10047.83,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.62
+        },
+        {
+          "timestamp": "2026-11-10T16:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10068.4,
+          "cash": 3.31,
+          "positions_value": 10065.09,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.8
+        },
+        {
+          "timestamp": "2026-11-10T17:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10091.4,
+          "cash": 3.31,
+          "positions_value": 10088.09,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.03
+        },
+        {
+          "timestamp": "2026-11-10T17:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10088.25,
+          "cash": 3.31,
+          "positions_value": 10084.94,
+          "drawdown_pct": -0.03,
+          "daily_return_pct": 0.99
+        },
+        {
+          "timestamp": "2026-11-10T18:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10085.33,
+          "cash": 3.31,
+          "positions_value": 10082.02,
+          "drawdown_pct": -0.06,
+          "daily_return_pct": 0.97
+        },
+        {
+          "timestamp": "2026-11-10T18:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10084.44,
+          "cash": 3.31,
+          "positions_value": 10081.13,
+          "drawdown_pct": -0.07,
+          "daily_return_pct": 0.96
+        },
+        {
+          "timestamp": "2026-11-10T19:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10089.9,
+          "cash": 3.31,
+          "positions_value": 10086.59,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": 1.01
+        },
+        {
+          "timestamp": "2026-11-10T19:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10109.34,
+          "cash": 3.31,
+          "positions_value": 10106.03,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.21
+        },
+        {
+          "timestamp": "2026-11-10T20:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10113.67,
+          "cash": 3.31,
+          "positions_value": 10110.36,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.25
+        },
+        {
+          "timestamp": "2026-11-10T20:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10111.42,
+          "cash": 3.31,
+          "positions_value": 10108.11,
+          "drawdown_pct": -0.02,
+          "daily_return_pct": 1.23
+        },
+        {
+          "timestamp": "2026-11-11T14:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10122.71,
+          "cash": 3.31,
+          "positions_value": 10119.4,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.34
+        },
+        {
+          "timestamp": "2026-11-11T15:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10149.5,
+          "cash": 3.31,
+          "positions_value": 10146.19,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.26
+        },
+        {
+          "timestamp": "2026-11-11T15:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10173.26,
+          "cash": 3.31,
+          "positions_value": 10169.95,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.5
+        },
+        {
+          "timestamp": "2026-11-11T16:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10173.73,
+          "cash": 3.31,
+          "positions_value": 10170.42,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.5
+        },
+        {
+          "timestamp": "2026-11-11T16:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10188.58,
+          "cash": 3.31,
+          "positions_value": 10185.27,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.65
+        },
+        {
+          "timestamp": "2026-11-11T17:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10194.0,
+          "cash": 3.31,
+          "positions_value": 10190.69,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.7
+        },
+        {
+          "timestamp": "2026-11-11T17:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10197.82,
+          "cash": 3.31,
+          "positions_value": 10194.51,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.74
+        },
+        {
+          "timestamp": "2026-11-11T18:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10192.53,
+          "cash": 3.31,
+          "positions_value": 10189.22,
+          "drawdown_pct": -0.05,
+          "daily_return_pct": 0.69
+        },
+        {
+          "timestamp": "2026-11-11T18:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10188.96,
+          "cash": 3.31,
+          "positions_value": 10185.65,
+          "drawdown_pct": -0.09,
+          "daily_return_pct": 0.65
+        },
+        {
+          "timestamp": "2026-11-11T19:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10199.62,
+          "cash": 3.31,
+          "positions_value": 10196.31,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.76
+        },
+        {
+          "timestamp": "2026-11-11T19:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10176.53,
+          "cash": 3.31,
+          "positions_value": 10173.22,
+          "drawdown_pct": -0.23,
+          "daily_return_pct": 0.53
+        },
+        {
+          "timestamp": "2026-11-11T20:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10192.33,
+          "cash": 3.31,
+          "positions_value": 10189.02,
+          "drawdown_pct": -0.07,
+          "daily_return_pct": 0.69
+        },
+        {
+          "timestamp": "2026-11-11T20:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10209.93,
+          "cash": 3.31,
+          "positions_value": 10206.62,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.86
+        },
+        {
+          "timestamp": "2026-11-11T20:35:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10233.91,
+          "cash": 3.31,
+          "positions_value": 10230.6,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.1
+        }
+      ],
+      "daily_journal": [
+        {
+          "trading_date_et": "2026-11-05",
+          "trading_day_number": 1,
+          "start_equity": 10000.0,
+          "end_equity": 10006.76,
+          "daily_pnl": 6.76,
+          "daily_pnl_pct": 0.07,
+          "trades_count": 5,
+          "rejections_count": 0,
+          "summary_text": "Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,006.76 (+$6.76, +0.07%). Executed 5 trade(s) — Buys: WFC ($2,003), QCOM ($2,008), PG ($2,005), PEP ($2,007), MCD ($1,975); Sells: none.",
+          "highlights": [
+            "BUY 26.8515 WFC @ $74.59 ($2002.77, stop $72.62) — Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $223.6B >= $10.0B floor; Valuation P/E 10.4x is within [4.0x, 33.6x]; Distance from 52w high -23.8% within [-38.6%, +0.0%]. Risk-managed stop at $72.62, target $80.44.",
+            "BUY 11.3565 QCOM @ $176.81 ($2007.98, stop $171.68) — Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $188.4B >= $10.0B floor; Valuation P/E 12.6x is within [4.0x, 33.6x]; Distance from 52w high -32.2% within [-38.6%, +0.0%]. Risk-managed stop at $171.68, target $190.17.",
+            "BUY 11.6839 PG @ $171.58 ($2004.67, stop $166.91) — Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $396.8B >= $10.0B floor; Valuation P/E 23.4x is within [4.0x, 33.6x]; Distance from 52w high -1.4% within [-38.6%, +0.0%]. Risk-managed stop at $166.91, target $184.88.",
+            "BUY 12.1566 PEP @ $165.07 ($2006.72, stop $160.64) — Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $224.5B >= $10.0B floor; Valuation P/E 20.6x is within [4.0x, 33.6x]; Distance from 52w high -3.9% within [-38.6%, +0.0%]. Risk-managed stop at $160.64, target $177.94.",
+            "BUY 6.3215 MCD @ $312.36 ($1974.55, stop $304.84) — Berkshire Style buy on MCD (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Discretionary' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $220.7B >= $10.0B floor; Valuation P/E 24.4x is within [4.0x, 33.6x]; Distance from 52w high -8.5% within [-38.6%, +0.0%]. Risk-managed stop at $304.84, target $337.67."
+          ]
+        },
+        {
+          "trading_date_et": "2026-11-06",
+          "trading_day_number": 2,
+          "start_equity": 10006.76,
+          "end_equity": 10001.22,
+          "daily_pnl": -5.54,
+          "daily_pnl_pct": -0.06,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 2 (2026-11-06): Equity moved from $10,006.76 to $10,001.22 ($-5.54, -0.06%). No new trades executed; held existing position(s): WFC (26.85 sh, +0.14%), QCOM (11.36 sh, +0.96%), PG (11.68 sh, +0.42%), PEP (12.16 sh, -0.42%), MCD (6.32 sh, -1.06%).",
+          "highlights": []
+        },
+        {
+          "trading_date_et": "2026-11-09",
+          "trading_day_number": 3,
+          "start_equity": 10001.22,
+          "end_equity": 9988.87,
+          "daily_pnl": -12.35,
+          "daily_pnl_pct": -0.12,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 3 (2026-11-09): Equity moved from $10,001.22 to $9,988.87 ($-12.35, -0.12%). No new trades executed; held existing position(s): WFC (26.85 sh, -0.31%), QCOM (11.36 sh, +1.40%), PG (11.68 sh, +0.28%), PEP (12.16 sh, -0.69%), MCD (6.32 sh, -1.26%).",
+          "highlights": []
+        },
+        {
+          "trading_date_et": "2026-11-10",
+          "trading_day_number": 4,
+          "start_equity": 9988.87,
+          "end_equity": 10122.71,
+          "daily_pnl": 133.84,
+          "daily_pnl_pct": 1.34,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 4 (2026-11-10): Equity moved from $9,988.87 to $10,122.71 (+$133.84, +1.34%). No new trades executed; held existing position(s): WFC (26.85 sh, +0.73%), QCOM (11.36 sh, +4.21%), PG (11.68 sh, +0.62%), PEP (12.16 sh, +0.35%), MCD (6.32 sh, +0.21%).",
+          "highlights": []
+        },
+        {
+          "trading_date_et": "2026-11-11",
+          "trading_day_number": 5,
+          "start_equity": 10122.71,
+          "end_equity": 10233.91,
+          "daily_pnl": 111.2,
+          "daily_pnl_pct": 1.1,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 5 (2026-11-11): Equity moved from $10,122.71 to $10,233.91 (+$111.20, +1.10%). No new trades executed; held existing position(s): WFC (26.85 sh, +1.58%), QCOM (11.36 sh, +6.34%), PG (11.68 sh, +1.33%), PEP (12.16 sh, +1.25%), MCD (6.32 sh, +1.18%).",
+          "highlights": []
+        }
+      ],
+      "last_updated": "2026-11-11T20:35:00Z"
+    },
+    "style_congress": {
+      "agent_id": "style_congress",
+      "name": "12. Congress Style (House PTR Pattern)",
+      "category": "Filing-Style Learned",
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "initial_cash": 10000.0,
+      "cash": 203.03,
+      "equity": 10552.55,
+      "peak_equity": 10552.55,
+      "max_drawdown_pct": -0.65,
+      "current_drawdown_pct": 0.0,
+      "current_trading_date_et": "2026-11-11",
+      "day_start_equity": 10336.4,
+      "daily_pnl_pct": 2.09,
+      "positions": {
+        "PFE": {
+          "ticker": "PFE",
+          "shares": 72.4279,
+          "avg_entry_price": 27.6873,
+          "current_price": 28.4043,
+          "stop_loss": 27.06,
+          "take_profit": 29.4,
+          "opened_at": "2026-11-05T15:30:00Z",
+          "entry_reasoning": "Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Health Care' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B >= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).",
+          "unrealized_pnl": 51.93,
+          "unrealized_pnl_pct": 2.59,
+          "market_value": 2057.26
+        },
+        "LMT": {
+          "ticker": "LMT",
+          "shares": 3.5135,
+          "avg_entry_price": 570.5901,
+          "current_price": 589.6569,
+          "stop_loss": 558.65,
+          "take_profit": 607.11,
+          "opened_at": "2026-11-05T16:30:00Z",
+          "entry_reasoning": "Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B >= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).",
+          "unrealized_pnl": 66.99,
+          "unrealized_pnl_pct": 3.34,
+          "market_value": 2071.76
+        },
+        "HON": {
+          "ticker": "HON",
+          "shares": 8.4485,
+          "avg_entry_price": 231.7461,
+          "current_price": 238.0383,
+          "stop_loss": 227.7,
+          "take_profit": 247.45,
+          "opened_at": "2026-11-05T17:00:00Z",
+          "entry_reasoning": "Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B >= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d).",
+          "unrealized_pnl": 53.16,
+          "unrealized_pnl_pct": 2.72,
+          "market_value": 2011.07
+        },
+        "QCOM": {
+          "ticker": "QCOM",
+          "shares": 11.1938,
+          "avg_entry_price": 186.8393,
+          "current_price": 188.0171,
+          "stop_loss": 181.62,
+          "take_profit": 197.38,
+          "opened_at": "2026-11-11T15:30:00Z",
+          "entry_reasoning": "Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B >= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).",
+          "unrealized_pnl": 13.19,
+          "unrealized_pnl_pct": 0.63,
+          "market_value": 2104.63
+        },
+        "BAC": {
+          "ticker": "BAC",
+          "shares": 43.9936,
+          "avg_entry_price": 47.3574,
+          "current_price": 47.8434,
+          "stop_loss": 46.38,
+          "take_profit": 50.41,
+          "opened_at": "2026-11-11T16:00:00Z",
+          "entry_reasoning": "Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B >= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).",
+          "unrealized_pnl": 21.38,
+          "unrealized_pnl_pct": 1.03,
+          "market_value": 2104.8
+        }
+      },
+      "pending_orders": [],
+      "trades": [
+        {
+          "trade_id": "trd_82a5f6795360",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "QCOM",
+          "shares": 11.3874,
+          "decision_timestamp": "2026-11-05T14:30:00Z",
+          "fill_timestamp": "2026-11-05T15:00:00Z",
+          "reference_price": 176.0857,
+          "fill_price": 176.209,
+          "spread_cost_dollars": 0.4008,
+          "slippage_cost_dollars": 1.0032,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2006.56,
+          "stop_loss": 172.12,
+          "take_profit": 187.05,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $187.9B >= $50.0B floor; 30-day price move -1.3% within learned [-8.0%, +9.6%]. Stop at $172.12, target $187.05 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_1ebfe4500b9a",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "PFE",
+          "shares": 72.4279,
+          "decision_timestamp": "2026-11-05T15:00:00Z",
+          "fill_timestamp": "2026-11-05T15:30:00Z",
+          "reference_price": 27.668,
+          "fill_price": 27.6873,
+          "spread_cost_dollars": 0.3984,
+          "slippage_cost_dollars": 0.9995,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2005.33,
+          "stop_loss": 27.06,
+          "take_profit": 29.4,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Health Care' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B >= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_20e3b8b50822",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "AXP",
+          "shares": 6.2753,
+          "decision_timestamp": "2026-11-05T15:30:00Z",
+          "fill_timestamp": "2026-11-05T16:00:00Z",
+          "reference_price": 321.5069,
+          "fill_price": 321.732,
+          "spread_cost_dollars": 0.4035,
+          "slippage_cost_dollars": 1.0091,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2018.96,
+          "stop_loss": 312.46,
+          "take_profit": 339.56,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $213.8B >= $50.0B floor; 30-day price move -1.5% within learned [-8.0%, +9.6%]. Stop at $312.46, target $339.56 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_4e46e8bb85c7",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "LMT",
+          "shares": 3.5135,
+          "decision_timestamp": "2026-11-05T16:00:00Z",
+          "fill_timestamp": "2026-11-05T16:30:00Z",
+          "reference_price": 570.1909,
+          "fill_price": 570.5901,
+          "spread_cost_dollars": 0.4005,
+          "slippage_cost_dollars": 1.0021,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2004.77,
+          "stop_loss": 558.65,
+          "take_profit": 607.11,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B >= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_9d87a4d6bc22",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "HON",
+          "shares": 8.4485,
+          "decision_timestamp": "2026-11-05T16:30:00Z",
+          "fill_timestamp": "2026-11-05T17:00:00Z",
+          "reference_price": 231.584,
+          "fill_price": 231.7461,
+          "spread_cost_dollars": 0.3912,
+          "slippage_cost_dollars": 0.9783,
+          "commission_dollars": 0.0,
+          "notional_dollars": 1957.91,
+          "stop_loss": 227.7,
+          "take_profit": 247.45,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B >= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_af7f96ab4d66",
+          "agent_id": "style_congress",
+          "side": "SELL",
+          "ticker": "AXP",
+          "shares": 6.2753,
+          "decision_timestamp": "2026-11-09T18:00:00Z",
+          "fill_timestamp": "2026-11-09T18:30:00Z",
+          "reference_price": 339.56,
+          "fill_price": 339.3224,
+          "spread_cost_dollars": 0.4261,
+          "slippage_cost_dollars": 1.0649,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2129.35,
+          "stop_loss": 312.46,
+          "take_profit": 339.56,
+          "realized_pnl": 110.39,
+          "realized_pnl_pct": 5.47,
+          "exit_reason": "TAKE_PROFIT",
+          "reasoning": "Take-profit triggered at $339.56 (intrabar high $341.93 >= target $339.56)",
+          "confidence": 1.0
+        },
+        {
+          "trade_id": "trd_269c5dd1e659",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "AXP",
+          "shares": 5.9743,
+          "decision_timestamp": "2026-11-09T18:00:00Z",
+          "fill_timestamp": "2026-11-09T18:30:00Z",
+          "reference_price": 340.5637,
+          "fill_price": 340.8021,
+          "spread_cost_dollars": 0.4068,
+          "slippage_cost_dollars": 1.0174,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2036.05,
+          "stop_loss": 331.32,
+          "take_profit": 360.06,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $226.7B >= $50.0B floor; 30-day price move +4.5% within learned [-8.0%, +9.6%]. Stop at $331.32, target $360.06 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_aeb49cb34347",
+          "agent_id": "style_congress",
+          "side": "SELL",
+          "ticker": "QCOM",
+          "shares": 11.3874,
+          "decision_timestamp": "2026-11-11T15:00:00Z",
+          "fill_timestamp": "2026-11-11T15:30:00Z",
+          "reference_price": 187.05,
+          "fill_price": 186.9191,
+          "spread_cost_dollars": 0.4259,
+          "slippage_cost_dollars": 1.0647,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2128.52,
+          "stop_loss": 172.12,
+          "take_profit": 187.05,
+          "realized_pnl": 121.96,
+          "realized_pnl_pct": 6.08,
+          "exit_reason": "TAKE_PROFIT",
+          "reasoning": "Take-profit triggered at $187.05 (intrabar high $187.50 >= target $187.05)",
+          "confidence": 1.0
+        },
+        {
+          "trade_id": "trd_99ecc0b17622",
+          "agent_id": "style_congress",
+          "side": "SELL",
+          "ticker": "AXP",
+          "shares": 5.9743,
+          "decision_timestamp": "2026-11-11T15:00:00Z",
+          "fill_timestamp": "2026-11-11T15:30:00Z",
+          "reference_price": 360.06,
+          "fill_price": 359.808,
+          "spread_cost_dollars": 0.4301,
+          "slippage_cost_dollars": 1.0754,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2149.6,
+          "stop_loss": 331.32,
+          "take_profit": 360.06,
+          "realized_pnl": 113.55,
+          "realized_pnl_pct": 5.58,
+          "exit_reason": "TAKE_PROFIT",
+          "reasoning": "Take-profit triggered at $360.06 (intrabar high $361.10 >= target $360.06)",
+          "confidence": 1.0
+        },
+        {
+          "trade_id": "trd_0982d45049c5",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "QCOM",
+          "shares": 11.1938,
+          "decision_timestamp": "2026-11-11T15:00:00Z",
+          "fill_timestamp": "2026-11-11T15:30:00Z",
+          "reference_price": 186.7086,
+          "fill_price": 186.8393,
+          "spread_cost_dollars": 0.4175,
+          "slippage_cost_dollars": 1.0455,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2091.44,
+          "stop_loss": 181.62,
+          "take_profit": 197.38,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B >= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).",
+          "confidence": 0.9
+        },
+        {
+          "trade_id": "trd_073243bd3efb",
+          "agent_id": "style_congress",
+          "side": "BUY",
+          "ticker": "BAC",
+          "shares": 43.9936,
+          "decision_timestamp": "2026-11-11T15:30:00Z",
+          "fill_timestamp": "2026-11-11T16:00:00Z",
+          "reference_price": 47.3242,
+          "fill_price": 47.3574,
+          "spread_cost_dollars": 0.4179,
+          "slippage_cost_dollars": 1.0426,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2083.42,
+          "stop_loss": 46.38,
+          "take_profit": 50.41,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B >= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).",
+          "confidence": 0.9
+        }
+      ],
+      "rejections": [],
+      "equity_curve": [
+        {
+          "timestamp": "2026-11-23T04:59:20Z",
+          "trading_date_et": "2026-11-22",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0.0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-05T15:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 9998.6,
+          "cash": 7993.44,
+          "positions_value": 2005.16,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": -0.01
+        },
+        {
+          "timestamp": "2026-11-05T15:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10004.09,
+          "cash": 5988.11,
+          "positions_value": 4015.98,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.04
+        },
+        {
+          "timestamp": "2026-11-05T16:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10014.5,
+          "cash": 3969.15,
+          "positions_value": 6045.35,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.14
+        },
+        {
+          "timestamp": "2026-11-05T16:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10020.43,
+          "cash": 1964.38,
+          "positions_value": 8056.05,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.2
+        },
+        {
+          "timestamp": "2026-11-05T17:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 9988.11,
+          "cash": 6.47,
+          "positions_value": 9981.64,
+          "drawdown_pct": -0.32,
+          "daily_return_pct": -0.12
+        },
+        {
+          "timestamp": "2026-11-05T17:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10014.56,
+          "cash": 6.47,
+          "positions_value": 10008.09,
+          "drawdown_pct": -0.06,
+          "daily_return_pct": 0.15
+        },
+        {
+          "timestamp": "2026-11-05T18:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10021.61,
+          "cash": 6.47,
+          "positions_value": 10015.14,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.22
+        },
+        {
+          "timestamp": "2026-11-05T18:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10038.87,
+          "cash": 6.47,
+          "positions_value": 10032.4,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.39
+        },
+        {
+          "timestamp": "2026-11-05T19:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10043.04,
+          "cash": 6.47,
+          "positions_value": 10036.57,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.43
+        },
+        {
+          "timestamp": "2026-11-05T19:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10037.73,
+          "cash": 6.47,
+          "positions_value": 10031.26,
+          "drawdown_pct": -0.05,
+          "daily_return_pct": 0.38
+        },
+        {
+          "timestamp": "2026-11-05T20:00:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10031.76,
+          "cash": 6.47,
+          "positions_value": 10025.29,
+          "drawdown_pct": -0.11,
+          "daily_return_pct": 0.32
+        },
+        {
+          "timestamp": "2026-11-05T20:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10025.14,
+          "cash": 6.47,
+          "positions_value": 10018.67,
+          "drawdown_pct": -0.18,
+          "daily_return_pct": 0.25
+        },
+        {
+          "timestamp": "2026-11-06T14:30:00Z",
+          "trading_date_et": "2026-11-05",
+          "equity": 10046.53,
+          "cash": 6.47,
+          "positions_value": 10040.06,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.47
+        },
+        {
+          "timestamp": "2026-11-06T15:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10062.05,
+          "cash": 6.47,
+          "positions_value": 10055.58,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.15
+        },
+        {
+          "timestamp": "2026-11-06T15:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10096.88,
+          "cash": 6.47,
+          "positions_value": 10090.41,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.5
+        },
+        {
+          "timestamp": "2026-11-06T16:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10107.95,
+          "cash": 6.47,
+          "positions_value": 10101.48,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.61
+        },
+        {
+          "timestamp": "2026-11-06T16:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10110.36,
+          "cash": 6.47,
+          "positions_value": 10103.89,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.64
+        },
+        {
+          "timestamp": "2026-11-06T17:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10096.58,
+          "cash": 6.47,
+          "positions_value": 10090.11,
+          "drawdown_pct": -0.14,
+          "daily_return_pct": 0.5
+        },
+        {
+          "timestamp": "2026-11-06T17:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10112.0,
+          "cash": 6.47,
+          "positions_value": 10105.53,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.65
+        },
+        {
+          "timestamp": "2026-11-06T18:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10133.81,
+          "cash": 6.47,
+          "positions_value": 10127.34,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.87
+        },
+        {
+          "timestamp": "2026-11-06T18:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10139.2,
+          "cash": 6.47,
+          "positions_value": 10132.73,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.92
+        },
+        {
+          "timestamp": "2026-11-06T19:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10134.84,
+          "cash": 6.47,
+          "positions_value": 10128.37,
+          "drawdown_pct": -0.04,
+          "daily_return_pct": 0.88
+        },
+        {
+          "timestamp": "2026-11-06T19:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10144.18,
+          "cash": 6.47,
+          "positions_value": 10137.71,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.97
+        },
+        {
+          "timestamp": "2026-11-06T20:00:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10111.24,
+          "cash": 6.47,
+          "positions_value": 10104.77,
+          "drawdown_pct": -0.32,
+          "daily_return_pct": 0.64
+        },
+        {
+          "timestamp": "2026-11-06T20:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10148.15,
+          "cash": 6.47,
+          "positions_value": 10141.68,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.01
+        },
+        {
+          "timestamp": "2026-11-09T14:30:00Z",
+          "trading_date_et": "2026-11-06",
+          "equity": 10150.51,
+          "cash": 6.47,
+          "positions_value": 10144.04,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.03
+        },
+        {
+          "timestamp": "2026-11-09T15:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10139.63,
+          "cash": 6.47,
+          "positions_value": 10133.16,
+          "drawdown_pct": -0.11,
+          "daily_return_pct": -0.11
+        },
+        {
+          "timestamp": "2026-11-09T15:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10126.77,
+          "cash": 6.47,
+          "positions_value": 10120.3,
+          "drawdown_pct": -0.23,
+          "daily_return_pct": -0.23
+        },
+        {
+          "timestamp": "2026-11-09T16:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10110.61,
+          "cash": 6.47,
+          "positions_value": 10104.14,
+          "drawdown_pct": -0.39,
+          "daily_return_pct": -0.39
+        },
+        {
+          "timestamp": "2026-11-09T16:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10095.94,
+          "cash": 6.47,
+          "positions_value": 10089.47,
+          "drawdown_pct": -0.54,
+          "daily_return_pct": -0.54
+        },
+        {
+          "timestamp": "2026-11-09T17:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10084.16,
+          "cash": 6.47,
+          "positions_value": 10077.69,
+          "drawdown_pct": -0.65,
+          "daily_return_pct": -0.65
+        },
+        {
+          "timestamp": "2026-11-09T17:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10094.04,
+          "cash": 6.47,
+          "positions_value": 10087.57,
+          "drawdown_pct": -0.56,
+          "daily_return_pct": -0.56
+        },
+        {
+          "timestamp": "2026-11-09T18:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10099.21,
+          "cash": 6.47,
+          "positions_value": 10092.74,
+          "drawdown_pct": -0.51,
+          "daily_return_pct": -0.51
+        },
+        {
+          "timestamp": "2026-11-09T18:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10121.21,
+          "cash": 99.77,
+          "positions_value": 10021.44,
+          "drawdown_pct": -0.29,
+          "daily_return_pct": -0.29
+        },
+        {
+          "timestamp": "2026-11-09T19:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10114.06,
+          "cash": 99.77,
+          "positions_value": 10014.29,
+          "drawdown_pct": -0.36,
+          "daily_return_pct": -0.36
+        },
+        {
+          "timestamp": "2026-11-09T19:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10142.0,
+          "cash": 99.77,
+          "positions_value": 10042.23,
+          "drawdown_pct": -0.08,
+          "daily_return_pct": -0.08
+        },
+        {
+          "timestamp": "2026-11-09T20:00:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10150.27,
+          "cash": 99.77,
+          "positions_value": 10050.5,
+          "drawdown_pct": -0.0,
+          "daily_return_pct": -0.0
+        },
+        {
+          "timestamp": "2026-11-09T20:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10129.72,
+          "cash": 99.77,
+          "positions_value": 10029.95,
+          "drawdown_pct": -0.2,
+          "daily_return_pct": -0.2
+        },
+        {
+          "timestamp": "2026-11-10T14:30:00Z",
+          "trading_date_et": "2026-11-09",
+          "equity": 10132.68,
+          "cash": 99.77,
+          "positions_value": 10032.91,
+          "drawdown_pct": -0.18,
+          "daily_return_pct": -0.18
+        },
+        {
+          "timestamp": "2026-11-10T15:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10127.58,
+          "cash": 99.77,
+          "positions_value": 10027.81,
+          "drawdown_pct": -0.23,
+          "daily_return_pct": -0.05
+        },
+        {
+          "timestamp": "2026-11-10T15:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10179.97,
+          "cash": 99.77,
+          "positions_value": 10080.2,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.47
+        },
+        {
+          "timestamp": "2026-11-10T16:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10215.18,
+          "cash": 99.77,
+          "positions_value": 10115.41,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.81
+        },
+        {
+          "timestamp": "2026-11-10T16:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10226.85,
+          "cash": 99.77,
+          "positions_value": 10127.08,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.93
+        },
+        {
+          "timestamp": "2026-11-10T17:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10268.54,
+          "cash": 99.77,
+          "positions_value": 10168.77,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.34
+        },
+        {
+          "timestamp": "2026-11-10T17:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10261.5,
+          "cash": 99.77,
+          "positions_value": 10161.73,
+          "drawdown_pct": -0.07,
+          "daily_return_pct": 1.27
+        },
+        {
+          "timestamp": "2026-11-10T18:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10265.15,
+          "cash": 99.77,
+          "positions_value": 10165.38,
+          "drawdown_pct": -0.03,
+          "daily_return_pct": 1.31
+        },
+        {
+          "timestamp": "2026-11-10T18:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10281.71,
+          "cash": 99.77,
+          "positions_value": 10181.94,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.47
+        },
+        {
+          "timestamp": "2026-11-10T19:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10292.43,
+          "cash": 99.77,
+          "positions_value": 10192.66,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.58
+        },
+        {
+          "timestamp": "2026-11-10T19:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10308.46,
+          "cash": 99.77,
+          "positions_value": 10208.69,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.73
+        },
+        {
+          "timestamp": "2026-11-10T20:00:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10314.78,
+          "cash": 99.77,
+          "positions_value": 10215.01,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.8
+        },
+        {
+          "timestamp": "2026-11-10T20:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10316.22,
+          "cash": 99.77,
+          "positions_value": 10216.45,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.81
+        },
+        {
+          "timestamp": "2026-11-11T14:30:00Z",
+          "trading_date_et": "2026-11-10",
+          "equity": 10336.4,
+          "cash": 99.77,
+          "positions_value": 10236.63,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 2.01
+        },
+        {
+          "timestamp": "2026-11-11T15:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10372.7,
+          "cash": 99.77,
+          "positions_value": 10272.93,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.35
+        },
+        {
+          "timestamp": "2026-11-11T15:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10411.37,
+          "cash": 2286.45,
+          "positions_value": 8124.92,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.73
+        },
+        {
+          "timestamp": "2026-11-11T16:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10422.29,
+          "cash": 203.03,
+          "positions_value": 10219.26,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.83
+        },
+        {
+          "timestamp": "2026-11-11T16:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10428.75,
+          "cash": 203.03,
+          "positions_value": 10225.72,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.89
+        },
+        {
+          "timestamp": "2026-11-11T17:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10426.41,
+          "cash": 203.03,
+          "positions_value": 10223.38,
+          "drawdown_pct": -0.02,
+          "daily_return_pct": 0.87
+        },
+        {
+          "timestamp": "2026-11-11T17:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10438.7,
+          "cash": 203.03,
+          "positions_value": 10235.67,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.99
+        },
+        {
+          "timestamp": "2026-11-11T18:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10451.19,
+          "cash": 203.03,
+          "positions_value": 10248.16,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.11
+        },
+        {
+          "timestamp": "2026-11-11T18:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10458.2,
+          "cash": 203.03,
+          "positions_value": 10255.17,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.18
+        },
+        {
+          "timestamp": "2026-11-11T19:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10473.09,
+          "cash": 203.03,
+          "positions_value": 10270.06,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.32
+        },
+        {
+          "timestamp": "2026-11-11T19:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10458.92,
+          "cash": 203.03,
+          "positions_value": 10255.89,
+          "drawdown_pct": -0.14,
+          "daily_return_pct": 1.19
+        },
+        {
+          "timestamp": "2026-11-11T20:00:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10492.74,
+          "cash": 203.03,
+          "positions_value": 10289.71,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.51
+        },
+        {
+          "timestamp": "2026-11-11T20:30:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10513.42,
+          "cash": 203.03,
+          "positions_value": 10310.39,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.71
+        },
+        {
+          "timestamp": "2026-11-11T20:35:00Z",
+          "trading_date_et": "2026-11-11",
+          "equity": 10552.55,
+          "cash": 203.03,
+          "positions_value": 10349.52,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 2.09
+        }
+      ],
+      "daily_journal": [
+        {
+          "trading_date_et": "2026-11-05",
+          "trading_day_number": 1,
+          "start_equity": 10000.0,
+          "end_equity": 10046.53,
+          "daily_pnl": 46.53,
+          "daily_pnl_pct": 0.47,
+          "trades_count": 5,
+          "rejections_count": 0,
+          "summary_text": "Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,046.53 (+$46.53, +0.47%). Executed 5 trade(s) — Buys: QCOM ($2,007), PFE ($2,005), AXP ($2,019), LMT ($2,005), HON ($1,958); Sells: none.",
+          "highlights": [
+            "BUY 11.3874 QCOM @ $176.21 ($2006.56, stop $172.12) — Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $187.9B >= $50.0B floor; 30-day price move -1.3% within learned [-8.0%, +9.6%]. Stop at $172.12, target $187.05 (typical hold ~59d).",
+            "BUY 72.4279 PFE @ $27.69 ($2005.33, stop $27.06) — Congress Style buy on PFE (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Health Care' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $157.4B >= $50.0B floor; 30-day price move -6.2% within learned [-8.0%, +9.6%]. Stop at $27.06, target $29.40 (typical hold ~59d).",
+            "BUY 6.2753 AXP @ $321.73 ($2018.96, stop $312.46) — Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $213.8B >= $50.0B floor; 30-day price move -1.5% within learned [-8.0%, +9.6%]. Stop at $312.46, target $339.56 (typical hold ~59d).",
+            "BUY 3.5135 LMT @ $570.59 ($2004.77, stop $558.65) — Congress Style buy on LMT (pattern score 97.4/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $131.7B >= $50.0B floor; 30-day price move +3.4% within learned [-8.0%, +9.6%]. Stop at $558.65, target $607.11 (typical hold ~59d).",
+            "BUY 8.4485 HON @ $231.75 ($1957.91, stop $227.70) — Congress Style buy on HON (pattern score 89.8/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Industrials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $73.7B >= $50.0B floor; 30-day price move +8.6% within learned [-8.0%, +9.6%]. Stop at $227.70, target $247.45 (typical hold ~59d)."
+          ]
+        },
+        {
+          "trading_date_et": "2026-11-06",
+          "trading_day_number": 2,
+          "start_equity": 10046.53,
+          "end_equity": 10150.51,
+          "daily_pnl": 103.98,
+          "daily_pnl_pct": 1.03,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 2 (2026-11-06): Equity moved from $10,046.53 to $10,150.51 (+$103.98, +1.03%). No new trades executed; held existing position(s): QCOM (11.39 sh, +1.30%), PFE (72.43 sh, +0.57%), AXP (6.28 sh, +4.48%), LMT (3.51 sh, -0.32%), HON (8.45 sh, +1.47%).",
+          "highlights": []
+        },
+        {
+          "trading_date_et": "2026-11-09",
+          "trading_day_number": 3,
+          "start_equity": 10150.51,
+          "end_equity": 10132.68,
+          "daily_pnl": -17.83,
+          "daily_pnl_pct": -0.18,
+          "trades_count": 2,
+          "rejections_count": 0,
+          "summary_text": "Day 3 (2026-11-09): Equity moved from $10,150.51 to $10,132.68 ($-17.83, -0.18%). Executed 2 trade(s) — Buys: AXP ($2,036); Sells: AXP (TAKE_PROFIT, +$110.39).",
+          "highlights": [
+            "BUY 5.9743 AXP @ $340.80 ($2036.05, stop $331.32) — Congress Style buy on AXP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $226.7B >= $50.0B floor; 30-day price move +4.5% within learned [-8.0%, +9.6%]. Stop at $331.32, target $360.06 (typical hold ~59d).",
+            "SELL 6.2753 AXP @ $339.32 [TAKE_PROFIT: +$110.39 (+5.47%)] — Take-profit triggered at $339.56 (intrabar high $341.93 >= target $339.56)"
+          ]
+        },
+        {
+          "trading_date_et": "2026-11-10",
+          "trading_day_number": 4,
+          "start_equity": 10132.68,
+          "end_equity": 10336.4,
+          "daily_pnl": 203.72,
+          "daily_pnl_pct": 2.01,
+          "trades_count": 0,
+          "rejections_count": 0,
+          "summary_text": "Day 4 (2026-11-10): Equity moved from $10,132.68 to $10,336.40 (+$203.72, +2.01%). No new trades executed; held existing position(s): QCOM (11.39 sh, +4.57%), PFE (72.43 sh, +0.43%), LMT (3.51 sh, +0.67%), HON (8.45 sh, +0.82%), AXP (5.97 sh, +4.72%).",
+          "highlights": []
+        },
+        {
+          "trading_date_et": "2026-11-11",
+          "trading_day_number": 5,
+          "start_equity": 10336.4,
+          "end_equity": 10552.55,
+          "daily_pnl": 216.15,
+          "daily_pnl_pct": 2.09,
+          "trades_count": 4,
+          "rejections_count": 0,
+          "summary_text": "Day 5 (2026-11-11): Equity moved from $10,336.40 to $10,552.55 (+$216.15, +2.09%). Executed 4 trade(s) — Buys: QCOM ($2,091), BAC ($2,083); Sells: QCOM (TAKE_PROFIT, +$121.96), AXP (TAKE_PROFIT, +$113.55).",
+          "highlights": [
+            "BUY 11.1938 QCOM @ $186.84 ($2091.44, stop $181.62) — Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $198.3B >= $50.0B floor; 30-day price move +4.1% within learned [-8.0%, +9.6%]. Stop at $181.62, target $197.38 (typical hold ~59d).",
+            "BUY 43.9936 BAC @ $47.36 ($2083.42, stop $46.38) — Congress Style buy on BAC (pattern score 97.3/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $326.6B >= $50.0B floor; 30-day price move -6.8% within learned [-8.0%, +9.6%]. Stop at $46.38, target $50.41 (typical hold ~59d).",
+            "SELL 11.3874 QCOM @ $186.92 [TAKE_PROFIT: +$121.96 (+6.08%)] — Take-profit triggered at $187.05 (intrabar high $187.50 >= target $187.05)",
+            "SELL 5.9743 AXP @ $359.81 [TAKE_PROFIT: +$113.55 (+5.58%)] — Take-profit triggered at $360.06 (intrabar high $361.10 >= target $360.06)"
           ]
         }
       ],
