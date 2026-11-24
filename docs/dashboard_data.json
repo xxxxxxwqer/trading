@@ -1,9 +1,9 @@
 {
   "paper_trading_warning": "PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)",
   "alpaca_paper_endpoint": "https://paper-api.alpaca.markets",
-  "generated_at_utc": "2026-11-24T05:35:10Z",
-  "generated_at_kst": "2026-11-24 14:35:10 KST",
-  "generated_at_et": "2026-11-24 00:35:10 EST",
+  "generated_at_utc": "2026-11-24T05:39:35Z",
+  "generated_at_kst": "2026-11-24 14:39:35 KST",
+  "generated_at_et": "2026-11-24 00:39:35 EST",
   "competition_status_badge": "LIVE - Day 1 of 10",
   "trading_days_completed": 1,
   "competition_trading_days": 10,
@@ -18,19 +18,15 @@
       "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
       "llm_agents.py": "88fafd78d80d6b6ba8d38e975cf4fb1ecc3f5c619e5e07937bf511be45ebd86b",
       "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
-      "own_strategy_agent.py": "4545b6f2e2b8976683bbe9a7b3bf49df76529f3421f0ef9fad628043cd6b7985",
       "claude_rmp_agent.py": "dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4",
       "claude_rmp_params.json": "9e8ffee7dd14d1e6cc9efa8f35aebe61b91d34da5a10984652697f8650a2d3f7",
       "risk_manager.py": "5c0039cf492408d6e8ed9d734ed8921003713150faddef21e15679439d840e14",
       "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
     },
     "strategy_integrity_verified": true,
-    "pre_declared_exceptions": [
-      "Agent 13 (Own Strategy) is explicitly permitted to review its own results and revise its own rulebook once per day AFTER market close (never during market hours); every version and change reason is permanently archived on the dashboard."
-    ],
     "started_at_utc": "",
     "completed_at_utc": "",
-    "last_updated_utc": "2026-11-24T05:35:10Z",
+    "last_updated_utc": "2026-11-24T05:39:35Z",
     "last_decision_timestamp_utc": "",
     "current_trading_date_et": "",
     "regime_summary": "Ready for Day 1 market open."
@@ -577,51 +573,6 @@
       "rank": 12
     },
     {
-      "agent_id": "llm_own_strategy",
-      "name": "13. Own Strategy (Autonomous Gemini Flash)",
-      "category": "Autonomous LLM (Gemini Flash)",
-      "short_category": "Autonomous LLM",
-      "category_class": "cat-autonomous",
-      "short_description": "Self-directed Gemini Flash trader given NO persona and NO suggested strategy — authors its own plain-language rulebook blindly before launch and may revise it once daily after market close.",
-      "playbook": "Pre-declared autonomous strategy: given ONLY starting cash ($10,000), hard risk/universe rules (US stocks >$5, >1M avg daily volume, 1% risk/trade, 20% max position, max 5 positions, -3% daily / -10% total limits), available data fields, 10 trading days, and the goal of highest net return. Authors its own rulebook blindly without seeing dry-run prices, sees only its own rulebook/positions/trades (never other agents or leaderboard), may tighten (never loosen) limits, and is explicitly permitted to review results and revise its rulebook once per day AFTER market close.",
-      "flatten_eod": false,
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "status_class": "status-active",
-      "initial_cash": 10000.0,
-      "equity": 10000.0,
-      "cash": 10000.0,
-      "positions_value": 0,
-      "open_positions_count": 0,
-      "unrealized_pnl": 0,
-      "peak_equity": 10000.0,
-      "net_profit": 0.0,
-      "net_return_pct": 0.0,
-      "return_vs_spy_pct": 0.0,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 0.0,
-      "total_fills": 0,
-      "buy_fills_count": 0,
-      "closed_trades_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate_pct": 0.0,
-      "profit_factor": null,
-      "profit_factor_str": "N/A",
-      "avg_win": 0.0,
-      "avg_loss": 0.0,
-      "gross_profit": 0,
-      "gross_loss": 0,
-      "total_spread_cost": 0,
-      "total_slippage_cost": 0,
-      "total_friction_cost": 0,
-      "total_notional": 0,
-      "rejections_count": 0,
-      "color": "#06b6d4",
-      "rank": 13
-    },
-    {
       "agent_id": "claude_rmp",
       "name": "14. Claude Residual-Momentum Pullback",
       "category": "Coded Strategy",
@@ -664,7 +615,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#f59e0b",
-      "rank": 14
+      "rank": 13
     }
   ],
   "cohort_analysis": {
@@ -696,21 +647,6 @@
       "best_agent_name": "5. Technical Analyst (Gemini Flash)",
       "best_agent_return_pct": 0.0,
       "worst_agent_name": "5. Technical Analyst (Gemini Flash)",
-      "worst_agent_return_pct": 0.0
-    },
-    "Autonomous LLM": {
-      "count": 1,
-      "avg_equity": 10000.0,
-      "avg_return_pct": 0.0,
-      "avg_max_drawdown_pct": 0.0,
-      "avg_win_rate_pct": 0.0,
-      "total_fills": 0,
-      "total_closed_trades": 0,
-      "total_friction_cost": 0,
-      "total_rejections": 0,
-      "best_agent_name": "13. Own Strategy (Autonomous Gemini Flash)",
-      "best_agent_return_pct": 0.0,
-      "worst_agent_name": "13. Own Strategy (Autonomous Gemini Flash)",
       "worst_agent_return_pct": 0.0
     },
     "Filing-Style Learned": {
@@ -1005,25 +941,6 @@
       },
       {
         "rank": 13,
-        "agent_id": "llm_own_strategy",
-        "name": "13. Own Strategy (Autonomous Gemini Flash)",
-        "short_category": "Autonomous LLM",
-        "n_days": 1,
-        "cum_return_pct": 0.0,
-        "mean_daily_pct": 0.0,
-        "std_daily_pct": 0.45,
-        "se_daily_pct": 0.45,
-        "cum_se_pct": 0.45,
-        "ci_95_low_pct": -0.88,
-        "ci_95_high_pct": 0.88,
-        "diff_vs_random_pct": 0.0,
-        "t_stat_vs_random": 0.0,
-        "diff_vs_spy_pct": 0.0,
-        "t_stat_vs_spy": 0.0,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 14,
         "agent_id": "claude_rmp",
         "name": "14. Claude Residual-Momentum Pullback",
         "short_category": "Coded",
@@ -1324,17 +1241,7 @@
       ]
     }
   },
-  "agent13_rulebook_history": {
-    "agent_id": "llm_own_strategy",
-    "agent_name": "13. Own Strategy (Autonomous Gemini Flash)",
-    "pre_declared_revision_policy": "Declared before competition start: Agent 13 writes its own rulebook blindly without suggested indicators or styles, and may review its own results and revise its rulebook at most once per trading day AFTER market close (never during market hours). Every past version and change reason is permanently archived.",
-    "current_version": 0,
-    "generated_by": "PENDING_GEMINI_API_KEY",
-    "blind_creation_verified": true,
-    "versions": [],
-    "daily_reviews": [],
-    "last_reviewed_date_et": ""
-  },
+  "agent13_rulebook_history": {},
   "claude_rmp": {
     "prevalidation": {
       "agent_id": "claude_rmp",
@@ -1486,7 +1393,6 @@
     "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
     "llm_agents.py": "88fafd78d80d6b6ba8d38e975cf4fb1ecc3f5c619e5e07937bf511be45ebd86b",
     "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
-    "own_strategy_agent.py": "4545b6f2e2b8976683bbe9a7b3bf49df76529f3421f0ef9fad628043cd6b7985",
     "claude_rmp_agent.py": "dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4",
     "claude_rmp_params.json": "9e8ffee7dd14d1e6cc9efa8f35aebe61b91d34da5a10984652697f8650a2d3f7",
     "risk_manager.py": "5c0039cf492408d6e8ed9d734ed8921003713150faddef21e15679439d840e14",
@@ -1514,7 +1420,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1524,7 +1430,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "coded_mean_rev": {
       "agent_id": "coded_mean_rev",
@@ -1547,7 +1453,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1557,7 +1463,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "coded_orb": {
       "agent_id": "coded_orb",
@@ -1580,7 +1486,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1590,7 +1496,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "coded_sector": {
       "agent_id": "coded_sector",
@@ -1613,7 +1519,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1623,7 +1529,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "llm_technical": {
       "agent_id": "llm_technical",
@@ -1646,7 +1552,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1656,7 +1562,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "llm_catalyst": {
       "agent_id": "llm_catalyst",
@@ -1679,7 +1585,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1689,7 +1595,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "llm_macro": {
       "agent_id": "llm_macro",
@@ -1712,7 +1618,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1722,7 +1628,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "llm_cautious": {
       "agent_id": "llm_cautious",
@@ -1745,7 +1651,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1755,7 +1661,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "ctrl_spy": {
       "agent_id": "ctrl_spy",
@@ -1778,7 +1684,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1788,7 +1694,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "ctrl_random": {
       "agent_id": "ctrl_random",
@@ -1811,7 +1717,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1821,7 +1727,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "style_berkshire": {
       "agent_id": "style_berkshire",
@@ -1844,7 +1750,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1854,7 +1760,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "style_congress": {
       "agent_id": "style_congress",
@@ -1877,7 +1783,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1887,40 +1793,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
-    },
-    "llm_own_strategy": {
-      "agent_id": "llm_own_strategy",
-      "name": "13. Own Strategy (Autonomous Gemini Flash)",
-      "category": "Autonomous LLM (Gemini Flash)",
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "initial_cash": 10000.0,
-      "cash": 10000.0,
-      "equity": 10000.0,
-      "peak_equity": 10000.0,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
-      "current_trading_date_et": "",
-      "day_start_equity": 10000.0,
-      "daily_pnl_pct": 0.0,
-      "positions": {},
-      "pending_orders": [],
-      "trades": [],
-      "rejections": [],
-      "equity_curve": [
-        {
-          "timestamp": "2026-11-24T05:35:10Z",
-          "trading_date_et": "2026-11-24",
-          "equity": 10000.0,
-          "cash": 10000.0,
-          "positions_value": 0.0,
-          "drawdown_pct": 0.0,
-          "daily_return_pct": 0.0
-        }
-      ],
-      "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     },
     "claude_rmp": {
       "agent_id": "claude_rmp",
@@ -1943,7 +1816,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T05:35:10Z",
+          "timestamp": "2026-11-24T05:39:35Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1953,7 +1826,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T05:35:10Z"
+      "last_updated": "2026-11-24T05:39:35Z"
     }
   }
 }

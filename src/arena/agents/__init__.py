@@ -16,7 +16,6 @@ from .coded_agents import (
     TrendFollowingAgent,
 )
 from .style_agents import BerkshireStyleAgent, CongressStyleAgent
-from .own_strategy_agent import OwnStrategyAgent
 from .claude_rmp_agent import ClaudeRMPAgent
 
 try:
@@ -50,10 +49,6 @@ def build_all_agents(allow_offline_llm_simulation: bool = False) -> List[BaseAge
         if spec.agent_id in CODED_AND_CONTROL_AGENT_CLASSES:
             cls = CODED_AND_CONTROL_AGENT_CLASSES[spec.agent_id]
             agents.append(cls(spec=spec))
-        elif spec.agent_id == "llm_own_strategy":
-            agents.append(
-                OwnStrategyAgent(spec=spec, allow_offline_simulation=allow_offline_llm_simulation)
-            )
         else:
             if "allow_offline_llm_simulation" in llm_params:
                 agents.append(
@@ -89,7 +84,6 @@ __all__ = [
     "RandomTraderAgent",
     "BerkshireStyleAgent",
     "CongressStyleAgent",
-    "OwnStrategyAgent",
     "ClaudeRMPAgent",
     "LLMAgent",
     "build_all_agents",

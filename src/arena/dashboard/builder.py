@@ -41,7 +41,7 @@ from arena.models import (
     TradeRecord,
 )
 
-# High-contrast, distinct palette for all 14 agents
+# High-contrast, distinct palette for all 13 active agents (1-12 + 14)
 AGENT_COLORS: Dict[str, str] = {
     "coded_trend": "#38bdf8",      # Sky Blue
     "coded_mean_rev": "#818cf8",   # Indigo
@@ -55,7 +55,6 @@ AGENT_COLORS: Dict[str, str] = {
     "ctrl_random": "#94a3b8",      # Slate Grey (Luck Control)
     "style_berkshire": "#22c55e",  # Classic Value Green
     "style_congress": "#f43f5e",   # Capitol Rose Red
-    "llm_own_strategy": "#06b6d4", # Autonomous Cyan
     "claude_rmp": "#f59e0b",       # Claude Amber Gold
 }
 
@@ -1619,8 +1618,7 @@ class DashboardBuilder:
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
           <button type="button" class="btn-filter active" data-filter="all">All {total_agents} Agents</button>
           <button type="button" class="btn-filter" data-filter="Coded">5 Coded</button>
-          <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Persona LLMs</button>
-          <button type="button" class="btn-filter" data-filter="Autonomous LLM">1 Own Strategy LLM</button>
+          <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
           <button type="button" class="btn-filter" data-filter="Control">2 Controls</button>
         </div>
