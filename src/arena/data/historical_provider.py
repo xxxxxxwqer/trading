@@ -386,11 +386,74 @@ class HistoricalReplayProvider:
 
         replay_days_set = {d.isoformat(): idx + 1 for idx, d in enumerate(replay_days)}
 
+        # Precompute 85 completed synthetic daily bars prior to replay_days[0] so strategies needing >=70
+        # completed daily bars (e.g. Claude RMP) work deterministically during offline dry runs.
+        pre_daily_by_ticker: Dict[str, List[Bar]] = {}
+        first_all_day = to_et_datetime(bars_by_ticker[sample_ticker][0].timestamp).date()
+        pre_days = get_recent_us_trading_days(80, end_date=first_all_day - timedelta(days=1))
+        for sym in self.universe:
+            first_bar = bars_by_ticker[sym][0]
+            anchor_close = float(first_bar.open)
+            rng_d = random.Random(_ticker_seed(sym, self.seed + 777))
+            # Build backward-anchored realistic daily path ending cleanly at anchor_close
+            rets = []
+            drift = 0.0014 if sym in {"NVDA", "AVGO", "META", "PLTR", "CAT", "LLY", "GE", "AXP", "ORCL", "NFLX", "JPM", "MSFT", "AAPL"} else 0.0006
+            for _ in pre_days:
+                rets.append(drift + rng_d.gauss(0.0, 0.011))
+            closes_pre = [anchor_close]
+            for r in reversed(rets[:-1]):
+                closes_pre.append(max(5.0, closes_pre[-1] / math.exp(r)))
+            closes_pre.reverse()
+            dlist: List[Bar] = []
+            for d_obj, c_val in zip(pre_days, closes_pre):
+                o_val = round(c_val * (1.0 + rng_d.gauss(0.0, 0.004)), 4)
+                h_val = round(max(o_val, c_val) * (1.0 + abs(rng_d.gauss(0.0, 0.006))), 4)
+                l_val = round(min(o_val, c_val) * (1.0 - abs(rng_d.gauss(0.0, 0.006))), 4)
+                dlist.append(
+                    Bar(
+                        ticker=sym,
+                        timestamp=f"{d_obj.isoformat()}T21:00:00Z",
+                        open=o_val,
+                        high=h_val,
+                        low=l_val,
+                        close=round(c_val, 4),
+                        volume=2_500_000.0,
+                    )
+                )
+            pre_daily_by_ticker[sym] = dlist
+
+        # Aggregate completed daily bars from the warmup + replay 30-min bars by ET date
+        completed_30m_daily: Dict[str, Dict[str, Bar]] = {sym: {} for sym in self.universe}
+        for sym in self.universe:
+            by_d: Dict[str, List[Bar]] = {}
+            for b in bars_by_ticker[sym]:
+                bd = to_et_datetime(b.timestamp).strftime("%Y-%m-%d")
+                by_d.setdefault(bd, []).append(b)
+            for bd, bl in by_d.items():
+                completed_30m_daily[sym][bd] = Bar(
+                    ticker=sym,
+                    timestamp=f"{bd}T21:00:00Z",
+                    open=bl[0].open,
+                    high=max(x.high for x in bl),
+                    low=min(x.low for x in bl),
+                    close=bl[-1].close,
+                    volume=sum(x.volume for x in bl),
+                )
+
         for d in replay_days:
             d_str = d.isoformat()
             day_num = replay_days_set[d_str]
             session_open_et, session_close_et = get_session_hours_et(d)
             day_timestamps = get_session_30min_timestamps_utc(d)
+
+            # Completed daily bars strictly BEFORE d_str (zero look-ahead)
+            daily_bars_before_day: Dict[str, List[Bar]] = {}
+            for sym in self.universe:
+                extra = [
+                    b for bd, b in sorted(completed_30m_daily[sym].items())
+                    if bd < d_str
+                ]
+                daily_bars_before_day[sym] = pre_daily_by_ticker[sym] + extra
 
             for ts in day_timestamps:
                 idx = ts_to_idx[ts]
@@ -439,6 +502,7 @@ class HistoricalReplayProvider:
                     indicators=indicators,
                     news=visible_news,
                     regime_summary=regime_summary,
+                    daily_bars_by_ticker=daily_bars_before_day,
                 )
 
                 yield snapshot, next_bars, next_quotes, fill_timestamp

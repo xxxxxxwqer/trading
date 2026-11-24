@@ -244,6 +244,20 @@ AGENT_SPECS: List[AgentSpec] = [
             "(never loosen) limits, and is explicitly permitted to review results and revise its rulebook once per day AFTER market close."
         ),
     ),
+    AgentSpec(
+        agent_id="claude_rmp",
+        name="14. Claude Residual-Momentum Pullback",
+        category="Coded Strategy",
+        short_description="Deterministic coded strategy designed by Claude: 4-factor SPY/breadth/vol Regime Gate, 63-day beta-neutral residual-momentum Top 10 leaders, ATR/RSI(2) pullback entries, HeatCap drawdown-adaptive sizing, and R-based trailing/time/SMA50/regime exits.",
+        playbook=(
+            "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. "
+            "Trades individual US stocks only (no ETFs; SPY used solely for regime & beta). Daily 4-factor Regime Gate "
+            "(C1..C4) sets max slots (5/3/1/0) plus -1.25% intraday SPY crash guard. Ranks stocks by 58-day intercept-free "
+            "residual momentum skipping the last 5 days, enters Top 10 pullbacks (E1..E6 with 24h news keyword veto), sizes via "
+            "drawdown-adaptive HeatCap (0.75% target risk, -2% daily halt), and manages exits via stop ratchet, 5-day time stop, "
+            "SMA50 break, and Regime-OFF rules. No new entries on Day 10."
+        ),
+    ),
 ]
 
 AGENT_SPECS_BY_ID: Dict[str, AgentSpec] = {spec.agent_id: spec for spec in AGENT_SPECS}

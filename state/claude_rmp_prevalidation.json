@@ -1,0 +1,49 @@
+{
+  "agent_id": "claude_rmp",
+  "agent_name": "14. Claude Residual-Momentum Pullback",
+  "generated_at_utc": "2026-11-24T05:20:12Z",
+  "parameters_locked_no_optimization": true,
+  "backtest_period": [
+    "2024-11-20",
+    "2026-11-20"
+  ],
+  "total_trading_days": 502,
+  "survivorship_bias_warning": "CAUTION: This 2-year historical pre-validation uses today's 64 liquid large-cap universe, which introduces survivorship bias and makes historical results more optimistic than live trading.",
+  "rolling_10d_summary": {
+    "windows_count": 493,
+    "return_distribution_pct": {
+      "min": -2.2,
+      "p10": -0.74,
+      "p25": -0.17,
+      "median": 0.0,
+      "mean": 0.31,
+      "p75": 0.82,
+      "p90": 1.51,
+      "max": 5.46
+    },
+    "spy_10d_median_pct": 0.44,
+    "spy_10d_mean_pct": 0.4,
+    "beat_spy_windows_count": 243,
+    "beat_spy_windows_pct": 49.3,
+    "worst_window_max_drawdown_pct": -2.46,
+    "median_window_max_drawdown_pct": -0.4,
+    "blown_up_count": 0,
+    "blown_up_target": 0,
+    "avg_r_per_closed_trade": -0.117,
+    "avg_exposure_pct": 18.44
+  },
+  "continuous_2y_summary": {
+    "return_pct": 19.32,
+    "spy_return_pct": 19.45,
+    "excess_vs_spy_pct": -0.13,
+    "beat_spy": false,
+    "max_drawdown_pct": -3.82,
+    "blown_up": false,
+    "trades_count": 286,
+    "closed_trades_count": 143,
+    "avg_r_per_closed_trade": 0.176,
+    "avg_exposure_pct": 27.87,
+    "avg_exposure_spy_up_pct": 27.95,
+    "avg_exposure_spy_down_pct": 27.78
+  }
+}

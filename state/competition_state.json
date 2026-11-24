@@ -10,6 +10,8 @@
     "llm_agents.py": "b5ea126bc7c00e1ae921ce62ee442244d6e6faf10072143df51c3ff3de18f189",
     "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
     "own_strategy_agent.py": "f2a074c0ac8ea94432b182fd1992138d982e689430778894a8d26275fff86490",
+    "claude_rmp_agent.py": "dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4",
+    "claude_rmp_params.json": "9e8ffee7dd14d1e6cc9efa8f35aebe61b91d34da5a10984652697f8650a2d3f7",
     "risk_manager.py": "5c0039cf492408d6e8ed9d734ed8921003713150faddef21e15679439d840e14",
     "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
   },
@@ -19,7 +21,7 @@
   ],
   "started_at_utc": "",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-24T05:11:14Z",
+  "last_updated_utc": "2026-11-24T05:24:18Z",
   "last_decision_timestamp_utc": "",
   "current_trading_date_et": "",
   "regime_summary": "Ready for Day 1 market open."

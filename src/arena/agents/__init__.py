@@ -17,6 +17,7 @@ from .coded_agents import (
 )
 from .style_agents import BerkshireStyleAgent, CongressStyleAgent
 from .own_strategy_agent import OwnStrategyAgent
+from .claude_rmp_agent import ClaudeRMPAgent
 
 try:
     from .llm_agents import LLMAgent
@@ -33,6 +34,7 @@ CODED_AND_CONTROL_AGENT_CLASSES: Dict[str, Type[BaseAgent]] = {
     "ctrl_random": RandomTraderAgent,
     "style_berkshire": BerkshireStyleAgent,
     "style_congress": CongressStyleAgent,
+    "claude_rmp": ClaudeRMPAgent,
 }
 
 
@@ -88,6 +90,7 @@ __all__ = [
     "BerkshireStyleAgent",
     "CongressStyleAgent",
     "OwnStrategyAgent",
+    "ClaudeRMPAgent",
     "LLMAgent",
     "build_all_agents",
 ]

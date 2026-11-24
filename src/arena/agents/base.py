@@ -68,6 +68,8 @@ def compute_strategy_hashes() -> Dict[str, str]:
         "llm_agents.py": agents_dir / "llm_agents.py",
         "style_agents.py": agents_dir / "style_agents.py",
         "own_strategy_agent.py": agents_dir / "own_strategy_agent.py",
+        "claude_rmp_agent.py": agents_dir / "claude_rmp_agent.py",
+        "claude_rmp_params.json": agents_dir / "claude_rmp_params.json",
         "risk_manager.py": arena_dir / "engine" / "risk_manager.py",
         "simulator.py": arena_dir / "engine" / "simulator.py",
     }

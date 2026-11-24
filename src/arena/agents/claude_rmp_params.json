@@ -1,0 +1,94 @@
+{
+  "agent_id": "claude_rmp",
+  "strategy_name": "Claude Residual-Momentum Pullback",
+  "version": "1.0.0-locked",
+  "deterministic": true,
+  "uses_llm_at_runtime": false,
+  "min_daily_bars": 70,
+  "regime": {
+    "spy_sma_long": 50,
+    "spy_sma_short": 20,
+    "spy_sma_short_slope_lookback": 5,
+    "breadth_min_ratio": 0.50,
+    "rv_short_days": 10,
+    "rv_long_days": 60,
+    "rv_ratio_max": 1.25,
+    "slots_by_score": {
+      "4": 5,
+      "3": 3,
+      "2": 1,
+      "1": 0,
+      "0": 0
+    },
+    "intraday_spy_crash_guard_pct": -1.25
+  },
+  "leader_score": {
+    "beta_lookback_days": 63,
+    "residual_window_days": 58,
+    "skip_recent_days": 5,
+    "include_intercept": false,
+    "sma_trend_days": 50,
+    "sma_slope_lookback": 10,
+    "max_rv63_annualized": 0.55,
+    "min_score": 0.0,
+    "top_n": 10
+  },
+  "entry": {
+    "open_buffer_minutes": 30,
+    "close_buffer_minutes": 30,
+    "h10_lookback_days": 10,
+    "pullback_atr_min": 1.0,
+    "pullback_atr_max": 3.5,
+    "rsi2_max": 30.0,
+    "intraday_bounce_atr_mult": 0.2,
+    "min_relative_intraday_vs_spy_pct": -1.5,
+    "news_veto_hours": 24,
+    "news_veto_cooldown_trading_days": 2,
+    "news_veto_keywords": [
+      "downgrade",
+      "cuts guidance",
+      "lowers guidance",
+      "misses",
+      "investigation",
+      "probe",
+      "subpoena",
+      "recall",
+      "lawsuit",
+      "fraud",
+      "offering",
+      "dilution",
+      "halted"
+    ],
+    "max_per_sector": 2,
+    "max_new_per_cycle": 2,
+    "max_new_per_day": 4,
+    "no_new_entries_on_final_day": true
+  },
+  "sizing_and_risk": {
+    "heat_cap_base_pct": 3.5,
+    "heat_cap_dd_intercept_pct": 7.5,
+    "target_risk_per_trade_pct": 0.75,
+    "min_risk_per_trade_pct": 0.25,
+    "stop_atr_mult": 2.0,
+    "stop_min_pct": 0.03,
+    "stop_max_pct": 0.07,
+    "max_position_equity_pct": 20.0,
+    "daily_loss_halt_pct": -2.0,
+    "stopout_cooldown_trading_days": 2
+  },
+  "exit": {
+    "breakeven_trigger_r": 1.0,
+    "breakeven_lock_r": 0.1,
+    "trail_trigger_r": 1.5,
+    "trail_atr_mult": 1.5,
+    "time_stop_trading_days": 5,
+    "time_stop_min_unrealized_r": 0.5,
+    "regime_off_min_unrealized_r": 1.0,
+    "regime_off_tighten_atr_mult": 1.0
+  },
+  "falsification": {
+    "h1_min_closed_trades": 8,
+    "h1_max_avg_r_to_reject": 0.0,
+    "h3_max_drawdown_reject_pct": -6.0
+  }
+}

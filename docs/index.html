@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Trading Arena — 13-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
+  <title>AI Trading Arena — 14-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
@@ -38,11 +38,11 @@
         <div class="timestamps-box">
           <div class="ts-item">
             <span class="ts-label">Korea (KST / Asia/Seoul):</span>
-            <time class="ts-value">2026-11-23 14:12:01 KST</time>
+            <time class="ts-value">2026-11-24 14:24:18 KST</time>
           </div>
           <div class="ts-item">
             <span class="ts-label">New York (ET / America/New_York):</span>
-            <time class="ts-value">2026-11-23 00:12:01 EST</time>
+            <time class="ts-value">2026-11-24 00:24:18 EST</time>
           </div>
         </div>
       </div>
@@ -69,6 +69,7 @@
           <a href="agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
           <a href="agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
           <a href="agents/llm_own_strategy.html" class="agent-pill" title="13. Own Strategy (Autonomous Gemini Flash)">#13 llm_own_strategy</a>
+          <a href="agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
       </div>
     </nav>
   </header>
@@ -88,15 +89,15 @@
         <div class="kpi-label">S&amp;P 500 (<code>ctrl_spy</code>) Benchmark</div>
         <div class="kpi-value neutral">+0.00%</div>
         <div class="kpi-sub">
-          Equity: <strong>$10,000.00</strong> &bull; 0 of 12 active agents beating SPY
+          Equity: <strong>$10,000.00</strong> &bull; 0 of 13 active agents beating SPY
         </div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-label">Agent Risk Status</div>
-        <div class="kpi-value">13 Active / 13 Total</div>
+        <div class="kpi-value">14 Active / 14 Total</div>
         <div class="kpi-sub">
-          <span class="pos">13 Active</span> &bull;
+          <span class="pos">14 Active</span> &bull;
           <span class="warn">0 Daily Halted (-3%)</span> &bull;
           <span class="neg">0 Blown Up (-10%)</span>
         </div>
@@ -123,7 +124,7 @@
     <section class="panel" id="leaderboard">
       <div class="panel-header">
         <div>
-          <h2>&#127942; 13-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
+          <h2>&#127942; 14-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
           <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
         </div>
         <div class="panel-actions">
@@ -565,6 +566,38 @@
                 <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
               </td>
             </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-14">#14</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f59e0b"></span>
+                  <div>
+                    <a href="agents/claude_rmp.html" class="agent-link">14. Claude Residual-Momentum Pullback</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">claude_rmp</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -574,12 +607,12 @@
     <section class="panel" id="equity-curves">
       <div class="panel-header">
         <div>
-          <h2>&#128200; All 13 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
+          <h2>&#128200; All 14 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
           <p class="panel-sub">Interactive mark-to-market trajectory net of bid/ask half-spread and 5 bps slippage on every fill. Toggle cohorts or hover any point for exact equity.</p>
         </div>
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
-          <button type="button" class="btn-filter active" data-filter="all">All 13 Agents</button>
-          <button type="button" class="btn-filter" data-filter="Coded">4 Coded</button>
+          <button type="button" class="btn-filter active" data-filter="all">All 14 Agents</button>
+          <button type="button" class="btn-filter" data-filter="Coded">5 Coded</button>
           <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Persona LLMs</button>
           <button type="button" class="btn-filter" data-filter="Autonomous LLM">1 Own Strategy LLM</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
@@ -595,10 +628,10 @@
         <div class="svg-wrap">
           <svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
           <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,925</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,000</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,075</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,150</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
-          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#06b6d4" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>13. Own Strategy (Autonomous Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#06b6d4"><title>13. Own Strategy (Autonomous Gemini Flash): $10,000.00</title></circle>
+          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#06b6d4" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>13. Own Strategy (Autonomous Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#06b6d4"><title>13. Own Strategy (Autonomous Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f59e0b" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f59e0b"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></circle>
           <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
           <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace"></text>
-          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-23 00:12 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 00:24 ET</text>
         </svg>
         </div>
       </details>
@@ -661,7 +694,7 @@
       <div class="panel-header">
         <div>
           <h2>&#9889; Recent Arena Trade Activity Feed</h2>
-          <p class="panel-sub">Latest virtual executions across all 13 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
+          <p class="panel-sub">Latest virtual executions across all 14 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
         </div>
       </div>
       <div class="table-wrap">
@@ -724,6 +757,16 @@
           </thead>
           <tbody>
             <tr>
+              <td class="mono">claude_rmp_agent.py</td>
+              <td class="mono hash-cell"><code>dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">claude_rmp_params.json</td>
+              <td class="mono hash-cell"><code>9e8ffee7dd14d1e6cc9efa8f35aebe61b91d34da5a10984652697f8650a2d3f7</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
               <td class="mono">coded_agents.py</td>
               <td class="mono hash-cell"><code>7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
@@ -760,12 +803,12 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Static Dashboard &bull; Updated 2026-11-23 14:12:01 KST / 2026-11-23 00:12:01 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Static Dashboard &bull; Updated 2026-11-24 14:24:18 KST / 2026-11-24 00:24:18 EST</p>
   </footer>
 
   <script>
     (function() {
-      const payload = {"labels": ["Start", "2026-11-23 00:12 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "13. Own Strategy (Autonomous Gemini Flash)", "agent_id": "llm_own_strategy", "category": "Autonomous LLM", "data": [10000.0, 10000.0], "borderColor": "#06b6d4", "backgroundColor": "#06b6d4", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
+      const payload = {"labels": ["Start", "2026-11-24 00:24 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "13. Own Strategy (Autonomous Gemini Flash)", "agent_id": "llm_own_strategy", "category": "Autonomous LLM", "data": [10000.0, 10000.0], "borderColor": "#06b6d4", "backgroundColor": "#06b6d4", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "14. Claude Residual-Momentum Pullback", "agent_id": "claude_rmp", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
       const canvas = document.getElementById('equityChart');
       if (!canvas || typeof Chart === 'undefined') return;
       const ctx = canvas.getContext('2d');

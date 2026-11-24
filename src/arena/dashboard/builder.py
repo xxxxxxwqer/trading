@@ -41,7 +41,7 @@ from arena.models import (
     TradeRecord,
 )
 
-# High-contrast, distinct palette for all 13 agents
+# High-contrast, distinct palette for all 14 agents
 AGENT_COLORS: Dict[str, str] = {
     "coded_trend": "#38bdf8",      # Sky Blue
     "coded_mean_rev": "#818cf8",   # Indigo
@@ -56,6 +56,7 @@ AGENT_COLORS: Dict[str, str] = {
     "style_berkshire": "#22c55e",  # Classic Value Green
     "style_congress": "#f43f5e",   # Capitol Rose Red
     "llm_own_strategy": "#06b6d4", # Autonomous Cyan
+    "claude_rmp": "#f59e0b",       # Claude Amber Gold
 }
 
 
@@ -229,6 +230,7 @@ class DashboardBuilder:
         luck_stats = self._compute_luck_vs_skill(sorted_metrics, normalized_agents)
         learned_patterns = self._load_learned_patterns()
         agent13_history = self._load_agent13_history()
+        claude_rmp_data = self._load_claude_rmp_data()
 
         # 1. Write styles.css
         (target_dir / "styles.css").write_text(self._render_styles_css(), encoding="utf-8")
@@ -249,6 +251,7 @@ class DashboardBuilder:
             "luck_vs_skill": luck_stats,
             "learned_patterns": learned_patterns,
             "agent13_rulebook_history": agent13_history,
+            "claude_rmp": claude_rmp_data,
             "bug_fixes": bug_fix_list,
             "strategy_hashes": strategy_hashes,
             "agents": {a.agent_id: a.to_dict() for a in normalized_agents},
@@ -630,6 +633,190 @@ class DashboardBuilder:
 {chr(10).join(cards)}
       </div>
     </section>"""
+
+    def _load_claude_rmp_data(self) -> Dict[str, Any]:
+        """Load Agent 14 (claude_rmp) pre-validation backtest, cycle logs, and locked params."""
+        out: Dict[str, Any] = {"prevalidation": {}, "cycle_logs": [], "params": {}}
+        p_pre = PROJECT_ROOT / "state" / "claude_rmp_prevalidation.json"
+        p_logs = PROJECT_ROOT / "state" / "claude_rmp_cycle_logs.json"
+        p_params = PROJECT_ROOT / "src" / "arena" / "agents" / "claude_rmp_params.json"
+        for key, path in (("prevalidation", p_pre), ("cycle_logs", p_logs), ("params", p_params)):
+            if path.exists():
+                try:
+                    out[key] = json.loads(path.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+        return out
+
+    def _render_claude_rmp_section(self, rmp_data: Dict[str, Any]) -> str:
+        """Render Agent 14 (claude_rmp) telemetry (Section 9), falsification criteria (Section 10),
+        and 2-year rolling 10-day pre-validation protocol (Section 11)."""
+        pre = rmp_data.get("prevalidation") or {}
+        logs = list(rmp_data.get("cycle_logs") or [])
+
+        # 1. Pre-validation card (Section 11)
+        pre_html = ""
+        if pre and pre.get("rolling_10d_summary"):
+            r10 = pre["rolling_10d_summary"]
+            dist = r10.get("return_distribution_pct") or {}
+            c2y = pre.get("continuous_2y_summary") or {}
+            bp = pre.get("backtest_period") or ["?", "?"]
+            pre_html = f"""
+    <section class="panel" id="claude-rmp-prevalidation">
+      <div class="panel-header">
+        <div>
+          <h2>&#128202; Pre-Validation Protocol (Locked Parameters — Zero Grid Search / Optimization)</h2>
+          <p class="panel-sub">2-year daily-bar approximation ({_esc(bp[0])} &rarr; {_esc(bp[1])}, {pre.get('total_trading_days', 0)} trading days, {r10.get('windows_count', 0)} rolling 10-day windows) with next-day open + spread + 5 bps slippage.</p>
+        </div>
+        <span class="status-pill status-active">BLOWN_UP: {r10.get('blown_up_count', 0)} / {r10.get('windows_count', 0)} (Target: 0)</span>
+      </div>
+      <div class="oos-strip">
+        <span><strong>Rolling 10D Beat SPY:</strong> {r10.get('beat_spy_windows_pct', 0):.1f}% ({r10.get('beat_spy_windows_count', 0)}/{r10.get('windows_count', 0)})</span>
+        <span><strong>10D Return (Min / Med / Mean / Max):</strong> {dist.get('min', 0):+.2f}% / {dist.get('median', 0):+.2f}% / {dist.get('mean', 0):+.2f}% / {dist.get('max', 0):+.2f}%</span>
+        <span><strong>Worst 10D Max DD:</strong> <span class="neg">{r10.get('worst_window_max_drawdown_pct', 0):.2f}%</span></span>
+        <span><strong>Avg Exposure (10D / 2Y):</strong> {r10.get('avg_exposure_pct', 0):.1f}% / {c2y.get('avg_exposure_pct', 0):.1f}%</span>
+      </div>
+      <div class="oos-strip" style="margin-top:8px;">
+        <span><strong>Continuous 2Y Return:</strong> <span class="{_pnl_class(float(c2y.get('return_pct', 0)))}">{float(c2y.get('return_pct', 0)):+.2f}%</span> vs SPY {float(c2y.get('spy_return_pct', 0)):+.2f}%</span>
+        <span><strong>2Y Max DD:</strong> <span class="neg">{float(c2y.get('max_drawdown_pct', 0)):.2f}%</span></span>
+        <span><strong>2Y Closed Avg R:</strong> <strong>{float(c2y.get('avg_r_per_closed_trade', 0)):+.3f}R</strong> ({c2y.get('closed_trades_count', 0)} closed)</span>
+        <span><strong>H2 Exposure (SPY Up vs Down):</strong> {float(c2y.get('avg_exposure_spy_up_pct', 0)):.1f}% vs {float(c2y.get('avg_exposure_spy_down_pct', 0)):.1f}%</span>
+      </div>
+      <p class="oos-verdict-text" style="margin-top:10px;"><strong>Survivorship Bias Notice:</strong> {_esc(pre.get('survivorship_bias_warning', ''))}</p>
+    </section>"""
+
+        # 2. Latest Cycle Telemetry (Section 9: Regime, Heat, Top 10 Leaders, E1..E6 Matrix)
+        latest_html = ""
+        if logs:
+            last = logs[-1]
+            rf = last.get("regime_flags") or {}
+            leaders = last.get("leaders_top10") or []
+            checks = last.get("candidate_checks") or []
+            leader_pills = " ".join(
+                f'<span class="rank-pill">{_esc(ld["ticker"])} ({float(ld["score"]):.2f})</span>'
+                for ld in leaders
+            )
+            check_rows = []
+            for ch in checks:
+                def _b(v: Any) -> str:
+                    if v is True:
+                        return '<span class="pos">&#10003;</span>'
+                    if v is False:
+                        return '<span class="neg">&#10007;</span>'
+                    return "—"
+                check_rows.append(
+                    f"""            <tr>
+              <td class="mono strong">{_esc(ch.get('ticker'))}</td>
+              <td class="num">{float(ch.get('score', 0)):.2f}</td>
+              <td class="num">{_fmt_money(float(ch.get('price', 0))) if ch.get('price') else '—'}</td>
+              <td class="num">{f"{float(ch['pullback_atr']):.2f}" if ch.get('pullback_atr') is not None else '—'}</td>
+              <td class="num">{f"{float(ch['rsi2']):.1f}" if ch.get('rsi2') is not None else '—'}</td>
+              <td>{_b(ch.get('E1'))}</td>
+              <td>{_b(ch.get('E2'))}</td>
+              <td>{_b(ch.get('E3'))}</td>
+              <td>{_b(ch.get('E4'))}</td>
+              <td>{_b(ch.get('E5'))}</td>
+              <td>{_b(ch.get('E6'))}</td>
+              <td><code>{_esc(ch.get('result', ''))}</code></td>
+            </tr>"""
+                )
+            if not check_rows:
+                check_rows.append('<tr><td colspan="12" class="empty-state">No entry candidates evaluated in this cycle (check action codes below).</td></tr>')
+
+            recent_log_rows = []
+            for lg in reversed(logs[-15:]):
+                codes = ", ".join(
+                    f"{a.get('code')}" + (f"({a.get('ticker')})" if a.get("ticker") else "")
+                    for a in (lg.get("actions") or [])
+                ) or "HOLD"
+                recent_log_rows.append(
+                    f"""            <tr>
+              <td class="mono">{_esc(format_et(lg.get('timestamp')))}</td>
+              <td class="num">{lg.get('regime_score', 0)}/4</td>
+              <td class="num">{lg.get('slots', 0)}</td>
+              <td class="num">{float(lg.get('dd_pct', 0)):.2f}%</td>
+              <td class="num">${float(lg.get('heat_dollars', 0)):.0f} / ${float(lg.get('heat_cap_dollars', 0)):.0f}</td>
+              <td><code>{_esc(codes)}</code></td>
+            </tr>"""
+                )
+
+            latest_html = f"""
+    <section class="panel" id="claude-rmp-telemetry">
+      <div class="panel-header">
+        <div>
+          <h2>&#128225; Live Cycle Telemetry — Regime Gate, HeatCap, Top-10 Leaders &amp; E1–E6 Matrix</h2>
+          <p class="panel-sub">Latest cycle: {_esc(format_et(last.get('timestamp')))} ({_esc(last.get('trading_date_et'))})</p>
+        </div>
+        <span class="status-pill status-active">Regime {last.get('regime_score', 0)}/4 &bull; Max Slots: {last.get('slots', 0)}</span>
+      </div>
+      <div class="oos-strip">
+        <span><strong>C1 (SPY&gt;SMA50):</strong> {"PASS" if rf.get("C1") else "FAIL"}</span>
+        <span><strong>C2 (SMA20 Rising):</strong> {"PASS" if rf.get("C2") else "FAIL"}</span>
+        <span><strong>C3 (Breadth&ge;50%):</strong> {"PASS" if rf.get("C3") else "FAIL"} ({float(last.get("breadth_ratio") or 0)*100:.0f}%)</span>
+        <span><strong>C4 (RV10&le;1.25&times;RV60):</strong> {"PASS" if rf.get("C4") else "FAIL"}</span>
+        <span><strong>DD:</strong> {float(last.get("dd_pct", 0)):.2f}%</span>
+        <span><strong>Heat / HeatCap:</strong> ${float(last.get("heat_dollars", 0)):.2f} / ${float(last.get("heat_cap_dollars", 0)):.2f}</span>
+      </div>
+      <div style="margin:12px 0;">
+        <div class="rules-heading" style="margin-bottom:6px;">Daily Residual-Momentum Top 10 Leaders (Score):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">{leader_pills or '<span class="sub-num">None</span>'}</div>
+      </div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th><th class="num">Score</th><th class="num">Price</th><th class="num">Pullback(ATR)</th><th class="num">RSI(2)</th>
+              <th>E1</th><th>E2</th><th>E3</th><th>E4</th><th>E5</th><th>E6</th><th>Result Code</th>
+            </tr>
+          </thead>
+          <tbody>
+{chr(10).join(check_rows)}
+          </tbody>
+        </table>
+      </div>
+      <h3 class="sub-heading">Recent Cycle Telemetry History (Last 15 Cycles)</h3>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr><th>Timestamp (ET)</th><th class="num">Regime</th><th class="num">Slots</th><th class="num">DD</th><th class="num">Heat / Cap</th><th>Action / Skip Codes</th></tr>
+          </thead>
+          <tbody>
+{chr(10).join(recent_log_rows)}
+          </tbody>
+        </table>
+      </div>
+    </section>"""
+
+        # 3. Hypotheses & Falsification Criteria (Section 1 & Section 10)
+        fals_html = """
+    <section class="panel" id="claude-rmp-hypotheses">
+      <div class="panel-header">
+        <div>
+          <h2>&#128300; Pre-Declared Hypotheses (H1–H3), Falsification Criteria &amp; Known Weaknesses</h2>
+          <p class="panel-sub">Evaluated objectively after the 10-trading-day competition ends.</p>
+        </div>
+      </div>
+      <div class="rulebook-grid">
+        <div class="rulebook-item">
+          <div class="rulebook-item-label">H1 (Selection) &amp; Falsification</div>
+          <p>Beta-neutral residual-momentum leaders bounce after 1–5 day pullbacks. <strong>Rejected if:</strong> &ge;8 closed trades with average R &le; 0.</p>
+        </div>
+        <div class="rulebook-item">
+          <div class="rulebook-item-label">H2 (Regime) &amp; Falsification</div>
+          <p>Exposure control matters more than stock picking over 10 days. <strong>Rejected if:</strong> average exposure on SPY down days exceeds SPY up days.</p>
+        </div>
+        <div class="rulebook-item">
+          <div class="rulebook-item-label">H3 (Survival) &amp; Falsification</div>
+          <p>Drawdown-scaled HeatCap prevents catastrophic -10% blow-ups. <strong>Rejected if:</strong> max drawdown is deeper than -6.0%.</p>
+        </div>
+        <div class="rulebook-item">
+          <div class="rulebook-item-label">Known Weaknesses (Disclosed Upfront)</div>
+          <p>Lags SPY in vertical one-way rallies with no pullbacks; 30-min check cadence carries gap-through-stop risk (buffered by 2.5% Heat cushion); regime boundary can flip slots frequently.</p>
+        </div>
+      </div>
+    </section>"""
+
+        return pre_html + latest_html + fals_html
 
     def _load_agent13_history(self) -> Dict[str, Any]:
         """Load Agent 13's self-authored rulebook versions and daily post-close reviews."""
@@ -1431,7 +1618,7 @@ class DashboardBuilder:
         </div>
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
           <button type="button" class="btn-filter active" data-filter="all">All {total_agents} Agents</button>
-          <button type="button" class="btn-filter" data-filter="Coded">4 Coded</button>
+          <button type="button" class="btn-filter" data-filter="Coded">5 Coded</button>
           <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Persona LLMs</button>
           <button type="button" class="btn-filter" data-filter="Autonomous LLM">1 Own Strategy LLM</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
@@ -1844,6 +2031,7 @@ class DashboardBuilder:
     </section>
 {self._render_learned_patterns_panel({agent.agent_id: self._load_learned_patterns()[agent.agent_id]}, root_prefix="../") if agent.agent_id in self._load_learned_patterns() else ""}
 {self._render_agent13_section(self._load_agent13_history()) if agent.agent_id == "llm_own_strategy" else ""}
+{self._render_claude_rmp_section(self._load_claude_rmp_data()) if agent.agent_id == "claude_rmp" else ""}
 
     <!-- Agent KPI Strip -->
     <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">

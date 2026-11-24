@@ -111,6 +111,7 @@ class MarketSnapshot:
     indicators: Dict[str, TickerIndicators]
     news: List[NewsHeadline] = field(default_factory=list)
     regime_summary: str = ""
+    daily_bars_by_ticker: Dict[str, List[Bar]] = field(default_factory=dict)
 
 
 @dataclass

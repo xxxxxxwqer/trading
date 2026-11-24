@@ -138,6 +138,8 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
         "llm_agents.py": _ARENA_DIR / "agents" / "llm_agents.py",
         "style_agents.py": _ARENA_DIR / "agents" / "style_agents.py",
         "own_strategy_agent.py": _ARENA_DIR / "agents" / "own_strategy_agent.py",
+        "claude_rmp_agent.py": _ARENA_DIR / "agents" / "claude_rmp_agent.py",
+        "claude_rmp_params.json": _ARENA_DIR / "agents" / "claude_rmp_params.json",
     }
     for name, path in engine_files.items():
         if hashes.get(name) in (None, "", "MISSING") and path.exists() and path.is_file():
@@ -155,7 +157,11 @@ def build_competition_agents(
 
     agents: List[BaseAgent] = []
     for spec in AGENT_SPECS:
-        if spec.agent_id in CODED_AND_CONTROL_AGENT_CLASSES:
+        if spec.agent_id == "claude_rmp":
+            from arena.agents.claude_rmp_agent import ClaudeRMPAgent
+
+            agents.append(ClaudeRMPAgent(spec=spec, state_dir=state_dir))
+        elif spec.agent_id in CODED_AND_CONTROL_AGENT_CLASSES:
             cls = CODED_AND_CONTROL_AGENT_CLASSES[spec.agent_id]
             agents.append(cls(spec=spec))
         elif spec.agent_id == "llm_own_strategy":
@@ -366,6 +372,11 @@ def init_or_reset_state(
         allow_offline_simulation=(mode == "DRY_RUN"),
     )
     agent13_init.ensure_initial_rulebook(overwrite=True, mode=mode)
+
+    # Reset Agent 14 (Claude RMP) internal daily cache, cooldowns, and cycle telemetry logs
+    from arena.agents.claude_rmp_agent import ClaudeRMPAgent
+
+    ClaudeRMPAgent(state_dir=state_dir).reset_internal_state()
 
     bug_fixes_path = _bug_fixes_log_path(state_dir)
     if preserve_bug_fixes and bug_fixes_path.exists():
@@ -622,60 +633,72 @@ def run_single_cycle(
         # Step 4: If state.status == "ACTIVE" (and not near-close for flatten_eod), agent decides
         elif state.status == "ACTIVE":
             try:
-                signal = agent.decide(snapshot, state)
+                if hasattr(agent, "decide_batch") and callable(getattr(agent, "decide_batch")):
+                    signals_batch = list(agent.decide_batch(snapshot, state) or [])
+                else:
+                    signals_batch = [agent.decide(snapshot, state)]
             except Exception as exc:
                 logger.warning("Agent %s decide() error: %s; defaulting to HOLD.", agent.agent_id, exc)
-                signal = agent.hold_signal(
-                    snapshot,
-                    reasoning=f"HOLD fallback due to runtime exception: {type(exc).__name__}",
+                signals_batch = [
+                    agent.hold_signal(
+                        snapshot,
+                        reasoning=f"HOLD fallback due to runtime exception: {type(exc).__name__}",
+                    )
+                ]
+
+            for signal in signals_batch:
+                if not signal.decision_timestamp:
+                    signal.decision_timestamp = snapshot.decision_timestamp
+
+                # Step 5: Pass OrderSignal through shared RiskManager (plus stricter agent limits where defined)
+                ticker = (signal.ticker or "").strip().upper()
+                decision_quote: Optional[Quote] = (
+                    snapshot.quotes_by_ticker.get(ticker) or effective_quotes.get(ticker)
+                    if ticker
+                    else None
                 )
 
-            if not signal.decision_timestamp:
-                signal.decision_timestamp = snapshot.decision_timestamp
-
-            # Step 5: Pass OrderSignal through shared RiskManager (plus Agent 13's hard stock/volume filter & stricter limits)
-            ticker = (signal.ticker or "").strip().upper()
-            decision_quote: Optional[Quote] = (
-                snapshot.quotes_by_ticker.get(ticker) or effective_quotes.get(ticker)
-                if ticker
-                else None
-            )
-
-            extra_stricter_limits = None
-            pre_rejected = False
-            if agent.agent_id == "llm_own_strategy":
-                from arena.agents.own_strategy_agent import OwnStrategyAgent, is_eligible_agent13_stock
-
-                if isinstance(agent, OwnStrategyAgent):
+                extra_stricter_limits = None
+                pre_rejected = False
+                if hasattr(agent, "get_effective_stricter_limits") and callable(getattr(agent, "get_effective_stricter_limits")):
                     extra_stricter_limits = agent.get_effective_stricter_limits()
-                if signal.action == "BUY":
+
+                if agent.agent_id == "llm_own_strategy" and signal.action == "BUY":
+                    from arena.agents.own_strategy_agent import is_eligible_agent13_stock
+
                     ok_elig, elig_reason = is_eligible_agent13_stock(snapshot, ticker)
                     if not ok_elig:
                         risk_manager._record_rejection(state=state, signal=signal, reason=elig_reason, record_rejection=True)
                         pre_rejected = True
 
-            if not pre_rejected:
-                risk_result = risk_manager.evaluate(
-                    signal=signal,
-                    state=state,
-                    quote=decision_quote,
-                    bypass_position_cap=spec.bypass_position_cap,
-                    stricter_limits=extra_stricter_limits,
-                )
+                if not pre_rejected:
+                    risk_result = risk_manager.evaluate(
+                        signal=signal,
+                        state=state,
+                        quote=decision_quote,
+                        bypass_position_cap=spec.bypass_position_cap,
+                        stricter_limits=extra_stricter_limits,
+                    )
 
-                # Step 6: If approved, simulate fill at fill_timestamp (> decision_timestamp) and record in ledger
-                if risk_result.approved and signal.action in ("BUY", "SELL"):
-                    fill_quote = effective_quotes.get(ticker) or decision_quote
-                    if fill_quote is not None:
-                        trade = simulator.simulate_fill(
-                            order_or_check=risk_result,
-                            fill_quote_or_bar=fill_quote,
-                            fill_timestamp=fill_timestamp,
-                            state=state,
-                            exit_reason="AGENT_SIGNAL",
-                            decision_timestamp=snapshot.decision_timestamp,
-                        )
-                        ledger.apply_trade(state, trade)
+                    # Step 6: If approved, simulate fill at fill_timestamp (> decision_timestamp) and record in ledger
+                    if risk_result.approved and signal.action in ("BUY", "SELL"):
+                        fill_quote = effective_quotes.get(ticker) or decision_quote
+                        if fill_quote is not None:
+                            exit_code = "AGENT_SIGNAL"
+                            if signal.action == "SELL" and signal.reasoning:
+                                for code_prefix in ("EXIT_STOP", "EXIT_TRAIL", "EXIT_TIME", "EXIT_SMA50", "EXIT_REGIME"):
+                                    if signal.reasoning.startswith(code_prefix):
+                                        exit_code = code_prefix
+                                        break
+                            trade = simulator.simulate_fill(
+                                order_or_check=risk_result,
+                                fill_quote_or_bar=fill_quote,
+                                fill_timestamp=fill_timestamp,
+                                state=state,
+                                exit_reason=exit_code,
+                                decision_timestamp=snapshot.decision_timestamp,
+                            )
+                            ledger.apply_trade(state, trade)
 
         # Step 7: Update mark-to-market equity and enforce -3% daily / -10% blown-up circuit breakers
         ledger.update_mark_to_market(
@@ -1070,6 +1093,12 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
     if a13_hist_src.exists():
         (snapshot_dir / "agent13_rulebook_history.json").write_text(
             a13_hist_src.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+    a14_logs_src = STATE_DIR / "claude_rmp_cycle_logs.json"
+    if a14_logs_src.exists():
+        (snapshot_dir / "claude_rmp_cycle_logs.json").write_text(
+            a14_logs_src.read_text(encoding="utf-8"),
             encoding="utf-8",
         )
 

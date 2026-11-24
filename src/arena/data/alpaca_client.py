@@ -869,6 +869,7 @@ class AlpacaDataClient:
 
         regime_summary = compute_regime_summary(indicators)
         is_near_close = compute_is_near_market_close(cutoff_iso, session_close_et=session_close_et)
+        daily_bars_by_ticker = self.fetch_completed_daily_bars_before(tickers, trading_date_et)
 
         return MarketSnapshot(
             decision_timestamp=cutoff_iso,
@@ -882,7 +883,76 @@ class AlpacaDataClient:
             indicators=indicators,
             news=news,
             regime_summary=regime_summary,
+            daily_bars_by_ticker=daily_bars_by_ticker,
         )
+
+    def fetch_completed_daily_bars_before(
+        self,
+        tickers: List[str],
+        trading_date_et: str,
+        lookback_calendar_days: int = 140,
+    ) -> Dict[str, List[Bar]]:
+        """Fetch split-adjusted completed daily bars strictly BEFORE `trading_date_et` (min ~85-95 bars)."""
+        assert_paper_trading_only(self.paper_base_url)
+        daily_bars: Dict[str, List[Bar]] = {sym: [] for sym in tickers}
+        if not self.has_credentials():
+            return daily_bars
+
+        target_dt = date.fromisoformat(trading_date_et)
+        start_str = (target_dt - timedelta(days=lookback_calendar_days)).isoformat()
+        # End strictly at yesterday's 23:59:59 UTC so today's partial daily bar can never leak
+        end_str = f"{(target_dt - timedelta(days=1)).isoformat()}T23:59:59Z"
+
+        batch_size = 30
+        for i in range(0, len(tickers), batch_size):
+            batch = tickers[i : i + batch_size]
+            page_token: Optional[str] = None
+            while True:
+                params: Dict[str, Any] = {
+                    "symbols": ",".join(batch),
+                    "timeframe": "1Day",
+                    "start": f"{start_str}T00:00:00Z",
+                    "end": end_str,
+                    "adjustment": "split",
+                    "feed": "iex",
+                    "limit": 10000,
+                }
+                if page_token:
+                    params["page_token"] = page_token
+                try:
+                    payload = self._get_json(self.data_base_url, "/v2/stocks/bars", params=params)
+                except Exception:
+                    break
+                bars_map = payload.get("bars", {}) if isinstance(payload, dict) else {}
+                for sym, raw_list in bars_map.items():
+                    if sym not in daily_bars:
+                        continue
+                    for rb in raw_list:
+                        ts_raw = str(rb.get("t") or "")
+                        if not ts_raw:
+                            continue
+                        b_date = to_et_datetime(ts_raw).strftime("%Y-%m-%d")
+                        if b_date >= trading_date_et:
+                            continue  # Strictly completed bars BEFORE decision date
+                        daily_bars[sym].append(
+                            Bar(
+                                ticker=sym,
+                                timestamp=f"{b_date}T21:00:00Z",
+                                open=float(rb["o"]),
+                                high=float(rb["h"]),
+                                low=float(rb["l"]),
+                                close=float(rb["c"]),
+                                volume=float(rb.get("v", 0.0)),
+                                vwap=float(rb["vw"]) if rb.get("vw") is not None else None,
+                            )
+                        )
+                page_token = payload.get("next_page_token") if isinstance(payload, dict) else None
+                if not page_token:
+                    break
+
+        for sym in daily_bars:
+            daily_bars[sym].sort(key=lambda b: b.timestamp)
+        return daily_bars
 
     def fetch_next_fill_quotes_and_bars(
         self,

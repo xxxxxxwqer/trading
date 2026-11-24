@@ -8,7 +8,7 @@
   "versions": [
     {
       "version": 1,
-      "created_at_utc": "2026-11-23T05:11:25Z",
+      "created_at_utc": "2026-11-24T05:24:00Z",
       "trading_date_et": "PRE_START",
       "trigger": "INITIAL_BLIND_DESIGN",
       "generated_by": "offline-blind-simulation (awaiting live GEMINI_API_KEY)",
@@ -36,7 +36,7 @@
     },
     {
       "version": 2,
-      "created_at_utc": "2026-11-23T05:11:50Z",
+      "created_at_utc": "2026-11-24T05:24:11Z",
       "trading_date_et": "2026-11-06",
       "trigger": "POST_CLOSE_REVIEW_DAY_2",
       "generated_by": "offline-blind-simulation (awaiting live GEMINI_API_KEY)",
@@ -68,7 +68,7 @@
     {
       "trading_date_et": "2026-11-05",
       "trading_day_number": 1,
-      "reviewed_at_utc": "2026-11-23T05:11:48Z",
+      "reviewed_at_utc": "2026-11-24T05:24:10Z",
       "equity_at_close": 10106.25,
       "daily_pnl_pct": 1.06,
       "trades_today": 4,
@@ -83,7 +83,7 @@
     {
       "trading_date_et": "2026-11-06",
       "trading_day_number": 2,
-      "reviewed_at_utc": "2026-11-23T05:11:50Z",
+      "reviewed_at_utc": "2026-11-24T05:24:11Z",
       "equity_at_close": 10158.77,
       "daily_pnl_pct": 0.52,
       "trades_today": 4,
@@ -101,7 +101,7 @@
     {
       "trading_date_et": "2026-11-09",
       "trading_day_number": 3,
-      "reviewed_at_utc": "2026-11-23T05:11:53Z",
+      "reviewed_at_utc": "2026-11-24T05:24:13Z",
       "equity_at_close": 10128.08,
       "daily_pnl_pct": -0.3,
       "trades_today": 5,
@@ -116,7 +116,7 @@
     {
       "trading_date_et": "2026-11-10",
       "trading_day_number": 4,
-      "reviewed_at_utc": "2026-11-23T05:11:56Z",
+      "reviewed_at_utc": "2026-11-24T05:24:15Z",
       "equity_at_close": 10216.36,
       "daily_pnl_pct": 0.87,
       "trades_today": 5,
@@ -131,7 +131,7 @@
     {
       "trading_date_et": "2026-11-11",
       "trading_day_number": 5,
-      "reviewed_at_utc": "2026-11-23T05:12:00Z",
+      "reviewed_at_utc": "2026-11-24T05:24:17Z",
       "equity_at_close": 10339.93,
       "daily_pnl_pct": 1.21,
       "trades_today": 2,
