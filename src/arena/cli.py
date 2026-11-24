@@ -75,6 +75,7 @@ from arena.config import (  # noqa: E402
 from arena.data.alpaca_client import (  # noqa: E402
     AlpacaDataClient,
     format_iso_utc,
+    get_session_hours_et,
     load_dotenv_if_present,
     parse_iso_utc,
     to_et_datetime,
@@ -91,6 +92,12 @@ from arena.models import (  # noqa: E402
     OrderSignal,
     Quote,
 )
+from arena.reporting.daily_report import (  # noqa: E402
+    REPORTS_DIR,
+    build_smart_market_summary,
+    generate_and_save_daily_report,
+    save_market_summary,
+)
 
 # Register remaining subpackages across both `arena.*` and `src.arena.*`
 for _sub in (
@@ -105,6 +112,8 @@ for _sub in (
     "engine.ledger",
     "engine.risk_manager",
     "engine.simulator",
+    "reporting",
+    "reporting.daily_report",
 ):
     _arena_key = f"arena.{_sub}"
     _src_key = f"src.arena.{_sub}"
@@ -254,6 +263,8 @@ def _rebuild_dashboard(
     competition_state: Dict[str, Any],
     bug_fixes: List[Dict[str, Any]],
     output_dir: Path = DOCS_DIR,
+    state_dir: Optional[Path] = None,
+    reports_dir: Optional[Path] = None,
 ) -> Optional[Path]:
     """Invoke DashboardBuilder.build_site to generate the static GitHub Pages site."""
     try:
@@ -277,13 +288,25 @@ def _rebuild_dashboard(
             kwargs["output_dir"] = output_dir
         elif "docs_dir" in params:
             kwargs["docs_dir"] = output_dir
+        if "state_dir" in params and state_dir is not None:
+            kwargs["state_dir"] = state_dir
+        if "reports_dir" in params and reports_dir is not None:
+            kwargs["reports_dir"] = reports_dir
 
-        if len(kwargs) == 4:
+        if len(kwargs) >= 4:
             return builder.build_site(**kwargs)
         return builder.build_site(agent_states, competition_state, bug_fixes, output_dir)
     except Exception as exc:
         logger.warning("Dashboard build warning (%s): %s", type(exc).__name__, exc)
         return None
+
+
+def _resolve_reports_dir(state_dir: Path, reports_dir: Optional[Path]) -> Path:
+    if reports_dir is not None:
+        return Path(reports_dir)
+    if state_dir.resolve() == STATE_DIR.resolve():
+        return REPORTS_DIR
+    return state_dir.parent / "reports"
 
 
 # ---------------------------------------------------------------------------
@@ -296,8 +319,10 @@ def init_or_reset_state(
     docs_dir: Path = DOCS_DIR,
     preserve_bug_fixes: bool = True,
     rebuild_docs: bool = True,
+    reports_dir: Optional[Path] = None,
+    clear_reports: bool = True,
 ) -> Dict[str, Any]:
-    """Reset all 10 agents to $10,000.00 cash, 0 trades, Day 0/10, and rebuild `docs/`."""
+    """Reset all active agents to $10,000.00 cash, 0 trades, Day 0/10, and rebuild `docs/`."""
     state_dir.mkdir(parents=True, exist_ok=True)
     agents_dir = state_dir / "agents"
     agents_dir.mkdir(parents=True, exist_ok=True)
@@ -355,6 +380,22 @@ def init_or_reset_state(
 
     ClaudeRMPAgent(state_dir=state_dir).reset_internal_state()
 
+    # Reset daily report log & cached market summary cleanly for Day 0
+    (state_dir / "daily_reports_log.json").write_text("[]\n", encoding="utf-8")
+    ms_cache = state_dir / "last_market_summary.json"
+    if ms_cache.exists():
+        ms_cache.unlink()
+
+    target_reports = _resolve_reports_dir(state_dir, reports_dir)
+    if clear_reports:
+        daily_dir = target_reports / "daily"
+        if daily_dir.exists():
+            for md_file in daily_dir.glob("*.md"):
+                md_file.unlink()
+        latest_md = target_reports / "LATEST_REPORT.md"
+        if latest_md.exists():
+            latest_md.unlink()
+
     bug_fixes_path = _bug_fixes_log_path(state_dir)
     if preserve_bug_fixes and bug_fixes_path.exists():
         bug_fixes = load_bug_fixes_log(state_dir=state_dir)
@@ -368,6 +409,8 @@ def init_or_reset_state(
             competition_state=comp_state,
             bug_fixes=bug_fixes,
             output_dir=docs_dir,
+            state_dir=state_dir,
+            reports_dir=target_reports,
         )
 
     return comp_state
@@ -510,8 +553,11 @@ def run_single_cycle(
     state_dir: Path = STATE_DIR,
     docs_dir: Path = DOCS_DIR,
     rebuild_dashboard: bool = True,
+    reports_dir: Optional[Path] = None,
+    generate_daily_report: bool = True,
+    use_llm_for_report: bool = True,
 ) -> Dict[str, Any]:
-    """Execute one complete trading cycle across all 10 agents and update ledgers & dashboard."""
+    """Execute one complete trading cycle across all active agents and update ledgers, reports & dashboard."""
     # Guarantee strict no-look-ahead timestamp ordering
     dec_dt = parse_iso_utc(snapshot.decision_timestamp)
     fill_dt = parse_iso_utc(fill_timestamp) if fill_timestamp else (dec_dt + timedelta(seconds=1))
@@ -720,12 +766,49 @@ def run_single_cycle(
 
     save_competition_state(comp_state, state_dir=state_dir)
 
+    # 6. Cache smart-filtered market summary every cycle, and generate verified daily Markdown report at close
+    target_reports = _resolve_reports_dir(state_dir, reports_dir)
+    market_summary: Optional[Dict[str, Any]] = None
+    try:
+        rmp_logs_path = state_dir / "claude_rmp_cycle_logs.json"
+        rmp_logs = json.loads(rmp_logs_path.read_text(encoding="utf-8")) if rmp_logs_path.exists() else []
+        market_summary = build_smart_market_summary(
+            snapshot=snapshot,
+            agent_states=agent_states,
+            claude_rmp_logs=rmp_logs if isinstance(rmp_logs, list) else [],
+        )
+        save_market_summary(market_summary, state_dir=state_dir)
+    except Exception as exc:
+        logger.warning("Market summary cache warning (%s): %s", type(exc).__name__, exc)
+
+    if generate_daily_report and (snapshot.is_near_market_close or comp_state.get("status") == "COMPLETED"):
+        try:
+            rep_res = generate_and_save_daily_report(
+                agent_states=agent_states,
+                competition_state=comp_state,
+                trading_date_et=snapshot.trading_date_et,
+                trading_day_number=snapshot.trading_day_number,
+                market_summary=market_summary,
+                state_dir=state_dir,
+                reports_dir=target_reports,
+                use_llm=use_llm_for_report,
+            )
+            logger.info(
+                "Daily Markdown report generated (%s): %s",
+                rep_res.get("generator"),
+                rep_res.get("report_path"),
+            )
+        except Exception as exc:
+            logger.warning("Daily Markdown report generation warning (%s): %s", type(exc).__name__, exc)
+
     if rebuild_dashboard:
         _rebuild_dashboard(
             agent_states=agent_states,
             competition_state=comp_state,
             bug_fixes=bug_fixes,
             output_dir=docs_dir,
+            state_dir=state_dir,
+            reports_dir=target_reports,
         )
 
     return comp_state
@@ -842,7 +925,27 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
             simulator=simulator,
         )
         save_competition_state(comp_state, state_dir=state_dir)
-        _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
+        target_reports = _resolve_reports_dir(state_dir, None)
+        try:
+            generate_and_save_daily_report(
+                agent_states=agent_states,
+                competition_state=comp_state,
+                trading_date_et=active_dates[-1],
+                trading_day_number=len(active_dates),
+                state_dir=state_dir,
+                reports_dir=target_reports,
+                use_llm=True,
+            )
+        except Exception as exc:
+            logger.warning("Final Day-10 daily report warning (%s): %s", type(exc).__name__, exc)
+        _rebuild_dashboard(
+            agent_states,
+            comp_state,
+            bug_fixes,
+            output_dir=docs_dir,
+            state_dir=state_dir,
+            reports_dir=target_reports,
+        )
         return 0
 
     # Record non-secret boolean connection status so setup can be verified transparently
@@ -866,9 +969,54 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
             reason_str,
             next_open,
         )
+
+        # Post-close catch-up: if the most recent active trading date does not yet have a daily report
+        # (e.g. if GitHub Actions cron delayed past the 15:30 ET cycle), generate it now!
+        target_reports = _resolve_reports_dir(state_dir, None)
+        if active_dates:
+            latest_active_date = active_dates[-1]
+            log_path = state_dir / "daily_reports_log.json"
+            existing_dates = set()
+            if log_path.exists():
+                try:
+                    loaded_log = json.loads(log_path.read_text(encoding="utf-8"))
+                    if isinstance(loaded_log, list):
+                        existing_dates = {str(e.get("trading_date_et", "")) for e in loaded_log}
+                except Exception:
+                    existing_dates = set()
+            if latest_active_date not in existing_dates:
+                now_et_dt = to_et_datetime(now_utc)
+                _, sess_close_et = get_session_hours_et(date.fromisoformat(latest_active_date))
+                is_past_close = (latest_active_date < today_et) or (now_et_dt.strftime("%H:%M") >= sess_close_et)
+                if is_past_close:
+                    try:
+                        rep_res = generate_and_save_daily_report(
+                            agent_states=agent_states,
+                            competition_state=comp_state,
+                            trading_date_et=latest_active_date,
+                            trading_day_number=len(active_dates),
+                            state_dir=state_dir,
+                            reports_dir=target_reports,
+                            use_llm=True,
+                        )
+                        logger.info(
+                            "Post-close catch-up daily report generated (%s): %s",
+                            rep_res.get("generator"),
+                            rep_res.get("report_path"),
+                        )
+                    except Exception as exc:
+                        logger.warning("Post-close catch-up report warning (%s): %s", type(exc).__name__, exc)
+
         comp_state["last_updated_utc"] = format_iso_utc(now_utc)
         save_competition_state(comp_state, state_dir=state_dir)
-        _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
+        _rebuild_dashboard(
+            agent_states,
+            comp_state,
+            bug_fixes,
+            output_dir=docs_dir,
+            state_dir=state_dir,
+            reports_dir=target_reports,
+        )
         return 0
 
     # 4. Hard live-safety check: NEVER trade on synthetic offline data when Alpaca credentials are missing
@@ -962,13 +1110,16 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
         reset_after,
     )
 
-    # 1. Reset state cleanly in DRY_RUN mode
+    # 1. Reset state cleanly in DRY_RUN mode (write dry-run reports into docs_dry_run/reports so live reports/ stays untouched)
+    dry_run_reports_dir = DRY_RUN_DOCS_DIR / "reports"
     init_or_reset_state(
         mode="DRY_RUN",
         state_dir=STATE_DIR,
         docs_dir=DOCS_DIR,
         preserve_bug_fixes=True,
         rebuild_docs=False,
+        reports_dir=dry_run_reports_dir,
+        clear_reports=True,
     )
 
     # 2. Build replay provider and agents
@@ -998,6 +1149,9 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
             state_dir=STATE_DIR,
             docs_dir=DOCS_DIR,
             rebuild_dashboard=is_last_cycle,
+            reports_dir=dry_run_reports_dir,
+            generate_daily_report=True,
+            use_llm_for_report=use_live_llm,
         )
         if snapshot.is_near_market_close or is_last_cycle:
             logger.info(
@@ -1019,12 +1173,16 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
         competition_state=comp_state,
         bug_fixes=bug_fixes,
         output_dir=DRY_RUN_DOCS_DIR,
+        state_dir=STATE_DIR,
+        reports_dir=dry_run_reports_dir,
     )
     _rebuild_dashboard(
         agent_states=dry_run_states,
         competition_state=comp_state,
         bug_fixes=bug_fixes,
         output_dir=DOCS_DIR,
+        state_dir=STATE_DIR,
+        reports_dir=dry_run_reports_dir,
     )
 
     # Also save a snapshot of dry-run JSON ledgers & Agent 13 rulebook history inside `docs_dry_run/state_snapshot/`
@@ -1224,6 +1382,60 @@ def cmd_learn_styles(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_generate_report(args: argparse.Namespace) -> int:
+    """Generate (or regenerate) a verified daily GFM Markdown report from current state."""
+    load_dotenv_if_present()
+    state_dir = Path(args.state_dir) if getattr(args, "state_dir", None) else STATE_DIR
+    docs_dir = Path(args.docs_dir) if getattr(args, "docs_dir", None) else DOCS_DIR
+    reports_dir = _resolve_reports_dir(state_dir, Path(args.reports_dir) if getattr(args, "reports_dir", None) else None)
+    use_llm = not bool(getattr(args, "no_llm", False))
+
+    comp_state = load_competition_state(state_dir=state_dir)
+    bug_fixes = load_bug_fixes_log(state_dir=state_dir)
+    ledger = LedgerManager(state_dir=state_dir / "agents")
+    agent_states = [ledger.load_or_initialize_agent(spec) for spec in AGENT_SPECS]
+
+    active_dates: List[str] = list(comp_state.get("active_trading_dates") or [])
+    req_date = (getattr(args, "date", None) or "").strip()
+    if req_date:
+        trading_date_et = req_date
+    elif active_dates:
+        trading_date_et = active_dates[-1]
+    else:
+        trading_date_et = to_et_datetime(datetime.now(timezone.utc)).strftime("%Y-%m-%d")
+
+    req_day = getattr(args, "day", None)
+    if req_day is not None:
+        trading_day_number = int(req_day)
+    elif trading_date_et in active_dates:
+        trading_day_number = active_dates.index(trading_date_et) + 1
+    else:
+        trading_day_number = max(1, len(active_dates))
+
+    res = generate_and_save_daily_report(
+        agent_states=agent_states,
+        competition_state=comp_state,
+        trading_date_et=trading_date_et,
+        trading_day_number=trading_day_number,
+        state_dir=state_dir,
+        reports_dir=reports_dir,
+        use_llm=use_llm,
+    )
+    _rebuild_dashboard(
+        agent_states=agent_states,
+        competition_state=comp_state,
+        bug_fixes=bug_fixes,
+        output_dir=docs_dir,
+        state_dir=state_dir,
+        reports_dir=reports_dir,
+    )
+    print(f"Daily Report Generated ({res['generator']}, post_check={res['post_check_passed']}):")
+    print(f"  - Daily file : {res['report_path']}")
+    print(f"  - Latest file: {res['latest_path']}")
+    print(f"  - Web page   : {docs_dir / 'reports.html'}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m arena.cli",
@@ -1297,6 +1509,19 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_learn.add_argument("--offline", action="store_true", help="Use only already-cached filings and prices.")
     p_learn.set_defaults(func=cmd_learn_styles)
+
+    # generate-report
+    p_rep = subparsers.add_parser(
+        "generate-report",
+        help="Generate a verified daily GitHub Flavored Markdown report from current state.",
+    )
+    p_rep.add_argument("--date", type=str, default=None, help="Target ET trading date YYYY-MM-DD (default: latest active day).")
+    p_rep.add_argument("--day", type=int, default=None, help="Override trading day number (1..10).")
+    p_rep.add_argument("--no-llm", action="store_true", help="Use 100% deterministic Python renderer without calling Gemini.")
+    p_rep.add_argument("--state-dir", type=str, default=None, help="Override state directory path.")
+    p_rep.add_argument("--reports-dir", type=str, default=None, help="Override reports output directory path.")
+    p_rep.add_argument("--docs-dir", type=str, default=None, help="Override docs output directory path.")
+    p_rep.set_defaults(func=cmd_generate_report)
 
     return parser
 

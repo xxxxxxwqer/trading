@@ -65,20 +65,21 @@ jobs:
             python -m arena.cli run-cycle
           fi
 
-      - name: Commit & Push Updated State and Dashboard
+      - name: Commit & Push Updated State, Dashboard, and Daily Reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state/ docs/
+          mkdir -p reports
+          git add state/ docs/ reports/
 
           if git diff --staged --quiet; then
-            echo "No state or dashboard changes to commit."
+            echo "No state, dashboard, or report changes to commit."
             exit 0
           fi
 
           TIMESTAMP_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git commit -m "chore(arena): update trading cycle state & dashboard [${TIMESTAMP_UTC}]"
+          git commit -m "chore(arena): update trading cycle state, dashboard & daily reports [${TIMESTAMP_UTC}]"
 
           # Retry push with rebase safety in case another commit landed on main
           for attempt in 1 2 3; do

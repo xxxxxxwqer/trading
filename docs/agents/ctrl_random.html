@@ -21,7 +21,7 @@
           <a href="../index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge comp-live">LIVE - Day 1 of 10</span>
         </div>
-        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
       </div>
 
       <div class="progress-and-clock">
@@ -38,11 +38,11 @@
         <div class="timestamps-box">
           <div class="ts-item">
             <span class="ts-label">Korea (KST / Asia/Seoul):</span>
-            <time class="ts-value">2026-11-24 14:39:35 KST</time>
+            <time class="ts-value">2026-11-24 22:53:45 KST</time>
           </div>
           <div class="ts-item">
             <span class="ts-label">New York (ET / America/New_York):</span>
-            <time class="ts-value">2026-11-24 00:39:35 EST</time>
+            <time class="ts-value">2026-11-24 08:53:45 EST</time>
           </div>
         </div>
       </div>
@@ -51,6 +51,7 @@
     <nav class="site-nav" aria-label="Main Navigation">
       <div class="nav-primary">
         <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
         <a href="../final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
         <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
@@ -187,7 +188,7 @@
           <polyline fill="none" stroke="#94a3b8" stroke-width="3.0" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
           <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
           <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace"></text>
-          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 00:39 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 08:53 ET</text>
         </svg></div>
       </details>
     </section>
@@ -303,12 +304,12 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 10. Random Trader (Luck Control) &bull; Updated 2026-11-24 14:39:35 KST / 2026-11-24 00:39:35 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 10. Random Trader (Luck Control) &bull; Updated 2026-11-24 22:53:45 KST / 2026-11-24 08:53:45 EST</p>
   </footer>
 
   <script>
     (function() {
-      const payload = {"labels": ["Start", "2026-11-24 00:39 ET"], "datasets": [{"label": "10. Random Trader (Luck Control)", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const payload = {"labels": ["Start", "2026-11-24 08:53 ET"], "datasets": [{"label": "10. Random Trader (Luck Control)", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
       const canvas = document.getElementById('agentEquityChart');
       if (!canvas || typeof Chart === 'undefined') return;
       new Chart(canvas.getContext('2d'), {

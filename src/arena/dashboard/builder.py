@@ -6,6 +6,7 @@ import hashlib
 import html
 import json
 import math
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -204,12 +205,16 @@ class DashboardBuilder:
         competition_state: Optional[Dict[str, Any]] = None,
         bug_fixes: Optional[List[Dict[str, Any]]] = None,
         output_dir: Optional[Path | str] = None,
+        state_dir: Optional[Path | str] = None,
+        reports_dir: Optional[Path | str] = None,
     ) -> Path:
         """Build the complete static site in output_dir and return output_dir Path."""
         target_dir = Path(output_dir) if output_dir is not None else self.default_output_dir
         target_dir.mkdir(parents=True, exist_ok=True)
         agents_dir = target_dir / "agents"
         agents_dir.mkdir(parents=True, exist_ok=True)
+        resolved_state_dir = Path(state_dir) if state_dir is not None else (PROJECT_ROOT / "state")
+        resolved_reports_dir = Path(reports_dir) if reports_dir is not None else (PROJECT_ROOT / "reports")
 
         comp_state: Dict[str, Any] = dict(competition_state or {})
         raw_bug_fixes = bug_fixes if bug_fixes is not None else comp_state.get("bug_fixes", [])
@@ -230,6 +235,7 @@ class DashboardBuilder:
         learned_patterns = self._load_learned_patterns()
         agent13_history = self._load_agent13_history()
         claude_rmp_data = self._load_claude_rmp_data()
+        daily_reports = self._load_daily_reports(resolved_state_dir, resolved_reports_dir)
 
         # 1. Write styles.css
         (target_dir / "styles.css").write_text(self._render_styles_css(), encoding="utf-8")
@@ -251,6 +257,10 @@ class DashboardBuilder:
             "learned_patterns": learned_patterns,
             "agent13_rulebook_history": agent13_history,
             "claude_rmp": claude_rmp_data,
+            "daily_reports": [
+                {k: v for k, v in r.items() if k != "markdown"}
+                for r in daily_reports
+            ],
             "bug_fixes": bug_fix_list,
             "strategy_hashes": strategy_hashes,
             "agents": {a.agent_id: a.to_dict() for a in normalized_agents},
@@ -294,6 +304,13 @@ class DashboardBuilder:
             strategy_hashes=strategy_hashes,
         )
         (target_dir / "final_report.html").write_text(final_report_html, encoding="utf-8")
+
+        # 6. Write reports.html (Daily Performance & Technical Regime Markdown Reports)
+        reports_html = self._render_daily_reports_html(
+            daily_reports=daily_reports,
+            header_ctx=header_ctx,
+        )
+        (target_dir / "reports.html").write_text(reports_html, encoding="utf-8")
 
         return target_dir
 
@@ -1162,6 +1179,7 @@ class DashboardBuilder:
     ) -> str:
         """Render the mandatory paper-trading banner, KST/ET timestamps, competition status, and nav bar."""
         idx_cls = "nav-link active" if active_page == "index" else "nav-link"
+        daily_cls = "nav-link active" if active_page == "reports" else "nav-link"
         rep_cls = "nav-link active" if active_page == "final_report" else "nav-link"
 
         agent_links = []
@@ -1187,7 +1205,7 @@ class DashboardBuilder:
           <a href="{root_prefix}index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge {_esc(header_ctx['status_badge_class'])}">{_esc(header_ctx['status_badge_text'])}</span>
         </div>
-        <p class="brand-subtitle">10-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 4 Coded vs. 4 Gemini Flash LLMs vs. 2 Controls</p>
+        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
       </div>
 
       <div class="progress-and-clock">
@@ -1217,6 +1235,7 @@ class DashboardBuilder:
     <nav class="site-nav" aria-label="Main Navigation">
       <div class="nav-primary">
         <a href="{root_prefix}index.html" class="{idx_cls}">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="{root_prefix}reports.html" class="{daily_cls}">&#128221; Daily Markdown Reports</a>
         <a href="{root_prefix}final_report.html" class="{rep_cls}">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
         <a href="{root_prefix}dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
@@ -2559,6 +2578,242 @@ class DashboardBuilder:
 </html>
 """
 
+    def _load_daily_reports(self, state_dir: Path, reports_dir: Path) -> List[Dict[str, Any]]:
+        """Load generated daily Markdown reports ordered newest-first."""
+        log_path = state_dir / "daily_reports_log.json"
+        entries: List[Dict[str, Any]] = []
+        if log_path.exists():
+            try:
+                loaded = json.loads(log_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, list):
+                    entries = loaded
+            except Exception:
+                entries = []
+
+        # Also pick up any daily/*.md files directly if log is empty
+        daily_dir = reports_dir / "daily"
+        known_files = {str(e.get("filename", "")) for e in entries}
+        if daily_dir.exists():
+            for md_file in sorted(daily_dir.glob("*.md")):
+                if md_file.name not in known_files:
+                    m_day = re.search(r"_day(\d+)\.md$", md_file.name)
+                    day_num = int(m_day.group(1)) if m_day else 1
+                    date_str = md_file.name.split("_day")[0]
+                    entries.append(
+                        {
+                            "trading_date_et": date_str,
+                            "trading_day_number": day_num,
+                            "is_final_day": day_num >= COMPETITION_TRADING_DAYS,
+                            "filename": md_file.name,
+                            "relative_path": f"reports/daily/{md_file.name}",
+                            "generator": "archived-markdown",
+                            "generated_at_utc": "",
+                        }
+                    )
+
+        enriched: List[Dict[str, Any]] = []
+        for e in sorted(entries, key=lambda x: (int(x.get("trading_day_number", 0)), str(x.get("trading_date_et", ""))), reverse=True):
+            fname = str(e.get("filename") or "")
+            md_path = daily_dir / fname if fname else None
+            if md_path and md_path.exists():
+                try:
+                    md_text = md_path.read_text(encoding="utf-8")
+                except Exception:
+                    md_text = ""
+                item = dict(e)
+                item["markdown"] = md_text
+                enriched.append(item)
+        return enriched
+
+    @staticmethod
+    def _format_inline_md(text: str) -> str:
+        """Safely escape and format inline GFM (**bold**, `code`) without raw HTML injection."""
+        escaped = html.escape(text)
+        escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
+        escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
+        return escaped
+
+    def _render_gfm_to_html(self, md_text: str) -> str:
+        """Pure-Python safe GFM subset renderer (headings, callouts, tables, bullets, paragraphs)."""
+        lines = (md_text or "").splitlines()
+        out: List[str] = []
+        i = 0
+        n = len(lines)
+
+        while i < n:
+            line = lines[i].rstrip()
+            stripped = line.strip()
+            if not stripped:
+                i += 1
+                continue
+
+            if stripped == "---":
+                out.append('<hr class="md-hr" />')
+                i += 1
+                continue
+
+            if stripped.startswith("### "):
+                out.append(f'<h3 class="md-h3">{self._format_inline_md(stripped[4:])}</h3>')
+                i += 1
+                continue
+            if stripped.startswith("## "):
+                out.append(f'<h2 class="md-h2">{self._format_inline_md(stripped[3:])}</h2>')
+                i += 1
+                continue
+            if stripped.startswith("# "):
+                out.append(f'<h1 class="md-h1">{self._format_inline_md(stripped[2:])}</h1>')
+                i += 1
+                continue
+
+            if stripped.startswith("> "):
+                quote_lines: List[str] = []
+                while i < n and lines[i].strip().startswith("> "):
+                    quote_lines.append(self._format_inline_md(lines[i].strip()[2:]))
+                    i += 1
+                out.append(f'<blockquote class="md-quote">{"<br />".join(quote_lines)}</blockquote>')
+                continue
+
+            # GFM Pipe Table
+            if stripped.startswith("|") and i + 1 < n and re.match(r"^\s*\|[\s:\-\|]+\|\s*$", lines[i + 1]):
+                headers = [c.strip() for c in stripped.strip("|").split("|")]
+                i += 2  # skip header and separator row
+                body_rows: List[List[str]] = []
+                while i < n and lines[i].strip().startswith("|"):
+                    row_cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                    body_rows.append(row_cells)
+                    i += 1
+                th_html = "".join(f"<th>{self._format_inline_md(h)}</th>" for h in headers)
+                tr_html = "".join(
+                    "<tr>" + "".join(f"<td>{self._format_inline_md(c)}</td>" for c in r) + "</tr>"
+                    for r in body_rows
+                )
+                out.append(
+                    f'<div class="table-wrap"><table class="arena-table md-table">'
+                    f"<thead><tr>{th_html}</tr></thead><tbody>{tr_html}</tbody></table></div>"
+                )
+                continue
+
+            # Bullet list
+            if stripped.startswith("- "):
+                items: List[str] = []
+                while i < n and lines[i].strip().startswith("- "):
+                    items.append(f"<li>{self._format_inline_md(lines[i].strip()[2:])}</li>")
+                    i += 1
+                out.append(f'<ul class="md-list">{"".join(items)}</ul>')
+                continue
+
+            # Paragraph
+            out.append(f'<p class="md-p">{self._format_inline_md(stripped)}</p>')
+            i += 1
+
+        return "\n".join(out)
+
+    def _render_daily_reports_html(
+        self,
+        daily_reports: List[Dict[str, Any]],
+        header_ctx: Dict[str, Any],
+    ) -> str:
+        header_html = self._render_common_header(header_ctx, active_page="reports", root_prefix="")
+        github_latest_url = "https://github.com/xxxxxxwqer/trading/blob/main/reports/LATEST_REPORT.md"
+
+        if not daily_reports:
+            content_html = f"""    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Performance &amp; Technical Regime Reports</h2>
+          <p class="panel-sub">Generated automatically after each US market close (16:00 ET / 13:00 ET early close) via 3-stage anti-hallucination pipeline (100% Python math + smart market JSON + Gemini Flash post-checked renderer).</p>
+        </div>
+        <a href="{github_latest_url}" target="_blank" rel="noopener" class="nav-link">View on GitHub &#8599;</a>
+      </div>
+      <div class="empty-state" style="padding:36px 20px;">
+        No daily reports generated yet. The Day 1 report will be published automatically right after the first US trading session closes (around 06:00 KST / 16:00 EST).
+      </div>
+    </section>"""
+        else:
+            nav_pills = []
+            report_articles = []
+            for idx, rep in enumerate(daily_reports):
+                day_num = rep.get("trading_day_number", 0)
+                date_et = str(rep.get("trading_date_et") or "")
+                gen_mode = str(rep.get("generator") or "deterministic-python")
+                fname = str(rep.get("filename") or "")
+                gh_file_url = f"https://github.com/xxxxxxwqer/trading/blob/main/reports/daily/{html.escape(fname)}"
+                anchor_id = f"report-day-{day_num}-{re.sub(r'[^0-9a-zA-Z_-]', '', date_et)}"
+                rendered_body = self._render_gfm_to_html(rep.get("markdown", ""))
+                raw_md_esc = _esc(rep.get("markdown", ""))
+                badge_label = "FINAL DAY 10/10" if rep.get("is_final_day") else f"Day {day_num}/10"
+                nav_pills.append(
+                    f'<a href="#{anchor_id}" class="agent-pill {"active" if idx == 0 else ""}">Day {day_num} ({_esc(date_et)})</a>'
+                )
+                report_articles.append(
+                    f"""    <section class="panel md-report-panel" id="{anchor_id}">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Day {day_num}/10 Daily Report &mdash; {_esc(date_et)}</h2>
+          <p class="panel-sub">File: <code>reports/daily/{_esc(fname)}</code> &bull; Generator: <code>{_esc(gen_mode)}</code> &bull; Generated: {_esc(format_kst(rep.get('generated_at_utc')))}</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span class="status-pill status-active">{_esc(badge_label)}</span>
+          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('{anchor_id}-raw', this)">&#128203; Copy Raw .md</button>
+          <a href="{gh_file_url}" target="_blank" rel="noopener" class="nav-link">GitHub .md &#8599;</a>
+        </div>
+      </div>
+      <div class="md-report-body">
+{rendered_body}
+      </div>
+      <details class="md-raw-details">
+        <summary>Show Raw GitHub Flavored Markdown Source ({_esc(fname)})</summary>
+        <pre class="md-raw-pre" id="{anchor_id}-raw">{raw_md_esc}</pre>
+      </details>
+    </section>"""
+                )
+
+            content_html = f"""    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Performance &amp; Technical Regime Reports ({len(daily_reports)} Published)</h2>
+          <p class="panel-sub">Zero look-ahead &bull; 100% Python pre-calculated metrics &bull; Strict anti-hallucination &amp; no-strategy-tuning rules.</p>
+        </div>
+        <a href="{github_latest_url}" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        {' '.join(nav_pills)}
+      </div>
+    </section>
+{chr(10).join(report_articles)}"""
+
+        return f"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Markdown Reports | AI Trading Arena</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+{header_html}
+  <main class="container">
+{content_html}
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Daily Reports &bull; Updated {_esc(header_ctx['updated_kst'])} / {_esc(header_ctx['updated_et'])}</p>
+  </footer>
+  <script>
+    function copyRawMarkdown(elId, btn) {{
+      var el = document.getElementById(elId);
+      if (!el) return;
+      navigator.clipboard.writeText(el.textContent || '').then(function() {{
+        var prev = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function() {{ btn.textContent = prev; }}, 1800);
+      }});
+    }}
+  </script>
+</body>
+</html>
+"""
+
     def _render_styles_css(self) -> str:
         return """/* AI Trading Arena — Institutional Quantitative Terminal Stylesheet */
 :root {
@@ -3573,5 +3828,101 @@ code, .mono {
   text-align: center;
   color: var(--text-muted);
   font-size: 12px;
+}
+
+.md-report-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.md-h1 {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin: 4px 0 6px;
+}
+
+.md-h2 {
+  font-size: 16px;
+  color: var(--accent-blue);
+  margin: 14px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.md-h3 {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 10px 0 4px;
+}
+
+.md-quote {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-blue);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.md-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13.5px;
+}
+
+.md-hr {
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 8px 0;
+}
+
+.md-table th, .md-table td {
+  font-size: 12.5px;
+  padding: 7px 9px;
+}
+
+.md-copy-btn {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.md-copy-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.md-raw-details {
+  margin-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+.md-raw-details summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+.md-raw-pre {
+  margin-top: 10px;
+  background: #050811;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
 }
 """

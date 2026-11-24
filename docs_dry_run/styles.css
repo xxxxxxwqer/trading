@@ -1012,3 +1012,99 @@ code, .mono {
   color: var(--text-muted);
   font-size: 12px;
 }
+
+.md-report-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-secondary);
+}
+
+.md-h1 {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin: 4px 0 6px;
+}
+
+.md-h2 {
+  font-size: 16px;
+  color: var(--accent-blue);
+  margin: 14px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.md-h3 {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 10px 0 4px;
+}
+
+.md-quote {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-blue);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.md-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13.5px;
+}
+
+.md-hr {
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 8px 0;
+}
+
+.md-table th, .md-table td {
+  font-size: 12.5px;
+  padding: 7px 9px;
+}
+
+.md-copy-btn {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.md-copy-btn:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.md-raw-details {
+  margin-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+.md-raw-details summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+.md-raw-pre {
+  margin-top: 10px;
+  background: #050811;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+}
