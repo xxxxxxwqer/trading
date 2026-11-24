@@ -44,6 +44,15 @@
       "positions_value": 0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
+    },
+    {
+      "timestamp": "2026-11-24T15:58:55Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "positions_value": 0,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
     }
   ],
   "daily_journal": [
@@ -60,5 +69,5 @@
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-24T15:58:26Z"
+  "last_updated": "2026-11-24T15:58:55Z"
 }

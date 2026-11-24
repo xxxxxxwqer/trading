@@ -151,6 +151,15 @@
       "positions_value": 3588.58,
       "drawdown_pct": -0.04,
       "daily_return_pct": -0.04
+    },
+    {
+      "timestamp": "2026-11-24T15:58:55Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 9996.21,
+      "cash": 6407.63,
+      "positions_value": 3588.58,
+      "drawdown_pct": -0.04,
+      "daily_return_pct": -0.04
     }
   ],
   "daily_journal": [
@@ -171,5 +180,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:26Z"
+  "last_updated": "2026-11-24T15:58:55Z"
 }

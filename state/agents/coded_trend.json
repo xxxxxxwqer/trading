@@ -5,14 +5,14 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 5997.49,
-  "equity": 9999.22,
+  "cash": 3996.25,
+  "equity": 9997.82,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.01,
-  "current_drawdown_pct": -0.01,
+  "max_drawdown_pct": -0.02,
+  "current_drawdown_pct": -0.02,
   "current_trading_date_et": "2026-11-24",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.01,
+  "daily_pnl_pct": -0.02,
   "positions": {
     "MRK": {
       "ticker": "MRK",
@@ -39,6 +39,19 @@
       "unrealized_pnl": -1.4,
       "unrealized_pnl_pct": -0.07,
       "market_value": 1999.72
+    },
+    "XLRE": {
+      "ticker": "XLRE",
+      "shares": 46.3678,
+      "avg_entry_price": 43.1602,
+      "current_price": 43.13,
+      "stop_loss": 42.48,
+      "take_profit": 44.42,
+      "opened_at": "2026-11-24T15:58:55Z",
+      "entry_reasoning": "Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42.",
+      "unrealized_pnl": -1.4,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1999.84
     }
   },
   "pending_orders": [],
@@ -86,6 +99,28 @@
       "exit_reason": "",
       "reasoning": "Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15.",
       "confidence": 0.74
+    },
+    {
+      "trade_id": "trd_a283b3eb3c89",
+      "agent_id": "coded_trend",
+      "side": "BUY",
+      "ticker": "XLRE",
+      "shares": 46.3678,
+      "decision_timestamp": "2026-11-24T15:58:53Z",
+      "fill_timestamp": "2026-11-24T15:58:55Z",
+      "reference_price": 43.13,
+      "fill_price": 43.1602,
+      "spread_cost_dollars": 0.3988,
+      "slippage_cost_dollars": 1.0015,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2001.24,
+      "stop_loss": 42.48,
+      "take_profit": 44.42,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42.",
+      "confidence": 0.74
     }
   ],
   "rejections": [],
@@ -116,6 +151,15 @@
       "positions_value": 4001.73,
       "drawdown_pct": -0.01,
       "daily_return_pct": -0.01
+    },
+    {
+      "timestamp": "2026-11-24T15:58:55Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 9997.82,
+      "cash": 3996.25,
+      "positions_value": 6001.57,
+      "drawdown_pct": -0.02,
+      "daily_return_pct": -0.02
     }
   ],
   "daily_journal": [
@@ -123,17 +167,18 @@
       "trading_date_et": "2026-11-24",
       "trading_day_number": 1,
       "start_equity": 10000.0,
-      "end_equity": 9999.22,
-      "daily_pnl": -0.78,
-      "daily_pnl_pct": -0.01,
-      "trades_count": 2,
+      "end_equity": 9997.82,
+      "daily_pnl": -2.18,
+      "daily_pnl_pct": -0.02,
+      "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,999.22 ($-0.78, -0.01%). Executed 2 trade(s) \u2014 Buys: MRK ($2,001), PFE ($2,001); Sells: none.",
+      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,997.82 ($-2.18, -0.02%). Executed 3 trade(s) \u2014 Buys: MRK ($2,001), PFE ($2,001), XLRE ($2,001); Sells: none.",
       "highlights": [
         "BUY 14.4487 MRK @ $138.52 ($2001.39, stop $136.34) \u2014 Buying MRK on momentum breakout: price $138.42 is at/near 20-bar high ($138.37) with 10-SMA ($136.46) > 30-SMA ($135.47), RSI(14) at 73.1, and volume ratio 1.07x. Stop set at $136.34 and target at $142.57.",
-        "BUY 70.6614 PFE @ $28.32 ($2001.12, stop $27.88) \u2014 Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15."
+        "BUY 70.6614 PFE @ $28.32 ($2001.12, stop $27.88) \u2014 Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15.",
+        "BUY 46.3678 XLRE @ $43.16 ($2001.24, stop $42.48) \u2014 Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42."
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:26Z"
+  "last_updated": "2026-11-24T15:58:55Z"
 }

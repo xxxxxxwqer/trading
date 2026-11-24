@@ -5,14 +5,14 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 5997.51,
-  "equity": 9955.35,
+  "cash": 4005.05,
+  "equity": 9953.96,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.45,
-  "current_drawdown_pct": -0.45,
+  "max_drawdown_pct": -0.46,
+  "current_drawdown_pct": -0.46,
   "current_trading_date_et": "2026-11-24",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.45,
+  "daily_pnl_pct": -0.46,
   "positions": {
     "XLP": {
       "ticker": "XLP",
@@ -39,6 +39,19 @@
       "unrealized_pnl": -45.64,
       "unrealized_pnl_pct": -2.28,
       "market_value": 1955.46
+    },
+    "XLV": {
+      "ticker": "XLV",
+      "shares": 10.8222,
+      "avg_entry_price": 184.1088,
+      "current_price": 183.98,
+      "stop_loss": 181.28,
+      "take_profit": 189.38,
+      "opened_at": "2026-11-24T15:58:55Z",
+      "entry_reasoning": "Buying XLV on 30-min Opening Range Breakout: price $183.98 cleared ORH $183.24 (ORL $179.31) on 1.40x relative volume. Stop placed at opening range midpoint ($181.28) with 2R intraday target at $189.38.",
+      "unrealized_pnl": -1.39,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1991.07
     }
   },
   "pending_orders": [],
@@ -86,6 +99,28 @@
       "exit_reason": "",
       "reasoning": "Buying ISRG on 30-min Opening Range Breakout: price $433.44 cleared ORH $428.52 (ORL $411.24) on 1.48x relative volume. Stop placed at 1.2% below entry ($428.24) with 2R intraday target at $443.84.",
       "confidence": 0.79
+    },
+    {
+      "trade_id": "trd_103ace103446",
+      "agent_id": "coded_orb",
+      "side": "BUY",
+      "ticker": "XLV",
+      "shares": 10.8222,
+      "decision_timestamp": "2026-11-24T15:58:53Z",
+      "fill_timestamp": "2026-11-24T15:58:55Z",
+      "reference_price": 183.98,
+      "fill_price": 184.1088,
+      "spread_cost_dollars": 0.3983,
+      "slippage_cost_dollars": 0.9956,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1992.46,
+      "stop_loss": 181.28,
+      "take_profit": 189.38,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying XLV on 30-min Opening Range Breakout: price $183.98 cleared ORH $183.24 (ORL $179.31) on 1.40x relative volume. Stop placed at opening range midpoint ($181.28) with 2R intraday target at $189.38.",
+      "confidence": 0.78
     }
   ],
   "rejections": [],
@@ -116,6 +151,15 @@
       "positions_value": 3957.84,
       "drawdown_pct": -0.45,
       "daily_return_pct": -0.45
+    },
+    {
+      "timestamp": "2026-11-24T15:58:55Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 9953.96,
+      "cash": 4005.05,
+      "positions_value": 5948.91,
+      "drawdown_pct": -0.46,
+      "daily_return_pct": -0.46
     }
   ],
   "daily_journal": [
@@ -123,17 +167,18 @@
       "trading_date_et": "2026-11-24",
       "trading_day_number": 1,
       "start_equity": 10000.0,
-      "end_equity": 9955.35,
-      "daily_pnl": -44.65,
-      "daily_pnl_pct": -0.45,
-      "trades_count": 2,
+      "end_equity": 9953.96,
+      "daily_pnl": -46.04,
+      "daily_pnl_pct": -0.46,
+      "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,955.35 ($-44.65, -0.45%). Executed 2 trade(s) \u2014 Buys: XLP ($2,001), ISRG ($2,001); Sells: none.",
+      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,953.96 ($-46.04, -0.46%). Executed 3 trade(s) \u2014 Buys: XLP ($2,001), ISRG ($2,001), XLV ($1,992); Sells: none.",
       "highlights": [
         "BUY 21.7426 XLP @ $92.05 ($2001.39, stop $91.01) \u2014 Buying XLP on 30-min Opening Range Breakout: price $91.98 cleared ORH $91.58 (ORL $90.44) on 1.98x relative volume. Stop placed at opening range midpoint ($91.01) with 2R intraday target at $93.93.",
-        "BUY 4.5115 ISRG @ $443.56 ($2001.10, stop $428.24) \u2014 Buying ISRG on 30-min Opening Range Breakout: price $433.44 cleared ORH $428.52 (ORL $411.24) on 1.48x relative volume. Stop placed at 1.2% below entry ($428.24) with 2R intraday target at $443.84."
+        "BUY 4.5115 ISRG @ $443.56 ($2001.10, stop $428.24) \u2014 Buying ISRG on 30-min Opening Range Breakout: price $433.44 cleared ORH $428.52 (ORL $411.24) on 1.48x relative volume. Stop placed at 1.2% below entry ($428.24) with 2R intraday target at $443.84.",
+        "BUY 10.8222 XLV @ $184.11 ($1992.46, stop $181.28) \u2014 Buying XLV on 30-min Opening Range Breakout: price $183.98 cleared ORH $183.24 (ORL $179.31) on 1.40x relative volume. Stop placed at opening range midpoint ($181.28) with 2R intraday target at $189.38."
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:26Z"
+  "last_updated": "2026-11-24T15:58:55Z"
 }

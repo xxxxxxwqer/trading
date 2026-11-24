@@ -221,6 +221,15 @@
       "positions_value": 7296.39,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
+    },
+    {
+      "timestamp": "2026-11-24T15:58:55Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 10000.32,
+      "cash": 2703.93,
+      "positions_value": 7296.39,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
     }
   ],
   "daily_journal": [
@@ -243,5 +252,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:26Z"
+  "last_updated": "2026-11-24T15:58:55Z"
 }
