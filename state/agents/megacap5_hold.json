@@ -6,7 +6,7 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.42,
-  "equity": 9993.35,
+  "equity": 9993.05,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.07,
   "current_drawdown_pct": -0.07,
@@ -18,66 +18,66 @@
       "ticker": "AAPL",
       "shares": 5.413,
       "avg_entry_price": 351.2507,
-      "current_price": 351.005,
+      "current_price": 350.855,
       "stop_loss": 333.4547,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1899.99
+      "unrealized_pnl": -2.14,
+      "unrealized_pnl_pct": -0.11,
+      "market_value": 1899.18
     },
     "AMZN": {
       "ticker": "AMZN",
       "shares": 7.4848,
       "avg_entry_price": 254.0227,
-      "current_price": 253.845,
+      "current_price": 253.68,
       "stop_loss": 241.1527,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1899.98
+      "unrealized_pnl": -2.57,
+      "unrealized_pnl_pct": -0.13,
+      "market_value": 1898.74
     },
     "GOOGL": {
       "ticker": "GOOGL",
       "shares": 6.8085,
       "avg_entry_price": 279.2554,
-      "current_price": 279.06,
+      "current_price": 278.95,
       "stop_loss": 265.107,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1899.98
+      "unrealized_pnl": -2.08,
+      "unrealized_pnl_pct": -0.11,
+      "market_value": 1899.23
     },
     "MSFT": {
       "ticker": "MSFT",
       "shares": 3.8307,
       "avg_entry_price": 496.3372,
-      "current_price": 495.99,
+      "current_price": 495.96,
       "stop_loss": 471.1905,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1899.99
+      "unrealized_pnl": -1.45,
+      "unrealized_pnl_pct": -0.08,
+      "market_value": 1899.87
     },
     "NVDA": {
       "ticker": "NVDA",
       "shares": 12.4606,
       "avg_entry_price": 152.5868,
-      "current_price": 152.48,
+      "current_price": 152.69,
       "stop_loss": 144.856,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1899.99
+      "unrealized_pnl": 1.29,
+      "unrealized_pnl_pct": 0.07,
+      "market_value": 1902.61
     }
   },
   "pending_orders": [],
@@ -212,6 +212,15 @@
       "positions_value": 9499.93,
       "drawdown_pct": -0.07,
       "daily_return_pct": -0.07
+    },
+    {
+      "timestamp": "2026-11-24T15:58:26Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 9993.05,
+      "cash": 493.42,
+      "positions_value": 9499.63,
+      "drawdown_pct": -0.07,
+      "daily_return_pct": -0.07
     }
   ],
   "daily_journal": [
@@ -219,12 +228,12 @@
       "trading_date_et": "2026-11-24",
       "trading_day_number": 1,
       "start_equity": 10000.0,
-      "end_equity": 9993.35,
-      "daily_pnl": -6.65,
+      "end_equity": 9993.05,
+      "daily_pnl": -6.95,
       "daily_pnl_pct": -0.07,
       "trades_count": 5,
       "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,993.35 ($-6.65, -0.07%). Executed 5 trade(s) \u2014 Buys: AAPL ($1,901), AMZN ($1,901), GOOGL ($1,901), MSFT ($1,901), NVDA ($1,901); Sells: none.",
+      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,993.05 ($-6.95, -0.07%). Executed 5 trade(s) \u2014 Buys: AAPL ($1,901), AMZN ($1,901), GOOGL ($1,901), MSFT ($1,901), NVDA ($1,901); Sells: none.",
       "highlights": [
         "BUY 5.4130 AAPL @ $351.25 ($1901.32, stop $333.45) \u2014 ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
         "BUY 7.4848 AMZN @ $254.02 ($1901.31, stop $241.15) \u2014 ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
@@ -234,5 +243,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:56:23Z"
+  "last_updated": "2026-11-24T15:58:26Z"
 }

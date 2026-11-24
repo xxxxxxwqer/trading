@@ -6,52 +6,52 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 6407.63,
-  "equity": 9997.49,
+  "equity": 9996.21,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.03,
-  "current_drawdown_pct": -0.03,
+  "max_drawdown_pct": -0.04,
+  "current_drawdown_pct": -0.04,
   "current_trading_date_et": "2026-11-24",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.03,
+  "daily_pnl_pct": -0.04,
   "positions": {
     "TLT": {
       "ticker": "TLT",
       "shares": 23.8066,
       "avg_entry_price": 81.9674,
-      "current_price": 81.91,
+      "current_price": 81.9,
       "stop_loss": 78.224,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=19.5%, stop=-4.5%",
-      "unrealized_pnl": -1.37,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1950.0
+      "unrealized_pnl": -1.61,
+      "unrealized_pnl_pct": -0.08,
+      "market_value": 1949.76
     },
     "SPY": {
       "ticker": "SPY",
       "shares": 1.1863,
       "avg_entry_price": 716.0509,
-      "current_price": 715.55,
+      "current_price": 715.78,
       "stop_loss": 683.3502,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=8.5%, stop=-4.5%",
-      "unrealized_pnl": -0.59,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 848.86
+      "unrealized_pnl": -0.32,
+      "unrealized_pnl_pct": -0.04,
+      "market_value": 849.13
     },
     "GLD": {
       "ticker": "GLD",
       "shares": 2.4154,
       "avg_entry_price": 327.7093,
-      "current_price": 327.48,
+      "current_price": 326.94,
       "stop_loss": 312.7434,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=7.9%, stop=-4.5%",
-      "unrealized_pnl": -0.55,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 791.0
+      "unrealized_pnl": -1.86,
+      "unrealized_pnl_pct": -0.23,
+      "market_value": 789.69
     }
   },
   "pending_orders": [],
@@ -142,6 +142,15 @@
       "positions_value": 3589.86,
       "drawdown_pct": -0.03,
       "daily_return_pct": -0.03
+    },
+    {
+      "timestamp": "2026-11-24T15:58:26Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 9996.21,
+      "cash": 6407.63,
+      "positions_value": 3588.58,
+      "drawdown_pct": -0.04,
+      "daily_return_pct": -0.04
     }
   ],
   "daily_journal": [
@@ -149,12 +158,12 @@
       "trading_date_et": "2026-11-24",
       "trading_day_number": 1,
       "start_equity": 10000.0,
-      "end_equity": 9997.49,
-      "daily_pnl": -2.51,
-      "daily_pnl_pct": -0.03,
+      "end_equity": 9996.21,
+      "daily_pnl": -3.79,
+      "daily_pnl_pct": -0.04,
       "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,997.49 ($-2.51, -0.03%). Executed 3 trade(s) \u2014 Buys: TLT ($1,951), SPY ($849), GLD ($792); Sells: none.",
+      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,996.21 ($-3.79, -0.04%). Executed 3 trade(s) \u2014 Buys: TLT ($1,951), SPY ($849), GLD ($792); Sells: none.",
       "highlights": [
         "BUY 23.8066 TLT @ $81.97 ($1951.37, stop $78.22) \u2014 ENTRY_RISK_PARITY: target_weight=19.5%, stop=-4.5%",
         "BUY 1.1863 SPY @ $716.05 ($849.45, stop $683.35) \u2014 ENTRY_RISK_PARITY: target_weight=8.5%, stop=-4.5%",
@@ -162,5 +171,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-24T15:56:23Z"
+  "last_updated": "2026-11-24T15:58:26Z"
 }
