@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>29. 20D Up/Down Volume Accumulation — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 30 US Trading Days</strong> (17%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 16.7%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 30-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+          <a href="../agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
+          <a href="../agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
+          <a href="../agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
+          <a href="../agents/kiro_pair_reversion.html" class="agent-pill" title="15. Kiro Pair-Spread Reversion (PSR)">#15 kiro_pair_reversion</a>
+          <a href="../agents/overnight_drift.html" class="agent-pill" title="16. Overnight Drift (Close→Open)">#16 overnight_drift</a>
+          <a href="../agents/eod_loser_overnight.html" class="agent-pill" title="17. EOD Loser Overnight Reversal">#17 eod_loser_overnight</a>
+          <a href="../agents/intraday_momentum.html" class="agent-pill" title="18. Intraday Momentum (Gao 2018)">#18 intraday_momentum</a>
+          <a href="../agents/turn_of_month.html" class="agent-pill" title="19. Turn-of-Month Calendar">#19 turn_of_month</a>
+          <a href="../agents/gap_down_fill.html" class="agent-pill" title="20. Intraday Gap-Down Fill">#20 gap_down_fill</a>
+          <a href="../agents/dual_momentum_macro.html" class="agent-pill" title="21. Dual Momentum Macro ETF">#21 dual_momentum_macro</a>
+          <a href="../agents/risk_parity_3.html" class="agent-pill" title="22. Risk Parity 3-Asset (8% Vol)">#22 risk_parity_3</a>
+          <a href="../agents/min_variance_etf.html" class="agent-pill" title="23. Minimum-Variance ETF Portfolio">#23 min_variance_etf</a>
+          <a href="../agents/low_vol_anomaly.html" class="agent-pill" title="24. Low-Volatility Stock Anomaly">#24 low_vol_anomaly</a>
+          <a href="../agents/megacap5_hold.html" class="agent-pill" title="25. Mega-Cap Top-5 Buy &amp; Hold (Control)">#25 megacap5_hold</a>
+          <a href="../agents/xs_short_reversal.html" class="agent-pill" title="26. Cross-Sectional 5D Short Reversal">#26 xs_short_reversal</a>
+          <a href="../agents/high52_anchor.html" class="agent-pill" title="27. 70D High Anchoring (George-Hwang)">#27 high52_anchor</a>
+          <a href="../agents/value_momentum.html" class="agent-pill" title="28. Value + 63D Momentum Combo">#28 value_momentum</a>
+          <a href="../agents/volume_accumulation.html" class="agent-pill active" title="29. 20D Up/Down Volume Accumulation">#29 volume_accumulation</a>
+          <a href="../agents/regime_beta_switch.html" class="agent-pill" title="30. Regime-Adaptive Beta Switch">#30 regime_beta_switch</a>
+          <a href="../agents/breadth_timing.html" class="agent-pill" title="31. Market Breadth Equity Timing">#31 breadth_timing</a>
+          <a href="../agents/panic_dip_index.html" class="agent-pill" title="32. Panic-Dip Index Buyer">#32 panic_dip_index</a>
+          <a href="../agents/risk_appetite_ratio.html" class="agent-pill" title="33. Cross-Asset Risk Appetite Ratio">#33 risk_appetite_ratio</a>
+          <a href="../agents/vwap_reversion.html" class="agent-pill" title="34. Intraday VWAP -2σ Reversion">#34 vwap_reversion</a>
+          <a href="../agents/squeeze_breakout.html" class="agent-pill" title="35. Volatility Squeeze Breakout">#35 squeeze_breakout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#1 of 34</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">30-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-1">Rank #1</span>
+            <h1>29. 20D Up/Down Volume Accumulation</h1>
+            <span class="cat-pill cat-coded">Coded</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Weekly top 5 stocks above SMA20 with the highest 20-day up-day to down-day volume accumulation ratio.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>volume_accumulation</code>)</div>
+        <p>Measures institutional accumulation via 20-day up-day/down-day volume ratio on stocks trading above D-1 SMA20; holds top 5 weekly (19% each, -5% stop).</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,947.15</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,947.15</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$947.15</div>
+        <div class="kpi-sub pos"><strong>+9.47%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value pos">+7.42%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$2,268.46</div>
+        <div class="kpi-sub">Invested: $8,678.69 (4 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.48%</div>
+        <div class="kpi-sub">Current DD: 0.00%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">0.0%</div>
+        <div class="kpi-sub">0W / 1L (1 closed, 6 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">0.00</div>
+        <div class="kpi-sub">Friction paid: $7.74</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">$0.00</span> / <span class="neg">-$100.86</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,124</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,399</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,673</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,947</text><line x1="78" y1="243.3" x2="932" y2="243.3" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#22d3ee" stroke-width="3.0" points="78.0,243.3 90.9,244.8 103.9,236.7 116.8,226.5 129.8,221.9 142.7,227.6 155.6,220.4 168.6,213.7 181.5,205.8 194.5,206.6 207.4,205.1 220.3,204.3 233.3,208.4 246.2,206.3 259.2,206.5 272.1,199.3 285.0,192.1 298.0,192.6 310.9,203.1 323.8,203.4 336.8,193.4 349.7,186.6 362.7,185.2 375.6,179.1 388.5,184.4 401.5,172.8 414.4,172.1 427.4,176.0 440.3,177.9 453.2,173.9 466.2,173.4 479.1,175.7 492.1,175.9 505.0,170.0 517.9,159.8 530.9,160.4 543.8,158.0 556.8,154.8 569.7,155.6 582.6,155.0 595.6,154.5 608.5,142.3 621.5,134.5 634.4,128.0 647.3,120.2 660.3,120.4 673.2,115.8 686.2,107.2 699.1,102.4 712.0,100.4 725.0,98.0 737.9,97.7 750.8,94.9 763.8,86.0 776.7,72.6 789.7,66.5 802.6,63.0 815.5,61.9 828.5,56.4 841.4,48.9 854.4,44.1 867.3,38.7 880.2,41.4 893.2,35.0 906.1,31.4 919.1,24.0 932.0,243.3"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#22d3ee"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,243.3 90.9,244.6 103.9,245.0 116.8,239.9 129.8,237.4 142.7,245.2 155.6,239.1 168.6,240.7 181.5,239.8 194.5,240.4 207.4,242.5 220.3,242.1 233.3,243.2 246.2,237.5 259.2,236.3 272.1,234.5 285.0,233.8 298.0,232.8 310.9,238.1 323.8,237.4 336.8,234.8 349.7,234.1 362.7,235.7 375.6,232.8 388.5,241.3 401.5,235.9 414.4,237.0 427.4,240.8 440.3,248.8 453.2,255.0 466.2,255.9 479.1,257.5 492.1,254.9 505.0,253.2 517.9,250.4 530.9,251.9 543.8,246.4 556.8,244.4 569.7,245.1 582.6,245.6 595.6,251.0 608.5,245.7 621.5,245.5 634.4,242.1 647.3,236.1 660.3,237.8 673.2,239.1 686.2,239.5 699.1,234.8 712.0,234.3 725.0,233.3 737.9,231.6 750.8,228.1 763.8,222.5 776.7,217.4 789.7,217.7 802.6,213.2 815.5,215.0 828.5,211.1 841.4,209.1 854.4,210.9 867.3,207.9 880.2,211.1 893.2,205.4 906.1,203.1 919.1,195.7 932.0,243.3"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 10:49 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (4 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.5091</td>
+              <td class="num">$422.93</td>
+              <td class="num">$487.00</td>
+              <td class="num strong">$2,195.93</td>
+              <td class="num neg">$400.30</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num pos">
+                <strong>+$288.91</strong>
+                <div class="sub-num">(+15.15%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</div>
+                <div class="sub-num">Opened: 2026-11-05 10:00:00 EST / 2026-11-06 00:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.0667</td>
+              <td class="num">$922.36</td>
+              <td class="num">$1,060.57</td>
+              <td class="num strong">$2,191.88</td>
+              <td class="num neg">$873.36</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num pos">
+                <strong>+$285.64</strong>
+                <div class="sub-num">(+14.98%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</div>
+                <div class="sub-num">Opened: 2026-11-05 10:00:00 EST / 2026-11-06 00:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">MA</td>
+              <td class="num">3.4788</td>
+              <td class="num">$545.88</td>
+              <td class="num">$572.54</td>
+              <td class="num strong">$1,991.74</td>
+              <td class="num neg">$518.85</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num pos">
+                <strong>+$92.73</strong>
+                <div class="sub-num">(+4.88%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</div>
+                <div class="sub-num">Opened: 2026-11-05 10:00:00 EST / 2026-11-06 00:00:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">META</td>
+              <td class="num">2.9590</td>
+              <td class="num">$648.33</td>
+              <td class="num">$777.00</td>
+              <td class="num strong">$2,299.14</td>
+              <td class="num neg">$609.99</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num pos">
+                <strong>+$380.73</strong>
+                <div class="sub-num">(+19.85%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</div>
+                <div class="sub-num">Opened: 2026-11-05 10:00:00 EST / 2026-11-06 00:00:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 29. 20D Up/Down Volume Accumulation did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,641.06</strong></span> &rarr;
+              <span>End: <strong>$10,947.15</strong></span>
+              <span class="journal-pnl pos">(+$306.09 / +2.88%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $10,641.06 to $10,947.15 (+$306.09, +2.88%). No new trades executed; held existing position(s): CAT (4.51 sh, +15.15%), LLY (2.07 sh, +14.98%), MA (3.48 sh, +4.88%), META (2.96 sh, +19.85%).</p>
+          
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,381.15</strong></span> &rarr;
+              <span>End: <strong>$10,641.06</strong></span>
+              <span class="journal-pnl pos">(+$259.91 / +2.50%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $10,381.15 to $10,641.06 (+$259.91, +2.50%). No new trades executed; held existing position(s): CAT (4.51 sh, +10.75%), LLY (2.07 sh, +11.17%), MA (3.48 sh, +3.00%), META (2.96 sh, +13.92%).</p>
+          
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,307.54</strong></span> &rarr;
+              <span>End: <strong>$10,381.15</strong></span>
+              <span class="journal-pnl pos">(+$73.61 / +0.71%)</span>
+              <span class="journal-counts">1 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,307.54 to $10,381.15 (+$73.61, +0.71%). Executed 1 trade(s) — Buys: none; Sells: UNH (STOP_LOSS, $-100.86).</p>
+          <ul class="journal-highlights"><li>SELL 3.0707 UNH @ $587.40 [STOP_LOSS: $-100.86 (-5.30%)] — Stop-loss triggered at $587.81 (intrabar low $587.50 &lt;= stop $587.81)</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,159.71</strong></span> &rarr;
+              <span>End: <strong>$10,307.54</strong></span>
+              <span class="journal-pnl pos">(+$147.83 / +1.46%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $10,159.71 to $10,307.54 (+$147.83, +1.46%). No new trades executed; held existing position(s): CAT (4.51 sh, +5.76%), LLY (2.07 sh, +5.04%), MA (3.48 sh, +0.08%), META (2.96 sh, +5.65%), UNH (3.07 sh, -0.43%).</p>
+          
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$10,159.71</strong></span>
+              <span class="journal-pnl pos">(+$159.71 / +1.60%)</span>
+              <span class="journal-counts">5 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $10,159.71 (+$159.71, +1.60%). Executed 5 trade(s) — Buys: CAT ($1,907), LLY ($1,906), MA ($1,899), META ($1,918), UNH ($1,905); Sells: none.</p>
+          <ul class="journal-highlights"><li>BUY 4.5091 CAT @ $422.93 ($1907.02, stop $400.30) — ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</li><li>BUY 2.0667 LLY @ $922.36 ($1906.24, stop $873.36) — ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</li><li>BUY 3.4788 MA @ $545.88 ($1899.01, stop $518.85) — ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</li><li>BUY 2.9590 META @ $648.33 ($1918.41, stop $609.99) — ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</li><li>BUY 3.0707 UNH @ $620.24 ($1904.57, stop $587.81) — ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (6 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 12:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 02:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">UNH</td>
+              <td class="num">3.0707</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 12:00:00 EST</div>
+                <div>Fill: 2026-11-09 12:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$587.81</td>
+              <td class="num strong">$587.40</td>
+              <td class="num neg">$0.36</td>
+              <td class="num neg">$0.90</td>
+              <td class="num neg"><strong>-$100.86</strong><div class="sub-num">(-5.30%)</div></td>
+              <td><span class="exit-pill">STOP_LOSS</span></td>
+              <td class="num">100%</td>
+              <td class="reasoning-cell">Stop-loss triggered at $587.81 (intrabar low $587.50 &lt;= stop $587.81)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">UNH</td>
+              <td class="num">3.0707</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$619.81</td>
+              <td class="num strong">$620.24</td>
+              <td class="num neg">$0.38</td>
+              <td class="num neg">$0.95</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">META</td>
+              <td class="num">2.9590</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$647.94</td>
+              <td class="num strong">$648.33</td>
+              <td class="num neg">$0.19</td>
+              <td class="num neg">$0.96</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">MA</td>
+              <td class="num">3.4788</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$545.50</td>
+              <td class="num strong">$545.88</td>
+              <td class="num neg">$0.38</td>
+              <td class="num neg">$0.95</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">LLY</td>
+              <td class="num">2.0667</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$921.71</td>
+              <td class="num strong">$922.36</td>
+              <td class="num neg">$0.38</td>
+              <td class="num neg">$0.95</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-05 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">CAT</td>
+              <td class="num">4.5091</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 09:30:00 EST</div>
+                <div>Fill: 2026-11-05 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$422.63</td>
+              <td class="num strong">$422.93</td>
+              <td class="num neg">$0.38</td>
+              <td class="num neg">$0.95</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 29. 20D Up/Down Volume Accumulation &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-24 10:49 ET"], "datasets": [{"label": "29. 20D Up/Down Volume Accumulation", "data": [10000.0, 9993.52, 10028.33, 10072.25, 10092.52, 10067.86, 10098.59, 10127.7, 10162.06, 10158.58, 10165.1, 10168.51, 10150.59, 10159.71, 10159.03, 10190.1, 10221.04, 10218.9, 10173.4, 10172.4, 10215.64, 10244.98, 10250.88, 10277.1, 10254.47, 10304.2, 10307.54, 10290.62, 10282.23, 10299.59, 10301.7, 10291.99, 10290.91, 10316.47, 10360.54, 10357.87, 10368.25, 10382.35, 10378.83, 10381.15, 10383.36, 10436.29, 10469.95, 10498.02, 10531.83, 10530.55, 10550.56, 10587.73, 10608.51, 10616.93, 10627.58, 10628.6, 10641.06, 10679.15, 10737.02, 10763.56, 10778.69, 10783.39, 10807.02, 10839.46, 10860.3, 10883.5, 10872.14, 10899.64, 10914.99, 10947.15, 10000.0], "borderColor": "#22d3ee", "backgroundColor": "#22d3ee", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

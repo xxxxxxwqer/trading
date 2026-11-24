@@ -1,0 +1,93 @@
+{
+  "agent_id": "kiro_pair_reversion",
+  "display_name": "Kiro Pair-Spread Reversion (PSR)",
+  "version": "1.0.0",
+  "pairs": [
+    ["KO", "PEP"], ["V", "MA"], ["XOM", "CVX"], ["JPM", "BAC"],
+    ["BAC", "WFC"], ["GS", "MS"], ["WMT", "COST"], ["MRK", "PFE"],
+    ["NVDA", "AMD"], ["AVGO", "QCOM"], ["CRM", "ADBE"], ["PG", "KO"]
+  ],
+  "regime_ticker": "SPY",
+  "stats": {
+    "lookback_days": 60,
+    "spread_window_days": 10,
+    "beta_clip": [0.5, 2.0],
+    "min_var_b": 1e-8,
+    "shock_lookback_days": 10,
+    "atr_period": 14,
+    "adv_period": 20
+  },
+  "filters": {
+    "rho_min_entry": 0.60,
+    "rho_exit_break": 0.40,
+    "z_entry_min": 2.0,
+    "z_entry_max": 4.0,
+    "shock_max": 3.5,
+    "max_spread_bps": 10,
+    "slippage_bps_per_side": 5,
+    "laggard_share_of_reversion": 0.5,
+    "min_edge_to_cost_ratio": 3.0
+  },
+  "regime": {
+    "crash_spy_intraday": -0.020,
+    "riskoff_spy_ret5": -0.030,
+    "riskoff_spy_sma": 20,
+    "riskoff_rv20_ann": 0.30,
+    "rv_annualization": 252,
+    "NORMAL":   {"max_slots": 4, "base_risk": 0.0060, "max_gross": 0.80},
+    "RISK_OFF": {"max_slots": 2, "base_risk": 0.0040, "max_gross": 0.40},
+    "CRASH":    {"max_slots": 0, "base_risk": 0.0,    "max_gross": 0.0}
+  },
+  "entry": {
+    "window_normal_et": ["10:30", "15:00"],
+    "window_early_close_et": ["10:30", "12:00"],
+    "last_entry_trading_day": 27,
+    "max_entries_per_cycle": 1,
+    "max_entries_per_day": 2,
+    "max_positions_per_sector": 2,
+    "bar_confirm": {"require_green": true, "require_higher_close": true},
+    "ticker_cooldown_days": 3,
+    "pair_cooldown_days_after_loss": 5,
+    "min_order_usd": 50,
+    "share_decimals": 4
+  },
+  "risk": {
+    "stop_atr_mult": 1.5,
+    "stop_pct_min": 0.015,
+    "stop_pct_max": 0.060,
+    "tp_pct_min": 0.015,
+    "tp_pct_max": 0.080,
+    "max_weight": 0.18,
+    "max_positions": 4,
+    "max_open_risk": 0.025,
+    "self_daily_halt": -0.020,
+    "dd_scaling": [
+      {"dd_lt": 0.03, "mult": 1.0},
+      {"dd_lt": 0.06, "mult": 0.6},
+      {"dd_lt": 0.08, "mult": 0.3},
+      {"dd_lt": 1.00, "mult": 0.0}
+    ],
+    "breakeven_trigger_R": 1.0
+  },
+  "exit": {
+    "z_take_profit": -0.5,
+    "z_stop": -3.5,
+    "max_hold_days": 7,
+    "time_exit_et_normal": "15:30",
+    "time_exit_et_early_close": "12:30",
+    "final_day": 30,
+    "final_day_exit_et": "15:00"
+  },
+  "news": {
+    "lookback_hours": 24,
+    "check_both_legs": true,
+    "veto_keywords": [
+      "earnings", "results", "quarter", "guidance", "outlook", "forecast",
+      "downgrade", "upgrade", "price target", "investigation", "probe",
+      "sec ", "doj", "lawsuit", "sued", "settlement", "recall", "fda",
+      "acquire", "acquisition", "merger", "buyout", "offering", "dilution",
+      "bankrupt", "fraud", "resign", "steps down", "ceo", "halt",
+      "layoff", "strike", "antitrust", "tariff", "split", "spin-off"
+    ]
+  }
+}

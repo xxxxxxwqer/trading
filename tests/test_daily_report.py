@@ -268,16 +268,16 @@ def _make_snapshot(trading_date_et: str = "2026-11-11") -> MarketSnapshot:
 
 
 class TestDailyReportPipeline(unittest.TestCase):
-    def test_four_strategy_groups_cover_exact_13_agents(self) -> None:
+    def test_four_strategy_groups_cover_all_active_agents(self) -> None:
         counts = {}
         for spec in AGENT_SPECS:
             grp = classify_agent_group(spec.agent_id, spec.category)
             counts[grp] = counts.get(grp, 0) + 1
-        self.assertEqual(len(AGENT_SPECS), 13)
-        self.assertEqual(counts["코딩 기반 (5)"], 5)
+        self.assertEqual(len(AGENT_SPECS), 34)
+        self.assertEqual(counts["코딩 기반 (25)"], 25)
         self.assertEqual(counts["Gemini Flash LLM (4)"], 4)
         self.assertEqual(counts["공시 스타일 학습 (2)"], 2)
-        self.assertEqual(counts["SPY / 랜덤 (2)"], 2)
+        self.assertEqual(counts["SPY / 랜덤 / 대조군 (3)"], 3)
 
     def test_smart_market_summary_filters_to_macro_and_active_tickers(self) -> None:
         states = _make_agent_states(num_days=1)
@@ -304,7 +304,7 @@ class TestDailyReportPipeline(unittest.TestCase):
             market_summary=summary,
         )
 
-        self.assertEqual(payload["metadata"]["total_agents"], 13)
+        self.assertEqual(payload["metadata"]["total_agents"], len(AGENT_SPECS))
         self.assertFalse(payload["metadata"]["is_final_day"])
         self.assertIsNone(payload["final_10day_stats"])
         self.assertEqual(payload["metadata"]["cycles_run_today"], 1)

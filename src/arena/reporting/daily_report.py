@@ -86,26 +86,44 @@ _T_CRIT_95 = {
     30: 2.0423,
 }
 
-# Canonical strategy group labels matching the user's reporting specification
+def _group_counts_from_specs() -> Dict[str, int]:
+    counts = {"coded": 0, "llm": 0, "style": 0, "ctrl": 0}
+    for sp in AGENT_SPECS:
+        cat_l = (sp.category or "").lower()
+        if sp.agent_id in ("ctrl_spy", "ctrl_random", "megacap5_hold") or "control" in cat_l or "benchmark" in cat_l:
+            counts["ctrl"] += 1
+        elif "coded" in cat_l:
+            counts["coded"] += 1
+        elif "llm" in cat_l or "gemini" in cat_l:
+            counts["llm"] += 1
+        elif "filing" in cat_l or "style" in cat_l:
+            counts["style"] += 1
+        else:
+            counts["ctrl"] += 1
+    return counts
+
+
+# Canonical strategy group labels dynamically sized from active AGENT_SPECS
 def classify_agent_group(agent_id: str, category: str) -> str:
-    if agent_id in ("ctrl_spy", "ctrl_random"):
-        return "SPY / 랜덤 (2)"
+    counts = _group_counts_from_specs()
     cat_l = (category or "").lower()
+    if agent_id in ("ctrl_spy", "ctrl_random", "megacap5_hold") or "control" in cat_l or "benchmark" in cat_l:
+        return f"SPY / 랜덤 / 대조군 ({counts['ctrl']})"
     if "coded" in cat_l:
-        return "코딩 기반 (5)"
+        return f"코딩 기반 ({counts['coded']})"
     if "llm" in cat_l or "gemini" in cat_l:
-        return "Gemini Flash LLM (4)"
+        return f"Gemini Flash LLM ({counts['llm']})"
     if "filing" in cat_l or "style" in cat_l:
-        return "공시 스타일 학습 (2)"
-    return "SPY / 랜덤 (2)"
+        return f"공시 스타일 학습 ({counts['style']})"
+    return f"SPY / 랜덤 / 대조군 ({counts['ctrl']})"
 
 
 DAILY_REPORT_SYSTEM_PROMPT = """# ROLE
 당신은 기관급 퀀트 리서치 팀의 **수석 성과 분석가(Performance Analyst) 겸 시장 구조 전략가**입니다.
-미국 주식·ETF 가상 모의투자 대회인 **AI Trading Arena(13개 에이전트: 1~12번, 14번 `claude_rmp`)**의 일일 JSON 데이터를 입력받아, GitHub 저장소(`.md`) 및 GitHub Pages 대시보드에 바로 게시할 수 있는 **객관적이고 정밀한 일일 성과·차트 분석 보고서**를 작성합니다.
+미국 주식·ETF 가상 모의투자 대회인 **AI Trading Arena(34개 에이전트: 1~12번, 14~35번)**의 일일 JSON 데이터를 입력받아, GitHub 저장소(`.md`) 및 GitHub Pages 대시보드에 바로 게시할 수 있는 **객관적이고 정밀한 일일 성과·차트 분석 보고서**를 작성합니다.
 
 # COMPETITION RULES & CONTEXT (필수 인지)
-1. **거래 유니버스**: 미국 상장 유동성 대형주 46개 + 섹터/지수/매크로 ETF 18개 = 총 64개 종목.
+1. **거래 유니버스**: 미국 상장 유동성 대형주 53개 + 섹터/지수/매크로 ETF 18개 = 총 71개 종목.
    - 100% 가상 모의투자(Paper Trading), **Long 또는 현금(Cash) 전용** (공매도·레버리지·옵션·동전주 금지).
    - 예외 유니버스: **11·12·14번**은 개별 대형주만 매매, **4번**은 11개 SPDR 섹터 ETF만 매매.
 2. **실행 주기 및 타임프레임**:
@@ -645,8 +663,14 @@ def build_report_payload(
     for idx, row in enumerate(leaderboard, start=1):
         row["rank"] = idx
 
-    # Strategy group aggregates (exact 4 groups)
-    group_order = ["코딩 기반 (5)", "Gemini Flash LLM (4)", "공시 스타일 학습 (2)", "SPY / 랜덤 (2)"]
+    # Strategy group aggregates (exact 4 groups dynamically sized from AGENT_SPECS)
+    g_counts = _group_counts_from_specs()
+    group_order = [
+        f"코딩 기반 ({g_counts['coded']})",
+        f"Gemini Flash LLM ({g_counts['llm']})",
+        f"공시 스타일 학습 ({g_counts['style']})",
+        f"SPY / 랜덤 / 대조군 ({g_counts['ctrl']})",
+    ]
     group_summary: List[Dict[str, Any]] = []
     for gname in group_order:
         members = [r for r in leaderboard if r["group"] == gname]
@@ -1128,7 +1152,7 @@ def _call_gemini_for_report(user_prompt: str, api_key: str) -> Tuple[Optional[st
             "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
             "generationConfig": {
                 "temperature": 0.15,
-                "maxOutputTokens": 4096,
+                "maxOutputTokens": 8192,
             },
         }
     ).encode("utf-8")

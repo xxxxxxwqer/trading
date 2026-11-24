@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
+  <title>30-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -20,17 +20,17 @@
           <a href="index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
         </div>
-        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
+        <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
       </div>
 
       <div class="progress-and-clock">
         <div class="trading-progress-box">
           <div class="progress-label-row">
             <span class="progress-title">Competition Progress</span>
-            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+            <span class="progress-count"><strong>5 / 30 US Trading Days</strong> (17%)</span>
           </div>
           <div class="progress-track" aria-label="Trading Days Progress">
-            <div class="progress-fill" style="width: 50.0%"></div>
+            <div class="progress-fill" style="width: 16.7%"></div>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
       <div class="nav-primary">
         <a href="index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
         <a href="reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
-        <a href="final_report.html" class="nav-link active">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="final_report.html" class="nav-link active">&#128202; 30-Day Final Report &amp; Luck vs. Skill</a>
         <a href="dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
       <div class="nav-agents-strip">
@@ -69,6 +69,27 @@
           <a href="agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
           <a href="agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
           <a href="agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
+          <a href="agents/kiro_pair_reversion.html" class="agent-pill" title="15. Kiro Pair-Spread Reversion (PSR)">#15 kiro_pair_reversion</a>
+          <a href="agents/overnight_drift.html" class="agent-pill" title="16. Overnight Drift (Close→Open)">#16 overnight_drift</a>
+          <a href="agents/eod_loser_overnight.html" class="agent-pill" title="17. EOD Loser Overnight Reversal">#17 eod_loser_overnight</a>
+          <a href="agents/intraday_momentum.html" class="agent-pill" title="18. Intraday Momentum (Gao 2018)">#18 intraday_momentum</a>
+          <a href="agents/turn_of_month.html" class="agent-pill" title="19. Turn-of-Month Calendar">#19 turn_of_month</a>
+          <a href="agents/gap_down_fill.html" class="agent-pill" title="20. Intraday Gap-Down Fill">#20 gap_down_fill</a>
+          <a href="agents/dual_momentum_macro.html" class="agent-pill" title="21. Dual Momentum Macro ETF">#21 dual_momentum_macro</a>
+          <a href="agents/risk_parity_3.html" class="agent-pill" title="22. Risk Parity 3-Asset (8% Vol)">#22 risk_parity_3</a>
+          <a href="agents/min_variance_etf.html" class="agent-pill" title="23. Minimum-Variance ETF Portfolio">#23 min_variance_etf</a>
+          <a href="agents/low_vol_anomaly.html" class="agent-pill" title="24. Low-Volatility Stock Anomaly">#24 low_vol_anomaly</a>
+          <a href="agents/megacap5_hold.html" class="agent-pill" title="25. Mega-Cap Top-5 Buy &amp; Hold (Control)">#25 megacap5_hold</a>
+          <a href="agents/xs_short_reversal.html" class="agent-pill" title="26. Cross-Sectional 5D Short Reversal">#26 xs_short_reversal</a>
+          <a href="agents/high52_anchor.html" class="agent-pill" title="27. 70D High Anchoring (George-Hwang)">#27 high52_anchor</a>
+          <a href="agents/value_momentum.html" class="agent-pill" title="28. Value + 63D Momentum Combo">#28 value_momentum</a>
+          <a href="agents/volume_accumulation.html" class="agent-pill" title="29. 20D Up/Down Volume Accumulation">#29 volume_accumulation</a>
+          <a href="agents/regime_beta_switch.html" class="agent-pill" title="30. Regime-Adaptive Beta Switch">#30 regime_beta_switch</a>
+          <a href="agents/breadth_timing.html" class="agent-pill" title="31. Market Breadth Equity Timing">#31 breadth_timing</a>
+          <a href="agents/panic_dip_index.html" class="agent-pill" title="32. Panic-Dip Index Buyer">#32 panic_dip_index</a>
+          <a href="agents/risk_appetite_ratio.html" class="agent-pill" title="33. Cross-Asset Risk Appetite Ratio">#33 risk_appetite_ratio</a>
+          <a href="agents/vwap_reversion.html" class="agent-pill" title="34. Intraday VWAP -2σ Reversion">#34 vwap_reversion</a>
+          <a href="agents/squeeze_breakout.html" class="agent-pill" title="35. Volatility Squeeze Breakout">#35 squeeze_breakout</a>
       </div>
     </nav>
   </header>
@@ -77,7 +98,7 @@
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h1>&#127942; 10-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
+          <h1>&#127942; 30-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
           <p class="panel-sub">Comprehensive ranking, strategy cohort comparison, transaction-cost drag audit, and statistical analysis of luck vs. skill over N = 10 US trading days.</p>
         </div>
         <div class="panel-actions">
@@ -88,6 +109,38 @@
       <div class="podium-grid">
       <div class="podium-card podium-gold">
         <div class="podium-medal">Gold #1</div>
+        <h3><a href="agents/volume_accumulation.html">29. 20D Up/Down Volume Accumulation</a></h3>
+        <div class="podium-cat"><span class="cat-pill cat-coded">Coded</span></div>
+        <div class="podium-equity">$10,947.15</div>
+        <div class="podium-ret pos">
+          +$947.15 (+9.47%) &bull; +7.42% vs SPY
+        </div>
+        <div class="podium-stats">
+          <span>Max DD: <strong>-0.48%</strong></span>
+          <span>Win Rate: <strong>0.0%</strong></span>
+          <span>PF: <strong>0.00</strong></span>
+          <span>Fills: <strong>6</strong></span>
+        </div>
+        <p class="podium-desc">Weekly top 5 stocks above SMA20 with the highest 20-day up-day to down-day volume accumulation ratio.</p>
+      </div>
+      <div class="podium-card podium-silver">
+        <div class="podium-medal">Silver #2</div>
+        <h3><a href="agents/risk_appetite_ratio.html">33. Cross-Asset Risk Appetite Ratio</a></h3>
+        <div class="podium-cat"><span class="cat-pill cat-coded">Coded</span></div>
+        <div class="podium-equity">$10,858.38</div>
+        <div class="podium-ret pos">
+          +$858.38 (+8.58%) &bull; +6.53% vs SPY
+        </div>
+        <div class="podium-stats">
+          <span>Max DD: <strong>-0.23%</strong></span>
+          <span>Win Rate: <strong>0.0%</strong></span>
+          <span>PF: <strong>N/A</strong></span>
+          <span>Fills: <strong>4</strong></span>
+        </div>
+        <p class="podium-desc">Scores XLY/XLP, SMH/SPY, and IWM/SPY vs 20d SMA to switch between growth ETFs, defensive ETFs (XLP/XLU/GLD/TLT), and Cash.</p>
+      </div>
+      <div class="podium-card podium-bronze">
+        <div class="podium-medal">Bronze #3</div>
         <h3><a href="agents/coded_sector.html">4. Sector ETF Rotation</a></h3>
         <div class="podium-cat"><span class="cat-pill cat-coded">Coded</span></div>
         <div class="podium-equity">$10,814.69</div>
@@ -101,38 +154,6 @@
           <span>Fills: <strong>30</strong></span>
         </div>
         <p class="podium-desc">Rotates into the top SPDR Sector ETFs exhibiting the strongest relative strength vs SPY.</p>
-      </div>
-      <div class="podium-card podium-silver">
-        <div class="podium-medal">Silver #2</div>
-        <h3><a href="agents/coded_orb.html">3. Intraday ORB (Flat by Close)</a></h3>
-        <div class="podium-cat"><span class="cat-pill cat-coded">Coded</span></div>
-        <div class="podium-equity">$10,597.90</div>
-        <div class="podium-ret pos">
-          +$597.90 (+5.98%) &bull; +3.92% vs SPY
-        </div>
-        <div class="podium-stats">
-          <span>Max DD: <strong>-0.25%</strong></span>
-          <span>Win Rate: <strong>91.2%</strong></span>
-          <span>PF: <strong>36.42</strong></span>
-          <span>Fills: <strong>68</strong></span>
-        </div>
-        <p class="podium-desc">Trades breakouts above the first 30-minute opening range and liquidates all positions before the closing bell.</p>
-      </div>
-      <div class="podium-card podium-bronze">
-        <div class="podium-medal">Bronze #3</div>
-        <h3><a href="agents/style_congress.html">12. Congress Style (House PTR Pattern)</a></h3>
-        <div class="podium-cat"><span class="cat-pill cat-style">Filing-Style</span></div>
-        <div class="podium-equity">$10,552.55</div>
-        <div class="podium-ret pos">
-          +$552.55 (+5.53%) &bull; +3.47% vs SPY
-        </div>
-        <div class="podium-stats">
-          <span>Max DD: <strong>-0.65%</strong></span>
-          <span>Win Rate: <strong>100.0%</strong></span>
-          <span>PF: <strong>∞</strong></span>
-          <span>Fills: <strong>11</strong></span>
-        </div>
-        <p class="podium-desc">Learns US House members&#x27; 2-year stock-buying style (sectors, size, 30-day pre-trade move, typical buy-to-sell hold time) from cached PTR PDFs and applies those rules to today&#x27;s universe without copying trades.</p>
       </div>
       </div>
     </section>
@@ -167,6 +188,36 @@
           <tbody>
             <tr>
               <td class="num"><span class="rank-pill rank-1">#1</span></td>
+              <td><a href="agents/volume_accumulation.html" class="agent-link">29. 20D Up/Down Volume Accumulation</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,947.15</td>
+              <td class="num pos">+$947.15 (+9.47%)</td>
+              <td class="num pos">+7.42%</td>
+              <td class="num neg">-0.48%</td>
+              <td class="num">0.0% (1 closed)</td>
+              <td class="num">0.00</td>
+              <td class="num neg">$2.08</td>
+              <td class="num neg">$5.67</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-2">#2</span></td>
+              <td><a href="agents/risk_appetite_ratio.html" class="agent-link">33. Cross-Asset Risk Appetite Ratio</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,858.38</td>
+              <td class="num pos">+$858.38 (+8.58%)</td>
+              <td class="num pos">+6.53%</td>
+              <td class="num neg">-0.23%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$1.33</td>
+              <td class="num neg">$3.81</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-3">#3</span></td>
               <td><a href="agents/coded_sector.html" class="agent-link">4. Sector ETF Rotation</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -181,7 +232,52 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-2">#2</span></td>
+              <td class="num"><span class="rank-pill rank-4">#4</span></td>
+              <td><a href="agents/high52_anchor.html" class="agent-link">27. 70D High Anchoring (George-Hwang)</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,699.14</td>
+              <td class="num pos">+$699.14 (+6.99%)</td>
+              <td class="num pos">+4.94%</td>
+              <td class="num neg">-0.91%</td>
+              <td class="num">0.0% (1 closed)</td>
+              <td class="num">0.00</td>
+              <td class="num neg">$1.89</td>
+              <td class="num neg">$5.67</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-5">#5</span></td>
+              <td><a href="agents/regime_beta_switch.html" class="agent-link">30. Regime-Adaptive Beta Switch</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,666.57</td>
+              <td class="num pos">+$666.57 (+6.67%)</td>
+              <td class="num pos">+4.61%</td>
+              <td class="num neg">-0.51%</td>
+              <td class="num">60.0% (5 closed)</td>
+              <td class="num">12.78</td>
+              <td class="num neg">$5.38</td>
+              <td class="num neg">$14.44</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-6">#6</span></td>
+              <td><a href="agents/breadth_timing.html" class="agent-link">31. Market Breadth Equity Timing</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,618.88</td>
+              <td class="num pos">+$618.88 (+6.19%)</td>
+              <td class="num pos">+4.13%</td>
+              <td class="num neg">-0.65%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$1.14</td>
+              <td class="num neg">$4.76</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-7">#7</span></td>
               <td><a href="agents/coded_orb.html" class="agent-link">3. Intraday ORB (Flat by Close)</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -196,7 +292,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-3">#3</span></td>
+              <td class="num"><span class="rank-pill rank-8">#8</span></td>
               <td><a href="agents/style_congress.html" class="agent-link">12. Congress Style (House PTR Pattern)</a></td>
               <td><span class="cat-pill cat-style">Filing-Style</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -211,7 +307,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-4">#4</span></td>
+              <td class="num"><span class="rank-pill rank-9">#9</span></td>
               <td><a href="agents/coded_trend.html" class="agent-link">1. Trend Follower (MA / Breakout)</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -226,7 +322,37 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-5">#5</span></td>
+              <td class="num"><span class="rank-pill rank-10">#10</span></td>
+              <td><a href="agents/megacap5_hold.html" class="agent-link">25. Mega-Cap Top-5 Buy &amp; Hold (Control)</a></td>
+              <td><span class="cat-pill cat-control">Control</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,502.78</td>
+              <td class="num pos">+$502.78 (+5.03%)</td>
+              <td class="num pos">+2.97%</td>
+              <td class="num neg">-0.91%</td>
+              <td class="num">0.0% (1 closed)</td>
+              <td class="num">0.00</td>
+              <td class="num neg">$1.32</td>
+              <td class="num neg">$5.67</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-11">#11</span></td>
+              <td><a href="agents/xs_short_reversal.html" class="agent-link">26. Cross-Sectional 5D Short Reversal</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,271.04</td>
+              <td class="num pos">+$271.04 (+2.71%)</td>
+              <td class="num pos">+0.66%</td>
+              <td class="num neg">-1.36%</td>
+              <td class="num">64.3% (14 closed)</td>
+              <td class="num">2.83</td>
+              <td class="num neg">$12.42</td>
+              <td class="num neg">$31.55</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-12">#12</span></td>
               <td><a href="agents/llm_catalyst.html" class="agent-link">6. News &amp; Catalyst Trader (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -241,7 +367,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-6">#6</span></td>
+              <td class="num"><span class="rank-pill rank-13">#13</span></td>
               <td><a href="agents/style_berkshire.html" class="agent-link">11. Berkshire Style (13F Pattern)</a></td>
               <td><span class="cat-pill cat-style">Filing-Style</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -256,7 +382,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-7">#7</span></td>
+              <td class="num"><span class="rank-pill rank-14">#14</span></td>
               <td><a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a></td>
               <td><span class="cat-pill cat-control">Control</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -271,7 +397,22 @@
               <td class="num">14</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-8">#8</span></td>
+              <td class="num"><span class="rank-pill rank-15">#15</span></td>
+              <td><a href="agents/low_vol_anomaly.html" class="agent-link">24. Low-Volatility Stock Anomaly</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,217.37</td>
+              <td class="num pos">+$217.37 (+2.17%)</td>
+              <td class="num pos">+0.12%</td>
+              <td class="num neg">-1.78%</td>
+              <td class="num">0.0% (1 closed)</td>
+              <td class="num">0.00</td>
+              <td class="num neg">$2.07</td>
+              <td class="num neg">$5.66</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-16">#16</span></td>
               <td><a href="agents/ctrl_spy.html" class="agent-link">9. Buy-and-Hold SPY (Benchmark)</a></td>
               <td><span class="cat-pill cat-control">Control</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -286,7 +427,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-9">#9</span></td>
+              <td class="num"><span class="rank-pill rank-17">#17</span></td>
               <td><a href="agents/coded_mean_rev.html" class="agent-link">2. Mean Reversion (RSI / Bollinger)</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -301,7 +442,67 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-10">#10</span></td>
+              <td class="num"><span class="rank-pill rank-18">#18</span></td>
+              <td><a href="agents/dual_momentum_macro.html" class="agent-link">21. Dual Momentum Macro ETF</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,178.80</td>
+              <td class="num pos">+$178.80 (+1.79%)</td>
+              <td class="num neg">-0.27%</td>
+              <td class="num neg">-0.09%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.39</td>
+              <td class="num neg">$1.96</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-19">#19</span></td>
+              <td><a href="agents/squeeze_breakout.html" class="agent-link">35. Volatility Squeeze Breakout</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,176.31</td>
+              <td class="num pos">+$176.31 (+1.76%)</td>
+              <td class="num neg">-0.29%</td>
+              <td class="num neg">-0.44%</td>
+              <td class="num">100.0% (1 closed)</td>
+              <td class="num">∞</td>
+              <td class="num neg">$2.31</td>
+              <td class="num neg">$5.77</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-20">#20</span></td>
+              <td><a href="agents/value_momentum.html" class="agent-link">28. Value + 63D Momentum Combo</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,169.27</td>
+              <td class="num pos">+$169.27 (+1.69%)</td>
+              <td class="num neg">-0.36%</td>
+              <td class="num neg">-1.85%</td>
+              <td class="num">0.0% (1 closed)</td>
+              <td class="num">0.00</td>
+              <td class="num neg">$2.26</td>
+              <td class="num neg">$5.66</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-21">#21</span></td>
+              <td><a href="agents/min_variance_etf.html" class="agent-link">23. Minimum-Variance ETF Portfolio</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,148.96</td>
+              <td class="num pos">+$148.96 (+1.49%)</td>
+              <td class="num neg">-0.57%</td>
+              <td class="num neg">-0.50%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$1.02</td>
+              <td class="num neg">$4.37</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-22">#22</span></td>
               <td><a href="agents/claude_rmp.html" class="agent-link">14. Claude Residual-Momentum Pullback</a></td>
               <td><span class="cat-pill cat-coded">Coded</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -316,7 +517,7 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-11">#11</span></td>
+              <td class="num"><span class="rank-pill rank-23">#23</span></td>
               <td><a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -331,7 +532,22 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-12">#12</span></td>
+              <td class="num"><span class="rank-pill rank-24">#24</span></td>
+              <td><a href="agents/risk_parity_3.html" class="agent-link">22. Risk Parity 3-Asset (8% Vol)</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,040.79</td>
+              <td class="num pos">+$40.79 (+0.41%)</td>
+              <td class="num neg">-1.65%</td>
+              <td class="num neg">-0.27%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.55</td>
+              <td class="num neg">$2.77</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-25">#25</span></td>
               <td><a href="agents/llm_technical.html" class="agent-link">5. Technical Analyst (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -346,7 +562,112 @@
               <td class="num">0</td>
             </tr>
             <tr>
-              <td class="num"><span class="rank-pill rank-13">#13</span></td>
+              <td class="num"><span class="rank-pill rank-26">#26</span></td>
+              <td><a href="agents/eod_loser_overnight.html" class="agent-link">17. EOD Loser Overnight Reversal</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,024.05</td>
+              <td class="num pos">+$24.05 (+0.24%)</td>
+              <td class="num neg">-1.81%</td>
+              <td class="num neg">-0.01%</td>
+              <td class="num">100.0% (1 closed)</td>
+              <td class="num">∞</td>
+              <td class="num neg">$0.77</td>
+              <td class="num neg">$1.93</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-27">#27</span></td>
+              <td><a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,006.72</td>
+              <td class="num pos">+$6.72 (+0.07%)</td>
+              <td class="num neg">-1.99%</td>
+              <td class="num neg">-0.13%</td>
+              <td class="num">62.5% (8 closed)</td>
+              <td class="num">1.66</td>
+              <td class="num neg">$3.52</td>
+              <td class="num neg">$17.58</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-28">#28</span></td>
+              <td><a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,000.68</td>
+              <td class="num pos">+$0.68 (+0.01%)</td>
+              <td class="num neg">-2.05%</td>
+              <td class="num neg">-0.04%</td>
+              <td class="num">50.0% (2 closed)</td>
+              <td class="num">1.21</td>
+              <td class="num neg">$0.78</td>
+              <td class="num neg">$3.91</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-29">#29</span></td>
+              <td><a href="agents/kiro_pair_reversion.html" class="agent-link">15. Kiro Pair-Spread Reversion (PSR)</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">+$0.00 (+0.00%)</td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.00</td>
+              <td class="num neg">$0.00</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-30">#30</span></td>
+              <td><a href="agents/turn_of_month.html" class="agent-link">19. Turn-of-Month Calendar</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">+$0.00 (+0.00%)</td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.00</td>
+              <td class="num neg">$0.00</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-31">#31</span></td>
+              <td><a href="agents/gap_down_fill.html" class="agent-link">20. Intraday Gap-Down Fill</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">+$0.00 (+0.00%)</td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.00</td>
+              <td class="num neg">$0.00</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-32">#32</span></td>
+              <td><a href="agents/panic_dip_index.html" class="agent-link">32. Panic-Dip Index Buyer</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">+$0.00 (+0.00%)</td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">0.0% (0 closed)</td>
+              <td class="num">N/A</td>
+              <td class="num neg">$0.00</td>
+              <td class="num neg">$0.00</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-33">#33</span></td>
               <td><a href="agents/llm_cautious.html" class="agent-link">8. Cautious Risk-First Trader (Gemini Flash)</a></td>
               <td><span class="cat-pill cat-llm">Gemini Flash LLM</span></td>
               <td><span class="status-pill status-active">ACTIVE</span></td>
@@ -358,6 +679,21 @@
               <td class="num">0.73</td>
               <td class="num neg">$3.84</td>
               <td class="num neg">$14.41</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td class="num"><span class="rank-pill rank-34">#34</span></td>
+              <td><a href="agents/vwap_reversion.html" class="agent-link">34. Intraday VWAP -2σ Reversion</a></td>
+              <td><span class="cat-pill cat-coded">Coded</span></td>
+              <td><span class="status-pill status-active">ACTIVE</span></td>
+              <td class="num strong">$9,973.34</td>
+              <td class="num neg">-$26.66 (-0.27%)</td>
+              <td class="num neg">-2.32%</td>
+              <td class="num neg">-0.38%</td>
+              <td class="num">33.3% (3 closed)</td>
+              <td class="num">0.14</td>
+              <td class="num neg">$1.88</td>
+              <td class="num neg">$5.65</td>
               <td class="num">0</td>
             </tr>
           </tbody>
@@ -391,15 +727,15 @@
           </thead>
           <tbody>
             <tr>
-              <td class="strong">Coded (5)</td>
-              <td class="num strong">$10,455.24</td>
-              <td class="num pos"><strong>+4.55%</strong></td>
-              <td class="num neg">-0.52%</td>
-              <td class="num">60.0%</td>
-              <td class="num">180 (85 closed)</td>
-              <td class="num neg">$251.51</td>
+              <td class="strong">Coded (25)</td>
+              <td class="num strong">$10,290.95</td>
+              <td class="num pos"><strong>+2.91%</strong></td>
+              <td class="num neg">-0.49%</td>
+              <td class="num">30.8%</td>
+              <td class="num">307 (123 closed)</td>
+              <td class="num neg">$412.47</td>
               <td class="num">0</td>
-              <td>4. Sector ETF Rotation (+8.15%)</td>
+              <td>29. 20D Up/Down Volume Accumulation (+9.47%)</td>
             </tr>
             <tr>
               <td class="strong">Gemini Flash LLM (4)</td>
@@ -453,8 +789,8 @@
         <div class="insight-card">
           <h3>1. Coded Strategies vs. Gemini Flash LLM Traders</h3>
           <p>
-            The 4 deterministic <strong>Coded Strategies</strong> averaged <strong>+4.55%</strong>
-            with an average max drawdown of <strong>-0.52%</strong>, whereas the 4
+            The 4 deterministic <strong>Coded Strategies</strong> averaged <strong>+2.91%</strong>
+            with an average max drawdown of <strong>-0.49%</strong>, whereas the 4
             <strong>Gemini Flash LLM Traders</strong> averaged <strong>+0.94%</strong>
             with an average max drawdown of <strong>-0.87%</strong>.
             Structured JSON validation and temperature-0.1 prompting kept LLM decisions grounded in the precomputed
@@ -477,15 +813,15 @@
             The highest-turnover agent was <strong>3. Intraday ORB (Flat by Close)</strong> with <strong>68 fills</strong>,
             incurring <strong>$95.04</strong> in combined spread and slippage drag
             ($25.08 spread + $69.96 slippage).
-            Over a short 10-day window, minimizing unnecessary churn proved critical to preserving net alpha.
+            Over a 30-day window, minimizing unnecessary churn proved critical to preserving net alpha.
           </p>
         </div>
 
         <div class="insight-card">
           <h3>4. Drawdown Control &amp; Shared Risk Manager Saves</h3>
           <p>
-            <strong>14. Claude Residual-Momentum Pullback</strong> achieved the tightest drawdown control at
-            <strong>-0.05%</strong>. Across the entire arena, the shared Risk Manager
+            <strong>15. Kiro Pair-Spread Reversion (PSR)</strong> achieved the tightest drawdown control at
+            <strong>0.00%</strong>. Across the entire arena, the shared Risk Manager
             enforced hard 1% risk-per-trade sizing, 20% single-stock caps, and the -3% daily loss circuit breaker,
             preventing catastrophic single-trade blow-ups even when signals were aggressive.
           </p>
@@ -493,50 +829,50 @@
       </div>
     </section>
 
-    <!-- Honest Statement on Luck vs. Skill Over 10 Trading Days -->
+    <!-- Honest Statement on Luck vs. Skill Over Competition Trading Days -->
     <section class="panel" id="luck-vs-skill">
       <div class="panel-header">
         <div>
-          <h2>&#9878; Honest Statement on Luck vs. Skill Over 10 Trading Days (N = 10)</h2>
-          <p class="panel-sub">Why a 2-week (10 US trading day) competition cannot statistically prove long-term alpha — and what our two scientific controls reveal.</p>
+          <h2>&#9878; Honest Statement on Luck vs. Skill Over 30 Trading Days (N = 30)</h2>
+          <p class="panel-sub">Why a 30-trading-day competition still has meaningful sample variance — and what our two scientific controls reveal.</p>
         </div>
       </div>
 
       <div class="scientific-callout">
         <h3>Key Statistical Finding: Winner vs. Random Luck Control (<code>ctrl_random</code>) &amp; SPY (<code>ctrl_spy</code>)</h3>
         <p>
-          Over <strong>N = 10 US trading days</strong>, top-ranked
-          <strong>4. Sector ETF Rotation</strong> finished at <strong>+8.15%</strong>
-          (95% confidence interval: <strong>[+5.34%, +10.96%]</strong>,
-          cumulative standard error <strong>&plusmn;1.43%</strong>).
+          Over <strong>N = 30 US trading days</strong>, top-ranked
+          <strong>29. 20D Up/Down Volume Accumulation</strong> finished at <strong>+9.47%</strong>
+          (95% confidence interval: <strong>[+5.68%, +13.26%]</strong>,
+          cumulative standard error <strong>&plusmn;1.94%</strong>).
         </p>
         <ul>
           <li>
             <strong>Comparison vs. 10. Random Trader (Luck Control):</strong>
             <code>ctrl_random</code> finished at <strong>+2.17%</strong> under the exact same risk manager.
-            The spread between #1 and pure random selection is <strong>+5.98%</strong>, which equals
-            <strong>+7.53 standard errors (t-statistic)</strong>.
+            The spread between #1 and pure random selection is <strong>+7.30%</strong>, which equals
+            <strong>+7.87 standard errors (t-statistic)</strong>.
           </li>
           <li>
             <strong>Comparison vs. 9. Buy-and-Hold SPY (Benchmark):</strong>
             <code>ctrl_spy</code> finished at <strong>+2.06%</strong>.
-            The spread between #1 and passive market beta is <strong>+6.09%</strong>, or
-            <strong>+4.25 standard errors</strong>.
+            The spread between #1 and passive market beta is <strong>+7.41%</strong>, or
+            <strong>+3.83 standard errors</strong>.
           </li>
           <li>
-            <strong>Why N = 10 Days Has Wide Confidence Intervals:</strong>
+            <strong>Why N = 30 Days Still Has Wide Confidence Intervals:</strong>
             In quantitative finance, the standard error of a strategy's cumulative return scales with
             <code>&sigma;<sub>daily</sub> &times; &radic;N</code>, while the t-statistic of skill scales with
             <code>(Sharpe<sub>annual</sub> &times; &radic;(N / 252))</code>. Even for a genuinely strong strategy with a true annualized
-            Sharpe Ratio of <strong>1.50</strong>, a 10-trading-day sample (<code>10 / 252 &approx; 0.04</code> years) yields an expected
-            t-statistic of only <code>1.50 &times; &radic;0.04 &approx; 0.30</code> standard errors — far below the <strong>1.96 standard errors</strong>
+            Sharpe Ratio of <strong>1.50</strong>, a 30-trading-day sample (<code>30 / 252 &approx; 0.119</code> years) yields an expected
+            t-statistic of only <code>1.50 &times; &radic;0.119 &approx; 0.52</code> standard errors — still below the <strong>1.96 standard errors</strong>
             required for 95% statistical significance (which requires roughly <code>(1.96 / 1.50)<sup>2</sup> &approx; 1.71 years &approx; 430 trading days</code>).
           </li>
           <li>
             <strong>Bottom Line:</strong>
-            While the 10-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
-            short-horizon return rankings are heavily influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
-            over 10 days should be interpreted as an transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
+            While the 30-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
+            short-horizon return rankings are still influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
+            over 30 days should be interpreted as a transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
           </li>
         </ul>
       </div>
@@ -548,9 +884,9 @@
               <th>Rank</th>
               <th>Agent</th>
               <th class="num">Days (N)</th>
-              <th class="num">10-Day Return</th>
+              <th class="num">30-Day Return</th>
               <th class="num">Daily Mean &plusmn; SD</th>
-              <th class="num">10-Day Std Error (SE)</th>
+              <th class="num">30-Day Std Error (SE)</th>
               <th class="num">95% Confidence Interval</th>
               <th class="num">Spread vs. Random (SE)</th>
               <th class="num">Spread vs. SPY (SE)</th>
@@ -560,6 +896,30 @@
           <tbody>
             <tr>
               <td class="num">#1</td>
+              <td><a href="agents/volume_accumulation.html" class="agent-link">29. 20D Up/Down Volume Accumulation</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+9.47%</strong></td>
+              <td class="num">+1.830% &plusmn; 0.865%</td>
+              <td class="num">&plusmn;1.94%</td>
+              <td class="num">[+5.68%, +13.26%]</td>
+              <td class="num pos">+7.30% (<strong>+7.87 SE</strong>)</td>
+              <td class="num pos">+7.41% (+3.83 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#2</td>
+              <td><a href="agents/risk_appetite_ratio.html" class="agent-link">33. Cross-Asset Risk Appetite Ratio</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+8.58%</strong></td>
+              <td class="num">+1.662% &plusmn; 0.675%</td>
+              <td class="num">&plusmn;1.51%</td>
+              <td class="num">[+5.62%, +11.54%]</td>
+              <td class="num pos">+6.41% (<strong>+13.54 SE</strong>)</td>
+              <td class="num pos">+6.52% (+4.32 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#3</td>
               <td><a href="agents/coded_sector.html" class="agent-link">4. Sector ETF Rotation</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+8.15%</strong></td>
@@ -571,7 +931,43 @@
               <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
             </tr>
             <tr>
-              <td class="num">#2</td>
+              <td class="num">#4</td>
+              <td><a href="agents/high52_anchor.html" class="agent-link">27. 70D High Anchoring (George-Hwang)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+6.99%</strong></td>
+              <td class="num">+1.366% &plusmn; 1.170%</td>
+              <td class="num">&plusmn;2.62%</td>
+              <td class="num">[+1.86%, +12.12%]</td>
+              <td class="num pos">+4.82% (<strong>+3.44 SE</strong>)</td>
+              <td class="num pos">+4.93% (+1.88 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#5</td>
+              <td><a href="agents/regime_beta_switch.html" class="agent-link">30. Regime-Adaptive Beta Switch</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+6.67%</strong></td>
+              <td class="num">+1.300% &plusmn; 0.714%</td>
+              <td class="num">&plusmn;1.60%</td>
+              <td class="num">[+3.54%, +9.80%]</td>
+              <td class="num pos">+4.50% (<strong>+4.10 SE</strong>)</td>
+              <td class="num pos">+4.61% (+2.89 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#6</td>
+              <td><a href="agents/breadth_timing.html" class="agent-link">31. Market Breadth Equity Timing</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+6.19%</strong></td>
+              <td class="num">+1.212% &plusmn; 0.944%</td>
+              <td class="num">&plusmn;2.11%</td>
+              <td class="num">[+2.05%, +10.33%]</td>
+              <td class="num pos">+4.02% (<strong>+4.59 SE</strong>)</td>
+              <td class="num pos">+4.13% (+1.96 SE)</td>
+              <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#7</td>
               <td><a href="agents/coded_orb.html" class="agent-link">3. Intraday ORB (Flat by Close)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+5.98%</strong></td>
@@ -583,7 +979,7 @@
               <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
             </tr>
             <tr>
-              <td class="num">#3</td>
+              <td class="num">#8</td>
               <td><a href="agents/style_congress.html" class="agent-link">12. Congress Style (House PTR Pattern)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+5.53%</strong></td>
@@ -595,7 +991,7 @@
               <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
             </tr>
             <tr>
-              <td class="num">#4</td>
+              <td class="num">#9</td>
               <td><a href="agents/coded_trend.html" class="agent-link">1. Trend Follower (MA / Breakout)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+5.12%</strong></td>
@@ -607,7 +1003,31 @@
               <td><span class="status-pill status-active">|t| &ge; 1.96 (p &lt; 0.05)</span></td>
             </tr>
             <tr>
-              <td class="num">#5</td>
+              <td class="num">#10</td>
+              <td><a href="agents/megacap5_hold.html" class="agent-link">25. Mega-Cap Top-5 Buy &amp; Hold (Control)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+5.03%</strong></td>
+              <td class="num">+0.990% &plusmn; 1.069%</td>
+              <td class="num">&plusmn;2.39%</td>
+              <td class="num">[+0.34%, +9.72%]</td>
+              <td class="num pos">+2.86% (<strong>+1.76 SE</strong>)</td>
+              <td class="num pos">+2.97% (+1.24 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#11</td>
+              <td><a href="agents/xs_short_reversal.html" class="agent-link">26. Cross-Sectional 5D Short Reversal</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+2.71%</strong></td>
+              <td class="num">+0.540% &plusmn; 0.950%</td>
+              <td class="num">&plusmn;2.13%</td>
+              <td class="num">[-1.46%, +6.88%]</td>
+              <td class="num pos">+0.54% (<strong>+0.71 SE</strong>)</td>
+              <td class="num pos">+0.65% (+0.31 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#12</td>
               <td><a href="agents/llm_catalyst.html" class="agent-link">6. News &amp; Catalyst Trader (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.46%</strong></td>
@@ -619,7 +1039,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#6</td>
+              <td class="num">#13</td>
               <td><a href="agents/style_berkshire.html" class="agent-link">11. Berkshire Style (13F Pattern)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.34%</strong></td>
@@ -631,7 +1051,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#7</td>
+              <td class="num">#14</td>
               <td><a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.17%</strong></td>
@@ -643,7 +1063,19 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#8</td>
+              <td class="num">#15</td>
+              <td><a href="agents/low_vol_anomaly.html" class="agent-link">24. Low-Volatility Stock Anomaly</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+2.17%</strong></td>
+              <td class="num">+0.436% &plusmn; 1.143%</td>
+              <td class="num">&plusmn;2.56%</td>
+              <td class="num">[-2.84%, +7.18%]</td>
+              <td class="num neutral">+0.00% (<strong>+0.00 SE</strong>)</td>
+              <td class="num pos">+0.11% (+0.04 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#16</td>
               <td><a href="agents/ctrl_spy.html" class="agent-link">9. Buy-and-Hold SPY (Benchmark)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.06%</strong></td>
@@ -655,7 +1087,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#9</td>
+              <td class="num">#17</td>
               <td><a href="agents/coded_mean_rev.html" class="agent-link">2. Mean Reversion (RSI / Bollinger)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+2.04%</strong></td>
@@ -667,7 +1099,55 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#10</td>
+              <td class="num">#18</td>
+              <td><a href="agents/dual_momentum_macro.html" class="agent-link">21. Dual Momentum Macro ETF</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+1.79%</strong></td>
+              <td class="num">+0.354% &plusmn; 0.194%</td>
+              <td class="num">&plusmn;0.43%</td>
+              <td class="num">[+0.94%, +2.64%]</td>
+              <td class="num neg">-0.38% (<strong>-0.36 SE</strong>)</td>
+              <td class="num neg">-0.27% (-0.54 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#19</td>
+              <td><a href="agents/squeeze_breakout.html" class="agent-link">35. Volatility Squeeze Breakout</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+1.76%</strong></td>
+              <td class="num">+0.352% &plusmn; 0.602%</td>
+              <td class="num">&plusmn;1.35%</td>
+              <td class="num">[-0.88%, +4.40%]</td>
+              <td class="num neg">-0.41% (<strong>-0.84 SE</strong>)</td>
+              <td class="num neg">-0.30% (-0.22 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#20</td>
+              <td><a href="agents/value_momentum.html" class="agent-link">28. Value + 63D Momentum Combo</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+1.69%</strong></td>
+              <td class="num">+0.342% &plusmn; 1.155%</td>
+              <td class="num">&plusmn;2.58%</td>
+              <td class="num">[-3.37%, +6.75%]</td>
+              <td class="num neg">-0.48% (<strong>-0.32 SE</strong>)</td>
+              <td class="num neg">-0.37% (-0.14 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#21</td>
+              <td><a href="agents/min_variance_etf.html" class="agent-link">23. Minimum-Variance ETF Portfolio</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+1.49%</strong></td>
+              <td class="num">+0.298% &plusmn; 0.444%</td>
+              <td class="num">&plusmn;0.99%</td>
+              <td class="num">[-0.46%, +3.44%]</td>
+              <td class="num neg">-0.68% (<strong>-1.36 SE</strong>)</td>
+              <td class="num neg">-0.57% (-0.57 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#22</td>
               <td><a href="agents/claude_rmp.html" class="agent-link">14. Claude Residual-Momentum Pullback</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+1.48%</strong></td>
@@ -679,7 +1159,7 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#11</td>
+              <td class="num">#23</td>
               <td><a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+1.06%</strong></td>
@@ -691,7 +1171,19 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#12</td>
+              <td class="num">#24</td>
+              <td><a href="agents/risk_parity_3.html" class="agent-link">22. Risk Parity 3-Asset (8% Vol)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+0.41%</strong></td>
+              <td class="num">+0.084% &plusmn; 0.212%</td>
+              <td class="num">&plusmn;0.47%</td>
+              <td class="num">[-0.52%, +1.34%]</td>
+              <td class="num neg">-1.76% (<strong>-1.84 SE</strong>)</td>
+              <td class="num neg">-1.65% (-3.30 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#25</td>
               <td><a href="agents/llm_technical.html" class="agent-link">5. Technical Analyst (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num pos"><strong>+0.29%</strong></td>
@@ -703,7 +1195,91 @@
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
             <tr>
-              <td class="num">#13</td>
+              <td class="num">#26</td>
+              <td><a href="agents/eod_loser_overnight.html" class="agent-link">17. EOD Loser Overnight Reversal</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+0.24%</strong></td>
+              <td class="num">+0.048% &plusmn; 0.113%</td>
+              <td class="num">&plusmn;0.25%</td>
+              <td class="num">[-0.26%, +0.74%]</td>
+              <td class="num neg">-1.93% (<strong>-1.40 SE</strong>)</td>
+              <td class="num neg">-1.82% (-3.64 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#27</td>
+              <td><a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+0.07%</strong></td>
+              <td class="num">+0.014% &plusmn; 0.081%</td>
+              <td class="num">&plusmn;0.18%</td>
+              <td class="num">[-0.29%, +0.43%]</td>
+              <td class="num neg">-2.10% (<strong>-1.63 SE</strong>)</td>
+              <td class="num neg">-1.99% (-3.98 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#28</td>
+              <td><a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a></td>
+              <td class="num">5</td>
+              <td class="num pos"><strong>+0.01%</strong></td>
+              <td class="num">+0.002% &plusmn; 0.025%</td>
+              <td class="num">&plusmn;0.06%</td>
+              <td class="num">[-0.10%, +0.12%]</td>
+              <td class="num neg">-2.16% (<strong>-1.55 SE</strong>)</td>
+              <td class="num neg">-2.05% (-4.10 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#29</td>
+              <td><a href="agents/kiro_pair_reversion.html" class="agent-link">15. Kiro Pair-Spread Reversion (PSR)</a></td>
+              <td class="num">5</td>
+              <td class="num neutral"><strong>+0.00%</strong></td>
+              <td class="num">+0.000% &plusmn; 0.000%</td>
+              <td class="num">&plusmn;0.00%</td>
+              <td class="num">[+0.00%, +0.00%]</td>
+              <td class="num neg">-2.17% (<strong>-1.54 SE</strong>)</td>
+              <td class="num neg">-2.06% (-4.12 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#30</td>
+              <td><a href="agents/turn_of_month.html" class="agent-link">19. Turn-of-Month Calendar</a></td>
+              <td class="num">5</td>
+              <td class="num neutral"><strong>+0.00%</strong></td>
+              <td class="num">+0.000% &plusmn; 0.000%</td>
+              <td class="num">&plusmn;0.00%</td>
+              <td class="num">[+0.00%, +0.00%]</td>
+              <td class="num neg">-2.17% (<strong>-1.54 SE</strong>)</td>
+              <td class="num neg">-2.06% (-4.12 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#31</td>
+              <td><a href="agents/gap_down_fill.html" class="agent-link">20. Intraday Gap-Down Fill</a></td>
+              <td class="num">5</td>
+              <td class="num neutral"><strong>+0.00%</strong></td>
+              <td class="num">+0.000% &plusmn; 0.000%</td>
+              <td class="num">&plusmn;0.00%</td>
+              <td class="num">[+0.00%, +0.00%]</td>
+              <td class="num neg">-2.17% (<strong>-1.54 SE</strong>)</td>
+              <td class="num neg">-2.06% (-4.12 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#32</td>
+              <td><a href="agents/panic_dip_index.html" class="agent-link">32. Panic-Dip Index Buyer</a></td>
+              <td class="num">5</td>
+              <td class="num neutral"><strong>+0.00%</strong></td>
+              <td class="num">+0.000% &plusmn; 0.000%</td>
+              <td class="num">&plusmn;0.00%</td>
+              <td class="num">[+0.00%, +0.00%]</td>
+              <td class="num neg">-2.17% (<strong>-1.54 SE</strong>)</td>
+              <td class="num neg">-2.06% (-4.12 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
+            <tr>
+              <td class="num">#33</td>
               <td><a href="agents/llm_cautious.html" class="agent-link">8. Cautious Risk-First Trader (Gemini Flash)</a></td>
               <td class="num">5</td>
               <td class="num neg"><strong>-0.07%</strong></td>
@@ -714,6 +1290,18 @@
               <td class="num neg">-2.13% (-4.26 SE)</td>
               <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
             </tr>
+            <tr>
+              <td class="num">#34</td>
+              <td><a href="agents/vwap_reversion.html" class="agent-link">34. Intraday VWAP -2σ Reversion</a></td>
+              <td class="num">5</td>
+              <td class="num neg"><strong>-0.27%</strong></td>
+              <td class="num">-0.054% &plusmn; 0.144%</td>
+              <td class="num">&plusmn;0.32%</td>
+              <td class="num">[-0.90%, +0.36%]</td>
+              <td class="num neg">-2.44% (<strong>-1.59 SE</strong>)</td>
+              <td class="num neg">-2.33% (-4.66 SE)</td>
+              <td><span class="status-pill status-halted">Within 95% Noise Band (|t| &lt; 1.96)</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -721,7 +1309,7 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena 10-Day Final Report &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena 30-Day Final Report &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
   </footer>
 </body>
 </html>

@@ -148,6 +148,15 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
         "style_agents.py": _ARENA_DIR / "agents" / "style_agents.py",
         "claude_rmp_agent.py": _ARENA_DIR / "agents" / "claude_rmp_agent.py",
         "claude_rmp_params.json": _ARENA_DIR / "agents" / "claude_rmp_params.json",
+        "kiro_pair_reversion_agent.py": _ARENA_DIR / "agents" / "kiro_pair_reversion_agent.py",
+        "kiro_pair_reversion_params.json": _ARENA_DIR / "agents" / "kiro_pair_reversion_params.json",
+        "part_b_params.json": _ARENA_DIR / "agents" / "part_b_params.json",
+        "part_b_common.py": _ARENA_DIR / "agents" / "part_b_common.py",
+        "calendar_agents.py": _ARENA_DIR / "agents" / "calendar_agents.py",
+        "allocation_agents.py": _ARENA_DIR / "agents" / "allocation_agents.py",
+        "factor_agents.py": _ARENA_DIR / "agents" / "factor_agents.py",
+        "timing_agents.py": _ARENA_DIR / "agents" / "timing_agents.py",
+        "microstructure_agents.py": _ARENA_DIR / "agents" / "microstructure_agents.py",
     }
     for name, path in engine_files.items():
         if hashes.get(name) in (None, "", "MISSING") and path.exists() and path.is_file():
@@ -167,9 +176,17 @@ def build_competition_agents(
             from arena.agents.claude_rmp_agent import ClaudeRMPAgent
 
             agents.append(ClaudeRMPAgent(spec=spec, state_dir=state_dir))
+        elif spec.agent_id == "kiro_pair_reversion":
+            from arena.agents.kiro_pair_reversion_agent import KiroPairReversionAgent
+
+            agents.append(KiroPairReversionAgent(spec=spec, state_dir=state_dir))
         elif spec.agent_id in CODED_AND_CONTROL_AGENT_CLASSES:
             cls = CODED_AND_CONTROL_AGENT_CLASSES[spec.agent_id]
-            agents.append(cls(spec=spec))
+            init_params = inspect.signature(cls.__init__).parameters
+            if "state_dir" in init_params:
+                agents.append(cls(spec=spec, state_dir=state_dir))
+            else:
+                agents.append(cls(spec=spec))
         elif spec.agent_id in LLM_AGENT_CLASSES:
             agent = create_llm_agent(
                 agent_id=spec.agent_id,
@@ -375,10 +392,14 @@ def init_or_reset_state(
     }
     save_competition_state(comp_state, state_dir=state_dir)
 
-    # Reset Agent 14 (Claude RMP) internal daily cache, cooldowns, and cycle telemetry logs
+    # Reset Agent 14 (Claude RMP), Agent 15 (Kiro PSR), and Part B (#16-#35) internal caches/states
     from arena.agents.claude_rmp_agent import ClaudeRMPAgent
+    from arena.agents.kiro_pair_reversion_agent import KiroPairReversionAgent
+    from arena.agents.part_b_common import reset_all_part_b_states
 
     ClaudeRMPAgent(state_dir=state_dir).reset_internal_state()
+    KiroPairReversionAgent(state_dir=state_dir).reset_internal_state()
+    reset_all_part_b_states(state_dir=state_dir)
 
     # Reset daily report log & cached market summary cleanly for Day 0
     (state_dir / "daily_reports_log.json").write_text("[]\n", encoding="utf-8")
@@ -700,7 +721,20 @@ def run_single_cycle(
                     if fill_quote is not None:
                         exit_code = "AGENT_SIGNAL"
                         if signal.action == "SELL" and signal.reasoning:
-                            for code_prefix in ("EXIT_STOP", "EXIT_TRAIL", "EXIT_TIME", "EXIT_SMA50", "EXIT_REGIME"):
+                            for code_prefix in (
+                                "EXIT_STOP",
+                                "EXIT_TRAIL",
+                                "EXIT_TIME",
+                                "EXIT_SMA50",
+                                "EXIT_REGIME",
+                                "EXIT_SYSTEM",
+                                "EXIT_FINAL_DAY",
+                                "EXIT_NEWS_VETO",
+                                "EXIT_Z_STOP",
+                                "EXIT_CRASH",
+                                "EXIT_TP_REVERT",
+                                "EXIT_CORR_BREAK",
+                            ):
                                 if signal.reasoning.startswith(code_prefix):
                                     exit_code = code_prefix
                                     break
@@ -713,6 +747,9 @@ def run_single_cycle(
                             decision_timestamp=snapshot.decision_timestamp,
                         )
                         ledger.apply_trade(state, trade)
+                elif not risk_result.approved and signal.action in ("BUY", "SELL"):
+                    if hasattr(agent, "record_risk_rejection") and callable(getattr(agent, "record_risk_rejection")):
+                        agent.record_risk_rejection(signal, risk_result.rejection_reason)
 
         # Step 7: Update mark-to-market equity and enforce -3% daily / -10% blown-up circuit breakers
         ledger.update_mark_to_market(

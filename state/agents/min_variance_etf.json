@@ -1,0 +1,33 @@
+{
+  "agent_id": "min_variance_etf",
+  "name": "23. Minimum-Variance ETF Portfolio",
+  "category": "Coded Strategy",
+  "status": "ACTIVE",
+  "status_reason": "Trading active",
+  "initial_cash": 10000.0,
+  "cash": 10000.0,
+  "equity": 10000.0,
+  "peak_equity": 10000.0,
+  "max_drawdown_pct": 0.0,
+  "current_drawdown_pct": 0.0,
+  "current_trading_date_et": "",
+  "day_start_equity": 10000.0,
+  "daily_pnl_pct": 0.0,
+  "positions": {},
+  "pending_orders": [],
+  "trades": [],
+  "rejections": [],
+  "equity_curve": [
+    {
+      "timestamp": "2026-11-24T15:49:51Z",
+      "trading_date_et": "2026-11-24",
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "positions_value": 0.0,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
+    }
+  ],
+  "daily_journal": [],
+  "last_updated": "2026-11-24T15:49:51Z"
+}

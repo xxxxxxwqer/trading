@@ -1,0 +1,192 @@
+{
+  "version": "1.0.0-locked",
+  "deterministic": true,
+  "uses_llm_at_runtime": false,
+  "common_news_veto_keywords": [
+    "earnings", "results", "quarter", "guidance", "outlook", "forecast",
+    "downgrade", "investigation", "probe", "subpoena", "lawsuit", "fraud",
+    "recall", "offering", "dilution", "bankrupt", "halt", "sec ", "doj"
+  ],
+  "overnight_drift": {
+    "tickers": ["SPY", "QQQ"],
+    "entry_et_normal": "15:30",
+    "entry_et_early": "12:30",
+    "exit_before_et": "10:00",
+    "weight_per_ticker": 0.195,
+    "stop_pct": 0.030
+  },
+  "eod_loser_overnight": {
+    "entry_et_normal": "15:30",
+    "entry_et_early": "12:30",
+    "exit_after_et": "10:30",
+    "min_intraday_drop_pct": -0.025,
+    "max_spread_bps": 15.0,
+    "max_positions": 3,
+    "max_per_sector": 1,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.040,
+    "tp_pct": 0.040
+  },
+  "intraday_momentum": {
+    "tickers": ["SPY", "QQQ"],
+    "first_bar_cutoff_et": "10:00",
+    "min_morning_return_pct": 0.0015,
+    "entry_et_normal": "15:00",
+    "entry_et_early": "12:00",
+    "weight_per_ticker": 0.195,
+    "stop_pct": 0.015
+  },
+  "turn_of_month": {
+    "tickers": ["SPY", "QQQ"],
+    "entry_last_n_days_of_month": 1,
+    "hold_first_n_days_of_next_month": 3,
+    "weight_per_ticker": 0.195,
+    "stop_pct": 0.045
+  },
+  "gap_down_fill": {
+    "window_start_et": "10:00",
+    "window_end_et": "11:30",
+    "gap_min_pct": -0.040,
+    "gap_max_pct": -0.015,
+    "max_positions": 3,
+    "weight_per_ticker": 0.19,
+    "stop_pct_min": 0.015,
+    "stop_pct_max": 0.040
+  },
+  "dual_momentum_macro": {
+    "tickers": ["SPY", "QQQ", "IWM", "TLT", "GLD"],
+    "lookback_days": 60,
+    "top_n": 2,
+    "abs_momentum_min": 0.0,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.195,
+    "stop_pct": 0.050
+  },
+  "risk_parity_3": {
+    "tickers": ["SPY", "TLT", "GLD"],
+    "vol_lookback_days": 20,
+    "target_vol_ann": 0.08,
+    "rebalance_interval_days": 5,
+    "max_weight_per_ticker": 0.195,
+    "stop_pct": 0.045
+  },
+  "min_variance_etf": {
+    "lookback_days": 60,
+    "top_n": 5,
+    "ridge_alpha": 0.00001,
+    "gd_iterations": 60,
+    "rebalance_interval_days": 5,
+    "max_weight_per_ticker": 0.195,
+    "stop_pct": 0.045
+  },
+  "low_vol_anomaly": {
+    "vol_lookback_days": 60,
+    "top_n": 5,
+    "max_per_sector": 2,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "megacap5_hold": {
+    "top_n": 5,
+    "fallback_tickers": ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL"],
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "xs_short_reversal": {
+    "lookback_days": 5,
+    "top_n": 5,
+    "max_per_sector": 1,
+    "rebalance_et_window": ["10:30", "11:30"],
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "high52_anchor": {
+    "high_lookback_days": 70,
+    "rs_lookback_days": 63,
+    "top_n": 5,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "value_momentum": {
+    "pe_quantile_cutoff": 0.50,
+    "mom_lookback_days": 63,
+    "top_n": 5,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "volume_accumulation": {
+    "lookback_days": 20,
+    "require_above_sma20": true,
+    "top_n": 5,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "regime_beta_switch": {
+    "beta_lookback_days": 63,
+    "spy_sma_days": 20,
+    "spy_rv_days": 20,
+    "risk_on_rv_max": 0.25,
+    "top_n": 5,
+    "rebalance_interval_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_pct": 0.050
+  },
+  "breadth_timing": {
+    "sma_days": 20,
+    "high_breadth_pct": 0.60,
+    "low_breadth_pct": 0.40,
+    "full_proxies": ["SPY", "QQQ", "DIA", "IWM", "XLK"],
+    "half_proxies": ["SPY", "DIA", "XLP"],
+    "full_weight_each": 0.19,
+    "half_weight_each": 0.165,
+    "stop_pct": 0.045
+  },
+  "panic_dip_index": {
+    "tickers": ["SPY", "QQQ"],
+    "spy_3d_drop_trigger": -0.030,
+    "add_on_extra_drop": -0.015,
+    "max_hold_days": 5,
+    "weight_per_ticker": 0.195,
+    "stop_pct": 0.045,
+    "tp_pct": 0.050
+  },
+  "risk_appetite_ratio": {
+    "ratio_pairs": [["XLY", "XLP"], ["SMH", "SPY"], ["IWM", "SPY"]],
+    "sma_days": 20,
+    "risk_on_etfs": ["QQQ", "SMH", "XLY", "XLK"],
+    "defensive_etfs": ["XLP", "XLU", "GLD", "TLT"],
+    "risk_on_weight_each": 0.19,
+    "defensive_weight_each": 0.15,
+    "stop_pct": 0.045
+  },
+  "vwap_reversion": {
+    "window_start_et": "10:30",
+    "window_end_normal_et": "14:30",
+    "window_end_early_et": "11:30",
+    "spy_max_abs_intraday": 0.0075,
+    "sigma_threshold": -2.0,
+    "min_sigma_pct": 0.0025,
+    "max_positions": 3,
+    "weight_per_ticker": 0.19,
+    "stop_sigma_mult": 2.0,
+    "stop_pct_min": 0.015,
+    "stop_pct_max": 0.040
+  },
+  "squeeze_breakout": {
+    "bb_period": 20,
+    "width_lookback_days": 60,
+    "squeeze_quantile": 0.20,
+    "min_volume_ratio": 1.2,
+    "max_positions": 4,
+    "max_hold_days": 5,
+    "weight_per_ticker": 0.19,
+    "stop_atr_mult": 1.5,
+    "stop_pct_min": 0.025,
+    "stop_pct_max": 0.050,
+    "tp_pct": 0.060
+  }
+}

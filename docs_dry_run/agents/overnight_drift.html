@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16. Overnight Drift (Close→Open) — AI Trading Arena Agent Ledger</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="paper-warning-banner" role="alert">
+      <span class="warning-icon">&#9888;</span>
+      <strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong>
+      <span class="warning-sub">Alpaca Paper Endpoint Only (<code>https://paper-api.alpaca.markets</code>) &bull; Zero Real Capital At Risk</span>
+    </div>
+
+    <div class="header-main">
+      <div class="brand-block">
+        <div class="brand-title-row">
+          <a href="../index.html" class="brand-title">AI Trading Arena</a>
+          <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
+        </div>
+        <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
+      </div>
+
+      <div class="progress-and-clock">
+        <div class="trading-progress-box">
+          <div class="progress-label-row">
+            <span class="progress-title">Competition Progress</span>
+            <span class="progress-count"><strong>5 / 30 US Trading Days</strong> (17%)</span>
+          </div>
+          <div class="progress-track" aria-label="Trading Days Progress">
+            <div class="progress-fill" style="width: 16.7%"></div>
+          </div>
+        </div>
+
+        <div class="timestamps-box">
+          <div class="ts-item">
+            <span class="ts-label">Korea (KST / Asia/Seoul):</span>
+            <time class="ts-value">2026-11-12 05:35:00 KST</time>
+          </div>
+          <div class="ts-item">
+            <span class="ts-label">New York (ET / America/New_York):</span>
+            <time class="ts-value">2026-11-11 15:35:00 EST</time>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main Navigation">
+      <div class="nav-primary">
+        <a href="../index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
+        <a href="../reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
+        <a href="../final_report.html" class="nav-link">&#128202; 30-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="../dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
+      </div>
+      <div class="nav-agents-strip">
+        <span class="nav-agents-label">Agents:</span>
+        <a href="../agents/coded_trend.html" class="agent-pill" title="1. Trend Follower (MA / Breakout)">#1 coded_trend</a>
+          <a href="../agents/coded_mean_rev.html" class="agent-pill" title="2. Mean Reversion (RSI / Bollinger)">#2 coded_mean_rev</a>
+          <a href="../agents/coded_orb.html" class="agent-pill" title="3. Intraday ORB (Flat by Close)">#3 coded_orb</a>
+          <a href="../agents/coded_sector.html" class="agent-pill" title="4. Sector ETF Rotation">#4 coded_sector</a>
+          <a href="../agents/llm_technical.html" class="agent-pill" title="5. Technical Analyst (Gemini Flash)">#5 llm_technical</a>
+          <a href="../agents/llm_catalyst.html" class="agent-pill" title="6. News &amp; Catalyst Trader (Gemini Flash)">#6 llm_catalyst</a>
+          <a href="../agents/llm_macro.html" class="agent-pill" title="7. Macro &amp; Sector Strategist (Gemini Flash)">#7 llm_macro</a>
+          <a href="../agents/llm_cautious.html" class="agent-pill" title="8. Cautious Risk-First Trader (Gemini Flash)">#8 llm_cautious</a>
+          <a href="../agents/ctrl_spy.html" class="agent-pill" title="9. Buy-and-Hold SPY (Benchmark)">#9 ctrl_spy</a>
+          <a href="../agents/ctrl_random.html" class="agent-pill" title="10. Random Trader (Luck Control)">#10 ctrl_random</a>
+          <a href="../agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
+          <a href="../agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
+          <a href="../agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
+          <a href="../agents/kiro_pair_reversion.html" class="agent-pill" title="15. Kiro Pair-Spread Reversion (PSR)">#15 kiro_pair_reversion</a>
+          <a href="../agents/overnight_drift.html" class="agent-pill active" title="16. Overnight Drift (Close→Open)">#16 overnight_drift</a>
+          <a href="../agents/eod_loser_overnight.html" class="agent-pill" title="17. EOD Loser Overnight Reversal">#17 eod_loser_overnight</a>
+          <a href="../agents/intraday_momentum.html" class="agent-pill" title="18. Intraday Momentum (Gao 2018)">#18 intraday_momentum</a>
+          <a href="../agents/turn_of_month.html" class="agent-pill" title="19. Turn-of-Month Calendar">#19 turn_of_month</a>
+          <a href="../agents/gap_down_fill.html" class="agent-pill" title="20. Intraday Gap-Down Fill">#20 gap_down_fill</a>
+          <a href="../agents/dual_momentum_macro.html" class="agent-pill" title="21. Dual Momentum Macro ETF">#21 dual_momentum_macro</a>
+          <a href="../agents/risk_parity_3.html" class="agent-pill" title="22. Risk Parity 3-Asset (8% Vol)">#22 risk_parity_3</a>
+          <a href="../agents/min_variance_etf.html" class="agent-pill" title="23. Minimum-Variance ETF Portfolio">#23 min_variance_etf</a>
+          <a href="../agents/low_vol_anomaly.html" class="agent-pill" title="24. Low-Volatility Stock Anomaly">#24 low_vol_anomaly</a>
+          <a href="../agents/megacap5_hold.html" class="agent-pill" title="25. Mega-Cap Top-5 Buy &amp; Hold (Control)">#25 megacap5_hold</a>
+          <a href="../agents/xs_short_reversal.html" class="agent-pill" title="26. Cross-Sectional 5D Short Reversal">#26 xs_short_reversal</a>
+          <a href="../agents/high52_anchor.html" class="agent-pill" title="27. 70D High Anchoring (George-Hwang)">#27 high52_anchor</a>
+          <a href="../agents/value_momentum.html" class="agent-pill" title="28. Value + 63D Momentum Combo">#28 value_momentum</a>
+          <a href="../agents/volume_accumulation.html" class="agent-pill" title="29. 20D Up/Down Volume Accumulation">#29 volume_accumulation</a>
+          <a href="../agents/regime_beta_switch.html" class="agent-pill" title="30. Regime-Adaptive Beta Switch">#30 regime_beta_switch</a>
+          <a href="../agents/breadth_timing.html" class="agent-pill" title="31. Market Breadth Equity Timing">#31 breadth_timing</a>
+          <a href="../agents/panic_dip_index.html" class="agent-pill" title="32. Panic-Dip Index Buyer">#32 panic_dip_index</a>
+          <a href="../agents/risk_appetite_ratio.html" class="agent-pill" title="33. Cross-Asset Risk Appetite Ratio">#33 risk_appetite_ratio</a>
+          <a href="../agents/vwap_reversion.html" class="agent-pill" title="34. Intraday VWAP -2σ Reversion">#34 vwap_reversion</a>
+          <a href="../agents/squeeze_breakout.html" class="agent-pill" title="35. Volatility Squeeze Breakout">#35 squeeze_breakout</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb-row">
+      <a href="../index.html">&larr; Back to Main Leaderboard</a>
+      <span>&bull;</span>
+      <span>Rank <strong>#27 of 34</strong></span>
+      <span>&bull;</span>
+      <a href="../final_report.html">30-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+    </div>
+
+    <!-- Agent Header & Playbook -->
+    <section class="panel agent-hero">
+      <div class="agent-hero-top">
+        <div>
+          <div class="agent-title-line">
+            <span class="rank-pill rank-27">Rank #27</span>
+            <h1>16. Overnight Drift (Close→Open)</h1>
+            <span class="cat-pill cat-coded">Coded</span>
+            <span class="status-pill status-active">ACTIVE</span>
+          </div>
+          <p class="agent-short-desc">Buys SPY and QQQ at the 15:30 ET close window and unwinds at next morning&#x27;s open to capture the overnight equity drift premium.</p>
+        </div>
+        <div class="agent-status-box">
+          <div class="ts-label">Status Reason</div>
+          <div class="strong">Trading active</div>
+        </div>
+      </div>
+
+      <div class="playbook-box">
+        <div class="playbook-title">Locked Strategy Playbook &amp; Risk Rules (<code>overnight_drift</code>)</div>
+        <p>Enters SPY &amp; QQQ at 15:30 ET (12:30 ET early close) with -3% stop and sells at &lt;= 10:00 ET the next trading day.</p>
+        <div class="risk-rules-strip">
+          <span>Max Risk/Trade: <strong>1% ($100)</strong></span>
+          <span>Max Single Position: <strong>20%</strong></span>
+          <span>Max Open Positions: <strong>5</strong></span>
+          <span>Daily Loss Halt: <strong>-3%</strong></span>
+          <span>Max Total Drawdown Stop: <strong>-10%</strong></span>
+          <span>Slippage: <strong>5 bps + Half-Spread</strong></span>
+          <span>EOD Flatten: <strong>No (Multi-Day Allowed)</strong></span>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- Agent KPI Strip -->
+    <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label">Current Equity</div>
+        <div class="kpi-value">$10,006.72</div>
+        <div class="kpi-sub">Initial: $10,000.00 &bull; Peak: $10,009.08</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Net Profit ($ / %)</div>
+        <div class="kpi-value pos">+$6.72</div>
+        <div class="kpi-sub pos"><strong>+0.07%</strong> total return</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Return vs. SPY</div>
+        <div class="kpi-value neg">-1.99%</div>
+        <div class="kpi-sub">Relative to <code>ctrl_spy</code> benchmark</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Cash &amp; Open Exposure</div>
+        <div class="kpi-value">$6,089.23</div>
+        <div class="kpi-sub">Invested: $3,917.49 (2 pos)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Max Drawdown</div>
+        <div class="kpi-value neg">-0.13%</div>
+        <div class="kpi-sub">Current DD: -0.02%</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value">62.5%</div>
+        <div class="kpi-sub">5W / 3L (8 closed, 18 fills)</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value">1.66</div>
+        <div class="kpi-sub">Friction paid: $21.10</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Win / Avg Loss</div>
+        <div class="kpi-value"><span class="pos">+$4.57</span> / <span class="neg">-$4.59</span></div>
+        <div class="kpi-sub">Rejections: 0</div>
+      </div>
+    </section>
+
+    <!-- Agent Equity Curve vs SPY -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>&#128200; Equity Trajectory vs. S&amp;P 500 Benchmark (<code>ctrl_spy</code>)</h2>
+          <p class="panel-sub">Mark-to-market virtual portfolio equity from $10,000.00 initial capital.</p>
+        </div>
+      </div>
+      <div class="chart-container chart-sm">
+        <canvas id="agentEquityChart" height="280"></canvas>
+      </div>
+      <details class="svg-companion-details">
+        <summary>Static Vector (SVG) Chart View</summary>
+        <div class="svg-wrap"><svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,939</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,028</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,117</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,206</text><line x1="78" y1="170.8" x2="932" y2="170.8" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#60a5fa" stroke-width="3.0" points="78.0,170.8 90.9,170.8 103.9,170.8 116.8,170.8 129.8,170.8 142.7,170.8 155.6,170.8 168.6,170.8 181.5,170.8 194.5,170.8 207.4,170.8 220.3,170.8 233.3,170.8 246.2,172.5 259.2,167.1 272.1,167.1 285.0,167.1 298.0,167.1 310.9,167.1 323.8,167.1 336.8,167.1 349.7,167.1 362.7,167.1 375.6,167.1 388.5,167.1 401.5,167.1 414.4,168.8 427.4,170.6 440.3,170.6 453.2,170.6 466.2,170.6 479.1,170.6 492.1,170.6 505.0,170.6 517.9,170.6 530.9,170.6 543.8,170.6 556.8,170.6 569.7,170.6 582.6,172.3 595.6,174.5 608.5,174.5 621.5,174.5 634.4,174.5 647.3,174.5 660.3,174.5 673.2,174.5 686.2,174.5 699.1,174.5 712.0,174.5 725.0,174.5 737.9,174.5 750.8,176.2 763.8,164.4 776.7,164.4 789.7,164.4 802.6,164.4 815.5,164.4 828.5,164.4 841.4,164.4 854.4,164.4 867.3,164.4 880.2,164.4 893.2,164.4 906.1,164.4 919.1,166.0 932.0,170.8"><title>16. Overnight Drift (Close→Open): $10,000.00</title></polyline><circle cx="932.0" cy="170.8" r="3.5" fill="#60a5fa"><title>16. Overnight Drift (Close→Open): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,170.8 90.9,175.0 103.9,176.1 116.8,160.6 129.8,152.8 142.7,176.7 155.6,158.0 168.6,163.0 181.5,160.1 194.5,162.0 207.4,168.4 220.3,167.3 233.3,170.6 246.2,153.0 259.2,149.2 272.1,143.7 285.0,141.6 298.0,138.6 310.9,154.8 323.8,152.7 336.8,144.7 349.7,142.4 362.7,147.4 375.6,138.6 388.5,164.8 401.5,148.2 414.4,151.4 427.4,163.1 440.3,187.8 453.2,207.0 466.2,209.9 479.1,214.7 492.1,206.6 505.0,201.6 517.9,192.9 530.9,197.5 543.8,180.6 556.8,174.3 569.7,176.6 582.6,178.2 595.6,194.6 608.5,178.4 621.5,177.8 634.4,167.3 647.3,148.7 660.3,154.0 673.2,158.0 686.2,159.1 699.1,144.7 712.0,143.1 725.0,140.2 737.9,134.9 750.8,123.9 763.8,106.8 776.7,91.1 789.7,91.9 802.6,78.1 815.5,83.6 828.5,71.5 841.4,65.5 854.4,71.0 867.3,61.7 880.2,71.7 893.2,54.0 906.1,46.9 919.1,24.0 932.0,170.8"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="170.8" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle>
+          <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
+          <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 10:49 ET</text>
+        </svg></div>
+      </details>
+    </section>
+
+    <!-- Current Open Positions Table -->
+    <section class="panel" id="open-positions">
+      <div class="panel-header">
+        <div>
+          <h2>&#128188; Current Open Positions (2 / 5 Max)</h2>
+          <p class="panel-sub">Live mark-to-market fractional share holdings with hard stop-loss and take-profit levels.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th class="num">Shares (Fractional)</th>
+              <th class="num">Avg Entry Price</th>
+              <th class="num">Current Price</th>
+              <th class="num">Market Value</th>
+              <th class="num">Stop-Loss</th>
+              <th class="num">Take-Profit</th>
+              <th class="num">Unrealized P&amp;L ($ / %)</th>
+              <th>Entry Reasoning &amp; Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.4232</td>
+              <td class="num">$572.76</td>
+              <td class="num">$572.41</td>
+              <td class="num strong">$1,959.49</td>
+              <td class="num neg">$553.05</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num neg">
+                <strong>-$1.18</strong>
+                <div class="sub-num">(-0.06%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</div>
+                <div class="sub-num">Opened: 2026-11-11 15:35:00 EST / 2026-11-12 05:35:00 KST</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.1885</td>
+              <td class="num">$614.45</td>
+              <td class="num">$614.08</td>
+              <td class="num strong">$1,958.00</td>
+              <td class="num neg">$593.75</td>
+              <td class="num pos">Trailing / Signal</td>
+              <td class="num neg">
+                <strong>-$1.18</strong>
+                <div class="sub-num">(-0.06%)</div>
+              </td>
+              <td class="reasoning-cell">
+                <div>ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</div>
+                <div class="sub-num">Opened: 2026-11-11 15:35:00 EST / 2026-11-12 05:35:00 KST</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Daily Journal in Plain English -->
+    <section class="panel" id="daily-journal">
+      <div class="panel-header">
+        <div>
+          <h2>&#128221; Daily Trading Journal (Plain English)</h2>
+          <p class="panel-sub">Day-by-day narrative explaining what 16. Overnight Drift (Close→Open) did, why it entered or stayed in cash, and how its virtual equity evolved.</p>
+        </div>
+      </div>
+      <div class="journal-list">
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 5</span>
+              <strong class="journal-date">2026-11-11 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$9,992.48</strong></span> &rarr;
+              <span>End: <strong>$10,006.72</strong></span>
+              <span class="journal-pnl pos">(+$14.24 / +0.14%)</span>
+              <span class="journal-counts">6 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 5 (2026-11-11): Equity moved from $9,992.48 to $10,006.72 (+$14.24, +0.14%). Executed 6 trade(s) — Buys: QQQ ($1,952), SPY ($1,953), QQQ ($1,961), SPY ($1,959); Sells: QQQ (AGENT_SIGNAL, +$11.87), SPY (AGENT_SIGNAL, +$2.39).</p>
+          <ul class="journal-highlights"><li>BUY 3.5137 QQQ @ $555.60 ($1952.22, stop $538.03) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.2237 SPY @ $605.87 ($1953.15, stop $586.43) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.4232 QQQ @ $572.76 ($1960.67, stop $553.05) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.1885 SPY @ $614.45 ($1959.18, stop $593.75) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>SELL 3.5137 QQQ @ $558.98 [AGENT_SIGNAL: +$11.87 (+0.61%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li><li>SELL 3.2237 SPY @ $606.61 [AGENT_SIGNAL: +$2.39 (+0.12%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 4</span>
+              <strong class="journal-date">2026-11-10 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$9,997.95</strong></span> &rarr;
+              <span>End: <strong>$9,992.48</strong></span>
+              <span class="journal-pnl neg">(-$5.47 / -0.05%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 4 (2026-11-10): Equity moved from $9,997.95 to $9,992.48 ($-5.47, -0.05%). Executed 4 trade(s) — Buys: QQQ ($1,953), SPY ($1,951); Sells: QQQ (AGENT_SIGNAL, +$1.43), SPY (AGENT_SIGNAL, $-6.90).</p>
+          <ul class="journal-highlights"><li>BUY 3.5952 QQQ @ $543.21 ($1952.96, stop $526.12) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.2447 SPY @ $601.22 ($1950.76, stop $582.96) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>SELL 3.5952 QQQ @ $543.61 [AGENT_SIGNAL: +$1.43 (+0.07%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li><li>SELL 3.2447 SPY @ $599.09 [AGENT_SIGNAL: $-6.90 (-0.35%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 3</span>
+              <strong class="journal-date">2026-11-09 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,002.92</strong></span> &rarr;
+              <span>End: <strong>$9,997.95</strong></span>
+              <span class="journal-pnl neg">(-$4.97 / -0.05%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 3 (2026-11-09): Equity moved from $10,002.92 to $9,997.95 ($-4.97, -0.05%). Executed 4 trade(s) — Buys: QQQ ($1,952), SPY ($1,951); Sells: QQQ (AGENT_SIGNAL, +$0.61), SPY (AGENT_SIGNAL, $-5.58).</p>
+          <ul class="journal-highlights"><li>BUY 3.6272 QQQ @ $538.02 ($1951.52, stop $521.74) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.2332 SPY @ $603.51 ($1951.28, stop $585.32) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>SELL 3.6272 QQQ @ $538.19 [AGENT_SIGNAL: +$0.61 (+0.03%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li><li>SELL 3.2332 SPY @ $601.79 [AGENT_SIGNAL: $-5.58 (-0.29%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 2</span>
+              <strong class="journal-date">2026-11-06 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$9,997.66</strong></span> &rarr;
+              <span>End: <strong>$10,002.92</strong></span>
+              <span class="journal-pnl pos">(+$5.26 / +0.05%)</span>
+              <span class="journal-counts">4 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 2 (2026-11-06): Equity moved from $9,997.66 to $10,002.92 (+$5.26, +0.05%). Executed 4 trade(s) — Buys: QQQ ($1,952), SPY ($1,956); Sells: QQQ (AGENT_SIGNAL, +$6.55), SPY (AGENT_SIGNAL, $-1.29).</p>
+          <ul class="journal-highlights"><li>BUY 3.6795 QQQ @ $530.39 ($1951.59, stop $514.06) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>BUY 3.2418 SPY @ $603.38 ($1956.03, stop $583.46) — ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</li><li>SELL 3.6795 QQQ @ $532.18 [AGENT_SIGNAL: +$6.55 (+0.34%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li><li>SELL 3.2418 SPY @ $602.98 [AGENT_SIGNAL: $-1.29 (-0.07%)] — EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</li></ul>
+        </article>
+        <article class="journal-card">
+          <div class="journal-card-header">
+            <div>
+              <span class="day-badge">Trading Day 1</span>
+              <strong class="journal-date">2026-11-05 (US Market Session)</strong>
+            </div>
+            <div class="journal-metrics">
+              <span>Start: <strong>$10,000.00</strong></span> &rarr;
+              <span>End: <strong>$9,997.66</strong></span>
+              <span class="journal-pnl neg">(-$2.34 / -0.02%)</span>
+              <span class="journal-counts">0 fills &bull; 0 rejections</span>
+            </div>
+          </div>
+          <p class="journal-summary">Day 1 (2026-11-05): Equity moved from $10,000.00 to $9,997.66 ($-2.34, -0.02%). No new trades executed; held existing position(s): QQQ (3.68 sh, -0.06%), SPY (3.24 sh, -0.06%).</p>
+          
+        </article>
+      </div>
+    </section>
+
+    <!-- Full Trade Log Table -->
+    <section class="panel" id="trade-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128203; Full Virtual Trade Execution Log (18 Fills)</h2>
+          <p class="panel-sub">Complete audit trail of every fill, including decision vs. fill timestamp (proving zero look-ahead), bid/ask spread cost, 5 bps slippage cost, and plain-English reasoning.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Fill Timestamp (ET &amp; KST)</th>
+              <th>Side</th>
+              <th>Ticker</th>
+              <th class="num">Fractional Shares</th>
+              <th>Decision vs. Fill Time (No Look-Ahead)</th>
+              <th class="num">Ref Price</th>
+              <th class="num">Fill Price</th>
+              <th class="num">Spread Cost</th>
+              <th class="num">5 bps Slippage</th>
+              <th class="num">Realized P&amp;L ($ / %)</th>
+              <th>Exit / Fill Reason</th>
+              <th class="num">Confidence</th>
+              <th>Full Plain-English Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.1885</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$614.08</td>
+              <td class="num strong">$614.45</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 15:35:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.4232</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 15:35:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$572.41</td>
+              <td class="num strong">$572.76</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2237</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 09:30:00 EST</div>
+                <div>Fill: 2026-11-11 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$606.98</td>
+              <td class="num strong">$606.61</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$2.39</strong><div class="sub-num">(+0.12%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-12 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.5137</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-11 09:30:00 EST</div>
+                <div>Fill: 2026-11-11 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$559.32</td>
+              <td class="num strong">$558.98</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$11.87</strong><div class="sub-num">(+0.61%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2237</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$605.51</td>
+              <td class="num strong">$605.87</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-11 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.5137</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 15:30:00 EST</div>
+                <div>Fill: 2026-11-11 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$555.27</td>
+              <td class="num strong">$555.60</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2447</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 09:30:00 EST</div>
+                <div>Fill: 2026-11-10 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$599.45</td>
+              <td class="num strong">$599.09</td>
+              <td class="num neg">$0.19</td>
+              <td class="num neg">$0.97</td>
+              <td class="num neg"><strong>-$6.90</strong><div class="sub-num">(-0.35%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-11 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.5952</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-10 09:30:00 EST</div>
+                <div>Fill: 2026-11-10 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$543.94</td>
+              <td class="num strong">$543.61</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$1.43</strong><div class="sub-num">(+0.07%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2447</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$600.85</td>
+              <td class="num strong">$601.22</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.97</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-10 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.5952</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 15:30:00 EST</div>
+                <div>Fill: 2026-11-10 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$542.89</td>
+              <td class="num strong">$543.21</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2332</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 09:30:00 EST</div>
+                <div>Fill: 2026-11-09 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$602.15</td>
+              <td class="num strong">$601.79</td>
+              <td class="num neg">$0.19</td>
+              <td class="num neg">$0.97</td>
+              <td class="num neg"><strong>-$5.58</strong><div class="sub-num">(-0.29%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-10 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.6272</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-09 09:30:00 EST</div>
+                <div>Fill: 2026-11-09 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$538.52</td>
+              <td class="num strong">$538.19</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$0.61</strong><div class="sub-num">(+0.03%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2332</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$603.15</td>
+              <td class="num strong">$603.51</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-09 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-09 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.6272</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 15:30:00 EST</div>
+                <div>Fill: 2026-11-09 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$537.70</td>
+              <td class="num strong">$538.02</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2418</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 09:30:00 EST</div>
+                <div>Fill: 2026-11-06 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$603.34</td>
+              <td class="num strong">$602.98</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neg"><strong>-$1.29</strong><div class="sub-num">(-0.07%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 10:00:00 EST</strong></div>
+                <div class="sub-num">2026-11-07 00:00:00 KST</div>
+              </td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.6795</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-06 09:30:00 EST</div>
+                <div>Fill: 2026-11-06 10:00:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$532.50</td>
+              <td class="num strong">$532.18</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num pos"><strong>+$6.55</strong><div class="sub-num">(+0.34%)</div></td>
+              <td><span class="exit-pill">AGENT_SIGNAL</span></td>
+              <td class="num">90%</td>
+              <td class="reasoning-cell">EXIT_OPEN_UNWIND: closing overnight SPY/QQQ drift position at market open</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.2418</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$603.02</td>
+              <td class="num strong">$603.38</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div><strong>2026-11-06 09:30:00 EST</strong></div>
+                <div class="sub-num">2026-11-06 23:30:00 KST</div>
+              </td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.6795</td>
+              <td class="num ts-cell">
+                <div>Dec: 2026-11-05 15:30:00 EST</div>
+                <div>Fill: 2026-11-06 09:30:00 EST</div>
+                <div><span class="verify-ok" title="decision_timestamp <= fill_timestamp">&#10003; Verified No Look-Ahead</span></div>
+              </td>
+              <td class="num">$530.08</td>
+              <td class="num strong">$530.39</td>
+              <td class="num neg">$0.20</td>
+              <td class="num neg">$0.98</td>
+              <td class="num neutral">— (Open Entry)</td>
+              <td><span class="exit-pill">ENTRY</span></td>
+              <td class="num">75%</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Risk Manager Rejection Log -->
+    <section class="panel" id="rejection-log">
+      <div class="panel-header">
+        <div>
+          <h2>&#128737; Shared Risk Manager Rejection Log (0 Rejected Orders)</h2>
+          <p class="panel-sub">Every order blocked by the shared risk manager before execution (missing stop-loss, &gt;1% risk, &gt;20% concentration, max 5 open positions, or -3% daily loss halt).</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead>
+            <tr>
+              <th>Timestamp (ET &amp; KST)</th>
+              <th>Action</th>
+              <th>Ticker</th>
+              <th class="num">Requested Stop-Loss</th>
+              <th>Exact Risk Rejection Reason</th>
+              <th>Agent's Original Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr><td colspan="6" class="empty-state">&#9989; 0 Risk Manager Rejections — All orders emitted by this agent complied with position, stop-loss, and drawdown limits.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; 16. Overnight Drift (Close→Open) &bull; Updated 2026-11-12 05:35:00 KST / 2026-11-11 15:35:00 EST</p>
+  </footer>
+
+  <script>
+    (function() {
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-24 10:49 ET"], "datasets": [{"label": "16. Overnight Drift (Close→Open)", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9997.66, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10002.92, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 9997.95, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9992.48, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10006.72, 10000.0], "borderColor": "#60a5fa", "backgroundColor": "#60a5fa", "borderWidth": 3.0, "pointRadius": 3, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}]};
+      const canvas = document.getElementById('agentEquityChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+      new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: payload.labels, datasets: payload.datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#e2e8f0' } }
+          },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(51, 65, 85, 0.35)' } },
+            y: {
+              ticks: { color: '#94a3b8', callback: function(v) { return '$' + Number(v).toLocaleString('en-US'); } },
+              grid: { color: 'rgba(51, 65, 85, 0.35)' }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

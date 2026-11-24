@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Trading Arena — 13-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
+  <title>AI Trading Arena — 34-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
@@ -21,7 +21,7 @@
           <a href="index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge comp-live">LIVE - Day 1 of 30</span>
         </div>
-        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
+        <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
       </div>
 
       <div class="progress-and-clock">
@@ -38,11 +38,11 @@
         <div class="timestamps-box">
           <div class="ts-item">
             <span class="ts-label">Korea (KST / Asia/Seoul):</span>
-            <time class="ts-value">2026-11-24 23:17:14 KST</time>
+            <time class="ts-value">2026-11-25 00:49:51 KST</time>
           </div>
           <div class="ts-item">
             <span class="ts-label">New York (ET / America/New_York):</span>
-            <time class="ts-value">2026-11-24 09:17:14 EST</time>
+            <time class="ts-value">2026-11-24 10:49:51 EST</time>
           </div>
         </div>
       </div>
@@ -70,6 +70,27 @@
           <a href="agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
           <a href="agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
           <a href="agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
+          <a href="agents/kiro_pair_reversion.html" class="agent-pill" title="15. Kiro Pair-Spread Reversion (PSR)">#15 kiro_pair_reversion</a>
+          <a href="agents/overnight_drift.html" class="agent-pill" title="16. Overnight Drift (Close→Open)">#16 overnight_drift</a>
+          <a href="agents/eod_loser_overnight.html" class="agent-pill" title="17. EOD Loser Overnight Reversal">#17 eod_loser_overnight</a>
+          <a href="agents/intraday_momentum.html" class="agent-pill" title="18. Intraday Momentum (Gao 2018)">#18 intraday_momentum</a>
+          <a href="agents/turn_of_month.html" class="agent-pill" title="19. Turn-of-Month Calendar">#19 turn_of_month</a>
+          <a href="agents/gap_down_fill.html" class="agent-pill" title="20. Intraday Gap-Down Fill">#20 gap_down_fill</a>
+          <a href="agents/dual_momentum_macro.html" class="agent-pill" title="21. Dual Momentum Macro ETF">#21 dual_momentum_macro</a>
+          <a href="agents/risk_parity_3.html" class="agent-pill" title="22. Risk Parity 3-Asset (8% Vol)">#22 risk_parity_3</a>
+          <a href="agents/min_variance_etf.html" class="agent-pill" title="23. Minimum-Variance ETF Portfolio">#23 min_variance_etf</a>
+          <a href="agents/low_vol_anomaly.html" class="agent-pill" title="24. Low-Volatility Stock Anomaly">#24 low_vol_anomaly</a>
+          <a href="agents/megacap5_hold.html" class="agent-pill" title="25. Mega-Cap Top-5 Buy &amp; Hold (Control)">#25 megacap5_hold</a>
+          <a href="agents/xs_short_reversal.html" class="agent-pill" title="26. Cross-Sectional 5D Short Reversal">#26 xs_short_reversal</a>
+          <a href="agents/high52_anchor.html" class="agent-pill" title="27. 70D High Anchoring (George-Hwang)">#27 high52_anchor</a>
+          <a href="agents/value_momentum.html" class="agent-pill" title="28. Value + 63D Momentum Combo">#28 value_momentum</a>
+          <a href="agents/volume_accumulation.html" class="agent-pill" title="29. 20D Up/Down Volume Accumulation">#29 volume_accumulation</a>
+          <a href="agents/regime_beta_switch.html" class="agent-pill" title="30. Regime-Adaptive Beta Switch">#30 regime_beta_switch</a>
+          <a href="agents/breadth_timing.html" class="agent-pill" title="31. Market Breadth Equity Timing">#31 breadth_timing</a>
+          <a href="agents/panic_dip_index.html" class="agent-pill" title="32. Panic-Dip Index Buyer">#32 panic_dip_index</a>
+          <a href="agents/risk_appetite_ratio.html" class="agent-pill" title="33. Cross-Asset Risk Appetite Ratio">#33 risk_appetite_ratio</a>
+          <a href="agents/vwap_reversion.html" class="agent-pill" title="34. Intraday VWAP -2σ Reversion">#34 vwap_reversion</a>
+          <a href="agents/squeeze_breakout.html" class="agent-pill" title="35. Volatility Squeeze Breakout">#35 squeeze_breakout</a>
       </div>
     </nav>
   </header>
@@ -89,15 +110,15 @@
         <div class="kpi-label">S&amp;P 500 (<code>ctrl_spy</code>) Benchmark</div>
         <div class="kpi-value neutral">+0.00%</div>
         <div class="kpi-sub">
-          Equity: <strong>$10,000.00</strong> &bull; 0 of 12 active agents beating SPY
+          Equity: <strong>$10,000.00</strong> &bull; 0 of 33 active agents beating SPY
         </div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-label">Agent Risk Status</div>
-        <div class="kpi-value">13 Active / 13 Total</div>
+        <div class="kpi-value">34 Active / 34 Total</div>
         <div class="kpi-sub">
-          <span class="pos">13 Active</span> &bull;
+          <span class="pos">34 Active</span> &bull;
           <span class="warn">0 Daily Halted (-3%)</span> &bull;
           <span class="neg">0 Blown Up (-10%)</span>
         </div>
@@ -124,7 +145,7 @@
     <section class="panel" id="leaderboard">
       <div class="panel-header">
         <div>
-          <h2>&#127942; 13-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
+          <h2>&#127942; 34-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
           <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
         </div>
         <div class="panel-actions">
@@ -566,6 +587,678 @@
                 <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
               </td>
             </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-14">#14</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#06b6d4"></span>
+                  <div>
+                    <a href="agents/kiro_pair_reversion.html" class="agent-link">15. Kiro Pair-Spread Reversion (PSR)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">kiro_pair_reversion</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-15">#15</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#60a5fa"></span>
+                  <div>
+                    <a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">overnight_drift</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-16">#16</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#a78bfa"></span>
+                  <div>
+                    <a href="agents/eod_loser_overnight.html" class="agent-link">17. EOD Loser Overnight Reversal</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">eod_loser_overnight</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-17">#17</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#e879f9"></span>
+                  <div>
+                    <a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">intraday_momentum</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-18">#18</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#2dd4bf"></span>
+                  <div>
+                    <a href="agents/turn_of_month.html" class="agent-link">19. Turn-of-Month Calendar</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">turn_of_month</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-19">#19</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fb7185"></span>
+                  <div>
+                    <a href="agents/gap_down_fill.html" class="agent-link">20. Intraday Gap-Down Fill</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">gap_down_fill</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-20">#20</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#34d399"></span>
+                  <div>
+                    <a href="agents/dual_momentum_macro.html" class="agent-link">21. Dual Momentum Macro ETF</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">dual_momentum_macro</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-21">#21</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#38bdf8"></span>
+                  <div>
+                    <a href="agents/risk_parity_3.html" class="agent-link">22. Risk Parity 3-Asset (8% Vol)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">risk_parity_3</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-22">#22</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#818cf8"></span>
+                  <div>
+                    <a href="agents/min_variance_etf.html" class="agent-link">23. Minimum-Variance ETF Portfolio</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">min_variance_etf</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-23">#23</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#4ade80"></span>
+                  <div>
+                    <a href="agents/low_vol_anomaly.html" class="agent-link">24. Low-Volatility Stock Anomaly</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">low_vol_anomaly</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-24">#24</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#e2e8f0"></span>
+                  <div>
+                    <a href="agents/megacap5_hold.html" class="agent-link">25. Mega-Cap Top-5 Buy &amp; Hold (Control)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-control">Control</span>
+                      <span class="agent-id-code">megacap5_hold</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-25">#25</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f472b6"></span>
+                  <div>
+                    <a href="agents/xs_short_reversal.html" class="agent-link">26. Cross-Sectional 5D Short Reversal</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">xs_short_reversal</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-26">#26</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fbbf24"></span>
+                  <div>
+                    <a href="agents/high52_anchor.html" class="agent-link">27. 70D High Anchoring (George-Hwang)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">high52_anchor</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-27">#27</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#a3e635"></span>
+                  <div>
+                    <a href="agents/value_momentum.html" class="agent-link">28. Value + 63D Momentum Combo</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">value_momentum</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-28">#28</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#22d3ee"></span>
+                  <div>
+                    <a href="agents/volume_accumulation.html" class="agent-link">29. 20D Up/Down Volume Accumulation</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">volume_accumulation</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-29">#29</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#c084fc"></span>
+                  <div>
+                    <a href="agents/regime_beta_switch.html" class="agent-link">30. Regime-Adaptive Beta Switch</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">regime_beta_switch</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-30">#30</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fb923c"></span>
+                  <div>
+                    <a href="agents/breadth_timing.html" class="agent-link">31. Market Breadth Equity Timing</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">breadth_timing</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-31">#31</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f87171"></span>
+                  <div>
+                    <a href="agents/panic_dip_index.html" class="agent-link">32. Panic-Dip Index Buyer</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">panic_dip_index</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-32">#32</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#67e8f9"></span>
+                  <div>
+                    <a href="agents/risk_appetite_ratio.html" class="agent-link">33. Cross-Asset Risk Appetite Ratio</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">risk_appetite_ratio</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-33">#33</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fde047"></span>
+                  <div>
+                    <a href="agents/vwap_reversion.html" class="agent-link">34. Intraday VWAP -2σ Reversion</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">vwap_reversion</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-34">#34</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#86efac"></span>
+                  <div>
+                    <a href="agents/squeeze_breakout.html" class="agent-link">35. Volatility Squeeze Breakout</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">squeeze_breakout</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neutral">+0.00%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -575,11 +1268,11 @@
     <section class="panel" id="equity-curves">
       <div class="panel-header">
         <div>
-          <h2>&#128200; All 13 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
+          <h2>&#128200; All 34 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
           <p class="panel-sub">Interactive mark-to-market trajectory net of bid/ask half-spread and 5 bps slippage on every fill. Toggle cohorts or hover any point for exact equity.</p>
         </div>
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
-          <button type="button" class="btn-filter active" data-filter="all">All 13 Agents</button>
+          <button type="button" class="btn-filter active" data-filter="all">All 34 Agents</button>
           <button type="button" class="btn-filter" data-filter="Coded">5 Coded</button>
           <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
@@ -595,10 +1288,10 @@
         <div class="svg-wrap">
           <svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
           <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,925</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,000</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,075</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,150</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
-          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f59e0b" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f59e0b"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></circle>
+          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,151.0 932.0,151.0"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f59e0b" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f59e0b"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></circle><polyline fill="none" stroke="#06b6d4" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>15. Kiro Pair-Spread Reversion (PSR): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#06b6d4"><title>15. Kiro Pair-Spread Reversion (PSR): $10,000.00</title></circle><polyline fill="none" stroke="#60a5fa" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>16. Overnight Drift (Close→Open): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#60a5fa"><title>16. Overnight Drift (Close→Open): $10,000.00</title></circle><polyline fill="none" stroke="#a78bfa" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>17. EOD Loser Overnight Reversal: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#a78bfa"><title>17. EOD Loser Overnight Reversal: $10,000.00</title></circle><polyline fill="none" stroke="#e879f9" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>18. Intraday Momentum (Gao 2018): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#e879f9"><title>18. Intraday Momentum (Gao 2018): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>19. Turn-of-Month Calendar: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#2dd4bf"><title>19. Turn-of-Month Calendar: $10,000.00</title></circle><polyline fill="none" stroke="#fb7185" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>20. Intraday Gap-Down Fill: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb7185"><title>20. Intraday Gap-Down Fill: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>21. Dual Momentum Macro ETF: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#34d399"><title>21. Dual Momentum Macro ETF: $10,000.00</title></circle><polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>22. Risk Parity 3-Asset (8% Vol): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#38bdf8"><title>22. Risk Parity 3-Asset (8% Vol): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>23. Minimum-Variance ETF Portfolio: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#818cf8"><title>23. Minimum-Variance ETF Portfolio: $10,000.00</title></circle><polyline fill="none" stroke="#4ade80" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>24. Low-Volatility Stock Anomaly: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#4ade80"><title>24. Low-Volatility Stock Anomaly: $10,000.00</title></circle><polyline fill="none" stroke="#e2e8f0" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>25. Mega-Cap Top-5 Buy &amp; Hold (Control): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#e2e8f0"><title>25. Mega-Cap Top-5 Buy &amp; Hold (Control): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>26. Cross-Sectional 5D Short Reversal: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f472b6"><title>26. Cross-Sectional 5D Short Reversal: $10,000.00</title></circle><polyline fill="none" stroke="#fbbf24" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>27. 70D High Anchoring (George-Hwang): $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fbbf24"><title>27. 70D High Anchoring (George-Hwang): $10,000.00</title></circle><polyline fill="none" stroke="#a3e635" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>28. Value + 63D Momentum Combo: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#a3e635"><title>28. Value + 63D Momentum Combo: $10,000.00</title></circle><polyline fill="none" stroke="#22d3ee" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#22d3ee"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>30. Regime-Adaptive Beta Switch: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#c084fc"><title>30. Regime-Adaptive Beta Switch: $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>31. Market Breadth Equity Timing: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fb923c"><title>31. Market Breadth Equity Timing: $10,000.00</title></circle><polyline fill="none" stroke="#f87171" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>32. Panic-Dip Index Buyer: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#f87171"><title>32. Panic-Dip Index Buyer: $10,000.00</title></circle><polyline fill="none" stroke="#67e8f9" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>33. Cross-Asset Risk Appetite Ratio: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#67e8f9"><title>33. Cross-Asset Risk Appetite Ratio: $10,000.00</title></circle><polyline fill="none" stroke="#fde047" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>34. Intraday VWAP -2σ Reversion: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#fde047"><title>34. Intraday VWAP -2σ Reversion: $10,000.00</title></circle><polyline fill="none" stroke="#86efac" stroke-width="1.8" points="78.0,151.0 932.0,151.0"><title>35. Volatility Squeeze Breakout: $10,000.00</title></polyline><circle cx="932.0" cy="151.0" r="3.5" fill="#86efac"><title>35. Volatility Squeeze Breakout: $10,000.00</title></circle>
           <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
           <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace"></text>
-          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 09:17 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 10:49 ET</text>
         </svg>
         </div>
       </details>
@@ -661,7 +1354,7 @@
       <div class="panel-header">
         <div>
           <h2>&#9889; Recent Arena Trade Activity Feed</h2>
-          <p class="panel-sub">Latest virtual executions across all 13 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
+          <p class="panel-sub">Latest virtual executions across all 34 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
         </div>
       </div>
       <div class="table-wrap">
@@ -724,6 +1417,16 @@
           </thead>
           <tbody>
             <tr>
+              <td class="mono">allocation_agents.py</td>
+              <td class="mono hash-cell"><code>265976c42ad9343a4f5f696d3173d3d13ca04bd668f262b0838de2c8e55eac3c</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">calendar_agents.py</td>
+              <td class="mono hash-cell"><code>0efe30b063cd3b07de91cb46ef0edf6b721b7fbce8aa7ae38a2fbc4358b1a246</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
               <td class="mono">claude_rmp_agent.py</td>
               <td class="mono hash-cell"><code>dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
@@ -739,8 +1442,38 @@
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
             <tr>
+              <td class="mono">factor_agents.py</td>
+              <td class="mono hash-cell"><code>e16c9e5bca1c238fddd73aed9013b03a018691d500ee73bda466a61f63479580</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">kiro_pair_reversion_agent.py</td>
+              <td class="mono hash-cell"><code>8ab293b03a1ab15c8fa42e4b3073047a9ddc293f51ca1060a80d9e0f6b6adae3</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">kiro_pair_reversion_params.json</td>
+              <td class="mono hash-cell"><code>433fbd40d1ae88bd7c2852da3de0d35bed8450149c387680520a278aca26340d</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
               <td class="mono">llm_agents.py</td>
               <td class="mono hash-cell"><code>88fafd78d80d6b6ba8d38e975cf4fb1ecc3f5c619e5e07937bf511be45ebd86b</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">microstructure_agents.py</td>
+              <td class="mono hash-cell"><code>df04fdeb3238f98311a88e8dc19f8ffeba9c87706a3a5d4a46ba20c285f2f2f9</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">part_b_common.py</td>
+              <td class="mono hash-cell"><code>1e98e77f9e811440aea5301098889dd9dae0d0bbb929cbd6afd63c82fec3353f</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">part_b_params.json</td>
+              <td class="mono hash-cell"><code>1a7dcc645a6292c6908a40f71bb3b025c5e0c59b55073e3c78d76bc0789bc93a</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
             <tr>
@@ -758,6 +1491,11 @@
               <td class="mono hash-cell"><code>984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
+            <tr>
+              <td class="mono">timing_agents.py</td>
+              <td class="mono hash-cell"><code>25a5d9e6760ee373ec42e1c26327c890b56b39e926cf3cad4d822ebcbbd01879</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -765,12 +1503,12 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Static Dashboard &bull; Updated 2026-11-24 23:17:14 KST / 2026-11-24 09:17:14 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Static Dashboard &bull; Updated 2026-11-25 00:49:51 KST / 2026-11-24 10:49:51 EST</p>
   </footer>
 
   <script>
     (function() {
-      const payload = {"labels": ["Start", "2026-11-24 09:17 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "14. Claude Residual-Momentum Pullback", "agent_id": "claude_rmp", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
+      const payload = {"labels": ["Start", "2026-11-24 10:49 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "14. Claude Residual-Momentum Pullback", "agent_id": "claude_rmp", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "15. Kiro Pair-Spread Reversion (PSR)", "agent_id": "kiro_pair_reversion", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#06b6d4", "backgroundColor": "#06b6d4", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "16. Overnight Drift (Close→Open)", "agent_id": "overnight_drift", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#60a5fa", "backgroundColor": "#60a5fa", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "17. EOD Loser Overnight Reversal", "agent_id": "eod_loser_overnight", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#a78bfa", "backgroundColor": "#a78bfa", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "18. Intraday Momentum (Gao 2018)", "agent_id": "intraday_momentum", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#e879f9", "backgroundColor": "#e879f9", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "19. Turn-of-Month Calendar", "agent_id": "turn_of_month", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "20. Intraday Gap-Down Fill", "agent_id": "gap_down_fill", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#fb7185", "backgroundColor": "#fb7185", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "21. Dual Momentum Macro ETF", "agent_id": "dual_momentum_macro", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "22. Risk Parity 3-Asset (8% Vol)", "agent_id": "risk_parity_3", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "23. Minimum-Variance ETF Portfolio", "agent_id": "min_variance_etf", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "24. Low-Volatility Stock Anomaly", "agent_id": "low_vol_anomaly", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#4ade80", "backgroundColor": "#4ade80", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "25. Mega-Cap Top-5 Buy & Hold (Control)", "agent_id": "megacap5_hold", "category": "Control", "data": [10000.0, 10000.0], "borderColor": "#e2e8f0", "backgroundColor": "#e2e8f0", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "26. Cross-Sectional 5D Short Reversal", "agent_id": "xs_short_reversal", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "27. 70D High Anchoring (George-Hwang)", "agent_id": "high52_anchor", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#fbbf24", "backgroundColor": "#fbbf24", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "28. Value + 63D Momentum Combo", "agent_id": "value_momentum", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#a3e635", "backgroundColor": "#a3e635", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "29. 20D Up/Down Volume Accumulation", "agent_id": "volume_accumulation", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#22d3ee", "backgroundColor": "#22d3ee", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "30. Regime-Adaptive Beta Switch", "agent_id": "regime_beta_switch", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "31. Market Breadth Equity Timing", "agent_id": "breadth_timing", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "32. Panic-Dip Index Buyer", "agent_id": "panic_dip_index", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#f87171", "backgroundColor": "#f87171", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "33. Cross-Asset Risk Appetite Ratio", "agent_id": "risk_appetite_ratio", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#67e8f9", "backgroundColor": "#67e8f9", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "34. Intraday VWAP -2σ Reversion", "agent_id": "vwap_reversion", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#fde047", "backgroundColor": "#fde047", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "35. Volatility Squeeze Breakout", "agent_id": "squeeze_breakout", "category": "Coded", "data": [10000.0, 10000.0], "borderColor": "#86efac", "backgroundColor": "#86efac", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
       const canvas = document.getElementById('equityChart');
       if (!canvas || typeof Chart === 'undefined') return;
       const ctx = canvas.getContext('2d');

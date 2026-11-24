@@ -17,6 +17,37 @@ from .coded_agents import (
 )
 from .style_agents import BerkshireStyleAgent, CongressStyleAgent
 from .claude_rmp_agent import ClaudeRMPAgent
+from .kiro_pair_reversion_agent import KiroPairReversionAgent
+from .calendar_agents import (
+    EODLoserOvernightAgent,
+    GapDownFillAgent,
+    IntradayMomentumAgent,
+    OvernightDriftAgent,
+    TurnOfMonthAgent,
+)
+from .allocation_agents import (
+    DualMomentumMacroAgent,
+    LowVolAnomalyAgent,
+    MegaCap5HoldAgent,
+    MinVarianceETFAgent,
+    RiskParity3Agent,
+)
+from .factor_agents import (
+    CrossSectionalShortReversalAgent,
+    High52AnchorAgent,
+    RegimeBetaSwitchAgent,
+    ValueMomentumAgent,
+    VolumeAccumulationAgent,
+)
+from .timing_agents import (
+    BreadthTimingAgent,
+    PanicDipIndexAgent,
+    RiskAppetiteRatioAgent,
+)
+from .microstructure_agents import (
+    SqueezeBreakoutAgent,
+    VWAPReversionAgent,
+)
 
 try:
     from .llm_agents import LLMAgent
@@ -34,6 +65,27 @@ CODED_AND_CONTROL_AGENT_CLASSES: Dict[str, Type[BaseAgent]] = {
     "style_berkshire": BerkshireStyleAgent,
     "style_congress": CongressStyleAgent,
     "claude_rmp": ClaudeRMPAgent,
+    "kiro_pair_reversion": KiroPairReversionAgent,
+    "overnight_drift": OvernightDriftAgent,
+    "eod_loser_overnight": EODLoserOvernightAgent,
+    "intraday_momentum": IntradayMomentumAgent,
+    "turn_of_month": TurnOfMonthAgent,
+    "gap_down_fill": GapDownFillAgent,
+    "dual_momentum_macro": DualMomentumMacroAgent,
+    "risk_parity_3": RiskParity3Agent,
+    "min_variance_etf": MinVarianceETFAgent,
+    "low_vol_anomaly": LowVolAnomalyAgent,
+    "megacap5_hold": MegaCap5HoldAgent,
+    "xs_short_reversal": CrossSectionalShortReversalAgent,
+    "high52_anchor": High52AnchorAgent,
+    "value_momentum": ValueMomentumAgent,
+    "volume_accumulation": VolumeAccumulationAgent,
+    "regime_beta_switch": RegimeBetaSwitchAgent,
+    "breadth_timing": BreadthTimingAgent,
+    "panic_dip_index": PanicDipIndexAgent,
+    "risk_appetite_ratio": RiskAppetiteRatioAgent,
+    "vwap_reversion": VWAPReversionAgent,
+    "squeeze_breakout": SqueezeBreakoutAgent,
 }
 
 
@@ -85,6 +137,7 @@ __all__ = [
     "BerkshireStyleAgent",
     "CongressStyleAgent",
     "ClaudeRMPAgent",
+    "KiroPairReversionAgent",
     "LLMAgent",
     "build_all_agents",
 ]

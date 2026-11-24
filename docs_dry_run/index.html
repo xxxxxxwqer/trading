@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Trading Arena — 13-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
+  <title>AI Trading Arena — 34-Agent US Stock &amp; ETF Paper-Trading Leaderboard</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
@@ -21,17 +21,17 @@
           <a href="index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge comp-dryrun">DRY RUN (5-Day Replay)</span>
         </div>
-        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
+        <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
       </div>
 
       <div class="progress-and-clock">
         <div class="trading-progress-box">
           <div class="progress-label-row">
             <span class="progress-title">Competition Progress</span>
-            <span class="progress-count"><strong>5 / 10 US Trading Days</strong> (50%)</span>
+            <span class="progress-count"><strong>5 / 30 US Trading Days</strong> (17%)</span>
           </div>
           <div class="progress-track" aria-label="Trading Days Progress">
-            <div class="progress-fill" style="width: 50.0%"></div>
+            <div class="progress-fill" style="width: 16.7%"></div>
           </div>
         </div>
 
@@ -52,7 +52,7 @@
       <div class="nav-primary">
         <a href="index.html" class="nav-link active">&#127942; Live Leaderboard &amp; Arena</a>
         <a href="reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
-        <a href="final_report.html" class="nav-link">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="final_report.html" class="nav-link">&#128202; 30-Day Final Report &amp; Luck vs. Skill</a>
         <a href="dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
       <div class="nav-agents-strip">
@@ -70,6 +70,27 @@
           <a href="agents/style_berkshire.html" class="agent-pill" title="11. Berkshire Style (13F Pattern)">#11 style_berkshire</a>
           <a href="agents/style_congress.html" class="agent-pill" title="12. Congress Style (House PTR Pattern)">#12 style_congress</a>
           <a href="agents/claude_rmp.html" class="agent-pill" title="14. Claude Residual-Momentum Pullback">#14 claude_rmp</a>
+          <a href="agents/kiro_pair_reversion.html" class="agent-pill" title="15. Kiro Pair-Spread Reversion (PSR)">#15 kiro_pair_reversion</a>
+          <a href="agents/overnight_drift.html" class="agent-pill" title="16. Overnight Drift (Close→Open)">#16 overnight_drift</a>
+          <a href="agents/eod_loser_overnight.html" class="agent-pill" title="17. EOD Loser Overnight Reversal">#17 eod_loser_overnight</a>
+          <a href="agents/intraday_momentum.html" class="agent-pill" title="18. Intraday Momentum (Gao 2018)">#18 intraday_momentum</a>
+          <a href="agents/turn_of_month.html" class="agent-pill" title="19. Turn-of-Month Calendar">#19 turn_of_month</a>
+          <a href="agents/gap_down_fill.html" class="agent-pill" title="20. Intraday Gap-Down Fill">#20 gap_down_fill</a>
+          <a href="agents/dual_momentum_macro.html" class="agent-pill" title="21. Dual Momentum Macro ETF">#21 dual_momentum_macro</a>
+          <a href="agents/risk_parity_3.html" class="agent-pill" title="22. Risk Parity 3-Asset (8% Vol)">#22 risk_parity_3</a>
+          <a href="agents/min_variance_etf.html" class="agent-pill" title="23. Minimum-Variance ETF Portfolio">#23 min_variance_etf</a>
+          <a href="agents/low_vol_anomaly.html" class="agent-pill" title="24. Low-Volatility Stock Anomaly">#24 low_vol_anomaly</a>
+          <a href="agents/megacap5_hold.html" class="agent-pill" title="25. Mega-Cap Top-5 Buy &amp; Hold (Control)">#25 megacap5_hold</a>
+          <a href="agents/xs_short_reversal.html" class="agent-pill" title="26. Cross-Sectional 5D Short Reversal">#26 xs_short_reversal</a>
+          <a href="agents/high52_anchor.html" class="agent-pill" title="27. 70D High Anchoring (George-Hwang)">#27 high52_anchor</a>
+          <a href="agents/value_momentum.html" class="agent-pill" title="28. Value + 63D Momentum Combo">#28 value_momentum</a>
+          <a href="agents/volume_accumulation.html" class="agent-pill" title="29. 20D Up/Down Volume Accumulation">#29 volume_accumulation</a>
+          <a href="agents/regime_beta_switch.html" class="agent-pill" title="30. Regime-Adaptive Beta Switch">#30 regime_beta_switch</a>
+          <a href="agents/breadth_timing.html" class="agent-pill" title="31. Market Breadth Equity Timing">#31 breadth_timing</a>
+          <a href="agents/panic_dip_index.html" class="agent-pill" title="32. Panic-Dip Index Buyer">#32 panic_dip_index</a>
+          <a href="agents/risk_appetite_ratio.html" class="agent-pill" title="33. Cross-Asset Risk Appetite Ratio">#33 risk_appetite_ratio</a>
+          <a href="agents/vwap_reversion.html" class="agent-pill" title="34. Intraday VWAP -2σ Reversion">#34 vwap_reversion</a>
+          <a href="agents/squeeze_breakout.html" class="agent-pill" title="35. Volatility Squeeze Breakout">#35 squeeze_breakout</a>
       </div>
     </nav>
   </header>
@@ -79,9 +100,9 @@
     <section class="kpi-strip" aria-label="Competition Summary KPIs">
       <div class="kpi-card">
         <div class="kpi-label">Best Performing Agent</div>
-        <div class="kpi-value"><a href="agents/coded_sector.html">4. Sector ETF Rotation</a></div>
+        <div class="kpi-value"><a href="agents/volume_accumulation.html">29. 20D Up/Down Volume Accumulation</a></div>
         <div class="kpi-sub pos">
-          <strong>$10,814.69</strong> (+$814.69 / +8.15%)
+          <strong>$10,947.15</strong> (+$947.15 / +9.47%)
         </div>
       </div>
 
@@ -89,15 +110,15 @@
         <div class="kpi-label">S&amp;P 500 (<code>ctrl_spy</code>) Benchmark</div>
         <div class="kpi-value pos">+2.06%</div>
         <div class="kpi-sub">
-          Equity: <strong>$10,205.54</strong> &bull; 7 of 12 active agents beating SPY
+          Equity: <strong>$10,205.54</strong> &bull; 15 of 33 active agents beating SPY
         </div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-label">Agent Risk Status</div>
-        <div class="kpi-value">13 Active / 13 Total</div>
+        <div class="kpi-value">34 Active / 34 Total</div>
         <div class="kpi-sub">
-          <span class="pos">13 Active</span> &bull;
+          <span class="pos">34 Active</span> &bull;
           <span class="warn">0 Daily Halted (-3%)</span> &bull;
           <span class="neg">0 Blown Up (-10%)</span>
         </div>
@@ -105,9 +126,9 @@
 
       <div class="kpi-card">
         <div class="kpi-label">Total Virtual Trades Executed</div>
-        <div class="kpi-value">369 Fills</div>
+        <div class="kpi-value">502 Fills</div>
         <div class="kpi-sub">
-          167 Closed Round-Trips &bull; $467.69 Spread + 5 bps Slippage
+          206 Closed Round-Trips &bull; $635.64 Spread + 5 bps Slippage
         </div>
       </div>
 
@@ -124,11 +145,11 @@
     <section class="panel" id="leaderboard">
       <div class="panel-header">
         <div>
-          <h2>&#127942; 13-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
+          <h2>&#127942; 34-Agent Standings &amp; Risk-Adjusted Leaderboard</h2>
           <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
         </div>
         <div class="panel-actions">
-          <a href="final_report.html" class="btn-secondary">View 10-Day Final Analysis &amp; Luck vs. Skill &rarr;</a>
+          <a href="final_report.html" class="btn-secondary">View 30-Day Final Analysis &amp; Luck vs. Skill &rarr;</a>
         </div>
       </div>
 
@@ -152,6 +173,70 @@
           <tbody>
             <tr>
               <td class="col-rank"><span class="rank-pill rank-1">#1</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#22d3ee"></span>
+                  <div>
+                    <a href="agents/volume_accumulation.html" class="agent-link">29. 20D Up/Down Volume Accumulation</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">volume_accumulation</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,947.15</td>
+              <td class="num pos">
+                <div>+$947.15</div>
+                <div class="sub-num">(+9.47%)</div>
+              </td>
+              <td class="num pos">+7.42%</td>
+              <td class="num neg">-0.48%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/1L)</span></td>
+              <td class="num">0.00</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">-$100.86</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-2">#2</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#67e8f9"></span>
+                  <div>
+                    <a href="agents/risk_appetite_ratio.html" class="agent-link">33. Cross-Asset Risk Appetite Ratio</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">risk_appetite_ratio</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,858.38</td>
+              <td class="num pos">
+                <div>+$858.38</div>
+                <div class="sub-num">(+8.58%)</div>
+              </td>
+              <td class="num pos">+6.53%</td>
+              <td class="num neg">-0.23%</td>
+              <td class="num">
+                <div>4 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-3">#3</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#2dd4bf"></span>
@@ -183,7 +268,103 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-2">#2</span></td>
+              <td class="col-rank"><span class="rank-pill rank-4">#4</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fbbf24"></span>
+                  <div>
+                    <a href="agents/high52_anchor.html" class="agent-link">27. 70D High Anchoring (George-Hwang)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">high52_anchor</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,699.14</td>
+              <td class="num pos">
+                <div>+$699.14</div>
+                <div class="sub-num">(+6.99%)</div>
+              </td>
+              <td class="num pos">+4.94%</td>
+              <td class="num neg">-0.91%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/1L)</span></td>
+              <td class="num">0.00</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">-$100.86</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-5">#5</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#c084fc"></span>
+                  <div>
+                    <a href="agents/regime_beta_switch.html" class="agent-link">30. Regime-Adaptive Beta Switch</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">regime_beta_switch</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,666.57</td>
+              <td class="num pos">
+                <div>+$666.57</div>
+                <div class="sub-num">(+6.67%)</div>
+              </td>
+              <td class="num pos">+4.61%</td>
+              <td class="num neg">-0.51%</td>
+              <td class="num">
+                <div>15 fills</div>
+                <div class="sub-num">5 closed</div>
+              </td>
+              <td class="num">60.0% <span class="sub-num">(3W/2L)</span></td>
+              <td class="num">12.78</td>
+              <td class="num">
+                <span class="pos">+$55.26</span> / <span class="neg">-$6.49</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-6">#6</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fb923c"></span>
+                  <div>
+                    <a href="agents/breadth_timing.html" class="agent-link">31. Market Breadth Equity Timing</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">breadth_timing</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,618.88</td>
+              <td class="num pos">
+                <div>+$618.88</div>
+                <div class="sub-num">(+6.19%)</div>
+              </td>
+              <td class="num pos">+4.13%</td>
+              <td class="num neg">-0.65%</td>
+              <td class="num">
+                <div>5 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-7">#7</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#c084fc"></span>
@@ -215,7 +396,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-3">#3</span></td>
+              <td class="col-rank"><span class="rank-pill rank-8">#8</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#f43f5e"></span>
@@ -247,7 +428,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-4">#4</span></td>
+              <td class="col-rank"><span class="rank-pill rank-9">#9</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#38bdf8"></span>
@@ -279,7 +460,71 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-5">#5</span></td>
+              <td class="col-rank"><span class="rank-pill rank-10">#10</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#e2e8f0"></span>
+                  <div>
+                    <a href="agents/megacap5_hold.html" class="agent-link">25. Mega-Cap Top-5 Buy &amp; Hold (Control)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-control">Control</span>
+                      <span class="agent-id-code">megacap5_hold</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,502.78</td>
+              <td class="num pos">
+                <div>+$502.78</div>
+                <div class="sub-num">(+5.03%)</div>
+              </td>
+              <td class="num pos">+2.97%</td>
+              <td class="num neg">-0.91%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/1L)</span></td>
+              <td class="num">0.00</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">-$99.82</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-11">#11</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f472b6"></span>
+                  <div>
+                    <a href="agents/xs_short_reversal.html" class="agent-link">26. Cross-Sectional 5D Short Reversal</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">xs_short_reversal</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,271.04</td>
+              <td class="num pos">
+                <div>+$271.04</div>
+                <div class="sub-num">(+2.71%)</div>
+              </td>
+              <td class="num pos">+0.66%</td>
+              <td class="num neg">-1.36%</td>
+              <td class="num">
+                <div>33 fills</div>
+                <div class="sub-num">14 closed</div>
+              </td>
+              <td class="num">64.3% <span class="sub-num">(9W/5L)</span></td>
+              <td class="num">2.83</td>
+              <td class="num">
+                <span class="pos">+$20.20</span> / <span class="neg">-$12.86</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-12">#12</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#f472b6"></span>
@@ -311,7 +556,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-6">#6</span></td>
+              <td class="col-rank"><span class="rank-pill rank-13">#13</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#22c55e"></span>
@@ -343,7 +588,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-7">#7</span></td>
+              <td class="col-rank"><span class="rank-pill rank-14">#14</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#94a3b8"></span>
@@ -375,7 +620,39 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-8">#8</span></td>
+              <td class="col-rank"><span class="rank-pill rank-15">#15</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#4ade80"></span>
+                  <div>
+                    <a href="agents/low_vol_anomaly.html" class="agent-link">24. Low-Volatility Stock Anomaly</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">low_vol_anomaly</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,217.37</td>
+              <td class="num pos">
+                <div>+$217.37</div>
+                <div class="sub-num">(+2.17%)</div>
+              </td>
+              <td class="num pos">+0.12%</td>
+              <td class="num neg">-1.78%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/1L)</span></td>
+              <td class="num">0.00</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">-$95.42</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-16">#16</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#ffffff"></span>
@@ -407,7 +684,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-9">#9</span></td>
+              <td class="col-rank"><span class="rank-pill rank-17">#17</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#818cf8"></span>
@@ -439,7 +716,135 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-10">#10</span></td>
+              <td class="col-rank"><span class="rank-pill rank-18">#18</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#34d399"></span>
+                  <div>
+                    <a href="agents/dual_momentum_macro.html" class="agent-link">21. Dual Momentum Macro ETF</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">dual_momentum_macro</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,178.80</td>
+              <td class="num pos">
+                <div>+$178.80</div>
+                <div class="sub-num">(+1.79%)</div>
+              </td>
+              <td class="num neg">-0.27%</td>
+              <td class="num neg">-0.09%</td>
+              <td class="num">
+                <div>2 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-19">#19</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#86efac"></span>
+                  <div>
+                    <a href="agents/squeeze_breakout.html" class="agent-link">35. Volatility Squeeze Breakout</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">squeeze_breakout</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,176.31</td>
+              <td class="num pos">
+                <div>+$176.31</div>
+                <div class="sub-num">(+1.76%)</div>
+              </td>
+              <td class="num neg">-0.29%</td>
+              <td class="num neg">-0.44%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">100.0% <span class="sub-num">(1W/0L)</span></td>
+              <td class="num">∞</td>
+              <td class="num">
+                <span class="pos">+$111.08</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-20">#20</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#a3e635"></span>
+                  <div>
+                    <a href="agents/value_momentum.html" class="agent-link">28. Value + 63D Momentum Combo</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">value_momentum</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,169.27</td>
+              <td class="num pos">
+                <div>+$169.27</div>
+                <div class="sub-num">(+1.69%)</div>
+              </td>
+              <td class="num neg">-0.36%</td>
+              <td class="num neg">-1.85%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/1L)</span></td>
+              <td class="num">0.00</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">-$100.86</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-21">#21</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#818cf8"></span>
+                  <div>
+                    <a href="agents/min_variance_etf.html" class="agent-link">23. Minimum-Variance ETF Portfolio</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">min_variance_etf</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,148.96</td>
+              <td class="num pos">
+                <div>+$148.96</div>
+                <div class="sub-num">(+1.49%)</div>
+              </td>
+              <td class="num neg">-0.57%</td>
+              <td class="num neg">-0.50%</td>
+              <td class="num">
+                <div>5 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-22">#22</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#f59e0b"></span>
@@ -471,7 +876,7 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-11">#11</span></td>
+              <td class="col-rank"><span class="rank-pill rank-23">#23</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#fb923c"></span>
@@ -503,7 +908,39 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-12">#12</span></td>
+              <td class="col-rank"><span class="rank-pill rank-24">#24</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#38bdf8"></span>
+                  <div>
+                    <a href="agents/risk_parity_3.html" class="agent-link">22. Risk Parity 3-Asset (8% Vol)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">risk_parity_3</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,040.79</td>
+              <td class="num pos">
+                <div>+$40.79</div>
+                <div class="sub-num">(+0.41%)</div>
+              </td>
+              <td class="num neg">-1.65%</td>
+              <td class="num neg">-0.27%</td>
+              <td class="num">
+                <div>3 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-25">#25</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#34d399"></span>
@@ -535,7 +972,231 @@
               </td>
             </tr>
             <tr>
-              <td class="col-rank"><span class="rank-pill rank-13">#13</span></td>
+              <td class="col-rank"><span class="rank-pill rank-26">#26</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#a78bfa"></span>
+                  <div>
+                    <a href="agents/eod_loser_overnight.html" class="agent-link">17. EOD Loser Overnight Reversal</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">eod_loser_overnight</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,024.05</td>
+              <td class="num pos">
+                <div>+$24.05</div>
+                <div class="sub-num">(+0.24%)</div>
+              </td>
+              <td class="num neg">-1.81%</td>
+              <td class="num neg">-0.01%</td>
+              <td class="num">
+                <div>2 fills</div>
+                <div class="sub-num">1 closed</div>
+              </td>
+              <td class="num">100.0% <span class="sub-num">(1W/0L)</span></td>
+              <td class="num">∞</td>
+              <td class="num">
+                <span class="pos">+$24.05</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-27">#27</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#60a5fa"></span>
+                  <div>
+                    <a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">overnight_drift</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,006.72</td>
+              <td class="num pos">
+                <div>+$6.72</div>
+                <div class="sub-num">(+0.07%)</div>
+              </td>
+              <td class="num neg">-1.99%</td>
+              <td class="num neg">-0.13%</td>
+              <td class="num">
+                <div>18 fills</div>
+                <div class="sub-num">8 closed</div>
+              </td>
+              <td class="num">62.5% <span class="sub-num">(5W/3L)</span></td>
+              <td class="num">1.66</td>
+              <td class="num">
+                <span class="pos">+$4.57</span> / <span class="neg">-$4.59</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-28">#28</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#e879f9"></span>
+                  <div>
+                    <a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">intraday_momentum</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.68</td>
+              <td class="num pos">
+                <div>+$0.68</div>
+                <div class="sub-num">(+0.01%)</div>
+              </td>
+              <td class="num neg">-2.05%</td>
+              <td class="num neg">-0.04%</td>
+              <td class="num">
+                <div>4 fills</div>
+                <div class="sub-num">2 closed</div>
+              </td>
+              <td class="num">50.0% <span class="sub-num">(1W/1L)</span></td>
+              <td class="num">1.21</td>
+              <td class="num">
+                <span class="pos">+$3.92</span> / <span class="neg">-$3.24</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-29">#29</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#06b6d4"></span>
+                  <div>
+                    <a href="agents/kiro_pair_reversion.html" class="agent-link">15. Kiro Pair-Spread Reversion (PSR)</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">kiro_pair_reversion</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-30">#30</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#2dd4bf"></span>
+                  <div>
+                    <a href="agents/turn_of_month.html" class="agent-link">19. Turn-of-Month Calendar</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">turn_of_month</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-31">#31</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fb7185"></span>
+                  <div>
+                    <a href="agents/gap_down_fill.html" class="agent-link">20. Intraday Gap-Down Fill</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">gap_down_fill</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-32">#32</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#f87171"></span>
+                  <div>
+                    <a href="agents/panic_dip_index.html" class="agent-link">32. Panic-Dip Index Buyer</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">panic_dip_index</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$10,000.00</td>
+              <td class="num neutral">
+                <div>+$0.00</div>
+                <div class="sub-num">(+0.00%)</div>
+              </td>
+              <td class="num neg">-2.06%</td>
+              <td class="num neg">0.00%</td>
+              <td class="num">
+                <div>0 fills</div>
+                <div class="sub-num">0 closed</div>
+              </td>
+              <td class="num">0.0% <span class="sub-num">(0W/0L)</span></td>
+              <td class="num">N/A</td>
+              <td class="num">
+                <span class="pos">$0.00</span> / <span class="neg">$0.00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-33">#33</span></td>
               <td class="col-agent">
                 <div class="agent-cell">
                   <span class="agent-color-dot" style="background:#facc15"></span>
@@ -566,6 +1227,38 @@
                 <span class="pos">+$4.06</span> / <span class="neg">-$3.95</span>
               </td>
             </tr>
+            <tr>
+              <td class="col-rank"><span class="rank-pill rank-34">#34</span></td>
+              <td class="col-agent">
+                <div class="agent-cell">
+                  <span class="agent-color-dot" style="background:#fde047"></span>
+                  <div>
+                    <a href="agents/vwap_reversion.html" class="agent-link">34. Intraday VWAP -2σ Reversion</a>
+                    <div class="agent-sub-row">
+                      <span class="cat-pill cat-coded">Coded</span>
+                      <span class="agent-id-code">vwap_reversion</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><span class="status-pill status-active" title="Trading active">ACTIVE</span></td>
+              <td class="num strong">$9,973.34</td>
+              <td class="num neg">
+                <div>-$26.66</div>
+                <div class="sub-num">(-0.27%)</div>
+              </td>
+              <td class="num neg">-2.32%</td>
+              <td class="num neg">-0.38%</td>
+              <td class="num">
+                <div>6 fills</div>
+                <div class="sub-num">3 closed</div>
+              </td>
+              <td class="num">33.3% <span class="sub-num">(1W/2L)</span></td>
+              <td class="num">0.14</td>
+              <td class="num">
+                <span class="pos">+$4.20</span> / <span class="neg">-$15.43</span>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -575,11 +1268,11 @@
     <section class="panel" id="equity-curves">
       <div class="panel-header">
         <div>
-          <h2>&#128200; All 13 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
+          <h2>&#128200; All 34 Agents — Equity Curves ($10,000 Starting Virtual Capital)</h2>
           <p class="panel-sub">Interactive mark-to-market trajectory net of bid/ask half-spread and 5 bps slippage on every fill. Toggle cohorts or hover any point for exact equity.</p>
         </div>
         <div class="chart-filter-bar" role="group" aria-label="Filter Equity Curves by Category">
-          <button type="button" class="btn-filter active" data-filter="all">All 13 Agents</button>
+          <button type="button" class="btn-filter active" data-filter="all">All 34 Agents</button>
           <button type="button" class="btn-filter" data-filter="Coded">5 Coded</button>
           <button type="button" class="btn-filter" data-filter="Gemini Flash LLM">4 Gemini Flash LLMs</button>
           <button type="button" class="btn-filter" data-filter="Filing-Style">2 Filing-Style</button>
@@ -594,11 +1287,11 @@
         <summary>Static Vector (SVG) Equity Curve Snapshot (Zero-JS / Print View)</summary>
         <div class="svg-wrap">
           <svg class="equity-svg-fallback" viewBox="0 0 960 320" role="img" aria-label="Equity Curves SVG Chart">
-          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,091</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,332</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,574</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,815</text><line x1="78" y1="238.5" x2="932" y2="238.5" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
-          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,236.4 116.8,226.8 129.8,224.9 142.7,231.8 155.6,221.8 168.6,213.5 181.5,204.0 194.5,203.1 207.4,202.3 220.3,201.2 233.3,203.0 246.2,195.1 259.2,189.4 272.1,181.0 285.0,177.3 298.0,175.0 310.9,181.9 323.8,181.5 336.8,175.6 349.7,177.2 362.7,178.7 375.6,174.2 388.5,180.0 401.5,172.2 414.4,173.2 427.4,179.8 440.3,189.0 453.2,197.7 466.2,197.1 479.1,197.9 492.1,198.3 505.0,195.5 517.9,193.5 530.9,192.4 543.8,186.5 556.8,182.9 569.7,185.6 582.6,185.7 595.6,188.2 608.5,174.5 621.5,163.6 634.4,158.1 647.3,146.9 660.3,148.8 673.2,150.2 686.2,152.2 699.1,150.1 712.0,147.6 725.0,147.5 737.9,146.1 750.8,143.2 763.8,134.7 776.7,127.8 789.7,127.1 802.6,123.1 815.5,127.0 828.5,124.0 841.4,122.2 854.4,120.1 867.3,114.0 880.2,117.3 893.2,113.6 906.1,111.3 919.1,103.6 932.0,238.5"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,239.7 116.8,237.7 129.8,242.1 142.7,242.9 155.6,243.3 168.6,240.5 181.5,238.7 194.5,237.0 207.4,237.5 220.3,233.5 233.3,232.4 246.2,223.4 259.2,221.3 272.1,219.8 285.0,219.6 298.0,219.6 310.9,224.3 323.8,231.1 336.8,225.2 349.7,216.9 362.7,212.9 375.6,202.9 388.5,201.5 401.5,192.9 414.4,193.5 427.4,197.5 440.3,210.3 453.2,216.0 466.2,218.7 479.1,223.3 492.1,222.2 505.0,222.4 517.9,217.6 530.9,217.3 543.8,211.1 556.8,208.9 569.7,207.9 582.6,211.9 595.6,215.6 608.5,208.1 621.5,208.6 634.4,208.7 647.3,202.9 660.3,203.9 673.2,204.5 686.2,204.9 699.1,203.1 712.0,199.6 725.0,192.7 737.9,185.7 750.8,186.8 763.8,186.8 776.7,186.8 789.7,187.2 802.6,187.4 815.5,186.9 828.5,186.8 841.4,186.3 854.4,186.4 867.3,186.1 880.2,184.9 893.2,184.9 906.1,184.9 919.1,184.9 932.0,238.5"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,238.5 90.9,238.5 103.9,238.9 116.8,238.2 129.8,237.8 142.7,239.3 155.6,233.2 168.6,226.4 181.5,215.3 194.5,216.7 207.4,218.4 220.3,218.5 233.3,219.3 246.2,214.6 259.2,214.6 272.1,215.0 285.0,214.3 298.0,213.5 310.9,218.0 323.8,216.9 336.8,208.3 349.7,201.4 362.7,200.9 375.6,195.7 388.5,202.5 401.5,192.3 414.4,195.3 427.4,195.3 440.3,195.6 453.2,193.0 466.2,193.5 479.1,193.0 492.1,191.5 505.0,180.9 517.9,170.8 530.9,169.2 543.8,166.5 556.8,161.4 569.7,161.1 582.6,162.5 595.6,162.5 608.5,162.8 621.5,156.8 634.4,156.5 647.3,150.9 660.3,149.5 673.2,144.1 686.2,142.3 699.1,138.5 712.0,133.9 725.0,129.1 737.9,127.2 750.8,123.5 763.8,123.5 776.7,123.9 789.7,117.8 802.6,116.4 815.5,113.4 828.5,112.7 841.4,105.9 854.4,99.5 867.3,98.4 880.2,100.9 893.2,93.1 906.1,90.3 919.1,81.1 932.0,238.5"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,235.8 116.8,229.9 129.8,227.4 142.7,231.9 155.6,226.4 168.6,219.7 181.5,212.5 194.5,212.0 207.4,211.5 220.3,212.0 233.3,213.5 246.2,208.4 259.2,203.9 272.1,194.3 285.0,187.6 298.0,186.0 310.9,189.9 323.8,186.6 336.8,179.3 349.7,176.9 362.7,179.2 375.6,174.3 388.5,179.5 401.5,171.0 414.4,170.2 427.4,169.2 440.3,172.4 453.2,170.4 466.2,171.2 479.1,172.7 492.1,169.4 505.0,162.3 517.9,153.9 530.9,152.6 543.8,145.6 556.8,144.0 569.7,145.3 582.6,146.6 595.6,149.1 608.5,134.9 621.5,126.4 634.4,121.5 647.3,112.8 660.3,110.7 673.2,105.4 686.2,98.0 699.1,93.4 712.0,90.8 725.0,86.7 737.9,84.8 750.8,80.2 763.8,75.5 776.7,67.9 789.7,64.9 802.6,62.8 815.5,61.1 828.5,60.3 841.4,51.6 854.4,41.2 867.3,38.0 880.2,40.8 893.2,38.4 906.1,34.3 919.1,24.0 932.0,238.5"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,238.5 90.9,238.8 103.9,236.7 116.8,230.7 129.8,228.1 142.7,233.6 155.6,232.0 168.6,228.0 181.5,228.3 194.5,227.0 207.4,227.3 220.3,227.3 233.3,229.6 246.2,227.8 259.2,231.6 272.1,234.1 285.0,233.2 298.0,231.6 310.9,238.3 323.8,239.1 336.8,236.1 349.7,237.6 362.7,240.0 375.6,239.1 388.5,242.8 401.5,240.1 414.4,241.5 427.4,244.5 440.3,248.1 453.2,251.3 466.2,251.6 479.1,253.3 492.1,256.5 505.0,256.4 517.9,256.6 530.9,254.6 543.8,254.9 556.8,255.6 569.7,255.9 582.6,257.6 595.6,257.9 608.5,257.1 621.5,257.3 634.4,260.3 647.3,261.9 660.3,263.8 673.2,262.0 686.2,262.2 699.1,260.8 712.0,261.1 725.0,260.6 737.9,260.0 750.8,257.5 763.8,254.1 776.7,251.7 789.7,253.0 802.6,248.7 815.5,248.9 828.5,246.3 841.4,245.2 854.4,247.0 867.3,243.8 880.2,248.6 893.2,245.6 906.1,239.9 919.1,230.9 932.0,238.5"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,238.5 90.9,238.5 103.9,238.8 116.8,236.6 129.8,234.9 142.7,238.4 155.6,235.7 168.6,234.7 181.5,229.2 194.5,231.2 207.4,231.5 220.3,229.7 233.3,230.4 246.2,228.2 259.2,226.6 272.1,224.6 285.0,221.5 298.0,217.4 310.9,220.3 323.8,220.4 336.8,218.2 349.7,219.6 362.7,220.7 375.6,218.8 388.5,225.1 401.5,220.3 414.4,223.1 427.4,227.2 440.3,228.7 453.2,230.4 466.2,230.3 479.1,231.4 492.1,229.6 505.0,226.5 517.9,224.4 530.9,225.1 543.8,221.9 556.8,219.8 569.7,220.6 582.6,220.9 595.6,223.2 608.5,219.4 621.5,216.5 634.4,213.6 647.3,207.9 660.3,207.2 673.2,208.7 686.2,207.5 699.1,205.4 712.0,203.9 725.0,203.5 737.9,202.8 750.8,199.1 763.8,194.8 776.7,188.9 789.7,188.4 802.6,186.2 815.5,188.0 828.5,184.6 841.4,183.1 854.4,185.2 867.3,183.7 880.2,183.9 893.2,179.6 906.1,177.7 919.1,173.8 932.0,238.5"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,238.5 90.9,238.8 103.9,234.3 116.8,233.8 129.8,231.8 142.7,236.9 155.6,231.4 168.6,227.2 181.5,225.7 194.5,222.8 207.4,219.5 220.3,218.3 233.3,222.5 246.2,216.2 259.2,215.3 272.1,213.8 285.0,213.5 298.0,211.1 310.9,216.7 323.8,215.6 336.8,212.1 349.7,213.1 362.7,215.7 375.6,214.0 388.5,219.6 401.5,211.1 414.4,210.8 427.4,219.9 440.3,230.9 453.2,238.8 466.2,239.5 479.1,238.8 492.1,236.4 505.0,237.1 517.9,235.9 530.9,237.8 543.8,235.6 556.8,233.4 569.7,231.5 582.6,232.3 595.6,239.0 608.5,242.7 621.5,244.5 634.4,243.7 647.3,238.4 660.3,237.5 673.2,239.2 686.2,239.9 699.1,238.7 712.0,236.1 725.0,234.3 737.9,236.1 750.8,234.6 763.8,231.2 776.7,228.2 789.7,230.7 802.6,227.2 815.5,227.5 828.5,226.1 841.4,224.8 854.4,223.1 867.3,219.1 880.2,222.9 893.2,219.0 906.1,215.8 919.1,210.6 932.0,238.5"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,238.5 90.9,238.7 103.9,239.7 116.8,239.0 129.8,238.6 142.7,240.6 155.6,238.2 168.6,237.5 181.5,236.2 194.5,236.2 207.4,234.3 220.3,234.1 233.3,234.5 246.2,234.5 259.2,234.7 272.1,234.4 285.0,235.2 298.0,235.7 310.9,237.9 323.8,238.1 336.8,238.3 349.7,238.3 362.7,238.3 375.6,238.4 388.5,239.6 401.5,238.0 414.4,237.8 427.4,238.7 440.3,239.8 453.2,240.8 466.2,241.0 479.1,241.2 492.1,241.4 505.0,241.5 517.9,241.7 530.9,241.5 543.8,241.1 556.8,241.2 569.7,241.0 582.6,241.3 595.6,241.3 608.5,241.3 621.5,241.6 634.4,241.7 647.3,241.7 660.3,241.7 673.2,241.7 686.2,241.7 699.1,241.7 712.0,241.7 725.0,241.7 737.9,241.9 750.8,241.5 763.8,240.9 776.7,240.7 789.7,240.4 802.6,240.4 815.5,240.4 828.5,240.4 841.4,240.4 854.4,240.4 867.3,240.4 880.2,240.4 893.2,240.4 906.1,240.4 919.1,240.4 932.0,238.5"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,238.5 90.9,240.1 103.9,240.4 116.8,234.7 129.8,231.8 142.7,240.7 155.6,233.8 168.6,235.6 181.5,234.5 194.5,235.2 207.4,237.6 220.3,237.2 233.3,238.4 246.2,231.9 259.2,230.5 272.1,228.5 285.0,227.7 298.0,226.6 310.9,232.6 323.8,231.8 336.8,228.9 349.7,228.0 362.7,229.9 375.6,226.6 388.5,236.3 401.5,230.2 414.4,231.3 427.4,235.7 440.3,244.8 453.2,251.8 466.2,252.9 479.1,254.7 492.1,251.7 505.0,249.8 517.9,246.6 530.9,248.3 543.8,242.1 556.8,239.8 569.7,240.6 582.6,241.2 595.6,247.3 608.5,241.3 621.5,241.1 634.4,237.2 647.3,230.3 660.3,232.3 673.2,233.8 686.2,234.2 699.1,228.9 712.0,228.3 725.0,227.2 737.9,225.3 750.8,221.2 763.8,214.9 776.7,209.1 789.7,209.4 802.6,204.3 815.5,206.3 828.5,201.9 841.4,199.7 854.4,201.7 867.3,198.3 880.2,201.9 893.2,195.4 906.1,192.8 919.1,184.4 932.0,238.5"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,239.1 116.8,239.5 129.8,239.4 142.7,242.8 155.6,239.6 168.6,240.9 181.5,239.4 194.5,240.2 207.4,242.2 220.3,244.5 233.3,245.6 246.2,237.8 259.2,236.3 272.1,231.0 285.0,228.9 298.0,227.6 310.9,232.0 323.8,233.3 336.8,227.4 349.7,225.5 362.7,225.1 375.6,222.3 388.5,228.1 401.5,220.1 414.4,220.3 427.4,224.9 440.3,231.4 453.2,236.0 466.2,236.7 479.1,239.7 492.1,235.8 505.0,234.3 517.9,229.5 530.9,233.9 543.8,231.2 556.8,230.0 569.7,229.6 582.6,231.9 595.6,235.0 608.5,229.6 621.5,228.6 634.4,226.3 647.3,216.6 660.3,219.7 673.2,222.5 686.2,222.5 699.1,219.9 712.0,218.6 725.0,216.6 737.9,217.0 750.8,211.4 763.8,207.5 776.7,205.0 789.7,205.2 802.6,202.9 815.5,201.4 828.5,200.4 841.4,193.2 854.4,189.4 867.3,186.4 880.2,187.7 893.2,185.0 906.1,183.1 919.1,181.3 932.0,238.5"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,238.3 116.8,234.6 129.8,231.8 142.7,236.6 155.6,229.0 168.6,230.4 181.5,230.2 194.5,234.0 207.4,237.1 220.3,238.4 233.3,239.4 246.2,236.7 259.2,233.6 272.1,229.0 285.0,227.7 298.0,227.9 310.9,230.3 323.8,232.7 336.8,232.1 349.7,231.8 362.7,233.1 375.6,232.8 388.5,240.7 401.5,235.1 414.4,238.2 427.4,240.5 440.3,246.2 453.2,247.8 466.2,250.9 479.1,254.0 492.1,251.6 505.0,251.6 517.9,247.6 530.9,249.6 543.8,244.5 556.8,240.6 569.7,241.2 582.6,241.4 595.6,241.7 608.5,231.2 621.5,225.0 634.4,220.5 647.3,214.4 660.3,215.3 673.2,216.0 686.2,216.3 699.1,214.8 712.0,209.7 725.0,208.6 737.9,209.2 750.8,206.2 763.8,199.1 776.7,192.9 789.7,192.8 802.6,188.9 815.5,187.4 828.5,186.4 841.4,187.8 854.4,188.8 867.3,185.9 880.2,192.0 893.2,187.9 906.1,183.2 919.1,176.9 932.0,238.5"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,238.5 90.9,238.9 103.9,237.4 116.8,234.7 129.8,233.1 142.7,241.6 155.6,234.7 168.6,232.8 181.5,228.3 194.5,227.2 207.4,228.6 220.3,230.1 233.3,231.9 246.2,226.3 259.2,222.2 272.1,213.0 285.0,210.1 298.0,209.4 310.9,213.1 323.8,209.0 336.8,203.3 349.7,201.9 362.7,203.0 375.6,200.5 388.5,209.2 401.5,199.5 414.4,198.9 427.4,201.7 440.3,205.1 453.2,209.4 466.2,213.2 479.1,216.3 492.1,213.7 505.0,212.4 517.9,206.6 530.9,208.5 543.8,201.1 556.8,198.9 569.7,204.4 582.6,203.6 595.6,204.9 608.5,191.1 621.5,181.8 634.4,178.8 647.3,167.8 660.3,169.7 673.2,168.7 686.2,164.3 699.1,161.5 712.0,157.3 725.0,155.6 737.9,155.2 750.8,149.9 763.8,140.4 776.7,130.2 789.7,127.3 802.6,125.6 815.5,126.2 828.5,123.0 841.4,119.7 854.4,117.9 867.3,113.9 880.2,117.7 893.2,108.8 906.1,103.3 919.1,93.0 932.0,238.5"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f59e0b" stroke-width="1.8" points="78.0,238.5 90.9,238.5 103.9,238.5 116.8,238.5 129.8,238.5 142.7,238.5 155.6,238.5 168.6,238.5 181.5,238.5 194.5,238.5 207.4,238.5 220.3,238.5 233.3,238.5 246.2,238.5 259.2,238.5 272.1,238.5 285.0,238.5 298.0,238.5 310.9,238.5 323.8,238.5 336.8,238.5 349.7,238.5 362.7,238.5 375.6,238.5 388.5,238.5 401.5,238.5 414.4,238.5 427.4,238.5 440.3,238.5 453.2,238.5 466.2,238.5 479.1,238.5 492.1,238.5 505.0,238.5 517.9,238.5 530.9,238.5 543.8,238.5 556.8,238.9 569.7,235.9 582.6,235.3 595.6,234.0 608.5,228.6 621.5,224.9 634.4,220.7 647.3,215.4 660.3,213.3 673.2,213.7 686.2,213.5 699.1,211.1 712.0,212.1 725.0,210.3 737.9,208.7 750.8,208.0 763.8,207.7 776.7,204.7 789.7,206.1 802.6,203.1 815.5,202.9 828.5,203.0 841.4,203.1 854.4,203.0 867.3,203.5 880.2,203.4 893.2,202.1 906.1,202.2 919.1,199.7 932.0,238.5"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></polyline><circle cx="932.0" cy="238.5" r="3.5" fill="#f59e0b"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></circle>
+          <line x1="78" y1="278.0" x2="932" y2="278.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="282.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$9,850</text><line x1="78" y1="214.5" x2="932" y2="214.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="218.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,124</text><line x1="78" y1="151.0" x2="932" y2="151.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="155.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,399</text><line x1="78" y1="87.5" x2="932" y2="87.5" stroke="#1e293b" stroke-width="1" /><text x="70" y="91.5" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,673</text><line x1="78" y1="24.0" x2="932" y2="24.0" stroke="#1e293b" stroke-width="1" /><text x="70" y="28.0" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">$10,947</text><line x1="78" y1="243.3" x2="932" y2="243.3" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,4" />
+          <polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,241.5 116.8,233.0 129.8,231.3 142.7,237.4 155.6,228.5 168.6,221.3 181.5,212.9 194.5,212.1 207.4,211.4 220.3,210.5 233.3,212.0 246.2,205.1 259.2,200.1 272.1,192.7 285.0,189.5 298.0,187.4 310.9,193.5 323.8,193.2 336.8,187.9 349.7,189.4 362.7,190.7 375.6,186.8 388.5,191.8 401.5,185.0 414.4,185.8 427.4,191.7 440.3,199.7 453.2,207.4 466.2,206.9 479.1,207.6 492.1,207.9 505.0,205.5 517.9,203.7 530.9,202.7 543.8,197.5 556.8,194.4 569.7,196.7 582.6,196.8 595.6,199.0 608.5,187.0 621.5,177.4 634.4,172.6 647.3,162.8 660.3,164.4 673.2,165.6 686.2,167.4 699.1,165.5 712.0,163.3 725.0,163.3 737.9,162.0 750.8,159.5 763.8,152.0 776.7,145.9 789.7,145.3 802.6,141.8 815.5,145.2 828.5,142.6 841.4,141.0 854.4,139.1 867.3,133.8 880.2,136.7 893.2,133.5 906.1,131.4 919.1,124.7 932.0,243.3"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#38bdf8"><title>1. Trend Follower (MA / Breakout): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,244.3 116.8,242.6 129.8,246.4 142.7,247.2 155.6,247.5 168.6,245.0 181.5,243.4 194.5,242.0 207.4,242.4 220.3,238.9 233.3,237.9 246.2,230.0 259.2,228.1 272.1,226.8 285.0,226.6 298.0,226.6 310.9,230.8 323.8,236.7 336.8,231.6 349.7,224.2 362.7,220.8 375.6,212.0 388.5,210.8 401.5,203.2 414.4,203.7 427.4,207.2 440.3,218.5 453.2,223.5 466.2,225.9 479.1,229.9 492.1,228.9 505.0,229.1 517.9,224.9 530.9,224.7 543.8,219.2 556.8,217.2 569.7,216.4 582.6,219.9 595.6,223.1 608.5,216.5 621.5,217.0 634.4,217.0 647.3,211.9 660.3,212.8 673.2,213.4 686.2,213.7 699.1,212.1 712.0,209.1 725.0,203.0 737.9,196.9 750.8,197.8 763.8,197.8 776.7,197.8 789.7,198.1 802.6,198.3 815.5,197.9 828.5,197.8 841.4,197.4 854.4,197.4 867.3,197.2 880.2,196.1 893.2,196.1 906.1,196.1 919.1,196.1 932.0,243.3"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#818cf8"><title>2. Mean Reversion (RSI / Bollinger): $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.6 116.8,243.0 129.8,242.6 142.7,244.0 155.6,238.6 168.6,232.6 181.5,222.8 194.5,224.1 207.4,225.6 220.3,225.7 233.3,226.4 246.2,222.3 259.2,222.3 272.1,222.6 285.0,222.0 298.0,221.3 310.9,225.2 323.8,224.3 336.8,216.7 349.7,210.7 362.7,210.2 375.6,205.6 388.5,211.6 401.5,202.7 414.4,205.3 427.4,205.3 440.3,205.6 453.2,203.3 466.2,203.7 479.1,203.2 492.1,202.0 505.0,192.6 517.9,183.7 530.9,182.3 543.8,180.0 556.8,175.4 569.7,175.2 582.6,176.4 595.6,176.4 608.5,176.7 621.5,171.4 634.4,171.2 647.3,166.2 660.3,165.0 673.2,160.3 686.2,158.7 699.1,155.3 712.0,151.3 725.0,147.1 737.9,145.4 750.8,142.2 763.8,142.2 776.7,142.5 789.7,137.1 802.6,135.9 815.5,133.2 828.5,132.6 841.4,126.6 854.4,121.1 867.3,120.1 880.2,122.3 893.2,115.4 906.1,113.0 919.1,104.9 932.0,243.3"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#c084fc"><title>3. Intraday ORB (Flat by Close): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,240.9 116.8,235.7 129.8,233.5 142.7,237.5 155.6,232.6 168.6,226.7 181.5,220.4 194.5,219.9 207.4,219.5 220.3,220.0 233.3,221.3 246.2,216.8 259.2,212.9 272.1,204.4 285.0,198.5 298.0,197.1 310.9,200.5 323.8,197.6 336.8,191.3 349.7,189.1 362.7,191.1 375.6,186.8 388.5,191.4 401.5,183.9 414.4,183.2 427.4,182.3 440.3,185.1 453.2,183.4 466.2,184.1 479.1,185.4 492.1,182.5 505.0,176.3 517.9,168.9 530.9,167.8 543.8,161.6 556.8,160.2 569.7,161.3 582.6,162.5 595.6,164.6 608.5,152.2 621.5,144.7 634.4,140.4 647.3,132.8 660.3,130.9 673.2,126.3 686.2,119.7 699.1,115.7 712.0,113.4 725.0,109.8 737.9,108.1 750.8,104.1 763.8,99.9 776.7,93.3 789.7,90.7 802.6,88.8 815.5,87.3 828.5,86.6 841.4,78.9 854.4,69.8 867.3,67.0 880.2,69.5 893.2,67.3 906.1,63.8 919.1,54.7 932.0,243.3"><title>4. Sector ETF Rotation: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#2dd4bf"><title>4. Sector ETF Rotation: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,243.3 90.9,243.5 103.9,241.7 116.8,236.4 129.8,234.1 142.7,238.9 155.6,237.6 168.6,234.1 181.5,234.3 194.5,233.2 207.4,233.4 220.3,233.5 233.3,235.4 246.2,233.8 259.2,237.2 272.1,239.4 285.0,238.6 298.0,237.2 310.9,243.1 323.8,243.8 336.8,241.2 349.7,242.5 362.7,244.6 375.6,243.8 388.5,247.0 401.5,244.7 414.4,245.9 427.4,248.5 440.3,251.7 453.2,254.6 466.2,254.8 479.1,256.3 492.1,259.1 505.0,259.0 517.9,259.2 530.9,257.4 543.8,257.7 556.8,258.3 569.7,258.6 582.6,260.0 595.6,260.3 608.5,259.6 621.5,259.8 634.4,262.5 647.3,263.8 660.3,265.5 673.2,263.9 686.2,264.1 699.1,262.9 712.0,263.1 725.0,262.7 737.9,262.1 750.8,260.0 763.8,257.0 776.7,254.9 789.7,256.0 802.6,252.3 815.5,252.4 828.5,250.1 841.4,249.1 854.4,250.8 867.3,248.0 880.2,252.1 893.2,249.5 906.1,244.5 919.1,236.6 932.0,243.3"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#34d399"><title>5. Technical Analyst (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.5 116.8,241.6 129.8,240.1 142.7,243.2 155.6,240.8 168.6,239.9 181.5,235.1 194.5,236.9 207.4,237.2 220.3,235.6 233.3,236.1 246.2,234.2 259.2,232.8 272.1,231.1 285.0,228.4 298.0,224.8 310.9,227.3 323.8,227.3 336.8,225.4 349.7,226.6 362.7,227.6 375.6,225.9 388.5,231.5 401.5,227.3 414.4,229.7 427.4,233.3 440.3,234.7 453.2,236.1 466.2,236.1 479.1,237.0 492.1,235.4 505.0,232.7 517.9,230.9 530.9,231.5 543.8,228.7 556.8,226.9 569.7,227.5 582.6,227.8 595.6,229.8 608.5,226.4 621.5,223.9 634.4,221.3 647.3,216.4 660.3,215.8 673.2,217.1 686.2,216.0 699.1,214.2 712.0,212.9 725.0,212.5 737.9,211.9 750.8,208.6 763.8,204.8 776.7,199.7 789.7,199.2 802.6,197.3 815.5,198.9 828.5,195.9 841.4,194.5 854.4,196.4 867.3,195.1 880.2,195.3 893.2,191.5 906.1,189.8 919.1,186.4 932.0,243.3"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#f472b6"><title>6. News &amp; Catalyst Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,243.3 90.9,243.5 103.9,239.6 116.8,239.2 129.8,237.3 142.7,241.9 155.6,237.0 168.6,233.4 181.5,232.0 194.5,229.4 207.4,226.5 220.3,225.5 233.3,229.2 246.2,223.6 259.2,222.9 272.1,221.5 285.0,221.3 298.0,219.2 310.9,224.1 323.8,223.1 336.8,220.0 349.7,220.9 362.7,223.2 375.6,221.8 388.5,226.6 401.5,219.1 414.4,218.9 427.4,226.9 440.3,236.6 453.2,243.5 466.2,244.1 479.1,243.5 492.1,241.4 505.0,242.1 517.9,241.0 530.9,242.7 543.8,240.8 556.8,238.8 569.7,237.1 582.6,237.8 595.6,243.7 608.5,246.9 621.5,248.5 634.4,247.8 647.3,243.2 660.3,242.4 673.2,243.9 686.2,244.5 699.1,243.4 712.0,241.1 725.0,239.6 737.9,241.1 750.8,239.8 763.8,236.8 776.7,234.2 789.7,236.4 802.6,233.3 815.5,233.6 828.5,232.3 841.4,231.2 854.4,229.7 867.3,226.2 880.2,229.5 893.2,226.1 906.1,223.3 919.1,218.8 932.0,243.3"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#fb923c"><title>7. Macro &amp; Sector Strategist (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#facc15" stroke-width="1.8" points="78.0,243.3 90.9,243.4 103.9,244.3 116.8,243.8 129.8,243.3 142.7,245.1 155.6,243.0 168.6,242.4 181.5,241.2 194.5,241.3 207.4,239.6 220.3,239.4 233.3,239.8 246.2,239.8 259.2,240.0 272.1,239.7 285.0,240.3 298.0,240.8 310.9,242.7 323.8,242.9 336.8,243.1 349.7,243.1 362.7,243.1 375.6,243.2 388.5,244.2 401.5,242.9 414.4,242.6 427.4,243.5 440.3,244.4 453.2,245.3 466.2,245.5 479.1,245.6 492.1,245.8 505.0,245.9 517.9,246.1 530.9,245.9 543.8,245.5 556.8,245.6 569.7,245.5 582.6,245.8 595.6,245.8 608.5,245.8 621.5,246.0 634.4,246.1 647.3,246.1 660.3,246.1 673.2,246.1 686.2,246.1 699.1,246.1 712.0,246.1 725.0,246.1 737.9,246.2 750.8,245.9 763.8,245.4 776.7,245.2 789.7,245.0 802.6,245.0 815.5,245.0 828.5,245.0 841.4,245.0 854.4,245.0 867.3,245.0 880.2,245.0 893.2,245.0 906.1,245.0 919.1,245.0 932.0,243.3"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#facc15"><title>8. Cautious Risk-First Trader (Gemini Flash): $10,000.00</title></circle><polyline fill="none" stroke="#ffffff" stroke-width="2.4" points="78.0,243.3 90.9,244.6 103.9,245.0 116.8,239.9 129.8,237.4 142.7,245.2 155.6,239.1 168.6,240.7 181.5,239.8 194.5,240.4 207.4,242.5 220.3,242.1 233.3,243.2 246.2,237.5 259.2,236.3 272.1,234.5 285.0,233.8 298.0,232.8 310.9,238.1 323.8,237.4 336.8,234.8 349.7,234.1 362.7,235.7 375.6,232.8 388.5,241.3 401.5,235.9 414.4,237.0 427.4,240.8 440.3,248.8 453.2,255.0 466.2,255.9 479.1,257.5 492.1,254.9 505.0,253.2 517.9,250.4 530.9,251.9 543.8,246.4 556.8,244.4 569.7,245.1 582.6,245.6 595.6,251.0 608.5,245.7 621.5,245.5 634.4,242.1 647.3,236.1 660.3,237.8 673.2,239.1 686.2,239.5 699.1,234.8 712.0,234.3 725.0,233.3 737.9,231.6 750.8,228.1 763.8,222.5 776.7,217.4 789.7,217.7 802.6,213.2 815.5,215.0 828.5,211.1 841.4,209.1 854.4,210.9 867.3,207.9 880.2,211.1 893.2,205.4 906.1,203.1 919.1,195.7 932.0,243.3"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#ffffff"><title>9. Buy-and-Hold SPY (Benchmark): $10,000.00</title></circle><polyline fill="none" stroke="#94a3b8" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,243.8 116.8,244.1 129.8,244.1 142.7,247.0 155.6,244.2 168.6,245.4 181.5,244.1 194.5,244.8 207.4,246.5 220.3,248.6 233.3,249.5 246.2,242.7 259.2,241.3 272.1,236.7 285.0,234.9 298.0,233.7 310.9,237.5 323.8,238.7 336.8,233.5 349.7,231.8 362.7,231.4 375.6,229.0 388.5,234.1 401.5,227.1 414.4,227.2 427.4,231.3 440.3,237.0 453.2,241.1 466.2,241.7 479.1,244.4 492.1,240.9 505.0,239.6 517.9,235.3 530.9,239.2 543.8,236.8 556.8,235.8 569.7,235.4 582.6,237.5 595.6,240.2 608.5,235.4 621.5,234.5 634.4,232.5 647.3,224.0 660.3,226.7 673.2,229.2 686.2,229.2 699.1,226.9 712.0,225.7 725.0,224.0 737.9,224.4 750.8,219.4 763.8,216.0 776.7,213.8 789.7,214.0 802.6,212.0 815.5,210.6 828.5,209.8 841.4,203.4 854.4,200.1 867.3,197.5 880.2,198.6 893.2,196.2 906.1,194.6 919.1,192.9 932.0,243.3"><title>10. Random Trader (Luck Control): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#94a3b8"><title>10. Random Trader (Luck Control): $10,000.00</title></circle><polyline fill="none" stroke="#22c55e" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,243.1 116.8,239.8 129.8,237.4 142.7,241.6 155.6,234.9 168.6,236.1 181.5,236.0 194.5,239.4 207.4,242.0 220.3,243.1 233.3,244.0 246.2,241.7 259.2,238.9 272.1,234.9 285.0,233.8 298.0,233.9 310.9,236.0 323.8,238.2 336.8,237.6 349.7,237.4 362.7,238.5 375.6,238.2 388.5,245.2 401.5,240.3 414.4,243.0 427.4,245.0 440.3,250.1 453.2,251.4 466.2,254.1 479.1,256.9 492.1,254.8 505.0,254.8 517.9,251.3 530.9,253.0 543.8,248.5 556.8,245.1 569.7,245.7 582.6,245.9 595.6,246.1 608.5,236.8 621.5,231.4 634.4,227.4 647.3,222.1 660.3,222.8 673.2,223.5 686.2,223.7 699.1,222.5 712.0,218.0 725.0,217.0 737.9,217.5 750.8,214.9 763.8,208.7 776.7,203.2 789.7,203.1 802.6,199.6 815.5,198.4 828.5,197.5 841.4,198.7 854.4,199.5 867.3,197.1 880.2,202.4 893.2,198.7 906.1,194.7 919.1,189.1 932.0,243.3"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#22c55e"><title>11. Berkshire Style (13F Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f43f5e" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,242.3 116.8,239.9 129.8,238.5 142.7,246.0 155.6,239.9 168.6,238.3 181.5,234.3 194.5,233.3 207.4,234.5 220.3,235.9 233.3,237.5 246.2,232.5 259.2,228.9 272.1,220.8 285.0,218.3 298.0,217.7 310.9,220.9 323.8,217.3 336.8,212.3 349.7,211.0 362.7,212.1 375.6,209.9 388.5,217.5 401.5,209.0 414.4,208.4 427.4,210.9 440.3,213.9 453.2,217.7 466.2,221.1 479.1,223.8 492.1,221.5 505.0,220.3 517.9,215.2 530.9,216.9 543.8,210.4 556.8,208.5 569.7,213.2 582.6,212.6 595.6,213.7 608.5,201.6 621.5,193.5 634.4,190.8 647.3,181.1 660.3,182.7 673.2,181.9 686.2,178.1 699.1,175.6 712.0,171.9 725.0,170.4 737.9,170.1 750.8,165.4 763.8,157.0 776.7,148.0 789.7,145.5 802.6,144.0 815.5,144.6 828.5,141.7 841.4,138.8 854.4,137.2 867.3,133.7 880.2,137.0 893.2,129.2 906.1,124.4 919.1,115.4 932.0,243.3"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#f43f5e"><title>12. Congress Style (House PTR Pattern): $10,000.00</title></circle><polyline fill="none" stroke="#f59e0b" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.3 414.4,243.3 427.4,243.3 440.3,243.3 453.2,243.3 466.2,243.3 479.1,243.3 492.1,243.3 505.0,243.3 517.9,243.3 530.9,243.3 543.8,243.3 556.8,243.6 569.7,240.9 582.6,240.4 595.6,239.3 608.5,234.6 621.5,231.3 634.4,227.6 647.3,223.0 660.3,221.1 673.2,221.5 686.2,221.3 699.1,219.2 712.0,220.0 725.0,218.5 737.9,217.1 750.8,216.5 763.8,216.2 776.7,213.5 789.7,214.8 802.6,212.2 815.5,212.0 828.5,212.0 841.4,212.2 854.4,212.0 867.3,212.5 880.2,212.4 893.2,211.3 906.1,211.3 919.1,209.1 932.0,243.3"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#f59e0b"><title>14. Claude Residual-Momentum Pullback: $10,000.00</title></circle><polyline fill="none" stroke="#06b6d4" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.3 414.4,243.3 427.4,243.3 440.3,243.3 453.2,243.3 466.2,243.3 479.1,243.3 492.1,243.3 505.0,243.3 517.9,243.3 530.9,243.3 543.8,243.3 556.8,243.3 569.7,243.3 582.6,243.3 595.6,243.3 608.5,243.3 621.5,243.3 634.4,243.3 647.3,243.3 660.3,243.3 673.2,243.3 686.2,243.3 699.1,243.3 712.0,243.3 725.0,243.3 737.9,243.3 750.8,243.3 763.8,243.3 776.7,243.3 789.7,243.3 802.6,243.3 815.5,243.3 828.5,243.3 841.4,243.3 854.4,243.3 867.3,243.3 880.2,243.3 893.2,243.3 906.1,243.3 919.1,243.3 932.0,243.3"><title>15. Kiro Pair-Spread Reversion (PSR): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#06b6d4"><title>15. Kiro Pair-Spread Reversion (PSR): $10,000.00</title></circle><polyline fill="none" stroke="#60a5fa" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.8 259.2,242.1 272.1,242.1 285.0,242.1 298.0,242.1 310.9,242.1 323.8,242.1 336.8,242.1 349.7,242.1 362.7,242.1 375.6,242.1 388.5,242.1 401.5,242.1 414.4,242.6 427.4,243.2 440.3,243.2 453.2,243.2 466.2,243.2 479.1,243.2 492.1,243.2 505.0,243.2 517.9,243.2 530.9,243.2 543.8,243.2 556.8,243.2 569.7,243.2 582.6,243.7 595.6,244.5 608.5,244.5 621.5,244.5 634.4,244.5 647.3,244.5 660.3,244.5 673.2,244.5 686.2,244.5 699.1,244.5 712.0,244.5 725.0,244.5 737.9,244.5 750.8,245.0 763.8,241.2 776.7,241.2 789.7,241.2 802.6,241.2 815.5,241.2 828.5,241.2 841.4,241.2 854.4,241.2 867.3,241.2 880.2,241.2 893.2,241.2 906.1,241.2 919.1,241.7 932.0,243.3"><title>16. Overnight Drift (Close→Open): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#60a5fa"><title>16. Overnight Drift (Close→Open): $10,000.00</title></circle><polyline fill="none" stroke="#a78bfa" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.6 259.2,240.8 272.1,238.3 285.0,237.7 298.0,237.7 310.9,237.7 323.8,237.7 336.8,237.7 349.7,237.7 362.7,237.7 375.6,237.7 388.5,237.7 401.5,237.7 414.4,237.7 427.4,237.7 440.3,237.7 453.2,237.7 466.2,237.7 479.1,237.7 492.1,237.7 505.0,237.7 517.9,237.7 530.9,237.7 543.8,237.7 556.8,237.7 569.7,237.7 582.6,237.7 595.6,237.7 608.5,237.7 621.5,237.7 634.4,237.7 647.3,237.7 660.3,237.7 673.2,237.7 686.2,237.7 699.1,237.7 712.0,237.7 725.0,237.7 737.9,237.7 750.8,237.7 763.8,237.7 776.7,237.7 789.7,237.7 802.6,237.7 815.5,237.7 828.5,237.7 841.4,237.7 854.4,237.7 867.3,237.7 880.2,237.7 893.2,237.7 906.1,237.7 919.1,237.7 932.0,243.3"><title>17. EOD Loser Overnight Reversal: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#a78bfa"><title>17. EOD Loser Overnight Reversal: $10,000.00</title></circle><polyline fill="none" stroke="#e879f9" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.5 414.4,244.0 427.4,244.0 440.3,244.0 453.2,244.0 466.2,244.0 479.1,244.0 492.1,244.0 505.0,244.0 517.9,244.0 530.9,244.0 543.8,244.0 556.8,244.0 569.7,244.0 582.6,244.0 595.6,244.0 608.5,244.0 621.5,244.0 634.4,244.0 647.3,244.0 660.3,244.0 673.2,244.0 686.2,244.0 699.1,244.0 712.0,244.0 725.0,244.0 737.9,244.0 750.8,244.0 763.8,244.0 776.7,244.0 789.7,244.0 802.6,244.0 815.5,244.0 828.5,244.0 841.4,244.0 854.4,244.0 867.3,244.0 880.2,244.0 893.2,244.0 906.1,244.3 919.1,243.1 932.0,243.3"><title>18. Intraday Momentum (Gao 2018): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#e879f9"><title>18. Intraday Momentum (Gao 2018): $10,000.00</title></circle><polyline fill="none" stroke="#2dd4bf" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.3 414.4,243.3 427.4,243.3 440.3,243.3 453.2,243.3 466.2,243.3 479.1,243.3 492.1,243.3 505.0,243.3 517.9,243.3 530.9,243.3 543.8,243.3 556.8,243.3 569.7,243.3 582.6,243.3 595.6,243.3 608.5,243.3 621.5,243.3 634.4,243.3 647.3,243.3 660.3,243.3 673.2,243.3 686.2,243.3 699.1,243.3 712.0,243.3 725.0,243.3 737.9,243.3 750.8,243.3 763.8,243.3 776.7,243.3 789.7,243.3 802.6,243.3 815.5,243.3 828.5,243.3 841.4,243.3 854.4,243.3 867.3,243.3 880.2,243.3 893.2,243.3 906.1,243.3 919.1,243.3 932.0,243.3"><title>19. Turn-of-Month Calendar: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#2dd4bf"><title>19. Turn-of-Month Calendar: $10,000.00</title></circle><polyline fill="none" stroke="#fb7185" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.3 414.4,243.3 427.4,243.3 440.3,243.3 453.2,243.3 466.2,243.3 479.1,243.3 492.1,243.3 505.0,243.3 517.9,243.3 530.9,243.3 543.8,243.3 556.8,243.3 569.7,243.3 582.6,243.3 595.6,243.3 608.5,243.3 621.5,243.3 634.4,243.3 647.3,243.3 660.3,243.3 673.2,243.3 686.2,243.3 699.1,243.3 712.0,243.3 725.0,243.3 737.9,243.3 750.8,243.3 763.8,243.3 776.7,243.3 789.7,243.3 802.6,243.3 815.5,243.3 828.5,243.3 841.4,243.3 854.4,243.3 867.3,243.3 880.2,243.3 893.2,243.3 906.1,243.3 919.1,243.3 932.0,243.3"><title>20. Intraday Gap-Down Fill: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#fb7185"><title>20. Intraday Gap-Down Fill: $10,000.00</title></circle><polyline fill="none" stroke="#34d399" stroke-width="1.8" points="78.0,243.3 90.9,243.8 103.9,241.1 116.8,238.0 129.8,238.1 142.7,240.1 155.6,238.2 168.6,238.1 181.5,237.0 194.5,237.1 207.4,237.4 220.3,237.2 233.3,237.5 246.2,237.7 259.2,236.3 272.1,234.5 285.0,232.1 298.0,231.4 310.9,232.6 323.8,232.5 336.8,232.3 349.7,231.6 362.7,231.3 375.6,230.8 388.5,232.5 401.5,231.2 414.4,231.4 427.4,230.8 440.3,229.8 453.2,229.1 466.2,229.5 479.1,229.6 492.1,228.5 505.0,228.4 517.9,228.1 530.9,228.3 543.8,227.7 556.8,227.1 569.7,228.0 582.6,227.7 595.6,226.4 608.5,223.4 621.5,220.9 634.4,219.9 647.3,218.4 660.3,218.3 673.2,218.5 686.2,218.5 699.1,217.8 712.0,217.4 725.0,217.3 737.9,216.7 750.8,216.9 763.8,213.8 776.7,211.0 789.7,209.1 802.6,207.7 815.5,207.5 828.5,207.0 841.4,206.3 854.4,206.9 867.3,206.0 880.2,205.3 893.2,204.1 906.1,203.4 919.1,201.9 932.0,243.3"><title>21. Dual Momentum Macro ETF: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#34d399"><title>21. Dual Momentum Macro ETF: $10,000.00</title></circle><polyline fill="none" stroke="#38bdf8" stroke-width="1.8" points="78.0,243.3 90.9,244.0 103.9,244.2 116.8,243.9 129.8,243.3 142.7,245.1 155.6,244.3 168.6,244.4 181.5,243.2 194.5,243.4 207.4,244.1 220.3,243.9 233.3,244.4 246.2,243.1 259.2,243.9 272.1,243.6 285.0,243.2 298.0,242.3 310.9,242.9 323.8,243.0 336.8,242.5 349.7,242.2 362.7,241.6 375.6,240.7 388.5,241.8 401.5,240.7 414.4,241.1 427.4,241.8 440.3,244.0 453.2,244.3 466.2,245.3 479.1,244.7 492.1,244.6 505.0,244.8 517.9,244.8 530.9,245.5 543.8,245.5 556.8,245.9 569.7,246.6 582.6,246.2 595.6,246.9 608.5,245.8 621.5,246.2 634.4,245.7 647.3,244.4 660.3,244.5 673.2,244.8 686.2,245.1 699.1,244.4 712.0,244.4 725.0,243.5 737.9,241.7 750.8,241.9 763.8,240.5 776.7,240.8 789.7,241.3 802.6,240.1 815.5,240.2 828.5,239.2 841.4,238.4 854.4,238.3 867.3,237.9 880.2,237.3 893.2,236.1 906.1,234.7 919.1,233.8 932.0,243.3"><title>22. Risk Parity 3-Asset (8% Vol): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#38bdf8"><title>22. Risk Parity 3-Asset (8% Vol): $10,000.00</title></circle><polyline fill="none" stroke="#818cf8" stroke-width="1.8" points="78.0,243.3 90.9,244.5 103.9,244.6 116.8,243.3 129.8,242.8 142.7,246.3 155.6,243.4 168.6,244.2 181.5,243.6 194.5,243.8 207.4,244.4 220.3,243.8 233.3,244.6 246.2,241.7 259.2,241.0 272.1,239.9 285.0,239.0 298.0,237.5 310.9,239.2 323.8,239.1 336.8,237.7 349.7,236.6 362.7,235.8 375.6,233.9 388.5,236.9 401.5,233.6 414.4,235.1 427.4,236.6 440.3,240.0 453.2,242.2 466.2,244.2 479.1,245.1 492.1,245.1 505.0,245.2 517.9,243.2 530.9,244.2 543.8,244.2 556.8,243.2 569.7,243.0 582.6,242.2 595.6,244.0 608.5,241.8 621.5,242.0 634.4,240.0 647.3,235.8 660.3,235.4 673.2,237.0 686.2,237.4 699.1,234.2 712.0,232.4 725.0,231.5 737.9,229.9 750.8,228.1 763.8,225.3 776.7,224.5 789.7,223.9 802.6,221.6 815.5,221.1 828.5,220.1 841.4,218.3 854.4,217.5 867.3,215.6 880.2,216.0 893.2,212.6 906.1,211.2 919.1,208.8 932.0,243.3"><title>23. Minimum-Variance ETF Portfolio: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#818cf8"><title>23. Minimum-Variance ETF Portfolio: $10,000.00</title></circle><polyline fill="none" stroke="#4ade80" stroke-width="1.8" points="78.0,243.3 90.9,244.8 103.9,246.7 116.8,244.3 129.8,242.8 142.7,248.9 155.6,243.1 168.6,240.5 181.5,238.8 194.5,239.9 207.4,236.4 220.3,235.1 233.3,238.7 246.2,233.1 259.2,230.8 272.1,226.8 285.0,226.8 298.0,224.6 310.9,230.8 323.8,232.4 336.8,226.9 349.7,227.0 362.7,229.0 375.6,225.5 388.5,231.7 401.5,227.7 414.4,228.0 427.4,236.2 440.3,246.4 453.2,255.0 466.2,257.6 479.1,263.6 492.1,260.9 505.0,258.9 517.9,259.9 530.9,260.9 543.8,260.1 556.8,256.2 569.7,254.3 582.6,256.4 595.6,262.4 608.5,262.6 621.5,264.5 634.4,266.1 647.3,263.5 660.3,265.6 673.2,264.6 686.2,262.9 699.1,257.4 712.0,251.1 725.0,245.9 737.9,242.6 750.8,238.4 763.8,234.3 776.7,225.6 789.7,222.5 802.6,218.0 815.5,215.1 828.5,213.0 841.4,212.4 854.4,210.2 867.3,207.2 880.2,208.2 893.2,204.7 906.1,198.9 919.1,193.0 932.0,243.3"><title>24. Low-Volatility Stock Anomaly: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#4ade80"><title>24. Low-Volatility Stock Anomaly: $10,000.00</title></circle><polyline fill="none" stroke="#e2e8f0" stroke-width="1.8" points="78.0,243.3 90.9,244.6 103.9,239.2 116.8,231.4 129.8,228.4 142.7,237.1 155.6,229.0 168.6,225.0 181.5,220.7 194.5,220.0 207.4,216.6 220.3,216.8 233.3,219.7 246.2,213.8 259.2,214.5 272.1,211.4 285.0,212.6 298.0,214.9 310.9,223.3 323.8,222.8 336.8,217.4 349.7,214.4 362.7,213.6 375.6,206.6 388.5,210.0 401.5,202.9 414.4,202.5 427.4,209.2 440.3,215.8 453.2,219.0 466.2,221.3 479.1,224.0 492.1,223.7 505.0,218.8 517.9,213.9 530.9,214.1 543.8,211.6 556.8,209.6 569.7,208.6 582.6,210.4 595.6,217.4 608.5,211.1 621.5,209.0 634.4,211.6 647.3,210.2 660.3,210.1 673.2,205.6 686.2,205.0 699.1,201.3 712.0,196.6 725.0,194.1 737.9,191.4 750.8,187.5 763.8,177.8 776.7,168.0 789.7,161.9 802.6,157.1 815.5,151.4 828.5,147.4 841.4,145.6 854.4,142.7 867.3,138.6 880.2,140.8 893.2,137.4 906.1,133.8 919.1,126.9 932.0,243.3"><title>25. Mega-Cap Top-5 Buy &amp; Hold (Control): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#e2e8f0"><title>25. Mega-Cap Top-5 Buy &amp; Hold (Control): $10,000.00</title></circle><polyline fill="none" stroke="#f472b6" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,244.8 129.8,244.1 142.7,247.7 155.6,245.2 168.6,245.1 181.5,244.6 194.5,246.8 207.4,246.5 220.3,244.1 233.3,245.3 246.2,242.4 259.2,238.3 272.1,234.2 285.0,232.3 298.0,230.6 310.9,233.6 323.8,230.1 336.8,227.0 349.7,224.2 362.7,226.9 375.6,225.3 388.5,233.3 401.5,222.9 414.4,225.5 427.4,229.6 440.3,237.9 453.2,245.9 466.2,249.2 479.1,254.5 492.1,251.9 505.0,251.9 517.9,249.7 530.9,250.0 543.8,245.0 556.8,243.1 569.7,241.9 582.6,244.8 595.6,246.6 608.5,242.7 621.5,242.4 634.4,238.8 647.3,231.8 660.3,230.9 673.2,232.2 686.2,229.6 699.1,226.6 712.0,223.0 725.0,222.3 737.9,220.5 750.8,216.2 763.8,211.0 776.7,208.3 789.7,210.6 802.6,204.1 815.5,202.6 828.5,200.5 841.4,199.7 854.4,200.8 867.3,195.8 880.2,198.3 893.2,194.8 906.1,189.1 919.1,180.5 932.0,243.3"><title>26. Cross-Sectional 5D Short Reversal: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#f472b6"><title>26. Cross-Sectional 5D Short Reversal: $10,000.00</title></circle><polyline fill="none" stroke="#fbbf24" stroke-width="1.8" points="78.0,243.3 90.9,244.7 103.9,240.2 116.8,231.2 129.8,229.0 142.7,235.8 155.6,227.8 168.6,224.3 181.5,218.4 194.5,217.4 207.4,217.4 220.3,216.1 233.3,219.4 246.2,218.2 259.2,215.3 272.1,206.4 285.0,198.9 298.0,195.8 310.9,203.8 323.8,201.5 336.8,194.8 349.7,193.7 362.7,196.5 375.6,191.3 388.5,199.5 401.5,189.5 414.4,191.0 427.4,197.9 440.3,202.9 453.2,203.4 466.2,203.6 479.1,207.8 492.1,211.0 505.0,207.0 517.9,200.1 530.9,201.2 543.8,200.6 556.8,196.9 569.7,196.7 582.6,196.5 595.6,199.6 608.5,193.1 621.5,187.7 634.4,186.7 647.3,183.6 660.3,187.1 673.2,181.6 686.2,175.8 699.1,171.2 712.0,166.9 725.0,162.2 737.9,157.9 750.8,152.9 763.8,143.4 776.7,127.2 789.7,121.3 802.6,117.9 815.5,115.8 828.5,109.4 841.4,105.0 854.4,101.3 867.3,95.9 880.2,97.9 893.2,94.0 906.1,89.0 919.1,81.4 932.0,243.3"><title>27. 70D High Anchoring (George-Hwang): $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#fbbf24"><title>27. 70D High Anchoring (George-Hwang): $10,000.00</title></circle><polyline fill="none" stroke="#a3e635" stroke-width="1.8" points="78.0,243.3 90.9,244.8 103.9,244.6 116.8,240.6 129.8,237.4 142.7,245.7 155.6,239.7 168.6,241.0 181.5,238.1 194.5,238.8 207.4,236.5 220.3,235.3 233.3,239.5 246.2,232.9 259.2,233.5 272.1,230.7 285.0,230.6 298.0,228.8 310.9,232.0 323.8,231.2 336.8,229.9 349.7,232.4 362.7,233.4 375.6,232.2 388.5,237.9 401.5,232.1 414.4,233.2 427.4,240.4 440.3,250.9 453.2,258.8 466.2,262.8 479.1,271.1 492.1,271.8 505.0,270.9 517.9,270.6 530.9,268.1 543.8,264.7 556.8,262.8 569.7,263.6 582.6,265.9 595.6,269.2 608.5,264.1 621.5,264.2 634.4,261.0 647.3,251.9 660.3,251.6 673.2,253.3 686.2,252.0 699.1,247.8 712.0,245.4 725.0,243.7 737.9,242.5 750.8,241.1 763.8,236.9 776.7,234.4 789.7,232.4 802.6,228.3 815.5,227.8 828.5,224.5 841.4,220.8 854.4,219.2 867.3,218.4 880.2,218.6 893.2,213.7 906.1,209.4 919.1,204.1 932.0,243.3"><title>28. Value + 63D Momentum Combo: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#a3e635"><title>28. Value + 63D Momentum Combo: $10,000.00</title></circle><polyline fill="none" stroke="#22d3ee" stroke-width="1.8" points="78.0,243.3 90.9,244.8 103.9,236.7 116.8,226.5 129.8,221.9 142.7,227.6 155.6,220.4 168.6,213.7 181.5,205.8 194.5,206.6 207.4,205.1 220.3,204.3 233.3,208.4 246.2,206.3 259.2,206.5 272.1,199.3 285.0,192.1 298.0,192.6 310.9,203.1 323.8,203.4 336.8,193.4 349.7,186.6 362.7,185.2 375.6,179.1 388.5,184.4 401.5,172.8 414.4,172.1 427.4,176.0 440.3,177.9 453.2,173.9 466.2,173.4 479.1,175.7 492.1,175.9 505.0,170.0 517.9,159.8 530.9,160.4 543.8,158.0 556.8,154.8 569.7,155.6 582.6,155.0 595.6,154.5 608.5,142.3 621.5,134.5 634.4,128.0 647.3,120.2 660.3,120.4 673.2,115.8 686.2,107.2 699.1,102.4 712.0,100.4 725.0,98.0 737.9,97.7 750.8,94.9 763.8,86.0 776.7,72.6 789.7,66.5 802.6,63.0 815.5,61.9 828.5,56.4 841.4,48.9 854.4,44.1 867.3,38.7 880.2,41.4 893.2,35.0 906.1,31.4 919.1,24.0 932.0,243.3"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#22d3ee"><title>29. 20D Up/Down Volume Accumulation: $10,000.00</title></circle><polyline fill="none" stroke="#c084fc" stroke-width="1.8" points="78.0,243.3 90.9,244.8 103.9,234.4 116.8,221.3 129.8,218.5 142.7,225.0 155.6,217.6 168.6,214.5 181.5,211.0 194.5,213.6 207.4,210.8 220.3,211.3 233.3,212.8 246.2,209.6 259.2,209.5 272.1,203.3 285.0,202.6 298.0,200.0 310.9,205.7 323.8,203.2 336.8,197.0 349.7,192.1 362.7,191.9 375.6,187.7 388.5,195.6 401.5,187.0 414.4,188.4 427.4,193.1 440.3,196.8 453.2,197.5 466.2,198.9 479.1,199.1 492.1,197.2 505.0,192.1 517.9,184.8 530.9,186.3 543.8,181.2 556.8,178.6 569.7,180.7 582.6,181.5 595.6,182.0 608.5,171.1 621.5,166.1 634.4,162.6 647.3,155.5 660.3,157.2 673.2,154.4 686.2,149.4 699.1,145.5 712.0,142.4 725.0,139.7 737.9,137.7 750.8,132.1 763.8,129.5 776.7,120.1 789.7,120.6 802.6,116.4 815.5,117.7 828.5,115.7 841.4,107.2 854.4,104.1 867.3,99.7 880.2,106.6 893.2,103.2 906.1,97.3 919.1,89.0 932.0,243.3"><title>30. Regime-Adaptive Beta Switch: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#c084fc"><title>30. Regime-Adaptive Beta Switch: $10,000.00</title></circle><polyline fill="none" stroke="#fb923c" stroke-width="1.8" points="78.0,243.3 90.9,244.6 103.9,239.2 116.8,232.4 129.8,231.3 142.7,240.5 155.6,233.9 168.6,233.3 181.5,232.3 194.5,233.4 207.4,233.0 220.3,232.6 233.3,233.4 246.2,229.5 259.2,225.3 272.1,218.9 285.0,214.7 298.0,211.7 310.9,217.5 323.8,215.1 336.8,211.3 349.7,208.3 362.7,208.6 375.6,206.8 388.5,211.3 401.5,203.5 414.4,204.4 427.4,207.6 440.3,210.0 453.2,212.6 466.2,215.6 479.1,218.8 492.1,214.9 505.0,212.7 517.9,206.5 530.9,208.1 543.8,204.8 556.8,201.3 569.7,202.3 582.6,202.1 595.6,205.4 608.5,193.7 621.5,189.5 634.4,186.1 647.3,176.0 660.3,175.4 673.2,176.0 686.2,172.4 699.1,167.6 712.0,165.7 725.0,165.7 737.9,163.6 750.8,158.7 763.8,150.4 776.7,140.8 789.7,137.0 802.6,130.2 815.5,128.7 828.5,124.3 841.4,120.1 854.4,117.7 867.3,114.1 880.2,116.1 893.2,111.7 906.1,108.5 919.1,100.0 932.0,243.3"><title>31. Market Breadth Equity Timing: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#fb923c"><title>31. Market Breadth Equity Timing: $10,000.00</title></circle><polyline fill="none" stroke="#f87171" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.3 298.0,243.3 310.9,243.3 323.8,243.3 336.8,243.3 349.7,243.3 362.7,243.3 375.6,243.3 388.5,243.3 401.5,243.3 414.4,243.3 427.4,243.3 440.3,243.3 453.2,243.3 466.2,243.3 479.1,243.3 492.1,243.3 505.0,243.3 517.9,243.3 530.9,243.3 543.8,243.3 556.8,243.3 569.7,243.3 582.6,243.3 595.6,243.3 608.5,243.3 621.5,243.3 634.4,243.3 647.3,243.3 660.3,243.3 673.2,243.3 686.2,243.3 699.1,243.3 712.0,243.3 725.0,243.3 737.9,243.3 750.8,243.3 763.8,243.3 776.7,243.3 789.7,243.3 802.6,243.3 815.5,243.3 828.5,243.3 841.4,243.3 854.4,243.3 867.3,243.3 880.2,243.3 893.2,243.3 906.1,243.3 919.1,243.3 932.0,243.3"><title>32. Panic-Dip Index Buyer: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#f87171"><title>32. Panic-Dip Index Buyer: $10,000.00</title></circle><polyline fill="none" stroke="#67e8f9" stroke-width="1.8" points="78.0,243.3 90.9,244.5 103.9,235.2 116.8,225.5 129.8,224.6 142.7,229.9 155.6,224.9 168.6,220.9 181.5,217.2 194.5,215.8 207.4,214.5 220.3,213.7 233.3,214.8 246.2,211.7 259.2,208.2 272.1,200.8 285.0,194.8 298.0,193.4 310.9,197.4 323.8,195.3 336.8,187.8 349.7,183.0 362.7,183.9 375.6,181.5 388.5,185.0 401.5,176.1 414.4,175.7 427.4,176.4 440.3,177.5 453.2,176.5 466.2,177.3 479.1,178.7 492.1,174.6 505.0,168.8 517.9,163.0 530.9,162.7 543.8,156.5 556.8,155.3 569.7,156.2 582.6,156.8 595.6,158.3 608.5,146.7 621.5,139.6 634.4,135.9 647.3,127.1 660.3,126.0 673.2,123.3 686.2,118.0 699.1,115.5 712.0,113.5 725.0,112.2 737.9,111.1 750.8,107.1 763.8,98.8 776.7,87.6 789.7,83.7 802.6,76.5 815.5,77.4 828.5,74.1 841.4,67.2 854.4,62.1 867.3,59.3 880.2,61.4 893.2,58.0 906.1,52.9 919.1,44.6 932.0,243.3"><title>33. Cross-Asset Risk Appetite Ratio: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#67e8f9"><title>33. Cross-Asset Risk Appetite Ratio: $10,000.00</title></circle><polyline fill="none" stroke="#fde047" stroke-width="1.8" points="78.0,243.3 90.9,243.3 103.9,243.3 116.8,243.3 129.8,243.3 142.7,243.3 155.6,243.3 168.6,243.3 181.5,243.3 194.5,243.3 207.4,243.3 220.3,243.3 233.3,243.3 246.2,243.3 259.2,243.3 272.1,243.3 285.0,243.5 298.0,247.1 310.9,250.4 323.8,250.4 336.8,250.4 349.7,250.4 362.7,250.4 375.6,250.4 388.5,250.4 401.5,250.4 414.4,250.4 427.4,250.4 440.3,250.4 453.2,250.7 466.2,251.1 479.1,252.1 492.1,251.8 505.0,251.9 517.9,251.5 530.9,250.2 543.8,249.2 556.8,249.4 569.7,249.4 582.6,249.4 595.6,249.4 608.5,249.4 621.5,249.4 634.4,249.4 647.3,249.4 660.3,249.4 673.2,249.4 686.2,249.4 699.1,249.4 712.0,249.4 725.0,249.4 737.9,249.4 750.8,249.4 763.8,249.4 776.7,249.4 789.7,249.4 802.6,249.4 815.5,249.4 828.5,249.4 841.4,249.4 854.4,249.4 867.3,249.4 880.2,249.4 893.2,249.4 906.1,249.4 919.1,249.4 932.0,243.3"><title>34. Intraday VWAP -2σ Reversion: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#fde047"><title>34. Intraday VWAP -2σ Reversion: $10,000.00</title></circle><polyline fill="none" stroke="#86efac" stroke-width="1.8" points="78.0,243.3 90.9,243.6 103.9,244.3 116.8,243.7 129.8,245.1 142.7,250.0 155.6,247.1 168.6,250.8 181.5,250.3 194.5,250.8 207.4,250.9 220.3,250.1 233.3,250.1 246.2,247.9 259.2,243.2 272.1,240.5 285.0,238.3 298.0,236.9 310.9,241.0 323.8,239.6 336.8,237.2 349.7,237.7 362.7,239.9 375.6,237.5 388.5,242.3 401.5,236.7 414.4,238.6 427.4,239.5 440.3,241.7 453.2,243.6 466.2,244.5 479.1,245.4 492.1,244.2 505.0,246.5 517.9,244.9 530.9,245.5 543.8,244.1 556.8,244.6 569.7,245.7 582.6,246.0 595.6,246.8 608.5,242.1 621.5,240.5 634.4,239.3 647.3,234.7 660.3,236.2 673.2,237.2 686.2,238.2 699.1,235.2 712.0,233.0 725.0,231.2 737.9,228.8 750.8,223.7 763.8,217.2 776.7,215.0 789.7,217.3 802.6,215.7 815.5,216.0 828.5,214.5 841.4,212.6 854.4,213.3 867.3,211.0 880.2,214.7 893.2,211.7 906.1,207.7 919.1,202.5 932.0,243.3"><title>35. Volatility Squeeze Breakout: $10,000.00</title></polyline><circle cx="932.0" cy="243.3" r="3.5" fill="#86efac"><title>35. Volatility Squeeze Breakout: $10,000.00</title></circle>
           <text x="78" y="308" text-anchor="start" fill="#94a3b8" font-size="11" font-family="monospace">Start</text>
           <text x="505.0" y="308" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-09 13:00 ET</text>
-          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 08:53 ET</text>
+          <text x="932" y="308" text-anchor="end" fill="#94a3b8" font-size="11" font-family="monospace">2026-11-24 10:49 ET</text>
         </svg>
         </div>
       </details>
@@ -661,7 +1354,7 @@
       <div class="panel-header">
         <div>
           <h2>&#9889; Recent Arena Trade Activity Feed</h2>
-          <p class="panel-sub">Latest virtual executions across all 13 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
+          <p class="panel-sub">Latest virtual executions across all 34 agents with plain-English decision reasoning and realistic spread + 5 bps slippage friction.</p>
         </div>
       </div>
       <div class="table-wrap">
@@ -811,6 +1504,45 @@
             </tr>
             <tr>
               <td class="num ts-cell">
+                <div>2026-11-11 15:35:00 EST</div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a></td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">QQQ</td>
+              <td class="num">3.4232</td>
+              <td class="num">$572.76</td>
+              <td class="num neutral">— (Entry)</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-11 15:35:00 EST</div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><a href="agents/overnight_drift.html" class="agent-link">16. Overnight Drift (Close→Open)</a></td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.1885</td>
+              <td class="num">$614.45</td>
+              <td class="num neutral">— (Entry)</td>
+              <td class="reasoning-cell">ENTRY_OVERNIGHT_DRIFT: target_weight=19.5%, stop=-3.0%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
+                <div>2026-11-11 15:35:00 EST</div>
+                <div class="sub-num">2026-11-12 05:35:00 KST</div>
+              </td>
+              <td><a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a></td>
+              <td><span class="side-pill side-sell">SELL</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.1877</td>
+              <td class="num">$613.71</td>
+              <td class="num pos">+$3.92 (+0.20%)</td>
+              <td class="reasoning-cell">End-of-day mandatory flatten for SPY (3.1877 shares)</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
                 <div>2026-11-11 15:30:00 EST</div>
                 <div class="sub-num">2026-11-12 05:30:00 KST</div>
               </td>
@@ -850,6 +1582,19 @@
             </tr>
             <tr>
               <td class="num ts-cell">
+                <div>2026-11-11 15:30:00 EST</div>
+                <div class="sub-num">2026-11-12 05:30:00 KST</div>
+              </td>
+              <td><a href="agents/intraday_momentum.html" class="agent-link">18. Intraday Momentum (Gao 2018)</a></td>
+              <td><span class="side-pill side-buy">BUY</span></td>
+              <td class="mono strong">SPY</td>
+              <td class="num">3.1877</td>
+              <td class="num">$612.48</td>
+              <td class="num neutral">— (Entry)</td>
+              <td class="reasoning-cell">ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%</td>
+            </tr>
+            <tr>
+              <td class="num ts-cell">
                 <div>2026-11-11 15:00:00 EST</div>
                 <div class="sub-num">2026-11-12 05:00:00 KST</div>
               </td>
@@ -886,58 +1631,6 @@
               <td class="num">$235.57</td>
               <td class="num neutral">— (Entry)</td>
               <td class="reasoning-cell">HON exhibits bullish SMA(10/20/30) alignment ($235.12 &gt; $234.31 &gt; $233.88) with RSI(14) at 64.5 and 1.03x volume; buying with 2.3:1 R/R (stop $232.99, target $240.76).</td>
-            </tr>
-            <tr>
-              <td class="num ts-cell">
-                <div>2026-11-11 15:00:00 EST</div>
-                <div class="sub-num">2026-11-12 05:00:00 KST</div>
-              </td>
-              <td><a href="agents/llm_macro.html" class="agent-link">7. Macro &amp; Sector Strategist (Gemini Flash)</a></td>
-              <td><span class="side-pill side-sell">SELL</span></td>
-              <td class="mono strong">XLP</td>
-              <td class="num">21.5768</td>
-              <td class="num">$85.01</td>
-              <td class="num pos">+$33.58 (+1.87%)</td>
-              <td class="reasoning-cell">Take-profit triggered at $85.07 (intrabar high $85.14 &gt;= target $85.07)</td>
-            </tr>
-            <tr>
-              <td class="num ts-cell">
-                <div>2026-11-11 14:30:00 EST</div>
-                <div class="sub-num">2026-11-12 04:30:00 KST</div>
-              </td>
-              <td><a href="agents/ctrl_random.html" class="agent-link">10. Random Trader (Luck Control)</a></td>
-              <td><span class="side-pill side-sell">SELL</span></td>
-              <td class="mono strong">AXP</td>
-              <td class="num">5.6162</td>
-              <td class="num">$366.64</td>
-              <td class="num pos">+$28.14 (+1.39%)</td>
-              <td class="reasoning-cell">Null-hypothesis random control: deterministic cycle seed (acb7d663) rolled 0.202 (&lt; 0.25) to randomly exit held position AXP.</td>
-            </tr>
-            <tr>
-              <td class="num ts-cell">
-                <div>2026-11-11 13:30:00 EST</div>
-                <div class="sub-num">2026-11-12 03:30:00 KST</div>
-              </td>
-              <td><a href="agents/coded_orb.html" class="agent-link">3. Intraday ORB (Flat by Close)</a></td>
-              <td><span class="side-pill side-sell">SELL</span></td>
-              <td class="mono strong">AXP</td>
-              <td class="num">5.8002</td>
-              <td class="num">$367.96</td>
-              <td class="num pos">+$36.73 (+1.75%)</td>
-              <td class="reasoning-cell">Take-profit triggered at $368.22 (intrabar high $368.64 &gt;= target $368.22)</td>
-            </tr>
-            <tr>
-              <td class="num ts-cell">
-                <div>2026-11-11 13:30:00 EST</div>
-                <div class="sub-num">2026-11-12 03:30:00 KST</div>
-              </td>
-              <td><a href="agents/coded_orb.html" class="agent-link">3. Intraday ORB (Flat by Close)</a></td>
-              <td><span class="side-pill side-buy">BUY</span></td>
-              <td class="mono strong">ABBV</td>
-              <td class="num">11.2824</td>
-              <td class="num">$186.02</td>
-              <td class="num neutral">— (Entry)</td>
-              <td class="reasoning-cell">Buying ABBV on 30-min Opening Range Breakout: price $186.20 cleared ORH $184.07 (ORL $183.16) on 1.37x relative volume. Stop placed at opening range midpoint ($183.61) with 2R intraday target at $191.37.</td>
             </tr>
           </tbody>
         </table>
@@ -983,6 +1676,16 @@
           </thead>
           <tbody>
             <tr>
+              <td class="mono">allocation_agents.py</td>
+              <td class="mono hash-cell"><code>265976c42ad9343a4f5f696d3173d3d13ca04bd668f262b0838de2c8e55eac3c</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">calendar_agents.py</td>
+              <td class="mono hash-cell"><code>0efe30b063cd3b07de91cb46ef0edf6b721b7fbce8aa7ae38a2fbc4358b1a246</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
               <td class="mono">claude_rmp_agent.py</td>
               <td class="mono hash-cell"><code>dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
@@ -998,8 +1701,38 @@
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
             <tr>
+              <td class="mono">factor_agents.py</td>
+              <td class="mono hash-cell"><code>e16c9e5bca1c238fddd73aed9013b03a018691d500ee73bda466a61f63479580</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">kiro_pair_reversion_agent.py</td>
+              <td class="mono hash-cell"><code>8ab293b03a1ab15c8fa42e4b3073047a9ddc293f51ca1060a80d9e0f6b6adae3</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">kiro_pair_reversion_params.json</td>
+              <td class="mono hash-cell"><code>433fbd40d1ae88bd7c2852da3de0d35bed8450149c387680520a278aca26340d</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
               <td class="mono">llm_agents.py</td>
               <td class="mono hash-cell"><code>88fafd78d80d6b6ba8d38e975cf4fb1ecc3f5c619e5e07937bf511be45ebd86b</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">microstructure_agents.py</td>
+              <td class="mono hash-cell"><code>df04fdeb3238f98311a88e8dc19f8ffeba9c87706a3a5d4a46ba20c285f2f2f9</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">part_b_common.py</td>
+              <td class="mono hash-cell"><code>1e98e77f9e811440aea5301098889dd9dae0d0bbb929cbd6afd63c82fec3353f</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
+            <tr>
+              <td class="mono">part_b_params.json</td>
+              <td class="mono hash-cell"><code>1a7dcc645a6292c6908a40f71bb3b025c5e0c59b55073e3c78d76bc0789bc93a</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
             <tr>
@@ -1017,6 +1750,11 @@
               <td class="mono hash-cell"><code>984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192</code></td>
               <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
             </tr>
+            <tr>
+              <td class="mono">timing_agents.py</td>
+              <td class="mono hash-cell"><code>25a5d9e6760ee373ec42e1c26327c890b56b39e926cf3cad4d822ebcbbd01879</code></td>
+              <td><span class="status-pill status-active">LOCKED &amp; VERIFIED</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1029,7 +1767,7 @@
 
   <script>
     (function() {
-      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-24 08:53 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 9998.59, 10007.87, 10044.27, 10051.79, 10025.4, 10063.63, 10095.12, 10131.09, 10134.53, 10137.47, 10141.74, 10135.0, 10164.89, 10186.49, 10218.32, 10232.37, 10241.22, 10214.89, 10216.38, 10239.07, 10232.89, 10227.12, 10244.07, 10222.19, 10251.68, 10248.05, 10222.93, 10188.11, 10154.81, 10157.2, 10154.21, 10152.78, 10163.3, 10171.04, 10175.24, 10197.51, 10211.13, 10201.09, 10200.58, 10191.04, 10242.93, 10284.43, 10305.34, 10347.8, 10340.75, 10335.56, 10327.82, 10335.76, 10345.43, 10345.61, 10350.98, 10362.04, 10394.12, 10420.53, 10423.09, 10438.48, 10423.58, 10435.01, 10441.61, 10449.84, 10472.92, 10460.46, 10474.24, 10483.07, 10512.38, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 9998.59, 9995.42, 10003.05, 9986.46, 9983.2, 9981.82, 9992.55, 9999.34, 10005.53, 10003.87, 10018.89, 10023.1, 10057.52, 10065.38, 10071.23, 10071.93, 10071.82, 10053.81, 10028.31, 10050.44, 10082.2, 10097.16, 10135.12, 10140.48, 10173.25, 10170.97, 10155.77, 10107.02, 10085.41, 10075.12, 10057.59, 10062.1, 10061.32, 10079.52, 10080.42, 10103.97, 10112.63, 10116.09, 10101.04, 10087.03, 10115.5, 10113.66, 10113.34, 10135.41, 10131.6, 10128.99, 10127.77, 10134.63, 10147.62, 10173.94, 10200.52, 10196.21, 10196.21, 10196.21, 10194.98, 10194.23, 10195.96, 10196.44, 10198.32, 10197.98, 10198.92, 10203.69, 10203.69, 10203.69, 10203.69, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0, 9998.59, 10001.27, 10002.77, 9996.89, 10020.19, 10046.09, 10088.27, 10082.72, 10076.41, 10075.99, 10073.1, 10090.68, 10090.68, 10089.45, 10091.96, 10094.91, 10077.91, 10082.14, 10114.84, 10140.87, 10142.78, 10162.65, 10136.87, 10175.37, 10164.2, 10164.2, 10162.77, 10172.87, 10170.92, 10172.95, 10178.48, 10218.88, 10257.17, 10263.36, 10273.38, 10292.99, 10293.94, 10288.81, 10288.81, 10287.56, 10310.28, 10311.29, 10332.8, 10337.92, 10358.46, 10365.23, 10379.79, 10397.36, 10415.57, 10422.61, 10436.72, 10436.72, 10435.24, 10458.49, 10463.75, 10475.27, 10477.93, 10503.8, 10527.76, 10532.17, 10522.74, 10552.27, 10562.9, 10597.9, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 9998.6, 10010.3, 10032.5, 10042.03, 10024.93, 10046.05, 10071.55, 10098.87, 10100.75, 10102.62, 10100.62, 10095.09, 10114.26, 10131.36, 10167.75, 10193.25, 10199.4, 10184.69, 10197.13, 10224.68, 10233.98, 10225.32, 10243.83, 10224.11, 10256.43, 10259.53, 10263.41, 10251.1, 10258.69, 10255.69, 10249.81, 10262.38, 10289.29, 10321.4, 10326.17, 10352.67, 10358.89, 10353.92, 10349.09, 10339.66, 10393.47, 10425.88, 10444.28, 10477.34, 10485.41, 10505.45, 10533.71, 10551.2, 10561.14, 10576.68, 10583.79, 10601.14, 10619.16, 10647.98, 10659.21, 10667.45, 10673.79, 10676.68, 10709.99, 10749.52, 10761.34, 10750.8, 10759.97, 10775.44, 10814.69, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 9998.88, 10006.98, 10029.75, 10039.62, 10018.81, 10024.68, 10039.81, 10038.68, 10043.68, 10042.56, 10042.4, 10033.8, 10040.75, 10026.1, 10016.82, 10020.1, 10026.14, 10000.86, 9997.77, 10009.06, 10003.42, 9994.28, 9997.79, 9983.77, 9993.79, 9988.45, 9977.4, 9963.67, 9951.24, 9950.29, 9943.68, 9931.83, 9932.2, 9931.24, 9938.86, 9937.74, 9935.04, 9933.93, 9927.6, 9926.49, 9929.4, 9928.45, 9917.04, 9911.24, 9903.82, 9910.9, 9909.94, 9915.31, 9914.2, 9916.08, 9918.49, 9927.75, 9940.88, 9949.91, 9945.08, 9961.21, 9960.4, 9970.36, 9974.72, 9967.63, 9979.74, 9961.69, 9973.02, 9994.71, 10029.01, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0, 9998.95, 10007.3, 10013.61, 10000.25, 10010.77, 10014.58, 10035.3, 10027.68, 10026.45, 10033.33, 10030.93, 10039.03, 10045.04, 10052.69, 10064.44, 10079.99, 10069.14, 10068.92, 10077.08, 10071.83, 10067.61, 10074.99, 10050.91, 10069.18, 10058.67, 10043.06, 10037.1, 10030.94, 10031.04, 10026.95, 10034.0, 10045.78, 10053.4, 10050.81, 10062.91, 10070.86, 10068.01, 10066.94, 10058.05, 10072.74, 10083.48, 10094.75, 10116.2, 10118.83, 10113.15, 10117.61, 10125.68, 10131.28, 10132.95, 10135.63, 10149.75, 10165.99, 10188.3, 10190.31, 10198.68, 10191.7, 10204.74, 10210.48, 10202.28, 10207.97, 10207.3, 10223.76, 10230.84, 10245.79, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 9998.91, 10015.81, 10017.75, 10025.61, 10005.94, 10027.05, 10042.77, 10048.74, 10059.8, 10072.28, 10076.69, 10060.77, 10084.89, 10087.98, 10093.94, 10094.81, 10104.2, 10082.91, 10086.99, 10100.41, 10096.52, 10086.63, 10092.97, 10071.89, 10104.23, 10105.24, 10070.77, 10029.03, 9999.03, 9996.28, 9998.85, 10007.93, 10005.26, 10009.91, 10002.63, 10010.89, 10019.4, 10026.71, 10023.53, 9998.13, 9984.15, 9977.42, 9980.25, 10000.52, 10003.73, 9997.31, 9994.88, 9999.33, 10009.29, 10015.92, 10009.31, 10014.98, 10027.76, 10039.18, 10029.8, 10043.04, 10041.88, 10047.28, 10052.04, 10058.66, 10073.71, 10059.29, 10074.09, 10086.11, 10105.92, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 9999.28, 9995.57, 9997.94, 9999.76, 9992.13, 10000.99, 10003.85, 10008.89, 10008.57, 10015.95, 10016.69, 10015.12, 10015.12, 10014.28, 10015.47, 10012.74, 10010.74, 10002.35, 10001.63, 10000.95, 10000.95, 10000.95, 10000.22, 9995.93, 10001.83, 10002.77, 9999.09, 9994.93, 9991.2, 9990.36, 9989.8, 9989.08, 9988.68, 9987.84, 9988.64, 9990.21, 9989.89, 9990.5, 9989.23, 9989.23, 9989.23, 9988.39, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.27, 9988.54, 9990.76, 9991.49, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 9998.6, 9997.73, 9996.33, 9996.63, 9983.79, 9995.88, 9990.76, 9996.61, 9993.59, 9986.0, 9977.05, 9973.05, 10002.52, 10008.42, 10028.38, 10036.34, 10041.4, 10024.79, 10019.95, 10042.03, 10049.46, 10051.09, 10061.49, 10039.7, 10069.9, 10069.33, 10051.72, 10027.16, 10009.41, 10006.99, 9995.28, 10010.34, 10015.87, 10034.27, 10017.49, 10027.82, 10032.41, 10033.86, 10025.07, 10013.3, 10033.97, 10037.79, 10046.33, 10083.2, 10071.61, 10060.9, 10060.97, 10070.84, 10075.71, 10083.37, 10081.71, 10103.05, 10117.77, 10127.28, 10126.58, 10135.24, 10141.11, 10144.79, 10172.18, 10186.64, 10197.75, 10192.86, 10203.23, 10210.27, 10217.39, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 9998.6, 10000.8, 10014.82, 10025.32, 10007.21, 10036.13, 10030.95, 10031.55, 10016.94, 10005.43, 10000.54, 9996.67, 10006.76, 10018.74, 10036.16, 10041.07, 10040.28, 10031.28, 10021.87, 10024.44, 10025.5, 10020.49, 10021.85, 9991.56, 10013.04, 10001.22, 9992.47, 9970.68, 9964.85, 9953.06, 9941.0, 9950.24, 9950.38, 9965.34, 9957.87, 9977.25, 9992.02, 9989.72, 9988.87, 9987.76, 10027.83, 10051.14, 10068.4, 10091.4, 10088.25, 10085.33, 10084.44, 10089.9, 10109.34, 10113.67, 10111.42, 10122.71, 10149.5, 10173.26, 10173.73, 10188.58, 10194.0, 10197.82, 10192.53, 10188.96, 10199.62, 10176.53, 10192.33, 10209.93, 10233.91, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 9998.6, 10004.09, 10014.5, 10020.43, 9988.11, 10014.56, 10021.61, 10038.87, 10043.04, 10037.73, 10031.76, 10025.14, 10046.53, 10062.05, 10096.88, 10107.95, 10110.36, 10096.58, 10112.0, 10133.81, 10139.2, 10134.84, 10144.18, 10111.24, 10148.15, 10150.51, 10139.63, 10126.77, 10110.61, 10095.94, 10084.16, 10094.04, 10099.21, 10121.21, 10114.06, 10142.0, 10150.27, 10129.72, 10132.68, 10127.58, 10179.97, 10215.18, 10226.85, 10268.54, 10261.5, 10265.15, 10281.71, 10292.43, 10308.46, 10314.78, 10316.22, 10336.4, 10372.7, 10411.37, 10422.29, 10428.75, 10426.41, 10438.7, 10451.19, 10458.2, 10473.09, 10458.92, 10492.74, 10513.42, 10552.55, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "14. Claude Residual-Momentum Pullback", "agent_id": "claude_rmp", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9998.6, 10010.07, 10012.36, 10017.0, 10037.48, 10051.67, 10067.55, 10087.63, 10095.85, 10094.17, 10094.85, 10104.05, 10100.44, 10106.98, 10113.26, 10115.78, 10116.87, 10128.53, 10122.97, 10134.36, 10135.07, 10134.96, 10134.42, 10134.92, 10133.01, 10133.3, 10138.16, 10138.03, 10147.52, 10000.0], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
+      const payload = {"labels": ["Start", "2026-11-05 10:00 ET", "2026-11-05 10:30 ET", "2026-11-05 11:00 ET", "2026-11-05 11:30 ET", "2026-11-05 12:00 ET", "2026-11-05 12:30 ET", "2026-11-05 13:00 ET", "2026-11-05 13:30 ET", "2026-11-05 14:00 ET", "2026-11-05 14:30 ET", "2026-11-05 15:00 ET", "2026-11-05 15:30 ET", "2026-11-06 09:30 ET", "2026-11-06 10:00 ET", "2026-11-06 10:30 ET", "2026-11-06 11:00 ET", "2026-11-06 11:30 ET", "2026-11-06 12:00 ET", "2026-11-06 12:30 ET", "2026-11-06 13:00 ET", "2026-11-06 13:30 ET", "2026-11-06 14:00 ET", "2026-11-06 14:30 ET", "2026-11-06 15:00 ET", "2026-11-06 15:30 ET", "2026-11-09 09:30 ET", "2026-11-09 10:00 ET", "2026-11-09 10:30 ET", "2026-11-09 11:00 ET", "2026-11-09 11:30 ET", "2026-11-09 12:00 ET", "2026-11-09 12:30 ET", "2026-11-09 13:00 ET", "2026-11-09 13:30 ET", "2026-11-09 14:00 ET", "2026-11-09 14:30 ET", "2026-11-09 15:00 ET", "2026-11-09 15:30 ET", "2026-11-10 09:30 ET", "2026-11-10 10:00 ET", "2026-11-10 10:30 ET", "2026-11-10 11:00 ET", "2026-11-10 11:30 ET", "2026-11-10 12:00 ET", "2026-11-10 12:30 ET", "2026-11-10 13:00 ET", "2026-11-10 13:30 ET", "2026-11-10 14:00 ET", "2026-11-10 14:30 ET", "2026-11-10 15:00 ET", "2026-11-10 15:30 ET", "2026-11-11 09:30 ET", "2026-11-11 10:00 ET", "2026-11-11 10:30 ET", "2026-11-11 11:00 ET", "2026-11-11 11:30 ET", "2026-11-11 12:00 ET", "2026-11-11 12:30 ET", "2026-11-11 13:00 ET", "2026-11-11 13:30 ET", "2026-11-11 14:00 ET", "2026-11-11 14:30 ET", "2026-11-11 15:00 ET", "2026-11-11 15:30 ET", "2026-11-11 15:35 ET", "2026-11-24 10:49 ET"], "datasets": [{"label": "1. Trend Follower (MA / Breakout)", "agent_id": "coded_trend", "category": "Coded", "data": [10000.0, 9998.59, 10007.87, 10044.27, 10051.79, 10025.4, 10063.63, 10095.12, 10131.09, 10134.53, 10137.47, 10141.74, 10135.0, 10164.89, 10186.49, 10218.32, 10232.37, 10241.22, 10214.89, 10216.38, 10239.07, 10232.89, 10227.12, 10244.07, 10222.19, 10251.68, 10248.05, 10222.93, 10188.11, 10154.81, 10157.2, 10154.21, 10152.78, 10163.3, 10171.04, 10175.24, 10197.51, 10211.13, 10201.09, 10200.58, 10191.04, 10242.93, 10284.43, 10305.34, 10347.8, 10340.75, 10335.56, 10327.82, 10335.76, 10345.43, 10345.61, 10350.98, 10362.04, 10394.12, 10420.53, 10423.09, 10438.48, 10423.58, 10435.01, 10441.61, 10449.84, 10472.92, 10460.46, 10474.24, 10483.07, 10512.38, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "2. Mean Reversion (RSI / Bollinger)", "agent_id": "coded_mean_rev", "category": "Coded", "data": [10000.0, 9998.59, 9995.42, 10003.05, 9986.46, 9983.2, 9981.82, 9992.55, 9999.34, 10005.53, 10003.87, 10018.89, 10023.1, 10057.52, 10065.38, 10071.23, 10071.93, 10071.82, 10053.81, 10028.31, 10050.44, 10082.2, 10097.16, 10135.12, 10140.48, 10173.25, 10170.97, 10155.77, 10107.02, 10085.41, 10075.12, 10057.59, 10062.1, 10061.32, 10079.52, 10080.42, 10103.97, 10112.63, 10116.09, 10101.04, 10087.03, 10115.5, 10113.66, 10113.34, 10135.41, 10131.6, 10128.99, 10127.77, 10134.63, 10147.62, 10173.94, 10200.52, 10196.21, 10196.21, 10196.21, 10194.98, 10194.23, 10195.96, 10196.44, 10198.32, 10197.98, 10198.92, 10203.69, 10203.69, 10203.69, 10203.69, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "3. Intraday ORB (Flat by Close)", "agent_id": "coded_orb", "category": "Coded", "data": [10000.0, 10000.0, 9998.59, 10001.27, 10002.77, 9996.89, 10020.19, 10046.09, 10088.27, 10082.72, 10076.41, 10075.99, 10073.1, 10090.68, 10090.68, 10089.45, 10091.96, 10094.91, 10077.91, 10082.14, 10114.84, 10140.87, 10142.78, 10162.65, 10136.87, 10175.37, 10164.2, 10164.2, 10162.77, 10172.87, 10170.92, 10172.95, 10178.48, 10218.88, 10257.17, 10263.36, 10273.38, 10292.99, 10293.94, 10288.81, 10288.81, 10287.56, 10310.28, 10311.29, 10332.8, 10337.92, 10358.46, 10365.23, 10379.79, 10397.36, 10415.57, 10422.61, 10436.72, 10436.72, 10435.24, 10458.49, 10463.75, 10475.27, 10477.93, 10503.8, 10527.76, 10532.17, 10522.74, 10552.27, 10562.9, 10597.9, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "4. Sector ETF Rotation", "agent_id": "coded_sector", "category": "Coded", "data": [10000.0, 9998.6, 10010.3, 10032.5, 10042.03, 10024.93, 10046.05, 10071.55, 10098.87, 10100.75, 10102.62, 10100.62, 10095.09, 10114.26, 10131.36, 10167.75, 10193.25, 10199.4, 10184.69, 10197.13, 10224.68, 10233.98, 10225.32, 10243.83, 10224.11, 10256.43, 10259.53, 10263.41, 10251.1, 10258.69, 10255.69, 10249.81, 10262.38, 10289.29, 10321.4, 10326.17, 10352.67, 10358.89, 10353.92, 10349.09, 10339.66, 10393.47, 10425.88, 10444.28, 10477.34, 10485.41, 10505.45, 10533.71, 10551.2, 10561.14, 10576.68, 10583.79, 10601.14, 10619.16, 10647.98, 10659.21, 10667.45, 10673.79, 10676.68, 10709.99, 10749.52, 10761.34, 10750.8, 10759.97, 10775.44, 10814.69, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "5. Technical Analyst (Gemini Flash)", "agent_id": "llm_technical", "category": "Gemini Flash LLM", "data": [10000.0, 9998.88, 10006.98, 10029.75, 10039.62, 10018.81, 10024.68, 10039.81, 10038.68, 10043.68, 10042.56, 10042.4, 10033.8, 10040.75, 10026.1, 10016.82, 10020.1, 10026.14, 10000.86, 9997.77, 10009.06, 10003.42, 9994.28, 9997.79, 9983.77, 9993.79, 9988.45, 9977.4, 9963.67, 9951.24, 9950.29, 9943.68, 9931.83, 9932.2, 9931.24, 9938.86, 9937.74, 9935.04, 9933.93, 9927.6, 9926.49, 9929.4, 9928.45, 9917.04, 9911.24, 9903.82, 9910.9, 9909.94, 9915.31, 9914.2, 9916.08, 9918.49, 9927.75, 9940.88, 9949.91, 9945.08, 9961.21, 9960.4, 9970.36, 9974.72, 9967.63, 9979.74, 9961.69, 9973.02, 9994.71, 10029.01, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "6. News & Catalyst Trader (Gemini Flash)", "agent_id": "llm_catalyst", "category": "Gemini Flash LLM", "data": [10000.0, 10000.0, 9998.95, 10007.3, 10013.61, 10000.25, 10010.77, 10014.58, 10035.3, 10027.68, 10026.45, 10033.33, 10030.93, 10039.03, 10045.04, 10052.69, 10064.44, 10079.99, 10069.14, 10068.92, 10077.08, 10071.83, 10067.61, 10074.99, 10050.91, 10069.18, 10058.67, 10043.06, 10037.1, 10030.94, 10031.04, 10026.95, 10034.0, 10045.78, 10053.4, 10050.81, 10062.91, 10070.86, 10068.01, 10066.94, 10058.05, 10072.74, 10083.48, 10094.75, 10116.2, 10118.83, 10113.15, 10117.61, 10125.68, 10131.28, 10132.95, 10135.63, 10149.75, 10165.99, 10188.3, 10190.31, 10198.68, 10191.7, 10204.74, 10210.48, 10202.28, 10207.97, 10207.3, 10223.76, 10230.84, 10245.79, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "7. Macro & Sector Strategist (Gemini Flash)", "agent_id": "llm_macro", "category": "Gemini Flash LLM", "data": [10000.0, 9998.91, 10015.81, 10017.75, 10025.61, 10005.94, 10027.05, 10042.77, 10048.74, 10059.8, 10072.28, 10076.69, 10060.77, 10084.89, 10087.98, 10093.94, 10094.81, 10104.2, 10082.91, 10086.99, 10100.41, 10096.52, 10086.63, 10092.97, 10071.89, 10104.23, 10105.24, 10070.77, 10029.03, 9999.03, 9996.28, 9998.85, 10007.93, 10005.26, 10009.91, 10002.63, 10010.89, 10019.4, 10026.71, 10023.53, 9998.13, 9984.15, 9977.42, 9980.25, 10000.52, 10003.73, 9997.31, 9994.88, 9999.33, 10009.29, 10015.92, 10009.31, 10014.98, 10027.76, 10039.18, 10029.8, 10043.04, 10041.88, 10047.28, 10052.04, 10058.66, 10073.71, 10059.29, 10074.09, 10086.11, 10105.92, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "8. Cautious Risk-First Trader (Gemini Flash)", "agent_id": "llm_cautious", "category": "Gemini Flash LLM", "data": [10000.0, 9999.28, 9995.57, 9997.94, 9999.76, 9992.13, 10000.99, 10003.85, 10008.89, 10008.57, 10015.95, 10016.69, 10015.12, 10015.12, 10014.28, 10015.47, 10012.74, 10010.74, 10002.35, 10001.63, 10000.95, 10000.95, 10000.95, 10000.22, 9995.93, 10001.83, 10002.77, 9999.09, 9994.93, 9991.2, 9990.36, 9989.8, 9989.08, 9988.68, 9987.84, 9988.64, 9990.21, 9989.89, 9990.5, 9989.23, 9989.23, 9989.23, 9988.39, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.99, 9987.27, 9988.54, 9990.76, 9991.49, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 9992.64, 10000.0], "borderColor": "#facc15", "backgroundColor": "#facc15", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "9. Buy-and-Hold SPY (Benchmark)", "agent_id": "ctrl_spy", "category": "Control", "data": [10000.0, 9994.11, 9992.64, 10014.38, 10025.3, 9991.79, 10018.03, 10010.99, 10015.04, 10012.44, 10003.4, 10005.02, 10000.34, 10025.02, 10030.33, 10038.02, 10040.99, 10045.13, 10022.44, 10025.35, 10036.55, 10039.8, 10032.79, 10045.09, 10008.43, 10031.68, 10027.19, 10010.83, 9976.2, 9949.44, 9945.29, 9938.55, 9949.9, 9956.96, 9969.16, 9962.65, 9986.29, 9995.1, 9991.91, 9989.74, 9966.76, 9989.41, 9990.28, 10005.02, 10031.0, 10023.51, 10018.04, 10016.48, 10036.58, 10038.86, 10042.9, 10050.33, 10065.67, 10089.64, 10111.62, 10110.54, 10129.76, 10122.17, 10139.01, 10147.45, 10139.7, 10152.79, 10138.84, 10163.61, 10173.48, 10205.54, 10000.0], "borderColor": "#ffffff", "backgroundColor": "#ffffff", "borderWidth": 2.6, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "10. Random Trader (Luck Control)", "agent_id": "ctrl_random", "category": "Control", "data": [10000.0, 9998.6, 9997.73, 9996.33, 9996.63, 9983.79, 9995.88, 9990.76, 9996.61, 9993.59, 9986.0, 9977.05, 9973.05, 10002.52, 10008.42, 10028.38, 10036.34, 10041.4, 10024.79, 10019.95, 10042.03, 10049.46, 10051.09, 10061.49, 10039.7, 10069.9, 10069.33, 10051.72, 10027.16, 10009.41, 10006.99, 9995.28, 10010.34, 10015.87, 10034.27, 10017.49, 10027.82, 10032.41, 10033.86, 10025.07, 10013.3, 10033.97, 10037.79, 10046.33, 10083.2, 10071.61, 10060.9, 10060.97, 10070.84, 10075.71, 10083.37, 10081.71, 10103.05, 10117.77, 10127.28, 10126.58, 10135.24, 10141.11, 10144.79, 10172.18, 10186.64, 10197.75, 10192.86, 10203.23, 10210.27, 10217.39, 10000.0], "borderColor": "#94a3b8", "backgroundColor": "#94a3b8", "borderWidth": 2.0, "borderDash": [6, 4], "pointRadius": 2, "tension": 0.18}, {"label": "11. Berkshire Style (13F Pattern)", "agent_id": "style_berkshire", "category": "Filing-Style", "data": [10000.0, 9998.6, 10000.8, 10014.82, 10025.32, 10007.21, 10036.13, 10030.95, 10031.55, 10016.94, 10005.43, 10000.54, 9996.67, 10006.76, 10018.74, 10036.16, 10041.07, 10040.28, 10031.28, 10021.87, 10024.44, 10025.5, 10020.49, 10021.85, 9991.56, 10013.04, 10001.22, 9992.47, 9970.68, 9964.85, 9953.06, 9941.0, 9950.24, 9950.38, 9965.34, 9957.87, 9977.25, 9992.02, 9989.72, 9988.87, 9987.76, 10027.83, 10051.14, 10068.4, 10091.4, 10088.25, 10085.33, 10084.44, 10089.9, 10109.34, 10113.67, 10111.42, 10122.71, 10149.5, 10173.26, 10173.73, 10188.58, 10194.0, 10197.82, 10192.53, 10188.96, 10199.62, 10176.53, 10192.33, 10209.93, 10233.91, 10000.0], "borderColor": "#22c55e", "backgroundColor": "#22c55e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "12. Congress Style (House PTR Pattern)", "agent_id": "style_congress", "category": "Filing-Style", "data": [10000.0, 9998.6, 10004.09, 10014.5, 10020.43, 9988.11, 10014.56, 10021.61, 10038.87, 10043.04, 10037.73, 10031.76, 10025.14, 10046.53, 10062.05, 10096.88, 10107.95, 10110.36, 10096.58, 10112.0, 10133.81, 10139.2, 10134.84, 10144.18, 10111.24, 10148.15, 10150.51, 10139.63, 10126.77, 10110.61, 10095.94, 10084.16, 10094.04, 10099.21, 10121.21, 10114.06, 10142.0, 10150.27, 10129.72, 10132.68, 10127.58, 10179.97, 10215.18, 10226.85, 10268.54, 10261.5, 10265.15, 10281.71, 10292.43, 10308.46, 10314.78, 10316.22, 10336.4, 10372.7, 10411.37, 10422.29, 10428.75, 10426.41, 10438.7, 10451.19, 10458.2, 10473.09, 10458.92, 10492.74, 10513.42, 10552.55, 10000.0], "borderColor": "#f43f5e", "backgroundColor": "#f43f5e", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "14. Claude Residual-Momentum Pullback", "agent_id": "claude_rmp", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9998.6, 10010.07, 10012.36, 10017.0, 10037.48, 10051.67, 10067.55, 10087.63, 10095.85, 10094.17, 10094.85, 10104.05, 10100.44, 10106.98, 10113.26, 10115.78, 10116.87, 10128.53, 10122.97, 10134.36, 10135.07, 10134.96, 10134.42, 10134.92, 10133.01, 10133.3, 10138.16, 10138.03, 10147.52, 10000.0], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "15. Kiro Pair-Spread Reversion (PSR)", "agent_id": "kiro_pair_reversion", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0], "borderColor": "#06b6d4", "backgroundColor": "#06b6d4", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "16. Overnight Drift (Close→Open)", "agent_id": "overnight_drift", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9997.66, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10005.26, 10002.92, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 10000.29, 9997.95, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9994.82, 9992.48, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10009.08, 10006.72, 10000.0], "borderColor": "#60a5fa", "backgroundColor": "#60a5fa", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "17. EOD Loser Overnight Reversal", "agent_id": "eod_loser_overnight", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9998.65, 10010.64, 10021.52, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10024.05, 10000.0], "borderColor": "#a78bfa", "backgroundColor": "#a78bfa", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "18. Intraday Momentum (Gao 2018)", "agent_id": "intraday_momentum", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9998.83, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9996.76, 9995.59, 10000.68, 10000.0], "borderColor": "#e879f9", "backgroundColor": "#e879f9", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "19. Turn-of-Month Calendar", "agent_id": "turn_of_month", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0], "borderColor": "#2dd4bf", "backgroundColor": "#2dd4bf", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "20. Intraday Gap-Down Fill", "agent_id": "gap_down_fill", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0], "borderColor": "#fb7185", "backgroundColor": "#fb7185", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "21. Dual Momentum Macro ETF", "agent_id": "dual_momentum_macro", "category": "Coded", "data": [10000.0, 9997.65, 10009.26, 10022.89, 10022.33, 10013.55, 10022.06, 10022.14, 10027.11, 10026.54, 10025.44, 10026.09, 10024.94, 10024.28, 10030.13, 10038.07, 10048.09, 10051.37, 10046.06, 10046.66, 10047.45, 10050.21, 10051.8, 10054.01, 10046.44, 10052.04, 10051.19, 10053.76, 10058.03, 10061.19, 10059.65, 10059.11, 10063.77, 10064.46, 10065.43, 10064.88, 10067.35, 10069.79, 10065.81, 10067.41, 10072.98, 10085.8, 10096.81, 10100.95, 10107.39, 10108.06, 10107.17, 10107.06, 10110.03, 10111.56, 10112.25, 10114.61, 10113.88, 10127.37, 10139.55, 10147.82, 10153.67, 10154.5, 10156.7, 10159.69, 10157.08, 10160.89, 10163.98, 10169.1, 10172.36, 10178.8, 10000.0], "borderColor": "#34d399", "backgroundColor": "#34d399", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "22. Risk Parity 3-Asset (8% Vol)", "agent_id": "risk_parity_3", "category": "Coded", "data": [10000.0, 9996.69, 9996.15, 9997.51, 9999.75, 9992.23, 9995.77, 9995.21, 10000.33, 9999.56, 9996.51, 9997.28, 9994.99, 10000.66, 9997.17, 9998.77, 10000.21, 10004.21, 10001.76, 10001.08, 10003.3, 10004.61, 10007.2, 10010.91, 10006.25, 10011.24, 10009.23, 10006.23, 9996.89, 9995.58, 9991.44, 9993.79, 9994.35, 9993.56, 9993.39, 9990.48, 9990.3, 9988.71, 9985.72, 9987.34, 9984.38, 9989.13, 9987.57, 9989.4, 9995.08, 9994.79, 9993.48, 9992.31, 9995.26, 9995.29, 9998.99, 10006.7, 10005.99, 10011.91, 10010.6, 10008.49, 10013.58, 10013.24, 10017.57, 10020.84, 10021.58, 10023.18, 10025.84, 10031.15, 10036.83, 10040.79, 10000.0], "borderColor": "#38bdf8", "backgroundColor": "#38bdf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "23. Minimum-Variance ETF Portfolio", "agent_id": "min_variance_etf", "category": "Coded", "data": [10000.0, 9994.61, 9994.14, 10000.03, 10001.91, 9987.05, 9999.36, 9995.79, 9998.46, 9997.82, 9995.18, 9997.68, 9994.37, 10006.99, 10009.99, 10014.56, 10018.53, 10025.12, 10017.43, 10018.07, 10023.88, 10028.88, 10032.49, 10040.3, 10027.55, 10041.59, 10035.21, 10028.76, 10013.99, 10004.63, 9995.86, 9991.95, 9992.02, 9991.59, 10000.5, 9996.05, 9996.11, 10000.48, 10001.02, 10004.63, 9996.68, 10006.19, 10005.61, 10013.95, 10032.19, 10033.91, 10027.26, 10025.39, 10039.27, 10047.08, 10050.96, 10057.71, 10065.43, 10077.72, 10081.15, 10083.6, 10093.62, 10095.68, 10099.98, 10107.92, 10111.24, 10119.69, 10117.69, 10132.65, 10138.73, 10148.96, 10000.0], "borderColor": "#818cf8", "backgroundColor": "#818cf8", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "24. Low-Volatility Stock Anomaly", "agent_id": "low_vol_anomaly", "category": "Coded", "data": [10000.0, 9993.53, 9985.11, 9995.48, 10001.88, 9975.75, 10000.76, 10011.97, 10019.45, 10014.64, 10029.59, 10035.1, 10019.87, 10043.89, 10053.94, 10071.17, 10071.25, 10080.83, 10053.7, 10047.17, 10070.83, 10070.42, 10061.54, 10076.74, 10050.04, 10067.29, 10066.12, 10030.45, 9986.34, 9949.49, 9938.2, 9912.08, 9923.82, 9932.5, 9928.04, 9923.9, 9927.5, 9944.35, 9952.53, 9943.44, 9917.59, 9916.47, 9908.49, 9901.5, 9912.58, 9903.77, 9908.08, 9915.16, 9938.97, 9966.33, 9988.47, 10002.79, 10020.84, 10038.87, 10076.32, 10089.58, 10109.35, 10121.82, 10130.59, 10133.44, 10142.66, 10155.66, 10151.53, 10166.74, 10191.75, 10217.37, 10000.0], "borderColor": "#4ade80", "backgroundColor": "#4ade80", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "25. Mega-Cap Top-5 Buy & Hold (Control)", "agent_id": "megacap5_hold", "category": "Control", "data": [10000.0, 9994.1, 10017.74, 10051.46, 10064.18, 10026.58, 10061.83, 10078.76, 10097.62, 10100.44, 10115.36, 10114.2, 10101.78, 10127.24, 10124.36, 10137.72, 10132.36, 10122.74, 10086.39, 10088.45, 10111.78, 10124.66, 10128.31, 10158.31, 10143.65, 10174.48, 10176.14, 10147.04, 10118.65, 10104.68, 10095.04, 10083.09, 10084.46, 10105.89, 10126.76, 10126.2, 10136.79, 10145.51, 10149.62, 10141.99, 10111.72, 10138.81, 10148.26, 10136.72, 10142.71, 10143.09, 10162.8, 10165.27, 10181.45, 10201.41, 10212.59, 10224.1, 10241.03, 10282.66, 10325.31, 10351.33, 10372.38, 10397.03, 10414.28, 10422.08, 10434.53, 10452.08, 10442.84, 10457.17, 10472.96, 10502.78, 10000.0], "borderColor": "#e2e8f0", "backgroundColor": "#e2e8f0", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "26. Cross-Sectional 5D Short Reversal", "agent_id": "xs_short_reversal", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 9993.33, 9996.62, 9980.67, 9991.52, 9991.97, 9994.33, 9984.73, 9985.93, 9996.55, 9991.26, 10003.89, 10021.35, 10039.37, 10047.54, 10054.53, 10041.89, 10056.98, 10070.08, 10082.32, 10070.7, 10077.78, 10043.02, 10088.2, 10076.65, 10059.12, 10023.24, 9988.56, 9974.51, 9951.45, 9962.7, 9962.83, 9972.12, 9970.92, 9992.48, 10000.56, 10005.86, 9993.35, 9985.71, 10002.47, 10003.88, 10019.53, 10049.75, 10053.64, 10047.81, 10059.03, 10071.99, 10087.43, 10090.79, 10098.58, 10116.97, 10139.3, 10151.08, 10141.04, 10169.41, 10175.73, 10184.77, 10188.02, 10183.67, 10205.02, 10194.27, 10209.58, 10233.91, 10271.04, 10000.0], "borderColor": "#f472b6", "backgroundColor": "#f472b6", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "27. 70D High Anchoring (George-Hwang)", "agent_id": "high52_anchor", "category": "Coded", "data": [10000.0, 9993.72, 10013.23, 10052.07, 10061.78, 10032.39, 10066.96, 10082.01, 10107.46, 10111.87, 10111.94, 10117.25, 10103.24, 10108.38, 10120.66, 10159.19, 10191.75, 10205.06, 10170.33, 10180.37, 10209.25, 10214.24, 10202.16, 10224.31, 10189.22, 10232.48, 10225.62, 10195.89, 10174.6, 10172.04, 10171.27, 10153.32, 10139.43, 10156.82, 10186.44, 10181.56, 10184.33, 10200.34, 10201.07, 10201.96, 10188.86, 10216.91, 10240.26, 10244.42, 10257.59, 10242.77, 10266.25, 10291.25, 10311.38, 10329.99, 10350.03, 10368.87, 10390.29, 10431.36, 10501.57, 10526.75, 10541.5, 10550.6, 10578.41, 10597.31, 10613.3, 10636.55, 10628.08, 10644.64, 10666.25, 10699.14, 10000.0], "borderColor": "#fbbf24", "backgroundColor": "#fbbf24", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "28. Value + 63D Momentum Combo", "agent_id": "value_momentum", "category": "Coded", "data": [10000.0, 9993.33, 9994.41, 10011.46, 10025.16, 9989.46, 10015.24, 10009.93, 10022.19, 10019.45, 10029.11, 10034.43, 10016.45, 10044.7, 10042.18, 10054.34, 10054.64, 10062.41, 10048.58, 10052.31, 10057.73, 10046.78, 10042.46, 10047.65, 10023.24, 10048.25, 10043.6, 10012.33, 9966.87, 9933.06, 9915.73, 9879.77, 9876.63, 9880.53, 9882.16, 9892.94, 9907.26, 9915.71, 9912.29, 9902.07, 9888.14, 9910.09, 9909.46, 9923.54, 9962.59, 9964.24, 9956.63, 9962.19, 9980.32, 9990.7, 9998.27, 10003.34, 10009.42, 10027.59, 10038.35, 10046.78, 10064.58, 10066.74, 10081.17, 10097.29, 10104.16, 10107.36, 10106.67, 10127.64, 10146.22, 10169.27, 10000.0], "borderColor": "#a3e635", "backgroundColor": "#a3e635", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "29. 20D Up/Down Volume Accumulation", "agent_id": "volume_accumulation", "category": "Coded", "data": [10000.0, 9993.52, 10028.33, 10072.25, 10092.52, 10067.86, 10098.59, 10127.7, 10162.06, 10158.58, 10165.1, 10168.51, 10150.59, 10159.71, 10159.03, 10190.1, 10221.04, 10218.9, 10173.4, 10172.4, 10215.64, 10244.98, 10250.88, 10277.1, 10254.47, 10304.2, 10307.54, 10290.62, 10282.23, 10299.59, 10301.7, 10291.99, 10290.91, 10316.47, 10360.54, 10357.87, 10368.25, 10382.35, 10378.83, 10381.15, 10383.36, 10436.29, 10469.95, 10498.02, 10531.83, 10530.55, 10550.56, 10587.73, 10608.51, 10616.93, 10627.58, 10628.6, 10641.06, 10679.15, 10737.02, 10763.56, 10778.69, 10783.39, 10807.02, 10839.46, 10860.3, 10883.5, 10872.14, 10899.64, 10914.99, 10947.15, 10000.0], "borderColor": "#22d3ee", "backgroundColor": "#22d3ee", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "30. Regime-Adaptive Beta Switch", "agent_id": "regime_beta_switch", "category": "Coded", "data": [10000.0, 9993.51, 10038.14, 10095.11, 10106.9, 10079.05, 10110.75, 10124.18, 10139.2, 10128.24, 10140.4, 10138.13, 10131.78, 10145.26, 10146.04, 10172.54, 10175.49, 10186.97, 10162.29, 10173.09, 10199.92, 10221.01, 10221.76, 10239.91, 10206.07, 10243.04, 10236.86, 10216.55, 10200.74, 10197.84, 10191.67, 10190.75, 10198.82, 10221.07, 10252.58, 10246.25, 10268.29, 10279.2, 10270.36, 10266.8, 10264.72, 10311.74, 10333.48, 10348.42, 10379.07, 10371.74, 10384.09, 10405.56, 10422.12, 10435.57, 10447.25, 10456.11, 10480.35, 10491.5, 10531.93, 10529.99, 10547.85, 10542.34, 10550.96, 10587.94, 10601.36, 10619.96, 10590.17, 10605.23, 10630.43, 10666.57, 10000.0], "borderColor": "#c084fc", "backgroundColor": "#c084fc", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "31. Market Breadth Equity Timing", "agent_id": "breadth_timing", "category": "Coded", "data": [10000.0, 9994.1, 10017.45, 10046.9, 10051.68, 10012.09, 10040.61, 10043.06, 10047.32, 10042.52, 10044.5, 10046.0, 10042.49, 10059.34, 10077.66, 10105.42, 10123.38, 10136.3, 10111.21, 10121.68, 10138.13, 10150.89, 10149.59, 10157.58, 10138.02, 10172.0, 10167.77, 10153.98, 10143.79, 10132.29, 10119.66, 10105.64, 10122.57, 10132.14, 10158.92, 10151.86, 10166.34, 10181.15, 10176.96, 10178.04, 10163.72, 10214.19, 10232.1, 10247.17, 10290.58, 10293.05, 10290.39, 10306.22, 10326.91, 10335.22, 10335.03, 10343.94, 10365.12, 10401.11, 10442.62, 10459.02, 10488.6, 10494.87, 10513.88, 10532.22, 10542.2, 10558.13, 10549.46, 10568.22, 10581.99, 10618.88, 10000.0], "borderColor": "#fb923c", "backgroundColor": "#fb923c", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "32. Panic-Dip Index Buyer", "agent_id": "panic_dip_index", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0], "borderColor": "#f87171", "backgroundColor": "#f87171", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "33. Cross-Asset Risk Appetite Ratio", "agent_id": "risk_appetite_ratio", "category": "Coded", "data": [10000.0, 9994.85, 10034.81, 10076.81, 10080.49, 10057.68, 10079.27, 10096.66, 10112.52, 10118.72, 10124.17, 10127.71, 10123.17, 10136.19, 10151.68, 10183.59, 10209.57, 10215.63, 10198.03, 10207.13, 10239.8, 10260.18, 10256.58, 10266.66, 10251.89, 10290.01, 10291.9, 10288.88, 10284.24, 10288.49, 10285.11, 10278.72, 10296.82, 10321.59, 10346.78, 10347.89, 10374.69, 10380.21, 10376.16, 10373.35, 10367.24, 10417.12, 10447.76, 10463.61, 10501.73, 10506.6, 10518.33, 10541.28, 10551.86, 10560.55, 10565.96, 10571.11, 10588.1, 10623.93, 10672.41, 10689.35, 10720.45, 10716.4, 10730.95, 10760.54, 10782.74, 10794.83, 10785.51, 10800.18, 10822.21, 10858.38, 10000.0], "borderColor": "#67e8f9", "backgroundColor": "#67e8f9", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "34. Intraday VWAP -2σ Reversion", "agent_id": "vwap_reversion", "category": "Coded", "data": [10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 10000.0, 9998.87, 9983.43, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9969.14, 9967.82, 9966.25, 9961.76, 9963.01, 9962.91, 9964.42, 9969.97, 9974.59, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 9973.34, 10000.0], "borderColor": "#fde047", "backgroundColor": "#fde047", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}, {"label": "35. Volatility Squeeze Breakout", "agent_id": "squeeze_breakout", "category": "Coded", "data": [10000.0, 9998.67, 9995.76, 9998.14, 9992.0, 9971.06, 9983.55, 9967.46, 9969.75, 9967.54, 9967.24, 9970.58, 9970.46, 9980.23, 10000.13, 10012.19, 10021.54, 10027.55, 10009.78, 10015.95, 10026.04, 10023.97, 10014.59, 10024.89, 10004.41, 10028.55, 10020.31, 10016.29, 10006.73, 9998.39, 9994.87, 9990.88, 9995.94, 9986.27, 9993.03, 9990.17, 9996.59, 9994.18, 9989.44, 9988.13, 9984.88, 10004.94, 10011.91, 10017.23, 10037.23, 10030.71, 10026.35, 10021.96, 10035.01, 10044.22, 10052.06, 10062.72, 10084.67, 10112.49, 10121.93, 10112.3, 10119.26, 10117.61, 10124.43, 10132.28, 10129.64, 10139.51, 10123.38, 10136.26, 10153.63, 10176.31, 10000.0], "borderColor": "#86efac", "backgroundColor": "#86efac", "borderWidth": 2.0, "borderDash": [], "pointRadius": 2, "tension": 0.18}]};
       const canvas = document.getElementById('equityChart');
       if (!canvas || typeof Chart === 'undefined') return;
       const ctx = canvas.getContext('2d');

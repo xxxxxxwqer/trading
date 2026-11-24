@@ -245,6 +245,167 @@ AGENT_SPECS: List[AgentSpec] = [
             "SMA50 break, and Regime-OFF rules. No new entries on the final trading day."
         ),
     ),
+    AgentSpec(
+        agent_id="kiro_pair_reversion",
+        name="15. Kiro Pair-Spread Reversion (PSR)",
+        category="Coded Strategy",
+        short_description="Deterministic coded pair-reversion strategy designed by Kiro: 12 fixed same-industry large-cap pairs, 10-day beta-neutral residual spread >= 2 sigma laggard long entries, 3-tier SPY regime filter, 24h both-leg news veto, and strict 10-level exit priority.",
+        playbook=(
+            "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. "
+            "Monitors 12 pre-fixed same-industry large-cap equity pairs (long-only individual stocks; SPY used only for CRASH/RISK_OFF/NORMAL regime). "
+            "Uses D-1 completed daily bars for 60-day beta/correlation/sigma_e and 9-day residual sum S_9, combines with intraday residual z_live, "
+            "enters laggard when 2.0 <= |lz| <= 4.0 with 30-min bar confirmation, edge >= 3x cost, no 24h news veto, drawdown-scaled risk (0.60%/0.40%), "
+            "2.5% max open risk, +1R breakeven stop ratchet, and strict 1->10 exit priority."
+        ),
+    ),
+    # --- Part B-A: Time-of-Day & Calendar Effect Agents (#16-#20) ---
+    AgentSpec(
+        agent_id="overnight_drift",
+        name="16. Overnight Drift (Close→Open)",
+        category="Coded Strategy",
+        short_description="Buys SPY and QQQ at the 15:30 ET close window and unwinds at next morning's open to capture the overnight equity drift premium.",
+        playbook="Enters SPY & QQQ at 15:30 ET (12:30 ET early close) with -3% stop and sells at <= 10:00 ET the next trading day.",
+    ),
+    AgentSpec(
+        agent_id="eod_loser_overnight",
+        name="17. EOD Loser Overnight Reversal",
+        category="Coded Strategy",
+        short_description="Buys up to 3 non-news large-cap stocks down >= 2.5% intraday at 15:30 ET and sells after 10:30 ET the next morning.",
+        playbook="Scans 53 individual stocks at 15:30 ET for intraday drops <= -2.5% with no 24h veto news (max 1/sector, -4% stop / +4% TP), unwinding next morning >= 10:30 ET.",
+    ),
+    AgentSpec(
+        agent_id="intraday_momentum",
+        name="18. Intraday Momentum (Gao 2018)",
+        category="Coded Strategy",
+        short_description="If SPY's overnight + first 30-min return is positive (>= +0.15%), buys SPY/QQQ at 15:00 ET and flattens before market close.",
+        playbook="Implements Gao et al. (2018) intraday momentum: enters at 15:00 ET (12:00 ET early close) only when morning return >= +0.15%, with -1.5% stop and mandatory EOD flatten.",
+        flatten_eod=True,
+    ),
+    AgentSpec(
+        agent_id="turn_of_month",
+        name="19. Turn-of-Month Calendar",
+        category="Coded Strategy",
+        short_description="Holds SPY and QQQ only from the last trading day of each month through the 3rd trading day of the new month; 100% cash otherwise.",
+        playbook="Calendar liquidity effect: enters SPY/QQQ on last trading day of month through day 3 of the following month (-4.5% stop), holding cash on all other days.",
+    ),
+    AgentSpec(
+        agent_id="gap_down_fill",
+        name="20. Intraday Gap-Down Fill",
+        category="Coded Strategy",
+        short_description="Buys non-news stocks that gap down -1.5% to -4.0% with a green first 30-min bar, targeting prior close and flattening by EOD.",
+        playbook="Scans 53 stocks at 10:00-11:30 ET for -1.5% to -4.0% open gaps without veto news and green opening 30m bar; targets prior close, flattens EOD.",
+        flatten_eod=True,
+    ),
+    # --- Part B-B: Asset Allocation & Risk Premia Agents (#21-#25) ---
+    AgentSpec(
+        agent_id="dual_momentum_macro",
+        name="21. Dual Momentum Macro ETF",
+        category="Coded Strategy",
+        short_description="Weekly 60-day absolute + relative momentum rotation across SPY, QQQ, IWM, TLT, and GLD (top 2 positive ETFs, else cash).",
+        playbook="Ranks SPY/QQQ/IWM/TLT/GLD weekly by D-1 60-day return; holds top 2 with positive absolute momentum (-5% stop), moving to cash if none are positive.",
+    ),
+    AgentSpec(
+        agent_id="risk_parity_3",
+        name="22. Risk Parity 3-Asset (8% Vol)",
+        category="Coded Strategy",
+        short_description="Weekly inverse-volatility allocation across SPY, TLT, and GLD scaled to an 8% annualized volatility target.",
+        playbook="Computes 20-day realized volatility on D-1 daily bars for SPY/TLT/GLD, allocates inversely to vol scaled to 8% target vol (-4.5% stop), rebalanced weekly.",
+    ),
+    AgentSpec(
+        agent_id="min_variance_etf",
+        name="23. Minimum-Variance ETF Portfolio",
+        category="Coded Strategy",
+        short_description="Weekly 60-day covariance minimum-variance long-only optimization across all 18 ETFs (top 5 holdings).",
+        playbook="Solves deterministic long-only minimum-variance weights over 60-day daily returns of all 18 ETFs (ridge-regularized), holding top 5 weekly (-4.5% stop).",
+    ),
+    AgentSpec(
+        agent_id="low_vol_anomaly",
+        name="24. Low-Volatility Stock Anomaly",
+        category="Coded Strategy",
+        short_description="Weekly equal-weight portfolio of the 5 lowest 60-day realized-volatility large-cap stocks (max 2 per sector).",
+        playbook="Exploits the low-volatility anomaly across 53 stocks using D-1 60-day realized volatility; holds bottom 5 vol stocks (19% each, -5% stop, max 2/sector).",
+    ),
+    AgentSpec(
+        agent_id="megacap5_hold",
+        name="25. Mega-Cap Top-5 Buy & Hold (Control)",
+        category="Control / Benchmark",
+        short_description="Concentrated control benchmark: buys the top 5 largest-cap stocks (19% each, -5% stop) on Day 1 and holds.",
+        playbook="Null benchmark for concentrated mega-cap exposure: allocates 19% each into the top 5 market-cap US stocks on Day 1 with -5% stop and holds.",
+    ),
+    # --- Part B-C: Cross-Sectional Factor Agents (#26-#30) ---
+    AgentSpec(
+        agent_id="xs_short_reversal",
+        name="26. Cross-Sectional 5D Short Reversal",
+        category="Coded Strategy",
+        short_description="Daily rebalance into the 5 worst 5-day performers among 53 large-caps (max 1 per sector, no veto news).",
+        playbook="Exploits short-term cross-sectional reversal: daily at 10:30-11:30 ET rotates into bottom 5 non-news 5-day losers across distinct GICS sectors (19% each, -5% stop).",
+    ),
+    AgentSpec(
+        agent_id="high52_anchor",
+        name="27. 70D High Anchoring (George-Hwang)",
+        category="Coded Strategy",
+        short_description="Weekly top 5 stocks closest to their dynamic 70-day high with positive 63-day relative strength vs SPY.",
+        playbook="George & Hwang (2004) anchoring strategy: filters 53 stocks for 63d RS > 0 vs SPY, ranks by proximity to dynamic 70-day high, holds top 5 weekly (19% each, -5% stop).",
+    ),
+    AgentSpec(
+        agent_id="value_momentum",
+        name="28. Value + 63D Momentum Combo",
+        category="Coded Strategy",
+        short_description="Weekly intersection of cheaper half by P/E ratio and top 5 strongest 63-day price momentum stocks.",
+        playbook="Filters 53 large-caps to bottom 50% by positive P/E ratio, selects top 5 by D-1 63-day positive momentum, rebalanced weekly (19% each, -5% stop).",
+    ),
+    AgentSpec(
+        agent_id="volume_accumulation",
+        name="29. 20D Up/Down Volume Accumulation",
+        category="Coded Strategy",
+        short_description="Weekly top 5 stocks above SMA20 with the highest 20-day up-day to down-day volume accumulation ratio.",
+        playbook="Measures institutional accumulation via 20-day up-day/down-day volume ratio on stocks trading above D-1 SMA20; holds top 5 weekly (19% each, -5% stop).",
+    ),
+    AgentSpec(
+        agent_id="regime_beta_switch",
+        name="30. Regime-Adaptive Beta Switch",
+        category="Coded Strategy",
+        short_description="Holds top 5 highest 63-day beta stocks in RISK_ON (SPY > SMA20 & low vol), rotating to bottom 5 lowest-beta stocks in RISK_OFF.",
+        playbook="Computes D-1 63-day beta vs SPY for 53 stocks; holds 5 highest-beta names when SPY > SMA20 & RV20 < 25%, switching to 5 lowest-beta defensive stocks otherwise.",
+    ),
+    # --- Part B-D: Market Timing & Sentiment Agents (#31-#33) ---
+    AgentSpec(
+        agent_id="breadth_timing",
+        name="31. Market Breadth Equity Timing",
+        category="Coded Strategy",
+        short_description="Uses % of 53 stocks above SMA20 to step equity ETF exposure between ~95% (>=60%), ~50% (40-60%), and 0% Cash (<40%).",
+        playbook="Daily breadth monitor: >=60% above SMA20 holds 5 broad ETFs (~95% equity); 40-60% holds 3 ETFs (~50%); <40% moves to 100% cash (-4.5% stop).",
+    ),
+    AgentSpec(
+        agent_id="panic_dip_index",
+        name="32. Panic-Dip Index Buyer",
+        category="Coded Strategy",
+        short_description="Buys SPY and QQQ in tranches when SPY drops >= 3% over 3 days, holding up to 5 trading days or +5% target.",
+        playbook="Contrarian index panic buyer: enters tranche 1 in SPY/QQQ on 3-day SPY drop <= -3% (tranche 2 on extra -1.5% dip), exits after 5 trading days or +5% TP (-4.5% stop).",
+    ),
+    AgentSpec(
+        agent_id="risk_appetite_ratio",
+        name="33. Cross-Asset Risk Appetite Ratio",
+        category="Coded Strategy",
+        short_description="Scores XLY/XLP, SMH/SPY, and IWM/SPY vs 20d SMA to switch between growth ETFs, defensive ETFs (XLP/XLU/GLD/TLT), and Cash.",
+        playbook="Daily 3-ratio risk-appetite composite: score 2-3 holds QQQ/SMH/XLY/XLK; score 1 rotates to XLP/XLU/GLD/TLT; score 0 holds 100% cash (-4.5% stop).",
+    ),
+    # --- Part B-E: Intraday Microstructure Agents (#34-#35) ---
+    AgentSpec(
+        agent_id="vwap_reversion",
+        name="34. Intraday VWAP -2σ Reversion",
+        category="Coded Strategy",
+        short_description="On range-bound SPY days (|move| <= 0.75%), buys stocks below session VWAP - 2σ, targeting VWAP reversion and flattening EOD.",
+        playbook="Computes cumulative intraday VWAP & std from 30-min bars; enters up to 3 non-news stocks below VWAP - 2σ (10:30-14:30 ET), exits on VWAP touch and flattens EOD.",
+        flatten_eod=True,
+    ),
+    AgentSpec(
+        agent_id="squeeze_breakout",
+        name="35. Volatility Squeeze Breakout",
+        category="Coded Strategy",
+        short_description="Identifies stocks with D-1 daily BB width in the bottom 20% of their 60-day range and buys intraday 30m upper-band breakouts.",
+        playbook="Daily D-1 Bollinger Band width compression filter (<=20th percentile of 60d); enters intraday upper BB breakouts with vol ratio >= 1.2x, ATR stop, +6% TP, 5-day max hold.",
+    ),
 ]
 
 AGENT_SPECS_BY_ID: Dict[str, AgentSpec] = {spec.agent_id: spec for spec in AGENT_SPECS}

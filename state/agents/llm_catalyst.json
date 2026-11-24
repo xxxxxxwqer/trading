@@ -19,7 +19,7 @@
   "rejections": [],
   "equity_curve": [
     {
-      "timestamp": "2026-11-24T14:17:14Z",
+      "timestamp": "2026-11-24T15:49:51Z",
       "trading_date_et": "2026-11-24",
       "equity": 10000.0,
       "cash": 10000.0,
@@ -29,5 +29,5 @@
     }
   ],
   "daily_journal": [],
-  "last_updated": "2026-11-24T14:17:14Z"
+  "last_updated": "2026-11-24T15:49:51Z"
 }

@@ -54,9 +54,30 @@ AGENT_COLORS: Dict[str, str] = {
     "llm_cautious": "#facc15",     # Amber Yellow
     "ctrl_spy": "#ffffff",         # Crisp White (Benchmark)
     "ctrl_random": "#94a3b8",      # Slate Grey (Luck Control)
-    "style_berkshire": "#22c55e",  # Classic Value Green
-    "style_congress": "#f43f5e",   # Capitol Rose Red
-    "claude_rmp": "#f59e0b",       # Claude Amber Gold
+    "style_berkshire": "#22c55e",       # Classic Value Green
+    "style_congress": "#f43f5e",        # Capitol Rose Red
+    "claude_rmp": "#f59e0b",            # Claude Amber Gold
+    "kiro_pair_reversion": "#06b6d4",   # Kiro Cyan
+    "overnight_drift": "#60a5fa",
+    "eod_loser_overnight": "#a78bfa",
+    "intraday_momentum": "#e879f9",
+    "turn_of_month": "#2dd4bf",
+    "gap_down_fill": "#fb7185",
+    "dual_momentum_macro": "#34d399",
+    "risk_parity_3": "#38bdf8",
+    "min_variance_etf": "#818cf8",
+    "low_vol_anomaly": "#4ade80",
+    "megacap5_hold": "#e2e8f0",
+    "xs_short_reversal": "#f472b6",
+    "high52_anchor": "#fbbf24",
+    "value_momentum": "#a3e635",
+    "volume_accumulation": "#22d3ee",
+    "regime_beta_switch": "#c084fc",
+    "breadth_timing": "#fb923c",
+    "panic_dip_index": "#f87171",
+    "risk_appetite_ratio": "#67e8f9",
+    "vwap_reversion": "#fde047",
+    "squeeze_breakout": "#86efac",
 }
 
 
@@ -650,6 +671,95 @@ class DashboardBuilder:
       </div>
     </section>"""
 
+    def _load_kiro_psr_data(self) -> Dict[str, Any]:
+        """Load Agent 15 (kiro_pair_reversion) pre-validation backtest, cycle logs, and locked params."""
+        out: Dict[str, Any] = {"prevalidation": {}, "cycle_logs": [], "params": {}}
+        p_pre = PROJECT_ROOT / "state" / "kiro_psr_prevalidation.json"
+        p_logs = PROJECT_ROOT / "state" / "kiro_psr_cycle_logs.json"
+        p_params = PROJECT_ROOT / "src" / "arena" / "agents" / "kiro_pair_reversion_params.json"
+        for key, path in (("prevalidation", p_pre), ("cycle_logs", p_logs), ("params", p_params)):
+            if path.exists():
+                try:
+                    out[key] = json.loads(path.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+        return out
+
+    def _render_kiro_psr_section(self, psr_data: Dict[str, Any]) -> str:
+        """Render Agent 15 (kiro_pair_reversion) 2-year pre-validation report and live 12-pair telemetry."""
+        pre = psr_data.get("prevalidation") or {}
+        logs = list(psr_data.get("cycle_logs") or [])
+        parts: List[str] = []
+
+        if pre and pre.get("continuous_summary"):
+            c = pre["continuous_summary"]
+            bp = pre.get("backtest_period") or ["?", "?"]
+            ex_dist = c.get("exit_reason_counts") or {}
+            ex_pills = " ".join(f'<span class="rank-pill">{_esc(k)}: {v}</span>' for k, v in sorted(ex_dist.items()))
+            parts.append(
+                f"""    <section class="panel" id="kiro-psr-prevalidation">
+      <div class="panel-header">
+        <div>
+          <h2>&#128202; Kiro PSR Pre-Validation Report (Locked params.json — Zero Optimization)</h2>
+          <p class="panel-sub">2-year daily-bar approximation ({_esc(bp[0])} &rarr; {_esc(bp[1])}, {pre.get('total_trading_days', 0)} trading days) across 12 fixed same-industry pairs with bid/ask spread + 5 bps/side slippage.</p>
+        </div>
+        <span class="status-pill status-active">Closed Trades: {c.get('closed_trades_count', 0)}</span>
+      </div>
+      <div class="oos-strip">
+        <span><strong>2Y Return:</strong> <span class="{_pnl_class(float(c.get('return_pct', 0)))}">{float(c.get('return_pct', 0)):+.2f}%</span> vs SPY {float(c.get('spy_return_pct', 0)):+.2f}%</span>
+        <span><strong>Max DD:</strong> <span class="neg">{float(c.get('max_drawdown_pct', 0)):.2f}%</span></span>
+        <span><strong>Annualized Sharpe:</strong> <strong>{float(c.get('sharpe_annualized', 0)):.2f}</strong></span>
+        <span><strong>Avg R / Trade:</strong> <strong>{float(c.get('avg_r_per_closed_trade', 0)):+.3f}R</strong></span>
+        <span><strong>Win Rate:</strong> <strong>{float(c.get('win_rate_pct', 0)):.1f}%</strong></span>
+      </div>
+      <div style="margin-top:10px;">
+        <div class="rules-heading" style="margin-bottom:6px;">Exit Reason Distribution:</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">{ex_pills or '<span class="sub-num">None</span>'}</div>
+      </div>
+    </section>"""
+            )
+
+        if logs:
+            last = logs[-1]
+            z_map = last.get("pair_z_live") or {}
+            z_pills = " ".join(
+                f'<span class="rank-pill">{_esc(pid)}: {f"{float(zv):+.2f}σ" if zv is not None else "N/A"}</span>'
+                for pid, zv in sorted(z_map.items())
+            )
+            cand_rows = []
+            for ch in last.get("top_candidates") or []:
+                cand_rows.append(
+                    f"""            <tr>
+              <td class="mono strong">{_esc(ch.get('pair_id'))}</td>
+              <td class="mono">{_esc(ch.get('ticker'))}</td>
+              <td class="num">{f"{float(ch['lz']):+.2f}" if ch.get('lz') is not None else '—'}</td>
+              <td class="num">{float(ch.get('score', 0)):.3f}</td>
+              <td><code>{_esc(ch.get('result', ''))}</code></td>
+            </tr>"""
+                )
+            if not cand_rows:
+                cand_rows.append('<tr><td colspan="5" class="empty-state">No candidate evaluations logged in latest cycle.</td></tr>')
+            parts.append(
+                f"""    <section class="panel" id="kiro-psr-telemetry">
+      <div class="panel-header">
+        <div>
+          <h2>&#128225; Live PSR Telemetry — 12 Fixed Pairs z_live &amp; Top Candidates</h2>
+          <p class="panel-sub">Latest cycle: {_esc(format_et(last.get('timestamp')))} ({_esc(last.get('trading_date_et'))})</p>
+        </div>
+        <span class="status-pill status-active">Regime: {_esc(last.get('regime', 'N/A'))} &bull; Active Pairs: {last.get('active_pairs_count', 0)}/12</span>
+      </div>
+      <div style="margin:8px 0 12px;display:flex;flex-wrap:wrap;gap:6px;">{z_pills}</div>
+      <div class="table-wrap">
+        <table class="arena-table">
+          <thead><tr><th>Pair</th><th>Laggard</th><th class="num">lz (σ)</th><th class="num">Score</th><th>Decision / Skip Code</th></tr></thead>
+          <tbody>{chr(10).join(cand_rows)}</tbody>
+        </table>
+      </div>
+    </section>"""
+            )
+
+        return "\n".join(parts)
+
     def _load_claude_rmp_data(self) -> Dict[str, Any]:
         """Load Agent 14 (claude_rmp) pre-validation backtest, cycle logs, and locked params."""
         out: Dict[str, Any] = {"prevalidation": {}, "cycle_logs": [], "params": {}}
@@ -1192,6 +1302,13 @@ class DashboardBuilder:
             )
         agent_strip_html = "\n          ".join(agent_links)
 
+        n_total = len(AGENT_SPECS)
+        n_coded = sum(1 for s in AGENT_SPECS if "coded" in s.category.lower())
+        n_llm = sum(1 for s in AGENT_SPECS if "llm" in s.category.lower() or "gemini" in s.category.lower())
+        n_style = sum(1 for s in AGENT_SPECS if "filing" in s.category.lower() or "style" in s.category.lower())
+        n_ctrl = n_total - n_coded - n_llm - n_style
+        brand_sub = f"{n_total}-Agent US Stock &amp; ETF Paper-Trading Competition &bull; {n_coded} Coded vs. {n_llm} Gemini Flash LLMs vs. {n_style} Filing-Style vs. {n_ctrl} Controls"
+
         return f"""  <header class="site-header">
     <div class="paper-warning-banner" role="alert">
       <span class="warning-icon">&#9888;</span>
@@ -1205,7 +1322,7 @@ class DashboardBuilder:
           <a href="{root_prefix}index.html" class="brand-title">AI Trading Arena</a>
           <span class="comp-status-badge {_esc(header_ctx['status_badge_class'])}">{_esc(header_ctx['status_badge_text'])}</span>
         </div>
-        <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
+        <p class="brand-subtitle">{brand_sub}</p>
       </div>
 
       <div class="progress-and-clock">
@@ -2049,6 +2166,7 @@ class DashboardBuilder:
 {self._render_learned_patterns_panel({agent.agent_id: self._load_learned_patterns()[agent.agent_id]}, root_prefix="../") if agent.agent_id in self._load_learned_patterns() else ""}
 {self._render_agent13_section(self._load_agent13_history()) if agent.agent_id == "llm_own_strategy" else ""}
 {self._render_claude_rmp_section(self._load_claude_rmp_data()) if agent.agent_id == "claude_rmp" else ""}
+{self._render_kiro_psr_section(self._load_kiro_psr_data()) if agent.agent_id == "kiro_pair_reversion" else ""}
 
     <!-- Agent KPI Strip -->
     <section class="kpi-strip kpi-strip-8" aria-label="Agent Performance KPIs">
