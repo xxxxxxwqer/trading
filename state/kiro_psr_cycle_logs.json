@@ -1,0 +1,56 @@
+[
+  {
+    "timestamp": "2026-11-24T15:56:18Z",
+    "trading_date_et": "2026-11-24",
+    "regime": "RISK_OFF",
+    "spy_intraday_pct": -0.97,
+    "m_dd": 1.0,
+    "active_pairs_count": 12,
+    "pair_z_live": {
+      "P01": 0.4521,
+      "P02": -0.0134,
+      "P03": -1.5483,
+      "P04": -1.6001,
+      "P05": -0.0894,
+      "P06": -1.0057,
+      "P07": 0.9258,
+      "P08": -0.7463,
+      "P09": 0.1453,
+      "P10": -0.6351,
+      "P11": -1.4907,
+      "P12": 0.5271
+    },
+    "top_candidates": [
+      {
+        "pair_id": "P03",
+        "ticker": "XOM",
+        "z_live": -1.5483,
+        "score": 1.4559,
+        "result": "SKIP_Z_WEAK"
+      },
+      {
+        "pair_id": "P04",
+        "ticker": "JPM",
+        "z_live": -1.6001,
+        "score": 1.1618,
+        "result": "SKIP_Z_WEAK"
+      },
+      {
+        "pair_id": "P11",
+        "ticker": "CRM",
+        "z_live": -1.4907,
+        "score": 0.9857,
+        "result": "SKIP_Z_WEAK"
+      }
+    ],
+    "actions": [
+      {
+        "code": "REGIME_RISK_OFF",
+        "spy_intraday_pct": -0.97
+      },
+      {
+        "code": "SKIP_NO_CANDIDATE"
+      }
+    ]
+  }
+]

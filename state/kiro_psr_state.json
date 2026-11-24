@@ -1,0 +1,303 @@
+{
+  "trading_dates_seen": [
+    "2026-11-24"
+  ],
+  "daily_cache_date": "2026-11-24",
+  "daily_cache": {
+    "valid": true,
+    "trading_date_et": "2026-11-24",
+    "spy": {
+      "prev_close": 722.56,
+      "sma20": 745.7455,
+      "rv20": 0.314243,
+      "ret5": -0.02362,
+      "last_bar_date": "2026-11-23"
+    },
+    "stocks": {
+      "ADBE": {
+        "prev_close": 223.92,
+        "atr14_d": 8.5411,
+        "adv20": 36338950.05,
+        "bars_count": 99
+      },
+      "AMD": {
+        "prev_close": 453.0,
+        "atr14_d": 45.701,
+        "adv20": 607613945.25,
+        "bars_count": 99
+      },
+      "AVGO": {
+        "prev_close": 313.44,
+        "atr14_d": 19.7617,
+        "adv20": 367028926.44,
+        "bars_count": 99
+      },
+      "BAC": {
+        "prev_close": 48.18,
+        "atr14_d": 1.2005,
+        "adv20": 131091875.51,
+        "bars_count": 99
+      },
+      "COST": {
+        "prev_close": 1097.8,
+        "atr14_d": 18.6616,
+        "adv20": 107701781.31,
+        "bars_count": 99
+      },
+      "CRM": {
+        "prev_close": 185.465,
+        "atr14_d": 8.6468,
+        "adv20": 74547978.88,
+        "bars_count": 99
+      },
+      "CVX": {
+        "prev_close": 206.12,
+        "atr14_d": 4.7541,
+        "adv20": 56674636.17,
+        "bars_count": 99
+      },
+      "GS": {
+        "prev_close": 823.72,
+        "atr14_d": 30.8055,
+        "adv20": 90007293.83,
+        "bars_count": 99
+      },
+      "JPM": {
+        "prev_close": 316.49,
+        "atr14_d": 7.8786,
+        "adv20": 81615079.9,
+        "bars_count": 99
+      },
+      "KO": {
+        "prev_close": 95.99,
+        "atr14_d": 1.7328,
+        "adv20": 115165584.87,
+        "bars_count": 99
+      },
+      "MA": {
+        "prev_close": 635.08,
+        "atr14_d": 13.2659,
+        "adv20": 138806674.85,
+        "bars_count": 99
+      },
+      "MRK": {
+        "prev_close": 135.46,
+        "atr14_d": 4.1995,
+        "adv20": 70349371.47,
+        "bars_count": 99
+      },
+      "MS": {
+        "prev_close": 172.645,
+        "atr14_d": 6.1256,
+        "adv20": 76046984.86,
+        "bars_count": 99
+      },
+      "NVDA": {
+        "prev_close": 165.185,
+        "atr14_d": 13.1448,
+        "adv20": 1827275513.66,
+        "bars_count": 99
+      },
+      "PEP": {
+        "prev_close": 140.21,
+        "atr14_d": 3.2989,
+        "adv20": 54714083.38,
+        "bars_count": 99
+      },
+      "PFE": {
+        "prev_close": 27.44,
+        "atr14_d": 0.6415,
+        "adv20": 64569301.85,
+        "bars_count": 99
+      },
+      "PG": {
+        "prev_close": 169.82,
+        "atr14_d": 3.1019,
+        "adv20": 78756278.03,
+        "bars_count": 99
+      },
+      "QCOM": {
+        "prev_close": 165.47,
+        "atr14_d": 9.536,
+        "adv20": 84919643.15,
+        "bars_count": 99
+      },
+      "V": {
+        "prev_close": 409.535,
+        "atr14_d": 8.6815,
+        "adv20": 178405963.57,
+        "bars_count": 99
+      },
+      "WFC": {
+        "prev_close": 80.04,
+        "atr14_d": 2.0652,
+        "adv20": 62176770.18,
+        "bars_count": 99
+      },
+      "WMT": {
+        "prev_close": 129.56,
+        "atr14_d": 2.9293,
+        "adv20": 125238251.0,
+        "bars_count": 99
+      },
+      "XOM": {
+        "prev_close": 156.93,
+        "atr14_d": 4.0641,
+        "adv20": 97719995.54,
+        "bars_count": 99
+      }
+    },
+    "pairs": {
+      "P01": {
+        "pair_id": "P01",
+        "a": "KO",
+        "b": "PEP",
+        "active": true,
+        "beta": 0.547177,
+        "sigma_e": 0.00756153,
+        "rho60": 0.734117,
+        "s_9": 0.00360977,
+        "shock_max": 1.2212,
+        "last_bar_date": "2026-11-23"
+      },
+      "P02": {
+        "pair_id": "P02",
+        "a": "V",
+        "b": "MA",
+        "active": true,
+        "beta": 0.957018,
+        "sigma_e": 0.00421493,
+        "rho60": 0.955255,
+        "s_9": 0.00281573,
+        "shock_max": 1.5718,
+        "last_bar_date": "2026-11-23"
+      },
+      "P03": {
+        "pair_id": "P03",
+        "a": "XOM",
+        "b": "CVX",
+        "active": true,
+        "beta": 1.018405,
+        "sigma_e": 0.00594955,
+        "rho60": 0.940336,
+        "s_9": -0.02180505,
+        "shock_max": 2.3001,
+        "last_bar_date": "2026-11-23"
+      },
+      "P04": {
+        "pair_id": "P04",
+        "a": "JPM",
+        "b": "BAC",
+        "active": true,
+        "beta": 0.665391,
+        "sigma_e": 0.00983997,
+        "rho60": 0.726105,
+        "s_9": -0.0436839,
+        "shock_max": 1.6627,
+        "last_bar_date": "2026-11-23"
+      },
+      "P05": {
+        "pair_id": "P05",
+        "a": "BAC",
+        "b": "WFC",
+        "active": true,
+        "beta": 0.665823,
+        "sigma_e": 0.01143977,
+        "rho60": 0.680732,
+        "s_9": -0.00494504,
+        "shock_max": 1.2805,
+        "last_bar_date": "2026-11-23"
+      },
+      "P06": {
+        "pair_id": "P06",
+        "a": "GS",
+        "b": "MS",
+        "active": true,
+        "beta": 1.005989,
+        "sigma_e": 0.00767775,
+        "rho60": 0.935663,
+        "s_9": -0.0166189,
+        "shock_max": 1.9602,
+        "last_bar_date": "2026-11-23"
+      },
+      "P07": {
+        "pair_id": "P07",
+        "a": "WMT",
+        "b": "COST",
+        "active": true,
+        "beta": 0.815857,
+        "sigma_e": 0.01069693,
+        "rho60": 0.669023,
+        "s_9": 0.00803999,
+        "shock_max": 1.5577,
+        "last_bar_date": "2026-11-23"
+      },
+      "P08": {
+        "pair_id": "P08",
+        "a": "MRK",
+        "b": "PFE",
+        "active": true,
+        "beta": 0.889284,
+        "sigma_e": 0.01387223,
+        "rho60": 0.634359,
+        "s_9": -0.02832481,
+        "shock_max": 1.9593,
+        "last_bar_date": "2026-11-23"
+      },
+      "P09": {
+        "pair_id": "P09",
+        "a": "NVDA",
+        "b": "AMD",
+        "active": true,
+        "beta": 0.5,
+        "sigma_e": 0.0414622,
+        "rho60": 0.50772,
+        "s_9": 0.0426651,
+        "shock_max": 5.8087,
+        "last_bar_date": "2026-11-23"
+      },
+      "P10": {
+        "pair_id": "P10",
+        "a": "AVGO",
+        "b": "QCOM",
+        "active": true,
+        "beta": 0.503915,
+        "sigma_e": 0.03027985,
+        "rho60": 0.533063,
+        "s_9": -0.03394559,
+        "shock_max": 3.0283,
+        "last_bar_date": "2026-11-23"
+      },
+      "P11": {
+        "pair_id": "P11",
+        "a": "CRM",
+        "b": "ADBE",
+        "active": true,
+        "beta": 0.645258,
+        "sigma_e": 0.01812987,
+        "rho60": 0.661217,
+        "s_9": -0.10486596,
+        "shock_max": 3.8882,
+        "last_bar_date": "2026-11-23"
+      },
+      "P12": {
+        "pair_id": "P12",
+        "a": "PG",
+        "b": "KO",
+        "active": true,
+        "beta": 0.825283,
+        "sigma_e": 0.00991542,
+        "rho60": 0.679779,
+        "s_9": 0.01496351,
+        "shock_max": 1.6554,
+        "last_bar_date": "2026-11-23"
+      }
+    }
+  },
+  "entries_today_date": "2026-11-24",
+  "entries_today_count": 0,
+  "position_meta": {},
+  "ticker_cooldown_until": {},
+  "pair_cooldown_until": {},
+  "seen_sell_trade_ids": []
+}
