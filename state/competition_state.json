@@ -28,8 +28,13 @@
   "strategy_integrity_verified": true,
   "started_at_utc": "2026-11-24T15:56:18Z",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-24T15:58:55Z",
+  "last_updated_utc": "2026-11-24T23:36:25Z",
   "last_decision_timestamp_utc": "2026-11-24T15:58:53Z",
   "current_trading_date_et": "2026-11-24",
-  "regime_summary": "RISK-OFF / DEFENSIVE \u2014 SPY 715.78 (-1.06% 1D, -2.35% 5D, UPTREND, RSI 40.2); QQQ (-2.46% 1D); Bonds (TLT +0.32%) steady/rising (yields easing); Gold (GLD -1.82%)."
+  "regime_summary": "RISK-OFF / DEFENSIVE \u2014 SPY 715.78 (-1.06% 1D, -2.35% 5D, UPTREND, RSI 40.2); QQQ (-2.46% 1D); Bonds (TLT +0.32%) steady/rising (yields easing); Gold (GLD -1.82%).",
+  "api_keys_status": {
+    "alpaca_paper_configured": true,
+    "gemini_configured": true,
+    "checked_at_utc": "2026-11-24T23:36:25Z"
+  }
 }
