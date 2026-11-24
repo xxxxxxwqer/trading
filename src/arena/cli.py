@@ -890,6 +890,13 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
         return 0
 
+    # Record non-secret boolean connection status so setup can be verified transparently
+    comp_state["api_keys_status"] = {
+        "alpaca_paper_configured": client.has_credentials(),
+        "gemini_configured": bool((os.environ.get("GEMINI_API_KEY") or "").strip()),
+        "checked_at_utc": format_iso_utc(now_utc),
+    }
+
     # 3. If market is closed and --force-open-check was not passed, run Agent 13 pre-start/post-close hooks and refresh dashboard
     if not is_open and not force_open:
         from arena.agents.own_strategy_agent import OwnStrategyAgent

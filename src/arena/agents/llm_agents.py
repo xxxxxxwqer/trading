@@ -564,7 +564,7 @@ class BaseLLMAgent(BaseAgent):
                 ],
                 "generationConfig": {
                     "temperature": 0.2,
-                    "maxOutputTokens": 400,
+                    "maxOutputTokens": 1024,
                     "responseMimeType": "application/json",
                 },
             }

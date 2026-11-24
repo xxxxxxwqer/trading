@@ -466,7 +466,7 @@ class OwnStrategyAgent(BaseAgent):
         note = "Initial blind rulebook generated strictly without seeing dry-run or live price data."
 
         if self._get_api_key():
-            raw_text, err = self._call_gemini_json(prompt, max_tokens=1100, temperature=0.3)
+            raw_text, err = self._call_gemini_json(prompt, max_tokens=2048, temperature=0.3)
             if raw_text and not err:
                 parsed = _extract_json_object(raw_text)
                 rulebook = _validate_rulebook_dict(parsed)
@@ -582,7 +582,7 @@ class OwnStrategyAgent(BaseAgent):
                 "Respond with ONE strict JSON object:\n"
                 '{"action": "BUY" | "SELL" | "HOLD", "ticker": "SYMBOL_OR_EMPTY", "size": 0.15, "stop_loss": 100.0, "take_profit": 110.0, "confidence": 0.75, "reasoning": "Concise 1-2 sentence explanation citing your rulebook."}'
             )
-            raw_text, err = self._call_gemini_json(decision_prompt, max_tokens=400, temperature=0.2)
+            raw_text, err = self._call_gemini_json(decision_prompt, max_tokens=1024, temperature=0.2)
             if err or not raw_text:
                 return self.hold_signal(
                     snapshot,
@@ -799,7 +799,7 @@ class OwnStrategyAgent(BaseAgent):
                 '  "updated_rulebook": { ... same 8 fields as rulebook if revised is true, else null ... }\n'
                 "}"
             )
-            raw_text, err = self._call_gemini_json(review_prompt, max_tokens=1100, temperature=0.25)
+            raw_text, err = self._call_gemini_json(review_prompt, max_tokens=2048, temperature=0.25)
             if raw_text and not err:
                 parsed = _extract_json_object(raw_text)
                 if isinstance(parsed, dict) and "review_summary" in parsed:
