@@ -66,8 +66,24 @@ _T_CRIT_95 = {
     10: 2.2281,
     11: 2.2010,
     12: 2.1788,
+    13: 2.1604,
+    14: 2.1448,
     15: 2.1314,
+    16: 2.1199,
+    17: 2.1098,
+    18: 2.1009,
+    19: 2.0930,
     20: 2.0860,
+    21: 2.0796,
+    22: 2.0739,
+    23: 2.0687,
+    24: 2.0639,
+    25: 2.0595,
+    26: 2.0555,
+    27: 2.0518,
+    28: 2.0484,
+    29: 2.0452,
+    30: 2.0423,
 }
 
 # Canonical strategy group labels matching the user's reporting specification
@@ -93,14 +109,14 @@ DAILY_REPORT_SYSTEM_PROMPT = """# ROLE
    - 100% 가상 모의투자(Paper Trading), **Long 또는 현금(Cash) 전용** (공매도·레버리지·옵션·동전주 금지).
    - 예외 유니버스: **11·12·14번**은 개별 대형주만 매매, **4번**은 11개 SPDR 섹터 ETF만 매매.
 2. **실행 주기 및 타임프레임**:
-   - 메인 실행: 미국 정규장(09:30~16:00 ET) **30분봉(`30Min`)** 기준 매 30분 1사이클(일 13사이클, 총 10거래일, 휴장·조기마감 자동 반영).
+   - 메인 실행: 미국 정규장(09:30~16:00 ET) **30분봉(`30Min`)** 기준 매 30분 1사이클(일 13사이클, 총 30거래일, 휴장·조기마감 자동 반영).
    - 보조 타임프레임: 전일 완료 수정주가 **일봉(`1Day`, 최소 70봉~52주)** 활용 (14번 레짐·잔차 모멘텀·ATR/SMA50, 11·12번 52주 고점 대비 거리·3개월/30일 추세).
 3. **리스크 및 탈락 규정**:
    - 초기 자금: 에이전트당 `$10,000`.
    - 거래 마찰: 실제 호가 스프레드(Bid/Ask) + `5 bps` 슬리피지 적용, 의사결정 후 다음 가격 체결.
    - 서킷 브레이커: 일일 손실률 `-3.0%` 도달 시 당일 신규 매매 정지(`DAILY_HALTED`), 누적 고점 대비 낙폭 `-10.0%` 도달 시 영구 탈락(`BLOWN_UP`).
 4. **전략 수정 금지 원칙 (CRITICAL)**:
-   - **대회 진행 중(1~10거래일)에는 어떠한 에이전트의 전략·파라미터·로직 수정도 금지됩니다.**
+   - **대회 진행 중(1~30거래일)에는 어떠한 에이전트의 전략·파라미터·로직 수정도 금지됩니다.**
    - 보고서 내 "손절폭을 넓혀야 한다", "RSI 기준을 조정하라" 같은 **전략 수정/튜닝 제안을 절대 작성하지 마세요.** 대신 현재 설정 기준의 리스크 모니터링 및 다음 거래일 관전 포인트만 객관적으로 정리합니다.
 
 # STRICT ANTI-HALLUCINATION & DATA INTEGRITY RULES (절대 준수)
@@ -113,7 +129,7 @@ DAILY_REPORT_SYSTEM_PROMPT = """# ROLE
 - 표준 GitHub Flavored Markdown(GFM)만 사용(HTML 태그 금지).
 - 건조하고 명확한 기관급 한국어 퀀트 리포트 문체(지표·티커·상태 코드는 영문 원어 유지).
 - 반드시 아래 섹션 순서를 지키고, `is_final_day == false`일 때는 **8번 섹션(헤더 포함)을 완전히 생략**하세요:
-  - `# AI Trading Arena 일일 리포트 — Day {TRADING_DAY}/10 ({DATE_ET})`
+  - `# AI Trading Arena 일일 리포트 — Day {TRADING_DAY}/30 ({DATE_ET})`
   - `## 1. 오늘의 핵심 요약 (Executive Summary)`
   - `## 2. 시장 매크로 및 기술적 레짐 브리핑` (`### 2.1`, `### 2.2`)
   - `## 3. 전체 에이전트 성과 리더보드 (13개 에이전트)`
@@ -402,7 +418,7 @@ def _compute_final_10day_stats(
             sd = math.sqrt(sum((x - mean_d) ** 2 for x in diffs) / (n - 1))
             se = sd / math.sqrt(n) if sd > 0 else 0.0
             t_stat = (mean_d / se) if se > 1e-9 else None
-            t_crit = _T_CRIT_95.get(n - 1, 2.2622)
+            t_crit = _T_CRIT_95.get(n - 1, 2.0452 if (n - 1) >= 29 else 2.2622)
             ci_lo = round(mean_d - t_crit * se, 3) if se > 0 else round(mean_d, 3)
             ci_hi = round(mean_d + t_crit * se, 3) if se > 0 else round(mean_d, 3)
             contains_zero = (ci_lo <= 0.0 <= ci_hi)
@@ -438,7 +454,7 @@ def _compute_final_10day_stats(
 
     return {
         "n_trading_days": len(spy_daily),
-        "student_t_critical_95": _T_CRIT_95.get(max(1, len(spy_daily) - 1), 2.2622),
+        "student_t_critical_95": _T_CRIT_95.get(max(1, len(spy_daily) - 1), 2.0452),
         "per_agent_vs_spy": per_agent,
     }
 
@@ -795,7 +811,7 @@ def render_deterministic_markdown_report(payload: Dict[str, Any]) -> str:
 
     reg_score_str = f"{rmp['regime_score']}/4" if rmp.get("regime_score") is not None else "N/A"
     lines: List[str] = [
-        f"# AI Trading Arena 일일 리포트 — Day {meta['trading_day']}/10 ({meta['date_et']})",
+        f"# AI Trading Arena 일일 리포트 — Day {meta['trading_day']}/{meta['total_trading_days']} ({meta['date_et']})",
         "",
         (
             f"> **세션 정보**: {meta['session_type']} (실행 사이클: {meta['cycles_run_today']}/13) | "
@@ -935,7 +951,7 @@ def render_deterministic_markdown_report(payload: Dict[str, Any]) -> str:
         f"| **거래당 평균 R (`Average R`)** | `{avg_r_str}` (청산 `{rmp['closed_trades_count']}`건 기준) | 누적 기준 |",
         f"| **필터·선정 지표 작동** | 당일 사유 코드: `{act_codes}` | Top-5 리더: `{rm_top}` |",
         "",
-        f"- **가설 H1~H3 반증 트래커 (SPY 상승일 vs 하락일 노출도)**: 누적 `{rmp['exposure_sample_days']}일` 표본 기준 SPY 상승일 평균 노출도 `{up_e}` vs SPY 하락일 평균 노출도 `{dn_e}`. 단기 표본(`Day {meta['trading_day']}/10`)이므로 통계적 확정은 10거래일 종료 후 판정합니다.",
+        f"- **가설 H1~H3 반증 트래커 (SPY 상승일 vs 하락일 노출도)**: 누적 `{rmp['exposure_sample_days']}일` 표본 기준 SPY 상승일 평균 노출도 `{up_e}` vs SPY 하락일 평균 노출도 `{dn_e}`. 단기 표본(`Day {meta['trading_day']}/{meta['total_trading_days']}`)이므로 통계적 확정은 {meta['total_trading_days']}거래일 종료 후 판정합니다.",
     ])
 
     # Section 6: Trade Review, Rejections & Friction
@@ -1038,7 +1054,7 @@ def render_deterministic_markdown_report(payload: Dict[str, Any]) -> str:
             "---",
             "",
             "## 8. 통계적 최종 평가: 운(Luck) vs 실력(Skill)",
-            f"- **표본 크기의 한계 명시**: 10거래일(일별 수익률 표본 `N={n_days}`)은 통계적 검정력(Statistical Power)이 매우 낮아, 단기 분산(운)과 구조적 알파(실력)를 확정적으로 분리하기 어렵습니다.",
+            f"- **표본 크기의 한계 명시**: {meta['total_trading_days']}거래일(일별 수익률 표본 `N={n_days}`)은 통계적 검정력(Statistical Power)이 제한적이므로, 단기 분산(운)과 구조적 알파(실력)를 완전히 분리하려면 장기 추적이 병행되어야 합니다.",
             "",
             "| 에이전트 (전략군) | 일일 초과수익 평균 (d̄, %p) | 표준편차 (s_d) | t-통계량 | 95% 신뢰구간 (%p) | 0 포함 여부 (통계적 유의성) |",
             "| :--- | :---: | :---: | :---: | :---: | :---: |",
@@ -1053,7 +1069,7 @@ def render_deterministic_markdown_report(payload: Dict[str, Any]) -> str:
                 f"{ci_str} | {sig_str} |"
             )
         lines.append(
-            "\n- **정직한 종합 판정**: 95% 신뢰구간에 0이 포함된 에이전트의 초과수익은 10거래일 단기 표본에서 통계적으로 우연과 구분되지 않으며, "
+            f"\n- **정직한 종합 판정**: 95% 신뢰구간에 0이 포함된 에이전트의 초과수익은 {meta['total_trading_days']}거래일 표본에서 통계적으로 우연과 구분되지 않으며, "
             "수익률 절대값보다 `10. Random Trader` 및 `9. SPY` 대비 일관된 MDD 통제와 거래 마찰 관리 역량을 중심으로 해석해야 합니다."
         )
 
@@ -1147,7 +1163,7 @@ def build_user_prompt_from_payload(payload: Dict[str, Any]) -> str:
         "System Prompt의 모든 데이터 무결성 규칙, 전략 수정 금지 원칙, 고정 GFM 형식을 엄격히 준수하세요.\n\n"
         "### 1. 메타데이터\n"
         f"- **거래일 (ET)**: {meta['date_et']}\n"
-        f"- **대회 진행 일차**: Day {meta['trading_day']} / 10\n"
+        f"- **대회 진행 일차**: Day {meta['trading_day']} / {meta['total_trading_days']}\n"
         f"- **최종일 여부 (`is_final_day`)**: {'true' if meta['is_final_day'] else 'false'}\n"
         f"- **당일 세션 유형**: {meta['session_type']}\n"
         f"- **실행된 30분봉 사이클 수**: {meta['cycles_run_today']} / 13\n"
@@ -1160,7 +1176,7 @@ def build_user_prompt_from_payload(payload: Dict[str, Any]) -> str:
         f"```json\n{json.dumps({'today_trades': payload['today_trades'][:35], 'today_rejections': payload['today_rejections'][:20], 'open_positions': payload['open_positions'][:20]}, ensure_ascii=False)}\n```\n\n"
         "### 5. 14번 `claude_rmp` 텔레메트리 (JSON)\n"
         f"```json\n{json.dumps(payload['claude_rmp_telemetry'], ensure_ascii=False)}\n```\n\n"
-        "### 6. 최종 10일차 통계 검정 (JSON, 1~9일차는 null)\n"
+        f"### 6. 최종 {meta['total_trading_days']}일차 통계 검정 (JSON, 1~{meta['total_trading_days'] - 1}일차는 null)\n"
         f"```json\n{json.dumps(payload.get('final_10day_stats'), ensure_ascii=False)}\n```\n"
     )
 

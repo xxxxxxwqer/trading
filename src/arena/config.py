@@ -24,7 +24,7 @@ ALPACA_DATA_BASE_URL = "https://data.alpaca.markets"
 
 # Competition parameters
 INITIAL_CASH: float = 10_000.0
-COMPETITION_TRADING_DAYS: int = 10
+COMPETITION_TRADING_DAYS: int = 30
 
 # Shared Professional Risk Manager Rules
 MAX_RISK_PER_TRADE_PCT: float = 0.01       # At most 1% of agent equity at risk per trade
@@ -188,10 +188,10 @@ AGENT_SPECS: List[AgentSpec] = [
         agent_id="ctrl_spy",
         name="9. Buy-and-Hold SPY (Benchmark)",
         category="Control / Benchmark",
-        short_description="Passive S&P 500 index benchmark that buys SPY on Day 1 and holds until the end of Day 10.",
+        short_description="Passive S&P 500 index benchmark that buys SPY on Day 1 and holds until the final trading day.",
         playbook=(
             "Passive index benchmark control. Allocates virtual capital into SPY at the first trading cycle and holds "
-            "passively through the 10-day competition so every active agent can be measured against the S&P 500."
+            "passively through the 30-day competition so every active agent can be measured against the S&P 500."
         ),
         bypass_position_cap=True,
     ),
@@ -242,7 +242,7 @@ AGENT_SPECS: List[AgentSpec] = [
             "(C1..C4) sets max slots (5/3/1/0) plus -1.25% intraday SPY crash guard. Ranks stocks by 58-day intercept-free "
             "residual momentum skipping the last 5 days, enters Top 10 pullbacks (E1..E6 with 24h news keyword veto), sizes via "
             "drawdown-adaptive HeatCap (0.75% target risk, -2% daily halt), and manages exits via stop ratchet, 5-day time stop, "
-            "SMA50 break, and Regime-OFF rules. No new entries on Day 10."
+            "SMA50 break, and Regime-OFF rules. No new entries on the final trading day."
         ),
     ),
 ]

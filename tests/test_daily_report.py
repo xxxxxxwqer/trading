@@ -41,8 +41,11 @@ from arena.reporting.daily_report import (  # noqa: E402
 
 def _make_agent_states(num_days: int = 1) -> list[AgentLedgerState]:
     """Create a realistic 13-agent roster with controlled equity, trades, positions, and rejections."""
+    from datetime import date, timedelta
+
     states: list[AgentLedgerState] = []
-    dates = [f"2026-11-{10 + d:02d}" for d in range(1, num_days + 1)]
+    base = date(2026, 11, 10)
+    dates = [(base + timedelta(days=d)).isoformat() for d in range(1, num_days + 1)]
     last_date = dates[-1]
 
     for idx, spec in enumerate(AGENT_SPECS):
@@ -347,23 +350,26 @@ class TestDailyReportPipeline(unittest.TestCase):
         self.assertFalse(ok_tuning)
 
     def test_day10_final_report_includes_student_t_section8(self) -> None:
-        states = _make_agent_states(num_days=10)
+        from arena.config import COMPETITION_TRADING_DAYS
+
+        states = _make_agent_states(num_days=COMPETITION_TRADING_DAYS)
+        last_date = states[0].current_trading_date_et
         payload = build_report_payload(
             agent_states=states,
             competition_state={"status": "COMPLETED"},
-            trading_date_et="2026-11-20",
-            trading_day_number=10,
+            trading_date_et=last_date,
+            trading_day_number=COMPETITION_TRADING_DAYS,
             market_summary={},
         )
         self.assertTrue(payload["metadata"]["is_final_day"])
         self.assertIsNotNone(payload["final_10day_stats"])
-        self.assertEqual(payload["final_10day_stats"]["n_trading_days"], 10)
+        self.assertEqual(payload["final_10day_stats"]["n_trading_days"], COMPETITION_TRADING_DAYS)
 
-        md_day10 = render_deterministic_markdown_report(payload)
-        ok, errs = validate_report_markdown(md_day10, states, is_final_day=True)
-        self.assertTrue(ok, f"Day 10 deterministic report failed validation: {errs}")
-        self.assertIn("## 8. 통계적 최종 평가: 운(Luck) vs 실력(Skill)", md_day10)
-        self.assertIn("95% 신뢰구간", md_day10)
+        md_final = render_deterministic_markdown_report(payload)
+        ok, errs = validate_report_markdown(md_final, states, is_final_day=True)
+        self.assertTrue(ok, f"Final-day deterministic report failed validation: {errs}")
+        self.assertIn("## 8. 통계적 최종 평가: 운(Luck) vs 실력(Skill)", md_final)
+        self.assertIn("95% 신뢰구간", md_final)
 
     def test_generate_save_and_render_dashboard_reports_page(self) -> None:
         states = _make_agent_states(num_days=1)
@@ -403,7 +409,9 @@ class TestDailyReportPipeline(unittest.TestCase):
                 reports_dir=reports_dir,
             )
             reports_html = (docs_dir / "reports.html").read_text(encoding="utf-8")
-            self.assertIn("Day 1/10 Daily Report", reports_html)
+            from arena.config import COMPETITION_TRADING_DAYS
+
+            self.assertIn(f"Day 1/{COMPETITION_TRADING_DAYS} Daily Report", reports_html)
             self.assertIn("2026-11-11_day01.md", reports_html)
             self.assertIn("claude_rmp", reports_html)
 

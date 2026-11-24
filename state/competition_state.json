@@ -2,7 +2,7 @@
   "status": "READY",
   "mode": "LIVE",
   "trading_days_completed": 0,
-  "total_trading_days": 10,
+  "total_trading_days": 30,
   "active_trading_dates": [],
   "cycles_run": 0,
   "strategy_hashes": {
@@ -17,7 +17,7 @@
   "strategy_integrity_verified": true,
   "started_at_utc": "",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-24T13:53:45Z",
+  "last_updated_utc": "2026-11-24T14:17:14Z",
   "last_decision_timestamp_utc": "",
   "current_trading_date_et": "",
   "regime_summary": "Ready for Day 1 market open."

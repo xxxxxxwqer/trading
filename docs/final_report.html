@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
+  <title>30-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -18,7 +18,7 @@
       <div class="brand-block">
         <div class="brand-title-row">
           <a href="index.html" class="brand-title">AI Trading Arena</a>
-          <span class="comp-status-badge comp-live">LIVE - Day 1 of 10</span>
+          <span class="comp-status-badge comp-live">LIVE - Day 1 of 30</span>
         </div>
         <p class="brand-subtitle">13-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 5 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 2 Controls</p>
       </div>
@@ -27,21 +27,21 @@
         <div class="trading-progress-box">
           <div class="progress-label-row">
             <span class="progress-title">Competition Progress</span>
-            <span class="progress-count"><strong>1 / 10 US Trading Days</strong> (10%)</span>
+            <span class="progress-count"><strong>1 / 30 US Trading Days</strong> (3%)</span>
           </div>
           <div class="progress-track" aria-label="Trading Days Progress">
-            <div class="progress-fill" style="width: 10.0%"></div>
+            <div class="progress-fill" style="width: 4.0%"></div>
           </div>
         </div>
 
         <div class="timestamps-box">
           <div class="ts-item">
             <span class="ts-label">Korea (KST / Asia/Seoul):</span>
-            <time class="ts-value">2026-11-24 22:53:45 KST</time>
+            <time class="ts-value">2026-11-24 23:17:14 KST</time>
           </div>
           <div class="ts-item">
             <span class="ts-label">New York (ET / America/New_York):</span>
-            <time class="ts-value">2026-11-24 08:53:45 EST</time>
+            <time class="ts-value">2026-11-24 09:17:14 EST</time>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
       <div class="nav-primary">
         <a href="index.html" class="nav-link">&#127942; Live Leaderboard &amp; Arena</a>
         <a href="reports.html" class="nav-link">&#128221; Daily Markdown Reports</a>
-        <a href="final_report.html" class="nav-link active">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="final_report.html" class="nav-link active">&#128202; 30-Day Final Report &amp; Luck vs. Skill</a>
         <a href="dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
       <div class="nav-agents-strip">
@@ -77,7 +77,7 @@
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h1>&#127942; 10-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
+          <h1>&#127942; 30-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
           <p class="panel-sub">Comprehensive ranking, strategy cohort comparison, transaction-cost drag audit, and statistical analysis of luck vs. skill over N = 10 US trading days.</p>
         </div>
         <div class="panel-actions">
@@ -477,7 +477,7 @@
             The highest-turnover agent was <strong>1. Trend Follower (MA / Breakout)</strong> with <strong>0 fills</strong>,
             incurring <strong>$0.00</strong> in combined spread and slippage drag
             ($0.00 spread + $0.00 slippage).
-            Over a short 10-day window, minimizing unnecessary churn proved critical to preserving net alpha.
+            Over a 30-day window, minimizing unnecessary churn proved critical to preserving net alpha.
           </p>
         </div>
 
@@ -493,19 +493,19 @@
       </div>
     </section>
 
-    <!-- Honest Statement on Luck vs. Skill Over 10 Trading Days -->
+    <!-- Honest Statement on Luck vs. Skill Over Competition Trading Days -->
     <section class="panel" id="luck-vs-skill">
       <div class="panel-header">
         <div>
-          <h2>&#9878; Honest Statement on Luck vs. Skill Over 10 Trading Days (N = 10)</h2>
-          <p class="panel-sub">Why a 2-week (10 US trading day) competition cannot statistically prove long-term alpha — and what our two scientific controls reveal.</p>
+          <h2>&#9878; Honest Statement on Luck vs. Skill Over 30 Trading Days (N = 30)</h2>
+          <p class="panel-sub">Why a 30-trading-day competition still has meaningful sample variance — and what our two scientific controls reveal.</p>
         </div>
       </div>
 
       <div class="scientific-callout">
         <h3>Key Statistical Finding: Winner vs. Random Luck Control (<code>ctrl_random</code>) &amp; SPY (<code>ctrl_spy</code>)</h3>
         <p>
-          Over <strong>N = 10 US trading days</strong>, top-ranked
+          Over <strong>N = 30 US trading days</strong>, top-ranked
           <strong>1. Trend Follower (MA / Breakout)</strong> finished at <strong>+0.00%</strong>
           (95% confidence interval: <strong>[-0.88%, +0.88%]</strong>,
           cumulative standard error <strong>&plusmn;0.45%</strong>).
@@ -524,19 +524,19 @@
             <strong>+0.00 standard errors</strong>.
           </li>
           <li>
-            <strong>Why N = 10 Days Has Wide Confidence Intervals:</strong>
+            <strong>Why N = 30 Days Still Has Wide Confidence Intervals:</strong>
             In quantitative finance, the standard error of a strategy's cumulative return scales with
             <code>&sigma;<sub>daily</sub> &times; &radic;N</code>, while the t-statistic of skill scales with
             <code>(Sharpe<sub>annual</sub> &times; &radic;(N / 252))</code>. Even for a genuinely strong strategy with a true annualized
-            Sharpe Ratio of <strong>1.50</strong>, a 10-trading-day sample (<code>10 / 252 &approx; 0.04</code> years) yields an expected
-            t-statistic of only <code>1.50 &times; &radic;0.04 &approx; 0.30</code> standard errors — far below the <strong>1.96 standard errors</strong>
+            Sharpe Ratio of <strong>1.50</strong>, a 30-trading-day sample (<code>30 / 252 &approx; 0.119</code> years) yields an expected
+            t-statistic of only <code>1.50 &times; &radic;0.119 &approx; 0.52</code> standard errors — still below the <strong>1.96 standard errors</strong>
             required for 95% statistical significance (which requires roughly <code>(1.96 / 1.50)<sup>2</sup> &approx; 1.71 years &approx; 430 trading days</code>).
           </li>
           <li>
             <strong>Bottom Line:</strong>
-            While the 10-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
-            short-horizon return rankings are heavily influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
-            over 10 days should be interpreted as an transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
+            While the 30-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
+            short-horizon return rankings are still influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
+            over 30 days should be interpreted as a transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
           </li>
         </ul>
       </div>
@@ -548,9 +548,9 @@
               <th>Rank</th>
               <th>Agent</th>
               <th class="num">Days (N)</th>
-              <th class="num">10-Day Return</th>
+              <th class="num">30-Day Return</th>
               <th class="num">Daily Mean &plusmn; SD</th>
-              <th class="num">10-Day Std Error (SE)</th>
+              <th class="num">30-Day Std Error (SE)</th>
               <th class="num">95% Confidence Interval</th>
               <th class="num">Spread vs. Random (SE)</th>
               <th class="num">Spread vs. SPY (SE)</th>
@@ -721,7 +721,7 @@
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena 10-Day Final Report &bull; Updated 2026-11-24 22:53:45 KST / 2026-11-24 08:53:45 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena 30-Day Final Report &bull; Updated 2026-11-24 23:17:14 KST / 2026-11-24 09:17:14 EST</p>
   </footer>
 </body>
 </html>

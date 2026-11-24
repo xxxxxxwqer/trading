@@ -1,17 +1,17 @@
 {
   "paper_trading_warning": "PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)",
   "alpaca_paper_endpoint": "https://paper-api.alpaca.markets",
-  "generated_at_utc": "2026-11-24T13:53:45Z",
-  "generated_at_kst": "2026-11-24 22:53:45 KST",
-  "generated_at_et": "2026-11-24 08:53:45 EST",
-  "competition_status_badge": "LIVE - Day 1 of 10",
+  "generated_at_utc": "2026-11-24T14:17:14Z",
+  "generated_at_kst": "2026-11-24 23:17:14 KST",
+  "generated_at_et": "2026-11-24 09:17:14 EST",
+  "competition_status_badge": "LIVE - Day 1 of 30",
   "trading_days_completed": 1,
-  "competition_trading_days": 10,
+  "competition_trading_days": 30,
   "competition_state": {
     "status": "READY",
     "mode": "LIVE",
     "trading_days_completed": 0,
-    "total_trading_days": 10,
+    "total_trading_days": 30,
     "active_trading_dates": [],
     "cycles_run": 0,
     "strategy_hashes": {
@@ -26,7 +26,7 @@
     "strategy_integrity_verified": true,
     "started_at_utc": "",
     "completed_at_utc": "",
-    "last_updated_utc": "2026-11-24T13:53:45Z",
+    "last_updated_utc": "2026-11-24T14:17:14Z",
     "last_decision_timestamp_utc": "",
     "current_trading_date_et": "",
     "regime_summary": "Ready for Day 1 market open."
@@ -398,8 +398,8 @@
       "category": "Control / Benchmark",
       "short_category": "Control",
       "category_class": "cat-control",
-      "short_description": "Passive S&P 500 index benchmark that buys SPY on Day 1 and holds until the end of Day 10.",
-      "playbook": "Passive index benchmark control. Allocates virtual capital into SPY at the first trading cycle and holds passively through the 10-day competition so every active agent can be measured against the S&P 500.",
+      "short_description": "Passive S&P 500 index benchmark that buys SPY on Day 1 and holds until the final trading day.",
+      "playbook": "Passive index benchmark control. Allocates virtual capital into SPY at the first trading cycle and holds passively through the 30-day competition so every active agent can be measured against the S&P 500.",
       "flatten_eod": false,
       "status": "ACTIVE",
       "status_reason": "Trading active",
@@ -579,7 +579,7 @@
       "short_category": "Coded",
       "category_class": "cat-coded",
       "short_description": "Deterministic coded strategy designed by Claude: 4-factor SPY/breadth/vol Regime Gate, 63-day beta-neutral residual-momentum Top 10 leaders, ATR/RSI(2) pullback entries, HeatCap drawdown-adaptive sizing, and R-based trailing/time/SMA50/regime exits.",
-      "playbook": "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. Trades individual US stocks only (no ETFs; SPY used solely for regime & beta). Daily 4-factor Regime Gate (C1..C4) sets max slots (5/3/1/0) plus -1.25% intraday SPY crash guard. Ranks stocks by 58-day intercept-free residual momentum skipping the last 5 days, enters Top 10 pullbacks (E1..E6 with 24h news keyword veto), sizes via drawdown-adaptive HeatCap (0.75% target risk, -2% daily halt), and manages exits via stop ratchet, 5-day time stop, SMA50 break, and Regime-OFF rules. No new entries on Day 10.",
+      "playbook": "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. Trades individual US stocks only (no ETFs; SPY used solely for regime & beta). Daily 4-factor Regime Gate (C1..C4) sets max slots (5/3/1/0) plus -1.25% intraday SPY crash guard. Ranks stocks by 58-day intercept-free residual momentum skipping the last 5 days, enters Top 10 pullbacks (E1..E6 with 24h news keyword veto), sizes via drawdown-adaptive HeatCap (0.75% target risk, -2% daily halt), and manages exits via stop ratchet, 5-day time stop, SMA50 break, and Regime-OFF rules. No new entries on the final trading day.",
       "flatten_eod": false,
       "status": "ACTIVE",
       "status_reason": "Trading active",
@@ -696,7 +696,7 @@
     }
   },
   "luck_vs_skill": {
-    "sample_size_days": 10,
+    "sample_size_days": 30,
     "winner_name": "1. Trend Follower (MA / Breakout)",
     "winner_return_pct": 0.0,
     "random_name": "10. Random Trader (Luck Control)",
@@ -1421,7 +1421,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1431,7 +1431,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "coded_mean_rev": {
       "agent_id": "coded_mean_rev",
@@ -1454,7 +1454,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1464,7 +1464,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "coded_orb": {
       "agent_id": "coded_orb",
@@ -1487,7 +1487,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1497,7 +1497,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "coded_sector": {
       "agent_id": "coded_sector",
@@ -1520,7 +1520,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1530,7 +1530,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "llm_technical": {
       "agent_id": "llm_technical",
@@ -1553,7 +1553,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1563,7 +1563,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "llm_catalyst": {
       "agent_id": "llm_catalyst",
@@ -1586,7 +1586,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1596,7 +1596,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "llm_macro": {
       "agent_id": "llm_macro",
@@ -1619,7 +1619,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1629,7 +1629,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "llm_cautious": {
       "agent_id": "llm_cautious",
@@ -1652,7 +1652,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1662,7 +1662,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "ctrl_spy": {
       "agent_id": "ctrl_spy",
@@ -1685,7 +1685,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1695,7 +1695,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "ctrl_random": {
       "agent_id": "ctrl_random",
@@ -1718,7 +1718,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1728,7 +1728,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "style_berkshire": {
       "agent_id": "style_berkshire",
@@ -1751,7 +1751,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1761,7 +1761,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "style_congress": {
       "agent_id": "style_congress",
@@ -1784,7 +1784,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1794,7 +1794,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     },
     "claude_rmp": {
       "agent_id": "claude_rmp",
@@ -1817,7 +1817,7 @@
       "rejections": [],
       "equity_curve": [
         {
-          "timestamp": "2026-11-24T13:53:45Z",
+          "timestamp": "2026-11-24T14:17:14Z",
           "trading_date_et": "2026-11-24",
           "equity": 10000.0,
           "cash": 10000.0,
@@ -1827,7 +1827,7 @@
         }
       ],
       "daily_journal": [],
-      "last_updated": "2026-11-24T13:53:45Z"
+      "last_updated": "2026-11-24T14:17:14Z"
     }
   }
 }

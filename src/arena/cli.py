@@ -434,7 +434,8 @@ def finalize_competition(
 ) -> None:
     """Close all open positions across all agents at the final price and mark competition COMPLETED."""
     logger.info(
-        "Finalizing 10-day competition at %s (Day %d): closing all open positions at final prices.",
+        "Finalizing %d-day competition at %s (Day %d): closing all open positions at final prices.",
+        COMPETITION_TRADING_DAYS,
         fill_timestamp,
         trading_day_number,
     )
@@ -457,7 +458,7 @@ def finalize_competition(
 
         if state.status != "BLOWN_UP":
             state.status = "COMPLETED"
-            state.status_reason = "10-day competition completed; all positions closed at final price"
+            state.status_reason = f"{COMPETITION_TRADING_DAYS}-day competition completed; all positions closed at final price"
 
         ledger.update_daily_journal(
             state=state,
@@ -884,7 +885,7 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
 
     # 1. If competition is already COMPLETED, refresh dashboard and exit cleanly
     if comp_state.get("status") == "COMPLETED":
-        logger.info("Competition is already marked COMPLETED (10/10 trading days finished). Exiting cleanly.")
+        logger.info("Competition is already marked COMPLETED (%d/%d trading days finished). Exiting cleanly.", COMPETITION_TRADING_DAYS, COMPETITION_TRADING_DAYS)
         _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
         return 0
 

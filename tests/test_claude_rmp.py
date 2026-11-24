@@ -181,10 +181,12 @@ class TestClaudeRMP(unittest.TestCase):
                 stop_loss=95.0, take_profit=None, opened_at="2026-11-18T15:00:00Z",
             )
             spy_prev = spy_bars[-1].close
+            from arena.config import COMPETITION_TRADING_DAYS
+
             snap_d10 = MarketSnapshot(
                 decision_timestamp="2026-11-23T15:00:00Z",
                 trading_date_et="2026-11-23",
-                trading_day_number=10,  # Final trading day -> NO new entries!
+                trading_day_number=COMPETITION_TRADING_DAYS,  # Final trading day -> NO new entries!
                 is_near_market_close=False,
                 session_open_et="09:30",
                 session_close_et="16:00",

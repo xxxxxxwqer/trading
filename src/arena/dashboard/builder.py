@@ -1236,7 +1236,7 @@ class DashboardBuilder:
       <div class="nav-primary">
         <a href="{root_prefix}index.html" class="{idx_cls}">&#127942; Live Leaderboard &amp; Arena</a>
         <a href="{root_prefix}reports.html" class="{daily_cls}">&#128221; Daily Markdown Reports</a>
-        <a href="{root_prefix}final_report.html" class="{rep_cls}">&#128202; 10-Day Final Report &amp; Luck vs. Skill</a>
+        <a href="{root_prefix}final_report.html" class="{rep_cls}">&#128202; {COMPETITION_TRADING_DAYS}-Day Final Report &amp; Luck vs. Skill</a>
         <a href="{root_prefix}dashboard_data.json" class="nav-link nav-json" target="_blank" rel="noopener">&#128196; JSON Ledger Export</a>
       </div>
       <div class="nav-agents-strip">
@@ -1599,7 +1599,7 @@ class DashboardBuilder:
           <p class="panel-sub">Sorted by current total virtual equity descending. Click any agent name to inspect open positions, plain-English daily journals, trade fills, and risk rejections.</p>
         </div>
         <div class="panel-actions">
-          <a href="final_report.html" class="btn-secondary">View 10-Day Final Analysis &amp; Luck vs. Skill &rarr;</a>
+          <a href="final_report.html" class="btn-secondary">View {COMPETITION_TRADING_DAYS}-Day Final Analysis &amp; Luck vs. Skill &rarr;</a>
         </div>
       </div>
 
@@ -2011,7 +2011,7 @@ class DashboardBuilder:
       <span>&bull;</span>
       <span>Rank <strong>#{m['rank']} of {len(sorted_metrics)}</strong></span>
       <span>&bull;</span>
-      <a href="../final_report.html">10-Day Final Report &amp; Luck vs. Skill &rarr;</a>
+      <a href="../final_report.html">{COMPETITION_TRADING_DAYS}-Day Final Report &amp; Luck vs. Skill &rarr;</a>
     </div>
 
     <!-- Agent Header & Playbook -->
@@ -2368,7 +2368,7 @@ class DashboardBuilder:
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
+  <title>{COMPETITION_TRADING_DAYS}-Day Final Report &amp; Luck vs. Skill Analysis — AI Trading Arena</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -2378,7 +2378,7 @@ class DashboardBuilder:
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h1>&#127942; 10-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
+          <h1>&#127942; {COMPETITION_TRADING_DAYS}-Day Competition Final Report &amp; Scientific Post-Mortem</h1>
           <p class="panel-sub">Comprehensive ranking, strategy cohort comparison, transaction-cost drag audit, and statistical analysis of luck vs. skill over N = 10 US trading days.</p>
         </div>
         <div class="panel-actions">
@@ -2483,7 +2483,7 @@ class DashboardBuilder:
             The highest-turnover agent was <strong>{_esc(most_active['name'])}</strong> with <strong>{most_active['total_fills']} fills</strong>,
             incurring <strong>{_fmt_money(most_active['total_friction_cost'])}</strong> in combined spread and slippage drag
             ({_fmt_money(most_active['total_spread_cost'])} spread + {_fmt_money(most_active['total_slippage_cost'])} slippage).
-            Over a short 10-day window, minimizing unnecessary churn proved critical to preserving net alpha.
+            Over a {COMPETITION_TRADING_DAYS}-day window, minimizing unnecessary churn proved critical to preserving net alpha.
           </p>
         </div>
 
@@ -2499,12 +2499,12 @@ class DashboardBuilder:
       </div>
     </section>
 
-    <!-- Honest Statement on Luck vs. Skill Over 10 Trading Days -->
+    <!-- Honest Statement on Luck vs. Skill Over Competition Trading Days -->
     <section class="panel" id="luck-vs-skill">
       <div class="panel-header">
         <div>
-          <h2>&#9878; Honest Statement on Luck vs. Skill Over 10 Trading Days (N = 10)</h2>
-          <p class="panel-sub">Why a 2-week (10 US trading day) competition cannot statistically prove long-term alpha — and what our two scientific controls reveal.</p>
+          <h2>&#9878; Honest Statement on Luck vs. Skill Over {COMPETITION_TRADING_DAYS} Trading Days (N = {COMPETITION_TRADING_DAYS})</h2>
+          <p class="panel-sub">Why a {COMPETITION_TRADING_DAYS}-trading-day competition still has meaningful sample variance — and what our two scientific controls reveal.</p>
         </div>
       </div>
 
@@ -2530,19 +2530,19 @@ class DashboardBuilder:
             <strong>{luck_stats['winner_vs_spy_se']:+.2f} standard errors</strong>.
           </li>
           <li>
-            <strong>Why N = 10 Days Has Wide Confidence Intervals:</strong>
+            <strong>Why N = {COMPETITION_TRADING_DAYS} Days Still Has Wide Confidence Intervals:</strong>
             In quantitative finance, the standard error of a strategy's cumulative return scales with
             <code>&sigma;<sub>daily</sub> &times; &radic;N</code>, while the t-statistic of skill scales with
             <code>(Sharpe<sub>annual</sub> &times; &radic;(N / 252))</code>. Even for a genuinely strong strategy with a true annualized
-            Sharpe Ratio of <strong>1.50</strong>, a 10-trading-day sample (<code>10 / 252 &approx; 0.04</code> years) yields an expected
-            t-statistic of only <code>1.50 &times; &radic;0.04 &approx; 0.30</code> standard errors — far below the <strong>1.96 standard errors</strong>
+            Sharpe Ratio of <strong>1.50</strong>, a {COMPETITION_TRADING_DAYS}-trading-day sample (<code>{COMPETITION_TRADING_DAYS} / 252 &approx; {COMPETITION_TRADING_DAYS / 252.0:.3f}</code> years) yields an expected
+            t-statistic of only <code>1.50 &times; &radic;{COMPETITION_TRADING_DAYS / 252.0:.3f} &approx; {1.50 * math.sqrt(COMPETITION_TRADING_DAYS / 252.0):.2f}</code> standard errors — still below the <strong>1.96 standard errors</strong>
             required for 95% statistical significance (which requires roughly <code>(1.96 / 1.50)<sup>2</sup> &approx; 1.71 years &approx; 430 trading days</code>).
           </li>
           <li>
             <strong>Bottom Line:</strong>
-            While the 10-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
-            short-horizon return rankings are heavily influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
-            over 10 days should be interpreted as an transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
+            While the {COMPETITION_TRADING_DAYS}-day arena rigorously tests <em>engineering discipline, zero look-ahead execution, transaction-cost realism, and automated risk containment</em>,
+            short-horizon return rankings are still influenced by regime alignment and sample variance. Any single agent beating <code>ctrl_random</code> or <code>ctrl_spy</code>
+            over {COMPETITION_TRADING_DAYS} days should be interpreted as a transparent experiment in execution and risk hygiene, <strong>not</strong> proof of permanent market-beating skill.
           </li>
         </ul>
       </div>
@@ -2554,9 +2554,9 @@ class DashboardBuilder:
               <th>Rank</th>
               <th>Agent</th>
               <th class="num">Days (N)</th>
-              <th class="num">10-Day Return</th>
+              <th class="num">{COMPETITION_TRADING_DAYS}-Day Return</th>
               <th class="num">Daily Mean &plusmn; SD</th>
-              <th class="num">10-Day Std Error (SE)</th>
+              <th class="num">{COMPETITION_TRADING_DAYS}-Day Std Error (SE)</th>
               <th class="num">95% Confidence Interval</th>
               <th class="num">Spread vs. Random (SE)</th>
               <th class="num">Spread vs. SPY (SE)</th>
@@ -2572,7 +2572,7 @@ class DashboardBuilder:
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena 10-Day Final Report &bull; Updated {_esc(header_ctx['updated_kst'])} / {_esc(header_ctx['updated_et'])}</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena {COMPETITION_TRADING_DAYS}-Day Final Report &bull; Updated {_esc(header_ctx['updated_kst'])} / {_esc(header_ctx['updated_et'])}</p>
   </footer>
 </body>
 </html>
@@ -2741,7 +2741,7 @@ class DashboardBuilder:
                 anchor_id = f"report-day-{day_num}-{re.sub(r'[^0-9a-zA-Z_-]', '', date_et)}"
                 rendered_body = self._render_gfm_to_html(rep.get("markdown", ""))
                 raw_md_esc = _esc(rep.get("markdown", ""))
-                badge_label = "FINAL DAY 10/10" if rep.get("is_final_day") else f"Day {day_num}/10"
+                badge_label = f"FINAL DAY {COMPETITION_TRADING_DAYS}/{COMPETITION_TRADING_DAYS}" if rep.get("is_final_day") else f"Day {day_num}/{COMPETITION_TRADING_DAYS}"
                 nav_pills.append(
                     f'<a href="#{anchor_id}" class="agent-pill {"active" if idx == 0 else ""}">Day {day_num} ({_esc(date_et)})</a>'
                 )
@@ -2749,7 +2749,7 @@ class DashboardBuilder:
                     f"""    <section class="panel md-report-panel" id="{anchor_id}">
       <div class="panel-header">
         <div>
-          <h2>&#128203; Day {day_num}/10 Daily Report &mdash; {_esc(date_et)}</h2>
+          <h2>&#128203; Day {day_num}/{COMPETITION_TRADING_DAYS} Daily Report &mdash; {_esc(date_et)}</h2>
           <p class="panel-sub">File: <code>reports/daily/{_esc(fname)}</code> &bull; Generator: <code>{_esc(gen_mode)}</code> &bull; Generated: {_esc(format_kst(rep.get('generated_at_utc')))}</p>
         </div>
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
