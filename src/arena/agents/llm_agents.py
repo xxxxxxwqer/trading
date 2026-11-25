@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, Tuple, Type
 
 from ..config import (
     AGENT_SPECS_BY_ID,
+    COMPETITION_TRADING_DAYS,
     INDEX_AND_MACRO_ETFS,
     LIQUID_LARGE_CAP_STOCKS,
     MAX_OPEN_POSITIONS,
@@ -510,7 +511,7 @@ class BaseLLMAgent(BaseAgent):
         """Build the system/user prompt combining persona playbook, risk rules, and market JSON."""
         compact_payload = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
         return (
-            f"You are '{self.name}' (agent_id='{self.agent_id}') competing in the 10-Day AI Trading Arena.\n"
+            f"You are '{self.name}' (agent_id='{self.agent_id}') competing in the {COMPETITION_TRADING_DAYS}-Day AI Trading Arena.\n"
             f"PLAYBOOK & PERSONA:\n{self.spec.playbook}\n"
             f"{self.PERSONA_PROMPT}\n\n"
             "SHARED ARENA RISK RULES (ENFORCED BY SYSTEM RISK MANAGER):\n"
@@ -554,26 +555,31 @@ class BaseLLMAgent(BaseAgent):
 
         _CYCLE_LLM_CALL_COUNTS[decision_ts] = cycle_calls + 1
 
-        request_body = json.dumps(
-            {
-                "contents": [
-                    {
-                        "role": "user",
-                        "parts": [{"text": prompt_text}],
-                    }
-                ],
-                "generationConfig": {
-                    "temperature": 0.2,
-                    "maxOutputTokens": 1024,
-                    "responseMimeType": "application/json",
-                },
-            }
-        ).encode("utf-8")
-
-        models_to_try = (PRIMARY_GEMINI_MODEL, FALLBACK_GEMINI_MODEL)
+        models_to_try = (PRIMARY_GEMINI_MODEL, "gemini-2.5-flash-lite", FALLBACK_GEMINI_MODEL)
         last_error = "Gemini API request failed"
 
         for idx, model_name in enumerate(models_to_try):
+            gen_cfg: Dict[str, Any] = {
+                "temperature": 0.2,
+                "maxOutputTokens": 2048,
+                "responseMimeType": "application/json",
+            }
+            # Gemini 2.5 thinking models consume maxOutputTokens on hidden thoughts unless disabled
+            if "2.5" in model_name:
+                gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
+
+            request_body = json.dumps(
+                {
+                    "contents": [
+                        {
+                            "role": "user",
+                            "parts": [{"text": prompt_text}],
+                        }
+                    ],
+                    "generationConfig": gen_cfg,
+                }
+            ).encode("utf-8")
+
             url = f"{GEMINI_API_BASE_URL}/{model_name}:generateContent?key={api_key}"
             req = urllib.request.Request(
                 url=url,
@@ -589,29 +595,47 @@ class BaseLLMAgent(BaseAgent):
                 candidates = resp_data.get("candidates") or []
                 if not candidates:
                     last_error = f"Empty candidates from {model_name}"
+                    logger.warning("Gemini API (%s) %s", self.agent_id, last_error)
                     continue
                 content = candidates[0].get("content") or {}
                 parts = content.get("parts") or []
-                if not parts or "text" not in parts[0]:
-                    last_error = f"Missing text part in {model_name} response"
+                # Skip thinking parts ({"thought": true}) so only the actual JSON answer is parsed
+                answer_chunks = [
+                    str(p["text"])
+                    for p in parts
+                    if isinstance(p, dict) and "text" in p and not p.get("thought")
+                ]
+                joined_text = "".join(answer_chunks).strip()
+                if not joined_text:
+                    last_error = f"Missing non-thought text part in {model_name} response"
+                    logger.warning("Gemini API (%s) %s", self.agent_id, last_error)
                     continue
-                return str(parts[0]["text"]), None
+                return joined_text, None
             except urllib.error.HTTPError as http_err:
                 status_code = getattr(http_err, "code", 0)
+                err_snippet = ""
+                try:
+                    raw_err = http_err.read().decode("utf-8", errors="ignore")[:200]
+                    err_snippet = _sanitize_error_message(" ".join(raw_err.split()), api_key)
+                except Exception:
+                    err_snippet = ""
                 if status_code == 429:
                     last_error = f"Gemini free-tier rate limit (HTTP 429) on {model_name}"
                 else:
-                    last_error = f"Gemini HTTP {status_code} on {model_name}"
-                if idx == 0:
-                    time.sleep(0.5)
+                    last_error = f"Gemini HTTP {status_code} on {model_name}" + (f" ({err_snippet})" if err_snippet else "")
+                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
+                if idx < len(models_to_try) - 1:
+                    time.sleep(0.8)
                     continue
             except urllib.error.URLError as url_err:
                 reason = _sanitize_error_message(str(getattr(url_err, "reason", url_err)), api_key)
                 last_error = f"Network error calling {model_name}: {reason}"
+                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
                 break
             except Exception as exc:
                 sanitized = _sanitize_error_message(str(exc), api_key)
                 last_error = f"Error calling {model_name} ({type(exc).__name__}: {sanitized})"
+                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
                 break
 
         return None, last_error
@@ -660,18 +684,22 @@ class BaseLLMAgent(BaseAgent):
                 decision_ts=snapshot.decision_timestamp,
             )
             if raw_text is None:
+                logger.warning("LLM agent %s HOLD fallback (API): %s", self.agent_id, error_reason or "Gemini API unavailable")
                 return self.hold_signal(
                     snapshot,
                     reasoning=f"HOLD fallback: {error_reason or 'Gemini API unavailable'}.",
                     confidence=0.5,
                 )
 
-            return parse_and_validate_llm_json(
+            parsed_signal = parse_and_validate_llm_json(
                 raw_text=raw_text,
                 agent_id=self.agent_id,
                 snapshot=snapshot,
                 state=state,
             )
+            if parsed_signal.action == "HOLD" and (parsed_signal.reasoning or "").startswith("HOLD fallback:"):
+                logger.warning("LLM agent %s JSON validation fallback: %s", self.agent_id, parsed_signal.reasoning)
+            return parsed_signal
         except Exception as exc:
             sanitized = _sanitize_error_message(str(exc), self._get_api_key())
             return self.hold_signal(

@@ -583,7 +583,7 @@ class AlpacaDataClient:
         }
 
     def _get_json(self, base_url: str, path: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any] | List[Any]:
-        """Perform a GET request to Alpaca Paper or Data API after verifying paper-only safety."""
+        """Perform a GET request to Alpaca Paper or Data API with retry on transient 429/5xx/network errors."""
         assert_paper_trading_only(self.paper_base_url)
         if "/orders" in path.lower():
             raise RuntimeError("HARD RULE VIOLATION: Order endpoints are strictly forbidden.")
@@ -592,10 +592,30 @@ class AlpacaDataClient:
             clean_params = {k: v for k, v in params.items() if v is not None and v != ""}
             if clean_params:
                 url = f"{url}?{urllib.parse.urlencode(clean_params)}"
-        req = urllib.request.Request(url, headers=self._headers(), method="GET")
-        with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
-            raw = resp.read().decode("utf-8")
-            return json.loads(raw)
+
+        retry_delays = (0.5, 1.5)
+        last_exc: Optional[Exception] = None
+        for attempt in range(len(retry_delays) + 1):
+            req = urllib.request.Request(url, headers=self._headers(), method="GET")
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
+                    raw = resp.read().decode("utf-8")
+                    return json.loads(raw)
+            except urllib.error.HTTPError as http_err:
+                last_exc = http_err
+                code = getattr(http_err, "code", 0)
+                if code in (429, 500, 502, 503, 504) and attempt < len(retry_delays):
+                    time.sleep(retry_delays[attempt])
+                    continue
+                raise
+            except (urllib.error.URLError, TimeoutError, OSError) as net_err:
+                last_exc = net_err
+                if attempt < len(retry_delays):
+                    time.sleep(retry_delays[attempt])
+                    continue
+                raise
+        assert last_exc is not None
+        raise last_exc
 
     # ------------------------------------------------------------------
     # Clock & Calendar Endpoints
@@ -736,8 +756,31 @@ class AlpacaDataClient:
                         if bid > 0 and ask >= bid:
                             mid = round((bid + ask) / 2.0, 4)
                             spread_bps = round(((ask - bid) / mid) * 10_000.0, 2) if mid > 0 else DEFAULT_SPREAD_BPS
-                            # Cap anomalous wide IEX spreads to realistic liquid spread bounds
-                            if spread_bps > 35.0:
+                            last_bar = bars_by_ticker[sym][-1] if (bars_by_ticker and bars_by_ticker.get(sym)) else None
+                            last_close = float(last_bar.close) if (last_bar is not None and last_bar.close > 0) else 0.0
+                            bar_dt = parse_iso_utc(last_bar.timestamp) if last_bar is not None else None
+                            bar_age_sec = abs((cutoff_dt - bar_dt).total_seconds()) if bar_dt is not None else 1e9
+                            dev_pct = abs(mid - last_close) / last_close if last_close > 0 else 0.0
+
+                            # Guard against skewed/stale IEX quotes:
+                            # 1) Wide IEX spread (> 35 bps) that skews midpoint away from fresh traded price
+                            # 2) Extreme IEX outlier (> 2.5% from a fresh bar <= 45 min old, or quote older than bar)
+                            reanchor_to_bar = False
+                            if last_close > 0:
+                                if spread_bps > 150.0:
+                                    reanchor_to_bar = True
+                                elif spread_bps > 35.0 and (bar_age_sec <= 7200 or dev_pct > 0.005):
+                                    reanchor_to_bar = True
+                                elif dev_pct > 0.025 and (bar_age_sec <= 2700 or (bar_dt is not None and q_dt < bar_dt)):
+                                    reanchor_to_bar = True
+
+                            if reanchor_to_bar:
+                                mid = round(last_close, 4)
+                                half_spread = mid * (DEFAULT_SPREAD_BPS / 20_000.0)
+                                bid = round(mid - half_spread, 4)
+                                ask = round(mid + half_spread, 4)
+                                spread_bps = DEFAULT_SPREAD_BPS
+                            elif spread_bps > 35.0:
                                 half_spread = mid * (DEFAULT_SPREAD_BPS / 20_000.0)
                                 bid = round(mid - half_spread, 4)
                                 ask = round(mid + half_spread, 4)
@@ -776,48 +819,60 @@ class AlpacaDataClient:
         decision_timestamp: str,
         limit: int = 30,
     ) -> List[NewsHeadline]:
-        """Fetch recent market news strictly created at or before decision_timestamp."""
+        """Fetch recent market news across ALL universe tickers strictly created at or before decision_timestamp."""
         assert_paper_trading_only(self.paper_base_url)
         cutoff_dt = parse_iso_utc(decision_timestamp)
         cutoff_iso = format_iso_utc(cutoff_dt)
         start_iso = format_iso_utc(cutoff_dt - timedelta(days=3))
         headlines: List[NewsHeadline] = []
 
-        if not self.has_credentials():
+        if not self.has_credentials() or not tickers:
             return headlines
 
-        try:
-            payload = self._get_json(
-                self.data_base_url,
-                "/v1beta1/news",
-                params={
-                    "symbols": ",".join(tickers[:35]),
-                    "start": start_iso,
-                    "end": cutoff_iso,
-                    "limit": limit,
-                    "sort": "desc",
-                },
-            )
-            items = payload.get("news", []) if isinstance(payload, dict) else []
-            for item in items:
-                created_raw = str(item.get("created_at") or "")
-                if not created_raw:
-                    continue
-                created_dt = parse_iso_utc(created_raw)
-                if created_dt <= cutoff_dt:
-                    headlines.append(
-                        NewsHeadline(
-                            headline=str(item.get("headline") or "").strip(),
-                            summary=str(item.get("summary") or "").strip()[:300],
-                            source=str(item.get("source") or "Alpaca News"),
-                            created_at=format_iso_utc(created_dt),
-                            symbols=[str(s) for s in (item.get("symbols") or [])],
-                            url=str(item.get("url") or ""),
+        seen_keys: set[Tuple[str, str]] = set()
+        chunk_size = 35
+        for i in range(0, len(tickers), chunk_size):
+            batch = tickers[i : i + chunk_size]
+            try:
+                payload = self._get_json(
+                    self.data_base_url,
+                    "/v1beta1/news",
+                    params={
+                        "symbols": ",".join(batch),
+                        "start": start_iso,
+                        "end": cutoff_iso,
+                        "limit": limit,
+                        "sort": "desc",
+                    },
+                )
+                items = payload.get("news", []) if isinstance(payload, dict) else []
+                for item in items:
+                    created_raw = str(item.get("created_at") or "")
+                    if not created_raw:
+                        continue
+                    created_dt = parse_iso_utc(created_raw)
+                    if created_dt <= cutoff_dt:
+                        title = str(item.get("headline") or "").strip()
+                        created_iso = format_iso_utc(created_dt)
+                        dedup_key = (title.lower(), created_iso)
+                        if not title or dedup_key in seen_keys:
+                            continue
+                        seen_keys.add(dedup_key)
+                        headlines.append(
+                            NewsHeadline(
+                                headline=title,
+                                summary=str(item.get("summary") or "").strip()[:300],
+                                source=str(item.get("source") or "Alpaca News"),
+                                created_at=created_iso,
+                                symbols=[str(s) for s in (item.get("symbols") or [])],
+                                url=str(item.get("url") or ""),
+                            )
                         )
-                    )
-        except Exception:
-            pass
-        return headlines
+            except Exception:
+                continue
+
+        headlines.sort(key=lambda h: h.created_at, reverse=True)
+        return headlines[:limit]
 
     # ------------------------------------------------------------------
     # Full MarketSnapshot & Next-Snapshot Fill Fetchers

@@ -150,7 +150,7 @@ DAILY_REPORT_SYSTEM_PROMPT = """# ROLE
   - `# AI Trading Arena 일일 리포트 — Day {TRADING_DAY}/30 ({DATE_ET})`
   - `## 1. 오늘의 핵심 요약 (Executive Summary)`
   - `## 2. 시장 매크로 및 기술적 레짐 브리핑` (`### 2.1`, `### 2.2`)
-  - `## 3. 전체 에이전트 성과 리더보드 (13개 에이전트)`
+  - `## 3. 전체 에이전트 성과 리더보드 (34개 에이전트 — 전원 생략 없이 모두 표기)`
   - `## 4. 전략군별 성과 비교`
   - `## 5. 스페셜 분석: 14번 claude_rmp 텔레메트리 및 가설 검증`
   - `## 6. 당일 매매 복기, 리스크 거부 및 마찰 감사` (`### 6.1`, `### 6.2`, `### 6.3`)
@@ -504,13 +504,24 @@ def build_report_payload(
     rnd_cum_pct = ((rnd_state.equity - rnd_state.initial_cash) / rnd_state.initial_cash * 100.0) if rnd_state else 0.0
     spy_daily_pct = float(spy_state.daily_pnl_pct) if spy_state else 0.0
 
-    # Infer actual cycles run today from equity curve timestamps if not explicitly supplied
+    # Prefer explicit per-date 30m cycle counter in competition_state (immune to Day-0 seed & 5-min monitor ticks)
     if cycles_run_today is None:
+        cycles_by_date = competition_state.get("cycles_by_date") or {}
+        if isinstance(cycles_by_date, dict) and trading_date_et in cycles_by_date:
+            try:
+                cycles_run_today = int(cycles_by_date[trading_date_et])
+            except Exception:
+                cycles_run_today = None
+
+    if cycles_run_today is None:
+        started_at = str(competition_state.get("started_at_utc") or "")
         day_timestamps = {
             pt.timestamp
             for st in agent_states
             for pt in st.equity_curve
-            if pt.trading_date_et == trading_date_et and pt.timestamp
+            if pt.trading_date_et == trading_date_et
+            and pt.timestamp
+            and (not started_at or pt.timestamp >= started_at)
         }
         cycles_run_today = len(day_timestamps) if day_timestamps else 0
 
@@ -1146,28 +1157,37 @@ def validate_report_markdown(
 
 def _call_gemini_for_report(user_prompt: str, api_key: str) -> Tuple[Optional[str], Optional[str]]:
     """Call Gemini Flash with temperature=0.15 to draft the GFM daily report."""
-    body = json.dumps(
-        {
-            "systemInstruction": {"parts": [{"text": DAILY_REPORT_SYSTEM_PROMPT}]},
-            "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
-            "generationConfig": {
-                "temperature": 0.15,
-                "maxOutputTokens": 8192,
-            },
+    for model_name in (PRIMARY_REPORT_MODEL, "gemini-2.5-flash-lite", FALLBACK_REPORT_MODEL):
+        gen_cfg: Dict[str, Any] = {
+            "temperature": 0.15,
+            "maxOutputTokens": 16384,
         }
-    ).encode("utf-8")
+        if "2.5" in model_name:
+            gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
 
-    for model_name in (PRIMARY_REPORT_MODEL, FALLBACK_REPORT_MODEL):
+        body = json.dumps(
+            {
+                "systemInstruction": {"parts": [{"text": DAILY_REPORT_SYSTEM_PROMPT}]},
+                "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+                "generationConfig": gen_cfg,
+            }
+        ).encode("utf-8")
+
         url = f"{GEMINI_API_BASE_URL}/{model_name}:generateContent?key={api_key}"
         req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"}, method="POST")
         try:
-            with urllib.request.urlopen(req, timeout=45) as resp:
+            with urllib.request.urlopen(req, timeout=60) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
             cands = data.get("candidates") or []
             if not cands:
                 continue
             parts = (cands[0].get("content") or {}).get("parts") or []
-            text = "".join(str(p.get("text", "")) for p in parts).strip()
+            # Exclude hidden thought parts on Gemini 2.5 models
+            text = "".join(
+                str(p.get("text", ""))
+                for p in parts
+                if isinstance(p, dict) and not p.get("thought")
+            ).strip()
             if text.startswith("```"):
                 text = re.sub(r"^```(?:markdown|md)?\s*", "", text, flags=re.IGNORECASE)
                 text = re.sub(r"\s*```$", "", text).strip()
@@ -1215,6 +1235,7 @@ def generate_and_save_daily_report(
     reports_dir: Path = REPORTS_DIR,
     use_llm: bool = True,
     cycles_run_today: Optional[int] = None,
+    is_post_close_final: bool = False,
 ) -> Dict[str, Any]:
     """Build payload, generate verified GFM report (Gemini Flash + deterministic fallback), and save to disk."""
     # Load cached market summary & Agent 14 telemetry if not passed directly
@@ -1302,6 +1323,7 @@ def generate_and_save_daily_report(
         "trading_date_et": trading_date_et,
         "trading_day_number": trading_day_number,
         "is_final_day": is_final,
+        "is_post_close_final": bool(is_post_close_final),
         "filename": report_filename,
         "relative_path": f"reports/daily/{report_filename}",
         "generator": generator_mode,

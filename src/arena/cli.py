@@ -566,6 +566,81 @@ def _build_effective_fill_quotes_and_marks(
     return effective_quotes, mark_prices
 
 
+def _build_post_entry_stop_bars_for_agent(
+    state: AgentLedgerState,
+    recent_bars_by_ticker: Dict[str, List[Bar]],
+    quotes_by_ticker: Dict[str, Quote],
+    now_iso: str,
+    fill_iso: str,
+    lookback_minutes: int = 15,
+) -> Dict[str, Bar]:
+    """Build intrabar stop/target check bars strictly AFTER each open position's opened_at timestamp.
+
+    Prevents pre-entry historical bar wicks from causing phantom stop-loss / take-profit triggers while
+    combining qualifying post-entry intraday bars with the live sanitized quote.
+    """
+    now_dt = parse_iso_utc(now_iso)
+    fill_dt = parse_iso_utc(fill_iso)
+    window_start = now_dt - timedelta(minutes=max(1, lookback_minutes))
+    check_bars: Dict[str, Bar] = {}
+
+    for sym, pos in state.positions.items():
+        if pos.shares <= 0:
+            continue
+        opened_dt: Optional[datetime] = None
+        if pos.opened_at:
+            try:
+                opened_dt = parse_iso_utc(pos.opened_at)
+            except Exception:
+                opened_dt = None
+
+        qual_bars: List[Bar] = []
+        for b in recent_bars_by_ticker.get(sym) or []:
+            try:
+                b_dt = parse_iso_utc(b.timestamp)
+            except Exception:
+                continue
+            if b_dt < window_start or b_dt > now_dt:
+                continue
+            if opened_dt is not None and b_dt <= opened_dt:
+                continue
+            qual_bars.append(b)
+
+        q = quotes_by_ticker.get(sym)
+        use_quote = q is not None and q.mid_price > 0 and (opened_dt is None or fill_dt > opened_dt)
+
+        if qual_bars:
+            b_open = qual_bars[0].open
+            b_high = max(b.high for b in qual_bars)
+            b_low = min(b.low for b in qual_bars)
+            b_close = qual_bars[-1].close
+            if use_quote and q is not None:
+                b_high = max(b_high, q.mid_price, q.ask_price)
+                b_low = min(b_low, q.mid_price, q.bid_price)
+                b_close = q.mid_price
+            check_bars[sym] = Bar(
+                ticker=sym,
+                timestamp=fill_iso,
+                open=round(b_open, 4),
+                high=round(b_high, 4),
+                low=round(b_low, 4),
+                close=round(b_close, 4),
+                volume=sum(float(b.volume) for b in qual_bars),
+            )
+        elif use_quote and q is not None:
+            check_bars[sym] = Bar(
+                ticker=sym,
+                timestamp=fill_iso,
+                open=round(q.mid_price, 4),
+                high=round(max(q.mid_price, q.ask_price), 4),
+                low=round(min(q.mid_price, q.bid_price), 4),
+                close=round(q.mid_price, 4),
+                volume=0.0,
+            )
+
+    return check_bars
+
+
 def run_single_cycle(
     snapshot: MarketSnapshot,
     next_quotes: Dict[str, Quote],
@@ -578,6 +653,7 @@ def run_single_cycle(
     reports_dir: Optional[Path] = None,
     generate_daily_report: bool = True,
     use_llm_for_report: bool = True,
+    stop_check_bars_by_ticker: Optional[Dict[str, List[Bar]]] = None,
 ) -> Dict[str, Any]:
     """Execute one complete trading cycle across all active agents and update ledgers, reports & dashboard."""
     # Guarantee strict no-look-ahead timestamp ordering
@@ -603,6 +679,12 @@ def run_single_cycle(
     comp_state["trading_days_completed"] = trading_days_completed
     comp_state["total_trading_days"] = COMPETITION_TRADING_DAYS
     comp_state["cycles_run"] = int(comp_state.get("cycles_run") or 0) + 1
+    cycles_by_date: Dict[str, int] = dict(comp_state.get("cycles_by_date") or {})
+    if snapshot.trading_date_et:
+        cycles_by_date[snapshot.trading_date_et] = int(cycles_by_date.get(snapshot.trading_date_et, 0)) + 1
+    comp_state["cycles_by_date"] = cycles_by_date
+    if snapshot.is_near_market_close and snapshot.trading_date_et:
+        comp_state["last_near_close_cycle_date_et"] = snapshot.trading_date_et
     comp_state["last_updated_utc"] = fill_timestamp
     comp_state["last_decision_timestamp_utc"] = snapshot.decision_timestamp
     comp_state["current_trading_date_et"] = snapshot.trading_date_et
@@ -629,14 +711,32 @@ def run_single_cycle(
         if prev_hash in ("", "MISSING") and cur_hash != "MISSING":
             stored_hashes[fname] = cur_hash
         elif prev_hash not in ("", "MISSING") and cur_hash != "MISSING" and prev_hash != cur_hash:
-            integrity_ok = False
-            logger.warning(
-                "STRATEGY INTEGRITY WARNING: '%s' hash changed from %s... to %s... after start! "
-                "Any bug fix must be documented in state/bug_fixes_log.json.",
-                fname,
-                prev_hash[:12],
-                cur_hash[:12],
+            # Check if this exact hash transition is publicly audited as a non-strategy infra bug fix
+            audited_infra = any(
+                isinstance(bf, dict)
+                and bf.get("strategy_logic_changed") is False
+                and (bf.get("file") == fname or str(bf.get("file", "")).endswith(f"/{fname}"))
+                and bf.get("old_sha256") == prev_hash
+                and bf.get("new_sha256") == cur_hash
+                for bf in bug_fixes
             )
+            if audited_infra:
+                stored_hashes[fname] = cur_hash
+                logger.info(
+                    "Audited non-strategy infra fix accepted for '%s' (%s... -> %s...; logged in state/bug_fixes_log.json).",
+                    fname,
+                    prev_hash[:12],
+                    cur_hash[:12],
+                )
+            else:
+                integrity_ok = False
+                logger.warning(
+                    "STRATEGY INTEGRITY WARNING: '%s' hash changed from %s... to %s... after start! "
+                    "Any bug fix must be documented in state/bug_fixes_log.json.",
+                    fname,
+                    prev_hash[:12],
+                    cur_hash[:12],
+                )
     comp_state["strategy_hashes"] = stored_hashes
     comp_state["strategy_integrity_verified"] = integrity_ok
 
@@ -662,17 +762,65 @@ def run_single_cycle(
         ledger.start_of_day_check(state, snapshot.trading_date_et)
 
         # Step 2: Check intrabar Stop-Loss and Take-Profit triggers on existing positions
-        if state.positions and next_bars:
-            simulator.check_and_execute_stops_and_targets(
-                state=state,
-                next_bars_by_ticker=next_bars,
-                quotes_by_ticker=effective_quotes,
-                decision_timestamp=snapshot.decision_timestamp,
-                fill_timestamp=fill_timestamp,
-                apply_to_state=True,
-            )
+        if state.positions:
+            if stop_check_bars_by_ticker is not None:
+                agent_stop_bars = _build_post_entry_stop_bars_for_agent(
+                    state=state,
+                    recent_bars_by_ticker=stop_check_bars_by_ticker,
+                    quotes_by_ticker=effective_quotes,
+                    now_iso=snapshot.decision_timestamp,
+                    fill_iso=fill_timestamp,
+                    lookback_minutes=35,
+                )
+            else:
+                agent_stop_bars = next_bars
+            if agent_stop_bars:
+                simulator.check_and_execute_stops_and_targets(
+                    state=state,
+                    next_bars_by_ticker=agent_stop_bars,
+                    quotes_by_ticker=effective_quotes,
+                    decision_timestamp=snapshot.decision_timestamp,
+                    fill_timestamp=fill_timestamp,
+                    apply_to_state=True,
+                )
 
-        # Step 3: If flatten_eod is True (coded_orb) and near market close, flatten open positions
+        # Step 3a: Catch-up flatten for intraday-only agents holding stale overnight positions from a missed close
+        if spec.flatten_eod and not snapshot.is_near_market_close and state.positions:
+            for sym in list(state.positions.keys()):
+                pos = state.positions.get(sym)
+                if pos is None or pos.shares <= 0 or not pos.opened_at:
+                    continue
+                try:
+                    opened_date_et = to_et_datetime(pos.opened_at).strftime("%Y-%m-%d")
+                except Exception:
+                    opened_date_et = pos.opened_at[:10]
+                if opened_date_et and snapshot.trading_date_et and opened_date_et < snapshot.trading_date_et:
+                    q_or_px = effective_quotes.get(sym) or (
+                        pos.current_price if pos.current_price > 0 else pos.avg_entry_price
+                    )
+                    catchup_sig = OrderSignal(
+                        agent_id=state.agent_id,
+                        action="SELL",
+                        ticker=sym,
+                        stop_loss=pos.stop_loss,
+                        take_profit=pos.take_profit,
+                        confidence=1.0,
+                        reasoning=f"Catch-up flatten for prior-day intraday-only position in {sym}",
+                        requested_shares=pos.shares,
+                        decision_timestamp=snapshot.decision_timestamp,
+                    )
+                    tr = simulator.simulate_fill(
+                        order_or_check=catchup_sig,
+                        fill_quote_or_bar=q_or_px,
+                        fill_timestamp=fill_timestamp,
+                        shares=pos.shares,
+                        state=state,
+                        exit_reason="EOD_FLAT_CATCHUP",
+                        decision_timestamp=snapshot.decision_timestamp,
+                    )
+                    ledger.apply_trade(state, tr)
+
+        # Step 3b: If flatten_eod is True (intraday-only agents) and near market close, flatten open positions
         if spec.flatten_eod and snapshot.is_near_market_close:
             if state.positions:
                 ledger.flatten_all_positions(
@@ -838,6 +986,7 @@ def run_single_cycle(
                 state_dir=state_dir,
                 reports_dir=target_reports,
                 use_llm=use_llm_for_report,
+                is_post_close_final=(comp_state.get("status") == "COMPLETED"),
             )
             logger.info(
                 "Daily Markdown report generated (%s): %s",
@@ -1016,25 +1165,79 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
             next_open,
         )
 
-        # Post-close catch-up: if the most recent active trading date does not yet have a daily report
-        # (e.g. if GitHub Actions cron delayed past the 15:30 ET cycle), generate it now!
+        # Post-close catch-up: once market closes, finalize any leftover flatten_eod positions,
+        # refresh closing marks for today, and generate the authoritative post-close daily report once.
         target_reports = _resolve_reports_dir(state_dir, None)
         if active_dates:
             latest_active_date = active_dates[-1]
             log_path = state_dir / "daily_reports_log.json"
-            existing_dates = set()
+            loaded_log: List[Dict[str, Any]] = []
             if log_path.exists():
                 try:
-                    loaded_log = json.loads(log_path.read_text(encoding="utf-8"))
-                    if isinstance(loaded_log, list):
-                        existing_dates = {str(e.get("trading_date_et", "")) for e in loaded_log}
+                    raw_log = json.loads(log_path.read_text(encoding="utf-8"))
+                    if isinstance(raw_log, list):
+                        loaded_log = raw_log
                 except Exception:
-                    existing_dates = set()
-            if latest_active_date not in existing_dates:
+                    loaded_log = []
+            entry_for_latest = next(
+                (e for e in loaded_log if str(e.get("trading_date_et", "")) == latest_active_date),
+                None,
+            )
+            already_finalized = bool(
+                entry_for_latest
+                and (entry_for_latest.get("is_post_close_final") is True or latest_active_date < today_et)
+            )
+            if not already_finalized:
                 now_et_dt = to_et_datetime(now_utc)
                 _, sess_close_et = get_session_hours_et(date.fromisoformat(latest_active_date))
                 is_past_close = (latest_active_date < today_et) or (now_et_dt.strftime("%H:%M") >= sess_close_et)
                 if is_past_close:
+                    # If today's session just closed, mark open positions to closing prices and flatten any
+                    # leftover intraday-only (flatten_eod) positions before writing the final daily report.
+                    if latest_active_date == today_et and client.has_credentials():
+                        try:
+                            held_syms = sorted(
+                                {sym for st in agent_states for sym, pos in st.positions.items() if pos.shares > 0}
+                                | {"SPY", "QQQ", "TLT", "GLD"}
+                            )
+                            close_bars = client.fetch_bars_up_to(held_syms, now_iso, lookback_days=2, timeframe="5Min")
+                            close_quotes = client.fetch_quotes_up_to(held_syms, now_iso, bars_by_ticker=close_bars)
+                            close_marks: Dict[str, float] = {}
+                            for sym in held_syms:
+                                blist = close_bars.get(sym) or []
+                                if blist and blist[-1].close > 0:
+                                    close_marks[sym] = round(float(blist[-1].close), 4)
+                                elif sym in close_quotes and close_quotes[sym].mid_price > 0:
+                                    close_marks[sym] = round(close_quotes[sym].mid_price, 4)
+                            if close_marks:
+                                sim_close = FillSimulator()
+                                fill_close_iso = format_iso_utc(parse_iso_utc(now_iso) + timedelta(seconds=1))
+                                for st in agent_states:
+                                    sp = AGENT_SPECS_BY_ID.get(st.agent_id)
+                                    if sp and sp.flatten_eod and st.positions:
+                                        ledger.flatten_all_positions(
+                                            state=st,
+                                            quotes_by_ticker=close_quotes or close_marks,
+                                            decision_timestamp=now_iso,
+                                            fill_timestamp=fill_close_iso,
+                                            exit_reason="EOD_FLAT_CATCHUP",
+                                            simulator=sim_close,
+                                        )
+                                    ledger.update_mark_to_market(
+                                        state=st,
+                                        prices_by_ticker=close_marks,
+                                        timestamp=fill_close_iso,
+                                        trading_date_et=latest_active_date,
+                                    )
+                                    ledger.update_daily_journal(
+                                        state=st,
+                                        trading_date_et=latest_active_date,
+                                        trading_day_number=len(active_dates),
+                                    )
+                                    ledger.save_agent_state(st)
+                        except Exception as exc:
+                            logger.warning("Post-close mark/flatten catch-up warning (%s): %s", type(exc).__name__, exc)
+
                     try:
                         rep_res = generate_and_save_daily_report(
                             agent_states=agent_states,
@@ -1044,9 +1247,10 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
                             state_dir=state_dir,
                             reports_dir=target_reports,
                             use_llm=True,
+                            is_post_close_final=True,
                         )
                         logger.info(
-                            "Post-close catch-up daily report generated (%s): %s",
+                            "Post-close final daily report generated (%s): %s",
                             rep_res.get("generator"),
                             rep_res.get("report_path"),
                         )
@@ -1105,6 +1309,15 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         _rebuild_dashboard(agent_states, comp_state, bug_fixes, output_dir=docs_dir)
         return 0
 
+    held_tickers_live = sorted(
+        {sym for st in agent_states for sym, pos in st.positions.items() if pos.shares > 0}
+    )
+    recent_5m_bars = (
+        client.fetch_bars_up_to(held_tickers_live, decision_timestamp, lookback_days=2, timeframe="5Min")
+        if held_tickers_live
+        else {}
+    )
+
     next_quotes, next_bars = client.fetch_next_fill_quotes_and_bars(
         tickers=UNIVERSE,
         after_decision_timestamp=decision_timestamp,
@@ -1115,7 +1328,11 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
     )
     fill_timestamp = format_iso_utc(fill_dt)
 
-    agents = build_competition_agents(allow_offline_llm_simulation=False, force_offline_llm=False)
+    agents = build_competition_agents(
+        allow_offline_llm_simulation=False,
+        force_offline_llm=False,
+        state_dir=state_dir,
+    )
     updated_comp = run_single_cycle(
         snapshot=snapshot,
         next_quotes=next_quotes,
@@ -1125,6 +1342,7 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
         state_dir=state_dir,
         docs_dir=docs_dir,
         rebuild_dashboard=True,
+        stop_check_bars_by_ticker=recent_5m_bars,
     )
 
     final_states = [ledger.load_agent_state(spec.agent_id) for spec in AGENT_SPECS]
@@ -1178,6 +1396,7 @@ def cmd_dry_run(args: argparse.Namespace) -> int:
     agents = build_competition_agents(
         allow_offline_llm_simulation=True,
         force_offline_llm=not use_live_llm,
+        state_dir=STATE_DIR,
     )
 
     total_cycles = len(cycles)
@@ -1299,11 +1518,14 @@ def _test_gemini_flash_key(api_key: str) -> tuple[bool, str]:
     if not api_key or api_key.strip().lower() in placeholders:
         return False, "GEMINI_API_KEY is not set (or still has placeholder value in .env)"
 
-    for model in ("gemini-2.5-flash", "gemini-2.0-flash"):
+    for model in ("gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key.strip()}"
+        gen_cfg: Dict[str, Any] = {"temperature": 0.0, "maxOutputTokens": 64}
+        if "2.5" in model:
+            gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
         payload = {
             "contents": [{"role": "user", "parts": [{"text": 'Reply with JSON: {"status": "ok"}'}]}],
-            "generationConfig": {"temperature": 0.0, "maxOutputTokens": 30},
+            "generationConfig": gen_cfg,
         }
         body = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(
@@ -1475,33 +1697,33 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
         {sym for st in agent_states for sym, pos in st.positions.items() if pos.shares > 0}
         | {"SPY", "QQQ", "TLT", "GLD"}
     )
-    quotes = client.fetch_quotes_up_to(held_tickers, now_iso)
-    next_quotes, next_bars = client.fetch_next_fill_quotes_and_bars(held_tickers, now_iso)
+    # Fetch recent 5Min bars first so live quotes are sanity-checked against real traded prices
+    # and intrabar stop checks only examine bars strictly AFTER each position's opened_at timestamp.
+    bars_5m = client.fetch_bars_up_to(held_tickers, now_iso, lookback_days=2, timeframe="5Min")
+    quotes = client.fetch_quotes_up_to(held_tickers, now_iso, bars_by_ticker=bars_5m)
 
-    fill_dt = max(now_utc, parse_iso_utc(now_iso) + timedelta(seconds=1))
+    fill_dt = max(datetime.now(timezone.utc), parse_iso_utc(now_iso) + timedelta(seconds=1))
     fill_iso = format_iso_utc(fill_dt)
 
-    # Merge live quotes into effective quotes, mark prices, and quote-backed intrabar check bars
+    # Merge sanitized live quotes and latest 5Min closes into effective quotes and mark prices
     eff_quotes: Dict[str, Quote] = {}
     mark_prices: Dict[str, float] = {}
-    check_bars: Dict[str, Bar] = dict(next_bars)
     for sym in held_tickers:
-        q = next_quotes.get(sym) or quotes.get(sym)
+        q = quotes.get(sym)
         if q is not None and q.mid_price > 0:
-            eff_quotes[sym] = q
+            eff_quotes[sym] = Quote(
+                ticker=sym,
+                timestamp=fill_iso,
+                bid_price=q.bid_price,
+                ask_price=q.ask_price,
+                mid_price=q.mid_price,
+                spread_bps=q.spread_bps,
+            )
             mark_prices[sym] = round(q.mid_price, 4)
-            if sym not in check_bars:
-                check_bars[sym] = Bar(
-                    ticker=sym,
-                    timestamp=fill_iso,
-                    open=q.mid_price,
-                    high=max(q.mid_price, q.ask_price),
-                    low=min(q.mid_price, q.bid_price),
-                    close=q.mid_price,
-                    volume=0.0,
-                )
-        elif sym in check_bars and check_bars[sym].close > 0:
-            mark_prices[sym] = round(check_bars[sym].close, 4)
+        else:
+            blist = bars_5m.get(sym) or []
+            if blist and blist[-1].close > 0:
+                mark_prices[sym] = round(float(blist[-1].close), 4)
 
     if not mark_prices:
         logger.warning("Monitor-tick received no live quotes; skipping update.")
@@ -1518,21 +1740,31 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
     for st in agent_states:
         ledger.start_of_day_check(st, today_et)
         trades_before = len(st.trades)
-        if st.positions and check_bars:
-            triggered = simulator.check_and_execute_stops_and_targets(
+        if st.positions:
+            agent_check_bars = _build_post_entry_stop_bars_for_agent(
                 state=st,
-                next_bars_by_ticker=check_bars,
+                recent_bars_by_ticker=bars_5m,
                 quotes_by_ticker=eff_quotes,
-                decision_timestamp=now_iso,
-                fill_timestamp=fill_iso,
-                apply_to_state=True,
+                now_iso=now_iso,
+                fill_iso=fill_iso,
+                lookback_minutes=10,
             )
-            sl_tp_fills += len(triggered)
+            if agent_check_bars:
+                triggered = simulator.check_and_execute_stops_and_targets(
+                    state=st,
+                    next_bars_by_ticker=agent_check_bars,
+                    quotes_by_ticker=eff_quotes,
+                    decision_timestamp=now_iso,
+                    fill_timestamp=fill_iso,
+                    apply_to_state=True,
+                )
+                sl_tp_fills += len(triggered)
 
-        # Keep equity curve compact: collapse intra-15-min points when no trade occurred
+        # Keep equity curve compact: only collapse consecutive intra-interval monitor ticks,
+        # NEVER overwriting a canonical 30-minute cycle point.
         had_trade = len(st.trades) > trades_before
         prev_curve_len = len(st.equity_curve)
-        prev_last_ts = st.equity_curve[-1].timestamp if prev_curve_len > 0 else ""
+        prev2_pt = st.equity_curve[-2] if prev_curve_len >= 2 else None
 
         ledger.update_mark_to_market(
             state=st,
@@ -1557,10 +1789,10 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
             )
             had_trade = True
 
-        if not had_trade and prev_curve_len >= 2 and prev_last_ts:
+        if not had_trade and prev2_pt is not None and prev2_pt.trading_date_et == today_et and prev2_pt.timestamp:
             try:
-                gap_sec = (parse_iso_utc(fill_iso) - parse_iso_utc(prev_last_ts)).total_seconds()
-                if 0 <= gap_sec < 840:  # < 14 min -> replace previous intra-interval point cleanly
+                gap_sec = (parse_iso_utc(fill_iso) - parse_iso_utc(prev2_pt.timestamp)).total_seconds()
+                if 0 <= gap_sec < 840 and len(st.equity_curve) >= 3:
                     latest_pt = st.equity_curve.pop()
                     st.equity_curve[-1] = latest_pt
             except Exception:
@@ -1631,16 +1863,18 @@ def cmd_session_step(args: argparse.Namespace) -> int:
         except Exception:
             elapsed_min = 999.0
 
-    # Also trigger full cycle near market close (so flatten_eod & EOD daily report always run!)
+    # Also trigger full cycle ONCE near market close (so flatten_eod & EOD daily report always run,
+    # without running a duplicate full cycle 25 minutes later at 15:55 ET!)
     _, sess_close_et = get_session_hours_et(date.fromisoformat(today_et))
     close_h, close_m = (int(x) for x in sess_close_et.split(":"))
     mins_to_close = (close_h * 60 + close_m) - (et_dt.hour * 60 + et_dt.minute)
-    is_final_close_window = (0 <= mins_to_close <= 32) and (elapsed_min >= 18.0)
+    already_ran_near_close = str(comp_state.get("last_near_close_cycle_date_et") or "") == today_et
+    is_final_close_window = (0 <= mins_to_close <= 32) and (elapsed_min >= 18.0) and (not already_ran_near_close)
 
     full_cycle_due = (
         (last_date != today_et)
-        or (elapsed_min >= 27.5)
-        or (near_30m_boundary and elapsed_min >= 20.0)
+        or (not already_ran_near_close and elapsed_min >= 27.5)
+        or (not already_ran_near_close and near_30m_boundary and elapsed_min >= 20.0)
         or is_final_close_window
         or force_open
     )

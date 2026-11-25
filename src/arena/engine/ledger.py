@@ -405,8 +405,9 @@ class LedgerManager:
 
             reason_map = {
                 "EOD_FLAT": f"End-of-day mandatory flatten for {ticker} ({pos.shares:.4f} shares)",
+                "EOD_FLAT_CATCHUP": f"Catch-up flatten for intraday-only position in {ticker} ({pos.shares:.4f} shares)",
                 "BLOWN_UP": f"Mandatory liquidation of {ticker} after breaching -10% max drawdown limit",
-                "COMPETITION_END": f"Day 10 competition close mark/flatten for {ticker}",
+                "COMPETITION_END": f"Final-day competition close mark/flatten for {ticker}",
             }
             reasoning = reason_map.get(
                 exit_reason,

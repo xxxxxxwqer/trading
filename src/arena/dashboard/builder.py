@@ -1633,7 +1633,7 @@ class DashboardBuilder:
             )
         if not bug_rows:
             bug_rows.append(
-                '<tr><td colspan="6" class="empty-state">&#9989; 0 Mid-Competition Bug Fixes or Code Modifications Logged — All 10 Agent Strategies Running Unmodified Since Day 1 Freeze.</td></tr>'
+                f'<tr><td colspan="6" class="empty-state">&#9989; 0 Mid-Competition Bug Fixes or Code Modifications Logged — All {len(normalized_agents)} Agent Strategies Running Unmodified Since Day 1 Freeze.</td></tr>'
             )
 
         hash_rows = []
@@ -1806,7 +1806,7 @@ class DashboardBuilder:
       <div class="panel-header">
         <div>
           <h2>&#128274; Bug Fixes &amp; Strategy Code-Freeze Integrity Log</h2>
-          <p class="panel-sub">Strict fair-competition audit: all 10 agent playbooks, indicator parameters, and prompts are locked at Day 1. Any technical bug fix during the 10-day window is logged publicly below (`state/bug_fixes_log.json`).</p>
+          <p class="panel-sub">Strict fair-competition audit: all {total_agents} agent playbooks, indicator parameters, and prompts are locked at Day 1. Any technical bug fix during the {COMPETITION_TRADING_DAYS}-day window is logged publicly below (<code>state/bug_fixes_log.json</code>).</p>
         </div>
       </div>
 

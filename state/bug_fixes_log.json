@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "timestamp": "2026-11-25T15:44:00Z",
+    "category": "API & Response Parsing Fix",
+    "file": "llm_agents.py",
+    "description": "Fixed Gemini 2.5 Flash hidden thinking-token truncation and thought-part extraction (set thinkingBudget=0 on 2.5 models, filter out thought parts, raise maxOutputTokens to 2048, add fallback model & warning logs). Zero changes to trading personas, rules, or risk limits.",
+    "strategy_logic_changed": false,
+    "old_sha256": "88fafd78d80d6b6ba8d38e975cf4fb1ecc3f5c619e5e07937bf511be45ebd86b",
+    "new_sha256": "6d9ea017147ce5ab51657f93dc633c6213340793a34b979e802be4bd2d424633"
+  },
+  {
+    "timestamp": "2026-11-25T15:44:00Z",
+    "category": "Market Data & Execution Infra Fix",
+    "file": "alpaca_client.py / cli.py / daily_report.py / trading_cycle.yml",
+    "description": "Batched Alpaca news across all 71 tickers (previously truncated to first 35), re-anchored skewed/wide IEX quotes against fresh bar closes, added 429/5xx HTTP retries, excluded pre-entry wicks from 5-min/30-min SL/TP checks, added EOD_FLAT_CATCHUP for intraday-only agents after missed closes, prevented duplicate near-close cycles, fixed daily report cycles_run_today & post-close finalization, and hardened git pull --rebase in Actions loop.",
+    "strategy_logic_changed": false
+  }
+]

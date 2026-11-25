@@ -75,7 +75,7 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
           ALPACA_BASE_URL: https://paper-api.alpaca.markets
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          RUN_MODE: ${{ github.event.inputs.mode || 'session' }}
+          RUN_MODE: ${{ github.event.inputs.mode || (github.event.action == 'run-cycle' && 'single' || 'session') }}
           FORCE_OPEN_CHECK: ${{ github.event.inputs.force_open_check || 'false' }}
         run: |
           commit_and_push() {
@@ -88,9 +88,13 @@ jobs:
             TIMESTAMP_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
             git commit -m "chore(arena): live update state, dashboard & reports [${TIMESTAMP_UTC}]"
             for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push origin HEAD:main; then
-                echo "Pushed live update on attempt ${attempt} (${TIMESTAMP_UTC})."
-                return 0
+              if git pull --rebase origin main; then
+                if git push origin HEAD:main; then
+                  echo "Pushed live update on attempt ${attempt} (${TIMESTAMP_UTC})."
+                  return 0
+                fi
+              else
+                git rebase --abort 2>/dev/null || true
               fi
               echo "Push attempt ${attempt} failed; retrying in 3s..."
               sleep 3
@@ -121,8 +125,8 @@ jobs:
             echo "  LIVE SESSION TICK #${TICK} — $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "=================================================================="
 
-            # Pull any external commits before stepping
-            git pull --rebase origin main || true
+            # Pull any external commits safely before stepping
+            git pull --rebase origin main || { git rebase --abort 2>/dev/null || true; }
 
             set +e
             python -m arena.cli session-step
