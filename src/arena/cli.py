@@ -1086,7 +1086,8 @@ def cmd_run_cycle(args: argparse.Namespace) -> int:
     client = AlpacaPaperDataClient()
     clock = client.get_clock()
     now_utc = datetime.now(timezone.utc)
-    now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    raw_now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    now_iso = format_iso_utc(parse_iso_utc(raw_now_iso))
     today_et = to_et_datetime(now_iso).strftime("%Y-%m-%d")
     calendar = client.get_calendar(today_et, (date.fromisoformat(today_et) + timedelta(days=7)).isoformat())
 
@@ -1680,7 +1681,8 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
     client = AlpacaPaperDataClient()
     clock = client.get_clock()
     now_utc = datetime.now(timezone.utc)
-    now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    raw_now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    now_iso = format_iso_utc(parse_iso_utc(raw_now_iso))
     today_et = to_et_datetime(now_iso).strftime("%Y-%m-%d")
     is_open = bool(clock.get("is_open", False))
     force_open = bool(getattr(args, "force_open_check", False))
@@ -1788,6 +1790,7 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
                 trading_date_et=today_et,
             )
             had_trade = True
+            sl_tp_fills += 1
 
         if not had_trade and prev2_pt is not None and prev2_pt.trading_date_et == today_et and prev2_pt.timestamp:
             try:
@@ -1819,7 +1822,10 @@ def cmd_monitor_tick(args: argparse.Namespace) -> int:
         len(mark_prices),
         sl_tp_fills,
     )
-    return 0
+    # Return 0 when an SL/TP stop or BLOWN_UP liquidation occurred (push immediately),
+    # or 10 (QUIET_MONITOR_EXIT_CODE) when only mark-to-market updated (caller can batch pushes every ~10m
+    # to stay safely under GitHub Pages' 10 deploys/hour soft limit while still watching SL/TP every 5m).
+    return 0 if sl_tp_fills > 0 else 10
 
 
 def cmd_session_step(args: argparse.Namespace) -> int:
@@ -1841,7 +1847,8 @@ def cmd_session_step(args: argparse.Namespace) -> int:
     client = AlpacaPaperDataClient()
     clock = client.get_clock()
     now_utc = datetime.now(timezone.utc)
-    now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    raw_now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    now_iso = format_iso_utc(parse_iso_utc(raw_now_iso))
     today_et = to_et_datetime(now_iso).strftime("%Y-%m-%d")
     is_open = bool(clock.get("is_open", False))
     force_open = bool(getattr(args, "force_open_check", False))

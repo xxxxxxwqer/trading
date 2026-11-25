@@ -81,25 +81,30 @@ jobs:
           commit_and_push() {
             mkdir -p reports
             git add state/ docs/ reports/
-            if git diff --staged --quiet; then
-              echo "No state, dashboard, or report changes to commit."
+            if ! git diff --staged --quiet; then
+              TIMESTAMP_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+              git commit -m "chore(arena): live update state, dashboard & reports [${TIMESTAMP_UTC}]"
+            fi
+            # Check if there are any unpushed local commits (including from a previous transient push failure)
+            AHEAD=$(git rev-list --count origin/main..HEAD 2>/dev/null || echo "0")
+            if [ "$AHEAD" -eq 0 ]; then
+              echo "No unpushed state, dashboard, or report commits."
               return 0
             fi
-            TIMESTAMP_UTC=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-            git commit -m "chore(arena): live update state, dashboard & reports [${TIMESTAMP_UTC}]"
             for attempt in 1 2 3; do
               if git pull --rebase origin main; then
                 if git push origin HEAD:main; then
-                  echo "Pushed live update on attempt ${attempt} (${TIMESTAMP_UTC})."
+                  echo "Pushed ${AHEAD} live commit(s) on attempt ${attempt} ($(date -u +'%Y-%m-%d %H:%M:%S UTC'))."
                   return 0
                 fi
               else
                 git rebase --abort 2>/dev/null || true
               fi
-              echo "Push attempt ${attempt} failed; retrying in 3s..."
-              sleep 3
+              SLEEP_SEC=$((attempt * 4))
+              echo "Push attempt ${attempt} failed (transient GitHub error); retrying in ${SLEEP_SEC}s..."
+              sleep "$SLEEP_SEC"
             done
-            echo "Failed to push after 3 attempts."
+            echo "WARNING: Failed to push after 3 attempts; unpushed commit(s) will retry automatically on next tick."
             return 1
           }
 
@@ -113,11 +118,14 @@ jobs:
             exit 0
           fi
 
-          # Continuous session mode: runs every 5 minutes for up to 210 minutes (3.5h) while US market is open.
-          # Two overlapping sessions (open 14:30 UTC + midday 17:55 UTC) cover the entire 6.5h trading day seamlessly.
+          # Continuous session mode: watches live quotes & SL/TP every 5 minutes for up to 210 minutes (3.5h).
+          # Full 30-min trading cycles & any SL/TP triggers push immediately; quiet monitor ticks push every ~10 min
+          # so GitHub Pages stays comfortably under its 10 deploys/hour soft limit.
           START_EPOCH=$(date +%s)
+          LAST_PUSH_EPOCH=0
           MAX_SECONDS=12600  # 210 minutes (3.5 hours)
           TICK=0
+          CONSECUTIVE_ERRORS=0
 
           while true; do
             TICK=$((TICK + 1))
@@ -125,27 +133,49 @@ jobs:
             echo "  LIVE SESSION TICK #${TICK} — $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "=================================================================="
 
-            # Pull any external commits safely before stepping
-            git pull --rebase origin main || { git rebase --abort 2>/dev/null || true; }
+            # Pull any external commits safely before stepping (autostash preserves quiet-tick local state)
+            git pull --rebase --autostash origin main || { git rebase --abort 2>/dev/null || true; }
 
             set +e
             python -m arena.cli session-step
             RC=$?
             set -e
 
-            commit_and_push
+            NOW_EPOCH=$(date +%s)
+            SINCE_PUSH=$((NOW_EPOCH - LAST_PUSH_EPOCH))
 
             if [ "$RC" -eq 20 ]; then
+              commit_and_push || true
               echo "Market is CLOSED (or 30-day competition COMPLETED). Session loop exiting cleanly."
               exit 0
-            elif [ "$RC" -ne 0 ]; then
-              echo "session-step failed with exit code ${RC}."
-              exit "$RC"
+            elif [ "$RC" -eq 0 ]; then
+              CONSECUTIVE_ERRORS=0
+              if commit_and_push; then
+                LAST_PUSH_EPOCH=$(date +%s)
+              fi
+            elif [ "$RC" -eq 10 ]; then
+              # Quiet 5-min watch tick (0 SL/TP triggers): push every >= 9 min to stay under GitHub Pages 10/hr cap
+              CONSECUTIVE_ERRORS=0
+              if [ "$SINCE_PUSH" -ge 540 ]; then
+                if commit_and_push; then
+                  LAST_PUSH_EPOCH=$(date +%s)
+                fi
+              else
+                echo "Quiet 5-min SL/TP watch tick OK (0 triggers; next Pages push in $((540 - SINCE_PUSH))s)."
+              fi
+            else
+              CONSECUTIVE_ERRORS=$((CONSECUTIVE_ERRORS + 1))
+              echo "WARNING: session-step exited with code ${RC} (consecutive errors: ${CONSECUTIVE_ERRORS}/3)."
+              commit_and_push || true
+              if [ "$CONSECUTIVE_ERRORS" -ge 3 ]; then
+                echo "Aborting session after 3 consecutive failures."
+                exit "$RC"
+              fi
             fi
 
-            NOW_EPOCH=$(date +%s)
             ELAPSED=$((NOW_EPOCH - START_EPOCH))
             if [ "$ELAPSED" -ge "$MAX_SECONDS" ]; then
+              commit_and_push || true
               echo "Reached 3.5-hour session window (${ELAPSED}s). Handing off cleanly to next session."
               exit 0
             fi
