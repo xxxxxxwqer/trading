@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "timestamp_utc": "2026-11-25T17:03:15Z",
+    "trading_date_et": "2026-11-25",
+    "agent_id": "llm_technical",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Current market regime is strongly risk-off with SPY and QQQ in sharp pullbacks and oversold conditions, failing to meet the CMT requirement of stable uptrend structure and clear 2:1 reward-to-risk setups for long-only positions."
+  },
+  {
+    "timestamp_utc": "2026-11-25T17:03:15Z",
+    "trading_date_et": "2026-11-25",
+    "agent_id": "llm_catalyst",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "The market is in a sharp risk-off pullback with SPY down -2.04% and weak volume confirmation on available headlines, so staying in cash is the prudent catalyst-trader approach until clearer momentum emerges."
+  },
+  {
+    "timestamp_utc": "2026-11-25T17:03:15Z",
+    "trading_date_et": "2026-11-25",
+    "agent_id": "llm_macro",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.5,
+    "is_fallback": true,
+    "reasoning": "HOLD fallback: gemini-3.8-flash HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later) | gemini-3.5-flash-lite HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experienci"
+  },
+  {
+    "timestamp_utc": "2026-11-25T17:03:15Z",
+    "trading_date_et": "2026-11-25",
+    "agent_id": "llm_cautious",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.5,
+    "is_fallback": true,
+    "reasoning": "HOLD fallback: gemini-3.8-flash HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later) | gemini-3.5-flash-lite HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experienci"
+  }
+]

@@ -1,0 +1,971 @@
+{
+  "trading_date_et": "2026-11-25",
+  "decision_timestamp_utc": "2026-11-25T17:03:15Z",
+  "session_open_et": "09:30",
+  "session_close_et": "16:00",
+  "regime_summary": "RISK-OFF / DEFENSIVE — SPY 702.97 (-2.04% 1D, -1.93% 5D, PULLBACK/DOWNTREND, RSI 28.4); QQQ (-3.56% 1D); Bonds (TLT +1.43%) steady/rising (yields easing); Gold (GLD -2.25%).",
+  "macro_assets": {
+    "SPY": {
+      "ticker": "SPY",
+      "close": 702.97,
+      "change_pct_1d": -2.04,
+      "change_pct_5d": -1.93,
+      "orb_high": 705.85,
+      "orb_low": 704.92,
+      "orb_position": "ORB Low 이탈 (-0.28%)",
+      "sma_20": 710.47,
+      "vs_sma20_pct": -1.06,
+      "sma_50": 758.68,
+      "vs_sma50_pct": -7.34,
+      "rsi_14": 28.4,
+      "atr_14": 4.18,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.16,
+      "rs_vs_spy": -0.0,
+      "dist_from_52w_high_pct": -11.75,
+      "sector": "Broad Market ETF"
+    },
+    "QQQ": {
+      "ticker": "QQQ",
+      "close": 614.88,
+      "change_pct_1d": -3.56,
+      "change_pct_5d": -5.69,
+      "orb_high": 620.4,
+      "orb_low": 620.4,
+      "orb_position": "ORB Low 이탈 (-0.89%)",
+      "sma_20": 627.88,
+      "vs_sma20_pct": -2.07,
+      "sma_50": 708.49,
+      "vs_sma50_pct": -13.21,
+      "rsi_14": 23.1,
+      "atr_14": 5.32,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.18,
+      "rs_vs_spy": -2.75,
+      "dist_from_52w_high_pct": -20.24,
+      "sector": "Technology"
+    },
+    "TLT": {
+      "ticker": "TLT",
+      "close": 82.65,
+      "change_pct_1d": 1.43,
+      "change_pct_5d": 3.08,
+      "orb_high": 82.13,
+      "orb_low": 82.12,
+      "orb_position": "ORB High 돌파 (+0.63%)",
+      "sma_20": 82.05,
+      "vs_sma20_pct": 0.73,
+      "sma_50": 80.1,
+      "vs_sma50_pct": 3.18,
+      "rsi_14": 80.4,
+      "atr_14": 0.18,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.04,
+      "rs_vs_spy": 4.32,
+      "dist_from_52w_high_pct": -10.36,
+      "sector": "Fixed Income ETF"
+    },
+    "GLD": {
+      "ticker": "GLD",
+      "close": 318.13,
+      "change_pct_1d": -2.25,
+      "change_pct_5d": -5.79,
+      "orb_high": 319.31,
+      "orb_low": 318.08,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 322.72,
+      "vs_sma20_pct": -1.42,
+      "sma_50": 372.33,
+      "vs_sma50_pct": -14.56,
+      "rsi_14": 23.7,
+      "atr_14": 1.75,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.03,
+      "rs_vs_spy": -2.22,
+      "dist_from_52w_high_pct": -36.65,
+      "sector": "Commodity ETF"
+    }
+  },
+  "market_internals": {
+    "breadth_above_sma50_pct": 34.0,
+    "rv10_rv60_ratio": 1.74,
+    "rs_vs_spy_top5": [
+      {
+        "ticker": "HD",
+        "rs_vs_spy": 5.61,
+        "1d_pct": 1.27
+      },
+      {
+        "ticker": "MCD",
+        "rs_vs_spy": 5.08,
+        "1d_pct": 1.67
+      },
+      {
+        "ticker": "CRM",
+        "rs_vs_spy": 4.28,
+        "1d_pct": 1.05
+      },
+      {
+        "ticker": "WMT",
+        "rs_vs_spy": 4.02,
+        "1d_pct": -0.25
+      },
+      {
+        "ticker": "LMT",
+        "rs_vs_spy": 3.99,
+        "1d_pct": 1.06
+      }
+    ],
+    "rs_vs_spy_bottom5": [
+      {
+        "ticker": "ORCL",
+        "rs_vs_spy": -6.52,
+        "1d_pct": -6.08
+      },
+      {
+        "ticker": "INTC",
+        "rs_vs_spy": -7.58,
+        "1d_pct": -8.26
+      },
+      {
+        "ticker": "AVGO",
+        "rs_vs_spy": -10.9,
+        "1d_pct": -5.97
+      },
+      {
+        "ticker": "MU",
+        "rs_vs_spy": -13.39,
+        "1d_pct": -11.18
+      },
+      {
+        "ticker": "AMD",
+        "rs_vs_spy": -13.49,
+        "1d_pct": -8.2
+      }
+    ],
+    "residual_momentum_top5": [
+      {
+        "ticker": "BRK.B",
+        "score": 2.2661,
+        "beta": 0.139
+      },
+      {
+        "ticker": "WMT",
+        "score": 1.8127,
+        "beta": 0.034
+      },
+      {
+        "ticker": "PG",
+        "score": 1.6131,
+        "beta": -0.053
+      },
+      {
+        "ticker": "COST",
+        "score": 1.5328,
+        "beta": -0.149
+      },
+      {
+        "ticker": "LLY",
+        "score": 1.4369,
+        "beta": 0.362
+      }
+    ],
+    "volume_ratio_top5": [
+      {
+        "ticker": "CAT",
+        "volume_ratio": 0.39,
+        "1d_pct": -3.59
+      },
+      {
+        "ticker": "META",
+        "volume_ratio": 0.29,
+        "1d_pct": -0.14
+      },
+      {
+        "ticker": "AMZN",
+        "volume_ratio": 0.25,
+        "1d_pct": -4.55
+      },
+      {
+        "ticker": "QCOM",
+        "volume_ratio": 0.22,
+        "1d_pct": -2.74
+      },
+      {
+        "ticker": "MSFT",
+        "volume_ratio": 0.18,
+        "1d_pct": -2.66
+      }
+    ],
+    "rsi_overbought": [
+      {
+        "ticker": "PEP",
+        "rsi_14": 73.1,
+        "bb": "밴드 내부"
+      },
+      {
+        "ticker": "MCD",
+        "rsi_14": 74.1,
+        "bb": "밴드 내부"
+      }
+    ],
+    "rsi_oversold": [
+      {
+        "ticker": "NVDA",
+        "rsi_14": 24.3,
+        "bb": "밴드 내부"
+      },
+      {
+        "ticker": "GOOGL",
+        "rsi_14": 29.9,
+        "bb": "밴드 내부"
+      },
+      {
+        "ticker": "AMZN",
+        "rsi_14": 25.6,
+        "bb": "밴드 내부"
+      },
+      {
+        "ticker": "TSLA",
+        "rsi_14": 24.6,
+        "bb": "밴드 내부"
+      },
+      {
+        "ticker": "AVGO",
+        "rsi_14": 19.7,
+        "bb": "밴드 내부"
+      }
+    ],
+    "near_52w_high": [
+      {
+        "ticker": "COST",
+        "dist_52w_pct": -1.92,
+        "close": 1090.83
+      },
+      {
+        "ticker": "PG",
+        "dist_52w_pct": -2.43,
+        "close": 173.73
+      },
+      {
+        "ticker": "KO",
+        "dist_52w_pct": -3.55,
+        "close": 98.17
+      },
+      {
+        "ticker": "DIS",
+        "dist_52w_pct": -4.37,
+        "close": 123.31
+      },
+      {
+        "ticker": "BRK.B",
+        "dist_52w_pct": -4.51,
+        "close": 576.78
+      }
+    ]
+  },
+  "active_ticker_snapshots": {
+    "AAPL": {
+      "ticker": "AAPL",
+      "close": 349.38,
+      "change_pct_1d": -1.37,
+      "change_pct_5d": -0.21,
+      "orb_high": 351.36,
+      "orb_low": 351.36,
+      "orb_position": "ORB Low 이탈 (-0.56%)",
+      "sma_20": 351.06,
+      "vs_sma20_pct": -0.48,
+      "sma_50": 342.64,
+      "vs_sma50_pct": 1.97,
+      "rsi_14": 39.7,
+      "atr_14": 2.29,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.12,
+      "rs_vs_spy": 1.25,
+      "dist_from_52w_high_pct": -5.06,
+      "sector": "Technology"
+    },
+    "ABBV": {
+      "ticker": "ABBV",
+      "close": 296.71,
+      "change_pct_1d": -1.21,
+      "change_pct_5d": 3.21,
+      "orb_high": 302.88,
+      "orb_low": 297.15,
+      "orb_position": "ORB Low 이탈 (-0.15%)",
+      "sma_20": 297.91,
+      "vs_sma20_pct": -0.4,
+      "sma_50": 280.28,
+      "vs_sma50_pct": 5.86,
+      "rsi_14": 37.4,
+      "atr_14": 1.25,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.04,
+      "rs_vs_spy": 3.2,
+      "dist_from_52w_high_pct": -5.52,
+      "sector": "Health Care"
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "close": 240.76,
+      "change_pct_1d": -4.55,
+      "change_pct_5d": -7.66,
+      "orb_high": 244.66,
+      "orb_low": 244.42,
+      "orb_position": "ORB Low 이탈 (-1.50%)",
+      "sma_20": 246.97,
+      "vs_sma20_pct": -2.51,
+      "sma_50": 255.17,
+      "vs_sma50_pct": -5.65,
+      "rsi_14": 25.6,
+      "atr_14": 2.7,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.25,
+      "rs_vs_spy": -4.28,
+      "dist_from_52w_high_pct": -14.06,
+      "sector": "Consumer Discretionary"
+    },
+    "AVGO": {
+      "ticker": "AVGO",
+      "close": 284.77,
+      "change_pct_1d": -5.97,
+      "change_pct_5d": -18.53,
+      "orb_high": 289.02,
+      "orb_low": 289.02,
+      "orb_position": "ORB Low 이탈 (-1.47%)",
+      "sma_20": 294.75,
+      "vs_sma20_pct": -3.39,
+      "sma_50": 341.35,
+      "vs_sma50_pct": -16.58,
+      "rsi_14": 19.7,
+      "atr_14": 3.89,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.13,
+      "rs_vs_spy": -10.9,
+      "dist_from_52w_high_pct": -38.5,
+      "sector": "Technology"
+    },
+    "BRK.B": {
+      "ticker": "BRK.B",
+      "close": 576.78,
+      "change_pct_1d": -0.09,
+      "change_pct_5d": 0.07,
+      "orb_high": 579.05,
+      "orb_low": 573.53,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 576.83,
+      "vs_sma20_pct": -0.01,
+      "sma_50": 539.35,
+      "vs_sma50_pct": 6.94,
+      "rsi_14": 49.8,
+      "atr_14": 1.88,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.05,
+      "rs_vs_spy": 1.98,
+      "dist_from_52w_high_pct": -4.51,
+      "sector": "Financials"
+    },
+    "COST": {
+      "ticker": "COST",
+      "close": 1090.83,
+      "change_pct_1d": -0.06,
+      "change_pct_5d": -1.8,
+      "orb_high": 1096.94,
+      "orb_low": 1086.24,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 1090.7,
+      "vs_sma20_pct": 0.01,
+      "sma_50": 994.18,
+      "vs_sma50_pct": 9.72,
+      "rsi_14": 50.0,
+      "atr_14": 3.74,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.03,
+      "rs_vs_spy": 0.96,
+      "dist_from_52w_high_pct": -1.92,
+      "sector": "Consumer Staples"
+    },
+    "CVX": {
+      "ticker": "CVX",
+      "close": 209.92,
+      "change_pct_1d": 0.57,
+      "change_pct_5d": 1.35,
+      "orb_high": 208.27,
+      "orb_low": 208.27,
+      "orb_position": "ORB High 돌파 (+0.79%)",
+      "sma_20": 209.75,
+      "vs_sma20_pct": 0.08,
+      "sma_50": 215.11,
+      "vs_sma50_pct": -2.41,
+      "rsi_14": 48.8,
+      "atr_14": 0.87,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.09,
+      "rs_vs_spy": 2.98,
+      "dist_from_52w_high_pct": -11.89,
+      "sector": "Energy"
+    },
+    "DIS": {
+      "ticker": "DIS",
+      "close": 123.31,
+      "change_pct_1d": 0.64,
+      "change_pct_5d": 0.64,
+      "orb_high": 121.82,
+      "orb_low": 121.2,
+      "orb_position": "ORB High 돌파 (+1.22%)",
+      "sma_20": 122.15,
+      "vs_sma20_pct": 0.95,
+      "sma_50": 111.15,
+      "vs_sma50_pct": 10.94,
+      "rsi_14": 59.2,
+      "atr_14": 0.72,
+      "bb_position": "BB 상단 돌파",
+      "volume_ratio": 0.1,
+      "rs_vs_spy": 2.62,
+      "dist_from_52w_high_pct": -4.37,
+      "sector": "Communication Services"
+    },
+    "GLD": {
+      "ticker": "GLD",
+      "close": 318.13,
+      "change_pct_1d": -2.25,
+      "change_pct_5d": -5.79,
+      "orb_high": 319.31,
+      "orb_low": 318.08,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 322.72,
+      "vs_sma20_pct": -1.42,
+      "sma_50": 372.33,
+      "vs_sma50_pct": -14.56,
+      "rsi_14": 23.7,
+      "atr_14": 1.75,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.03,
+      "rs_vs_spy": -2.22,
+      "dist_from_52w_high_pct": -36.65,
+      "sector": "Commodity ETF"
+    },
+    "GOOGL": {
+      "ticker": "GOOGL",
+      "close": 266.72,
+      "change_pct_1d": -4.48,
+      "change_pct_5d": -3.5,
+      "orb_high": 267.6,
+      "orb_low": 267.6,
+      "orb_position": "ORB Low 이탈 (-0.33%)",
+      "sma_20": 272.76,
+      "vs_sma20_pct": -2.21,
+      "sma_50": 319.64,
+      "vs_sma50_pct": -16.56,
+      "rsi_14": 29.9,
+      "atr_14": 2.74,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.1,
+      "rs_vs_spy": -1.96,
+      "dist_from_52w_high_pct": -35.08,
+      "sector": "Communication Services"
+    },
+    "HON": {
+      "ticker": "HON",
+      "close": 222.02,
+      "change_pct_1d": -1.25,
+      "change_pct_5d": -0.81,
+      "orb_high": 220.95,
+      "orb_low": 217.98,
+      "orb_position": "ORB High 돌파 (+0.48%)",
+      "sma_20": 222.33,
+      "vs_sma20_pct": -0.14,
+      "sma_50": 215.74,
+      "vs_sma50_pct": 2.91,
+      "rsi_14": 51.2,
+      "atr_14": 1.53,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.07,
+      "rs_vs_spy": 0.97,
+      "dist_from_52w_high_pct": -18.3,
+      "sector": "Industrials"
+    },
+    "KO": {
+      "ticker": "KO",
+      "close": 98.17,
+      "change_pct_1d": 0.45,
+      "change_pct_5d": 0.07,
+      "orb_high": 98.5,
+      "orb_low": 98.5,
+      "orb_position": "ORB Low 이탈 (-0.34%)",
+      "sma_20": 97.93,
+      "vs_sma20_pct": 0.25,
+      "sma_50": 92.13,
+      "vs_sma50_pct": 6.56,
+      "rsi_14": 51.9,
+      "atr_14": 0.34,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.08,
+      "rs_vs_spy": 2.22,
+      "dist_from_52w_high_pct": -3.55,
+      "sector": "Consumer Staples"
+    },
+    "LMT": {
+      "ticker": "LMT",
+      "close": 592.8,
+      "change_pct_1d": 1.06,
+      "change_pct_5d": 2.78,
+      "orb_high": 591.26,
+      "orb_low": 583.08,
+      "orb_position": "ORB High 돌파 (+0.26%)",
+      "sma_20": 588.15,
+      "vs_sma20_pct": 0.79,
+      "sma_50": 560.56,
+      "vs_sma50_pct": 5.75,
+      "rsi_14": 65.1,
+      "atr_14": 3.03,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.13,
+      "rs_vs_spy": 3.99,
+      "dist_from_52w_high_pct": -18.28,
+      "sector": "Industrials"
+    },
+    "MA": {
+      "ticker": "MA",
+      "close": 650.48,
+      "change_pct_1d": 0.49,
+      "change_pct_5d": 1.14,
+      "orb_high": 647.03,
+      "orb_low": 639.42,
+      "orb_position": "ORB High 돌파 (+0.53%)",
+      "sma_20": 645.37,
+      "vs_sma20_pct": 0.79,
+      "sma_50": 609.8,
+      "vs_sma50_pct": 6.67,
+      "rsi_14": 67.4,
+      "atr_14": 2.68,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.14,
+      "rs_vs_spy": 2.83,
+      "dist_from_52w_high_pct": -8.27,
+      "sector": "Financials"
+    },
+    "MCD": {
+      "ticker": "MCD",
+      "close": 285.51,
+      "change_pct_1d": 1.67,
+      "change_pct_5d": 4.28,
+      "orb_high": 281.92,
+      "orb_low": 279.99,
+      "orb_position": "ORB High 돌파 (+1.28%)",
+      "sma_20": 281.04,
+      "vs_sma20_pct": 1.59,
+      "sma_50": 253.19,
+      "vs_sma50_pct": 12.77,
+      "rsi_14": 74.1,
+      "atr_14": 0.97,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.12,
+      "rs_vs_spy": 5.08,
+      "dist_from_52w_high_pct": -20.05,
+      "sector": "Consumer Discretionary"
+    },
+    "MSFT": {
+      "ticker": "MSFT",
+      "close": 482.96,
+      "change_pct_1d": -2.66,
+      "change_pct_5d": -5.09,
+      "orb_high": 479.84,
+      "orb_low": 479.84,
+      "orb_position": "ORB High 돌파 (+0.65%)",
+      "sma_20": 489.54,
+      "vs_sma20_pct": -1.34,
+      "sma_50": 519.63,
+      "vs_sma50_pct": -7.06,
+      "rsi_14": 33.0,
+      "atr_14": 4.6,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.18,
+      "rs_vs_spy": -2.02,
+      "dist_from_52w_high_pct": -13.35,
+      "sector": "Technology"
+    },
+    "NVDA": {
+      "ticker": "NVDA",
+      "close": 142.72,
+      "change_pct_1d": -7.12,
+      "change_pct_5d": -2.24,
+      "orb_high": 147.24,
+      "orb_low": 146.71,
+      "orb_position": "ORB Low 이탈 (-2.72%)",
+      "sma_20": 148.95,
+      "vs_sma20_pct": -4.19,
+      "sma_50": 204.96,
+      "vs_sma50_pct": -30.37,
+      "rsi_14": 24.3,
+      "atr_14": 2.44,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.09,
+      "rs_vs_spy": -2.46,
+      "dist_from_52w_high_pct": -48.42,
+      "sector": "Technology"
+    },
+    "PEP": {
+      "ticker": "PEP",
+      "close": 144.69,
+      "change_pct_1d": 1.37,
+      "change_pct_5d": 1.81,
+      "orb_high": 144.53,
+      "orb_low": 143.72,
+      "orb_position": "ORB High 돌파 (+0.11%)",
+      "sma_20": 143.18,
+      "vs_sma20_pct": 1.05,
+      "sma_50": 134.35,
+      "vs_sma50_pct": 7.7,
+      "rsi_14": 73.1,
+      "atr_14": 0.53,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.07,
+      "rs_vs_spy": 3.59,
+      "dist_from_52w_high_pct": -18.04,
+      "sector": "Consumer Staples"
+    },
+    "PFE": {
+      "ticker": "PFE",
+      "close": 28.26,
+      "change_pct_1d": -0.77,
+      "change_pct_5d": 0.71,
+      "orb_high": 28.6,
+      "orb_low": 28.59,
+      "orb_position": "ORB Low 이탈 (-1.15%)",
+      "sma_20": 28.37,
+      "vs_sma20_pct": -0.4,
+      "sma_50": 28.84,
+      "vs_sma50_pct": -2.0,
+      "rsi_14": 42.5,
+      "atr_14": 0.12,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.05,
+      "rs_vs_spy": 2.02,
+      "dist_from_52w_high_pct": -12.85,
+      "sector": "Health Care"
+    },
+    "PG": {
+      "ticker": "PG",
+      "close": 173.73,
+      "change_pct_1d": 0.69,
+      "change_pct_5d": 2.28,
+      "orb_high": 173.6,
+      "orb_low": 172.54,
+      "orb_position": "ORB High 돌파 (+0.07%)",
+      "sma_20": 172.57,
+      "vs_sma20_pct": 0.67,
+      "sma_50": 157.85,
+      "vs_sma50_pct": 10.06,
+      "rsi_14": 66.3,
+      "atr_14": 0.42,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.03,
+      "rs_vs_spy": 3.54,
+      "dist_from_52w_high_pct": -2.43,
+      "sector": "Consumer Staples"
+    },
+    "SPY": {
+      "ticker": "SPY",
+      "close": 702.97,
+      "change_pct_1d": -2.04,
+      "change_pct_5d": -1.93,
+      "orb_high": 705.85,
+      "orb_low": 704.92,
+      "orb_position": "ORB Low 이탈 (-0.28%)",
+      "sma_20": 710.47,
+      "vs_sma20_pct": -1.06,
+      "sma_50": 758.68,
+      "vs_sma50_pct": -7.34,
+      "rsi_14": 28.4,
+      "atr_14": 4.18,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.16,
+      "rs_vs_spy": -0.0,
+      "dist_from_52w_high_pct": -11.75,
+      "sector": "Broad Market ETF"
+    },
+    "TLT": {
+      "ticker": "TLT",
+      "close": 82.65,
+      "change_pct_1d": 1.43,
+      "change_pct_5d": 3.08,
+      "orb_high": 82.13,
+      "orb_low": 82.12,
+      "orb_position": "ORB High 돌파 (+0.63%)",
+      "sma_20": 82.05,
+      "vs_sma20_pct": 0.73,
+      "sma_50": 80.1,
+      "vs_sma50_pct": 3.18,
+      "rsi_14": 80.4,
+      "atr_14": 0.18,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.04,
+      "rs_vs_spy": 4.32,
+      "dist_from_52w_high_pct": -10.36,
+      "sector": "Fixed Income ETF"
+    },
+    "V": {
+      "ticker": "V",
+      "close": 419.0,
+      "change_pct_1d": 0.54,
+      "change_pct_5d": 0.4,
+      "orb_high": 417.16,
+      "orb_low": 413.47,
+      "orb_position": "ORB High 돌파 (+0.44%)",
+      "sma_20": 415.53,
+      "vs_sma20_pct": 0.83,
+      "sma_50": 396.19,
+      "vs_sma50_pct": 5.76,
+      "rsi_14": 69.3,
+      "atr_14": 1.56,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.05,
+      "rs_vs_spy": 2.44,
+      "dist_from_52w_high_pct": -9.13,
+      "sector": "Financials"
+    },
+    "WFC": {
+      "ticker": "WFC",
+      "close": 79.85,
+      "change_pct_1d": -1.67,
+      "change_pct_5d": -2.08,
+      "orb_high": 79.92,
+      "orb_low": 79.27,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 80.53,
+      "vs_sma20_pct": -0.84,
+      "sma_50": 83.08,
+      "vs_sma50_pct": -3.89,
+      "rsi_14": 36.7,
+      "atr_14": 0.45,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.05,
+      "rs_vs_spy": 0.08,
+      "dist_from_52w_high_pct": -19.58,
+      "sector": "Financials"
+    },
+    "WMT": {
+      "ticker": "WMT",
+      "close": 132.0,
+      "change_pct_1d": -0.25,
+      "change_pct_5d": 3.92,
+      "orb_high": 133.15,
+      "orb_low": 133.15,
+      "orb_position": "ORB Low 이탈 (-0.86%)",
+      "sma_20": 132.0,
+      "vs_sma20_pct": 0.0,
+      "sma_50": 117.54,
+      "vs_sma50_pct": 12.3,
+      "rsi_14": 49.7,
+      "atr_14": 0.57,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.07,
+      "rs_vs_spy": 4.02,
+      "dist_from_52w_high_pct": -5.33,
+      "sector": "Consumer Staples"
+    },
+    "XLC": {
+      "ticker": "XLC",
+      "close": 103.65,
+      "change_pct_1d": -0.77,
+      "change_pct_5d": -2.47,
+      "orb_high": 103.05,
+      "orb_low": 101.43,
+      "orb_position": "ORB High 돌파 (+0.59%)",
+      "sma_20": 104.0,
+      "vs_sma20_pct": -0.33,
+      "sma_50": 108.21,
+      "vs_sma50_pct": -4.21,
+      "rsi_14": 46.3,
+      "atr_14": 0.73,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.09,
+      "rs_vs_spy": 0.27,
+      "dist_from_52w_high_pct": -16.92,
+      "sector": "Communication Services"
+    },
+    "XLE": {
+      "ticker": "XLE",
+      "close": 60.48,
+      "change_pct_1d": 0.07,
+      "change_pct_5d": -1.75,
+      "orb_high": 60.63,
+      "orb_low": 59.63,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 60.42,
+      "vs_sma20_pct": 0.1,
+      "sma_50": 64.5,
+      "vs_sma50_pct": -6.23,
+      "rsi_14": 54.3,
+      "atr_14": 0.29,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.11,
+      "rs_vs_spy": 1.05,
+      "dist_from_52w_high_pct": -13.74,
+      "sector": "Energy"
+    },
+    "XLP": {
+      "ticker": "XLP",
+      "close": 92.47,
+      "change_pct_1d": 0.64,
+      "change_pct_5d": 0.92,
+      "orb_high": 92.45,
+      "orb_low": 91.86,
+      "orb_position": "ORB High 돌파 (+0.02%)",
+      "sma_20": 91.97,
+      "vs_sma20_pct": 0.54,
+      "sma_50": 86.68,
+      "vs_sma50_pct": 6.68,
+      "rsi_14": 62.5,
+      "atr_14": 0.25,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.05,
+      "rs_vs_spy": 2.77,
+      "dist_from_52w_high_pct": -3.23,
+      "sector": "Consumer Staples"
+    },
+    "XLU": {
+      "ticker": "XLU",
+      "close": 43.45,
+      "change_pct_1d": 0.09,
+      "change_pct_5d": -0.29,
+      "orb_high": 43.52,
+      "orb_low": 43.29,
+      "orb_position": "ORB 범위 내",
+      "sma_20": 43.45,
+      "vs_sma20_pct": -0.01,
+      "sma_50": 42.02,
+      "vs_sma50_pct": 3.41,
+      "rsi_14": 49.2,
+      "atr_14": 0.12,
+      "bb_position": "밴드 내부",
+      "volume_ratio": 0.03,
+      "rs_vs_spy": 1.86,
+      "dist_from_52w_high_pct": -10.69,
+      "sector": "Utilities"
+    }
+  },
+  "headlines": [
+    {
+      "created_at": "2026-11-25T16:01:51Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "DIS"
+      ],
+      "headline": "Disney Channel in Germany Rebrands to Disney TV"
+    },
+    {
+      "created_at": "2026-11-25T16:01:37Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "KO"
+      ],
+      "headline": "Coca-Cola Renews Sponsorship Partnership with Confederation of African Football"
+    },
+    {
+      "created_at": "2026-11-25T16:01:35Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "GS"
+      ],
+      "headline": "Goldman Sachs Reports Market Sentiment Indicator at Low Levels"
+    },
+    {
+      "created_at": "2026-11-25T16:01:33Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MU"
+      ],
+      "headline": "Tradr ETFs Announces Upcoming Launch of Leveraged ETF Featuring Micron Technology, Inc."
+    },
+    {
+      "created_at": "2026-11-25T16:01:23Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AVGO"
+      ],
+      "headline": "UBS Adjusts Broadcom Price Target"
+    },
+    {
+      "created_at": "2026-11-25T16:01:19Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "AMZN"
+      ],
+      "headline": "Duracell and Amazon Partner for 'Power Playland on the Pier' Holiday Event"
+    },
+    {
+      "created_at": "2026-11-25T14:32:39Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "TSLA"
+      ],
+      "headline": "General Motors Korea to Adopt Tesla's North American Charging Standard"
+    },
+    {
+      "created_at": "2026-11-25T14:32:25Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "MS"
+      ],
+      "headline": "Morgan Stanley Adjusts Price Target on Workday"
+    },
+    {
+      "created_at": "2026-11-25T14:32:23Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "LLY"
+      ],
+      "headline": "Eli Lilly and Novo Nordisk Face Lawsuits Over Rare Eye Condition Linked to GLP-1 Drugs"
+    },
+    {
+      "created_at": "2026-11-25T14:31:57Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "BLK"
+      ],
+      "headline": "BlackRock, Inc. Discloses Change in Voting Rights in Brenntag SE"
+    },
+    {
+      "created_at": "2026-11-25T14:31:57Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "PLTR"
+      ],
+      "headline": "Palantir Technologies Insiders Report Significant Stock Transactions"
+    },
+    {
+      "created_at": "2026-11-25T14:31:49Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "META"
+      ],
+      "headline": "Meta Deploys Autonomous Food Preparation System in London Office"
+    },
+    {
+      "created_at": "2026-11-25T14:31:49Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "META"
+      ],
+      "headline": "Meta and Amazon Conclude Discussions to Lift Muse Shopping Robot Blockade"
+    },
+    {
+      "created_at": "2026-11-25T14:31:36Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "HD"
+      ],
+      "headline": "The Home Depot Foundation Awards $150,000 Grant for Affordable Housing Project"
+    },
+    {
+      "created_at": "2026-11-25T14:31:34Z",
+      "source": "fiscal.ai",
+      "symbols": [
+        "UNP"
+      ],
+      "headline": "Union Pacific Corporation CEO and CFO to Address Goldman Sachs Industrials and Materials Conference"
+    }
+  ]
+}
