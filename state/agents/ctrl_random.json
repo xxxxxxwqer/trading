@@ -28,7 +28,7 @@
       "daily_return_pct": 0.0
     },
     {
-      "timestamp": "2026-11-25T16:52:58Z",
+      "timestamp": "2026-11-25T16:58:13Z",
       "trading_date_et": "2026-11-25",
       "equity": 10000.0,
       "cash": 10000.0,
@@ -51,5 +51,5 @@
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-25T16:52:58Z"
+  "last_updated": "2026-11-25T16:58:13Z"
 }

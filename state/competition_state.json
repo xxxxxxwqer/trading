@@ -28,7 +28,7 @@
   "strategy_integrity_verified": false,
   "started_at_utc": "2026-11-25T16:52:54Z",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-25T16:52:58Z",
+  "last_updated_utc": "2026-11-25T16:58:13Z",
   "last_decision_timestamp_utc": "2026-11-25T16:52:54Z",
   "current_trading_date_et": "2026-11-25",
   "regime_summary": "RISK-OFF / DEFENSIVE \u2014 SPY 699.27 (-2.55% 1D, -2.62% 5D, PULLBACK/DOWNTREND, RSI 19.1); QQQ (-4.16% 1D); Bonds (TLT +1.49%) steady/rising (yields easing); Gold (GLD -2.79%).",
@@ -39,5 +39,7 @@
     "alpaca_paper_configured": true,
     "gemini_configured": true,
     "checked_at_utc": "2026-11-25T16:52:58Z"
-  }
+  },
+  "last_monitor_tick_utc": "2026-11-25T16:58:13Z",
+  "monitor_ticks_run": 1
 }
