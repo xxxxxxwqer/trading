@@ -30,15 +30,56 @@ from .base import BaseAgent
 logger = logging.getLogger(__name__)
 
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models"
-PRIMARY_GEMINI_MODEL = "gemini-2.5-flash"
-FALLBACK_GEMINI_MODEL = "gemini-2.0-flash"
+PRIMARY_GEMINI_MODEL = "gemini-3.8-flash"
+FALLBACK_GEMINI_MODEL = "gemini-3.5-flash-lite"
+LEGACY_FALLBACK_GEMINI_MODEL = "gemini-2.5-flash"
 MAX_LLM_CALLS_PER_CYCLE = 4
 DEFAULT_POLITE_PAUSE_SECONDS = 1.2
 
-# Module-level state for free-tier rate limiting and shared payload caching
+# Module-level state for free-tier rate limiting, model discovery, and shared payload caching
 _LAST_GEMINI_CALL_MONO: float = 0.0
 _CYCLE_LLM_CALL_COUNTS: Dict[str, int] = {}
 _SHARED_MARKET_PAYLOAD_CACHE: Tuple[int, str, Dict[str, Any]] = (0, "", {})
+_DISCOVERED_FLASH_MODELS: Optional[List[str]] = None
+
+
+def _discover_live_flash_models(api_key: str, timeout_seconds: float = 10.0) -> List[str]:
+    """Query Gemini /v1beta/models once per process to discover live flash models if static IDs 404."""
+    global _DISCOVERED_FLASH_MODELS
+    if _DISCOVERED_FLASH_MODELS is not None:
+        return list(_DISCOVERED_FLASH_MODELS)
+    discovered: List[str] = []
+    try:
+        url = f"{GEMINI_API_BASE_URL}?key={api_key}"
+        req = urllib.request.Request(url=url, headers={"Accept": "application/json"}, method="GET")
+        with urllib.request.urlopen(req, timeout=timeout_seconds) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        candidates: List[str] = []
+        for m in data.get("models") or []:
+            methods = m.get("supportedGenerationMethods") or []
+            if "generateContent" not in methods:
+                continue
+            raw_name = str(m.get("name") or "")
+            short = raw_name.split("/")[-1]
+            sl = short.lower()
+            if "gemini" in sl and "flash" in sl and "audio" not in sl and "image" not in sl and "tts" not in sl:
+                candidates.append(short)
+        # Prefer stable highest-version flash models first (avoid experimental/preview when stable exists)
+        candidates.sort(
+            key=lambda s: (
+                "exp" in s.lower() or "preview" in s.lower(),
+                "lite" in s.lower(),
+                s,
+            )
+        )
+        # Keep newest version numbers at the front within each tier
+        stable = sorted([c for c in candidates if "exp" not in c.lower() and "preview" not in c.lower()], reverse=True)
+        other = sorted([c for c in candidates if c not in stable], reverse=True)
+        discovered = (stable + other)[:5]
+    except Exception:
+        discovered = []
+    _DISCOVERED_FLASH_MODELS = discovered
+    return list(discovered)
 
 _POSITIVE_NEWS_KEYWORDS = (
     "beat",
@@ -555,90 +596,117 @@ class BaseLLMAgent(BaseAgent):
 
         _CYCLE_LLM_CALL_COUNTS[decision_ts] = cycle_calls + 1
 
-        models_to_try = (PRIMARY_GEMINI_MODEL, "gemini-2.5-flash-lite", FALLBACK_GEMINI_MODEL)
-        last_error = "Gemini API request failed"
+        models_to_try: List[str] = [PRIMARY_GEMINI_MODEL, FALLBACK_GEMINI_MODEL, LEGACY_FALLBACK_GEMINI_MODEL]
+        tried: set[str] = set()
+        errors: List[str] = []
+        discovered_added = False
 
-        for idx, model_name in enumerate(models_to_try):
-            gen_cfg: Dict[str, Any] = {
+        idx = 0
+        while idx < len(models_to_try):
+            model_name = models_to_try[idx]
+            idx += 1
+            if model_name in tried:
+                continue
+            tried.add(model_name)
+
+            # Try with thinkingBudget=0 only for 2.5 models; retry once without thinkingConfig on HTTP 400
+            configs_to_try: List[Dict[str, Any]] = []
+            base_cfg: Dict[str, Any] = {
                 "temperature": 0.2,
-                "maxOutputTokens": 2048,
+                "maxOutputTokens": 4096,
                 "responseMimeType": "application/json",
             }
-            # Gemini 2.5 thinking models consume maxOutputTokens on hidden thoughts unless disabled
             if "2.5" in model_name:
-                gen_cfg["thinkingConfig"] = {"thinkingBudget": 0}
+                cfg_no_think = dict(base_cfg)
+                cfg_no_think["thinkingConfig"] = {"thinkingBudget": 0}
+                configs_to_try.append(cfg_no_think)
+            configs_to_try.append(base_cfg)
 
-            request_body = json.dumps(
-                {
-                    "contents": [
-                        {
-                            "role": "user",
-                            "parts": [{"text": prompt_text}],
-                        }
-                    ],
-                    "generationConfig": gen_cfg,
-                }
-            ).encode("utf-8")
+            hit_404 = False
+            for cfg_idx, gen_cfg in enumerate(configs_to_try):
+                request_body = json.dumps(
+                    {
+                        "contents": [
+                            {
+                                "role": "user",
+                                "parts": [{"text": prompt_text}],
+                            }
+                        ],
+                        "generationConfig": gen_cfg,
+                    }
+                ).encode("utf-8")
 
-            url = f"{GEMINI_API_BASE_URL}/{model_name}:generateContent?key={api_key}"
-            req = urllib.request.Request(
-                url=url,
-                data=request_body,
-                headers={"Content-Type": "application/json"},
-                method="POST",
-            )
-            try:
-                _LAST_GEMINI_CALL_MONO = time.monotonic()
-                with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
-                    raw_bytes = resp.read()
-                resp_data = json.loads(raw_bytes.decode("utf-8"))
-                candidates = resp_data.get("candidates") or []
-                if not candidates:
-                    last_error = f"Empty candidates from {model_name}"
-                    logger.warning("Gemini API (%s) %s", self.agent_id, last_error)
-                    continue
-                content = candidates[0].get("content") or {}
-                parts = content.get("parts") or []
-                # Skip thinking parts ({"thought": true}) so only the actual JSON answer is parsed
-                answer_chunks = [
-                    str(p["text"])
-                    for p in parts
-                    if isinstance(p, dict) and "text" in p and not p.get("thought")
-                ]
-                joined_text = "".join(answer_chunks).strip()
-                if not joined_text:
-                    last_error = f"Missing non-thought text part in {model_name} response"
-                    logger.warning("Gemini API (%s) %s", self.agent_id, last_error)
-                    continue
-                return joined_text, None
-            except urllib.error.HTTPError as http_err:
-                status_code = getattr(http_err, "code", 0)
-                err_snippet = ""
+                url = f"{GEMINI_API_BASE_URL}/{model_name}:generateContent?key={api_key}"
+                req = urllib.request.Request(
+                    url=url,
+                    data=request_body,
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
                 try:
-                    raw_err = http_err.read().decode("utf-8", errors="ignore")[:200]
-                    err_snippet = _sanitize_error_message(" ".join(raw_err.split()), api_key)
-                except Exception:
+                    _LAST_GEMINI_CALL_MONO = time.monotonic()
+                    with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
+                        raw_bytes = resp.read()
+                    resp_data = json.loads(raw_bytes.decode("utf-8"))
+                    candidates = resp_data.get("candidates") or []
+                    if not candidates:
+                        msg = f"{model_name}: empty candidates"
+                        errors.append(msg)
+                        logger.warning("Gemini API (%s) %s", self.agent_id, msg)
+                        break
+                    content = candidates[0].get("content") or {}
+                    parts = content.get("parts") or []
+                    # Skip hidden thinking parts ({"thought": true}) so only the actual JSON answer is parsed
+                    answer_chunks = [
+                        str(p["text"])
+                        for p in parts
+                        if isinstance(p, dict) and "text" in p and not p.get("thought")
+                    ]
+                    joined_text = "".join(answer_chunks).strip()
+                    if not joined_text:
+                        msg = f"{model_name}: missing non-thought text part"
+                        errors.append(msg)
+                        logger.warning("Gemini API (%s) %s", self.agent_id, msg)
+                        break
+                    return joined_text, None
+                except urllib.error.HTTPError as http_err:
+                    status_code = getattr(http_err, "code", 0)
                     err_snippet = ""
-                if status_code == 429:
-                    last_error = f"Gemini free-tier rate limit (HTTP 429) on {model_name}"
-                else:
-                    last_error = f"Gemini HTTP {status_code} on {model_name}" + (f" ({err_snippet})" if err_snippet else "")
-                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
-                if idx < len(models_to_try) - 1:
-                    time.sleep(0.8)
-                    continue
-            except urllib.error.URLError as url_err:
-                reason = _sanitize_error_message(str(getattr(url_err, "reason", url_err)), api_key)
-                last_error = f"Network error calling {model_name}: {reason}"
-                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
-                break
-            except Exception as exc:
-                sanitized = _sanitize_error_message(str(exc), api_key)
-                last_error = f"Error calling {model_name} ({type(exc).__name__}: {sanitized})"
-                logger.warning("Gemini API (%s) error: %s", self.agent_id, last_error)
-                break
+                    try:
+                        raw_err = http_err.read().decode("utf-8", errors="ignore")[:160]
+                        err_snippet = _sanitize_error_message(" ".join(raw_err.split()), api_key)
+                    except Exception:
+                        err_snippet = ""
+                    if status_code == 400 and cfg_idx + 1 < len(configs_to_try):
+                        continue  # retry same model without thinkingConfig
+                    if status_code == 404:
+                        hit_404 = True
+                    msg = f"{model_name} HTTP {status_code}" + (f" ({err_snippet})" if err_snippet else "")
+                    errors.append(msg)
+                    logger.warning("Gemini API (%s) error: %s", self.agent_id, msg)
+                    time.sleep(0.5)
+                    break
+                except urllib.error.URLError as url_err:
+                    reason = _sanitize_error_message(str(getattr(url_err, "reason", url_err)), api_key)
+                    msg = f"{model_name} network error: {reason}"
+                    errors.append(msg)
+                    logger.warning("Gemini API (%s) error: %s", self.agent_id, msg)
+                    return None, " | ".join(errors)
+                except Exception as exc:
+                    sanitized = _sanitize_error_message(str(exc), api_key)
+                    msg = f"{model_name} {type(exc).__name__}: {sanitized}"
+                    errors.append(msg)
+                    logger.warning("Gemini API (%s) error: %s", self.agent_id, msg)
+                    break
 
-        return None, last_error
+            # If static models are returning 404/failing, dynamically discover live Flash models once
+            if (hit_404 or idx >= len(models_to_try)) and not discovered_added:
+                discovered_added = True
+                for dm in _discover_live_flash_models(api_key):
+                    if dm not in tried and dm not in models_to_try:
+                        models_to_try.append(dm)
+
+        return None, " | ".join(errors) if errors else "Gemini API request failed"
 
     def simulate_offline_response(
         self,

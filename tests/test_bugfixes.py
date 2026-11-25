@@ -175,11 +175,13 @@ class TestAuditedBugFixes(unittest.TestCase):
         self.assertEqual(attempts["n"], 2)
         self.assertTrue(res["is_open"])
 
-    def test_gemini_25_skips_thought_parts_and_sets_thinking_budget_zero(self) -> None:
+    def test_gemini_skips_thought_parts_and_uses_live_flash_model(self) -> None:
         agent = TechnicalLLMAgent(api_key="dummy-test-key", polite_pause_seconds=0.0)
+        captured_urls = []
         captured_bodies = []
 
         def fake_urlopen(req, timeout=20.0):
+            captured_urls.append(req.full_url)
             captured_bodies.append(json.loads(req.data.decode("utf-8")))
             return _DummyHTTPResp(
                 {
@@ -216,8 +218,7 @@ class TestAuditedBugFixes(unittest.TestCase):
         parsed = json.loads(raw_text)
         self.assertEqual(parsed["action"], "HOLD")
         self.assertIn("skipping thought part", parsed["reasoning"])
-        # Verify thinkingBudget: 0 was passed for gemini-2.5-flash
-        self.assertEqual(captured_bodies[0]["generationConfig"]["thinkingConfig"]["thinkingBudget"], 0)
+        self.assertIn("gemini-3.8-flash", captured_urls[0])
         self.assertGreaterEqual(captured_bodies[0]["generationConfig"]["maxOutputTokens"], 2048)
 
     def test_daily_report_cycles_count_and_post_close_flag(self) -> None:

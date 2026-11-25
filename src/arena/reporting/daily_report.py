@@ -49,8 +49,8 @@ MARKET_SUMMARY_CACHE_PATH = STATE_DIR / "last_market_summary.json"
 REPORTS_LOG_PATH = STATE_DIR / "daily_reports_log.json"
 
 GEMINI_API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models"
-PRIMARY_REPORT_MODEL = "gemini-2.5-flash"
-FALLBACK_REPORT_MODEL = "gemini-2.0-flash"
+PRIMARY_REPORT_MODEL = "gemini-3.8-flash"
+FALLBACK_REPORT_MODEL = "gemini-3.5-flash-lite"
 
 # Two-tailed 95% Student-t critical values by degrees of freedom (df = n - 1)
 _T_CRIT_95 = {
@@ -1156,8 +1156,25 @@ def validate_report_markdown(
 
 
 def _call_gemini_for_report(user_prompt: str, api_key: str) -> Tuple[Optional[str], Optional[str]]:
-    """Call Gemini Flash with temperature=0.15 to draft the GFM daily report."""
-    for model_name in (PRIMARY_REPORT_MODEL, "gemini-2.5-flash-lite", FALLBACK_REPORT_MODEL):
+    """Call Gemini Flash with temperature=0.15 to draft the GFM daily report (with live model fallback)."""
+    models_to_try: List[str] = [PRIMARY_REPORT_MODEL, FALLBACK_REPORT_MODEL, "gemini-2.5-flash"]
+    try:
+        from arena.agents.llm_agents import _discover_live_flash_models
+
+        discovered_fn = _discover_live_flash_models
+    except Exception:
+        discovered_fn = None
+
+    tried: set[str] = set()
+    discovered_added = False
+    idx = 0
+    while idx < len(models_to_try):
+        model_name = models_to_try[idx]
+        idx += 1
+        if model_name in tried:
+            continue
+        tried.add(model_name)
+
         gen_cfg: Dict[str, Any] = {
             "temperature": 0.15,
             "maxOutputTokens": 16384,
@@ -1182,7 +1199,7 @@ def _call_gemini_for_report(user_prompt: str, api_key: str) -> Tuple[Optional[st
             if not cands:
                 continue
             parts = (cands[0].get("content") or {}).get("parts") or []
-            # Exclude hidden thought parts on Gemini 2.5 models
+            # Exclude hidden thought parts
             text = "".join(
                 str(p.get("text", ""))
                 for p in parts
@@ -1196,6 +1213,11 @@ def _call_gemini_for_report(user_prompt: str, api_key: str) -> Tuple[Optional[st
         except Exception as exc:
             err_msg = re.sub(r"key=[^&\s\"']+", "key=[REDACTED]", str(exc))
             logger.warning("Gemini daily report call failed on %s: %s", model_name, err_msg)
+            if not discovered_added and discovered_fn is not None and idx >= len(models_to_try):
+                discovered_added = True
+                for dm in discovered_fn(api_key):
+                    if dm not in tried and dm not in models_to_try:
+                        models_to_try.append(dm)
     return None, "Gemini daily report API call failed"
 
 

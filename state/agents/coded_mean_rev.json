@@ -5,90 +5,29 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.61,
-  "equity": 10001.71,
-  "peak_equity": 10001.71,
-  "max_drawdown_pct": -0.01,
+  "cash": 10000.0,
+  "equity": 10000.0,
+  "peak_equity": 10000.0,
+  "max_drawdown_pct": 0.0,
   "current_drawdown_pct": 0.0,
-  "current_trading_date_et": "2026-11-25",
+  "current_trading_date_et": "",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.02,
-  "positions": {
-    "AVGO": {
-      "ticker": "AVGO",
-      "shares": 7.0776,
-      "avg_entry_price": 282.7778,
-      "current_price": 283.02,
-      "stop_loss": 275.64,
-      "take_profit": 295.51,
-      "opened_at": "2026-11-25T16:52:58Z",
-      "entry_reasoning": "Buying oversold dip in AVGO: RSI(14) is 14.5 with price $282.58 near lower Bollinger Band ($278.15) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.64, mean-reversion target at $295.51.",
-      "unrealized_pnl": 1.71,
-      "unrealized_pnl_pct": 0.09,
-      "market_value": 2003.1
-    }
-  },
+  "daily_pnl_pct": 0.0,
+  "positions": {},
   "pending_orders": [],
-  "trades": [
-    {
-      "trade_id": "trd_649efc920334",
-      "agent_id": "coded_mean_rev",
-      "side": "BUY",
-      "ticker": "AVGO",
-      "shares": 7.0776,
-      "decision_timestamp": "2026-11-25T16:52:54Z",
-      "fill_timestamp": "2026-11-25T16:52:58Z",
-      "reference_price": 282.58,
-      "fill_price": 282.7778,
-      "spread_cost_dollars": 0.3999,
-      "slippage_cost_dollars": 1.0001,
-      "commission_dollars": 0.0,
-      "notional_dollars": 2001.39,
-      "stop_loss": 275.64,
-      "take_profit": 295.51,
-      "realized_pnl": null,
-      "realized_pnl_pct": null,
-      "exit_reason": "",
-      "reasoning": "Buying oversold dip in AVGO: RSI(14) is 14.5 with price $282.58 near lower Bollinger Band ($278.15) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.64, mean-reversion target at $295.51.",
-      "confidence": 0.9
-    }
-  ],
+  "trades": [],
   "rejections": [],
   "equity_curve": [
     {
-      "timestamp": "2026-11-25T16:52:20Z",
+      "timestamp": "2026-11-25T16:58:21Z",
       "trading_date_et": "2026-11-25",
       "equity": 10000.0,
       "cash": 10000.0,
       "positions_value": 0.0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
-    },
-    {
-      "timestamp": "2026-11-25T16:58:13Z",
-      "trading_date_et": "2026-11-25",
-      "equity": 10001.71,
-      "cash": 7998.61,
-      "positions_value": 2003.1,
-      "drawdown_pct": 0.0,
-      "daily_return_pct": 0.02
     }
   ],
-  "daily_journal": [
-    {
-      "trading_date_et": "2026-11-25",
-      "trading_day_number": 1,
-      "start_equity": 10000.0,
-      "end_equity": 10001.71,
-      "daily_pnl": 1.71,
-      "daily_pnl_pct": 0.02,
-      "trades_count": 1,
-      "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-25): Equity moved from $10,000.00 to $10,001.71 (+$1.71, +0.02%). Executed 1 trade(s) \u2014 Buys: AVGO ($2,001); Sells: none.",
-      "highlights": [
-        "BUY 7.0776 AVGO @ $282.78 ($2001.39, stop $275.64) \u2014 Buying oversold dip in AVGO: RSI(14) is 14.5 with price $282.58 near lower Bollinger Band ($278.15) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.64, mean-reversion target at $295.51."
-      ]
-    }
-  ],
-  "last_updated": "2026-11-25T16:58:13Z"
+  "daily_journal": [],
+  "last_updated": "2026-11-25T16:58:21Z"
 }

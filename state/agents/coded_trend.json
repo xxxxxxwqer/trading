@@ -5,90 +5,29 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.6,
-  "equity": 9998.93,
+  "cash": 10000.0,
+  "equity": 10000.0,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.01,
-  "current_drawdown_pct": -0.01,
-  "current_trading_date_et": "2026-11-25",
+  "max_drawdown_pct": 0.0,
+  "current_drawdown_pct": 0.0,
+  "current_trading_date_et": "",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.01,
-  "positions": {
-    "HD": {
-      "ticker": "HD",
-      "shares": 5.6027,
-      "avg_entry_price": 357.2199,
-      "current_price": 357.03,
-      "stop_loss": 351.62,
-      "take_profit": 367.68,
-      "opened_at": "2026-11-25T16:52:58Z",
-      "entry_reasoning": "Buying HD on momentum breakout: price $356.97 is at/near 20-bar high ($358.10) with 10-SMA ($354.61) > 30-SMA ($350.28), RSI(14) at 69.4, and volume ratio 1.05x. Stop set at $351.62 and target at $367.68.",
-      "unrealized_pnl": -1.07,
-      "unrealized_pnl_pct": -0.05,
-      "market_value": 2000.33
-    }
-  },
+  "daily_pnl_pct": 0.0,
+  "positions": {},
   "pending_orders": [],
-  "trades": [
-    {
-      "trade_id": "trd_a8fc19e0e11c",
-      "agent_id": "coded_trend",
-      "side": "BUY",
-      "ticker": "HD",
-      "shares": 5.6027,
-      "decision_timestamp": "2026-11-25T16:52:54Z",
-      "fill_timestamp": "2026-11-25T16:52:58Z",
-      "reference_price": 356.97,
-      "fill_price": 357.2199,
-      "spread_cost_dollars": 0.4,
-      "slippage_cost_dollars": 1.0001,
-      "commission_dollars": 0.0,
-      "notional_dollars": 2001.4,
-      "stop_loss": 351.62,
-      "take_profit": 367.68,
-      "realized_pnl": null,
-      "realized_pnl_pct": null,
-      "exit_reason": "",
-      "reasoning": "Buying HD on momentum breakout: price $356.97 is at/near 20-bar high ($358.10) with 10-SMA ($354.61) > 30-SMA ($350.28), RSI(14) at 69.4, and volume ratio 1.05x. Stop set at $351.62 and target at $367.68.",
-      "confidence": 0.81
-    }
-  ],
+  "trades": [],
   "rejections": [],
   "equity_curve": [
     {
-      "timestamp": "2026-11-25T16:52:20Z",
+      "timestamp": "2026-11-25T16:58:21Z",
       "trading_date_et": "2026-11-25",
       "equity": 10000.0,
       "cash": 10000.0,
       "positions_value": 0.0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
-    },
-    {
-      "timestamp": "2026-11-25T16:58:13Z",
-      "trading_date_et": "2026-11-25",
-      "equity": 9998.93,
-      "cash": 7998.6,
-      "positions_value": 2000.33,
-      "drawdown_pct": -0.01,
-      "daily_return_pct": -0.01
     }
   ],
-  "daily_journal": [
-    {
-      "trading_date_et": "2026-11-25",
-      "trading_day_number": 1,
-      "start_equity": 10000.0,
-      "end_equity": 9998.93,
-      "daily_pnl": -1.07,
-      "daily_pnl_pct": -0.01,
-      "trades_count": 1,
-      "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-25): Equity moved from $10,000.00 to $9,998.93 ($-1.07, -0.01%). Executed 1 trade(s) \u2014 Buys: HD ($2,001); Sells: none.",
-      "highlights": [
-        "BUY 5.6027 HD @ $357.22 ($2001.40, stop $351.62) \u2014 Buying HD on momentum breakout: price $356.97 is at/near 20-bar high ($358.10) with 10-SMA ($354.61) > 30-SMA ($350.28), RSI(14) at 69.4, and volume ratio 1.05x. Stop set at $351.62 and target at $367.68."
-      ]
-    }
-  ],
-  "last_updated": "2026-11-25T16:58:13Z"
+  "daily_journal": [],
+  "last_updated": "2026-11-25T16:58:21Z"
 }

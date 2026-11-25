@@ -160,7 +160,8 @@ def compute_all_strategy_hashes() -> Dict[str, str]:
     }
     for name, path in engine_files.items():
         if hashes.get(name) in (None, "", "MISSING") and path.exists() and path.is_file():
-            hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+            normalized_bytes = path.read_bytes().replace(b"\r\n", b"\n")
+            hashes[name] = hashlib.sha256(normalized_bytes).hexdigest()
     return hashes
 
 
@@ -1549,7 +1550,7 @@ def _test_gemini_flash_key(api_key: str) -> tuple[bool, str]:
     if not api_key or api_key.strip().lower() in placeholders:
         return False, "GEMINI_API_KEY is not set (or still has placeholder value in .env)"
 
-    for model in ("gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash"):
+    for model in ("gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key.strip()}"
         gen_cfg: Dict[str, Any] = {"temperature": 0.0, "maxOutputTokens": 64}
         if "2.5" in model:

@@ -85,7 +85,9 @@ def compute_strategy_hashes() -> Dict[str, str]:
     hashes: Dict[str, str] = {}
     for name, path in target_files.items():
         if path.exists() and path.is_file():
-            hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+            # Normalize CRLF -> LF so Windows and Linux GitHub Actions compute identical SHA-256 hashes
+            normalized_bytes = path.read_bytes().replace(b"\r\n", b"\n")
+            hashes[name] = hashlib.sha256(normalized_bytes).hexdigest()
         else:
             hashes[name] = "MISSING"
     return hashes
