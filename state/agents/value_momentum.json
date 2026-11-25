@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 652.94,
-  "equity": 9955.81,
+  "equity": 9917.04,
   "peak_equity": 10017.24,
-  "max_drawdown_pct": -0.84,
-  "current_drawdown_pct": -0.61,
+  "max_drawdown_pct": -1.0,
+  "current_drawdown_pct": -1.0,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 10017.24,
-  "daily_pnl_pct": -0.61,
+  "daily_pnl_pct": -1.0,
   "positions": {
     "BRK.B": {
       "ticker": "BRK.B",
       "shares": 3.0296,
       "avg_entry_price": 583.4082,
-      "current_price": 577.425,
+      "current_price": 578.015,
       "stop_loss": 549.993,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -18.12,
-      "unrealized_pnl_pct": -1.03,
-      "market_value": 1749.37
+      "unrealized_pnl": -16.34,
+      "unrealized_pnl_pct": -0.92,
+      "market_value": 1751.15
     },
     "CVX": {
       "ticker": "CVX",
       "shares": 9.1028,
       "avg_entry_price": 208.8711,
-      "current_price": 210.64,
+      "current_price": 206.615,
       "stop_loss": 198.2887,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 16.1,
-      "unrealized_pnl_pct": 0.85,
-      "market_value": 1917.41
+      "unrealized_pnl": -20.53,
+      "unrealized_pnl_pct": -1.08,
+      "market_value": 1880.78
     },
     "DIS": {
       "ticker": "DIS",
       "shares": 15.6404,
       "avg_entry_price": 120.154,
-      "current_price": 122.09,
+      "current_price": 122.005,
       "stop_loss": 115.406,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 30.28,
-      "unrealized_pnl_pct": 1.61,
-      "market_value": 1909.54
+      "unrealized_pnl": 28.95,
+      "unrealized_pnl_pct": 1.54,
+      "market_value": 1908.21
     },
     "HON": {
       "ticker": "HON",
       "shares": 8.5527,
       "avg_entry_price": 222.3055,
-      "current_price": 220.74,
+      "current_price": 220.56,
       "stop_loss": 211.0425,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -13.39,
-      "unrealized_pnl_pct": -0.7,
-      "market_value": 1887.92
+      "unrealized_pnl": -14.93,
+      "unrealized_pnl_pct": -0.79,
+      "market_value": 1886.38
     },
     "QCOM": {
       "ticker": "QCOM",
       "shares": 11.7103,
       "avg_entry_price": 162.0534,
-      "current_price": 157.01,
+      "current_price": 156.92,
       "stop_loss": 154.1375,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -59.06,
-      "unrealized_pnl_pct": -3.11,
-      "market_value": 1838.63
+      "unrealized_pnl": -60.11,
+      "unrealized_pnl_pct": -3.17,
+      "market_value": 1837.58
     }
   },
   "pending_orders": [],
@@ -232,13 +232,13 @@
       "daily_return_pct": 0.17
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9955.81,
+      "equity": 9917.04,
       "cash": 652.94,
-      "positions_value": 9302.87,
-      "drawdown_pct": -0.61,
-      "daily_return_pct": -0.61
+      "positions_value": 9264.1,
+      "drawdown_pct": -1.0,
+      "daily_return_pct": -1.0
     }
   ],
   "daily_journal": [
@@ -264,14 +264,14 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 10017.24,
-      "end_equity": 9955.81,
-      "daily_pnl": -61.43,
-      "daily_pnl_pct": -0.61,
+      "end_equity": 9917.04,
+      "daily_pnl": -100.2,
+      "daily_pnl_pct": -1.0,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,017.24 to $9,955.81 ($-61.43, -0.61%). No new trades executed; held existing position(s): BRK.B (3.03 sh, -1.03%), CVX (9.10 sh, +0.85%), DIS (15.64 sh, +1.61%), HON (8.55 sh, -0.70%), QCOM (11.71 sh, -3.11%).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,017.24 to $9,917.04 ($-100.20, -1.00%). No new trades executed; held existing position(s): BRK.B (3.03 sh, -0.92%), CVX (9.10 sh, -1.08%), DIS (15.64 sh, +1.54%), HON (8.55 sh, -0.79%), QCOM (11.71 sh, -3.17%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

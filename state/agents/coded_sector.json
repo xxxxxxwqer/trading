@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 7932.5,
-  "equity": 9936.52,
+  "equity": 9937.17,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.66,
   "current_drawdown_pct": -0.63,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9998.19,
-  "daily_pnl_pct": -0.62,
+  "daily_pnl_pct": -0.61,
   "positions": {
     "XLP": {
       "ticker": "XLP",
       "shares": 21.7426,
       "avg_entry_price": 92.0494,
-      "current_price": 92.17,
+      "current_price": 92.2,
       "stop_loss": 90.61,
       "take_profit": 95.66,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +1.42%, RS vs SPY +2.49%, 5d change -0.18%) trading at $91.98 above 20-SMA ($90.64). Stop at $90.61, target at $95.66.",
-      "unrealized_pnl": 2.63,
-      "unrealized_pnl_pct": 0.13,
-      "market_value": 2004.02
+      "unrealized_pnl": 3.28,
+      "unrealized_pnl_pct": 0.16,
+      "market_value": 2004.67
     }
   },
   "pending_orders": [],
@@ -180,13 +180,13 @@
       "daily_return_pct": -0.02
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9936.52,
+      "equity": 9937.17,
       "cash": 7932.5,
-      "positions_value": 2004.02,
+      "positions_value": 2004.67,
       "drawdown_pct": -0.63,
-      "daily_return_pct": -0.62
+      "daily_return_pct": -0.61
     }
   ],
   "daily_journal": [
@@ -210,17 +210,17 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9998.19,
-      "end_equity": 9936.52,
-      "daily_pnl": -61.67,
-      "daily_pnl_pct": -0.62,
+      "end_equity": 9937.17,
+      "daily_pnl": -61.02,
+      "daily_pnl_pct": -0.61,
       "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,998.19 to $9,936.52 ($-61.67, -0.62%). Executed 2 trade(s) \u2014 Buys: none; Sells: XLY (STOP_LOSS, $-44.08), XLV (AGENT_SIGNAL, $-22.03).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,998.19 to $9,937.17 ($-61.02, -0.61%). Executed 2 trade(s) \u2014 Buys: none; Sells: XLY (STOP_LOSS, $-44.08), XLV (AGENT_SIGNAL, $-22.03).",
       "highlights": [
         "SELL 17.0685 XLY @ $114.67 [STOP_LOSS: $-44.08 (-2.20%)] \u2014 Stop-loss triggered at $114.75 (intrabar low $114.33 <= stop $115.41)",
         "SELL 10.8692 XLV @ $182.08 [AGENT_SIGNAL: $-22.03 (-1.10%)] \u2014 Rotating out of sector ETF XLV: price ($182.21) broke below 20-SMA ($182.93)."
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

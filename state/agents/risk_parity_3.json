@@ -6,13 +6,13 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 6407.63,
-  "equity": 9966.22,
+  "equity": 9963.28,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.4,
-  "current_drawdown_pct": -0.34,
+  "current_drawdown_pct": -0.37,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9996.21,
-  "daily_pnl_pct": -0.3,
+  "daily_pnl_pct": -0.33,
   "positions": {
     "TLT": {
       "ticker": "TLT",
@@ -31,27 +31,27 @@
       "ticker": "SPY",
       "shares": 1.1863,
       "avg_entry_price": 716.0509,
-      "current_price": 699.725,
+      "current_price": 699.11,
       "stop_loss": 683.3502,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=8.5%, stop=-4.5%",
-      "unrealized_pnl": -19.37,
-      "unrealized_pnl_pct": -2.28,
-      "market_value": 830.08
+      "unrealized_pnl": -20.1,
+      "unrealized_pnl_pct": -2.37,
+      "market_value": 829.35
     },
     "GLD": {
       "ticker": "GLD",
       "shares": 2.4154,
       "avg_entry_price": 327.7093,
-      "current_price": 316.3,
+      "current_price": 315.385,
       "stop_loss": 312.7434,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=7.9%, stop=-4.5%",
-      "unrealized_pnl": -27.56,
-      "unrealized_pnl_pct": -3.48,
-      "market_value": 763.99
+      "unrealized_pnl": -29.77,
+      "unrealized_pnl_pct": -3.76,
+      "market_value": 761.78
     }
   },
   "pending_orders": [],
@@ -162,13 +162,13 @@
       "daily_return_pct": -0.04
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9966.22,
+      "equity": 9963.28,
       "cash": 6407.63,
-      "positions_value": 3558.59,
-      "drawdown_pct": -0.34,
-      "daily_return_pct": -0.3
+      "positions_value": 3555.65,
+      "drawdown_pct": -0.37,
+      "daily_return_pct": -0.33
     }
   ],
   "daily_journal": [
@@ -192,14 +192,14 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9996.21,
-      "end_equity": 9966.22,
-      "daily_pnl": -29.99,
-      "daily_pnl_pct": -0.3,
+      "end_equity": 9963.28,
+      "daily_pnl": -32.93,
+      "daily_pnl_pct": -0.33,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,996.21 to $9,966.22 ($-29.99, -0.30%). No new trades executed; held existing position(s): TLT (23.81 sh, +0.67%), SPY (1.19 sh, -2.28%), GLD (2.42 sh, -3.48%).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,996.21 to $9,963.28 ($-32.93, -0.33%). No new trades executed; held existing position(s): TLT (23.81 sh, +0.67%), SPY (1.19 sh, -2.37%), GLD (2.42 sh, -3.76%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

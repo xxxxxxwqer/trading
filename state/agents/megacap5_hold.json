@@ -6,7 +6,7 @@
   "status_reason": "Daily loss limit -3% reached",
   "initial_cash": 10000.0,
   "cash": 5902.7,
-  "equity": 9616.35,
+  "equity": 9615.84,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -3.91,
   "current_drawdown_pct": -3.84,
@@ -18,27 +18,27 @@
       "ticker": "AAPL",
       "shares": 5.413,
       "avg_entry_price": 351.2507,
-      "current_price": 346.27,
+      "current_price": 346.25,
       "stop_loss": 333.4547,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -26.96,
+      "unrealized_pnl": -27.07,
       "unrealized_pnl_pct": -1.42,
-      "market_value": 1874.36
+      "market_value": 1874.25
     },
     "MSFT": {
       "ticker": "MSFT",
       "shares": 3.8307,
       "avg_entry_price": 496.3372,
-      "current_price": 480.145,
+      "current_price": 480.04,
       "stop_loss": 471.1905,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -62.03,
-      "unrealized_pnl_pct": -3.26,
-      "market_value": 1839.29
+      "unrealized_pnl": -62.43,
+      "unrealized_pnl_pct": -3.28,
+      "market_value": 1838.89
     }
   },
   "pending_orders": [],
@@ -259,11 +259,11 @@
       "daily_return_pct": -0.07
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9616.35,
+      "equity": 9615.84,
       "cash": 5902.7,
-      "positions_value": 3713.65,
+      "positions_value": 3713.14,
       "drawdown_pct": -3.84,
       "daily_return_pct": -3.77
     }
@@ -291,12 +291,12 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9993.05,
-      "end_equity": 9616.35,
-      "daily_pnl": -376.7,
+      "end_equity": 9615.84,
+      "daily_pnl": -377.21,
       "daily_pnl_pct": -3.77,
       "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,993.05 to $9,616.35 ($-376.70, -3.77%). Executed 3 trade(s) \u2014 Buys: none; Sells: AMZN (STOP_LOSS, $-99.48), GOOGL (STOP_LOSS, $-97.59), NVDA (STOP_LOSS, $-97.59). Status at close: DAILY_HALTED (Daily loss limit -3% reached).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,993.05 to $9,615.84 ($-377.21, -3.77%). Executed 3 trade(s) \u2014 Buys: none; Sells: AMZN (STOP_LOSS, $-99.48), GOOGL (STOP_LOSS, $-97.59), NVDA (STOP_LOSS, $-97.59). Status at close: DAILY_HALTED (Daily loss limit -3% reached).",
       "highlights": [
         "SELL 7.4848 AMZN @ $240.73 [STOP_LOSS: $-99.48 (-5.23%)] \u2014 Stop-loss triggered at $240.90 (intrabar low $237.17 <= stop $241.15)",
         "SELL 6.8085 GOOGL @ $264.92 [STOP_LOSS: $-97.59 (-5.13%)] \u2014 Stop-loss triggered at $265.11 (intrabar low $264.94 <= stop $265.11)",
@@ -304,5 +304,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

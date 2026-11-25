@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 680.81,
-  "equity": 9950.46,
+  "equity": 9947.33,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.78,
-  "current_drawdown_pct": -0.5,
+  "current_drawdown_pct": -0.53,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9997.36,
-  "daily_pnl_pct": -0.47,
+  "daily_pnl_pct": -0.5,
   "positions": {
     "CRM": {
       "ticker": "CRM",
       "shares": 9.8089,
       "avg_entry_price": 194.1858,
-      "current_price": 193.17,
+      "current_price": 193.39,
       "stop_loss": 184.015,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -9.96,
-      "unrealized_pnl_pct": -0.52,
-      "market_value": 1894.79
+      "unrealized_pnl": -7.81,
+      "unrealized_pnl_pct": -0.41,
+      "market_value": 1896.94
     },
     "GS": {
       "ticker": "GS",
       "shares": 2.1334,
       "avg_entry_price": 800.1898,
-      "current_price": 776.695,
+      "current_price": 776.12,
       "stop_loss": 759.6485,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -50.12,
-      "unrealized_pnl_pct": -2.94,
-      "market_value": 1657.0
+      "unrealized_pnl": -51.35,
+      "unrealized_pnl_pct": -3.01,
+      "market_value": 1655.77
     },
     "NKE": {
       "ticker": "NKE",
       "shares": 53.3483,
       "avg_entry_price": 35.6399,
-      "current_price": 35.59,
+      "current_price": 35.51,
       "stop_loss": 33.8342,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -2.66,
-      "unrealized_pnl_pct": -0.14,
-      "market_value": 1898.67
+      "unrealized_pnl": -6.93,
+      "unrealized_pnl_pct": -0.36,
+      "market_value": 1894.4
     },
     "UNH": {
       "ticker": "UNH",
       "shares": 5.59,
       "avg_entry_price": 340.6002,
-      "current_price": 340.365,
+      "current_price": 341.265,
       "stop_loss": 322.8955,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -1.32,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1902.64
+      "unrealized_pnl": 3.71,
+      "unrealized_pnl_pct": 0.2,
+      "market_value": 1907.67
     },
     "XOM": {
       "ticker": "XOM",
       "shares": 12.0413,
       "avg_entry_price": 157.9589,
-      "current_price": 159.165,
+      "current_price": 158.765,
       "stop_loss": 149.9005,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 14.52,
-      "unrealized_pnl_pct": 0.76,
-      "market_value": 1916.55
+      "unrealized_pnl": 9.71,
+      "unrealized_pnl_pct": 0.51,
+      "market_value": 1911.74
     }
   },
   "pending_orders": [],
@@ -232,13 +232,13 @@
       "daily_return_pct": -0.03
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9950.46,
+      "equity": 9947.33,
       "cash": 680.81,
-      "positions_value": 9269.65,
-      "drawdown_pct": -0.5,
-      "daily_return_pct": -0.47
+      "positions_value": 9266.52,
+      "drawdown_pct": -0.53,
+      "daily_return_pct": -0.5
     }
   ],
   "daily_journal": [
@@ -264,14 +264,14 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9997.36,
-      "end_equity": 9950.46,
-      "daily_pnl": -46.9,
-      "daily_pnl_pct": -0.47,
+      "end_equity": 9947.33,
+      "daily_pnl": -50.03,
+      "daily_pnl_pct": -0.5,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.36 to $9,950.46 ($-46.90, -0.47%). No new trades executed; held existing position(s): CRM (9.81 sh, -0.52%), GS (2.13 sh, -2.94%), NKE (53.35 sh, -0.14%), UNH (5.59 sh, -0.07%), XOM (12.04 sh, +0.76%).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.36 to $9,947.33 ($-50.03, -0.50%). No new trades executed; held existing position(s): CRM (9.81 sh, -0.41%), GS (2.13 sh, -3.01%), NKE (53.35 sh, -0.36%), UNH (5.59 sh, +0.20%), XOM (12.04 sh, +0.51%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

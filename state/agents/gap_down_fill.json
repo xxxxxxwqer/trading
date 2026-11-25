@@ -6,52 +6,52 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 4177.12,
-  "equity": 9881.6,
+  "equity": 9879.68,
   "peak_equity": 10005.31,
   "max_drawdown_pct": -1.32,
-  "current_drawdown_pct": -1.24,
+  "current_drawdown_pct": -1.26,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 10005.31,
-  "daily_pnl_pct": -1.24,
+  "daily_pnl_pct": -1.26,
   "positions": {
     "COST": {
       "ticker": "COST",
       "shares": 1.7395,
       "avg_entry_price": 1095.3374,
-      "current_price": 1089.035,
+      "current_price": 1089.665,
       "stop_loss": 1063.0978,
       "take_profit": 1097.8,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_GAP_FILL: gap bounce=1.42%, target prev_close=$1097.80",
-      "unrealized_pnl": -10.96,
-      "unrealized_pnl_pct": -0.58,
-      "market_value": 1894.38
+      "unrealized_pnl": -9.87,
+      "unrealized_pnl_pct": -0.52,
+      "market_value": 1895.47
     },
     "BAC": {
       "ticker": "BAC",
       "shares": 40.0423,
       "avg_entry_price": 47.5082,
-      "current_price": 47.585,
+      "current_price": 47.545,
       "stop_loss": 46.7252,
       "take_profit": 48.58,
       "opened_at": "2026-11-25T15:29:46Z",
       "entry_reasoning": "ENTRY_GAP_FILL: gap bounce=1.30%, target prev_close=$48.58",
-      "unrealized_pnl": 3.07,
-      "unrealized_pnl_pct": 0.16,
-      "market_value": 1905.41
+      "unrealized_pnl": 1.47,
+      "unrealized_pnl_pct": 0.08,
+      "market_value": 1903.81
     },
     "GS": {
       "ticker": "GS",
       "shares": 2.4523,
       "avg_entry_price": 797.3529,
-      "current_price": 776.695,
+      "current_price": 776.12,
       "stop_loss": 763.5523,
       "take_profit": 806.05,
       "opened_at": "2026-11-25T15:29:46Z",
       "entry_reasoning": "ENTRY_GAP_FILL: gap bounce=0.99%, target prev_close=$806.05",
-      "unrealized_pnl": -50.66,
-      "unrealized_pnl_pct": -2.59,
-      "market_value": 1904.69
+      "unrealized_pnl": -52.07,
+      "unrealized_pnl_pct": -2.66,
+      "market_value": 1903.28
     }
   },
   "pending_orders": [],
@@ -250,13 +250,13 @@
       "daily_return_pct": 0.05
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9881.6,
+      "equity": 9879.68,
       "cash": 4177.12,
-      "positions_value": 5704.48,
-      "drawdown_pct": -1.24,
-      "daily_return_pct": -1.24
+      "positions_value": 5702.56,
+      "drawdown_pct": -1.26,
+      "daily_return_pct": -1.26
     }
   ],
   "daily_journal": [
@@ -280,12 +280,12 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 10005.31,
-      "end_equity": 9881.6,
-      "daily_pnl": -123.71,
-      "daily_pnl_pct": -1.24,
+      "end_equity": 9879.68,
+      "daily_pnl": -125.63,
+      "daily_pnl_pct": -1.26,
       "trades_count": 4,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,005.31 to $9,881.60 ($-123.71, -1.24%). Executed 4 trade(s) \u2014 Buys: BAC ($1,902), GS ($1,955); Sells: QCOM (STOP_LOSS, $-27.73), PANW (STOP_LOSS, $-32.12).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,005.31 to $9,879.68 ($-125.63, -1.26%). Executed 4 trade(s) \u2014 Buys: BAC ($1,902), GS ($1,955); Sells: QCOM (STOP_LOSS, $-27.73), PANW (STOP_LOSS, $-32.12).",
       "highlights": [
         "BUY 40.0423 BAC @ $47.51 ($1902.34, stop $46.73) \u2014 ENTRY_GAP_FILL: gap bounce=1.30%, target prev_close=$48.58",
         "BUY 2.4523 GS @ $797.35 ($1955.35, stop $763.55) \u2014 ENTRY_GAP_FILL: gap bounce=0.99%, target prev_close=$806.05",
@@ -294,5 +294,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }

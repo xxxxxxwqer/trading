@@ -6,39 +6,39 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 5844.13,
-  "equity": 9849.97,
+  "equity": 9848.4,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -1.58,
-  "current_drawdown_pct": -1.5,
+  "current_drawdown_pct": -1.52,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9966.51,
-  "daily_pnl_pct": -1.17,
+  "daily_pnl_pct": -1.19,
   "positions": {
     "V": {
       "ticker": "V",
       "shares": 4.8271,
       "avg_entry_price": 420.7894,
-      "current_price": 415.68,
+      "current_price": 416.16,
       "stop_loss": 406.03,
       "take_profit": 441.25,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "Congress Style buy on V (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $714.5B >= $50.0B floor; 30-day price move +1.8% within learned [-8.0%, +9.6%]. Stop at $406.03, target $441.25 (typical hold ~59d).",
-      "unrealized_pnl": -24.66,
-      "unrealized_pnl_pct": -1.21,
-      "market_value": 2006.53
+      "unrealized_pnl": -22.34,
+      "unrealized_pnl_pct": -1.1,
+      "market_value": 2008.85
     },
     "WFC": {
       "ticker": "WFC",
       "shares": 25.0524,
       "avg_entry_price": 79.6207,
-      "current_price": 79.805,
+      "current_price": 79.65,
       "stop_loss": 77.97,
       "take_profit": 84.74,
       "opened_at": "2026-11-25T15:29:46Z",
       "entry_reasoning": "Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $238.8B >= $50.0B floor; 30-day price move -2.9% within learned [-8.0%, +9.6%]. Stop at $77.97, target $84.74 (typical hold ~59d).",
-      "unrealized_pnl": 4.62,
-      "unrealized_pnl_pct": 0.23,
-      "market_value": 1999.31
+      "unrealized_pnl": 0.73,
+      "unrealized_pnl_pct": 0.04,
+      "market_value": 1995.42
     }
   },
   "pending_orders": [],
@@ -215,13 +215,13 @@
       "daily_return_pct": -0.33
     },
     {
-      "timestamp": "2026-11-25T15:40:00Z",
+      "timestamp": "2026-11-25T15:45:05Z",
       "trading_date_et": "2026-11-25",
-      "equity": 9849.97,
+      "equity": 9848.4,
       "cash": 5844.13,
-      "positions_value": 4005.84,
-      "drawdown_pct": -1.5,
-      "daily_return_pct": -1.17
+      "positions_value": 4004.27,
+      "drawdown_pct": -1.52,
+      "daily_return_pct": -1.19
     }
   ],
   "daily_journal": [
@@ -245,12 +245,12 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9966.51,
-      "end_equity": 9849.97,
-      "daily_pnl": -116.54,
-      "daily_pnl_pct": -1.17,
+      "end_equity": 9848.4,
+      "daily_pnl": -118.11,
+      "daily_pnl_pct": -1.19,
       "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,966.51 to $9,849.97 ($-116.54, -1.17%). Executed 3 trade(s) \u2014 Buys: WFC ($1,995); Sells: TSLA (STOP_LOSS, $-87.27), TMO (STOP_LOSS, $-42.72).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,966.51 to $9,848.40 ($-118.11, -1.19%). Executed 3 trade(s) \u2014 Buys: WFC ($1,995); Sells: TSLA (STOP_LOSS, $-87.27), TMO (STOP_LOSS, $-42.72).",
       "highlights": [
         "BUY 25.0524 WFC @ $79.62 ($1994.69, stop $77.97) \u2014 Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $238.8B >= $50.0B floor; 30-day price move -2.9% within learned [-8.0%, +9.6%]. Stop at $77.97, target $84.74 (typical hold ~59d).",
         "SELL 5.2412 TSLA @ $364.01 [STOP_LOSS: $-87.27 (-4.37%)] \u2014 Stop-loss triggered at $364.27 (intrabar low $361.81 <= stop $371.79)",
@@ -258,5 +258,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:40:00Z"
+  "last_updated": "2026-11-25T15:45:05Z"
 }
