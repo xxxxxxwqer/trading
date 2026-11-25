@@ -401,8 +401,9 @@ def init_or_reset_state(
     KiroPairReversionAgent(state_dir=state_dir).reset_internal_state()
     reset_all_part_b_states(state_dir=state_dir)
 
-    # Reset daily report log & cached market summary cleanly for Day 0
+    # Reset daily report log, LLM decision telemetry & cached market summary cleanly for Day 0
     (state_dir / "daily_reports_log.json").write_text("[]\n", encoding="utf-8")
+    (state_dir / "llm_cycle_logs.json").write_text("[]\n", encoding="utf-8")
     ms_cache = state_dir / "last_market_summary.json"
     if ms_cache.exists():
         ms_cache.unlink()
@@ -850,6 +851,35 @@ def run_single_cycle(
             for signal in signals_batch:
                 if not signal.decision_timestamp:
                     signal.decision_timestamp = snapshot.decision_timestamp
+
+                # Record transparent decision telemetry for Gemini Flash LLM agents (including genuine HOLD vs fallback)
+                if "llm" in (spec.category or "").lower() or spec.agent_id.startswith("llm_"):
+                    try:
+                        llm_log_path = state_dir / "llm_cycle_logs.json"
+                        llm_logs: List[Dict[str, Any]] = []
+                        if llm_log_path.exists():
+                            loaded_ll = json.loads(llm_log_path.read_text(encoding="utf-8"))
+                            if isinstance(loaded_ll, list):
+                                llm_logs = loaded_ll
+                        rsn = str(signal.reasoning or "")
+                        llm_logs.append(
+                            {
+                                "timestamp_utc": snapshot.decision_timestamp,
+                                "trading_date_et": snapshot.trading_date_et,
+                                "agent_id": spec.agent_id,
+                                "action": signal.action,
+                                "ticker": signal.ticker,
+                                "confidence": signal.confidence,
+                                "is_fallback": rsn.startswith("HOLD fallback:"),
+                                "reasoning": rsn[:300],
+                            }
+                        )
+                        llm_log_path.write_text(
+                            json.dumps(llm_logs[-120:], indent=2, ensure_ascii=False),
+                            encoding="utf-8",
+                        )
+                    except Exception:
+                        pass
 
                 # Step 5: Pass OrderSignal through shared RiskManager (plus stricter agent limits where defined)
                 ticker = (signal.ticker or "").strip().upper()

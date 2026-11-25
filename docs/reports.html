@@ -18,7 +18,7 @@
       <div class="brand-block">
         <div class="brand-title-row">
           <a href="index.html" class="brand-title">AI Trading Arena</a>
-          <span class="comp-status-badge comp-live">LIVE - Day 2 of 30</span>
+          <span class="comp-status-badge comp-live">LIVE - Day 1 of 30</span>
         </div>
         <p class="brand-subtitle">34-Agent US Stock &amp; ETF Paper-Trading Competition &bull; 25 Coded vs. 4 Gemini Flash LLMs vs. 2 Filing-Style vs. 3 Controls</p>
       </div>
@@ -27,21 +27,21 @@
         <div class="trading-progress-box">
           <div class="progress-label-row">
             <span class="progress-title">Competition Progress</span>
-            <span class="progress-count"><strong>2 / 30 US Trading Days</strong> (7%)</span>
+            <span class="progress-count"><strong>1 / 30 US Trading Days</strong> (3%)</span>
           </div>
           <div class="progress-track" aria-label="Trading Days Progress">
-            <div class="progress-fill" style="width: 6.7%"></div>
+            <div class="progress-fill" style="width: 4.0%"></div>
           </div>
         </div>
 
         <div class="timestamps-box">
           <div class="ts-item">
             <span class="ts-label">Korea (KST / Asia/Seoul):</span>
-            <time class="ts-value">2026-11-26 01:47:41 KST</time>
+            <time class="ts-value">2026-11-26 01:52:20 KST</time>
           </div>
           <div class="ts-item">
             <span class="ts-label">New York (ET / America/New_York):</span>
-            <time class="ts-value">2026-11-25 11:47:41 EST</time>
+            <time class="ts-value">2026-11-25 11:52:20 EST</time>
           </div>
         </div>
       </div>
@@ -97,233 +97,19 @@
     <section class="panel">
       <div class="panel-header">
         <div>
-          <h2>&#128221; Daily Performance &amp; Technical Regime Reports (1 Published)</h2>
-          <p class="panel-sub">Zero look-ahead &bull; 100% Python pre-calculated metrics &bull; Strict anti-hallucination &amp; no-strategy-tuning rules.</p>
+          <h2>&#128221; Daily Performance &amp; Technical Regime Reports</h2>
+          <p class="panel-sub">Generated automatically after each US market close (16:00 ET / 13:00 ET early close) via 3-stage anti-hallucination pipeline (100% Python math + smart market JSON + Gemini Flash post-checked renderer).</p>
         </div>
-        <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/LATEST_REPORT.md" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+        <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/LATEST_REPORT.md" target="_blank" rel="noopener" class="nav-link">View on GitHub &#8599;</a>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">
-        <a href="#report-day-1-2026-11-24" class="agent-pill active">Day 1 (2026-11-24)</a>
+      <div class="empty-state" style="padding:36px 20px;">
+        No daily reports generated yet. The Day 1 report will be published automatically right after the first US trading session closes (around 06:00 KST / 16:00 EST).
       </div>
-    </section>
-    <section class="panel md-report-panel" id="report-day-1-2026-11-24">
-      <div class="panel-header">
-        <div>
-          <h2>&#128203; Day 1/30 Daily Report &mdash; 2026-11-24</h2>
-          <p class="panel-sub">File: <code>reports/daily/2026-11-24_day01.md</code> &bull; Generator: <code>deterministic-python</code> &bull; Generated: 2026-11-25 08:36:25 KST</p>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-          <span class="status-pill status-active">Day 1/30</span>
-          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('report-day-1-2026-11-24-raw', this)">&#128203; Copy Raw .md</button>
-          <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/daily/2026-11-24_day01.md" target="_blank" rel="noopener" class="nav-link">GitHub .md &#8599;</a>
-        </div>
-      </div>
-      <div class="md-report-body">
-<h1 class="md-h1">AI Trading Arena 일일 리포트 — Day 1/30 (2026-11-24)</h1>
-<blockquote class="md-quote"><strong>세션 정보</strong>: Regular (09:30-16:00 ET) (실행 사이클: 4/13) | <strong>시장 레짐(14번 기준)</strong>: Score <code>0/4</code> | <strong>SPY 일일/누적</strong>: <code>-0.04%</code> / <code>-0.04%</code> | <strong>활성 에이전트</strong>: <code>34/34</code> (정지 <code>0</code>, 탈락 <code>0</code>)</blockquote>
-<hr class="md-hr" />
-<h2 class="md-h2">1. 오늘의 핵심 요약 (Executive Summary)</h2>
-<ul class="md-list"><li><strong>일일 성과 Top / Bottom</strong>: 최고 수익은 <strong>11. Berkshire Style (13F Pattern)</strong> (<code>+0.40%</code>, <code>+$39.77</code>), 최저 수익은 <strong>3. Intraday ORB (Flat by Close)</strong> (<code>-0.46%</code>, <code>-$46.04</code>)입니다.</li><li><strong>벤치마크 비교</strong>: 누적 기준 <code>9. Buy-and-Hold SPY</code> 상회 에이전트 <code>26/33명</code>, <code>10. Random Trader</code> 상회 에이전트 <code>24/33명</code>입니다.</li><li><strong>전략군 흐름</strong>: 당일 가장 강세인 전략군은 <strong>공시 스타일 학습 (2)</strong> (당일 평균 <code>+0.04%</code>), 가장 약세인 전략군은 <strong>SPY / 랜덤 / 대조군 (3)</strong> (당일 평균 <code>-0.05%</code>)입니다.</li><li><strong>리스크·이상 징후</strong>: 당일 신규 체결 <code>67건</code>, 리스크 관리자 거부 <code>0건</code>, 일일 정지(<code>DAILY_HALTED</code>) <code>0명</code>, 영구 탈락(<code>BLOWN_UP</code>) <code>0명</code>입니다.</li></ul>
-<hr class="md-hr" />
-<h2 class="md-h2">2. 시장 매크로 및 기술적 레짐 브리핑</h2>
-<h3 class="md-h3">2.1 주요 벤치마크 및 매크로 자산 흐름</h3>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>Ticker</th><th>종가 ($)</th><th>일일 등락 (%)</th><th>ORB(첫 30분) 대비 위치</th><th>SMA(20) / SMA(50) 대비</th><th>RSI(14)</th><th>Volume Ratio</th><th>핵심 흐름 요약</th></tr></thead><tbody><tr><td><strong>SPY</strong></td><td>$715.78</td><td>-1.06%</td><td>ORB 범위 내</td><td>-0.71% / -5.75%</td><td>40.2</td><td>1.70x</td><td>밴드 내부 (5일 -2.35%)</td></tr><tr><td><strong>QQQ</strong></td><td>$635.50</td><td>-2.46%</td><td>ORB 범위 내</td><td>-1.82% / -10.47%</td><td>31.3</td><td>1.06x</td><td>밴드 내부 (5일 -3.60%)</td></tr><tr><td><strong>TLT</strong></td><td>$81.90</td><td>+0.32%</td><td>ORB 범위 내</td><td>+0.38% / +2.26%</td><td>69.7</td><td>0.96x</td><td>밴드 내부 (5일 +2.41%)</td></tr><tr><td><strong>GLD</strong></td><td>$326.94</td><td>-1.82%</td><td>ORB Low 이탈 (-1.63%)</td><td>-2.11% / -12.51%</td><td>2.7</td><td>0.50x</td><td>BB 하단 이탈 (5일 -5.03%)</td></tr></tbody></table></div>
-<h3 class="md-h3">2.2 시장 내부 구조 (Breadth · 변동성 · 모멘텀 · 뉴스)</h3>
-<ul class="md-list"><li><strong>시장 폭(Breadth) 및 변동성</strong>: 개별주 중 <code>SMA(50)</code> 상회 종목 비율 <code>43.4%</code>, <code>RV10/RV60</code> 변동성 비율 <code>1.74</code>.</li><li><strong>상대강도(<code>RS vs SPY</code>) 상위 / 63일 잔차 모멘텀 상위</strong>: RS 상위 <code>PANW(+6.46), WMT(+4.50), ABBV(+4.26), HD(+3.90), CRM(+3.87)</code> | 잔차 모멘텀 상위 <code>BRK.B(2.45), WMT(1.78), PG(1.68), COST(1.54), AAPL(1.46)</code>.</li><li><strong>과열/과매도 및 거래량 급증</strong>: RSI(14)≥70 <code>CRM(RSI 83.5), ADBE(RSI 83.2), MA(RSI 72.0), UNH(RSI 72.8), JNJ(RSI 71.7)</code> / RSI(14)≤30 <code>NVDA(RSI 21.7), AMD(RSI 8.1), MU(RSI 17.0), GS(RSI 19.3), MS(RSI 27.6)</code> / 거래량 비율 상위 <code>BAC(1.77x), INTC(1.66x), AMD(1.62x), PLTR(1.62x), NKE(1.58x)</code>.</li><li><strong>52주 고점 근접 종목 (11·12번 기준)</strong>: <code>COST(-1.9%), PG(-2.4%), KO(-3.5%), DIS(-4.4%), BRK.B(-4.5%)</code>.</li><li><strong>당일 주요 뉴스(Alpaca Headlines)</strong>: [MRK] Merck Executives to Participate in 9th Annual Evercore Healthcare Conference; [AVGO] BNP Paribas Adjusts Broadcom Price Target; [LMT] Mizuho Initiates Lockheed Martin at Outperform With $765 Price Target; [DIS] The Walt Disney Studios Partners with Kaleidescape; [AAPL] J.P. Morgan Maintains Buy Rating and $355 Price Target for Apple</li></ul>
-<hr class="md-hr" />
-<h2 class="md-h2">3. 전체 에이전트 성과 리더보드 (34개 에이전트)</h2>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>순위</th><th>에이전트 (전략군)</th><th>평가액 ($)</th><th>일일 손익 ($ / %)</th><th>누적 수익률 (%)</th><th>vs SPY (%p)</th><th>vs Random (%p)</th><th>MDD (%)</th><th>체결 / 청산</th><th>승률 (%)</th><th>PF</th><th>평균익 / 평균손 ($)</th><th>마찰비용 ($)</th><th>거부</th><th>상태</th></tr></thead><tbody><tr><td>1</td><td>11. Berkshire Style (13F Pattern) (공시 스타일 학습 (2))</td><td>$10,039.77</td><td>+$39.77 / +0.40%</td><td>+0.40%</td><td>+0.44%p</td><td>+0.43%p</td><td>-0.01%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.21</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>2</td><td>27. 70D High Anchoring (George-Hwang) (코딩 기반 (25))</td><td>$10,036.58</td><td>+$36.58 / +0.37%</td><td>+0.37%</td><td>+0.41%p</td><td>+0.40%p</td><td>0.00%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$8.79</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>3</td><td>2. Mean Reversion (RSI / Bollinger) (코딩 기반 (25))</td><td>$10,019.61</td><td>+$19.61 / +0.20%</td><td>+0.20%</td><td>+0.24%p</td><td>+0.23%p</td><td>-0.06%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.20</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>4</td><td>28. Value + 63D Momentum Combo (코딩 기반 (25))</td><td>$10,017.24</td><td>+$17.24 / +0.17%</td><td>+0.17%</td><td>+0.21%p</td><td>+0.20%p</td><td>0.00%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$6.54</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>5</td><td>20. Intraday Gap-Down Fill (코딩 기반 (25))</td><td>$10,005.31</td><td>+$5.31 / +0.05%</td><td>+0.05%</td><td>+0.09%p</td><td>+0.08%p</td><td>-0.05%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$8.35</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>6</td><td>23. Minimum-Variance ETF Portfolio (코딩 기반 (25))</td><td>$10,000.32</td><td>+$0.32 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>-0.05%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$5.10</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>7</td><td>5. Technical Analyst (Gemini Flash) (Gemini Flash LLM (4))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>8</td><td>6. News &amp; Catalyst Trader (Gemini Flash) (Gemini Flash LLM (4))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>9</td><td>7. Macro &amp; Sector Strategist (Gemini Flash) (Gemini Flash LLM (4))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>10</td><td>8. Cautious Risk-First Trader (Gemini Flash) (Gemini Flash LLM (4))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>11</td><td>14. Claude Residual-Momentum Pullback (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>12</td><td>15. Kiro Pair-Spread Reversion (PSR) (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>13</td><td>16. Overnight Drift (Close→Open) (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>14</td><td>17. EOD Loser Overnight Reversal (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>15</td><td>18. Intraday Momentum (Gao 2018) (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>16</td><td>19. Turn-of-Month Calendar (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>17</td><td>21. Dual Momentum Macro ETF (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>18</td><td>31. Market Breadth Equity Timing (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>19</td><td>32. Panic-Dip Index Buyer (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>20</td><td>33. Cross-Asset Risk Appetite Ratio (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>21</td><td>34. Intraday VWAP -2σ Reversion (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>22</td><td>35. Volatility Squeeze Breakout (코딩 기반 (25))</td><td>$10,000.00</td><td>+$0.00 / +0.00%</td><td>+0.00%</td><td>+0.04%p</td><td>+0.03%p</td><td>0.00%</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$0.00</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>23</td><td>4. Sector ETF Rotation (코딩 기반 (25))</td><td>$9,998.19</td><td>-$1.81 / -0.02%</td><td>-0.02%</td><td>+0.02%p</td><td>+0.01%p</td><td>-0.02%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.20</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>24</td><td>1. Trend Follower (MA / Breakout) (코딩 기반 (25))</td><td>$9,997.82</td><td>-$2.18 / -0.02%</td><td>-0.02%</td><td>+0.02%p</td><td>+0.01%p</td><td>-0.02%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.21</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>25</td><td>26. Cross-Sectional 5D Short Reversal (코딩 기반 (25))</td><td>$9,997.36</td><td>-$2.64 / -0.03%</td><td>-0.03%</td><td>+0.01%p</td><td>+0.00%p</td><td>-0.13%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$8.31</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>26</td><td><strong>10. Random Trader (Luck Control)</strong> (SPY / 랜덤 / 대조군 (3))</td><td>$9,997.20</td><td>-$2.80 / -0.03%</td><td>-0.03%</td><td>+0.01%p</td><td>+0.00%p</td><td>-0.03%</td><td>2 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$2.80</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>27</td><td><strong>9. Buy-and-Hold SPY (Benchmark)</strong> (SPY / 랜덤 / 대조군 (3))</td><td>$9,996.29</td><td>-$3.71 / -0.04%</td><td>-0.04%</td><td>+0.00%p</td><td>-0.01%p</td><td>-0.07%</td><td>1 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$6.86</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>28</td><td>22. Risk Parity 3-Asset (8% Vol) (코딩 기반 (25))</td><td>$9,996.21</td><td>-$3.79 / -0.04%</td><td>-0.04%</td><td>+0.00%p</td><td>-0.01%p</td><td>-0.04%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$2.51</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>29</td><td>25. Mega-Cap Top-5 Buy &amp; Hold (Control) (SPY / 랜덤 / 대조군 (3))</td><td>$9,993.05</td><td>-$6.95 / -0.07%</td><td>-0.07%</td><td>-0.03%p</td><td>-0.04%p</td><td>-0.07%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$6.65</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>30</td><td>30. Regime-Adaptive Beta Switch (코딩 기반 (25))</td><td>$9,983.47</td><td>-$16.53 / -0.17%</td><td>-0.17%</td><td>-0.13%p</td><td>-0.14%p</td><td>-0.28%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$6.56</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>31</td><td>29. 20D Up/Down Volume Accumulation (코딩 기반 (25))</td><td>$9,982.02</td><td>-$17.98 / -0.18%</td><td>-0.18%</td><td>-0.14%p</td><td>-0.15%p</td><td>-0.23%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$8.73</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>32</td><td>24. Low-Volatility Stock Anomaly (코딩 기반 (25))</td><td>$9,980.79</td><td>-$19.21 / -0.19%</td><td>-0.19%</td><td>-0.15%p</td><td>-0.16%p</td><td>-0.28%</td><td>5 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$8.73</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>33</td><td>12. Congress Style (House PTR Pattern) (공시 스타일 학습 (2))</td><td>$9,966.51</td><td>-$33.49 / -0.33%</td><td>-0.33%</td><td>-0.29%p</td><td>-0.30%p</td><td>-0.33%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.21</td><td>0</td><td><code>ACTIVE</code></td></tr><tr><td>34</td><td>3. Intraday ORB (Flat by Close) (코딩 기반 (25))</td><td>$9,953.96</td><td>-$46.04 / -0.46%</td><td>-0.46%</td><td>-0.42%p</td><td>-0.43%p</td><td>-0.46%</td><td>3 / 0</td><td>N/A</td><td>N/A</td><td>N/A / N/A</td><td>$4.19</td><td>0</td><td><code>ACTIVE</code></td></tr></tbody></table></div>
-<hr class="md-hr" />
-<h2 class="md-h2">4. 전략군별 성과 비교</h2>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>전략군 (인원)</th><th>당일 평균 수익률 (%)</th><th>누적 평균 수익률 (%)</th><th>누적 중앙값 (%)</th><th>최고 / 최저 에이전트</th><th>총 체결 수</th><th>평균 마찰비용 ($)</th><th>총 리스크 거부</th></tr></thead><tbody><tr><td>코딩 기반 (25)</td><td>-0.01%</td><td>-0.01%</td><td>+0.00%</td><td>27. 70D High Anchoring (George-Hwang) (+0.37%) / 3. Intraday ORB (Flat by Close) (-0.46%)</td><td>53</td><td>$3.22</td><td>0</td></tr><tr><td>Gemini Flash LLM (4)</td><td>+0.00%</td><td>+0.00%</td><td>+0.00%</td><td>5. Technical Analyst (Gemini Flash) (+0.00%) / 5. Technical Analyst (Gemini Flash) (+0.00%)</td><td>0</td><td>$0.00</td><td>0</td></tr><tr><td>공시 스타일 학습 (2)</td><td>+0.04%</td><td>+0.04%</td><td>+0.04%</td><td>11. Berkshire Style (13F Pattern) (+0.40%) / 12. Congress Style (House PTR Pattern) (-0.33%)</td><td>6</td><td>$4.21</td><td>0</td></tr><tr><td>SPY / 랜덤 / 대조군 (3)</td><td>-0.05%</td><td>-0.05%</td><td>-0.04%</td><td>10. Random Trader (Luck Control) (-0.03%) / 25. Mega-Cap Top-5 Buy &amp; Hold (Control) (-0.07%)</td><td>8</td><td>$5.44</td><td>0</td></tr></tbody></table></div>
-<ul class="md-list"><li><strong>그룹 간 격차 분석</strong>: 당일 <code>공시 스타일 학습 (2)</code>이 평균 <code>+0.04%</code>로 선두를 기록했고, <code>SPY / 랜덤 / 대조군 (3)</code>은 평균 <code>-0.05%</code>를 기록했습니다. 누적 마찰비용은 체결 빈도가 높은 전략군일수록 수익률 차감 폭이 크게 나타났습니다.</li></ul>
-<hr class="md-hr" />
-<h2 class="md-h2">5. 스페셜 분석: 14번 <code>claude_rmp</code> 텔레메트리 및 가설 검증</h2>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>항목</th><th>당일 수치 / 상태</th><th>비고</th></tr></thead><tbody><tr><td><strong>레짐 점수 (<code>0~4</code>) 및 허용 슬롯</strong></td><td><code>Score 0/4</code> (허용 슬롯: <code>0</code>개)</td><td>C1~C4: <code>{&#x27;C1&#x27;: False, &#x27;C2&#x27;: False, &#x27;C3&#x27;: False, &#x27;C4&#x27;: False}</code></td></tr><tr><td><strong>포트폴리오 리스크 (<code>Heat / HeatCap</code>)</strong></td><td><code>0.00% / 3.50%</code></td><td><code>$0.00 / $350.00</code></td></tr><tr><td><strong>거래당 평균 R (<code>Average R</code>)</strong></td><td><code>N/A</code> (청산 <code>0</code>건 기준)</td><td>누적 기준</td></tr><tr><td><strong>필터·선정 지표 작동</strong></td><td>당일 사유 코드: <code>SKIP_REGIME_OFF</code></td><td>Top-5 리더: <code>BRK.B(2.45), WMT(1.78), PG(1.68), COST(1.54), AAPL(1.46)</code></td></tr></tbody></table></div>
-<ul class="md-list"><li><strong>가설 H1~H3 반증 트래커 (SPY 상승일 vs 하락일 노출도)</strong>: 누적 <code>1일</code> 표본 기준 SPY 상승일 평균 노출도 <code>N/A</code> vs SPY 하락일 평균 노출도 <code>0.0%</code>. 단기 표본(<code>Day 1/30</code>)이므로 통계적 확정은 30거래일 종료 후 판정합니다.</li></ul>
-<hr class="md-hr" />
-<h2 class="md-h2">6. 당일 매매 복기, 리스크 거부 및 마찰 감사</h2>
-<h3 class="md-h3">6.1 주요 진입·청산 복기 (Best &amp; Worst / 특이 체결)</h3>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>에이전트</th><th>종목</th><th>구분</th><th>결정→체결 시각 (ET)</th><th>기준가→체결가 ($)</th><th>실현손익 ($ / %)</th><th>신뢰도</th><th>근거 및 지표 정합성 평가</th></tr></thead><tbody><tr><td>1. Trend Follower (MA / Breakout)</td><td>MRK</td><td><code>BUY</code></td><td>10:56→10:56</td><td>$138.42→$138.52</td><td>-</td><td>0.71</td><td>Buying MRK on momentum breakout: price $138.42 is at/near 20-bar high ($138.37) with 10-SMA ($136.46) &gt; 30-SMA ($135.47), RSI(14) at 73.1, a</td></tr><tr><td>1. Trend Follower (MA / Breakout)</td><td>PFE</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$28.30→$28.32</td><td>-</td><td>0.74</td><td>Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) &gt; 30-SMA ($27.63), RSI(14) at 74.9, and v</td></tr><tr><td>1. Trend Follower (MA / Breakout)</td><td>XLRE</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$43.13→$43.16</td><td>-</td><td>0.74</td><td>Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) &gt; 30-SMA ($42.94), RSI(14) at 56.2, and</td></tr><tr><td>2. Mean Reversion (RSI / Bollinger)</td><td>GLD</td><td><code>BUY</code></td><td>10:56→10:56</td><td>$327.48→$327.71</td><td>-</td><td>0.90</td><td>Buying oversold dip in GLD: RSI(14) is 2.8 with price $327.48 near lower Bollinger Band ($329.12) while holding structural support above 94%</td></tr><tr><td>2. Mean Reversion (RSI / Bollinger)</td><td>SMH</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$423.66→$423.96</td><td>-</td><td>0.90</td><td>Buying oversold dip in SMH: RSI(14) is 15.1 with price $423.66 near lower Bollinger Band ($426.52) while holding structural support above 94</td></tr><tr><td>2. Mean Reversion (RSI / Bollinger)</td><td>CAT</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$526.48→$526.84</td><td>-</td><td>0.90</td><td>Buying oversold dip in CAT: RSI(14) is 15.6 with price $533.62 near lower Bollinger Band ($510.85) while holding structural support above 94</td></tr><tr><td>3. Intraday ORB (Flat by Close)</td><td>XLP</td><td><code>BUY</code></td><td>10:56→10:56</td><td>$91.98→$92.05</td><td>-</td><td>0.84</td><td>Buying XLP on 30-min Opening Range Breakout: price $91.98 cleared ORH $91.58 (ORL $90.44) on 1.98x relative volume. Stop placed at opening r</td></tr><tr><td>3. Intraday ORB (Flat by Close)</td><td>ISRG</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$443.25→$443.56</td><td>-</td><td>0.79</td><td>Buying ISRG on 30-min Opening Range Breakout: price $433.44 cleared ORH $428.52 (ORL $411.24) on 1.48x relative volume. Stop placed at 1.2%</td></tr><tr><td>3. Intraday ORB (Flat by Close)</td><td>XLV</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$183.98→$184.11</td><td>-</td><td>0.78</td><td>Buying XLV on 30-min Opening Range Breakout: price $183.98 cleared ORH $183.24 (ORL $179.31) on 1.40x relative volume. Stop placed at openin</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLP</td><td><code>BUY</code></td><td>10:56→10:56</td><td>$91.98→$92.05</td><td>-</td><td>0.78</td><td>Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +1.42%, RS vs SPY +2.49%, 5d change -0.18%) trading at $91.98 abo</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLV</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$183.98→$184.11</td><td>-</td><td>0.76</td><td>Rotating into top-ranked sector ETF XLV (rank #2 of 11, composite RS score +1.03%, RS vs SPY +2.36%, 5d change -0.96%) trading at $183.98 ab</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLY</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$117.17→$117.25</td><td>-</td><td>0.76</td><td>Rotating into top-ranked sector ETF XLY (rank #3 of 11, composite RS score +0.91%, RS vs SPY +1.69%, 5d change -0.26%) trading at $117.17 ab</td></tr><tr><td>9. Buy-and-Hold SPY (Benchmark)</td><td>SPY</td><td><code>BUY</code></td><td>10:56→10:56</td><td>$715.55→$716.05</td><td>-</td><td>1.00</td><td>Allocating passive S&amp;P 500 benchmark capital into SPY at $715.55 (requesting 13.9054 shares with catastrophic stop floor at $357.77) to hold</td></tr><tr><td>10. Random Trader (Luck Control)</td><td>XLK</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$156.12→$156.23</td><td>-</td><td>0.50</td><td>Null-hypothesis random control: deterministic cycle seed (05cb9216) rolled 0.380 to randomly buy XLK at $156.12 with a 1.69% stop ($153.48)</td></tr><tr><td>10. Random Trader (Luck Control)</td><td>TMO</td><td><code>BUY</code></td><td>10:58→10:58</td><td>$695.59→$696.08</td><td>-</td><td>0.50</td><td>Null-hypothesis random control: deterministic cycle seed (e0aa742a) rolled 0.658 to randomly buy TMO at $695.59 with a 1.73% stop ($683.54)</td></tr></tbody></table></div>
-<ul class="md-list"><li><strong>주요 손실 원인 진단</strong>: 당일 실현 손실 청산 거래는 없습니다.</li></ul>
-<h3 class="md-h3">6.2 리스크 관리자 거부 로그 (<code>rejections</code>) 감사</h3>
-<ul class="md-list"><li>당일 리스크 관리자 거부 건수 없음.</li></ul>
-<h3 class="md-h3">6.3 거래 마찰 비용 (스프레드 + 5 bps 슬리피지) 영향</h3>
-<ul class="md-list"><li><strong>27. 70D High Anchoring (George-Hwang)</strong>: 누적 마찰 비용 <code>$8.79</code> (초기 자금 <code>$10,000</code> 대비 <code>0.09%</code>, 총 <code>5회</code> 체결)</li><li><strong>29. 20D Up/Down Volume Accumulation</strong>: 누적 마찰 비용 <code>$8.73</code> (초기 자금 <code>$10,000</code> 대비 <code>0.09%</code>, 총 <code>5회</code> 체결)</li><li><strong>24. Low-Volatility Stock Anomaly</strong>: 누적 마찰 비용 <code>$8.73</code> (초기 자금 <code>$10,000</code> 대비 <code>0.09%</code>, 총 <code>5회</code> 체결)</li></ul>
-<hr class="md-hr" />
-<h2 class="md-h2">7. 다음 거래일 관전 포인트 (모니터링 전용 · 전략 수정 금지)</h2>
-<h3 class="md-h3">7.1 현재 보유(오픈) 포지션 손절·익절 근접도</h3>
-<div class="table-wrap"><table class="arena-table md-table"><thead><tr><th>에이전트</th><th>종목</th><th>진입가 ($)</th><th>현재가 ($)</th><th>미실현 손익 ($ / %)</th><th>손절가 (잔여 거리 %)</th><th>익절가 (잔여 거리 %)</th><th>주시 포인트</th></tr></thead><tbody><tr><td>3. Intraday ORB (Flat by Close)</td><td>XLP</td><td>$92.05</td><td>$92.09</td><td>+$0.99 (+0.05%)</td><td>$91.01 (-1.18%)</td><td>$93.93 (+1.99%)</td><td>손절선 근접 주시</td></tr><tr><td>3. Intraday ORB (Flat by Close)</td><td>ISRG</td><td>$443.56</td><td>$433.44</td><td>-$45.64 (-2.28%)</td><td>$428.24 (-1.20%)</td><td>$443.84 (+2.40%)</td><td>손절선 근접 주시</td></tr><tr><td>3. Intraday ORB (Flat by Close)</td><td>XLV</td><td>$184.11</td><td>$183.98</td><td>-$1.39 (-0.07%)</td><td>$181.28 (-1.47%)</td><td>$189.38 (+2.94%)</td><td>손절선 근접 주시</td></tr><tr><td>1. Trend Follower (MA / Breakout)</td><td>PFE</td><td>$28.32</td><td>$28.30</td><td>-$1.40 (-0.07%)</td><td>$27.88 (-1.48%)</td><td>$29.15 (+3.00%)</td><td>손절선 근접 주시</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLV</td><td>$184.11</td><td>$183.98</td><td>-$1.40 (-0.07%)</td><td>$181.22 (-1.50%)</td><td>$191.34 (+4.00%)</td><td>손절선 근접 주시</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLY</td><td>$117.25</td><td>$117.17</td><td>-$1.40 (-0.07%)</td><td>$115.41 (-1.50%)</td><td>$121.86 (+4.00%)</td><td>손절선 근접 주시</td></tr><tr><td>1. Trend Follower (MA / Breakout)</td><td>XLRE</td><td>$43.16</td><td>$43.13</td><td>-$1.40 (-0.07%)</td><td>$42.48 (-1.51%)</td><td>$44.42 (+2.99%)</td><td>비중 20.0%</td></tr><tr><td>1. Trend Follower (MA / Breakout)</td><td>MRK</td><td>$138.52</td><td>$138.56</td><td>+$0.62 (+0.03%)</td><td>$136.34 (-1.60%)</td><td>$142.57 (+2.89%)</td><td>비중 20.0%</td></tr><tr><td>4. Sector ETF Rotation</td><td>XLP</td><td>$92.05</td><td>$92.09</td><td>+$0.99 (+0.05%)</td><td>$90.61 (-1.61%)</td><td>$95.66 (+3.87%)</td><td>비중 20.0%</td></tr><tr><td>2. Mean Reversion (RSI / Bollinger)</td><td>GLD</td><td>$327.71</td><td>$326.94</td><td>-$4.70 (-0.23%)</td><td>$321.59 (-1.64%)</td><td>$335.67 (+2.67%)</td><td>비중 19.9%</td></tr><tr><td>10. Random Trader (Luck Control)</td><td>XLK</td><td>$156.23</td><td>$156.12</td><td>-$1.40 (-0.07%)</td><td>$153.48 (-1.69%)</td><td>$161.40 (+3.38%)</td><td>비중 20.0%</td></tr><tr><td>10. Random Trader (Luck Control)</td><td>TMO</td><td>$696.08</td><td>$695.59</td><td>-$1.40 (-0.07%)</td><td>$683.54 (-1.73%)</td><td>$719.69 (+3.46%)</td><td>비중 20.0%</td></tr><tr><td>20. Intraday Gap-Down Fill</td><td>QCOM</td><td>$162.05</td><td>$162.65</td><td>+$6.99 (+0.37%)</td><td>$159.80 (-1.75%)</td><td>$165.47 (+1.73%)</td><td>비중 19.0%</td></tr><tr><td>20. Intraday Gap-Down Fill</td><td>PANW</td><td>$351.22</td><td>$351.74</td><td>+$2.84 (+0.15%)</td><td>$345.53 (-1.77%)</td><td>$353.49 (+0.50%)</td><td>비중 19.0%</td></tr><tr><td>2. Mean Reversion (RSI / Bollinger)</td><td>CAT</td><td>$526.84</td><td>$533.62</td><td>+$25.71 (+1.29%)</td><td>$524.01 (-1.80%)</td><td>$546.96 (+2.50%)</td><td>비중 20.2%</td></tr></tbody></table></div>
-<h3 class="md-h3">7.2 서킷 브레이커 여유폭 및 레짐 분기점</h3>
-<ul class="md-list"><li><strong>서킷 브레이커 경계 에이전트</strong>: 현재 <code>-10%</code> 탈락(<code>BLOWN_UP</code>)까지 여유폭 3.0%p 이내 또는 <code>-2%</code> 이하 일일 손실에 근접한 에이전트 없음.</li><li><strong>레짐 점수 변화 가능성</strong>: 14번 <code>claude_rmp</code> 현재 레짐 <code>0/4</code> (허용 슬롯 <code>0</code>개). 다음 거래일 <code>SPY</code> 종가 vs <code>SMA(50)</code> (<code>$759.45</code>), 개별주 Breadth <code>50%</code> 경계(<code>43.4%</code>), <code>RV10/RV60</code> <code>1.25</code> 임계치(<code>1.74</code>) 변동 여부를 주시합니다.</li><li><strong>일정 체크</strong>: 다음 미국 거래일 — <strong>2026-11-25 Regular Session (09:30-16:00 ET)</strong>.</li></ul>
-      </div>
-      <details class="md-raw-details">
-        <summary>Show Raw GitHub Flavored Markdown Source (2026-11-24_day01.md)</summary>
-        <pre class="md-raw-pre" id="report-day-1-2026-11-24-raw"># AI Trading Arena 일일 리포트 — Day 1/30 (2026-11-24)
-
-&gt; **세션 정보**: Regular (09:30-16:00 ET) (실행 사이클: 4/13) | **시장 레짐(14번 기준)**: Score `0/4` | **SPY 일일/누적**: `-0.04%` / `-0.04%` | **활성 에이전트**: `34/34` (정지 `0`, 탈락 `0`)
-
----
-
-## 1. 오늘의 핵심 요약 (Executive Summary)
-- **일일 성과 Top / Bottom**: 최고 수익은 **11. Berkshire Style (13F Pattern)** (`+0.40%`, `+$39.77`), 최저 수익은 **3. Intraday ORB (Flat by Close)** (`-0.46%`, `-$46.04`)입니다.
-- **벤치마크 비교**: 누적 기준 `9. Buy-and-Hold SPY` 상회 에이전트 `26/33명`, `10. Random Trader` 상회 에이전트 `24/33명`입니다.
-- **전략군 흐름**: 당일 가장 강세인 전략군은 **공시 스타일 학습 (2)** (당일 평균 `+0.04%`), 가장 약세인 전략군은 **SPY / 랜덤 / 대조군 (3)** (당일 평균 `-0.05%`)입니다.
-- **리스크·이상 징후**: 당일 신규 체결 `67건`, 리스크 관리자 거부 `0건`, 일일 정지(`DAILY_HALTED`) `0명`, 영구 탈락(`BLOWN_UP`) `0명`입니다.
-
----
-
-## 2. 시장 매크로 및 기술적 레짐 브리핑
-
-### 2.1 주요 벤치마크 및 매크로 자산 흐름
-| Ticker | 종가 ($) | 일일 등락 (%) | ORB(첫 30분) 대비 위치 | SMA(20) / SMA(50) 대비 | RSI(14) | Volume Ratio | 핵심 흐름 요약 |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **SPY** | $715.78 | -1.06% | ORB 범위 내 | -0.71% / -5.75% | 40.2 | 1.70x | 밴드 내부 (5일 -2.35%) |
-| **QQQ** | $635.50 | -2.46% | ORB 범위 내 | -1.82% / -10.47% | 31.3 | 1.06x | 밴드 내부 (5일 -3.60%) |
-| **TLT** | $81.90 | +0.32% | ORB 범위 내 | +0.38% / +2.26% | 69.7 | 0.96x | 밴드 내부 (5일 +2.41%) |
-| **GLD** | $326.94 | -1.82% | ORB Low 이탈 (-1.63%) | -2.11% / -12.51% | 2.7 | 0.50x | BB 하단 이탈 (5일 -5.03%) |
-
-### 2.2 시장 내부 구조 (Breadth · 변동성 · 모멘텀 · 뉴스)
-- **시장 폭(Breadth) 및 변동성**: 개별주 중 `SMA(50)` 상회 종목 비율 `43.4%`, `RV10/RV60` 변동성 비율 `1.74`.
-- **상대강도(`RS vs SPY`) 상위 / 63일 잔차 모멘텀 상위**: RS 상위 `PANW(+6.46), WMT(+4.50), ABBV(+4.26), HD(+3.90), CRM(+3.87)` | 잔차 모멘텀 상위 `BRK.B(2.45), WMT(1.78), PG(1.68), COST(1.54), AAPL(1.46)`.
-- **과열/과매도 및 거래량 급증**: RSI(14)≥70 `CRM(RSI 83.5), ADBE(RSI 83.2), MA(RSI 72.0), UNH(RSI 72.8), JNJ(RSI 71.7)` / RSI(14)≤30 `NVDA(RSI 21.7), AMD(RSI 8.1), MU(RSI 17.0), GS(RSI 19.3), MS(RSI 27.6)` / 거래량 비율 상위 `BAC(1.77x), INTC(1.66x), AMD(1.62x), PLTR(1.62x), NKE(1.58x)`.
-- **52주 고점 근접 종목 (11·12번 기준)**: `COST(-1.9%), PG(-2.4%), KO(-3.5%), DIS(-4.4%), BRK.B(-4.5%)`.
-- **당일 주요 뉴스(Alpaca Headlines)**: [MRK] Merck Executives to Participate in 9th Annual Evercore Healthcare Conference; [AVGO] BNP Paribas Adjusts Broadcom Price Target; [LMT] Mizuho Initiates Lockheed Martin at Outperform With $765 Price Target; [DIS] The Walt Disney Studios Partners with Kaleidescape; [AAPL] J.P. Morgan Maintains Buy Rating and $355 Price Target for Apple
-
----
-
-## 3. 전체 에이전트 성과 리더보드 (34개 에이전트)
-
-| 순위 | 에이전트 (전략군) | 평가액 ($) | 일일 손익 ($ / %) | 누적 수익률 (%) | vs SPY (%p) | vs Random (%p) | MDD (%) | 체결 / 청산 | 승률 (%) | PF | 평균익 / 평균손 ($) | 마찰비용 ($) | 거부 | 상태 |
-| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 1 | 11. Berkshire Style (13F Pattern) (공시 스타일 학습 (2)) | $10,039.77 | +$39.77 / +0.40% | +0.40% | +0.44%p | +0.43%p | -0.01% | 3 / 0 | N/A | N/A | N/A / N/A | $4.21 | 0 | `ACTIVE` |
-| 2 | 27. 70D High Anchoring (George-Hwang) (코딩 기반 (25)) | $10,036.58 | +$36.58 / +0.37% | +0.37% | +0.41%p | +0.40%p | 0.00% | 5 / 0 | N/A | N/A | N/A / N/A | $8.79 | 0 | `ACTIVE` |
-| 3 | 2. Mean Reversion (RSI / Bollinger) (코딩 기반 (25)) | $10,019.61 | +$19.61 / +0.20% | +0.20% | +0.24%p | +0.23%p | -0.06% | 3 / 0 | N/A | N/A | N/A / N/A | $4.20 | 0 | `ACTIVE` |
-| 4 | 28. Value + 63D Momentum Combo (코딩 기반 (25)) | $10,017.24 | +$17.24 / +0.17% | +0.17% | +0.21%p | +0.20%p | 0.00% | 5 / 0 | N/A | N/A | N/A / N/A | $6.54 | 0 | `ACTIVE` |
-| 5 | 20. Intraday Gap-Down Fill (코딩 기반 (25)) | $10,005.31 | +$5.31 / +0.05% | +0.05% | +0.09%p | +0.08%p | -0.05% | 3 / 0 | N/A | N/A | N/A / N/A | $8.35 | 0 | `ACTIVE` |
-| 6 | 23. Minimum-Variance ETF Portfolio (코딩 기반 (25)) | $10,000.32 | +$0.32 / +0.00% | +0.00% | +0.04%p | +0.03%p | -0.05% | 5 / 0 | N/A | N/A | N/A / N/A | $5.10 | 0 | `ACTIVE` |
-| 7 | 5. Technical Analyst (Gemini Flash) (Gemini Flash LLM (4)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 8 | 6. News &amp; Catalyst Trader (Gemini Flash) (Gemini Flash LLM (4)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 9 | 7. Macro &amp; Sector Strategist (Gemini Flash) (Gemini Flash LLM (4)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 10 | 8. Cautious Risk-First Trader (Gemini Flash) (Gemini Flash LLM (4)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 11 | 14. Claude Residual-Momentum Pullback (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 12 | 15. Kiro Pair-Spread Reversion (PSR) (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 13 | 16. Overnight Drift (Close→Open) (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 14 | 17. EOD Loser Overnight Reversal (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 15 | 18. Intraday Momentum (Gao 2018) (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 16 | 19. Turn-of-Month Calendar (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 17 | 21. Dual Momentum Macro ETF (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 18 | 31. Market Breadth Equity Timing (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 19 | 32. Panic-Dip Index Buyer (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 20 | 33. Cross-Asset Risk Appetite Ratio (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 21 | 34. Intraday VWAP -2σ Reversion (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 22 | 35. Volatility Squeeze Breakout (코딩 기반 (25)) | $10,000.00 | +$0.00 / +0.00% | +0.00% | +0.04%p | +0.03%p | 0.00% | 0 / 0 | N/A | N/A | N/A / N/A | $0.00 | 0 | `ACTIVE` |
-| 23 | 4. Sector ETF Rotation (코딩 기반 (25)) | $9,998.19 | -$1.81 / -0.02% | -0.02% | +0.02%p | +0.01%p | -0.02% | 3 / 0 | N/A | N/A | N/A / N/A | $4.20 | 0 | `ACTIVE` |
-| 24 | 1. Trend Follower (MA / Breakout) (코딩 기반 (25)) | $9,997.82 | -$2.18 / -0.02% | -0.02% | +0.02%p | +0.01%p | -0.02% | 3 / 0 | N/A | N/A | N/A / N/A | $4.21 | 0 | `ACTIVE` |
-| 25 | 26. Cross-Sectional 5D Short Reversal (코딩 기반 (25)) | $9,997.36 | -$2.64 / -0.03% | -0.03% | +0.01%p | +0.00%p | -0.13% | 5 / 0 | N/A | N/A | N/A / N/A | $8.31 | 0 | `ACTIVE` |
-| 26 | **10. Random Trader (Luck Control)** (SPY / 랜덤 / 대조군 (3)) | $9,997.20 | -$2.80 / -0.03% | -0.03% | +0.01%p | +0.00%p | -0.03% | 2 / 0 | N/A | N/A | N/A / N/A | $2.80 | 0 | `ACTIVE` |
-| 27 | **9. Buy-and-Hold SPY (Benchmark)** (SPY / 랜덤 / 대조군 (3)) | $9,996.29 | -$3.71 / -0.04% | -0.04% | +0.00%p | -0.01%p | -0.07% | 1 / 0 | N/A | N/A | N/A / N/A | $6.86 | 0 | `ACTIVE` |
-| 28 | 22. Risk Parity 3-Asset (8% Vol) (코딩 기반 (25)) | $9,996.21 | -$3.79 / -0.04% | -0.04% | +0.00%p | -0.01%p | -0.04% | 3 / 0 | N/A | N/A | N/A / N/A | $2.51 | 0 | `ACTIVE` |
-| 29 | 25. Mega-Cap Top-5 Buy &amp; Hold (Control) (SPY / 랜덤 / 대조군 (3)) | $9,993.05 | -$6.95 / -0.07% | -0.07% | -0.03%p | -0.04%p | -0.07% | 5 / 0 | N/A | N/A | N/A / N/A | $6.65 | 0 | `ACTIVE` |
-| 30 | 30. Regime-Adaptive Beta Switch (코딩 기반 (25)) | $9,983.47 | -$16.53 / -0.17% | -0.17% | -0.13%p | -0.14%p | -0.28% | 5 / 0 | N/A | N/A | N/A / N/A | $6.56 | 0 | `ACTIVE` |
-| 31 | 29. 20D Up/Down Volume Accumulation (코딩 기반 (25)) | $9,982.02 | -$17.98 / -0.18% | -0.18% | -0.14%p | -0.15%p | -0.23% | 5 / 0 | N/A | N/A | N/A / N/A | $8.73 | 0 | `ACTIVE` |
-| 32 | 24. Low-Volatility Stock Anomaly (코딩 기반 (25)) | $9,980.79 | -$19.21 / -0.19% | -0.19% | -0.15%p | -0.16%p | -0.28% | 5 / 0 | N/A | N/A | N/A / N/A | $8.73 | 0 | `ACTIVE` |
-| 33 | 12. Congress Style (House PTR Pattern) (공시 스타일 학습 (2)) | $9,966.51 | -$33.49 / -0.33% | -0.33% | -0.29%p | -0.30%p | -0.33% | 3 / 0 | N/A | N/A | N/A / N/A | $4.21 | 0 | `ACTIVE` |
-| 34 | 3. Intraday ORB (Flat by Close) (코딩 기반 (25)) | $9,953.96 | -$46.04 / -0.46% | -0.46% | -0.42%p | -0.43%p | -0.46% | 3 / 0 | N/A | N/A | N/A / N/A | $4.19 | 0 | `ACTIVE` |
-
----
-
-## 4. 전략군별 성과 비교
-
-| 전략군 (인원) | 당일 평균 수익률 (%) | 누적 평균 수익률 (%) | 누적 중앙값 (%) | 최고 / 최저 에이전트 | 총 체결 수 | 평균 마찰비용 ($) | 총 리스크 거부 |
-| :--- | :---: | :---: | :---: | :--- | :---: | :---: | :---: |
-| 코딩 기반 (25) | -0.01% | -0.01% | +0.00% | 27. 70D High Anchoring (George-Hwang) (+0.37%) / 3. Intraday ORB (Flat by Close) (-0.46%) | 53 | $3.22 | 0 |
-| Gemini Flash LLM (4) | +0.00% | +0.00% | +0.00% | 5. Technical Analyst (Gemini Flash) (+0.00%) / 5. Technical Analyst (Gemini Flash) (+0.00%) | 0 | $0.00 | 0 |
-| 공시 스타일 학습 (2) | +0.04% | +0.04% | +0.04% | 11. Berkshire Style (13F Pattern) (+0.40%) / 12. Congress Style (House PTR Pattern) (-0.33%) | 6 | $4.21 | 0 |
-| SPY / 랜덤 / 대조군 (3) | -0.05% | -0.05% | -0.04% | 10. Random Trader (Luck Control) (-0.03%) / 25. Mega-Cap Top-5 Buy &amp; Hold (Control) (-0.07%) | 8 | $5.44 | 0 |
-
-- **그룹 간 격차 분석**: 당일 `공시 스타일 학습 (2)`이 평균 `+0.04%`로 선두를 기록했고, `SPY / 랜덤 / 대조군 (3)`은 평균 `-0.05%`를 기록했습니다. 누적 마찰비용은 체결 빈도가 높은 전략군일수록 수익률 차감 폭이 크게 나타났습니다.
-
----
-
-## 5. 스페셜 분석: 14번 `claude_rmp` 텔레메트리 및 가설 검증
-
-| 항목 | 당일 수치 / 상태 | 비고 |
-| :--- | :--- | :--- |
-| **레짐 점수 (`0~4`) 및 허용 슬롯** | `Score 0/4` (허용 슬롯: `0`개) | C1~C4: `{&#x27;C1&#x27;: False, &#x27;C2&#x27;: False, &#x27;C3&#x27;: False, &#x27;C4&#x27;: False}` |
-| **포트폴리오 리스크 (`Heat / HeatCap`)** | `0.00% / 3.50%` | `$0.00 / $350.00` |
-| **거래당 평균 R (`Average R`)** | `N/A` (청산 `0`건 기준) | 누적 기준 |
-| **필터·선정 지표 작동** | 당일 사유 코드: `SKIP_REGIME_OFF` | Top-5 리더: `BRK.B(2.45), WMT(1.78), PG(1.68), COST(1.54), AAPL(1.46)` |
-
-- **가설 H1~H3 반증 트래커 (SPY 상승일 vs 하락일 노출도)**: 누적 `1일` 표본 기준 SPY 상승일 평균 노출도 `N/A` vs SPY 하락일 평균 노출도 `0.0%`. 단기 표본(`Day 1/30`)이므로 통계적 확정은 30거래일 종료 후 판정합니다.
-
----
-
-## 6. 당일 매매 복기, 리스크 거부 및 마찰 감사
-
-### 6.1 주요 진입·청산 복기 (Best &amp; Worst / 특이 체결)
-| 에이전트 | 종목 | 구분 | 결정→체결 시각 (ET) | 기준가→체결가 ($) | 실현손익 ($ / %) | 신뢰도 | 근거 및 지표 정합성 평가 |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1. Trend Follower (MA / Breakout) | MRK | `BUY` | 10:56→10:56 | $138.42→$138.52 | - | 0.71 | Buying MRK on momentum breakout: price $138.42 is at/near 20-bar high ($138.37) with 10-SMA ($136.46) &gt; 30-SMA ($135.47), RSI(14) at 73.1, a |
-| 1. Trend Follower (MA / Breakout) | PFE | `BUY` | 10:58→10:58 | $28.30→$28.32 | - | 0.74 | Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) &gt; 30-SMA ($27.63), RSI(14) at 74.9, and v |
-| 1. Trend Follower (MA / Breakout) | XLRE | `BUY` | 10:58→10:58 | $43.13→$43.16 | - | 0.74 | Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) &gt; 30-SMA ($42.94), RSI(14) at 56.2, and  |
-| 2. Mean Reversion (RSI / Bollinger) | GLD | `BUY` | 10:56→10:56 | $327.48→$327.71 | - | 0.90 | Buying oversold dip in GLD: RSI(14) is 2.8 with price $327.48 near lower Bollinger Band ($329.12) while holding structural support above 94% |
-| 2. Mean Reversion (RSI / Bollinger) | SMH | `BUY` | 10:58→10:58 | $423.66→$423.96 | - | 0.90 | Buying oversold dip in SMH: RSI(14) is 15.1 with price $423.66 near lower Bollinger Band ($426.52) while holding structural support above 94 |
-| 2. Mean Reversion (RSI / Bollinger) | CAT | `BUY` | 10:58→10:58 | $526.48→$526.84 | - | 0.90 | Buying oversold dip in CAT: RSI(14) is 15.6 with price $533.62 near lower Bollinger Band ($510.85) while holding structural support above 94 |
-| 3. Intraday ORB (Flat by Close) | XLP | `BUY` | 10:56→10:56 | $91.98→$92.05 | - | 0.84 | Buying XLP on 30-min Opening Range Breakout: price $91.98 cleared ORH $91.58 (ORL $90.44) on 1.98x relative volume. Stop placed at opening r |
-| 3. Intraday ORB (Flat by Close) | ISRG | `BUY` | 10:58→10:58 | $443.25→$443.56 | - | 0.79 | Buying ISRG on 30-min Opening Range Breakout: price $433.44 cleared ORH $428.52 (ORL $411.24) on 1.48x relative volume. Stop placed at 1.2%  |
-| 3. Intraday ORB (Flat by Close) | XLV | `BUY` | 10:58→10:58 | $183.98→$184.11 | - | 0.78 | Buying XLV on 30-min Opening Range Breakout: price $183.98 cleared ORH $183.24 (ORL $179.31) on 1.40x relative volume. Stop placed at openin |
-| 4. Sector ETF Rotation | XLP | `BUY` | 10:56→10:56 | $91.98→$92.05 | - | 0.78 | Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +1.42%, RS vs SPY +2.49%, 5d change -0.18%) trading at $91.98 abo |
-| 4. Sector ETF Rotation | XLV | `BUY` | 10:58→10:58 | $183.98→$184.11 | - | 0.76 | Rotating into top-ranked sector ETF XLV (rank #2 of 11, composite RS score +1.03%, RS vs SPY +2.36%, 5d change -0.96%) trading at $183.98 ab |
-| 4. Sector ETF Rotation | XLY | `BUY` | 10:58→10:58 | $117.17→$117.25 | - | 0.76 | Rotating into top-ranked sector ETF XLY (rank #3 of 11, composite RS score +0.91%, RS vs SPY +1.69%, 5d change -0.26%) trading at $117.17 ab |
-| 9. Buy-and-Hold SPY (Benchmark) | SPY | `BUY` | 10:56→10:56 | $715.55→$716.05 | - | 1.00 | Allocating passive S&amp;P 500 benchmark capital into SPY at $715.55 (requesting 13.9054 shares with catastrophic stop floor at $357.77) to hold |
-| 10. Random Trader (Luck Control) | XLK | `BUY` | 10:58→10:58 | $156.12→$156.23 | - | 0.50 | Null-hypothesis random control: deterministic cycle seed (05cb9216) rolled 0.380 to randomly buy XLK at $156.12 with a 1.69% stop ($153.48)  |
-| 10. Random Trader (Luck Control) | TMO | `BUY` | 10:58→10:58 | $695.59→$696.08 | - | 0.50 | Null-hypothesis random control: deterministic cycle seed (e0aa742a) rolled 0.658 to randomly buy TMO at $695.59 with a 1.73% stop ($683.54)  |
-
-- **주요 손실 원인 진단**: 당일 실현 손실 청산 거래는 없습니다.
-
-### 6.2 리스크 관리자 거부 로그 (`rejections`) 감사
-- 당일 리스크 관리자 거부 건수 없음.
-
-### 6.3 거래 마찰 비용 (스프레드 + 5 bps 슬리피지) 영향
-- **27. 70D High Anchoring (George-Hwang)**: 누적 마찰 비용 `$8.79` (초기 자금 `$10,000` 대비 `0.09%`, 총 `5회` 체결)
-- **29. 20D Up/Down Volume Accumulation**: 누적 마찰 비용 `$8.73` (초기 자금 `$10,000` 대비 `0.09%`, 총 `5회` 체결)
-- **24. Low-Volatility Stock Anomaly**: 누적 마찰 비용 `$8.73` (초기 자금 `$10,000` 대비 `0.09%`, 총 `5회` 체결)
-
----
-
-## 7. 다음 거래일 관전 포인트 (모니터링 전용 · 전략 수정 금지)
-
-### 7.1 현재 보유(오픈) 포지션 손절·익절 근접도
-| 에이전트 | 종목 | 진입가 ($) | 현재가 ($) | 미실현 손익 ($ / %) | 손절가 (잔여 거리 %) | 익절가 (잔여 거리 %) | 주시 포인트 |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| 3. Intraday ORB (Flat by Close) | XLP | $92.05 | $92.09 | +$0.99 (+0.05%) | $91.01 (-1.18%) | $93.93 (+1.99%) | 손절선 근접 주시 |
-| 3. Intraday ORB (Flat by Close) | ISRG | $443.56 | $433.44 | -$45.64 (-2.28%) | $428.24 (-1.20%) | $443.84 (+2.40%) | 손절선 근접 주시 |
-| 3. Intraday ORB (Flat by Close) | XLV | $184.11 | $183.98 | -$1.39 (-0.07%) | $181.28 (-1.47%) | $189.38 (+2.94%) | 손절선 근접 주시 |
-| 1. Trend Follower (MA / Breakout) | PFE | $28.32 | $28.30 | -$1.40 (-0.07%) | $27.88 (-1.48%) | $29.15 (+3.00%) | 손절선 근접 주시 |
-| 4. Sector ETF Rotation | XLV | $184.11 | $183.98 | -$1.40 (-0.07%) | $181.22 (-1.50%) | $191.34 (+4.00%) | 손절선 근접 주시 |
-| 4. Sector ETF Rotation | XLY | $117.25 | $117.17 | -$1.40 (-0.07%) | $115.41 (-1.50%) | $121.86 (+4.00%) | 손절선 근접 주시 |
-| 1. Trend Follower (MA / Breakout) | XLRE | $43.16 | $43.13 | -$1.40 (-0.07%) | $42.48 (-1.51%) | $44.42 (+2.99%) | 비중 20.0% |
-| 1. Trend Follower (MA / Breakout) | MRK | $138.52 | $138.56 | +$0.62 (+0.03%) | $136.34 (-1.60%) | $142.57 (+2.89%) | 비중 20.0% |
-| 4. Sector ETF Rotation | XLP | $92.05 | $92.09 | +$0.99 (+0.05%) | $90.61 (-1.61%) | $95.66 (+3.87%) | 비중 20.0% |
-| 2. Mean Reversion (RSI / Bollinger) | GLD | $327.71 | $326.94 | -$4.70 (-0.23%) | $321.59 (-1.64%) | $335.67 (+2.67%) | 비중 19.9% |
-| 10. Random Trader (Luck Control) | XLK | $156.23 | $156.12 | -$1.40 (-0.07%) | $153.48 (-1.69%) | $161.40 (+3.38%) | 비중 20.0% |
-| 10. Random Trader (Luck Control) | TMO | $696.08 | $695.59 | -$1.40 (-0.07%) | $683.54 (-1.73%) | $719.69 (+3.46%) | 비중 20.0% |
-| 20. Intraday Gap-Down Fill | QCOM | $162.05 | $162.65 | +$6.99 (+0.37%) | $159.80 (-1.75%) | $165.47 (+1.73%) | 비중 19.0% |
-| 20. Intraday Gap-Down Fill | PANW | $351.22 | $351.74 | +$2.84 (+0.15%) | $345.53 (-1.77%) | $353.49 (+0.50%) | 비중 19.0% |
-| 2. Mean Reversion (RSI / Bollinger) | CAT | $526.84 | $533.62 | +$25.71 (+1.29%) | $524.01 (-1.80%) | $546.96 (+2.50%) | 비중 20.2% |
-
-### 7.2 서킷 브레이커 여유폭 및 레짐 분기점
-- **서킷 브레이커 경계 에이전트**: 현재 `-10%` 탈락(`BLOWN_UP`)까지 여유폭 3.0%p 이내 또는 `-2%` 이하 일일 손실에 근접한 에이전트 없음.
-- **레짐 점수 변화 가능성**: 14번 `claude_rmp` 현재 레짐 `0/4` (허용 슬롯 `0`개). 다음 거래일 `SPY` 종가 vs `SMA(50)` (`$759.45`), 개별주 Breadth `50%` 경계(`43.4%`), `RV10/RV60` `1.25` 임계치(`1.74`) 변동 여부를 주시합니다.
-- **일정 체크**: 다음 미국 거래일 — **2026-11-25 Regular Session (09:30-16:00 ET)**.
-</pre>
-      </details>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Daily Reports &bull; Updated 2026-11-26 01:47:41 KST / 2026-11-25 11:47:41 EST</p>
+    <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Daily Reports &bull; Updated 2026-11-26 01:52:20 KST / 2026-11-25 11:52:20 EST</p>
   </footer>
   <script>
     function copyRawMarkdown(elId, btn) {

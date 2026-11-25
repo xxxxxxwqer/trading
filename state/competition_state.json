@@ -1,16 +1,13 @@
 {
-  "status": "LIVE",
+  "status": "READY",
   "mode": "LIVE",
-  "trading_days_completed": 2,
+  "trading_days_completed": 0,
   "total_trading_days": 30,
-  "active_trading_dates": [
-    "2026-11-24",
-    "2026-11-25"
-  ],
-  "cycles_run": 5,
+  "active_trading_dates": [],
+  "cycles_run": 0,
   "strategy_hashes": {
     "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
-    "llm_agents.py": "6d9ea017147ce5ab51657f93dc633c6213340793a34b979e802be4bd2d424633",
+    "llm_agents.py": "039e5447bae67a4b8b57c25b6367bd9b59e13acf7d9f402b84e976e860c50873",
     "style_agents.py": "984c01bf15de67c965308704ce4cf6c6e42d505a8db55ce442cc7649dbcc2192",
     "claude_rmp_agent.py": "dd8a857f04a0b54e72ec76afb885fdd20dacaaf9cc4c5ca21fa010013605cac4",
     "claude_rmp_params.json": "9e8ffee7dd14d1e6cc9efa8f35aebe61b91d34da5a10984652697f8650a2d3f7",
@@ -27,20 +24,10 @@
     "simulator.py": "17c79325ac0543dbc0882d5bb2dc8a459d558f779e14d78baf66bd5fb12a4074"
   },
   "strategy_integrity_verified": true,
-  "started_at_utc": "2026-11-24T15:56:18Z",
+  "started_at_utc": "",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-25T16:47:41Z",
-  "last_decision_timestamp_utc": "2026-11-25T16:47:38Z",
-  "current_trading_date_et": "2026-11-25",
-  "regime_summary": "RISK-OFF / DEFENSIVE \u2014 SPY 699.52 (-2.52% 1D, -2.59% 5D, PULLBACK/DOWNTREND, RSI 19.2); QQQ (-4.16% 1D); Bonds (TLT +1.45%) steady/rising (yields easing); Gold (GLD -2.65%).",
-  "api_keys_status": {
-    "alpaca_paper_configured": true,
-    "gemini_configured": true,
-    "checked_at_utc": "2026-11-25T16:47:41Z"
-  },
-  "last_monitor_tick_utc": "2026-11-25T15:45:05Z",
-  "monitor_ticks_run": 3,
-  "cycles_by_date": {
-    "2026-11-25": 1
-  }
+  "last_updated_utc": "2026-11-25T16:52:20Z",
+  "last_decision_timestamp_utc": "",
+  "current_trading_date_et": "",
+  "regime_summary": "Ready for Day 1 market open."
 }

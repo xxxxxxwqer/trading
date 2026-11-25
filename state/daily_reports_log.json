@@ -1,11 +1,1 @@
-[
-  {
-    "trading_date_et": "2026-11-24",
-    "trading_day_number": 1,
-    "is_final_day": false,
-    "filename": "2026-11-24_day01.md",
-    "relative_path": "reports/daily/2026-11-24_day01.md",
-    "generator": "deterministic-python",
-    "generated_at_utc": "2026-11-24T23:36:25Z"
-  }
-]
+[]

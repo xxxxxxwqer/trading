@@ -5,138 +5,29 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 193.18,
-  "equity": 9773.6,
+  "cash": 10000.0,
+  "equity": 10000.0,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -2.46,
-  "current_drawdown_pct": -2.26,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 9996.29,
-  "daily_pnl_pct": -2.23,
-  "positions": {
-    "SPY": {
-      "ticker": "SPY",
-      "shares": 13.6957,
-      "avg_entry_price": 716.0509,
-      "current_price": 699.52,
-      "stop_loss": 357.77,
-      "take_profit": 1431.1,
-      "opened_at": "2026-11-24T15:56:23Z",
-      "entry_reasoning": "Allocating passive S&P 500 benchmark capital into SPY at $715.55 (requesting 13.9054 shares with catastrophic stop floor at $357.77) to hold throughout the 10-day competition.",
-      "unrealized_pnl": -226.4,
-      "unrealized_pnl_pct": -2.31,
-      "market_value": 9580.42
-    }
-  },
+  "max_drawdown_pct": 0.0,
+  "current_drawdown_pct": 0.0,
+  "current_trading_date_et": "",
+  "day_start_equity": 10000.0,
+  "daily_pnl_pct": 0.0,
+  "positions": {},
   "pending_orders": [],
-  "trades": [
-    {
-      "trade_id": "trd_5a12a450b485",
-      "agent_id": "ctrl_spy",
-      "side": "BUY",
-      "ticker": "SPY",
-      "shares": 13.6957,
-      "decision_timestamp": "2026-11-24T15:56:18Z",
-      "fill_timestamp": "2026-11-24T15:56:23Z",
-      "reference_price": 715.55,
-      "fill_price": 716.0509,
-      "spread_cost_dollars": 1.9599,
-      "slippage_cost_dollars": 4.9003,
-      "commission_dollars": 0.0,
-      "notional_dollars": 9806.82,
-      "stop_loss": 357.77,
-      "take_profit": 1431.1,
-      "realized_pnl": null,
-      "realized_pnl_pct": null,
-      "exit_reason": "",
-      "reasoning": "Allocating passive S&P 500 benchmark capital into SPY at $715.55 (requesting 13.9054 shares with catastrophic stop floor at $357.77) to hold throughout the 10-day competition.",
-      "confidence": 1.0
-    }
-  ],
+  "trades": [],
   "rejections": [],
   "equity_curve": [
     {
-      "timestamp": "2026-11-24T15:49:51Z",
-      "trading_date_et": "2026-11-24",
+      "timestamp": "2026-11-25T16:52:20Z",
+      "trading_date_et": "2026-11-25",
       "equity": 10000.0,
       "cash": 10000.0,
       "positions_value": 0.0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
-    },
-    {
-      "timestamp": "2026-11-24T15:56:23Z",
-      "trading_date_et": "2026-11-24",
-      "equity": 9993.14,
-      "cash": 193.18,
-      "positions_value": 9799.96,
-      "drawdown_pct": -0.07,
-      "daily_return_pct": -0.07
-    },
-    {
-      "timestamp": "2026-11-24T15:58:26Z",
-      "trading_date_et": "2026-11-24",
-      "equity": 9996.29,
-      "cash": 193.18,
-      "positions_value": 9803.11,
-      "drawdown_pct": -0.04,
-      "daily_return_pct": -0.04
-    },
-    {
-      "timestamp": "2026-11-24T15:58:55Z",
-      "trading_date_et": "2026-11-24",
-      "equity": 9996.29,
-      "cash": 193.18,
-      "positions_value": 9803.11,
-      "drawdown_pct": -0.04,
-      "daily_return_pct": -0.04
-    },
-    {
-      "timestamp": "2026-11-25T15:45:05Z",
-      "trading_date_et": "2026-11-25",
-      "equity": 9767.98,
-      "cash": 193.18,
-      "positions_value": 9574.8,
-      "drawdown_pct": -2.32,
-      "daily_return_pct": -2.28
-    },
-    {
-      "timestamp": "2026-11-25T16:47:41Z",
-      "trading_date_et": "2026-11-25",
-      "equity": 9773.6,
-      "cash": 193.18,
-      "positions_value": 9580.42,
-      "drawdown_pct": -2.26,
-      "daily_return_pct": -2.23
     }
   ],
-  "daily_journal": [
-    {
-      "trading_date_et": "2026-11-24",
-      "trading_day_number": 1,
-      "start_equity": 10000.0,
-      "end_equity": 9996.29,
-      "daily_pnl": -3.71,
-      "daily_pnl_pct": -0.04,
-      "trades_count": 1,
-      "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-24): Equity moved from $10,000.00 to $9,996.29 ($-3.71, -0.04%). Executed 1 trade(s) \u2014 Buys: SPY ($9,807); Sells: none.",
-      "highlights": [
-        "BUY 13.6957 SPY @ $716.05 ($9806.82, stop $357.77) \u2014 Allocating passive S&P 500 benchmark capital into SPY at $715.55 (requesting 13.9054 shares with catastrophic stop floor at $357.77) to hold throughout the 10-day competition."
-      ]
-    },
-    {
-      "trading_date_et": "2026-11-25",
-      "trading_day_number": 2,
-      "start_equity": 9996.29,
-      "end_equity": 9773.6,
-      "daily_pnl": -222.69,
-      "daily_pnl_pct": -2.23,
-      "trades_count": 0,
-      "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,996.29 to $9,773.60 ($-222.69, -2.23%). No new trades executed; held existing position(s): SPY (13.70 sh, -2.31%).",
-      "highlights": []
-    }
-  ],
-  "last_updated": "2026-11-25T16:47:41Z"
+  "daily_journal": [],
+  "last_updated": "2026-11-25T16:52:20Z"
 }
