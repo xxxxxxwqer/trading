@@ -5,27 +5,40 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7835.92,
-  "equity": 9842.27,
+  "cash": 5866.1,
+  "equity": 9850.15,
   "peak_equity": 10019.61,
   "max_drawdown_pct": -1.79,
-  "current_drawdown_pct": -1.77,
+  "current_drawdown_pct": -1.69,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 10019.61,
-  "daily_pnl_pct": -1.77,
+  "daily_pnl_pct": -1.69,
   "positions": {
     "GLD": {
       "ticker": "GLD",
       "shares": 6.3616,
       "avg_entry_price": 315.2205,
-      "current_price": 315.385,
+      "current_price": 316.84,
       "stop_loss": 309.33,
       "take_profit": 325.79,
       "opened_at": "2026-11-25T15:29:46Z",
       "entry_reasoning": "Buying oversold dip in GLD: RSI(14) is 6.0 with price $315.00 near lower Bollinger Band ($315.99) while holding structural support above 94% of 30-SMA ($328.86). Stop at $309.33, mean-reversion target at $325.79.",
-      "unrealized_pnl": 1.04,
-      "unrealized_pnl_pct": 0.05,
-      "market_value": 2006.35
+      "unrealized_pnl": 10.3,
+      "unrealized_pnl_pct": 0.51,
+      "market_value": 2015.61
+    },
+    "AVGO": {
+      "ticker": "AVGO",
+      "shares": 6.9678,
+      "avg_entry_price": 282.7028,
+      "current_price": 282.505,
+      "stop_loss": 275.57,
+      "take_profit": 295.5,
+      "opened_at": "2026-11-25T16:47:41Z",
+      "entry_reasoning": "Buying oversold dip in AVGO: RSI(14) is 14.3 with price $282.50 near lower Bollinger Band ($278.13) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.57, mean-reversion target at $295.50.",
+      "unrealized_pnl": -1.38,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1968.44
     }
   },
   "pending_orders": [],
@@ -183,6 +196,28 @@
       "exit_reason": "",
       "reasoning": "Buying oversold dip in GLD: RSI(14) is 6.0 with price $315.00 near lower Bollinger Band ($315.99) while holding structural support above 94% of 30-SMA ($328.86). Stop at $309.33, mean-reversion target at $325.79.",
       "confidence": 0.9
+    },
+    {
+      "trade_id": "trd_cdd89259196d",
+      "agent_id": "coded_mean_rev",
+      "side": "BUY",
+      "ticker": "AVGO",
+      "shares": 6.9678,
+      "decision_timestamp": "2026-11-25T16:47:38Z",
+      "fill_timestamp": "2026-11-25T16:47:41Z",
+      "reference_price": 282.505,
+      "fill_price": 282.7028,
+      "spread_cost_dollars": 0.3937,
+      "slippage_cost_dollars": 0.9846,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1969.82,
+      "stop_loss": 275.57,
+      "take_profit": 295.5,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying oversold dip in AVGO: RSI(14) is 14.3 with price $282.50 near lower Bollinger Band ($278.13) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.57, mean-reversion target at $295.50.",
+      "confidence": 0.9
     }
   ],
   "rejections": [],
@@ -231,6 +266,15 @@
       "positions_value": 2006.35,
       "drawdown_pct": -1.77,
       "daily_return_pct": -1.77
+    },
+    {
+      "timestamp": "2026-11-25T16:47:41Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9850.15,
+      "cash": 5866.1,
+      "positions_value": 3984.05,
+      "drawdown_pct": -1.69,
+      "daily_return_pct": -1.69
     }
   ],
   "daily_journal": [
@@ -254,19 +298,20 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 10019.61,
-      "end_equity": 9842.27,
-      "daily_pnl": -177.34,
-      "daily_pnl_pct": -1.77,
-      "trades_count": 4,
+      "end_equity": 9850.15,
+      "daily_pnl": -169.46,
+      "daily_pnl_pct": -1.69,
+      "trades_count": 5,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,019.61 to $9,842.27 ($-177.34, -1.77%). Executed 4 trade(s) \u2014 Buys: GLD ($2,005); Sells: GLD (STOP_LOSS, $-60.66), SMH (STOP_LOSS, $-85.96), CAT (STOP_LOSS, $-12.15).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $10,019.61 to $9,850.15 ($-169.46, -1.69%). Executed 5 trade(s) \u2014 Buys: GLD ($2,005), AVGO ($1,970); Sells: GLD (STOP_LOSS, $-60.66), SMH (STOP_LOSS, $-85.96), CAT (STOP_LOSS, $-12.15).",
       "highlights": [
         "BUY 6.3616 GLD @ $315.22 ($2005.31, stop $309.33) \u2014 Buying oversold dip in GLD: RSI(14) is 6.0 with price $315.00 near lower Bollinger Band ($315.99) while holding structural support above 94% of 30-SMA ($328.86). Stop at $309.33, mean-reversion target at $325.79.",
+        "BUY 6.9678 AVGO @ $282.70 ($1969.82, stop $275.57) \u2014 Buying oversold dip in AVGO: RSI(14) is 14.3 with price $282.50 near lower Bollinger Band ($278.13) while holding structural support above 94% of 30-SMA ($298.99). Stop at $275.57, mean-reversion target at $295.50.",
         "SELL 6.1072 GLD @ $317.78 [STOP_LOSS: $-60.66 (-3.03%)] \u2014 Stop-loss triggered at $318.00 (intrabar low $314.01 <= stop $321.59)",
         "SELL 4.7201 SMH @ $405.75 [STOP_LOSS: $-85.96 (-4.30%)] \u2014 Stop-loss triggered at $406.03 (intrabar low $397.20 <= stop $410.93)",
         "SELL 3.7965 CAT @ $523.64 [STOP_LOSS: $-12.15 (-0.61%)] \u2014 Stop-loss triggered at $524.01 (intrabar low $517.99 <= stop $524.01)"
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:45:05Z"
+  "last_updated": "2026-11-25T16:47:41Z"
 }

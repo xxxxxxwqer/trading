@@ -5,27 +5,40 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7932.5,
-  "equity": 9937.17,
+  "cash": 5943.68,
+  "equity": 9940.13,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.66,
-  "current_drawdown_pct": -0.63,
+  "current_drawdown_pct": -0.6,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9998.19,
-  "daily_pnl_pct": -0.61,
+  "daily_pnl_pct": -0.58,
   "positions": {
     "XLP": {
       "ticker": "XLP",
       "shares": 21.7426,
       "avg_entry_price": 92.0494,
-      "current_price": 92.2,
+      "current_price": 92.4,
       "stop_loss": 90.61,
       "take_profit": 95.66,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +1.42%, RS vs SPY +2.49%, 5d change -0.18%) trading at $91.98 above 20-SMA ($90.64). Stop at $90.61, target at $95.66.",
-      "unrealized_pnl": 3.28,
-      "unrealized_pnl_pct": 0.16,
-      "market_value": 2004.67
+      "unrealized_pnl": 7.63,
+      "unrealized_pnl_pct": 0.38,
+      "market_value": 2009.02
+    },
+    "XLRE": {
+      "ticker": "XLRE",
+      "shares": 45.5938,
+      "avg_entry_price": 43.6205,
+      "current_price": 43.59,
+      "stop_loss": 42.94,
+      "take_profit": 45.33,
+      "opened_at": "2026-11-25T16:47:41Z",
+      "entry_reasoning": "Rotating into top-ranked sector ETF XLRE (rank #2 of 11, composite RS score +1.43%, RS vs SPY +2.56%, 5d change -0.27%) trading at $43.59 above 20-SMA ($43.29). Stop at $42.94, target at $45.33.",
+      "unrealized_pnl": -1.39,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1987.43
     }
   },
   "pending_orders": [],
@@ -139,6 +152,28 @@
       "exit_reason": "AGENT_SIGNAL",
       "reasoning": "Rotating out of sector ETF XLV: price ($182.21) broke below 20-SMA ($182.93).",
       "confidence": 0.83
+    },
+    {
+      "trade_id": "trd_95659a780279",
+      "agent_id": "coded_sector",
+      "side": "BUY",
+      "ticker": "XLRE",
+      "shares": 45.5938,
+      "decision_timestamp": "2026-11-25T16:47:38Z",
+      "fill_timestamp": "2026-11-25T16:47:41Z",
+      "reference_price": 43.59,
+      "fill_price": 43.6205,
+      "spread_cost_dollars": 0.3967,
+      "slippage_cost_dollars": 0.9939,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1988.82,
+      "stop_loss": 42.94,
+      "take_profit": 45.33,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Rotating into top-ranked sector ETF XLRE (rank #2 of 11, composite RS score +1.43%, RS vs SPY +2.56%, 5d change -0.27%) trading at $43.59 above 20-SMA ($43.29). Stop at $42.94, target at $45.33.",
+      "confidence": 0.78
     }
   ],
   "rejections": [],
@@ -187,6 +222,15 @@
       "positions_value": 2004.67,
       "drawdown_pct": -0.63,
       "daily_return_pct": -0.61
+    },
+    {
+      "timestamp": "2026-11-25T16:47:41Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9940.13,
+      "cash": 5943.68,
+      "positions_value": 3996.45,
+      "drawdown_pct": -0.6,
+      "daily_return_pct": -0.58
     }
   ],
   "daily_journal": [
@@ -210,17 +254,18 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9998.19,
-      "end_equity": 9937.17,
-      "daily_pnl": -61.02,
-      "daily_pnl_pct": -0.61,
-      "trades_count": 2,
+      "end_equity": 9940.13,
+      "daily_pnl": -58.06,
+      "daily_pnl_pct": -0.58,
+      "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,998.19 to $9,937.17 ($-61.02, -0.61%). Executed 2 trade(s) \u2014 Buys: none; Sells: XLY (STOP_LOSS, $-44.08), XLV (AGENT_SIGNAL, $-22.03).",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,998.19 to $9,940.13 ($-58.06, -0.58%). Executed 3 trade(s) \u2014 Buys: XLRE ($1,989); Sells: XLY (STOP_LOSS, $-44.08), XLV (AGENT_SIGNAL, $-22.03).",
       "highlights": [
+        "BUY 45.5938 XLRE @ $43.62 ($1988.82, stop $42.94) \u2014 Rotating into top-ranked sector ETF XLRE (rank #2 of 11, composite RS score +1.43%, RS vs SPY +2.56%, 5d change -0.27%) trading at $43.59 above 20-SMA ($43.29). Stop at $42.94, target at $45.33.",
         "SELL 17.0685 XLY @ $114.67 [STOP_LOSS: $-44.08 (-2.20%)] \u2014 Stop-loss triggered at $114.75 (intrabar low $114.33 <= stop $115.41)",
         "SELL 10.8692 XLV @ $182.08 [AGENT_SIGNAL: $-22.03 (-1.10%)] \u2014 Rotating out of sector ETF XLV: price ($182.21) broke below 20-SMA ($182.93)."
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:45:05Z"
+  "last_updated": "2026-11-25T16:47:41Z"
 }

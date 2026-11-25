@@ -5,66 +5,53 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 1942.78,
-  "equity": 9979.36,
+  "cash": 3942.67,
+  "equity": 9983.83,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.96,
-  "current_drawdown_pct": -0.21,
+  "current_drawdown_pct": -0.16,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 9997.82,
-  "daily_pnl_pct": -0.18,
+  "daily_pnl_pct": -0.14,
   "positions": {
-    "MRK": {
-      "ticker": "MRK",
-      "shares": 14.4487,
-      "avg_entry_price": 138.5169,
-      "current_price": 139.435,
-      "stop_loss": 136.34,
-      "take_profit": 142.57,
-      "opened_at": "2026-11-24T15:56:23Z",
-      "entry_reasoning": "Buying MRK on momentum breakout: price $138.42 is at/near 20-bar high ($138.37) with 10-SMA ($136.46) > 30-SMA ($135.47), RSI(14) at 73.1, and volume ratio 1.07x. Stop set at $136.34 and target at $142.57.",
-      "unrealized_pnl": 13.26,
-      "unrealized_pnl_pct": 0.66,
-      "market_value": 2014.65
-    },
     "PFE": {
       "ticker": "PFE",
       "shares": 70.6614,
       "avg_entry_price": 28.3199,
-      "current_price": 28.32,
+      "current_price": 28.21,
       "stop_loss": 27.88,
       "take_profit": 29.15,
       "opened_at": "2026-11-24T15:58:26Z",
       "entry_reasoning": "Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15.",
-      "unrealized_pnl": 0.01,
-      "unrealized_pnl_pct": 0.0,
-      "market_value": 2001.13
+      "unrealized_pnl": -7.76,
+      "unrealized_pnl_pct": -0.39,
+      "market_value": 1993.36
     },
     "XLRE": {
       "ticker": "XLRE",
       "shares": 46.3678,
       "avg_entry_price": 43.1602,
-      "current_price": 43.48,
+      "current_price": 43.59,
       "stop_loss": 42.48,
       "take_profit": 44.42,
       "opened_at": "2026-11-24T15:58:55Z",
       "entry_reasoning": "Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42.",
-      "unrealized_pnl": 14.83,
-      "unrealized_pnl_pct": 0.74,
-      "market_value": 2016.07
+      "unrealized_pnl": 19.93,
+      "unrealized_pnl_pct": 1.0,
+      "market_value": 2021.17
     },
     "MCD": {
       "ticker": "MCD",
       "shares": 7.0969,
       "avg_entry_price": 289.3474,
-      "current_price": 282.48,
+      "current_price": 285.565,
       "stop_loss": 277.52,
       "take_profit": 290.2,
       "opened_at": "2026-11-25T15:29:46Z",
       "entry_reasoning": "Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20.",
-      "unrealized_pnl": -48.74,
-      "unrealized_pnl_pct": -2.37,
-      "market_value": 2004.73
+      "unrealized_pnl": -26.84,
+      "unrealized_pnl_pct": -1.31,
+      "market_value": 2026.63
     }
   },
   "pending_orders": [],
@@ -156,6 +143,28 @@
       "exit_reason": "",
       "reasoning": "Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20.",
       "confidence": 0.92
+    },
+    {
+      "trade_id": "trd_719d57b404a9",
+      "agent_id": "coded_trend",
+      "side": "SELL",
+      "ticker": "MRK",
+      "shares": 14.4487,
+      "decision_timestamp": "2026-11-25T16:47:38Z",
+      "fill_timestamp": "2026-11-25T16:47:41Z",
+      "reference_price": 138.51,
+      "fill_price": 138.4131,
+      "spread_cost_dollars": 0.4002,
+      "slippage_cost_dollars": 0.9999,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1999.89,
+      "stop_loss": null,
+      "take_profit": null,
+      "realized_pnl": -1.5,
+      "realized_pnl_pct": -0.07,
+      "exit_reason": "AGENT_SIGNAL",
+      "reasoning": "Exiting MRK on trend breakdown: last price ($138.51) fell below 20-SMA ($139.53).",
+      "confidence": 0.82
     }
   ],
   "rejections": [],
@@ -204,6 +213,15 @@
       "positions_value": 8036.58,
       "drawdown_pct": -0.21,
       "daily_return_pct": -0.18
+    },
+    {
+      "timestamp": "2026-11-25T16:47:41Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9983.83,
+      "cash": 3942.67,
+      "positions_value": 6041.16,
+      "drawdown_pct": -0.16,
+      "daily_return_pct": -0.14
     }
   ],
   "daily_journal": [
@@ -227,16 +245,17 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 2,
       "start_equity": 9997.82,
-      "end_equity": 9979.36,
-      "daily_pnl": -18.46,
-      "daily_pnl_pct": -0.18,
-      "trades_count": 1,
+      "end_equity": 9983.83,
+      "daily_pnl": -13.99,
+      "daily_pnl_pct": -0.14,
+      "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.82 to $9,979.36 ($-18.46, -0.18%). Executed 1 trade(s) \u2014 Buys: MCD ($2,053); Sells: none.",
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.82 to $9,983.83 ($-13.99, -0.14%). Executed 2 trade(s) \u2014 Buys: MCD ($2,053); Sells: MRK (AGENT_SIGNAL, $-1.50).",
       "highlights": [
-        "BUY 7.0969 MCD @ $289.35 ($2053.47, stop $277.52) \u2014 Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20."
+        "BUY 7.0969 MCD @ $289.35 ($2053.47, stop $277.52) \u2014 Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20.",
+        "SELL 14.4487 MRK @ $138.41 [AGENT_SIGNAL: $-1.50 (-0.07%)] \u2014 Exiting MRK on trend breakdown: last price ($138.51) fell below 20-SMA ($139.53)."
       ]
     }
   ],
-  "last_updated": "2026-11-25T15:45:05Z"
+  "last_updated": "2026-11-25T16:47:41Z"
 }
