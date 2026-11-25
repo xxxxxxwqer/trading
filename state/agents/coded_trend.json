@@ -5,53 +5,66 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 3996.25,
-  "equity": 9997.82,
+  "cash": 1942.78,
+  "equity": 9961.57,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.02,
-  "current_drawdown_pct": -0.02,
-  "current_trading_date_et": "2026-11-24",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.02,
+  "max_drawdown_pct": -0.38,
+  "current_drawdown_pct": -0.38,
+  "current_trading_date_et": "2026-11-25",
+  "day_start_equity": 9997.82,
+  "daily_pnl_pct": -0.36,
   "positions": {
     "MRK": {
       "ticker": "MRK",
       "shares": 14.4487,
       "avg_entry_price": 138.5169,
-      "current_price": 138.56,
+      "current_price": 139.37,
       "stop_loss": 136.34,
       "take_profit": 142.57,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "Buying MRK on momentum breakout: price $138.42 is at/near 20-bar high ($138.37) with 10-SMA ($136.46) > 30-SMA ($135.47), RSI(14) at 73.1, and volume ratio 1.07x. Stop set at $136.34 and target at $142.57.",
-      "unrealized_pnl": 0.62,
-      "unrealized_pnl_pct": 0.03,
-      "market_value": 2002.01
+      "unrealized_pnl": 12.33,
+      "unrealized_pnl_pct": 0.62,
+      "market_value": 2013.72
     },
     "PFE": {
       "ticker": "PFE",
       "shares": 70.6614,
       "avg_entry_price": 28.3199,
-      "current_price": 28.3,
+      "current_price": 28.24,
       "stop_loss": 27.88,
       "take_profit": 29.15,
       "opened_at": "2026-11-24T15:58:26Z",
       "entry_reasoning": "Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15.",
-      "unrealized_pnl": -1.4,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1999.72
+      "unrealized_pnl": -5.64,
+      "unrealized_pnl_pct": -0.28,
+      "market_value": 1995.48
     },
     "XLRE": {
       "ticker": "XLRE",
       "shares": 46.3678,
       "avg_entry_price": 43.1602,
-      "current_price": 43.13,
+      "current_price": 43.35,
       "stop_loss": 42.48,
       "take_profit": 44.42,
       "opened_at": "2026-11-24T15:58:55Z",
       "entry_reasoning": "Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42.",
-      "unrealized_pnl": -1.4,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1999.84
+      "unrealized_pnl": 8.8,
+      "unrealized_pnl_pct": 0.44,
+      "market_value": 2010.04
+    },
+    "MCD": {
+      "ticker": "MCD",
+      "shares": 7.0969,
+      "avg_entry_price": 289.3474,
+      "current_price": 281.75,
+      "stop_loss": 277.52,
+      "take_profit": 290.2,
+      "opened_at": "2026-11-25T15:29:46Z",
+      "entry_reasoning": "Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20.",
+      "unrealized_pnl": -53.92,
+      "unrealized_pnl_pct": -2.63,
+      "market_value": 1999.55
     }
   },
   "pending_orders": [],
@@ -121,6 +134,28 @@
       "exit_reason": "",
       "reasoning": "Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42.",
       "confidence": 0.74
+    },
+    {
+      "trade_id": "trd_b56274d32b80",
+      "agent_id": "coded_trend",
+      "side": "BUY",
+      "ticker": "MCD",
+      "shares": 7.0969,
+      "decision_timestamp": "2026-11-25T15:29:32Z",
+      "fill_timestamp": "2026-11-25T15:29:46Z",
+      "reference_price": 289.145,
+      "fill_price": 289.3474,
+      "spread_cost_dollars": 0.4102,
+      "slippage_cost_dollars": 1.0262,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2053.47,
+      "stop_loss": 277.52,
+      "take_profit": 290.2,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20.",
+      "confidence": 0.92
     }
   ],
   "rejections": [],
@@ -160,6 +195,15 @@
       "positions_value": 6001.57,
       "drawdown_pct": -0.02,
       "daily_return_pct": -0.02
+    },
+    {
+      "timestamp": "2026-11-25T15:29:46Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9961.57,
+      "cash": 1942.78,
+      "positions_value": 8018.79,
+      "drawdown_pct": -0.38,
+      "daily_return_pct": -0.36
     }
   ],
   "daily_journal": [
@@ -178,7 +222,21 @@
         "BUY 70.6614 PFE @ $28.32 ($2001.12, stop $27.88) \u2014 Buying PFE on momentum breakout: price $28.30 is at/near 20-bar high ($28.25) with 10-SMA ($27.72) > 30-SMA ($27.63), RSI(14) at 74.9, and volume ratio 1.08x. Stop set at $27.88 and target at $29.15.",
         "BUY 46.3678 XLRE @ $43.16 ($2001.24, stop $42.48) \u2014 Buying XLRE on momentum breakout: price $43.13 is at/near 20-bar high ($43.31) with 10-SMA ($42.95) > 30-SMA ($42.94), RSI(14) at 56.2, and volume ratio 1.44x. Stop set at $42.48 and target at $44.42."
       ]
+    },
+    {
+      "trading_date_et": "2026-11-25",
+      "trading_day_number": 2,
+      "start_equity": 9997.82,
+      "end_equity": 9961.57,
+      "daily_pnl": -36.25,
+      "daily_pnl_pct": -0.36,
+      "trades_count": 1,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.82 to $9,961.57 ($-36.25, -0.36%). Executed 1 trade(s) \u2014 Buys: MCD ($2,053); Sells: none.",
+      "highlights": [
+        "BUY 7.0969 MCD @ $289.35 ($2053.47, stop $277.52) \u2014 Buying MCD on momentum breakout: price $281.75 is at/near 20-bar high ($282.06) with 10-SMA ($280.59) > 30-SMA ($277.72), RSI(14) at 72.0, and volume ratio 1.94x. Stop set at $277.52 and target at $290.20."
+      ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:55Z"
+  "last_updated": "2026-11-25T15:29:46Z"
 }

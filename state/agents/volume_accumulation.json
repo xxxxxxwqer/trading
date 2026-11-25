@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 623.23,
-  "equity": 9982.02,
+  "equity": 9941.6,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.23,
-  "current_drawdown_pct": -0.18,
-  "current_trading_date_et": "2026-11-24",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.18,
+  "max_drawdown_pct": -0.58,
+  "current_drawdown_pct": -0.58,
+  "current_trading_date_et": "2026-11-25",
+  "day_start_equity": 9982.02,
+  "daily_pnl_pct": -0.4,
   "positions": {
     "BRK.B": {
       "ticker": "BRK.B",
       "shares": 3.0296,
       "avg_entry_price": 583.4082,
-      "current_price": 579.06,
+      "current_price": 574.995,
       "stop_loss": 549.993,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -13.17,
-      "unrealized_pnl_pct": -0.75,
-      "market_value": 1754.32
+      "unrealized_pnl": -25.49,
+      "unrealized_pnl_pct": -1.44,
+      "market_value": 1742.0
     },
     "COST": {
       "ticker": "COST",
       "shares": 1.7395,
       "avg_entry_price": 1095.3374,
-      "current_price": 1092.74,
+      "current_price": 1088.8,
       "stop_loss": 1037.5995,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -4.52,
-      "unrealized_pnl_pct": -0.24,
-      "market_value": 1900.82
+      "unrealized_pnl": -11.37,
+      "unrealized_pnl_pct": -0.6,
+      "market_value": 1893.97
     },
     "HON": {
       "ticker": "HON",
       "shares": 8.5527,
       "avg_entry_price": 222.3055,
-      "current_price": 222.21,
+      "current_price": 219.795,
       "stop_loss": 211.0425,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -0.81,
-      "unrealized_pnl_pct": -0.04,
-      "market_value": 1900.5
+      "unrealized_pnl": -21.47,
+      "unrealized_pnl_pct": -1.13,
+      "market_value": 1879.84
     },
     "PG": {
       "ticker": "PG",
       "shares": 11.0147,
       "avg_entry_price": 172.6158,
-      "current_price": 172.64,
+      "current_price": 173.2,
       "stop_loss": 163.8702,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 0.27,
-      "unrealized_pnl_pct": 0.01,
-      "market_value": 1901.58
+      "unrealized_pnl": 6.44,
+      "unrealized_pnl_pct": 0.34,
+      "market_value": 1907.75
     },
     "WMT": {
       "ticker": "WMT",
       "shares": 14.3873,
       "avg_entry_price": 132.1524,
-      "current_price": 132.17,
+      "current_price": 131.7,
       "stop_loss": 125.457,
       "take_profit": null,
       "opened_at": "2026-11-24T15:56:23Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 0.25,
-      "unrealized_pnl_pct": 0.01,
-      "market_value": 1901.57
+      "unrealized_pnl": -6.51,
+      "unrealized_pnl_pct": -0.34,
+      "market_value": 1894.81
     }
   },
   "pending_orders": [],
@@ -230,6 +230,15 @@
       "positions_value": 9358.79,
       "drawdown_pct": -0.18,
       "daily_return_pct": -0.18
+    },
+    {
+      "timestamp": "2026-11-25T15:29:46Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9941.6,
+      "cash": 623.23,
+      "positions_value": 9318.37,
+      "drawdown_pct": -0.58,
+      "daily_return_pct": -0.4
     }
   ],
   "daily_journal": [
@@ -250,7 +259,19 @@
         "BUY 11.0147 PG @ $172.62 ($1901.31, stop $163.87) \u2014 ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
         "BUY 14.3873 WMT @ $132.15 ($1901.32, stop $125.46) \u2014 ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%"
       ]
+    },
+    {
+      "trading_date_et": "2026-11-25",
+      "trading_day_number": 2,
+      "start_equity": 9982.02,
+      "end_equity": 9941.6,
+      "daily_pnl": -40.42,
+      "daily_pnl_pct": -0.4,
+      "trades_count": 0,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,982.02 to $9,941.60 ($-40.42, -0.40%). No new trades executed; held existing position(s): BRK.B (3.03 sh, -1.44%), COST (1.74 sh, -0.60%), HON (8.55 sh, -1.13%), PG (11.01 sh, +0.34%), WMT (14.39 sh, -0.34%).",
+      "highlights": []
     }
   ],
-  "last_updated": "2026-11-24T15:58:55Z"
+  "last_updated": "2026-11-25T15:29:46Z"
 }

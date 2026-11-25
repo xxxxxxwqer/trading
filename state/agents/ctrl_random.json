@@ -5,42 +5,15 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 5997.53,
-  "equity": 9997.2,
+  "cash": 9895.86,
+  "equity": 9895.86,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.03,
-  "current_drawdown_pct": -0.03,
-  "current_trading_date_et": "2026-11-24",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.03,
-  "positions": {
-    "XLK": {
-      "ticker": "XLK",
-      "shares": 12.8106,
-      "avg_entry_price": 156.2293,
-      "current_price": 156.12,
-      "stop_loss": 153.48,
-      "take_profit": 161.4,
-      "opened_at": "2026-11-24T15:58:26Z",
-      "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (05cb9216) rolled 0.380 to randomly buy XLK at $156.12 with a 1.69% stop ($153.48) and 2R target ($161.40).",
-      "unrealized_pnl": -1.4,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1999.99
-    },
-    "TMO": {
-      "ticker": "TMO",
-      "shares": 2.8748,
-      "avg_entry_price": 696.077,
-      "current_price": 695.59,
-      "stop_loss": 683.54,
-      "take_profit": 719.69,
-      "opened_at": "2026-11-24T15:58:55Z",
-      "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (e0aa742a) rolled 0.658 to randomly buy TMO at $695.59 with a 1.73% stop ($683.54) and 2R target ($719.69).",
-      "unrealized_pnl": -1.4,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 1999.68
-    }
-  },
+  "max_drawdown_pct": -1.04,
+  "current_drawdown_pct": -1.04,
+  "current_trading_date_et": "2026-11-25",
+  "day_start_equity": 9997.2,
+  "daily_pnl_pct": -1.01,
+  "positions": {},
   "pending_orders": [],
   "trades": [
     {
@@ -86,6 +59,50 @@
       "exit_reason": "",
       "reasoning": "Null-hypothesis random control: deterministic cycle seed (e0aa742a) rolled 0.658 to randomly buy TMO at $695.59 with a 1.73% stop ($683.54) and 2R target ($719.69).",
       "confidence": 0.5
+    },
+    {
+      "trade_id": "trd_7d92164a9041",
+      "agent_id": "ctrl_random",
+      "side": "SELL",
+      "ticker": "XLK",
+      "shares": 12.8106,
+      "decision_timestamp": "2026-11-25T15:29:32Z",
+      "fill_timestamp": "2026-11-25T15:29:46Z",
+      "reference_price": 151.55,
+      "fill_price": 151.4439,
+      "spread_cost_dollars": 0.3882,
+      "slippage_cost_dollars": 0.971,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1940.09,
+      "stop_loss": 153.48,
+      "take_profit": 161.4,
+      "realized_pnl": -61.3,
+      "realized_pnl_pct": -3.06,
+      "exit_reason": "STOP_LOSS",
+      "reasoning": "Stop-loss triggered at $151.55 (intrabar low $149.00 <= stop $153.48)",
+      "confidence": 1.0
+    },
+    {
+      "trade_id": "trd_64a861256855",
+      "agent_id": "ctrl_random",
+      "side": "SELL",
+      "ticker": "TMO",
+      "shares": 2.8748,
+      "decision_timestamp": "2026-11-25T15:29:32Z",
+      "fill_timestamp": "2026-11-25T15:29:46Z",
+      "reference_price": 681.65,
+      "fill_price": 681.1729,
+      "spread_cost_dollars": 0.3918,
+      "slippage_cost_dollars": 0.9797,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1958.24,
+      "stop_loss": 683.54,
+      "take_profit": 719.69,
+      "realized_pnl": -42.84,
+      "realized_pnl_pct": -2.14,
+      "exit_reason": "STOP_LOSS",
+      "reasoning": "Stop-loss triggered at $681.65 (intrabar low $671.54 <= stop $683.54)",
+      "confidence": 1.0
     }
   ],
   "rejections": [],
@@ -125,6 +142,15 @@
       "positions_value": 3999.67,
       "drawdown_pct": -0.03,
       "daily_return_pct": -0.03
+    },
+    {
+      "timestamp": "2026-11-25T15:29:46Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 9895.86,
+      "cash": 9895.86,
+      "positions_value": 0,
+      "drawdown_pct": -1.04,
+      "daily_return_pct": -1.01
     }
   ],
   "daily_journal": [
@@ -142,7 +168,22 @@
         "BUY 12.8106 XLK @ $156.23 ($2001.39, stop $153.48) \u2014 Null-hypothesis random control: deterministic cycle seed (05cb9216) rolled 0.380 to randomly buy XLK at $156.12 with a 1.69% stop ($153.48) and 2R target ($161.40).",
         "BUY 2.8748 TMO @ $696.08 ($2001.08, stop $683.54) \u2014 Null-hypothesis random control: deterministic cycle seed (e0aa742a) rolled 0.658 to randomly buy TMO at $695.59 with a 1.73% stop ($683.54) and 2R target ($719.69)."
       ]
+    },
+    {
+      "trading_date_et": "2026-11-25",
+      "trading_day_number": 2,
+      "start_equity": 9997.2,
+      "end_equity": 9895.86,
+      "daily_pnl": -101.34,
+      "daily_pnl_pct": -1.01,
+      "trades_count": 2,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-25): Equity moved from $9,997.20 to $9,895.86 ($-101.34, -1.01%). Executed 2 trade(s) \u2014 Buys: none; Sells: XLK (STOP_LOSS, $-61.30), TMO (STOP_LOSS, $-42.84).",
+      "highlights": [
+        "SELL 12.8106 XLK @ $151.44 [STOP_LOSS: $-61.30 (-3.06%)] \u2014 Stop-loss triggered at $151.55 (intrabar low $149.00 <= stop $153.48)",
+        "SELL 2.8748 TMO @ $681.17 [STOP_LOSS: $-42.84 (-2.14%)] \u2014 Stop-loss triggered at $681.65 (intrabar low $671.54 <= stop $683.54)"
+      ]
     }
   ],
-  "last_updated": "2026-11-24T15:58:55Z"
+  "last_updated": "2026-11-25T15:29:46Z"
 }

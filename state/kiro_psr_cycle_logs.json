@@ -160,5 +160,37 @@
         "code": "SKIP_NO_CANDIDATE"
       }
     ]
+  },
+  {
+    "timestamp": "2026-11-25T15:29:32Z",
+    "trading_date_et": "2026-11-25",
+    "regime": "CRASH",
+    "spy_intraday_pct": -2.9,
+    "m_dd": 1.0,
+    "active_pairs_count": 12,
+    "pair_z_live": {
+      "P01": 0.0227,
+      "P02": 0.0225,
+      "P03": -1.9307,
+      "P04": -1.8589,
+      "P05": -0.4,
+      "P06": -0.8994,
+      "P07": 1.3096,
+      "P08": -0.3261,
+      "P09": 0.0169,
+      "P10": -1.4432,
+      "P11": -1.8764,
+      "P12": 1.0117
+    },
+    "top_candidates": [],
+    "actions": [
+      {
+        "code": "REGIME_CRASH",
+        "spy_intraday_pct": -2.9
+      },
+      {
+        "code": "SKIP_OUT_OF_WINDOW"
+      }
+    ]
   }
 ]
