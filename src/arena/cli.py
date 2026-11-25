@@ -607,6 +607,14 @@ def run_single_cycle(
     comp_state["last_decision_timestamp_utc"] = snapshot.decision_timestamp
     comp_state["current_trading_date_et"] = snapshot.trading_date_et
     comp_state["regime_summary"] = snapshot.regime_summary
+    comp_state["api_keys_status"] = {
+        "alpaca_paper_configured": bool(
+            (os.environ.get("ALPACA_API_KEY") or os.environ.get("APCA_API_KEY_ID") or "").strip()
+            and (os.environ.get("ALPACA_SECRET_KEY") or os.environ.get("APCA_API_SECRET_KEY") or "").strip()
+        ),
+        "gemini_configured": bool((os.environ.get("GEMINI_API_KEY") or "").strip()),
+        "checked_at_utc": fill_timestamp,
+    }
     if not comp_state.get("started_at_utc"):
         comp_state["started_at_utc"] = snapshot.decision_timestamp
     if comp_state.get("status") == "READY":
@@ -1420,6 +1428,244 @@ def cmd_learn_styles(args: argparse.Namespace) -> int:
     return 0
 
 
+MARKET_CLOSED_EXIT_CODE = 20
+
+
+def cmd_monitor_tick(args: argparse.Namespace) -> int:
+    """Fast 5-minute live market watch: check real-time SL/TP, mark-to-market, circuit breakers & refresh dashboard.
+
+    Preserves 100% strategy integrity: executes zero new strategy entries (those remain on the canonical
+    30-minute decision cadence) while watching open positions continuously every 5 minutes.
+    Returns exit code 0 while market is open, or 20 (MARKET_CLOSED_EXIT_CODE) when market is closed/completed.
+    """
+    load_dotenv_if_present()
+    assert_paper_trading_only()
+
+    state_dir = Path(args.state_dir) if getattr(args, "state_dir", None) else STATE_DIR
+    docs_dir = Path(args.docs_dir) if getattr(args, "docs_dir", None) else DOCS_DIR
+    target_reports = _resolve_reports_dir(state_dir, None)
+
+    comp_state = load_competition_state(state_dir=state_dir)
+    bug_fixes = load_bug_fixes_log(state_dir=state_dir)
+    ledger = LedgerManager(state_dir=state_dir / "agents")
+    agent_states_map = ledger.initialize_all_agents(initial_cash=INITIAL_CASH, overwrite=False)
+    agent_states = [agent_states_map[spec.agent_id] for spec in AGENT_SPECS]
+
+    if comp_state.get("status") == "COMPLETED":
+        logger.info("Competition is COMPLETED; monitor-tick exiting cleanly.")
+        return MARKET_CLOSED_EXIT_CODE
+
+    client = AlpacaPaperDataClient()
+    clock = client.get_clock()
+    now_utc = datetime.now(timezone.utc)
+    now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    today_et = to_et_datetime(now_iso).strftime("%Y-%m-%d")
+    is_open = bool(clock.get("is_open", False))
+    force_open = bool(getattr(args, "force_open_check", False))
+
+    if not is_open and not force_open:
+        logger.info("US market CLOSED during monitor-tick (%s). Signaling session stop.", now_iso)
+        return MARKET_CLOSED_EXIT_CODE
+
+    if not client.has_credentials():
+        logger.error("Alpaca Paper API credentials missing; skipping live monitor-tick.")
+        return MARKET_CLOSED_EXIT_CODE
+
+    held_tickers = sorted(
+        {sym for st in agent_states for sym, pos in st.positions.items() if pos.shares > 0}
+        | {"SPY", "QQQ", "TLT", "GLD"}
+    )
+    quotes = client.fetch_quotes_up_to(held_tickers, now_iso)
+    next_quotes, next_bars = client.fetch_next_fill_quotes_and_bars(held_tickers, now_iso)
+
+    fill_dt = max(now_utc, parse_iso_utc(now_iso) + timedelta(seconds=1))
+    fill_iso = format_iso_utc(fill_dt)
+
+    # Merge live quotes into effective quotes, mark prices, and quote-backed intrabar check bars
+    eff_quotes: Dict[str, Quote] = {}
+    mark_prices: Dict[str, float] = {}
+    check_bars: Dict[str, Bar] = dict(next_bars)
+    for sym in held_tickers:
+        q = next_quotes.get(sym) or quotes.get(sym)
+        if q is not None and q.mid_price > 0:
+            eff_quotes[sym] = q
+            mark_prices[sym] = round(q.mid_price, 4)
+            if sym not in check_bars:
+                check_bars[sym] = Bar(
+                    ticker=sym,
+                    timestamp=fill_iso,
+                    open=q.mid_price,
+                    high=max(q.mid_price, q.ask_price),
+                    low=min(q.mid_price, q.bid_price),
+                    close=q.mid_price,
+                    volume=0.0,
+                )
+        elif sym in check_bars and check_bars[sym].close > 0:
+            mark_prices[sym] = round(check_bars[sym].close, 4)
+
+    if not mark_prices:
+        logger.warning("Monitor-tick received no live quotes; skipping update.")
+        return 0
+
+    simulator = FillSimulator()
+    active_dates: List[str] = list(comp_state.get("active_trading_dates") or [])
+    if today_et not in active_dates:
+        active_dates.append(today_et)
+        active_dates.sort()
+    day_num = max(1, len(active_dates))
+
+    sl_tp_fills = 0
+    for st in agent_states:
+        ledger.start_of_day_check(st, today_et)
+        trades_before = len(st.trades)
+        if st.positions and check_bars:
+            triggered = simulator.check_and_execute_stops_and_targets(
+                state=st,
+                next_bars_by_ticker=check_bars,
+                quotes_by_ticker=eff_quotes,
+                decision_timestamp=now_iso,
+                fill_timestamp=fill_iso,
+                apply_to_state=True,
+            )
+            sl_tp_fills += len(triggered)
+
+        # Keep equity curve compact: collapse intra-15-min points when no trade occurred
+        had_trade = len(st.trades) > trades_before
+        prev_curve_len = len(st.equity_curve)
+        prev_last_ts = st.equity_curve[-1].timestamp if prev_curve_len > 0 else ""
+
+        ledger.update_mark_to_market(
+            state=st,
+            prices_by_ticker=mark_prices,
+            timestamp=fill_iso,
+            trading_date_et=today_et,
+        )
+        if st.status == "BLOWN_UP" and st.positions:
+            ledger.flatten_all_positions(
+                state=st,
+                quotes_by_ticker=eff_quotes,
+                decision_timestamp=now_iso,
+                fill_timestamp=fill_iso,
+                exit_reason="BLOWN_UP",
+                simulator=simulator,
+            )
+            ledger.update_mark_to_market(
+                state=st,
+                prices_by_ticker=mark_prices,
+                timestamp=fill_iso,
+                trading_date_et=today_et,
+            )
+            had_trade = True
+
+        if not had_trade and prev_curve_len >= 2 and prev_last_ts:
+            try:
+                gap_sec = (parse_iso_utc(fill_iso) - parse_iso_utc(prev_last_ts)).total_seconds()
+                if 0 <= gap_sec < 840:  # < 14 min -> replace previous intra-interval point cleanly
+                    latest_pt = st.equity_curve.pop()
+                    st.equity_curve[-1] = latest_pt
+            except Exception:
+                pass
+
+        ledger.update_daily_journal(st, trading_date_et=today_et, trading_day_number=day_num)
+        ledger.save_agent_state(st)
+
+    comp_state["last_updated_utc"] = fill_iso
+    comp_state["last_monitor_tick_utc"] = fill_iso
+    comp_state["monitor_ticks_run"] = int(comp_state.get("monitor_ticks_run") or 0) + 1
+    save_competition_state(comp_state, state_dir=state_dir)
+    _rebuild_dashboard(
+        agent_states=agent_states,
+        competition_state=comp_state,
+        bug_fixes=bug_fixes,
+        output_dir=docs_dir,
+        state_dir=state_dir,
+        reports_dir=target_reports,
+    )
+    logger.info(
+        "LIVE 5-MIN MONITOR TICK complete (%s) — %d tickers marked, %d SL/TP stops executed.",
+        fill_iso,
+        len(mark_prices),
+        sl_tp_fills,
+    )
+    return 0
+
+
+def cmd_session_step(args: argparse.Namespace) -> int:
+    """Single step for continuous market-hours runner: runs 30-min full cycle when due, else 5-min live monitor.
+
+    Returns:
+      - 0  : Market is OPEN and step succeeded (continue sleeping 5 min & looping)
+      - 20 : Market is CLOSED or competition COMPLETED (catch-up report checked; exit loop cleanly)
+    """
+    load_dotenv_if_present()
+    assert_paper_trading_only()
+
+    state_dir = Path(args.state_dir) if getattr(args, "state_dir", None) else STATE_DIR
+    comp_state = load_competition_state(state_dir=state_dir)
+    if comp_state.get("status") == "COMPLETED":
+        logger.info("Competition is COMPLETED; session-step exiting with code %d.", MARKET_CLOSED_EXIT_CODE)
+        return MARKET_CLOSED_EXIT_CODE
+
+    client = AlpacaPaperDataClient()
+    clock = client.get_clock()
+    now_utc = datetime.now(timezone.utc)
+    now_iso = str(clock.get("timestamp") or format_iso_utc(now_utc))
+    today_et = to_et_datetime(now_iso).strftime("%Y-%m-%d")
+    is_open = bool(clock.get("is_open", False))
+    force_open = bool(getattr(args, "force_open_check", False))
+
+    if not is_open and not force_open:
+        # Run cmd_run_cycle once so post-close catch-up daily report & dashboard refresh execute cleanly
+        cmd_run_cycle(args)
+        return MARKET_CLOSED_EXIT_CODE
+
+    # Determine whether a full 30-min decision cycle is due
+    last_dec = str(comp_state.get("last_decision_timestamp_utc") or "")
+    last_date = str(comp_state.get("current_trading_date_et") or "")
+    et_dt = to_et_datetime(now_iso)
+    near_30m_boundary = (et_dt.minute % 30) <= 4
+    elapsed_min = 999.0
+    if last_dec:
+        try:
+            elapsed_min = (parse_iso_utc(now_iso) - parse_iso_utc(last_dec)).total_seconds() / 60.0
+        except Exception:
+            elapsed_min = 999.0
+
+    # Also trigger full cycle near market close (so flatten_eod & EOD daily report always run!)
+    _, sess_close_et = get_session_hours_et(date.fromisoformat(today_et))
+    close_h, close_m = (int(x) for x in sess_close_et.split(":"))
+    mins_to_close = (close_h * 60 + close_m) - (et_dt.hour * 60 + et_dt.minute)
+    is_final_close_window = (0 <= mins_to_close <= 32) and (elapsed_min >= 18.0)
+
+    full_cycle_due = (
+        (last_date != today_et)
+        or (elapsed_min >= 27.5)
+        or (near_30m_boundary and elapsed_min >= 20.0)
+        or is_final_close_window
+        or force_open
+    )
+
+    if full_cycle_due:
+        logger.info(
+            "session-step -> FULL 30-MIN CYCLE (elapsed=%.1f min, ET=%s, mins_to_close=%d)",
+            elapsed_min,
+            et_dt.strftime("%H:%M"),
+            mins_to_close,
+        )
+        rc = cmd_run_cycle(args)
+        # Re-check if competition just finished on Day 30
+        if load_competition_state(state_dir=state_dir).get("status") == "COMPLETED":
+            return MARKET_CLOSED_EXIT_CODE
+        return rc
+
+    logger.info(
+        "session-step -> 5-MIN LIVE MONITOR TICK (elapsed=%.1f min since last 30m cycle, ET=%s)",
+        elapsed_min,
+        et_dt.strftime("%H:%M"),
+    )
+    return cmd_monitor_tick(args)
+
+
 def cmd_generate_report(args: argparse.Namespace) -> int:
     """Generate (or regenerate) a verified daily GFM Markdown report from current state."""
     load_dotenv_if_present()
@@ -1547,6 +1793,26 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_learn.add_argument("--offline", action="store_true", help="Use only already-cached filings and prices.")
     p_learn.set_defaults(func=cmd_learn_styles)
+
+    # monitor-tick
+    p_mon = subparsers.add_parser(
+        "monitor-tick",
+        help="Run a fast 5-minute live price & SL/TP stop-loss monitor tick and refresh dashboard.",
+    )
+    p_mon.add_argument("--force-open-check", action="store_true", help="Bypass market-open check.")
+    p_mon.add_argument("--state-dir", type=str, default=None, help="Override state directory path.")
+    p_mon.add_argument("--docs-dir", type=str, default=None, help="Override docs output directory path.")
+    p_mon.set_defaults(func=cmd_monitor_tick)
+
+    # session-step
+    p_step = subparsers.add_parser(
+        "session-step",
+        help="Execute one step of continuous market-hours watch (30-min full cycle when due, else 5-min live monitor).",
+    )
+    p_step.add_argument("--force-open-check", action="store_true", help="Bypass market-open check.")
+    p_step.add_argument("--state-dir", type=str, default=None, help="Override state directory path.")
+    p_step.add_argument("--docs-dir", type=str, default=None, help="Override docs output directory path.")
+    p_step.set_defaults(func=cmd_session_step)
 
     # generate-report
     p_rep = subparsers.add_parser(
