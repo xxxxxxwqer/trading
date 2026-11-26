@@ -1068,19 +1068,65 @@ code, .mono {
   padding: 7px 9px;
 }
 
-.md-copy-btn {
+.md-copy-btn, .md-save-btn {
   background: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-strong);
   border-radius: 6px;
   padding: 6px 12px;
   font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.md-copy-btn:hover {
+.md-copy-btn:hover, .md-save-btn:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
+}
+
+.md-save-primary {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.md-save-primary:hover {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 12px;
+  }
+  .site-header, .paper-warning-banner, .no-print, .report-actions-bar, .md-raw-details, .print-hidden {
+    display: none !important;
+  }
+  .panel, .md-report-panel {
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .md-h1, .md-h2, .md-h3, .strong, th, td {
+    color: #0f172a !important;
+  }
+  .md-table th, .md-table td {
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+  }
+  .md-table th {
+    background: #f1f5f9 !important;
+  }
+  .md-quote {
+    background: #f8fafc !important;
+    color: #1e293b !important;
+    border-left: 3px solid #0284c7 !important;
+  }
 }
 
 .md-raw-details {

@@ -2864,16 +2864,19 @@ class DashboardBuilder:
                     f'<a href="#{anchor_id}" class="agent-pill {"active" if idx == 0 else ""}">Day {day_num} ({_esc(date_et)})</a>'
                 )
                 report_articles.append(
-                    f"""    <section class="panel md-report-panel" id="{anchor_id}">
+                    f"""    <section class="panel md-report-panel" id="{anchor_id}" data-report-day="{day_num}" data-report-date="{_esc(date_et)}" data-report-file="{_esc(fname)}">
       <div class="panel-header">
         <div>
           <h2>&#128203; Day {day_num}/{COMPETITION_TRADING_DAYS} Daily Report &mdash; {_esc(date_et)}</h2>
           <p class="panel-sub">File: <code>reports/daily/{_esc(fname)}</code> &bull; Generator: <code>{_esc(gen_mode)}</code> &bull; Generated: {_esc(format_kst(rep.get('generated_at_utc')))}</p>
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <div class="report-actions-bar" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <span class="status-pill status-active">{_esc(badge_label)}</span>
-          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('{anchor_id}-raw', this)">&#128203; Copy Raw .md</button>
-          <a href="{gh_file_url}" target="_blank" rel="noopener" class="nav-link">GitHub .md &#8599;</a>
+          <button type="button" class="md-save-btn md-save-primary" onclick="downloadMarkdown('{anchor_id}-raw', '{_esc(fname)}')">&#128190; .md 저장</button>
+          <button type="button" class="md-save-btn" onclick="downloadStandaloneHtml('{anchor_id}', '{_esc(date_et)}', {day_num})">&#128196; .html 저장</button>
+          <button type="button" class="md-save-btn" onclick="printSingleReport('{anchor_id}')">&#128424; PDF 저장</button>
+          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('{anchor_id}-raw', this)">&#128203; 복사</button>
+          <a href="{gh_file_url}" target="_blank" rel="noopener" class="nav-link">GitHub &#8599;</a>
         </div>
       </div>
       <div class="md-report-body">
@@ -2886,13 +2889,16 @@ class DashboardBuilder:
     </section>"""
                 )
 
-            content_html = f"""    <section class="panel">
+            content_html = f"""    <section class="panel no-print">
       <div class="panel-header">
         <div>
           <h2>&#128221; Daily Performance &amp; Technical Regime Reports ({len(daily_reports)} Published)</h2>
           <p class="panel-sub">Zero look-ahead &bull; 100% Python pre-calculated metrics &bull; Strict anti-hallucination &amp; no-strategy-tuning rules.</p>
         </div>
-        <a href="{github_latest_url}" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <button type="button" class="md-save-btn md-save-primary" onclick="downloadAllReports()">&#128230; 전체 리포트 모음 저장 (.md)</button>
+          <a href="{github_latest_url}" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+        </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;">
         {' '.join(nav_pills)}
@@ -2914,16 +2920,79 @@ class DashboardBuilder:
 {content_html}
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer no-print">
     <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Daily Reports &bull; Updated {_esc(header_ctx['updated_kst'])} / {_esc(header_ctx['updated_et'])}</p>
   </footer>
   <script>
+    function _triggerDownload(content, filename, mimeType) {{
+      var blob = new Blob([content], {{ type: mimeType || 'text/plain;charset=utf-8' }});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {{
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }}, 200);
+    }}
+
+    function downloadMarkdown(elId, filename) {{
+      var el = document.getElementById(elId);
+      if (!el) return;
+      _triggerDownload(el.textContent || '', filename || 'daily_report.md', 'text/markdown;charset=utf-8');
+    }}
+
+    function downloadStandaloneHtml(sectionId, dateEt, dayNum) {{
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      var bodyEl = sec.querySelector('.md-report-body');
+      var bodyHtml = bodyEl ? bodyEl.innerHTML : '';
+      var title = 'AI Trading Arena Day ' + dayNum + ' Report (' + dateEt + ')';
+      var doc = '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>' + title + '</title>'
+        + '<style>body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;max-width:1040px;margin:32px auto;padding:0 20px;color:#0f172a;line-height:1.65;}}h1,h2,h3{{color:#0f172a;margin-top:24px;}}h2{{border-bottom:2px solid #e2e8f0;padding-bottom:6px;}}table{{border-collapse:collapse;width:100%;margin:14px 0;font-size:13px;}}th,td{{border:1px solid #cbd5e1;padding:7px 9px;text-align:left;}}th{{background:#f1f5f9;font-weight:700;}}blockquote{{background:#f8fafc;border-left:4px solid #0284c7;padding:10px 14px;margin:12px 0;}}code{{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:12px;}}hr{{border:0;border-top:1px solid #cbd5e1;margin:20px 0;}}</style>'
+        + '</head><body>' + bodyHtml + '</body></html>';
+      var dayPad = String(dayNum).padStart(2, '0');
+      _triggerDownload(doc, dateEt + '_day' + dayPad + '_report.html', 'text/html;charset=utf-8');
+    }}
+
+    function downloadAllReports() {{
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.md-report-panel'));
+      if (!panels.length) return;
+      // Sort chronologically (Day 1 -> latest)
+      panels.sort(function(a, b) {{
+        return Number(a.getAttribute('data-report-day') || 0) - Number(b.getAttribute('data-report-day') || 0);
+      }});
+      var chunks = [];
+      panels.forEach(function(p) {{
+        var pre = p.querySelector('.md-raw-pre');
+        if (pre && pre.textContent) chunks.push(pre.textContent.trim());
+      }});
+      var firstDay = String(panels[0].getAttribute('data-report-day') || 1).padStart(2, '0');
+      var lastDay = String(panels[panels.length - 1].getAttribute('data-report-day') || 1).padStart(2, '0');
+      var combined = chunks.join('\\n\\n---\\n\\n') + '\\n';
+      _triggerDownload(combined, 'AI_Trading_Arena_Reports_Day' + firstDay + '-Day' + lastDay + '.md', 'text/markdown;charset=utf-8');
+    }}
+
+    function printSingleReport(sectionId) {{
+      var panels = document.querySelectorAll('.md-report-panel');
+      panels.forEach(function(p) {{
+        if (p.id !== sectionId) p.classList.add('print-hidden');
+        else p.classList.remove('print-hidden');
+      }});
+      window.print();
+      setTimeout(function() {{
+        panels.forEach(function(p) {{ p.classList.remove('print-hidden'); }});
+      }}, 500);
+    }}
+
     function copyRawMarkdown(elId, btn) {{
       var el = document.getElementById(elId);
       if (!el) return;
       navigator.clipboard.writeText(el.textContent || '').then(function() {{
         var prev = btn.textContent;
-        btn.textContent = 'Copied!';
+        btn.textContent = '복사됨!';
         setTimeout(function() {{ btn.textContent = prev; }}, 1800);
       }});
     }}
@@ -4003,19 +4072,65 @@ code, .mono {
   padding: 7px 9px;
 }
 
-.md-copy-btn {
+.md-copy-btn, .md-save-btn {
   background: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-strong);
   border-radius: 6px;
   padding: 6px 12px;
   font-size: 12px;
+  font-weight: 600;
   cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.md-copy-btn:hover {
+.md-copy-btn:hover, .md-save-btn:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
+}
+
+.md-save-primary {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.md-save-primary:hover {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 12px;
+  }
+  .site-header, .paper-warning-banner, .no-print, .report-actions-bar, .md-raw-details, .print-hidden {
+    display: none !important;
+  }
+  .panel, .md-report-panel {
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .md-h1, .md-h2, .md-h3, .strong, th, td {
+    color: #0f172a !important;
+  }
+  .md-table th, .md-table td {
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+  }
+  .md-table th {
+    background: #f1f5f9 !important;
+  }
+  .md-quote {
+    background: #f8fafc !important;
+    color: #1e293b !important;
+    border-left: 3px solid #0284c7 !important;
+  }
 }
 
 .md-raw-details {

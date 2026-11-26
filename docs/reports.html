@@ -94,28 +94,34 @@
     </nav>
   </header>
   <main class="container">
-    <section class="panel">
+    <section class="panel no-print">
       <div class="panel-header">
         <div>
           <h2>&#128221; Daily Performance &amp; Technical Regime Reports (1 Published)</h2>
           <p class="panel-sub">Zero look-ahead &bull; 100% Python pre-calculated metrics &bull; Strict anti-hallucination &amp; no-strategy-tuning rules.</p>
         </div>
-        <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/LATEST_REPORT.md" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <button type="button" class="md-save-btn md-save-primary" onclick="downloadAllReports()">&#128230; 전체 리포트 모음 저장 (.md)</button>
+          <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/LATEST_REPORT.md" target="_blank" rel="noopener" class="nav-link">LATEST_REPORT.md on GitHub &#8599;</a>
+        </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;">
         <a href="#report-day-1-2026-11-25" class="agent-pill active">Day 1 (2026-11-25)</a>
       </div>
     </section>
-    <section class="panel md-report-panel" id="report-day-1-2026-11-25">
+    <section class="panel md-report-panel" id="report-day-1-2026-11-25" data-report-day="1" data-report-date="2026-11-25" data-report-file="2026-11-25_day01.md">
       <div class="panel-header">
         <div>
           <h2>&#128203; Day 1/30 Daily Report &mdash; 2026-11-25</h2>
           <p class="panel-sub">File: <code>reports/daily/2026-11-25_day01.md</code> &bull; Generator: <code>gemini-flash (gemini-3.8-flash)</code> &bull; Generated: 2026-11-26 10:00:14 KST</p>
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <div class="report-actions-bar" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <span class="status-pill status-active">Day 1/30</span>
-          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('report-day-1-2026-11-25-raw', this)">&#128203; Copy Raw .md</button>
-          <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/daily/2026-11-25_day01.md" target="_blank" rel="noopener" class="nav-link">GitHub .md &#8599;</a>
+          <button type="button" class="md-save-btn md-save-primary" onclick="downloadMarkdown('report-day-1-2026-11-25-raw', '2026-11-25_day01.md')">&#128190; .md 저장</button>
+          <button type="button" class="md-save-btn" onclick="downloadStandaloneHtml('report-day-1-2026-11-25', '2026-11-25', 1)">&#128196; .html 저장</button>
+          <button type="button" class="md-save-btn" onclick="printSingleReport('report-day-1-2026-11-25')">&#128424; PDF 저장</button>
+          <button type="button" class="md-copy-btn" onclick="copyRawMarkdown('report-day-1-2026-11-25-raw', this)">&#128203; 복사</button>
+          <a href="https://github.com/xxxxxxwqer/trading/blob/main/reports/daily/2026-11-25_day01.md" target="_blank" rel="noopener" class="nav-link">GitHub &#8599;</a>
         </div>
       </div>
       <div class="md-report-body">
@@ -279,16 +285,79 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer no-print">
     <p><strong>PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)</strong> &bull; AI Trading Arena Daily Reports &bull; Updated 2026-11-26 10:00:02 KST / 2026-11-25 20:00:02 EST</p>
   </footer>
   <script>
+    function _triggerDownload(content, filename, mimeType) {
+      var blob = new Blob([content], { type: mimeType || 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 200);
+    }
+
+    function downloadMarkdown(elId, filename) {
+      var el = document.getElementById(elId);
+      if (!el) return;
+      _triggerDownload(el.textContent || '', filename || 'daily_report.md', 'text/markdown;charset=utf-8');
+    }
+
+    function downloadStandaloneHtml(sectionId, dateEt, dayNum) {
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      var bodyEl = sec.querySelector('.md-report-body');
+      var bodyHtml = bodyEl ? bodyEl.innerHTML : '';
+      var title = 'AI Trading Arena Day ' + dayNum + ' Report (' + dateEt + ')';
+      var doc = '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>' + title + '</title>'
+        + '<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;max-width:1040px;margin:32px auto;padding:0 20px;color:#0f172a;line-height:1.65;}h1,h2,h3{color:#0f172a;margin-top:24px;}h2{border-bottom:2px solid #e2e8f0;padding-bottom:6px;}table{border-collapse:collapse;width:100%;margin:14px 0;font-size:13px;}th,td{border:1px solid #cbd5e1;padding:7px 9px;text-align:left;}th{background:#f1f5f9;font-weight:700;}blockquote{background:#f8fafc;border-left:4px solid #0284c7;padding:10px 14px;margin:12px 0;}code{background:#f1f5f9;padding:1px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:12px;}hr{border:0;border-top:1px solid #cbd5e1;margin:20px 0;}</style>'
+        + '</head><body>' + bodyHtml + '</body></html>';
+      var dayPad = String(dayNum).padStart(2, '0');
+      _triggerDownload(doc, dateEt + '_day' + dayPad + '_report.html', 'text/html;charset=utf-8');
+    }
+
+    function downloadAllReports() {
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.md-report-panel'));
+      if (!panels.length) return;
+      // Sort chronologically (Day 1 -> latest)
+      panels.sort(function(a, b) {
+        return Number(a.getAttribute('data-report-day') || 0) - Number(b.getAttribute('data-report-day') || 0);
+      });
+      var chunks = [];
+      panels.forEach(function(p) {
+        var pre = p.querySelector('.md-raw-pre');
+        if (pre && pre.textContent) chunks.push(pre.textContent.trim());
+      });
+      var firstDay = String(panels[0].getAttribute('data-report-day') || 1).padStart(2, '0');
+      var lastDay = String(panels[panels.length - 1].getAttribute('data-report-day') || 1).padStart(2, '0');
+      var combined = chunks.join('\n\n---\n\n') + '\n';
+      _triggerDownload(combined, 'AI_Trading_Arena_Reports_Day' + firstDay + '-Day' + lastDay + '.md', 'text/markdown;charset=utf-8');
+    }
+
+    function printSingleReport(sectionId) {
+      var panels = document.querySelectorAll('.md-report-panel');
+      panels.forEach(function(p) {
+        if (p.id !== sectionId) p.classList.add('print-hidden');
+        else p.classList.remove('print-hidden');
+      });
+      window.print();
+      setTimeout(function() {
+        panels.forEach(function(p) { p.classList.remove('print-hidden'); });
+      }, 500);
+    }
+
     function copyRawMarkdown(elId, btn) {
       var el = document.getElementById(elId);
       if (!el) return;
       navigator.clipboard.writeText(el.textContent || '').then(function() {
         var prev = btn.textContent;
-        btn.textContent = 'Copied!';
+        btn.textContent = '복사됨!';
         setTimeout(function() { btn.textContent = prev; }, 1800);
       });
     }
