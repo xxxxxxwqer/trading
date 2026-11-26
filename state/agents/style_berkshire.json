@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 7998.25,
-  "equity": 9996.74,
-  "peak_equity": 10000.0,
+  "equity": 10024.02,
+  "peak_equity": 10024.02,
   "max_drawdown_pct": -0.03,
-  "current_drawdown_pct": -0.03,
+  "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-25",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.03,
+  "daily_pnl_pct": 0.24,
   "positions": {
     "WFC": {
       "ticker": "WFC",
       "shares": 25.0281,
       "avg_entry_price": 79.98,
-      "current_price": 79.85,
+      "current_price": 80.94,
       "stop_loss": 77.85,
       "take_profit": 86.24,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24.",
-      "unrealized_pnl": -3.26,
-      "unrealized_pnl_pct": -0.16,
-      "market_value": 1998.49
+      "unrealized_pnl": 24.02,
+      "unrealized_pnl_pct": 1.2,
+      "market_value": 2025.77
     }
   },
   "pending_orders": [],
@@ -72,6 +72,15 @@
       "positions_value": 1998.49,
       "drawdown_pct": -0.03,
       "daily_return_pct": -0.03
+    },
+    {
+      "timestamp": "2026-11-26T01:00:02Z",
+      "trading_date_et": "2026-11-25",
+      "equity": 10024.02,
+      "cash": 7998.25,
+      "positions_value": 2025.77,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.24
     }
   ],
   "daily_journal": [
@@ -79,16 +88,16 @@
       "trading_date_et": "2026-11-25",
       "trading_day_number": 1,
       "start_equity": 10000.0,
-      "end_equity": 9996.74,
-      "daily_pnl": -3.26,
-      "daily_pnl_pct": -0.03,
+      "end_equity": 10024.02,
+      "daily_pnl": 24.02,
+      "daily_pnl_pct": 0.24,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 1 (2026-11-25): Equity moved from $10,000.00 to $9,996.74 ($-3.26, -0.03%). Executed 1 trade(s) \u2014 Buys: WFC ($2,002); Sells: none.",
+      "summary_text": "Day 1 (2026-11-25): Equity moved from $10,000.00 to $10,024.02 (+$24.02, +0.24%). Executed 1 trade(s) \u2014 Buys: WFC ($2,002); Sells: none.",
       "highlights": [
         "BUY 25.0281 WFC @ $79.98 ($2001.75, stop $77.85) \u2014 Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24."
       ]
     }
   ],
-  "last_updated": "2026-11-25T17:03:17Z"
+  "last_updated": "2026-11-26T01:00:02Z"
 }

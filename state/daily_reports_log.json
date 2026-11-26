@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "trading_date_et": "2026-11-25",
+    "trading_day_number": 1,
+    "is_final_day": false,
+    "is_post_close_final": true,
+    "filename": "2026-11-25_day01.md",
+    "relative_path": "reports/daily/2026-11-25_day01.md",
+    "generator": "gemini-flash (gemini-3.8-flash)",
+    "generated_at_utc": "2026-11-26T01:00:14Z"
+  }
+]
