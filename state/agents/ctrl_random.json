@@ -5,27 +5,40 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.61,
-  "equity": 10015.53,
+  "cash": 5994.5,
+  "equity": 10010.21,
   "peak_equity": 10020.17,
-  "max_drawdown_pct": -0.05,
-  "current_drawdown_pct": -0.05,
+  "max_drawdown_pct": -0.1,
+  "current_drawdown_pct": -0.1,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.16,
+  "daily_pnl_pct": 0.1,
   "positions": {
     "ADBE": {
       "ticker": "ADBE",
       "shares": 8.5927,
       "avg_entry_price": 232.918,
-      "current_price": 234.725,
+      "current_price": 234.27,
       "stop_loss": 228.61,
       "take_profit": 241.04,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
-      "unrealized_pnl": 15.53,
-      "unrealized_pnl_pct": 0.78,
-      "market_value": 2016.92
+      "unrealized_pnl": 11.62,
+      "unrealized_pnl_pct": 0.58,
+      "market_value": 2013.01
+    },
+    "XLI": {
+      "ticker": "XLI",
+      "shares": 12.1819,
+      "avg_entry_price": 164.5151,
+      "current_price": 164.4,
+      "stop_loss": 161.42,
+      "take_profit": 170.36,
+      "opened_at": "2026-11-27T15:02:10Z",
+      "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
+      "unrealized_pnl": -1.41,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2002.7
     }
   },
   "pending_orders": [],
@@ -50,6 +63,28 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
+      "confidence": 0.5
+    },
+    {
+      "trade_id": "trd_2fb88e7fd568",
+      "agent_id": "ctrl_random",
+      "side": "BUY",
+      "ticker": "XLI",
+      "shares": 12.1819,
+      "decision_timestamp": "2026-11-27T15:01:54Z",
+      "fill_timestamp": "2026-11-27T15:02:10Z",
+      "reference_price": 164.4,
+      "fill_price": 164.5151,
+      "spread_cost_dollars": 0.4008,
+      "slippage_cost_dollars": 1.0014,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2004.11,
+      "stop_loss": 161.42,
+      "take_profit": 170.36,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
       "confidence": 0.5
     }
   ],
@@ -108,6 +143,24 @@
       "positions_value": 2016.92,
       "drawdown_pct": -0.05,
       "daily_return_pct": 0.16
+    },
+    {
+      "timestamp": "2026-11-27T14:56:53Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10013.6,
+      "cash": 7998.61,
+      "positions_value": 2014.99,
+      "drawdown_pct": -0.07,
+      "daily_return_pct": 0.14
+    },
+    {
+      "timestamp": "2026-11-27T15:02:10Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10010.21,
+      "cash": 5994.5,
+      "positions_value": 4015.71,
+      "drawdown_pct": -0.1,
+      "daily_return_pct": 0.1
     }
   ],
   "daily_journal": [
@@ -127,16 +180,17 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10015.53,
-      "daily_pnl": 15.53,
-      "daily_pnl_pct": 0.16,
-      "trades_count": 1,
+      "end_equity": 10010.21,
+      "daily_pnl": 10.21,
+      "daily_pnl_pct": 0.1,
+      "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,015.53 (+$15.53, +0.16%). Executed 1 trade(s) \u2014 Buys: ADBE ($2,001); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,010.21 (+$10.21, +0.10%). Executed 2 trade(s) \u2014 Buys: ADBE ($2,001), XLI ($2,004); Sells: none.",
       "highlights": [
-        "BUY 8.5927 ADBE @ $232.92 ($2001.39, stop $228.61) \u2014 Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04)."
+        "BUY 8.5927 ADBE @ $232.92 ($2001.39, stop $228.61) \u2014 Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
+        "BUY 12.1819 XLI @ $164.52 ($2004.11, stop $161.42) \u2014 Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36)."
       ]
     }
   ],
-  "last_updated": "2026-11-27T14:51:49Z"
+  "last_updated": "2026-11-27T15:02:10Z"
 }

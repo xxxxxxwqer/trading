@@ -78,5 +78,45 @@
     "confidence": 0.9,
     "is_fallback": false,
     "reasoning": "As an ultra-cautious risk-first trader, market indices like SPY and QQQ are showing extremely high RSI levels above 80, indicating short-term overbought conditions and elevated volatility risk. Preserving capital is paramount, so I am remaining in 100% cash until a lower-risk pullback presents an A+"
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:01:54Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_technical",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "Current market conditions show many extended names near upper Bollinger Bands without sufficient risk-reward ratios meeting the strict 2:1 CMT criteria."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:01:54Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_catalyst",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Existing position in PLTR continues to show strong positive momentum backed by recent defense contract news, while current news catalysts across the market lack sufficient immediate volume confirmation to warrant adding new positions."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:01:54Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_macro",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.75,
+    "is_fallback": false,
+    "reasoning": "Market regime remains risk-on with SPY and QQQ pushing higher, though our existing NVDA position is experiencing a mild pullback. Maintaining current exposure without adding new risk given the existing open position."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:01:54Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_cautious",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.9,
+    "is_fallback": false,
+    "reasoning": "As a cautious, risk-first trader focusing on capital preservation, current market RSI levels across major indices are elevated (SPY RSI 73.9) with stretched valuations, presenting an unfavorable risk-reward environment. Maintaining 100% cash until a high-conviction, low-volatility A+ setup materiali"
   }
 ]

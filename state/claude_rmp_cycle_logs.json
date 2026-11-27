@@ -150,5 +150,81 @@
         "spy_intraday_pct": 1.33
       }
     ]
+  },
+  {
+    "timestamp": "2026-11-27T15:01:54Z",
+    "trading_date_et": "2026-11-27",
+    "regime_score": 0,
+    "regime_flags": {
+      "C1": false,
+      "C2": false,
+      "C3": false,
+      "C4": false
+    },
+    "breadth_ratio": 0.4528,
+    "slots": 0,
+    "dd_pct": 0.0,
+    "heat_dollars": 0.0,
+    "heat_cap_dollars": 350.0,
+    "spy_intraday_pct": 0.51,
+    "leaders_top10": [
+      {
+        "ticker": "WMT",
+        "score": 1.9932,
+        "beta": 0.053
+      },
+      {
+        "ticker": "BRK.B",
+        "score": 1.8975,
+        "beta": 0.144
+      },
+      {
+        "ticker": "COST",
+        "score": 1.6861,
+        "beta": -0.127
+      },
+      {
+        "ticker": "PG",
+        "score": 1.6672,
+        "beta": -0.04
+      },
+      {
+        "ticker": "DIS",
+        "score": 1.4433,
+        "beta": 0.412
+      },
+      {
+        "ticker": "AAPL",
+        "score": 1.4029,
+        "beta": 0.486
+      },
+      {
+        "ticker": "LLY",
+        "score": 1.3664,
+        "beta": 0.38
+      },
+      {
+        "ticker": "TMO",
+        "score": 1.2031,
+        "beta": 0.832
+      },
+      {
+        "ticker": "V",
+        "score": 1.179,
+        "beta": 0.451
+      },
+      {
+        "ticker": "ISRG",
+        "score": 1.1789,
+        "beta": 0.821
+      }
+    ],
+    "candidate_checks": [],
+    "actions": [
+      {
+        "code": "SKIP_REGIME_OFF",
+        "spy_intraday_pct": 0.51
+      }
+    ]
   }
 ]
