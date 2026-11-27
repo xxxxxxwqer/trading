@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.39,
-  "equity": 10018.65,
+  "equity": 9997.75,
   "peak_equity": 10019.39,
   "max_drawdown_pct": -0.29,
-  "current_drawdown_pct": -0.01,
+  "current_drawdown_pct": -0.22,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 9996.42,
-  "daily_pnl_pct": 0.22,
+  "daily_pnl_pct": 0.01,
   "positions": {
     "ABBV": {
       "ticker": "ABBV",
       "shares": 6.4035,
       "avg_entry_price": 296.9177,
-      "current_price": 292.84,
+      "current_price": 291.55,
       "stop_loss": 281.8745,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -26.11,
-      "unrealized_pnl_pct": -1.37,
-      "market_value": 1875.2
+      "unrealized_pnl": -34.37,
+      "unrealized_pnl_pct": -1.81,
+      "market_value": 1866.94
     },
     "DIS": {
       "ticker": "DIS",
       "shares": 15.4083,
       "avg_entry_price": 123.3964,
-      "current_price": 127.19,
+      "current_price": 127.03,
       "stop_loss": 117.1445,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 58.45,
-      "unrealized_pnl_pct": 3.07,
-      "market_value": 1959.78
+      "unrealized_pnl": 55.99,
+      "unrealized_pnl_pct": 2.94,
+      "market_value": 1957.32
     },
     "MCD": {
       "ticker": "MCD",
       "shares": 6.6546,
       "avg_entry_price": 285.7149,
-      "current_price": 283.06,
+      "current_price": 282.32,
       "stop_loss": 271.2392,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -17.67,
-      "unrealized_pnl_pct": -0.93,
-      "market_value": 1883.65
+      "unrealized_pnl": -22.59,
+      "unrealized_pnl_pct": -1.19,
+      "market_value": 1878.73
     },
     "PG": {
       "ticker": "PG",
       "shares": 10.9365,
       "avg_entry_price": 173.8516,
-      "current_price": 173.06,
+      "current_price": 172.56,
       "stop_loss": 165.0435,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -8.66,
-      "unrealized_pnl_pct": -0.46,
-      "market_value": 1892.67
+      "unrealized_pnl": -14.13,
+      "unrealized_pnl_pct": -0.74,
+      "market_value": 1887.2
     },
     "WMT": {
       "ticker": "WMT",
       "shares": 14.3939,
       "avg_entry_price": 132.0924,
-      "current_price": 132.97,
+      "current_price": 132.985,
       "stop_loss": 125.4,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 12.64,
-      "unrealized_pnl_pct": 0.66,
-      "market_value": 1913.96
+      "unrealized_pnl": 12.85,
+      "unrealized_pnl_pct": 0.68,
+      "market_value": 1914.17
     }
   },
   "pending_orders": [],
@@ -412,13 +412,22 @@
       "daily_return_pct": 0.22
     },
     {
-      "timestamp": "2026-11-27T17:49:25Z",
+      "timestamp": "2026-11-27T17:54:30Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10018.65,
+      "equity": 10018.52,
       "cash": 493.39,
-      "positions_value": 9525.26,
+      "positions_value": 9525.13,
       "drawdown_pct": -0.01,
       "daily_return_pct": 0.22
+    },
+    {
+      "timestamp": "2026-11-27T17:59:33Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9997.75,
+      "cash": 493.39,
+      "positions_value": 9504.36,
+      "drawdown_pct": -0.22,
+      "daily_return_pct": 0.01
     }
   ],
   "daily_journal": [
@@ -444,14 +453,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 9996.42,
-      "end_equity": 10018.65,
-      "daily_pnl": 22.23,
-      "daily_pnl_pct": 0.22,
+      "end_equity": 9997.75,
+      "daily_pnl": 1.33,
+      "daily_pnl_pct": 0.01,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,996.42 to $10,018.65 (+$22.23, +0.22%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.37%), DIS (15.41 sh, +3.07%), MCD (6.65 sh, -0.93%), PG (10.94 sh, -0.46%), WMT (14.39 sh, +0.66%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,996.42 to $9,997.75 (+$1.33, +0.01%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.81%), DIS (15.41 sh, +2.94%), MCD (6.65 sh, -1.19%), PG (10.94 sh, -0.74%), WMT (14.39 sh, +0.68%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T17:49:25Z"
+  "last_updated": "2026-11-27T17:59:33Z"
 }
