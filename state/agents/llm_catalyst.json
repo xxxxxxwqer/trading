@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 8498.95,
-  "equity": 10026.97,
+  "equity": 10029.59,
   "peak_equity": 10038.35,
   "max_drawdown_pct": -0.3,
-  "current_drawdown_pct": -0.11,
+  "current_drawdown_pct": -0.09,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.27,
+  "daily_pnl_pct": 0.3,
   "positions": {
     "PLTR": {
       "ticker": "PLTR",
       "shares": 8.8926,
       "avg_entry_price": 168.7981,
-      "current_price": 171.83,
+      "current_price": 172.125,
       "stop_loss": 164.0,
       "take_profit": 178.0,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Palantir secured a major catalyst contract to supply the Maven Smart System to Poland's Defence Ministry, supported by strong relative strength (+4.35 vs SPY) and a 1D gain of 3.11%.",
-      "unrealized_pnl": 26.97,
-      "unrealized_pnl_pct": 1.8,
-      "market_value": 1528.02
+      "unrealized_pnl": 29.59,
+      "unrealized_pnl_pct": 1.97,
+      "market_value": 1530.64
     }
   },
   "pending_orders": [],
@@ -236,13 +236,22 @@
       "daily_return_pct": 0.26
     },
     {
-      "timestamp": "2026-11-27T17:13:20Z",
+      "timestamp": "2026-11-27T17:18:24Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10026.97,
+      "equity": 10027.32,
       "cash": 8498.95,
-      "positions_value": 1528.02,
+      "positions_value": 1528.37,
       "drawdown_pct": -0.11,
       "daily_return_pct": 0.27
+    },
+    {
+      "timestamp": "2026-11-27T17:23:27Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10029.59,
+      "cash": 8498.95,
+      "positions_value": 1530.64,
+      "drawdown_pct": -0.09,
+      "daily_return_pct": 0.3
     }
   ],
   "daily_journal": [
@@ -262,16 +271,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10026.97,
-      "daily_pnl": 26.97,
-      "daily_pnl_pct": 0.27,
+      "end_equity": 10029.59,
+      "daily_pnl": 29.59,
+      "daily_pnl_pct": 0.3,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,026.97 (+$26.97, +0.27%). Executed 1 trade(s) \u2014 Buys: PLTR ($1,501); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,029.59 (+$29.59, +0.30%). Executed 1 trade(s) \u2014 Buys: PLTR ($1,501); Sells: none.",
       "highlights": [
         "BUY 8.8926 PLTR @ $168.80 ($1501.05, stop $164.00) \u2014 Palantir secured a major catalyst contract to supply the Maven Smart System to Poland's Defence Ministry, supported by strong relative strength (+4.35 vs SPY) and a 1D gain of 3.11%."
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:13:20Z"
+  "last_updated": "2026-11-27T17:23:27Z"
 }
