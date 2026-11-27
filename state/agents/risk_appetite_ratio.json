@@ -6,65 +6,65 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 3995.83,
-  "equity": 10043.99,
+  "equity": 10040.23,
   "peak_equity": 10059.64,
-  "max_drawdown_pct": -0.16,
-  "current_drawdown_pct": -0.16,
+  "max_drawdown_pct": -0.19,
+  "current_drawdown_pct": -0.19,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10033.17,
-  "daily_pnl_pct": 0.11,
+  "daily_pnl_pct": 0.07,
   "positions": {
     "GLD": {
       "ticker": "GLD",
       "shares": 4.715,
       "avg_entry_price": 318.3527,
-      "current_price": 331.9,
+      "current_price": 331.805,
       "stop_loss": 303.8141,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 63.88,
-      "unrealized_pnl_pct": 4.26,
-      "market_value": 1564.91
+      "unrealized_pnl": 63.43,
+      "unrealized_pnl_pct": 4.23,
+      "market_value": 1564.46
     },
     "TLT": {
       "ticker": "TLT",
       "shares": 18.1488,
       "avg_entry_price": 82.7078,
-      "current_price": 81.49,
+      "current_price": 81.385,
       "stop_loss": 78.9308,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": -22.1,
-      "unrealized_pnl_pct": -1.47,
-      "market_value": 1478.95
+      "unrealized_pnl": -24.01,
+      "unrealized_pnl_pct": -1.6,
+      "market_value": 1477.04
     },
     "XLP": {
       "ticker": "XLP",
       "shares": 16.2214,
       "avg_entry_price": 92.5347,
-      "current_price": 92.385,
+      "current_price": 92.33,
       "stop_loss": 88.3088,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": -2.43,
-      "unrealized_pnl_pct": -0.16,
-      "market_value": 1498.61
+      "unrealized_pnl": -3.32,
+      "unrealized_pnl_pct": -0.22,
+      "market_value": 1497.72
     },
     "XLU": {
       "ticker": "XLU",
       "shares": 34.5224,
       "avg_entry_price": 43.4804,
-      "current_price": 43.615,
+      "current_price": 43.6,
       "stop_loss": 41.4948,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 4.64,
-      "unrealized_pnl_pct": 0.31,
-      "market_value": 1505.69
+      "unrealized_pnl": 4.13,
+      "unrealized_pnl_pct": 0.28,
+      "market_value": 1505.18
     }
   },
   "pending_orders": [],
@@ -287,13 +287,22 @@
       "daily_return_pct": 0.11
     },
     {
-      "timestamp": "2026-11-27T16:15:46Z",
+      "timestamp": "2026-11-27T16:20:50Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10043.99,
+      "equity": 10042.55,
       "cash": 3995.83,
-      "positions_value": 6048.16,
-      "drawdown_pct": -0.16,
-      "daily_return_pct": 0.11
+      "positions_value": 6046.72,
+      "drawdown_pct": -0.17,
+      "daily_return_pct": 0.09
+    },
+    {
+      "timestamp": "2026-11-27T16:25:53Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10040.23,
+      "cash": 3995.83,
+      "positions_value": 6044.4,
+      "drawdown_pct": -0.19,
+      "daily_return_pct": 0.07
     }
   ],
   "daily_journal": [
@@ -318,14 +327,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10033.17,
-      "end_equity": 10043.99,
-      "daily_pnl": 10.82,
-      "daily_pnl_pct": 0.11,
+      "end_equity": 10040.23,
+      "daily_pnl": 7.06,
+      "daily_pnl_pct": 0.07,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,043.99 (+$10.82, +0.11%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.26%), TLT (18.15 sh, -1.47%), XLP (16.22 sh, -0.16%), XLU (34.52 sh, +0.31%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,040.23 (+$7.06, +0.07%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.23%), TLT (18.15 sh, -1.60%), XLP (16.22 sh, -0.22%), XLU (34.52 sh, +0.28%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T16:15:46Z"
+  "last_updated": "2026-11-27T16:25:53Z"
 }

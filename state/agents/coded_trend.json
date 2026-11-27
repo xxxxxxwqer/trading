@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 7998.6,
-  "equity": 10023.15,
+  "equity": 10026.18,
   "peak_equity": 10035.71,
   "max_drawdown_pct": -0.13,
-  "current_drawdown_pct": -0.13,
+  "current_drawdown_pct": -0.1,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.23,
+  "daily_pnl_pct": 0.26,
   "positions": {
     "CVX": {
       "ticker": "CVX",
       "shares": 9.4791,
       "avg_entry_price": 211.1377,
-      "current_price": 213.58,
+      "current_price": 213.9,
       "stop_loss": 207.83,
       "take_profit": 217.32,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32.",
-      "unrealized_pnl": 23.15,
-      "unrealized_pnl_pct": 1.16,
-      "market_value": 2024.55
+      "unrealized_pnl": 26.18,
+      "unrealized_pnl_pct": 1.31,
+      "market_value": 2027.58
     }
   },
   "pending_orders": [],
@@ -182,13 +182,22 @@
       "daily_return_pct": 0.26
     },
     {
-      "timestamp": "2026-11-27T16:15:46Z",
+      "timestamp": "2026-11-27T16:20:50Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10023.15,
+      "equity": 10025.99,
       "cash": 7998.6,
-      "positions_value": 2024.55,
-      "drawdown_pct": -0.13,
-      "daily_return_pct": 0.23
+      "positions_value": 2027.39,
+      "drawdown_pct": -0.1,
+      "daily_return_pct": 0.26
+    },
+    {
+      "timestamp": "2026-11-27T16:25:53Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10026.18,
+      "cash": 7998.6,
+      "positions_value": 2027.58,
+      "drawdown_pct": -0.1,
+      "daily_return_pct": 0.26
     }
   ],
   "daily_journal": [
@@ -208,16 +217,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10023.15,
-      "daily_pnl": 23.15,
-      "daily_pnl_pct": 0.23,
+      "end_equity": 10026.18,
+      "daily_pnl": 26.18,
+      "daily_pnl_pct": 0.26,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,023.15 (+$23.15, +0.23%). Executed 1 trade(s) \u2014 Buys: CVX ($2,001); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,026.18 (+$26.18, +0.26%). Executed 1 trade(s) \u2014 Buys: CVX ($2,001); Sells: none.",
       "highlights": [
         "BUY 9.4791 CVX @ $211.14 ($2001.40, stop $207.83) \u2014 Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32."
       ]
     }
   ],
-  "last_updated": "2026-11-27T16:15:46Z"
+  "last_updated": "2026-11-27T16:25:53Z"
 }

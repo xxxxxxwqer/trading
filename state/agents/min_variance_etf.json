@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 2697.91,
-  "equity": 10054.78,
+  "equity": 10055.88,
   "peak_equity": 10069.63,
   "max_drawdown_pct": -0.15,
-  "current_drawdown_pct": -0.15,
+  "current_drawdown_pct": -0.14,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10018.46,
-  "daily_pnl_pct": 0.36,
+  "daily_pnl_pct": 0.37,
   "positions": {
     "TLT": {
       "ticker": "TLT",
       "shares": 23.5934,
       "avg_entry_price": 82.7078,
-      "current_price": 81.49,
+      "current_price": 81.385,
       "stop_loss": 78.9308,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=19.5%, stop=-4.5%",
-      "unrealized_pnl": -28.73,
-      "unrealized_pnl_pct": -1.47,
-      "market_value": 1922.63
+      "unrealized_pnl": -31.21,
+      "unrealized_pnl_pct": -1.6,
+      "market_value": 1920.15
     },
     "XLE": {
       "ticker": "XLE",
       "shares": 32.242,
       "avg_entry_price": 60.5223,
-      "current_price": 61.745,
+      "current_price": 61.875,
       "stop_loss": 57.7584,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=19.5%, stop=-4.5%",
-      "unrealized_pnl": 39.42,
-      "unrealized_pnl_pct": 2.02,
-      "market_value": 1990.78
+      "unrealized_pnl": 43.61,
+      "unrealized_pnl_pct": 2.24,
+      "market_value": 1994.97
     },
     "XLC": {
       "ticker": "XLC",
       "shares": 12.3492,
       "avg_entry_price": 103.7225,
-      "current_price": 107.14,
+      "current_price": 107.17,
       "stop_loss": 98.9857,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=12.8%, stop=-4.5%",
-      "unrealized_pnl": 42.2,
-      "unrealized_pnl_pct": 3.29,
-      "market_value": 1323.09
+      "unrealized_pnl": 42.57,
+      "unrealized_pnl_pct": 3.32,
+      "market_value": 1323.46
     },
     "XLU": {
       "ticker": "XLU",
       "shares": 25.9608,
       "avg_entry_price": 43.4804,
-      "current_price": 43.615,
+      "current_price": 43.6,
       "stop_loss": 41.4948,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=11.3%, stop=-4.5%",
-      "unrealized_pnl": 3.49,
-      "unrealized_pnl_pct": 0.31,
-      "market_value": 1132.28
+      "unrealized_pnl": 3.1,
+      "unrealized_pnl_pct": 0.28,
+      "market_value": 1131.89
     },
     "XLP": {
       "ticker": "XLP",
       "shares": 10.6953,
       "avg_entry_price": 92.5347,
-      "current_price": 92.385,
+      "current_price": 92.33,
       "stop_loss": 88.3088,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=9.9%, stop=-4.5%",
-      "unrealized_pnl": -1.6,
-      "unrealized_pnl_pct": -0.16,
-      "market_value": 988.09
+      "unrealized_pnl": -2.19,
+      "unrealized_pnl_pct": -0.22,
+      "market_value": 987.5
     }
   },
   "pending_orders": [],
@@ -322,13 +322,22 @@
       "daily_return_pct": 0.41
     },
     {
-      "timestamp": "2026-11-27T16:15:46Z",
+      "timestamp": "2026-11-27T16:20:50Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10054.78,
+      "equity": 10056.46,
       "cash": 2697.91,
-      "positions_value": 7356.87,
-      "drawdown_pct": -0.15,
-      "daily_return_pct": 0.36
+      "positions_value": 7358.55,
+      "drawdown_pct": -0.13,
+      "daily_return_pct": 0.38
+    },
+    {
+      "timestamp": "2026-11-27T16:25:53Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10055.88,
+      "cash": 2697.91,
+      "positions_value": 7357.97,
+      "drawdown_pct": -0.14,
+      "daily_return_pct": 0.37
     }
   ],
   "daily_journal": [
@@ -354,14 +363,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10018.46,
-      "end_equity": 10054.78,
-      "daily_pnl": 36.32,
-      "daily_pnl_pct": 0.36,
+      "end_equity": 10055.88,
+      "daily_pnl": 37.42,
+      "daily_pnl_pct": 0.37,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.46 to $10,054.78 (+$36.32, +0.36%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.47%), XLE (32.24 sh, +2.02%), XLC (12.35 sh, +3.29%), XLU (25.96 sh, +0.31%), XLP (10.70 sh, -0.16%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.46 to $10,055.88 (+$37.42, +0.37%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.60%), XLE (32.24 sh, +2.24%), XLC (12.35 sh, +3.32%), XLU (25.96 sh, +0.28%), XLP (10.70 sh, -0.22%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T16:15:46Z"
+  "last_updated": "2026-11-27T16:25:53Z"
 }
