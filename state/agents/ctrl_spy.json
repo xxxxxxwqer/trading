@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 193.17,
-  "equity": 10299.21,
+  "equity": 10308.13,
   "peak_equity": 10317.75,
   "max_drawdown_pct": -0.79,
-  "current_drawdown_pct": -0.18,
+  "current_drawdown_pct": -0.09,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10184.19,
-  "daily_pnl_pct": 1.13,
+  "daily_pnl_pct": 1.22,
   "positions": {
     "SPY": {
       "ticker": "SPY",
       "shares": 13.9409,
       "avg_entry_price": 703.4572,
-      "current_price": 724.92,
+      "current_price": 725.56,
       "stop_loss": 351.48,
       "take_profit": 1405.93,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Allocating passive S&P 500 benchmark capital into SPY at $702.97 (requesting 14.1543 shares with catastrophic stop floor at $351.48) to hold throughout the 10-day competition.",
-      "unrealized_pnl": 299.21,
-      "unrealized_pnl_pct": 3.05,
-      "market_value": 10106.04
+      "unrealized_pnl": 308.13,
+      "unrealized_pnl_pct": 3.14,
+      "market_value": 10114.96
     }
   },
   "pending_orders": [],
@@ -198,6 +198,15 @@
       "positions_value": 10106.04,
       "drawdown_pct": -0.18,
       "daily_return_pct": 1.13
+    },
+    {
+      "timestamp": "2026-11-27T16:31:14Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10308.13,
+      "cash": 193.17,
+      "positions_value": 10114.96,
+      "drawdown_pct": -0.09,
+      "daily_return_pct": 1.22
     }
   ],
   "daily_journal": [
@@ -219,14 +228,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10184.19,
-      "end_equity": 10299.21,
-      "daily_pnl": 115.02,
-      "daily_pnl_pct": 1.13,
+      "end_equity": 10308.13,
+      "daily_pnl": 123.94,
+      "daily_pnl_pct": 1.22,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,184.19 to $10,299.21 (+$115.02, +1.13%). No new trades executed; held existing position(s): SPY (13.94 sh, +3.05%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,184.19 to $10,308.13 (+$123.94, +1.22%). No new trades executed; held existing position(s): SPY (13.94 sh, +3.14%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T16:25:53Z"
+  "last_updated": "2026-11-27T16:31:14Z"
 }

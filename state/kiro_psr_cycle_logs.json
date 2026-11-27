@@ -202,5 +202,69 @@
         "code": "SKIP_NO_CANDIDATE"
       }
     ]
+  },
+  {
+    "timestamp": "2026-11-27T16:30:56Z",
+    "trading_date_et": "2026-11-27",
+    "regime": "RISK_OFF",
+    "spy_intraday_pct": 1.23,
+    "m_dd": 1.0,
+    "active_pairs_count": 12,
+    "pair_z_live": {
+      "P01": -0.2737,
+      "P02": 0.1985,
+      "P03": -2.1798,
+      "P04": -1.216,
+      "P05": -0.0571,
+      "P06": -0.746,
+      "P07": 1.3054,
+      "P08": -0.6684,
+      "P09": 0.4586,
+      "P10": -1.6595,
+      "P11": -1.4753,
+      "P12": 0.8531
+    },
+    "top_candidates": [
+      {
+        "pair_id": "P03",
+        "ticker": "XOM",
+        "lz": -2.1798,
+        "score": 2.032912,
+        "result": "ENTRY_PAIR_LAGGARD"
+      },
+      {
+        "pair_id": "P11",
+        "ticker": "CRM",
+        "z_live": -1.4753,
+        "score": 1.0068,
+        "result": "SKIP_Z_WEAK"
+      },
+      {
+        "pair_id": "P04",
+        "ticker": "JPM",
+        "z_live": -1.216,
+        "score": 0.8835,
+        "result": "SKIP_Z_WEAK"
+      }
+    ],
+    "actions": [
+      {
+        "code": "REGIME_RISK_OFF",
+        "spy_intraday_pct": 1.23
+      },
+      {
+        "code": "ENTRY_PAIR_LAGGARD",
+        "ticker": "XOM",
+        "pair_id": "P03",
+        "lz": -2.1798,
+        "rho60": 0.9326,
+        "beta": 1.001,
+        "g_bps": 162.23,
+        "cost_bps": 14.0,
+        "stop_pct": 0.0359,
+        "tp_pct": 0.0324,
+        "shares": 6.9242
+      }
+    ]
   }
 ]

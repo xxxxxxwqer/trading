@@ -296,8 +296,18 @@
     }
   },
   "entries_today_date": "2026-11-27",
-  "entries_today_count": 0,
-  "position_meta": {},
+  "entries_today_count": 1,
+  "position_meta": {
+    "XOM": {
+      "pair_id": "P03",
+      "leg": "A",
+      "partner": "CVX",
+      "entry_price": 160.8122,
+      "stop_pct": 0.035923,
+      "cost_bps": 14.0,
+      "entry_day_idx": 1
+    }
+  },
   "ticker_cooldown_until": {},
   "pair_cooldown_until": {},
   "seen_sell_trade_ids": []

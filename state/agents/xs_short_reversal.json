@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.57,
-  "equity": 10087.92,
-  "peak_equity": 10087.92,
+  "equity": 10093.99,
+  "peak_equity": 10093.99,
   "max_drawdown_pct": -0.14,
   "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.88,
+  "daily_pnl_pct": 0.94,
   "positions": {
     "AMD": {
       "ticker": "AMD",
       "shares": 4.6634,
       "avg_entry_price": 407.7053,
-      "current_price": 416.46,
+      "current_price": 417.7,
       "stop_loss": 387.049,
       "take_profit": null,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 40.83,
-      "unrealized_pnl_pct": 2.15,
-      "market_value": 1942.12
+      "unrealized_pnl": 46.61,
+      "unrealized_pnl_pct": 2.45,
+      "market_value": 1947.9
     },
     "AMZN": {
       "ticker": "AMZN",
       "shares": 7.5507,
       "avg_entry_price": 251.8061,
-      "current_price": 254.2,
+      "current_price": 253.88,
       "stop_loss": 239.0485,
       "take_profit": null,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 18.08,
-      "unrealized_pnl_pct": 0.95,
-      "market_value": 1919.39
+      "unrealized_pnl": 15.66,
+      "unrealized_pnl_pct": 0.82,
+      "market_value": 1916.97
     },
     "GE": {
       "ticker": "GE",
       "shares": 5.922,
       "avg_entry_price": 321.0596,
-      "current_price": 322.65,
+      "current_price": 322.495,
       "stop_loss": 304.7932,
       "take_profit": null,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 9.42,
-      "unrealized_pnl_pct": 0.5,
-      "market_value": 1910.73
+      "unrealized_pnl": 8.51,
+      "unrealized_pnl_pct": 0.45,
+      "market_value": 1909.82
     },
     "GOOGL": {
       "ticker": "GOOGL",
       "shares": 7.002,
       "avg_entry_price": 271.54,
-      "current_price": 272.495,
+      "current_price": 273.32,
       "stop_loss": 257.7825,
       "take_profit": null,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 6.69,
-      "unrealized_pnl_pct": 0.35,
-      "market_value": 1908.01
+      "unrealized_pnl": 12.47,
+      "unrealized_pnl_pct": 0.66,
+      "market_value": 1913.79
     },
     "GS": {
       "ticker": "GS",
       "shares": 2.3485,
       "avg_entry_price": 809.5364,
-      "current_price": 815.03,
+      "current_price": 814.11,
       "stop_loss": 768.5215,
       "take_profit": null,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 12.9,
-      "unrealized_pnl_pct": 0.68,
-      "market_value": 1914.1
+      "unrealized_pnl": 10.74,
+      "unrealized_pnl_pct": 0.56,
+      "market_value": 1911.94
     }
   },
   "pending_orders": [],
@@ -338,6 +338,15 @@
       "positions_value": 9594.35,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.88
+    },
+    {
+      "timestamp": "2026-11-27T16:31:14Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10093.99,
+      "cash": 493.57,
+      "positions_value": 9600.42,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.94
     }
   ],
   "daily_journal": [
@@ -357,12 +366,12 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10087.92,
-      "daily_pnl": 87.92,
-      "daily_pnl_pct": 0.88,
+      "end_equity": 10093.99,
+      "daily_pnl": 93.99,
+      "daily_pnl_pct": 0.94,
       "trades_count": 5,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,087.92 (+$87.92, +0.88%). Executed 5 trade(s) \u2014 Buys: AMD ($1,901), AMZN ($1,901), GE ($1,901), GOOGL ($1,901), GS ($1,901); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,093.99 (+$93.99, +0.94%). Executed 5 trade(s) \u2014 Buys: AMD ($1,901), AMZN ($1,901), GE ($1,901), GOOGL ($1,901), GS ($1,901); Sells: none.",
       "highlights": [
         "BUY 4.6634 AMD @ $407.71 ($1901.29, stop $387.05) \u2014 ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
         "BUY 7.5507 AMZN @ $251.81 ($1901.31, stop $239.05) \u2014 ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
@@ -372,5 +381,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-27T16:25:53Z"
+  "last_updated": "2026-11-27T16:31:14Z"
 }

@@ -1,9 +1,9 @@
 {
   "paper_trading_warning": "PAPER TRADING - NOT REAL MONEY (100% Virtual $10,000 Starting Cash)",
   "alpaca_paper_endpoint": "https://paper-api.alpaca.markets",
-  "generated_at_utc": "2026-11-27T16:25:53Z",
-  "generated_at_kst": "2026-11-28 01:25:53 KST",
-  "generated_at_et": "2026-11-27 11:25:53 EST",
+  "generated_at_utc": "2026-11-27T16:31:14Z",
+  "generated_at_kst": "2026-11-28 01:31:14 KST",
+  "generated_at_et": "2026-11-27 11:31:14 EST",
   "competition_status_badge": "LIVE - Day 2 of 30",
   "trading_days_completed": 2,
   "competition_trading_days": 30,
@@ -16,7 +16,7 @@
       "2026-11-25",
       "2026-11-27"
     ],
-    "cycles_run": 5,
+    "cycles_run": 6,
     "strategy_hashes": {
       "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
       "llm_agents.py": "e39a377759d775bcb241c264ec7ad1ae31785858a2a84f2fe731cbf2bfdfbda0",
@@ -38,18 +38,18 @@
     "strategy_integrity_verified": true,
     "started_at_utc": "2026-11-25T17:03:15Z",
     "completed_at_utc": "",
-    "last_updated_utc": "2026-11-27T16:25:53Z",
-    "last_decision_timestamp_utc": "2026-11-27T16:04:25Z",
+    "last_updated_utc": "2026-11-27T16:31:14Z",
+    "last_decision_timestamp_utc": "2026-11-27T16:30:56Z",
     "current_trading_date_et": "2026-11-27",
-    "regime_summary": "RISK-ON / BULLISH MOMENTUM — SPY 725.40 (+1.22% 1D, +3.40% 5D, UPTREND, RSI 70.8); QQQ (+1.76% 1D); Bonds (TLT -0.81%) lower (yields firming); Gold (GLD +1.40%).",
+    "regime_summary": "RISK-ON / BULLISH MOMENTUM — SPY 725.56 (+1.24% 1D, +4.43% 5D, UPTREND, RSI 67.1); QQQ (+1.82% 1D); Bonds (TLT -1.02%) lower (yields firming); Gold (GLD +1.40%).",
     "cycles_by_date": {
       "2026-11-25": 1,
-      "2026-11-27": 4
+      "2026-11-27": 5
     },
     "api_keys_status": {
       "alpaca_paper_configured": true,
       "gemini_configured": true,
-      "checked_at_utc": "2026-11-27T16:04:41Z"
+      "checked_at_utc": "2026-11-27T16:31:14Z"
     },
     "last_monitor_tick_utc": "2026-11-27T16:25:53Z",
     "monitor_ticks_run": 19
@@ -68,18 +68,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10299.21,
+      "equity": 10308.13,
       "cash": 193.17,
-      "positions_value": 10106.04,
+      "positions_value": 10114.96,
       "open_positions_count": 1,
-      "unrealized_pnl": 299.21,
+      "unrealized_pnl": 308.13,
       "peak_equity": 10317.75,
-      "net_profit": 299.21,
-      "net_return_pct": 2.99,
+      "net_profit": 308.13,
+      "net_return_pct": 3.08,
       "return_vs_spy_pct": 0.0,
       "max_drawdown_pct": -0.79,
-      "current_drawdown_pct": -0.18,
-      "daily_pnl_pct": 1.13,
+      "current_drawdown_pct": -0.09,
+      "daily_pnl_pct": 1.22,
       "total_fills": 1,
       "buy_fills_count": 1,
       "closed_trades_count": 0,
@@ -113,18 +113,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10285.77,
+      "equity": 10296.72,
       "cash": 493.42,
-      "positions_value": 9792.35,
+      "positions_value": 9803.3,
       "open_positions_count": 5,
-      "unrealized_pnl": 285.77,
+      "unrealized_pnl": 296.72,
       "peak_equity": 10412.13,
-      "net_profit": 285.77,
-      "net_return_pct": 2.86,
-      "return_vs_spy_pct": -0.13,
+      "net_profit": 296.72,
+      "net_return_pct": 2.97,
+      "return_vs_spy_pct": -0.11,
       "max_drawdown_pct": -1.99,
-      "current_drawdown_pct": -1.21,
-      "daily_pnl_pct": 0.64,
+      "current_drawdown_pct": -1.11,
+      "daily_pnl_pct": 0.74,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -158,18 +158,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10172.7,
+      "equity": 10177.56,
       "cash": 493.41,
-      "positions_value": 9679.29,
+      "positions_value": 9684.15,
       "open_positions_count": 5,
-      "unrealized_pnl": 172.7,
+      "unrealized_pnl": 177.56,
       "peak_equity": 10189.04,
-      "net_profit": 172.7,
-      "net_return_pct": 1.73,
-      "return_vs_spy_pct": -1.27,
+      "net_profit": 177.56,
+      "net_return_pct": 1.78,
+      "return_vs_spy_pct": -1.31,
       "max_drawdown_pct": -0.28,
-      "current_drawdown_pct": -0.16,
-      "daily_pnl_pct": 0.78,
+      "current_drawdown_pct": -0.11,
+      "daily_pnl_pct": 0.83,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -203,18 +203,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10151.19,
+      "equity": 10160.44,
       "cash": 0.01,
-      "positions_value": 10151.18,
+      "positions_value": 10160.43,
       "open_positions_count": 5,
-      "unrealized_pnl": 151.19,
-      "peak_equity": 10151.19,
-      "net_profit": 151.19,
-      "net_return_pct": 1.51,
+      "unrealized_pnl": 160.44,
+      "peak_equity": 10160.44,
+      "net_profit": 160.44,
+      "net_return_pct": 1.6,
       "return_vs_spy_pct": -1.48,
       "max_drawdown_pct": -0.19,
       "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 1.27,
+      "daily_pnl_pct": 1.36,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -248,20 +248,20 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10145.25,
-      "cash": 2058.89,
-      "positions_value": 8086.36,
-      "open_positions_count": 4,
-      "unrealized_pnl": -35.9,
+      "equity": 10147.01,
+      "cash": 28.42,
+      "positions_value": 10118.59,
+      "open_positions_count": 5,
+      "unrealized_pnl": -34.14,
       "peak_equity": 10179.74,
-      "net_profit": 145.25,
-      "net_return_pct": 1.45,
-      "return_vs_spy_pct": -1.54,
+      "net_profit": 147.01,
+      "net_return_pct": 1.47,
+      "return_vs_spy_pct": -1.61,
       "max_drawdown_pct": -0.34,
-      "current_drawdown_pct": -0.34,
-      "daily_pnl_pct": 0.32,
-      "total_fills": 6,
-      "buy_fills_count": 5,
+      "current_drawdown_pct": -0.32,
+      "daily_pnl_pct": 0.34,
+      "total_fills": 7,
+      "buy_fills_count": 6,
       "closed_trades_count": 1,
       "win_count": 1,
       "loss_count": 0,
@@ -272,10 +272,10 @@
       "avg_loss": 0.0,
       "gross_profit": 181.15,
       "gross_loss": 0,
-      "total_spread_cost": 2.46,
-      "total_slippage_cost": 6.15,
-      "total_friction_cost": 8.61,
-      "total_notional": 12306.21,
+      "total_spread_cost": 2.87,
+      "total_slippage_cost": 7.17,
+      "total_friction_cost": 10.03,
+      "total_notional": 14336.68,
       "rejections_count": 0,
       "color": "#818cf8",
       "rank": 5
@@ -293,18 +293,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10131.32,
+      "equity": 10141.25,
       "cash": 0.0,
-      "positions_value": 10131.32,
+      "positions_value": 10141.25,
       "open_positions_count": 5,
-      "unrealized_pnl": 130.95,
+      "unrealized_pnl": 140.88,
       "peak_equity": 10141.99,
-      "net_profit": 131.32,
-      "net_return_pct": 1.31,
-      "return_vs_spy_pct": -1.68,
+      "net_profit": 141.25,
+      "net_return_pct": 1.41,
+      "return_vs_spy_pct": -1.67,
       "max_drawdown_pct": -0.21,
-      "current_drawdown_pct": -0.11,
-      "daily_pnl_pct": 1.06,
+      "current_drawdown_pct": -0.01,
+      "daily_pnl_pct": 1.16,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -338,18 +338,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10087.92,
+      "equity": 10093.99,
       "cash": 493.57,
-      "positions_value": 9594.35,
+      "positions_value": 9600.42,
       "open_positions_count": 5,
-      "unrealized_pnl": 87.92,
-      "peak_equity": 10087.92,
-      "net_profit": 87.92,
-      "net_return_pct": 0.88,
-      "return_vs_spy_pct": -2.11,
+      "unrealized_pnl": 93.99,
+      "peak_equity": 10093.99,
+      "net_profit": 93.99,
+      "net_return_pct": 0.94,
+      "return_vs_spy_pct": -2.14,
       "max_drawdown_pct": -0.14,
       "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 0.88,
+      "daily_pnl_pct": 0.94,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -383,18 +383,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10071.37,
+      "equity": 10074.93,
       "cash": 493.48,
-      "positions_value": 9577.89,
+      "positions_value": 9581.45,
       "open_positions_count": 5,
-      "unrealized_pnl": 71.37,
+      "unrealized_pnl": 74.93,
       "peak_equity": 10092.52,
-      "net_profit": 71.37,
-      "net_return_pct": 0.71,
-      "return_vs_spy_pct": -2.28,
+      "net_profit": 74.93,
+      "net_return_pct": 0.75,
+      "return_vs_spy_pct": -2.33,
       "max_drawdown_pct": -0.21,
-      "current_drawdown_pct": -0.21,
-      "daily_pnl_pct": 0.45,
+      "current_drawdown_pct": -0.17,
+      "daily_pnl_pct": 0.49,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -428,18 +428,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10055.88,
+      "equity": 10057.23,
       "cash": 2697.91,
-      "positions_value": 7357.97,
+      "positions_value": 7359.32,
       "open_positions_count": 5,
-      "unrealized_pnl": 55.88,
+      "unrealized_pnl": 57.23,
       "peak_equity": 10069.63,
-      "net_profit": 55.88,
-      "net_return_pct": 0.56,
-      "return_vs_spy_pct": -2.43,
+      "net_profit": 57.23,
+      "net_return_pct": 0.57,
+      "return_vs_spy_pct": -2.51,
       "max_drawdown_pct": -0.15,
-      "current_drawdown_pct": -0.14,
-      "daily_pnl_pct": 0.37,
+      "current_drawdown_pct": -0.12,
+      "daily_pnl_pct": 0.39,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -473,18 +473,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10040.23,
+      "equity": 10042.69,
       "cash": 3995.83,
-      "positions_value": 6044.4,
+      "positions_value": 6046.86,
       "open_positions_count": 4,
-      "unrealized_pnl": 40.23,
+      "unrealized_pnl": 42.69,
       "peak_equity": 10059.64,
-      "net_profit": 40.23,
-      "net_return_pct": 0.4,
-      "return_vs_spy_pct": -2.59,
+      "net_profit": 42.69,
+      "net_return_pct": 0.43,
+      "return_vs_spy_pct": -2.65,
       "max_drawdown_pct": -0.19,
-      "current_drawdown_pct": -0.19,
-      "daily_pnl_pct": 0.07,
+      "current_drawdown_pct": -0.17,
+      "daily_pnl_pct": 0.09,
       "total_fills": 4,
       "buy_fills_count": 4,
       "closed_trades_count": 0,
@@ -506,51 +506,6 @@
       "rank": 10
     },
     {
-      "agent_id": "risk_parity_3",
-      "name": "22. Risk Parity 3-Asset (8% Vol)",
-      "category": "Coded Strategy",
-      "short_category": "Coded",
-      "category_class": "cat-coded",
-      "short_description": "Weekly inverse-volatility allocation across SPY, TLT, and GLD scaled to an 8% annualized volatility target.",
-      "playbook": "Computes 20-day realized volatility on D-1 daily bars for SPY/TLT/GLD, allocates inversely to vol scaled to 8% target vol (-4.5% stop), rebalanced weekly.",
-      "flatten_eod": false,
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "status_class": "status-active",
-      "initial_cash": 10000.0,
-      "equity": 10028.33,
-      "cash": 6402.53,
-      "positions_value": 3625.8,
-      "open_positions_count": 3,
-      "unrealized_pnl": 28.33,
-      "peak_equity": 10045.16,
-      "net_profit": 28.33,
-      "net_return_pct": 0.28,
-      "return_vs_spy_pct": -2.71,
-      "max_drawdown_pct": -0.17,
-      "current_drawdown_pct": -0.17,
-      "daily_pnl_pct": 0.03,
-      "total_fills": 3,
-      "buy_fills_count": 3,
-      "closed_trades_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate_pct": 0.0,
-      "profit_factor": null,
-      "profit_factor_str": "N/A",
-      "avg_win": 0.0,
-      "avg_loss": 0.0,
-      "gross_profit": 0,
-      "gross_loss": 0,
-      "total_spread_cost": 0.72,
-      "total_slippage_cost": 1.8,
-      "total_friction_cost": 2.52,
-      "total_notional": 3597.47,
-      "rejections_count": 0,
-      "color": "#38bdf8",
-      "rank": 11
-    },
-    {
       "agent_id": "llm_catalyst",
       "name": "6. News & Catalyst Trader (Gemini Flash)",
       "category": "LLM Trader (Gemini Flash)",
@@ -563,18 +518,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10026.79,
+      "equity": 10031.23,
       "cash": 8498.95,
-      "positions_value": 1527.84,
+      "positions_value": 1532.28,
       "open_positions_count": 1,
-      "unrealized_pnl": 26.79,
-      "peak_equity": 10026.79,
-      "net_profit": 26.79,
-      "net_return_pct": 0.27,
-      "return_vs_spy_pct": -2.72,
+      "unrealized_pnl": 31.23,
+      "peak_equity": 10031.23,
+      "net_profit": 31.23,
+      "net_return_pct": 0.31,
+      "return_vs_spy_pct": -2.77,
       "max_drawdown_pct": -0.3,
       "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 0.27,
+      "daily_pnl_pct": 0.31,
       "total_fills": 1,
       "buy_fills_count": 1,
       "closed_trades_count": 0,
@@ -593,7 +548,97 @@
       "total_notional": 1501.05,
       "rejections_count": 0,
       "color": "#f472b6",
+      "rank": 11
+    },
+    {
+      "agent_id": "coded_sector",
+      "name": "4. Sector ETF Rotation",
+      "category": "Coded Strategy",
+      "short_category": "Coded",
+      "category_class": "cat-coded",
+      "short_description": "Rotates into the top SPDR Sector ETFs exhibiting the strongest relative strength vs SPY.",
+      "playbook": "Relative-strength sector rotation across the 11 SPDR Sector ETFs (XLK, XLF, XLV, XLE, XLY, XLP, XLI, XLU, XLB, XLRE, XLC). Computes risk-adjusted return over the lookback window relative to SPY, holds the top leaders with positive momentum, and rotates out of laggards.",
+      "flatten_eod": false,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 10030.19,
+      "cash": 1987.92,
+      "positions_value": 8042.27,
+      "open_positions_count": 4,
+      "unrealized_pnl": 30.19,
+      "peak_equity": 10037.61,
+      "net_profit": 30.19,
+      "net_return_pct": 0.3,
+      "return_vs_spy_pct": -2.78,
+      "max_drawdown_pct": -0.12,
+      "current_drawdown_pct": -0.07,
+      "daily_pnl_pct": 0.36,
+      "total_fills": 4,
+      "buy_fills_count": 4,
+      "closed_trades_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate_pct": 0.0,
+      "profit_factor": null,
+      "profit_factor_str": "N/A",
+      "avg_win": 0.0,
+      "avg_loss": 0.0,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "total_spread_cost": 1.6,
+      "total_slippage_cost": 4.0,
+      "total_friction_cost": 5.6,
+      "total_notional": 8012.08,
+      "rejections_count": 0,
+      "color": "#2dd4bf",
       "rank": 12
+    },
+    {
+      "agent_id": "risk_parity_3",
+      "name": "22. Risk Parity 3-Asset (8% Vol)",
+      "category": "Coded Strategy",
+      "short_category": "Coded",
+      "category_class": "cat-coded",
+      "short_description": "Weekly inverse-volatility allocation across SPY, TLT, and GLD scaled to an 8% annualized volatility target.",
+      "playbook": "Computes 20-day realized volatility on D-1 daily bars for SPY/TLT/GLD, allocates inversely to vol scaled to 8% target vol (-4.5% stop), rebalanced weekly.",
+      "flatten_eod": false,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 10028.2,
+      "cash": 6402.53,
+      "positions_value": 3625.67,
+      "open_positions_count": 3,
+      "unrealized_pnl": 28.2,
+      "peak_equity": 10045.16,
+      "net_profit": 28.2,
+      "net_return_pct": 0.28,
+      "return_vs_spy_pct": -2.8,
+      "max_drawdown_pct": -0.17,
+      "current_drawdown_pct": -0.17,
+      "daily_pnl_pct": 0.02,
+      "total_fills": 3,
+      "buy_fills_count": 3,
+      "closed_trades_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate_pct": 0.0,
+      "profit_factor": null,
+      "profit_factor_str": "N/A",
+      "avg_win": 0.0,
+      "avg_loss": 0.0,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "total_spread_cost": 0.72,
+      "total_slippage_cost": 1.8,
+      "total_friction_cost": 2.52,
+      "total_notional": 3597.47,
+      "rejections_count": 0,
+      "color": "#38bdf8",
+      "rank": 13
     },
     {
       "agent_id": "coded_trend",
@@ -608,15 +653,15 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10026.18,
+      "equity": 10025.9,
       "cash": 7998.6,
-      "positions_value": 2027.58,
+      "positions_value": 2027.3,
       "open_positions_count": 1,
-      "unrealized_pnl": 26.18,
+      "unrealized_pnl": 25.9,
       "peak_equity": 10035.71,
-      "net_profit": 26.18,
+      "net_profit": 25.9,
       "net_return_pct": 0.26,
-      "return_vs_spy_pct": -2.73,
+      "return_vs_spy_pct": -2.82,
       "max_drawdown_pct": -0.13,
       "current_drawdown_pct": -0.1,
       "daily_pnl_pct": 0.26,
@@ -638,97 +683,7 @@
       "total_notional": 2001.4,
       "rejections_count": 0,
       "color": "#38bdf8",
-      "rank": 13
-    },
-    {
-      "agent_id": "coded_sector",
-      "name": "4. Sector ETF Rotation",
-      "category": "Coded Strategy",
-      "short_category": "Coded",
-      "category_class": "cat-coded",
-      "short_description": "Rotates into the top SPDR Sector ETFs exhibiting the strongest relative strength vs SPY.",
-      "playbook": "Relative-strength sector rotation across the 11 SPDR Sector ETFs (XLK, XLF, XLV, XLE, XLY, XLP, XLI, XLU, XLB, XLRE, XLC). Computes risk-adjusted return over the lookback window relative to SPY, holds the top leaders with positive momentum, and rotates out of laggards.",
-      "flatten_eod": false,
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "status_class": "status-active",
-      "initial_cash": 10000.0,
-      "equity": 10026.0,
-      "cash": 1987.92,
-      "positions_value": 8038.08,
-      "open_positions_count": 4,
-      "unrealized_pnl": 26.0,
-      "peak_equity": 10037.61,
-      "net_profit": 26.0,
-      "net_return_pct": 0.26,
-      "return_vs_spy_pct": -2.73,
-      "max_drawdown_pct": -0.12,
-      "current_drawdown_pct": -0.12,
-      "daily_pnl_pct": 0.32,
-      "total_fills": 4,
-      "buy_fills_count": 4,
-      "closed_trades_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate_pct": 0.0,
-      "profit_factor": null,
-      "profit_factor_str": "N/A",
-      "avg_win": 0.0,
-      "avg_loss": 0.0,
-      "gross_profit": 0,
-      "gross_loss": 0,
-      "total_spread_cost": 1.6,
-      "total_slippage_cost": 4.0,
-      "total_friction_cost": 5.6,
-      "total_notional": 8012.08,
-      "rejections_count": 0,
-      "color": "#2dd4bf",
       "rank": 14
-    },
-    {
-      "agent_id": "ctrl_random",
-      "name": "10. Random Trader (Luck Control)",
-      "category": "Control / Benchmark",
-      "short_category": "Control",
-      "category_class": "cat-control",
-      "short_description": "Randomly buys and sells liquid universe stocks within the shared risk rules to show what luck alone produces.",
-      "playbook": "Null-hypothesis scientific control. Uses a seeded pseudo-random generator each cycle to randomly hold, buy a random universe stock with a random 1.5%–3.5% stop-loss and 2x take-profit, or exit an existing position—all subject to the exact same shared risk manager as the AI and coded agents.",
-      "flatten_eod": false,
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "status_class": "status-active",
-      "initial_cash": 10000.0,
-      "equity": 10018.43,
-      "cash": 3989.22,
-      "positions_value": 6029.21,
-      "open_positions_count": 3,
-      "unrealized_pnl": 18.43,
-      "peak_equity": 10020.17,
-      "net_profit": 18.43,
-      "net_return_pct": 0.18,
-      "return_vs_spy_pct": -2.81,
-      "max_drawdown_pct": -0.15,
-      "current_drawdown_pct": -0.02,
-      "daily_pnl_pct": 0.18,
-      "total_fills": 3,
-      "buy_fills_count": 3,
-      "closed_trades_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate_pct": 0.0,
-      "profit_factor": null,
-      "profit_factor_str": "N/A",
-      "avg_win": 0.0,
-      "avg_loss": 0.0,
-      "gross_profit": 0,
-      "gross_loss": 0,
-      "total_spread_cost": 1.2,
-      "total_slippage_cost": 3.0,
-      "total_friction_cost": 4.21,
-      "total_notional": 6010.78,
-      "rejections_count": 0,
-      "color": "#94a3b8",
-      "rank": 15
     },
     {
       "agent_id": "regime_beta_switch",
@@ -743,18 +698,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10016.57,
+      "equity": 10022.31,
       "cash": 493.41,
-      "positions_value": 9523.16,
+      "positions_value": 9528.9,
       "open_positions_count": 5,
-      "unrealized_pnl": 16.57,
+      "unrealized_pnl": 22.31,
       "peak_equity": 10035.67,
-      "net_profit": 16.57,
-      "net_return_pct": 0.17,
-      "return_vs_spy_pct": -2.83,
+      "net_profit": 22.31,
+      "net_return_pct": 0.22,
+      "return_vs_spy_pct": -2.86,
       "max_drawdown_pct": -0.28,
-      "current_drawdown_pct": -0.19,
-      "daily_pnl_pct": -0.02,
+      "current_drawdown_pct": -0.13,
+      "daily_pnl_pct": 0.03,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -773,35 +728,35 @@
       "total_notional": 9506.59,
       "rejections_count": 0,
       "color": "#c084fc",
-      "rank": 16
+      "rank": 15
     },
     {
-      "agent_id": "coded_orb",
-      "name": "3. Intraday ORB (Flat by Close)",
-      "category": "Coded Strategy",
-      "short_category": "Coded",
-      "category_class": "cat-coded",
-      "short_description": "Trades breakouts above the first 30-minute opening range and liquidates all positions before the closing bell.",
-      "playbook": "Intraday Opening Range Breakout (ORB). Establishes the high and low of the first 30-minute bar of the US session (9:30–10:00 AM ET). Buys when price breaks above the opening range high on strong volume with a stop at the opening range midpoint. Automatically flattens all positions in the final cycle before market close.",
-      "flatten_eod": true,
+      "agent_id": "ctrl_random",
+      "name": "10. Random Trader (Luck Control)",
+      "category": "Control / Benchmark",
+      "short_category": "Control",
+      "category_class": "cat-control",
+      "short_description": "Randomly buys and sells liquid universe stocks within the shared risk rules to show what luck alone produces.",
+      "playbook": "Null-hypothesis scientific control. Uses a seeded pseudo-random generator each cycle to randomly hold, buy a random universe stock with a random 1.5%–3.5% stop-loss and 2x take-profit, or exit an existing position—all subject to the exact same shared risk manager as the AI and coded agents.",
+      "flatten_eod": false,
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 10000.0,
-      "cash": 10000.0,
-      "positions_value": 0,
-      "open_positions_count": 0,
-      "unrealized_pnl": 0,
-      "peak_equity": 10000.0,
-      "net_profit": 0.0,
-      "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 0.0,
-      "total_fills": 0,
-      "buy_fills_count": 0,
+      "equity": 10017.58,
+      "cash": 1983.41,
+      "positions_value": 8034.17,
+      "open_positions_count": 4,
+      "unrealized_pnl": 17.58,
+      "peak_equity": 10020.17,
+      "net_profit": 17.58,
+      "net_return_pct": 0.18,
+      "return_vs_spy_pct": -2.91,
+      "max_drawdown_pct": -0.15,
+      "current_drawdown_pct": -0.03,
+      "daily_pnl_pct": 0.18,
+      "total_fills": 4,
+      "buy_fills_count": 4,
       "closed_trades_count": 0,
       "win_count": 0,
       "loss_count": 0,
@@ -812,13 +767,13 @@
       "avg_loss": 0.0,
       "gross_profit": 0,
       "gross_loss": 0,
-      "total_spread_cost": 0,
-      "total_slippage_cost": 0,
-      "total_friction_cost": 0,
-      "total_notional": 0,
+      "total_spread_cost": 1.6,
+      "total_slippage_cost": 4.01,
+      "total_friction_cost": 5.61,
+      "total_notional": 8016.59,
       "rejections_count": 0,
-      "color": "#c084fc",
-      "rank": 17
+      "color": "#94a3b8",
+      "rank": 16
     },
     {
       "agent_id": "llm_technical",
@@ -841,7 +796,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -863,7 +818,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#34d399",
-      "rank": 18
+      "rank": 17
     },
     {
       "agent_id": "llm_cautious",
@@ -886,7 +841,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -908,7 +863,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#facc15",
-      "rank": 19
+      "rank": 18
     },
     {
       "agent_id": "claude_rmp",
@@ -931,7 +886,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -953,52 +908,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#f59e0b",
-      "rank": 20
-    },
-    {
-      "agent_id": "kiro_pair_reversion",
-      "name": "15. Kiro Pair-Spread Reversion (PSR)",
-      "category": "Coded Strategy",
-      "short_category": "Coded",
-      "category_class": "cat-coded",
-      "short_description": "Deterministic coded pair-reversion strategy designed by Kiro: 12 fixed same-industry large-cap pairs, 10-day beta-neutral residual spread >= 2 sigma laggard long entries, 3-tier SPY regime filter, 24h both-leg news veto, and strict 10-level exit priority.",
-      "playbook": "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. Monitors 12 pre-fixed same-industry large-cap equity pairs (long-only individual stocks; SPY used only for CRASH/RISK_OFF/NORMAL regime). Uses D-1 completed daily bars for 60-day beta/correlation/sigma_e and 9-day residual sum S_9, combines with intraday residual z_live, enters laggard when 2.0 <= |lz| <= 4.0 with 30-min bar confirmation, edge >= 3x cost, no 24h news veto, drawdown-scaled risk (0.60%/0.40%), 2.5% max open risk, +1R breakeven stop ratchet, and strict 1->10 exit priority.",
-      "flatten_eod": false,
-      "status": "ACTIVE",
-      "status_reason": "Trading active",
-      "status_class": "status-active",
-      "initial_cash": 10000.0,
-      "equity": 10000.0,
-      "cash": 10000.0,
-      "positions_value": 0,
-      "open_positions_count": 0,
-      "unrealized_pnl": 0,
-      "peak_equity": 10000.0,
-      "net_profit": 0.0,
-      "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
-      "daily_pnl_pct": 0.0,
-      "total_fills": 0,
-      "buy_fills_count": 0,
-      "closed_trades_count": 0,
-      "win_count": 0,
-      "loss_count": 0,
-      "win_rate_pct": 0.0,
-      "profit_factor": null,
-      "profit_factor_str": "N/A",
-      "avg_win": 0.0,
-      "avg_loss": 0.0,
-      "gross_profit": 0,
-      "gross_loss": 0,
-      "total_spread_cost": 0,
-      "total_slippage_cost": 0,
-      "total_friction_cost": 0,
-      "total_notional": 0,
-      "rejections_count": 0,
-      "color": "#06b6d4",
-      "rank": 21
+      "rank": 19
     },
     {
       "agent_id": "overnight_drift",
@@ -1021,7 +931,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1043,7 +953,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#60a5fa",
-      "rank": 22
+      "rank": 20
     },
     {
       "agent_id": "eod_loser_overnight",
@@ -1066,7 +976,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1088,7 +998,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#a78bfa",
-      "rank": 23
+      "rank": 21
     },
     {
       "agent_id": "intraday_momentum",
@@ -1111,7 +1021,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1133,7 +1043,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#e879f9",
-      "rank": 24
+      "rank": 22
     },
     {
       "agent_id": "turn_of_month",
@@ -1156,7 +1066,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1178,7 +1088,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#2dd4bf",
-      "rank": 25
+      "rank": 23
     },
     {
       "agent_id": "gap_down_fill",
@@ -1201,7 +1111,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1223,7 +1133,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#fb7185",
-      "rank": 26
+      "rank": 24
     },
     {
       "agent_id": "dual_momentum_macro",
@@ -1246,7 +1156,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1268,7 +1178,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#34d399",
-      "rank": 27
+      "rank": 25
     },
     {
       "agent_id": "breadth_timing",
@@ -1291,7 +1201,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1313,7 +1223,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#fb923c",
-      "rank": 28
+      "rank": 26
     },
     {
       "agent_id": "panic_dip_index",
@@ -1336,7 +1246,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1358,7 +1268,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#f87171",
-      "rank": 29
+      "rank": 27
     },
     {
       "agent_id": "vwap_reversion",
@@ -1381,7 +1291,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1403,7 +1313,7 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#fde047",
-      "rank": 30
+      "rank": 28
     },
     {
       "agent_id": "squeeze_breakout",
@@ -1426,7 +1336,7 @@
       "peak_equity": 10000.0,
       "net_profit": 0.0,
       "net_return_pct": 0.0,
-      "return_vs_spy_pct": -2.99,
+      "return_vs_spy_pct": -3.08,
       "max_drawdown_pct": 0.0,
       "current_drawdown_pct": 0.0,
       "daily_pnl_pct": 0.0,
@@ -1448,35 +1358,35 @@
       "total_notional": 0,
       "rejections_count": 0,
       "color": "#86efac",
-      "rank": 31
+      "rank": 29
     },
     {
-      "agent_id": "high52_anchor",
-      "name": "27. 70D High Anchoring (George-Hwang)",
+      "agent_id": "kiro_pair_reversion",
+      "name": "15. Kiro Pair-Spread Reversion (PSR)",
       "category": "Coded Strategy",
       "short_category": "Coded",
       "category_class": "cat-coded",
-      "short_description": "Weekly top 5 stocks closest to their dynamic 70-day high with positive 63-day relative strength vs SPY.",
-      "playbook": "George & Hwang (2004) anchoring strategy: filters 53 stocks for 63d RS > 0 vs SPY, ranks by proximity to dynamic 70-day high, holds top 5 weekly (19% each, -5% stop).",
+      "short_description": "Deterministic coded pair-reversion strategy designed by Kiro: 12 fixed same-industry large-cap pairs, 10-day beta-neutral residual spread >= 2 sigma laggard long entries, 3-tier SPY regime filter, 24h both-leg news veto, and strict 10-level exit priority.",
+      "playbook": "100% deterministic, zero-LLM-at-runtime coded strategy with SHA-256 locked code and params.json. Monitors 12 pre-fixed same-industry large-cap equity pairs (long-only individual stocks; SPY used only for CRASH/RISK_OFF/NORMAL regime). Uses D-1 completed daily bars for 60-day beta/correlation/sigma_e and 9-day residual sum S_9, combines with intraday residual z_live, enters laggard when 2.0 <= |lz| <= 4.0 with 30-min bar confirmation, edge >= 3x cost, no 24h news veto, drawdown-scaled risk (0.60%/0.40%), 2.5% max open risk, +1R breakeven stop ratchet, and strict 1->10 exit priority.",
       "flatten_eod": false,
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 9981.36,
-      "cash": 493.39,
-      "positions_value": 9487.97,
-      "open_positions_count": 5,
-      "unrealized_pnl": -18.64,
+      "equity": 9999.22,
+      "cash": 8885.95,
+      "positions_value": 1113.27,
+      "open_positions_count": 1,
+      "unrealized_pnl": -0.78,
       "peak_equity": 10000.0,
-      "net_profit": -18.64,
-      "net_return_pct": -0.19,
-      "return_vs_spy_pct": -3.18,
-      "max_drawdown_pct": -0.29,
-      "current_drawdown_pct": -0.19,
-      "daily_pnl_pct": -0.15,
-      "total_fills": 5,
-      "buy_fills_count": 5,
+      "net_profit": -0.78,
+      "net_return_pct": -0.01,
+      "return_vs_spy_pct": -3.09,
+      "max_drawdown_pct": -0.01,
+      "current_drawdown_pct": -0.01,
+      "daily_pnl_pct": -0.01,
+      "total_fills": 1,
+      "buy_fills_count": 1,
       "closed_trades_count": 0,
       "win_count": 0,
       "loss_count": 0,
@@ -1487,13 +1397,58 @@
       "avg_loss": 0.0,
       "gross_profit": 0,
       "gross_loss": 0,
-      "total_spread_cost": 1.9,
-      "total_slippage_cost": 4.75,
-      "total_friction_cost": 6.65,
-      "total_notional": 9506.61,
+      "total_spread_cost": 0.22,
+      "total_slippage_cost": 0.56,
+      "total_friction_cost": 0.78,
+      "total_notional": 1114.05,
       "rejections_count": 0,
-      "color": "#fbbf24",
-      "rank": 32
+      "color": "#06b6d4",
+      "rank": 30
+    },
+    {
+      "agent_id": "coded_orb",
+      "name": "3. Intraday ORB (Flat by Close)",
+      "category": "Coded Strategy",
+      "short_category": "Coded",
+      "category_class": "cat-coded",
+      "short_description": "Trades breakouts above the first 30-minute opening range and liquidates all positions before the closing bell.",
+      "playbook": "Intraday Opening Range Breakout (ORB). Establishes the high and low of the first 30-minute bar of the US session (9:30–10:00 AM ET). Buys when price breaks above the opening range high on strong volume with a stop at the opening range midpoint. Automatically flattens all positions in the final cycle before market close.",
+      "flatten_eod": true,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 9998.6,
+      "cash": 7998.05,
+      "positions_value": 2000.55,
+      "open_positions_count": 1,
+      "unrealized_pnl": -1.4,
+      "peak_equity": 10000.0,
+      "net_profit": -1.4,
+      "net_return_pct": -0.01,
+      "return_vs_spy_pct": -3.1,
+      "max_drawdown_pct": -0.01,
+      "current_drawdown_pct": -0.01,
+      "daily_pnl_pct": -0.01,
+      "total_fills": 1,
+      "buy_fills_count": 1,
+      "closed_trades_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate_pct": 0.0,
+      "profit_factor": null,
+      "profit_factor_str": "N/A",
+      "avg_win": 0.0,
+      "avg_loss": 0.0,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "total_spread_cost": 0.4,
+      "total_slippage_cost": 1.0,
+      "total_friction_cost": 1.4,
+      "total_notional": 2001.95,
+      "rejections_count": 0,
+      "color": "#c084fc",
+      "rank": 31
     },
     {
       "agent_id": "low_vol_anomaly",
@@ -1508,18 +1463,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 9977.02,
+      "equity": 9983.09,
       "cash": 493.49,
-      "positions_value": 9483.53,
+      "positions_value": 9489.6,
       "open_positions_count": 5,
-      "unrealized_pnl": -22.98,
+      "unrealized_pnl": -16.91,
       "peak_equity": 10000.0,
-      "net_profit": -22.98,
-      "net_return_pct": -0.23,
-      "return_vs_spy_pct": -3.22,
+      "net_profit": -16.91,
+      "net_return_pct": -0.17,
+      "return_vs_spy_pct": -3.25,
       "max_drawdown_pct": -0.36,
-      "current_drawdown_pct": -0.23,
-      "daily_pnl_pct": -0.05,
+      "current_drawdown_pct": -0.17,
+      "daily_pnl_pct": 0.01,
       "total_fills": 5,
       "buy_fills_count": 5,
       "closed_trades_count": 0,
@@ -1538,6 +1493,51 @@
       "total_notional": 9506.51,
       "rejections_count": 0,
       "color": "#4ade80",
+      "rank": 32
+    },
+    {
+      "agent_id": "high52_anchor",
+      "name": "27. 70D High Anchoring (George-Hwang)",
+      "category": "Coded Strategy",
+      "short_category": "Coded",
+      "category_class": "cat-coded",
+      "short_description": "Weekly top 5 stocks closest to their dynamic 70-day high with positive 63-day relative strength vs SPY.",
+      "playbook": "George & Hwang (2004) anchoring strategy: filters 53 stocks for 63d RS > 0 vs SPY, ranks by proximity to dynamic 70-day high, holds top 5 weekly (19% each, -5% stop).",
+      "flatten_eod": false,
+      "status": "ACTIVE",
+      "status_reason": "Trading active",
+      "status_class": "status-active",
+      "initial_cash": 10000.0,
+      "equity": 9982.08,
+      "cash": 493.39,
+      "positions_value": 9488.69,
+      "open_positions_count": 5,
+      "unrealized_pnl": -17.92,
+      "peak_equity": 10000.0,
+      "net_profit": -17.92,
+      "net_return_pct": -0.18,
+      "return_vs_spy_pct": -3.26,
+      "max_drawdown_pct": -0.29,
+      "current_drawdown_pct": -0.18,
+      "daily_pnl_pct": -0.14,
+      "total_fills": 5,
+      "buy_fills_count": 5,
+      "closed_trades_count": 0,
+      "win_count": 0,
+      "loss_count": 0,
+      "win_rate_pct": 0.0,
+      "profit_factor": null,
+      "profit_factor_str": "N/A",
+      "avg_win": 0.0,
+      "avg_loss": 0.0,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "total_spread_cost": 1.9,
+      "total_slippage_cost": 4.75,
+      "total_friction_cost": 6.65,
+      "total_notional": 9506.61,
+      "rejections_count": 0,
+      "color": "#fbbf24",
       "rank": 33
     },
     {
@@ -1553,18 +1553,18 @@
       "status_reason": "Trading active",
       "status_class": "status-active",
       "initial_cash": 10000.0,
-      "equity": 9963.08,
+      "equity": 9966.68,
       "cash": 8498.95,
-      "positions_value": 1464.13,
+      "positions_value": 1467.73,
       "open_positions_count": 1,
-      "unrealized_pnl": -36.92,
+      "unrealized_pnl": -33.32,
       "peak_equity": 10000.0,
-      "net_profit": -36.92,
-      "net_return_pct": -0.37,
-      "return_vs_spy_pct": -3.36,
+      "net_profit": -33.32,
+      "net_return_pct": -0.33,
+      "return_vs_spy_pct": -3.41,
       "max_drawdown_pct": -0.59,
-      "current_drawdown_pct": -0.37,
-      "daily_pnl_pct": -0.37,
+      "current_drawdown_pct": -0.33,
+      "daily_pnl_pct": -0.33,
       "total_fills": 1,
       "buy_fills_count": 1,
       "closed_trades_count": 0,
@@ -1589,23 +1589,23 @@
   "cohort_analysis": {
     "Coded": {
       "count": 25,
-      "avg_equity": 10025.15,
-      "avg_return_pct": 0.25,
+      "avg_equity": 10026.52,
+      "avg_return_pct": 0.27,
       "avg_max_drawdown_pct": -0.11,
       "avg_win_rate_pct": 4.0,
-      "total_fills": 53,
+      "total_fills": 56,
       "total_closed_trades": 1,
-      "total_friction_cost": 67.33,
+      "total_friction_cost": 70.93,
       "total_rejections": 0,
       "best_agent_name": "28. Value + 63D Momentum Combo",
-      "best_agent_return_pct": 1.73,
-      "worst_agent_name": "24. Low-Volatility Stock Anomaly",
-      "worst_agent_return_pct": -0.23
+      "best_agent_return_pct": 1.78,
+      "worst_agent_name": "27. 70D High Anchoring (George-Hwang)",
+      "worst_agent_return_pct": -0.18
     },
     "Gemini Flash LLM": {
       "count": 4,
-      "avg_equity": 9997.47,
-      "avg_return_pct": -0.02,
+      "avg_equity": 9999.48,
+      "avg_return_pct": -0.01,
       "avg_max_drawdown_pct": -0.22,
       "avg_win_rate_pct": 0.0,
       "total_fills": 2,
@@ -1613,14 +1613,14 @@
       "total_friction_cost": 2.1,
       "total_rejections": 0,
       "best_agent_name": "6. News & Catalyst Trader (Gemini Flash)",
-      "best_agent_return_pct": 0.27,
+      "best_agent_return_pct": 0.31,
       "worst_agent_name": "7. Macro & Sector Strategist (Gemini Flash)",
-      "worst_agent_return_pct": -0.37
+      "worst_agent_return_pct": -0.33
     },
     "Filing-Style Learned": {
       "count": 2,
-      "avg_equity": 10141.26,
-      "avg_return_pct": 1.41,
+      "avg_equity": 10150.85,
+      "avg_return_pct": 1.5,
       "avg_max_drawdown_pct": -0.2,
       "avg_win_rate_pct": 0.0,
       "total_fills": 10,
@@ -1628,14 +1628,14 @@
       "total_friction_cost": 17.33,
       "total_rejections": 0,
       "best_agent_name": "11. Berkshire Style (13F Pattern)",
-      "best_agent_return_pct": 1.51,
+      "best_agent_return_pct": 1.6,
       "worst_agent_name": "12. Congress Style (House PTR Pattern)",
-      "worst_agent_return_pct": 1.31
+      "worst_agent_return_pct": 1.41
     },
     "Buy-and-Hold SPY": {
       "count": 1,
-      "avg_equity": 10299.21,
-      "avg_return_pct": 2.99,
+      "avg_equity": 10308.13,
+      "avg_return_pct": 3.08,
       "avg_max_drawdown_pct": -0.79,
       "avg_win_rate_pct": 0.0,
       "total_fills": 1,
@@ -1643,19 +1643,19 @@
       "total_friction_cost": 6.86,
       "total_rejections": 0,
       "best_agent_name": "9. Buy-and-Hold SPY (Benchmark)",
-      "best_agent_return_pct": 2.99,
+      "best_agent_return_pct": 3.08,
       "worst_agent_name": "9. Buy-and-Hold SPY (Benchmark)",
-      "worst_agent_return_pct": 2.99
+      "worst_agent_return_pct": 3.08
     },
     "Random Trader (Luck Control)": {
       "count": 1,
-      "avg_equity": 10018.43,
+      "avg_equity": 10017.58,
       "avg_return_pct": 0.18,
       "avg_max_drawdown_pct": -0.15,
       "avg_win_rate_pct": 0.0,
-      "total_fills": 3,
+      "total_fills": 4,
       "total_closed_trades": 0,
-      "total_friction_cost": 4.21,
+      "total_friction_cost": 5.61,
       "total_rejections": 0,
       "best_agent_name": "10. Random Trader (Luck Control)",
       "best_agent_return_pct": 0.18,
@@ -1666,18 +1666,18 @@
   "luck_vs_skill": {
     "sample_size_days": 30,
     "winner_name": "9. Buy-and-Hold SPY (Benchmark)",
-    "winner_return_pct": 2.99,
+    "winner_return_pct": 3.08,
     "random_name": "10. Random Trader (Luck Control)",
     "random_return_pct": 0.18,
     "spy_name": "9. Buy-and-Hold SPY (Benchmark)",
-    "spy_return_pct": 2.99,
-    "winner_vs_random_pct": 2.81,
-    "winner_vs_random_se": 3.16,
+    "spy_return_pct": 3.08,
+    "winner_vs_random_pct": 2.9,
+    "winner_vs_random_se": 3.62,
     "winner_vs_spy_pct": 0.0,
     "winner_vs_spy_se": 0.0,
-    "winner_cum_se_pct": 0.71,
-    "winner_ci_95_low_pct": 1.6,
-    "winner_ci_95_high_pct": 4.38,
+    "winner_cum_se_pct": 0.62,
+    "winner_ci_95_low_pct": 1.86,
+    "winner_ci_95_high_pct": 4.3,
     "per_agent": [
       {
         "rank": 1,
@@ -1685,15 +1685,15 @@
         "name": "9. Buy-and-Hold SPY (Benchmark)",
         "short_category": "Control",
         "n_days": 2,
-        "cum_return_pct": 2.99,
-        "mean_daily_pct": 1.485,
-        "std_daily_pct": 0.502,
-        "se_daily_pct": 0.355,
-        "cum_se_pct": 0.71,
-        "ci_95_low_pct": 1.6,
-        "ci_95_high_pct": 4.38,
-        "diff_vs_random_pct": 2.81,
-        "t_stat_vs_random": 3.16,
+        "cum_return_pct": 3.08,
+        "mean_daily_pct": 1.53,
+        "std_daily_pct": 0.438,
+        "se_daily_pct": 0.31,
+        "cum_se_pct": 0.62,
+        "ci_95_low_pct": 1.86,
+        "ci_95_high_pct": 4.3,
+        "diff_vs_random_pct": 2.9,
+        "t_stat_vs_random": 3.62,
         "diff_vs_spy_pct": 0.0,
         "t_stat_vs_spy": 0.0,
         "statistically_significant_95": true
@@ -1704,17 +1704,17 @@
         "name": "25. Mega-Cap Top-5 Buy & Hold (Control)",
         "short_category": "Control",
         "n_days": 2,
-        "cum_return_pct": 2.86,
-        "mean_daily_pct": 1.425,
-        "std_daily_pct": 1.11,
-        "se_daily_pct": 0.785,
-        "cum_se_pct": 1.57,
-        "ci_95_low_pct": -0.22,
-        "ci_95_high_pct": 5.94,
-        "diff_vs_random_pct": 2.68,
-        "t_stat_vs_random": 1.53,
-        "diff_vs_spy_pct": -0.13,
-        "t_stat_vs_spy": -0.08,
+        "cum_return_pct": 2.97,
+        "mean_daily_pct": 1.475,
+        "std_daily_pct": 1.039,
+        "se_daily_pct": 0.735,
+        "cum_se_pct": 1.47,
+        "ci_95_low_pct": 0.09,
+        "ci_95_high_pct": 5.85,
+        "diff_vs_random_pct": 2.79,
+        "t_stat_vs_random": 1.69,
+        "diff_vs_spy_pct": -0.11,
+        "t_stat_vs_spy": -0.07,
         "statistically_significant_95": false
       },
       {
@@ -1723,17 +1723,17 @@
         "name": "28. Value + 63D Momentum Combo",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 1.73,
-        "mean_daily_pct": 0.86,
-        "std_daily_pct": 0.113,
-        "se_daily_pct": 0.08,
-        "cum_se_pct": 0.16,
-        "ci_95_low_pct": 1.42,
-        "ci_95_high_pct": 2.04,
-        "diff_vs_random_pct": 1.55,
-        "t_stat_vs_random": 4.56,
-        "diff_vs_spy_pct": -1.26,
-        "t_stat_vs_spy": -2.52,
+        "cum_return_pct": 1.78,
+        "mean_daily_pct": 0.885,
+        "std_daily_pct": 0.078,
+        "se_daily_pct": 0.055,
+        "cum_se_pct": 0.11,
+        "ci_95_low_pct": 1.56,
+        "ci_95_high_pct": 2.0,
+        "diff_vs_random_pct": 1.6,
+        "t_stat_vs_random": 5.52,
+        "diff_vs_spy_pct": -1.3,
+        "t_stat_vs_spy": -2.6,
         "statistically_significant_95": true
       },
       {
@@ -1742,17 +1742,17 @@
         "name": "11. Berkshire Style (13F Pattern)",
         "short_category": "Filing-Style",
         "n_days": 2,
-        "cum_return_pct": 1.51,
-        "mean_daily_pct": 0.755,
-        "std_daily_pct": 0.728,
-        "se_daily_pct": 0.515,
-        "cum_se_pct": 1.03,
-        "ci_95_low_pct": -0.51,
-        "ci_95_high_pct": 3.53,
-        "diff_vs_random_pct": 1.33,
-        "t_stat_vs_random": 1.56,
+        "cum_return_pct": 1.6,
+        "mean_daily_pct": 0.8,
+        "std_daily_pct": 0.792,
+        "se_daily_pct": 0.56,
+        "cum_se_pct": 1.12,
+        "ci_95_low_pct": -0.6,
+        "ci_95_high_pct": 3.8,
+        "diff_vs_random_pct": 1.42,
+        "t_stat_vs_random": 1.51,
         "diff_vs_spy_pct": -1.48,
-        "t_stat_vs_spy": -1.44,
+        "t_stat_vs_spy": -1.32,
         "statistically_significant_95": false
       },
       {
@@ -1761,17 +1761,17 @@
         "name": "2. Mean Reversion (RSI / Bollinger)",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 1.45,
-        "mean_daily_pct": 0.725,
-        "std_daily_pct": 0.573,
-        "se_daily_pct": 0.405,
-        "cum_se_pct": 0.81,
-        "ci_95_low_pct": -0.14,
-        "ci_95_high_pct": 3.04,
-        "diff_vs_random_pct": 1.27,
-        "t_stat_vs_random": 1.28,
-        "diff_vs_spy_pct": -1.54,
-        "t_stat_vs_spy": -1.9,
+        "cum_return_pct": 1.47,
+        "mean_daily_pct": 0.735,
+        "std_daily_pct": 0.559,
+        "se_daily_pct": 0.395,
+        "cum_se_pct": 0.79,
+        "ci_95_low_pct": -0.08,
+        "ci_95_high_pct": 3.02,
+        "diff_vs_random_pct": 1.29,
+        "t_stat_vs_random": 1.33,
+        "diff_vs_spy_pct": -1.61,
+        "t_stat_vs_spy": -2.04,
         "statistically_significant_95": false
       },
       {
@@ -1780,17 +1780,17 @@
         "name": "12. Congress Style (House PTR Pattern)",
         "short_category": "Filing-Style",
         "n_days": 2,
-        "cum_return_pct": 1.31,
-        "mean_daily_pct": 0.655,
-        "std_daily_pct": 0.573,
-        "se_daily_pct": 0.405,
-        "cum_se_pct": 0.81,
-        "ci_95_low_pct": -0.28,
-        "ci_95_high_pct": 2.9,
-        "diff_vs_random_pct": 1.13,
-        "t_stat_vs_random": 1.79,
-        "diff_vs_spy_pct": -1.68,
-        "t_stat_vs_spy": -2.07,
+        "cum_return_pct": 1.41,
+        "mean_daily_pct": 0.705,
+        "std_daily_pct": 0.643,
+        "se_daily_pct": 0.455,
+        "cum_se_pct": 0.91,
+        "ci_95_low_pct": -0.37,
+        "ci_95_high_pct": 3.19,
+        "diff_vs_random_pct": 1.23,
+        "t_stat_vs_random": 1.68,
+        "diff_vs_spy_pct": -1.67,
+        "t_stat_vs_spy": -1.84,
         "statistically_significant_95": false
       },
       {
@@ -1799,17 +1799,17 @@
         "name": "26. Cross-Sectional 5D Short Reversal",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 0.88,
-        "mean_daily_pct": 0.44,
-        "std_daily_pct": 0.622,
-        "se_daily_pct": 0.44,
-        "cum_se_pct": 0.88,
-        "ci_95_low_pct": -0.84,
-        "ci_95_high_pct": 2.6,
-        "diff_vs_random_pct": 0.7,
+        "cum_return_pct": 0.94,
+        "mean_daily_pct": 0.47,
+        "std_daily_pct": 0.665,
+        "se_daily_pct": 0.47,
+        "cum_se_pct": 0.94,
+        "ci_95_low_pct": -0.9,
+        "ci_95_high_pct": 2.78,
+        "diff_vs_random_pct": 0.76,
         "t_stat_vs_random": 1.0,
-        "diff_vs_spy_pct": -2.11,
-        "t_stat_vs_spy": -2.4,
+        "diff_vs_spy_pct": -2.14,
+        "t_stat_vs_spy": -2.28,
         "statistically_significant_95": false
       },
       {
@@ -1818,17 +1818,17 @@
         "name": "29. 20D Up/Down Volume Accumulation",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 0.71,
-        "mean_daily_pct": 0.355,
-        "std_daily_pct": 0.134,
-        "se_daily_pct": 0.095,
-        "cum_se_pct": 0.19,
-        "ci_95_low_pct": 0.34,
-        "ci_95_high_pct": 1.08,
-        "diff_vs_random_pct": 0.53,
-        "t_stat_vs_random": 53.0,
-        "diff_vs_spy_pct": -2.28,
-        "t_stat_vs_spy": -4.56,
+        "cum_return_pct": 0.75,
+        "mean_daily_pct": 0.375,
+        "std_daily_pct": 0.163,
+        "se_daily_pct": 0.115,
+        "cum_se_pct": 0.23,
+        "ci_95_low_pct": 0.3,
+        "ci_95_high_pct": 1.2,
+        "diff_vs_random_pct": 0.57,
+        "t_stat_vs_random": 11.4,
+        "diff_vs_spy_pct": -2.33,
+        "t_stat_vs_spy": -4.66,
         "statistically_significant_95": true
       },
       {
@@ -1837,17 +1837,17 @@
         "name": "23. Minimum-Variance ETF Portfolio",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 0.56,
-        "mean_daily_pct": 0.275,
-        "std_daily_pct": 0.134,
-        "se_daily_pct": 0.095,
-        "cum_se_pct": 0.19,
-        "ci_95_low_pct": 0.19,
-        "ci_95_high_pct": 0.93,
-        "diff_vs_random_pct": 0.38,
-        "t_stat_vs_random": 38.0,
-        "diff_vs_spy_pct": -2.43,
-        "t_stat_vs_spy": -4.86,
+        "cum_return_pct": 0.57,
+        "mean_daily_pct": 0.285,
+        "std_daily_pct": 0.148,
+        "se_daily_pct": 0.105,
+        "cum_se_pct": 0.21,
+        "ci_95_low_pct": 0.16,
+        "ci_95_high_pct": 0.98,
+        "diff_vs_random_pct": 0.39,
+        "t_stat_vs_random": 13.0,
+        "diff_vs_spy_pct": -2.51,
+        "t_stat_vs_spy": -5.02,
         "statistically_significant_95": true
       },
       {
@@ -1856,59 +1856,78 @@
         "name": "33. Cross-Asset Risk Appetite Ratio",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": 0.4,
-        "mean_daily_pct": 0.2,
-        "std_daily_pct": 0.184,
-        "se_daily_pct": 0.13,
-        "cum_se_pct": 0.26,
-        "ci_95_low_pct": -0.11,
-        "ci_95_high_pct": 0.91,
-        "diff_vs_random_pct": 0.22,
-        "t_stat_vs_random": 0.5,
-        "diff_vs_spy_pct": -2.59,
-        "t_stat_vs_spy": -5.18,
+        "cum_return_pct": 0.43,
+        "mean_daily_pct": 0.21,
+        "std_daily_pct": 0.17,
+        "se_daily_pct": 0.12,
+        "cum_se_pct": 0.24,
+        "ci_95_low_pct": -0.04,
+        "ci_95_high_pct": 0.9,
+        "diff_vs_random_pct": 0.25,
+        "t_stat_vs_random": 0.6,
+        "diff_vs_spy_pct": -2.65,
+        "t_stat_vs_spy": -5.3,
         "statistically_significant_95": false
       },
       {
         "rank": 11,
+        "agent_id": "llm_catalyst",
+        "name": "6. News & Catalyst Trader (Gemini Flash)",
+        "short_category": "Gemini Flash LLM",
+        "n_days": 2,
+        "cum_return_pct": 0.31,
+        "mean_daily_pct": 0.155,
+        "std_daily_pct": 0.219,
+        "se_daily_pct": 0.155,
+        "cum_se_pct": 0.31,
+        "ci_95_low_pct": -0.3,
+        "ci_95_high_pct": 0.92,
+        "diff_vs_random_pct": 0.13,
+        "t_stat_vs_random": 1.0,
+        "diff_vs_spy_pct": -2.77,
+        "t_stat_vs_spy": -5.54,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 12,
+        "agent_id": "coded_sector",
+        "name": "4. Sector ETF Rotation",
+        "short_category": "Coded",
+        "n_days": 2,
+        "cum_return_pct": 0.3,
+        "mean_daily_pct": 0.15,
+        "std_daily_pct": 0.297,
+        "se_daily_pct": 0.21,
+        "cum_se_pct": 0.42,
+        "ci_95_low_pct": -0.52,
+        "ci_95_high_pct": 1.12,
+        "diff_vs_random_pct": 0.12,
+        "t_stat_vs_random": 0.5,
+        "diff_vs_spy_pct": -2.78,
+        "t_stat_vs_spy": -5.56,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 13,
         "agent_id": "risk_parity_3",
         "name": "22. Risk Parity 3-Asset (8% Vol)",
         "short_category": "Coded",
         "n_days": 2,
         "cum_return_pct": 0.28,
-        "mean_daily_pct": 0.145,
-        "std_daily_pct": 0.163,
-        "se_daily_pct": 0.115,
-        "cum_se_pct": 0.23,
-        "ci_95_low_pct": -0.17,
-        "ci_95_high_pct": 0.73,
+        "mean_daily_pct": 0.14,
+        "std_daily_pct": 0.17,
+        "se_daily_pct": 0.12,
+        "cum_se_pct": 0.24,
+        "ci_95_low_pct": -0.19,
+        "ci_95_high_pct": 0.75,
         "diff_vs_random_pct": 0.1,
         "t_stat_vs_random": 0.24,
-        "diff_vs_spy_pct": -2.71,
-        "t_stat_vs_spy": -5.42,
+        "diff_vs_spy_pct": -2.8,
+        "t_stat_vs_spy": -5.6,
         "statistically_significant_95": false
       },
       {
-        "rank": 12,
-        "agent_id": "llm_catalyst",
-        "name": "6. News & Catalyst Trader (Gemini Flash)",
-        "short_category": "Gemini Flash LLM",
-        "n_days": 2,
-        "cum_return_pct": 0.27,
-        "mean_daily_pct": 0.135,
-        "std_daily_pct": 0.191,
-        "se_daily_pct": 0.135,
-        "cum_se_pct": 0.27,
-        "ci_95_low_pct": -0.26,
-        "ci_95_high_pct": 0.8,
-        "diff_vs_random_pct": 0.09,
-        "t_stat_vs_random": 1.0,
-        "diff_vs_spy_pct": -2.72,
-        "t_stat_vs_spy": -5.44,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 13,
+        "rank": 14,
         "agent_id": "coded_trend",
         "name": "1. Trend Follower (MA / Breakout)",
         "short_category": "Coded",
@@ -1922,31 +1941,31 @@
         "ci_95_high_pct": 0.77,
         "diff_vs_random_pct": 0.08,
         "t_stat_vs_random": 1.0,
-        "diff_vs_spy_pct": -2.73,
-        "t_stat_vs_spy": -5.46,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 14,
-        "agent_id": "coded_sector",
-        "name": "4. Sector ETF Rotation",
-        "short_category": "Coded",
-        "n_days": 2,
-        "cum_return_pct": 0.26,
-        "mean_daily_pct": 0.13,
-        "std_daily_pct": 0.269,
-        "se_daily_pct": 0.19,
-        "cum_se_pct": 0.38,
-        "ci_95_low_pct": -0.48,
-        "ci_95_high_pct": 1.0,
-        "diff_vs_random_pct": 0.08,
-        "t_stat_vs_random": 0.4,
-        "diff_vs_spy_pct": -2.73,
-        "t_stat_vs_spy": -5.46,
+        "diff_vs_spy_pct": -2.82,
+        "t_stat_vs_spy": -5.64,
         "statistically_significant_95": false
       },
       {
         "rank": 15,
+        "agent_id": "regime_beta_switch",
+        "name": "30. Regime-Adaptive Beta Switch",
+        "short_category": "Coded",
+        "n_days": 2,
+        "cum_return_pct": 0.22,
+        "mean_daily_pct": 0.11,
+        "std_daily_pct": 0.113,
+        "se_daily_pct": 0.08,
+        "cum_se_pct": 0.16,
+        "ci_95_low_pct": -0.09,
+        "ci_95_high_pct": 0.53,
+        "diff_vs_random_pct": 0.04,
+        "t_stat_vs_random": 0.12,
+        "diff_vs_spy_pct": -2.86,
+        "t_stat_vs_spy": -5.72,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 16,
         "agent_id": "ctrl_random",
         "name": "10. Random Trader (Luck Control)",
         "short_category": "Control",
@@ -1960,50 +1979,12 @@
         "ci_95_high_pct": 0.53,
         "diff_vs_random_pct": 0.0,
         "t_stat_vs_random": 0.0,
-        "diff_vs_spy_pct": -2.81,
-        "t_stat_vs_spy": -5.62,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 16,
-        "agent_id": "regime_beta_switch",
-        "name": "30. Regime-Adaptive Beta Switch",
-        "short_category": "Coded",
-        "n_days": 2,
-        "cum_return_pct": 0.17,
-        "mean_daily_pct": 0.085,
-        "std_daily_pct": 0.148,
-        "se_daily_pct": 0.105,
-        "cum_se_pct": 0.21,
-        "ci_95_low_pct": -0.24,
-        "ci_95_high_pct": 0.58,
-        "diff_vs_random_pct": -0.01,
-        "t_stat_vs_random": -0.03,
-        "diff_vs_spy_pct": -2.82,
-        "t_stat_vs_spy": -5.64,
+        "diff_vs_spy_pct": -2.9,
+        "t_stat_vs_spy": -5.8,
         "statistically_significant_95": false
       },
       {
         "rank": 17,
-        "agent_id": "coded_orb",
-        "name": "3. Intraday ORB (Flat by Close)",
-        "short_category": "Coded",
-        "n_days": 2,
-        "cum_return_pct": 0.0,
-        "mean_daily_pct": 0.0,
-        "std_daily_pct": 0.0,
-        "se_daily_pct": 0.0,
-        "cum_se_pct": 0.0,
-        "ci_95_low_pct": -0.0,
-        "ci_95_high_pct": 0.0,
-        "diff_vs_random_pct": -0.18,
-        "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 18,
         "agent_id": "llm_technical",
         "name": "5. Technical Analyst (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -2017,12 +1998,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 19,
+        "rank": 18,
         "agent_id": "llm_cautious",
         "name": "8. Cautious Risk-First Trader (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
@@ -2036,12 +2017,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 20,
+        "rank": 19,
         "agent_id": "claude_rmp",
         "name": "14. Claude Residual-Momentum Pullback",
         "short_category": "Coded",
@@ -2055,31 +2036,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 21,
-        "agent_id": "kiro_pair_reversion",
-        "name": "15. Kiro Pair-Spread Reversion (PSR)",
-        "short_category": "Coded",
-        "n_days": 2,
-        "cum_return_pct": 0.0,
-        "mean_daily_pct": 0.0,
-        "std_daily_pct": 0.0,
-        "se_daily_pct": 0.0,
-        "cum_se_pct": 0.0,
-        "ci_95_low_pct": -0.0,
-        "ci_95_high_pct": 0.0,
-        "diff_vs_random_pct": -0.18,
-        "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 22,
+        "rank": 20,
         "agent_id": "overnight_drift",
         "name": "16. Overnight Drift (Close→Open)",
         "short_category": "Coded",
@@ -2093,12 +2055,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 23,
+        "rank": 21,
         "agent_id": "eod_loser_overnight",
         "name": "17. EOD Loser Overnight Reversal",
         "short_category": "Coded",
@@ -2112,12 +2074,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 24,
+        "rank": 22,
         "agent_id": "intraday_momentum",
         "name": "18. Intraday Momentum (Gao 2018)",
         "short_category": "Coded",
@@ -2131,12 +2093,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 25,
+        "rank": 23,
         "agent_id": "turn_of_month",
         "name": "19. Turn-of-Month Calendar",
         "short_category": "Coded",
@@ -2150,12 +2112,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 26,
+        "rank": 24,
         "agent_id": "gap_down_fill",
         "name": "20. Intraday Gap-Down Fill",
         "short_category": "Coded",
@@ -2169,12 +2131,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 27,
+        "rank": 25,
         "agent_id": "dual_momentum_macro",
         "name": "21. Dual Momentum Macro ETF",
         "short_category": "Coded",
@@ -2188,12 +2150,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 28,
+        "rank": 26,
         "agent_id": "breadth_timing",
         "name": "31. Market Breadth Equity Timing",
         "short_category": "Coded",
@@ -2207,12 +2169,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 29,
+        "rank": 27,
         "agent_id": "panic_dip_index",
         "name": "32. Panic-Dip Index Buyer",
         "short_category": "Coded",
@@ -2226,12 +2188,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 30,
+        "rank": 28,
         "agent_id": "vwap_reversion",
         "name": "34. Intraday VWAP -2σ Reversion",
         "short_category": "Coded",
@@ -2245,12 +2207,12 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
         "statistically_significant_95": false
       },
       {
-        "rank": 31,
+        "rank": 29,
         "agent_id": "squeeze_breakout",
         "name": "35. Volatility Squeeze Breakout",
         "short_category": "Coded",
@@ -2264,47 +2226,85 @@
         "ci_95_high_pct": 0.0,
         "diff_vs_random_pct": -0.18,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -2.99,
-        "t_stat_vs_spy": -5.98,
+        "diff_vs_spy_pct": -3.08,
+        "t_stat_vs_spy": -6.16,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 30,
+        "agent_id": "kiro_pair_reversion",
+        "name": "15. Kiro Pair-Spread Reversion (PSR)",
+        "short_category": "Coded",
+        "n_days": 2,
+        "cum_return_pct": -0.01,
+        "mean_daily_pct": -0.005,
+        "std_daily_pct": 0.007,
+        "se_daily_pct": 0.005,
+        "cum_se_pct": 0.01,
+        "ci_95_low_pct": -0.03,
+        "ci_95_high_pct": 0.01,
+        "diff_vs_random_pct": -0.19,
+        "t_stat_vs_random": -1.0,
+        "diff_vs_spy_pct": -3.09,
+        "t_stat_vs_spy": -6.18,
+        "statistically_significant_95": false
+      },
+      {
+        "rank": 31,
+        "agent_id": "coded_orb",
+        "name": "3. Intraday ORB (Flat by Close)",
+        "short_category": "Coded",
+        "n_days": 2,
+        "cum_return_pct": -0.01,
+        "mean_daily_pct": -0.005,
+        "std_daily_pct": 0.007,
+        "se_daily_pct": 0.005,
+        "cum_se_pct": 0.01,
+        "ci_95_low_pct": -0.03,
+        "ci_95_high_pct": 0.01,
+        "diff_vs_random_pct": -0.19,
+        "t_stat_vs_random": -1.0,
+        "diff_vs_spy_pct": -3.09,
+        "t_stat_vs_spy": -6.18,
         "statistically_significant_95": false
       },
       {
         "rank": 32,
-        "agent_id": "high52_anchor",
-        "name": "27. 70D High Anchoring (George-Hwang)",
-        "short_category": "Coded",
-        "n_days": 2,
-        "cum_return_pct": -0.19,
-        "mean_daily_pct": -0.095,
-        "std_daily_pct": 0.078,
-        "se_daily_pct": 0.055,
-        "cum_se_pct": 0.11,
-        "ci_95_low_pct": -0.41,
-        "ci_95_high_pct": 0.03,
-        "diff_vs_random_pct": -0.37,
-        "t_stat_vs_random": -1.28,
-        "diff_vs_spy_pct": -3.18,
-        "t_stat_vs_spy": -6.36,
-        "statistically_significant_95": false
-      },
-      {
-        "rank": 33,
         "agent_id": "low_vol_anomaly",
         "name": "24. Low-Volatility Stock Anomaly",
         "short_category": "Coded",
         "n_days": 2,
-        "cum_return_pct": -0.23,
-        "mean_daily_pct": -0.115,
-        "std_daily_pct": 0.092,
-        "se_daily_pct": 0.065,
-        "cum_se_pct": 0.13,
-        "ci_95_low_pct": -0.48,
-        "ci_95_high_pct": 0.02,
-        "diff_vs_random_pct": -0.41,
-        "t_stat_vs_random": -8.2,
-        "diff_vs_spy_pct": -3.22,
-        "t_stat_vs_spy": -6.44,
+        "cum_return_pct": -0.17,
+        "mean_daily_pct": -0.085,
+        "std_daily_pct": 0.134,
+        "se_daily_pct": 0.095,
+        "cum_se_pct": 0.19,
+        "ci_95_low_pct": -0.54,
+        "ci_95_high_pct": 0.2,
+        "diff_vs_random_pct": -0.35,
+        "t_stat_vs_random": -35.0,
+        "diff_vs_spy_pct": -3.25,
+        "t_stat_vs_spy": -6.5,
         "statistically_significant_95": true
+      },
+      {
+        "rank": 33,
+        "agent_id": "high52_anchor",
+        "name": "27. 70D High Anchoring (George-Hwang)",
+        "short_category": "Coded",
+        "n_days": 2,
+        "cum_return_pct": -0.18,
+        "mean_daily_pct": -0.09,
+        "std_daily_pct": 0.071,
+        "se_daily_pct": 0.05,
+        "cum_se_pct": 0.1,
+        "ci_95_low_pct": -0.38,
+        "ci_95_high_pct": 0.02,
+        "diff_vs_random_pct": -0.36,
+        "t_stat_vs_random": -1.29,
+        "diff_vs_spy_pct": -3.26,
+        "t_stat_vs_spy": -6.52,
+        "statistically_significant_95": false
       },
       {
         "rank": 34,
@@ -2312,17 +2312,17 @@
         "name": "7. Macro & Sector Strategist (Gemini Flash)",
         "short_category": "Gemini Flash LLM",
         "n_days": 2,
-        "cum_return_pct": -0.37,
-        "mean_daily_pct": -0.185,
-        "std_daily_pct": 0.262,
-        "se_daily_pct": 0.185,
-        "cum_se_pct": 0.37,
-        "ci_95_low_pct": -1.1,
-        "ci_95_high_pct": 0.36,
-        "diff_vs_random_pct": -0.55,
+        "cum_return_pct": -0.33,
+        "mean_daily_pct": -0.165,
+        "std_daily_pct": 0.233,
+        "se_daily_pct": 0.165,
+        "cum_se_pct": 0.33,
+        "ci_95_low_pct": -0.98,
+        "ci_95_high_pct": 0.32,
+        "diff_vs_random_pct": -0.51,
         "t_stat_vs_random": -1.0,
-        "diff_vs_spy_pct": -3.36,
-        "t_stat_vs_spy": -6.72,
+        "diff_vs_spy_pct": -3.41,
+        "t_stat_vs_spy": -6.82,
         "statistically_significant_95": false
       }
     ]
@@ -3039,6 +3039,82 @@
             "spy_intraday_pct": 1.21
           }
         ]
+      },
+      {
+        "timestamp": "2026-11-27T16:30:56Z",
+        "trading_date_et": "2026-11-27",
+        "regime_score": 0,
+        "regime_flags": {
+          "C1": false,
+          "C2": false,
+          "C3": false,
+          "C4": false
+        },
+        "breadth_ratio": 0.4528,
+        "slots": 0,
+        "dd_pct": 0.0,
+        "heat_dollars": 0.0,
+        "heat_cap_dollars": 350.0,
+        "spy_intraday_pct": 1.23,
+        "leaders_top10": [
+          {
+            "ticker": "WMT",
+            "score": 1.9932,
+            "beta": 0.053
+          },
+          {
+            "ticker": "BRK.B",
+            "score": 1.8975,
+            "beta": 0.144
+          },
+          {
+            "ticker": "COST",
+            "score": 1.6861,
+            "beta": -0.127
+          },
+          {
+            "ticker": "PG",
+            "score": 1.6672,
+            "beta": -0.04
+          },
+          {
+            "ticker": "DIS",
+            "score": 1.4433,
+            "beta": 0.412
+          },
+          {
+            "ticker": "AAPL",
+            "score": 1.4029,
+            "beta": 0.486
+          },
+          {
+            "ticker": "LLY",
+            "score": 1.3664,
+            "beta": 0.38
+          },
+          {
+            "ticker": "TMO",
+            "score": 1.2031,
+            "beta": 0.832
+          },
+          {
+            "ticker": "V",
+            "score": 1.179,
+            "beta": 0.451
+          },
+          {
+            "ticker": "ISRG",
+            "score": 1.1789,
+            "beta": 0.821
+          }
+        ],
+        "candidate_checks": [],
+        "actions": [
+          {
+            "code": "SKIP_REGIME_OFF",
+            "spy_intraday_pct": 1.23
+          }
+        ]
       }
     ],
     "params": {
@@ -3176,7 +3252,7 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 7998.6,
-      "equity": 10026.18,
+      "equity": 10025.9,
       "peak_equity": 10035.71,
       "max_drawdown_pct": -0.13,
       "current_drawdown_pct": -0.1,
@@ -3188,14 +3264,14 @@
           "ticker": "CVX",
           "shares": 9.4791,
           "avg_entry_price": 211.1377,
-          "current_price": 213.9,
+          "current_price": 213.87,
           "stop_loss": 207.83,
           "take_profit": 217.32,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32.",
-          "unrealized_pnl": 26.18,
-          "unrealized_pnl_pct": 1.31,
-          "market_value": 2027.58
+          "unrealized_pnl": 25.9,
+          "unrealized_pnl_pct": 1.29,
+          "market_value": 2027.3
         }
       },
       "pending_orders": [],
@@ -3368,6 +3444,15 @@
           "positions_value": 2027.58,
           "drawdown_pct": -0.1,
           "daily_return_pct": 0.26
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10025.9,
+          "cash": 7998.6,
+          "positions_value": 2027.3,
+          "drawdown_pct": -0.1,
+          "daily_return_pct": 0.26
         }
       ],
       "daily_journal": [
@@ -3387,18 +3472,18 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10026.18,
-          "daily_pnl": 26.18,
+          "end_equity": 10025.9,
+          "daily_pnl": 25.9,
           "daily_pnl_pct": 0.26,
           "trades_count": 1,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,026.18 (+$26.18, +0.26%). Executed 1 trade(s) — Buys: CVX ($2,001); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,025.90 (+$25.90, +0.26%). Executed 1 trade(s) — Buys: CVX ($2,001); Sells: none.",
           "highlights": [
             "BUY 9.4791 CVX @ $211.14 ($2001.40, stop $207.83) — Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32."
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "coded_mean_rev": {
       "agent_id": "coded_mean_rev",
@@ -3407,66 +3492,79 @@
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
-      "cash": 2058.89,
-      "equity": 10145.25,
+      "cash": 28.42,
+      "equity": 10147.01,
       "peak_equity": 10179.74,
       "max_drawdown_pct": -0.34,
-      "current_drawdown_pct": -0.34,
+      "current_drawdown_pct": -0.32,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10112.65,
-      "daily_pnl_pct": 0.32,
+      "daily_pnl_pct": 0.34,
       "positions": {
         "ABBV": {
           "ticker": "ABBV",
           "shares": 6.8679,
           "avg_entry_price": 294.6962,
-          "current_price": 291.62,
+          "current_price": 292.025,
           "stop_loss": 289.19,
           "take_profit": 301.85,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
-          "unrealized_pnl": -21.12,
-          "unrealized_pnl_pct": -1.04,
-          "market_value": 2002.82
+          "unrealized_pnl": -18.34,
+          "unrealized_pnl_pct": -0.91,
+          "market_value": 2005.6
         },
         "TLT": {
           "ticker": "TLT",
           "shares": 24.8505,
           "avg_entry_price": 81.7872,
-          "current_price": 81.385,
+          "current_price": 81.32,
           "stop_loss": 80.26,
           "take_profit": 83.77,
           "opened_at": "2026-11-27T15:02:10Z",
           "entry_reasoning": "Buying oversold dip in TLT: RSI(14) is 12.6 with price $81.73 near lower Bollinger Band ($81.76) while holding structural support above 94% of 30-SMA ($82.12). Stop at $80.26, mean-reversion target at $83.77.",
-          "unrealized_pnl": -9.99,
-          "unrealized_pnl_pct": -0.49,
-          "market_value": 2022.46
+          "unrealized_pnl": -11.61,
+          "unrealized_pnl_pct": -0.57,
+          "market_value": 2020.84
         },
         "KO": {
           "ticker": "KO",
           "shares": 20.8899,
           "avg_entry_price": 97.3231,
-          "current_price": 97.32,
+          "current_price": 97.4,
           "stop_loss": 95.5,
           "take_profit": 99.69,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "Buying oversold dip in KO: RSI(14) is 34.4 with price $97.25 near lower Bollinger Band ($96.83) while holding structural support above 94% of 30-SMA ($97.90). Stop at $95.50, mean-reversion target at $99.69.",
-          "unrealized_pnl": -0.06,
-          "unrealized_pnl_pct": -0.0,
-          "market_value": 2033.01
+          "unrealized_pnl": 1.61,
+          "unrealized_pnl_pct": 0.08,
+          "market_value": 2034.68
         },
         "PEP": {
           "ticker": "PEP",
           "shares": 14.0931,
           "avg_entry_price": 144.2409,
-          "current_price": 143.905,
+          "current_price": 143.93,
           "stop_loss": 141.55,
           "take_profit": 147.74,
           "opened_at": "2026-11-27T16:04:41Z",
           "entry_reasoning": "Buying oversold dip in PEP: RSI(14) is 32.8 with price $144.14 near lower Bollinger Band ($142.65) while holding structural support above 94% of 30-SMA ($143.73). Stop at $141.55, mean-reversion target at $147.74.",
-          "unrealized_pnl": -4.73,
-          "unrealized_pnl_pct": -0.23,
-          "market_value": 2028.07
+          "unrealized_pnl": -4.38,
+          "unrealized_pnl_pct": -0.22,
+          "market_value": 2028.42
+        },
+        "MCD": {
+          "ticker": "MCD",
+          "shares": 7.1984,
+          "avg_entry_price": 282.0724,
+          "current_price": 281.875,
+          "stop_loss": 276.8,
+          "take_profit": 288.92,
+          "opened_at": "2026-11-27T16:31:14Z",
+          "entry_reasoning": "Buying oversold dip in MCD: RSI(14) is 28.4 with price $281.88 near lower Bollinger Band ($279.56) while holding structural support above 94% of 30-SMA ($282.26). Stop at $276.80, mean-reversion target at $288.92.",
+          "unrealized_pnl": -1.42,
+          "unrealized_pnl_pct": -0.07,
+          "market_value": 2029.05
         }
       },
       "pending_orders": [],
@@ -3602,6 +3700,28 @@
           "exit_reason": "",
           "reasoning": "Buying oversold dip in PEP: RSI(14) is 32.8 with price $144.14 near lower Bollinger Band ($142.65) while holding structural support above 94% of 30-SMA ($143.73). Stop at $141.55, mean-reversion target at $147.74.",
           "confidence": 0.76
+        },
+        {
+          "trade_id": "trd_f779aa992756",
+          "agent_id": "coded_mean_rev",
+          "side": "BUY",
+          "ticker": "MCD",
+          "shares": 7.1984,
+          "decision_timestamp": "2026-11-27T16:30:56Z",
+          "fill_timestamp": "2026-11-27T16:31:14Z",
+          "reference_price": 281.875,
+          "fill_price": 282.0724,
+          "spread_cost_dollars": 0.406,
+          "slippage_cost_dollars": 1.015,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2030.47,
+          "stop_loss": 276.8,
+          "take_profit": 288.92,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Buying oversold dip in MCD: RSI(14) is 28.4 with price $281.88 near lower Bollinger Band ($279.56) while holding structural support above 94% of 30-SMA ($282.26). Stop at $276.80, mean-reversion target at $288.92.",
+          "confidence": 0.84
         }
       ],
       "rejections": [],
@@ -3749,6 +3869,15 @@
           "positions_value": 8086.36,
           "drawdown_pct": -0.34,
           "daily_return_pct": 0.32
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10147.01,
+          "cash": 28.42,
+          "positions_value": 10118.59,
+          "drawdown_pct": -0.32,
+          "daily_return_pct": 0.34
         }
       ],
       "daily_journal": [
@@ -3770,22 +3899,23 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10112.65,
-          "end_equity": 10145.25,
-          "daily_pnl": 32.6,
-          "daily_pnl_pct": 0.32,
-          "trades_count": 5,
+          "end_equity": 10147.01,
+          "daily_pnl": 34.36,
+          "daily_pnl_pct": 0.34,
+          "trades_count": 6,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,112.65 to $10,145.25 (+$32.60, +0.32%). Executed 5 trade(s) — Buys: ABBV ($2,024), TLT ($2,032), KO ($2,033), PEP ($2,033); Sells: AVGO (TAKE_PROFIT, +$181.15).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,112.65 to $10,147.01 (+$34.36, +0.34%). Executed 6 trade(s) — Buys: ABBV ($2,024), TLT ($2,032), KO ($2,033), PEP ($2,033), MCD ($2,030); Sells: AVGO (TAKE_PROFIT, +$181.15).",
           "highlights": [
             "BUY 6.8679 ABBV @ $294.70 ($2023.94, stop $289.19) — Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
             "BUY 24.8505 TLT @ $81.79 ($2032.45, stop $80.26) — Buying oversold dip in TLT: RSI(14) is 12.6 with price $81.73 near lower Bollinger Band ($81.76) while holding structural support above 94% of 30-SMA ($82.12). Stop at $80.26, mean-reversion target at $83.77.",
             "BUY 20.8899 KO @ $97.32 ($2033.07, stop $95.50) — Buying oversold dip in KO: RSI(14) is 34.4 with price $97.25 near lower Bollinger Band ($96.83) while holding structural support above 94% of 30-SMA ($97.90). Stop at $95.50, mean-reversion target at $99.69.",
             "BUY 14.0931 PEP @ $144.24 ($2032.80, stop $141.55) — Buying oversold dip in PEP: RSI(14) is 32.8 with price $144.14 near lower Bollinger Band ($142.65) while holding structural support above 94% of 30-SMA ($143.73). Stop at $141.55, mean-reversion target at $147.74.",
+            "BUY 7.1984 MCD @ $282.07 ($2030.47, stop $276.80) — Buying oversold dip in MCD: RSI(14) is 28.4 with price $281.88 near lower Bollinger Band ($279.56) while holding structural support above 94% of 30-SMA ($282.26). Stop at $276.80, mean-reversion target at $288.92.",
             "SELL 7.0232 AVGO @ $310.76 [TAKE_PROFIT: +$181.15 (+9.05%)] — Take-profit triggered at $310.98 (intrabar high $311.04 >= target $294.75)"
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "coded_orb": {
       "agent_id": "coded_orb",
@@ -3794,17 +3924,54 @@
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
-      "cash": 10000.0,
-      "equity": 10000.0,
+      "cash": 7998.05,
+      "equity": 9998.6,
       "peak_equity": 10000.0,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
+      "max_drawdown_pct": -0.01,
+      "current_drawdown_pct": -0.01,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
-      "daily_pnl_pct": 0.0,
-      "positions": {},
+      "daily_pnl_pct": -0.01,
+      "positions": {
+        "AMZN": {
+          "ticker": "AMZN",
+          "shares": 7.8799,
+          "avg_entry_price": 254.0578,
+          "current_price": 253.88,
+          "stop_loss": 251.02,
+          "take_profit": 259.39,
+          "opened_at": "2026-11-27T16:31:14Z",
+          "entry_reasoning": "Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
+          "unrealized_pnl": -1.4,
+          "unrealized_pnl_pct": -0.07,
+          "market_value": 2000.55
+        }
+      },
       "pending_orders": [],
-      "trades": [],
+      "trades": [
+        {
+          "trade_id": "trd_c52862bb287f",
+          "agent_id": "coded_orb",
+          "side": "BUY",
+          "ticker": "AMZN",
+          "shares": 7.8799,
+          "decision_timestamp": "2026-11-27T16:30:56Z",
+          "fill_timestamp": "2026-11-27T16:31:14Z",
+          "reference_price": 253.88,
+          "fill_price": 254.0578,
+          "spread_cost_dollars": 0.4003,
+          "slippage_cost_dollars": 1.0007,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2001.95,
+          "stop_loss": 251.02,
+          "take_profit": 259.39,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
+          "confidence": 0.75
+        }
+      ],
       "rejections": [],
       "equity_curve": [
         {
@@ -3950,6 +4117,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 9998.6,
+          "cash": 7998.05,
+          "positions_value": 2000.55,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": -0.01
         }
       ],
       "daily_journal": [
@@ -3969,16 +4145,18 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10000.0,
-          "daily_pnl": 0.0,
-          "daily_pnl_pct": 0.0,
-          "trades_count": 0,
+          "end_equity": 9998.6,
+          "daily_pnl": -1.4,
+          "daily_pnl_pct": -0.01,
+          "trades_count": 1,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,000.00 (+$0.00, +0.00%). Stayed in 100% cash with no trades executed.",
-          "highlights": []
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,998.60 ($-1.40, -0.01%). Executed 1 trade(s) — Buys: AMZN ($2,002); Sells: none.",
+          "highlights": [
+            "BUY 7.8799 AMZN @ $254.06 ($2001.95, stop $251.02) — Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39."
+          ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "coded_sector": {
       "agent_id": "coded_sector",
@@ -3988,65 +4166,65 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 1987.92,
-      "equity": 10026.0,
+      "equity": 10030.19,
       "peak_equity": 10037.61,
       "max_drawdown_pct": -0.12,
-      "current_drawdown_pct": -0.12,
+      "current_drawdown_pct": -0.07,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 9994.49,
-      "daily_pnl_pct": 0.32,
+      "daily_pnl_pct": 0.36,
       "positions": {
         "XLP": {
           "ticker": "XLP",
           "shares": 21.6286,
           "avg_entry_price": 92.5347,
-          "current_price": 92.33,
+          "current_price": 92.385,
           "stop_loss": 91.08,
           "take_profit": 96.17,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +2.03%, RS vs SPY +2.77%, 5d change +0.92%) trading at $92.47 above 20-SMA ($91.97). Stop at $91.08, target at $96.17.",
-          "unrealized_pnl": -4.43,
-          "unrealized_pnl_pct": -0.22,
-          "market_value": 1996.97
+          "unrealized_pnl": -3.24,
+          "unrealized_pnl_pct": -0.16,
+          "market_value": 1998.16
         },
         "XLB": {
           "ticker": "XLB",
           "shares": 39.0409,
           "avg_entry_price": 51.2358,
-          "current_price": 51.92,
+          "current_price": 51.94,
           "stop_loss": 50.43,
           "take_profit": 53.25,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Rotating into top-ranked sector ETF XLB (rank #3 of 11, composite RS score +0.36%, RS vs SPY -1.00%, 5d change +2.40%) trading at $51.20 above 20-SMA ($50.58). Stop at $50.43, target at $53.25.",
-          "unrealized_pnl": 26.71,
-          "unrealized_pnl_pct": 1.34,
-          "market_value": 2027.0
+          "unrealized_pnl": 27.49,
+          "unrealized_pnl_pct": 1.37,
+          "market_value": 2027.78
         },
         "XLF": {
           "ticker": "XLF",
           "shares": 35.1467,
           "avg_entry_price": 57.0199,
-          "current_price": 57.15,
+          "current_price": 57.165,
           "stop_loss": 56.13,
           "take_profit": 59.26,
           "opened_at": "2026-11-27T15:02:10Z",
           "entry_reasoning": "Rotating into top-ranked sector ETF XLF (rank #4 of 11, composite RS score +0.93%, RS vs SPY -0.04%, 5d change +2.39%) trading at $56.98 above 20-SMA ($56.19). Stop at $56.13, target at $59.26.",
-          "unrealized_pnl": 4.57,
-          "unrealized_pnl_pct": 0.23,
-          "market_value": 2008.63
+          "unrealized_pnl": 5.1,
+          "unrealized_pnl_pct": 0.25,
+          "market_value": 2009.16
         },
         "XLC": {
           "ticker": "XLC",
           "shares": 18.7131,
           "avg_entry_price": 107.215,
-          "current_price": 107.17,
+          "current_price": 107.26,
           "stop_loss": 105.53,
           "take_profit": 111.43,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "Rotating into top-ranked sector ETF XLC (rank #5 of 11, composite RS score +0.63%, RS vs SPY -0.29%, 5d change +2.01%) trading at $107.14 above 20-SMA ($104.65). Stop at $105.53, target at $111.43.",
-          "unrealized_pnl": -0.85,
-          "unrealized_pnl_pct": -0.04,
-          "market_value": 2005.48
+          "unrealized_pnl": 0.84,
+          "unrealized_pnl_pct": 0.04,
+          "market_value": 2007.17
         }
       },
       "pending_orders": [],
@@ -4285,6 +4463,15 @@
           "positions_value": 8038.08,
           "drawdown_pct": -0.12,
           "daily_return_pct": 0.32
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10030.19,
+          "cash": 1987.92,
+          "positions_value": 8042.27,
+          "drawdown_pct": -0.07,
+          "daily_return_pct": 0.36
         }
       ],
       "daily_journal": [
@@ -4306,12 +4493,12 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 9994.49,
-          "end_equity": 10026.0,
-          "daily_pnl": 31.51,
-          "daily_pnl_pct": 0.32,
+          "end_equity": 10030.19,
+          "daily_pnl": 35.7,
+          "daily_pnl_pct": 0.36,
           "trades_count": 3,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,994.49 to $10,026.00 (+$31.51, +0.32%). Executed 3 trade(s) — Buys: XLB ($2,000), XLF ($2,004), XLC ($2,006); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,994.49 to $10,030.19 (+$35.70, +0.36%). Executed 3 trade(s) — Buys: XLB ($2,000), XLF ($2,004), XLC ($2,006); Sells: none.",
           "highlights": [
             "BUY 39.0409 XLB @ $51.24 ($2000.29, stop $50.43) — Rotating into top-ranked sector ETF XLB (rank #3 of 11, composite RS score +0.36%, RS vs SPY -1.00%, 5d change +2.40%) trading at $51.20 above 20-SMA ($50.58). Stop at $50.43, target at $53.25.",
             "BUY 35.1467 XLF @ $57.02 ($2004.06, stop $56.13) — Rotating into top-ranked sector ETF XLF (rank #4 of 11, composite RS score +0.93%, RS vs SPY -0.04%, 5d change +2.39%) trading at $56.98 above 20-SMA ($56.19). Stop at $56.13, target at $59.26.",
@@ -4319,7 +4506,7 @@
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "llm_technical": {
       "agent_id": "llm_technical",
@@ -4484,6 +4671,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -4512,7 +4708,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "llm_catalyst": {
       "agent_id": "llm_catalyst",
@@ -4522,26 +4718,26 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 8498.95,
-      "equity": 10026.79,
-      "peak_equity": 10026.79,
+      "equity": 10031.23,
+      "peak_equity": 10031.23,
       "max_drawdown_pct": -0.3,
       "current_drawdown_pct": 0.0,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
-      "daily_pnl_pct": 0.27,
+      "daily_pnl_pct": 0.31,
       "positions": {
         "PLTR": {
           "ticker": "PLTR",
           "shares": 8.8926,
           "avg_entry_price": 168.7981,
-          "current_price": 171.81,
+          "current_price": 172.31,
           "stop_loss": 164.0,
           "take_profit": 178.0,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Palantir secured a major catalyst contract to supply the Maven Smart System to Poland's Defence Ministry, supported by strong relative strength (+4.35 vs SPY) and a 1D gain of 3.11%.",
-          "unrealized_pnl": 26.79,
-          "unrealized_pnl_pct": 1.78,
-          "market_value": 1527.84
+          "unrealized_pnl": 31.23,
+          "unrealized_pnl_pct": 2.08,
+          "market_value": 1532.28
         }
       },
       "pending_orders": [],
@@ -4714,6 +4910,15 @@
           "positions_value": 1527.84,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.27
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10031.23,
+          "cash": 8498.95,
+          "positions_value": 1532.28,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.31
         }
       ],
       "daily_journal": [
@@ -4733,18 +4938,18 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10026.79,
-          "daily_pnl": 26.79,
-          "daily_pnl_pct": 0.27,
+          "end_equity": 10031.23,
+          "daily_pnl": 31.23,
+          "daily_pnl_pct": 0.31,
           "trades_count": 1,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,026.79 (+$26.79, +0.27%). Executed 1 trade(s) — Buys: PLTR ($1,501); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,031.23 (+$31.23, +0.31%). Executed 1 trade(s) — Buys: PLTR ($1,501); Sells: none.",
           "highlights": [
             "BUY 8.8926 PLTR @ $168.80 ($1501.05, stop $164.00) — Palantir secured a major catalyst contract to supply the Maven Smart System to Poland's Defence Ministry, supported by strong relative strength (+4.35 vs SPY) and a 1D gain of 3.11%."
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "llm_macro": {
       "agent_id": "llm_macro",
@@ -4754,26 +4959,26 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 8498.95,
-      "equity": 9963.08,
+      "equity": 9966.68,
       "peak_equity": 10000.0,
       "max_drawdown_pct": -0.59,
-      "current_drawdown_pct": -0.37,
+      "current_drawdown_pct": -0.33,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
-      "daily_pnl_pct": -0.37,
+      "daily_pnl_pct": -0.33,
       "positions": {
         "NVDA": {
           "ticker": "NVDA",
           "shares": 9.8691,
           "avg_entry_price": 152.0964,
-          "current_price": 148.355,
+          "current_price": 148.72,
           "stop_loss": 145.0,
           "take_profit": 165.0,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "The market regime is firmly RISK-ON with SPY and QQQ showing strong bullish momentum, and NVDA is a top macro leader demonstrating exceptional relative strength (+5.09 vs SPY) and robust 5-day gains.",
-          "unrealized_pnl": -36.92,
-          "unrealized_pnl_pct": -2.46,
-          "market_value": 1464.13
+          "unrealized_pnl": -33.32,
+          "unrealized_pnl_pct": -2.22,
+          "market_value": 1467.73
         }
       },
       "pending_orders": [],
@@ -4946,6 +5151,15 @@
           "positions_value": 1464.13,
           "drawdown_pct": -0.37,
           "daily_return_pct": -0.37
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 9966.68,
+          "cash": 8498.95,
+          "positions_value": 1467.73,
+          "drawdown_pct": -0.33,
+          "daily_return_pct": -0.33
         }
       ],
       "daily_journal": [
@@ -4965,18 +5179,18 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 9963.08,
-          "daily_pnl": -36.92,
-          "daily_pnl_pct": -0.37,
+          "end_equity": 9966.68,
+          "daily_pnl": -33.32,
+          "daily_pnl_pct": -0.33,
           "trades_count": 1,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,963.08 ($-36.92, -0.37%). Executed 1 trade(s) — Buys: NVDA ($1,501); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,966.68 ($-33.32, -0.33%). Executed 1 trade(s) — Buys: NVDA ($1,501); Sells: none.",
           "highlights": [
             "BUY 9.8691 NVDA @ $152.10 ($1501.05, stop $145.00) — The market regime is firmly RISK-ON with SPY and QQQ showing strong bullish momentum, and NVDA is a top macro leader demonstrating exceptional relative strength (+5.09 vs SPY) and robust 5-day gains."
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "llm_cautious": {
       "agent_id": "llm_cautious",
@@ -5141,6 +5355,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -5169,7 +5392,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "ctrl_spy": {
       "agent_id": "ctrl_spy",
@@ -5179,26 +5402,26 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 193.17,
-      "equity": 10299.21,
+      "equity": 10308.13,
       "peak_equity": 10317.75,
       "max_drawdown_pct": -0.79,
-      "current_drawdown_pct": -0.18,
+      "current_drawdown_pct": -0.09,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10184.19,
-      "daily_pnl_pct": 1.13,
+      "daily_pnl_pct": 1.22,
       "positions": {
         "SPY": {
           "ticker": "SPY",
           "shares": 13.9409,
           "avg_entry_price": 703.4572,
-          "current_price": 724.92,
+          "current_price": 725.56,
           "stop_loss": 351.48,
           "take_profit": 1405.93,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "Allocating passive S&P 500 benchmark capital into SPY at $702.97 (requesting 14.1543 shares with catastrophic stop floor at $351.48) to hold throughout the 10-day competition.",
-          "unrealized_pnl": 299.21,
-          "unrealized_pnl_pct": 3.05,
-          "market_value": 10106.04
+          "unrealized_pnl": 308.13,
+          "unrealized_pnl_pct": 3.14,
+          "market_value": 10114.96
         }
       },
       "pending_orders": [],
@@ -5371,6 +5594,15 @@
           "positions_value": 10106.04,
           "drawdown_pct": -0.18,
           "daily_return_pct": 1.13
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10308.13,
+          "cash": 193.17,
+          "positions_value": 10114.96,
+          "drawdown_pct": -0.09,
+          "daily_return_pct": 1.22
         }
       ],
       "daily_journal": [
@@ -5392,16 +5624,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10184.19,
-          "end_equity": 10299.21,
-          "daily_pnl": 115.02,
-          "daily_pnl_pct": 1.13,
+          "end_equity": 10308.13,
+          "daily_pnl": 123.94,
+          "daily_pnl_pct": 1.22,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,184.19 to $10,299.21 (+$115.02, +1.13%). No new trades executed; held existing position(s): SPY (13.94 sh, +3.05%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,184.19 to $10,308.13 (+$123.94, +1.22%). No new trades executed; held existing position(s): SPY (13.94 sh, +3.14%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "ctrl_random": {
       "agent_id": "ctrl_random",
@@ -5410,11 +5642,11 @@
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
-      "cash": 3989.22,
-      "equity": 10018.43,
+      "cash": 1983.41,
+      "equity": 10017.58,
       "peak_equity": 10020.17,
       "max_drawdown_pct": -0.15,
-      "current_drawdown_pct": -0.02,
+      "current_drawdown_pct": -0.03,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
       "daily_pnl_pct": 0.18,
@@ -5423,40 +5655,53 @@
           "ticker": "ADBE",
           "shares": 8.5927,
           "avg_entry_price": 232.918,
-          "current_price": 234.85,
+          "current_price": 234.995,
           "stop_loss": 228.61,
           "take_profit": 241.04,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
-          "unrealized_pnl": 16.61,
-          "unrealized_pnl_pct": 0.83,
-          "market_value": 2018.0
+          "unrealized_pnl": 17.85,
+          "unrealized_pnl_pct": 0.89,
+          "market_value": 2019.24
         },
         "XLI": {
           "ticker": "XLI",
           "shares": 12.1819,
           "avg_entry_price": 164.5151,
-          "current_price": 164.89,
+          "current_price": 165.04,
           "stop_loss": 161.42,
           "take_profit": 170.36,
           "opened_at": "2026-11-27T15:02:10Z",
           "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
-          "unrealized_pnl": 4.56,
-          "unrealized_pnl_pct": 0.23,
-          "market_value": 2008.67
+          "unrealized_pnl": 6.39,
+          "unrealized_pnl_pct": 0.32,
+          "market_value": 2010.5
         },
         "AMZN": {
           "ticker": "AMZN",
           "shares": 7.8778,
           "avg_entry_price": 254.5481,
-          "current_price": 254.2,
+          "current_price": 253.88,
           "stop_loss": 248.66,
           "take_profit": 265.79,
           "opened_at": "2026-11-27T16:04:41Z",
           "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79).",
-          "unrealized_pnl": -2.74,
-          "unrealized_pnl_pct": -0.14,
-          "market_value": 2002.54
+          "unrealized_pnl": -5.26,
+          "unrealized_pnl_pct": -0.26,
+          "market_value": 2000.02
+        },
+        "DIA": {
+          "ticker": "DIA",
+          "shares": 3.9576,
+          "avg_entry_price": 506.8246,
+          "current_price": 506.47,
+          "stop_loss": 497.91,
+          "take_profit": 523.02,
+          "opened_at": "2026-11-27T16:31:14Z",
+          "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (a421e3c0) rolled 0.484 to randomly buy DIA at $506.28 with a 1.65% stop ($497.91) and 2R target ($523.02).",
+          "unrealized_pnl": -1.4,
+          "unrealized_pnl_pct": -0.07,
+          "market_value": 2004.41
         }
       },
       "pending_orders": [],
@@ -5525,6 +5770,28 @@
           "realized_pnl_pct": null,
           "exit_reason": "",
           "reasoning": "Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79).",
+          "confidence": 0.5
+        },
+        {
+          "trade_id": "trd_bdefad2bd531",
+          "agent_id": "ctrl_random",
+          "side": "BUY",
+          "ticker": "DIA",
+          "shares": 3.9576,
+          "decision_timestamp": "2026-11-27T16:30:56Z",
+          "fill_timestamp": "2026-11-27T16:31:14Z",
+          "reference_price": 506.47,
+          "fill_price": 506.8246,
+          "spread_cost_dollars": 0.4009,
+          "slippage_cost_dollars": 1.0025,
+          "commission_dollars": 0.0,
+          "notional_dollars": 2005.81,
+          "stop_loss": 497.91,
+          "take_profit": 523.02,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "Null-hypothesis random control: deterministic cycle seed (a421e3c0) rolled 0.484 to randomly buy DIA at $506.28 with a 1.65% stop ($497.91) and 2R target ($523.02).",
           "confidence": 0.5
         }
       ],
@@ -5673,6 +5940,15 @@
           "positions_value": 6029.21,
           "drawdown_pct": -0.02,
           "daily_return_pct": 0.18
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10017.58,
+          "cash": 1983.41,
+          "positions_value": 8034.17,
+          "drawdown_pct": -0.03,
+          "daily_return_pct": 0.18
         }
       ],
       "daily_journal": [
@@ -5692,20 +5968,21 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10018.43,
-          "daily_pnl": 18.43,
+          "end_equity": 10017.58,
+          "daily_pnl": 17.58,
           "daily_pnl_pct": 0.18,
-          "trades_count": 3,
+          "trades_count": 4,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,018.43 (+$18.43, +0.18%). Executed 3 trade(s) — Buys: ADBE ($2,001), XLI ($2,004), AMZN ($2,005); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,017.58 (+$17.58, +0.18%). Executed 4 trade(s) — Buys: ADBE ($2,001), XLI ($2,004), AMZN ($2,005), DIA ($2,006); Sells: none.",
           "highlights": [
             "BUY 8.5927 ADBE @ $232.92 ($2001.39, stop $228.61) — Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
             "BUY 12.1819 XLI @ $164.52 ($2004.11, stop $161.42) — Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
-            "BUY 7.8778 AMZN @ $254.55 ($2005.28, stop $248.66) — Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79)."
+            "BUY 7.8778 AMZN @ $254.55 ($2005.28, stop $248.66) — Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79).",
+            "BUY 3.9576 DIA @ $506.82 ($2005.81, stop $497.91) — Null-hypothesis random control: deterministic cycle seed (a421e3c0) rolled 0.484 to randomly buy DIA at $506.28 with a 1.65% stop ($497.91) and 2R target ($523.02)."
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "style_berkshire": {
       "agent_id": "style_berkshire",
@@ -5715,78 +5992,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 0.01,
-      "equity": 10151.19,
-      "peak_equity": 10151.19,
+      "equity": 10160.44,
+      "peak_equity": 10160.44,
       "max_drawdown_pct": -0.19,
       "current_drawdown_pct": 0.0,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10024.02,
-      "daily_pnl_pct": 1.27,
+      "daily_pnl_pct": 1.36,
       "positions": {
         "WFC": {
           "ticker": "WFC",
           "shares": 25.0281,
           "avg_entry_price": 79.98,
-          "current_price": 82.33,
+          "current_price": 82.43,
           "stop_loss": 77.85,
           "take_profit": 86.24,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24.",
-          "unrealized_pnl": 58.81,
-          "unrealized_pnl_pct": 2.94,
-          "market_value": 2060.56
+          "unrealized_pnl": 61.32,
+          "unrealized_pnl_pct": 3.06,
+          "market_value": 2063.07
         },
         "QCOM": {
           "ticker": "QCOM",
           "shares": 11.8859,
           "avg_entry_price": 168.7881,
-          "current_price": 177.695,
+          "current_price": 178.445,
           "stop_loss": 160.88,
           "take_profit": 182.16,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
-          "unrealized_pnl": 105.87,
-          "unrealized_pnl_pct": 5.28,
-          "market_value": 2112.07
+          "unrealized_pnl": 114.78,
+          "unrealized_pnl_pct": 5.72,
+          "market_value": 2120.98
         },
         "PG": {
           "ticker": "PG",
           "shares": 11.7168,
           "avg_entry_price": 172.951,
-          "current_price": 172.56,
+          "current_price": 172.43,
           "stop_loss": 168.33,
           "take_profit": 186.46,
           "opened_at": "2026-11-27T15:02:10Z",
           "entry_reasoning": "Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46.",
-          "unrealized_pnl": -4.58,
-          "unrealized_pnl_pct": -0.23,
-          "market_value": 2021.85
+          "unrealized_pnl": -6.1,
+          "unrealized_pnl_pct": -0.3,
+          "market_value": 2020.33
         },
         "PEP": {
           "ticker": "PEP",
           "shares": 14.0459,
           "avg_entry_price": 144.3009,
-          "current_price": 143.905,
+          "current_price": 143.93,
           "stop_loss": 140.59,
           "take_profit": 155.74,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $196.5B >= $10.0B floor; Valuation P/E 18.0x is within [4.0x, 33.6x]; Distance from 52w high -15.9% within [-38.6%, +0.0%]. Risk-managed stop at $140.59, target $155.74.",
-          "unrealized_pnl": -5.56,
-          "unrealized_pnl_pct": -0.27,
-          "market_value": 2021.28
+          "unrealized_pnl": -5.21,
+          "unrealized_pnl_pct": -0.26,
+          "market_value": 2021.63
         },
         "MCD": {
           "ticker": "MCD",
           "shares": 6.8627,
           "avg_entry_price": 282.5077,
-          "current_price": 282.02,
+          "current_price": 281.875,
           "stop_loss": 275.25,
           "take_profit": 304.89,
           "opened_at": "2026-11-27T16:04:41Z",
           "entry_reasoning": "Berkshire Style buy on MCD (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Discretionary' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $199.3B >= $10.0B floor; Valuation P/E 22.1x is within [4.0x, 33.6x]; Distance from 52w high -17.4% within [-38.6%, +0.0%]. Risk-managed stop at $275.25, target $304.89.",
-          "unrealized_pnl": -3.35,
-          "unrealized_pnl_pct": -0.17,
-          "market_value": 1935.42
+          "unrealized_pnl": -4.35,
+          "unrealized_pnl_pct": -0.22,
+          "market_value": 1934.42
         }
       },
       "pending_orders": [],
@@ -6047,6 +6324,15 @@
           "positions_value": 10151.18,
           "drawdown_pct": 0.0,
           "daily_return_pct": 1.27
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10160.44,
+          "cash": 0.01,
+          "positions_value": 10160.43,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 1.36
         }
       ],
       "daily_journal": [
@@ -6068,12 +6354,12 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10024.02,
-          "end_equity": 10151.19,
-          "daily_pnl": 127.17,
-          "daily_pnl_pct": 1.27,
+          "end_equity": 10160.44,
+          "daily_pnl": 136.42,
+          "daily_pnl_pct": 1.36,
           "trades_count": 4,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.02 to $10,151.19 (+$127.17, +1.27%). Executed 4 trade(s) — Buys: QCOM ($2,006), PG ($2,026), PEP ($2,027), MCD ($1,939); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.02 to $10,160.44 (+$136.42, +1.36%). Executed 4 trade(s) — Buys: QCOM ($2,006), PG ($2,026), PEP ($2,027), MCD ($1,939); Sells: none.",
           "highlights": [
             "BUY 11.8859 QCOM @ $168.79 ($2006.20, stop $160.88) — Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
             "BUY 11.7168 PG @ $172.95 ($2026.43, stop $168.33) — Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46.",
@@ -6082,7 +6368,7 @@
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "style_congress": {
       "agent_id": "style_congress",
@@ -6092,78 +6378,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 0.0,
-      "equity": 10131.32,
+      "equity": 10141.25,
       "peak_equity": 10141.99,
       "max_drawdown_pct": -0.21,
-      "current_drawdown_pct": -0.11,
+      "current_drawdown_pct": -0.01,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10024.92,
-      "daily_pnl_pct": 1.06,
+      "daily_pnl_pct": 1.16,
       "positions": {
         "V": {
           "ticker": "V",
           "shares": 4.7732,
           "avg_entry_price": 419.2933,
-          "current_price": 430.105,
+          "current_price": 430.375,
           "stop_loss": 410.62,
           "take_profit": 446.23,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "Congress Style buy on V (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $722.6B >= $50.0B floor; 30-day price move +2.9% within learned [-8.0%, +9.6%]. Stop at $410.62, target $446.23 (typical hold ~59d).",
-          "unrealized_pnl": 51.61,
-          "unrealized_pnl_pct": 2.58,
-          "market_value": 2052.98
+          "unrealized_pnl": 52.9,
+          "unrealized_pnl_pct": 2.64,
+          "market_value": 2054.27
         },
         "WFC": {
           "ticker": "WFC",
           "shares": 24.7712,
           "avg_entry_price": 80.9967,
-          "current_price": 82.33,
+          "current_price": 82.43,
           "stop_loss": 79.32,
           "take_profit": 86.2,
           "opened_at": "2026-11-27T14:30:47Z",
           "entry_reasoning": "Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d).",
-          "unrealized_pnl": 33.02,
-          "unrealized_pnl_pct": 1.65,
-          "market_value": 2039.41
+          "unrealized_pnl": 35.5,
+          "unrealized_pnl_pct": 1.77,
+          "market_value": 2041.89
         },
         "TSLA": {
           "ticker": "TSLA",
           "shares": 5.15,
           "avg_entry_price": 391.2937,
-          "current_price": 398.37,
+          "current_price": 397.68,
           "stop_loss": 382.68,
           "take_profit": 416.44,
           "opened_at": "2026-11-27T15:02:10Z",
           "entry_reasoning": "Congress Style buy on TSLA (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Consumer Discretionary' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $1545.6B >= $50.0B floor; 30-day price move +1.2% within learned [-8.0%, +9.6%]. Stop at $382.68, target $416.44 (typical hold ~59d).",
-          "unrealized_pnl": 36.45,
-          "unrealized_pnl_pct": 1.81,
-          "market_value": 2051.61
+          "unrealized_pnl": 32.89,
+          "unrealized_pnl_pct": 1.63,
+          "market_value": 2048.05
         },
         "TMO": {
           "ticker": "TMO",
           "shares": 2.9767,
           "avg_entry_price": 679.7306,
-          "current_price": 678.74,
+          "current_price": 679.22,
           "stop_loss": 665.67,
           "take_profit": 723.41,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "Congress Style buy on TMO (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Health Care' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $251.7B >= $50.0B floor; 30-day price move -2.1% within learned [-8.0%, +9.6%]. Stop at $665.67, target $723.41 (typical hold ~59d).",
-          "unrealized_pnl": -2.94,
-          "unrealized_pnl_pct": -0.15,
-          "market_value": 2020.41
+          "unrealized_pnl": -1.52,
+          "unrealized_pnl_pct": -0.08,
+          "market_value": 2021.83
         },
         "QCOM": {
           "ticker": "QCOM",
           "shares": 11.069,
           "avg_entry_price": 176.5382,
-          "current_price": 177.695,
+          "current_price": 178.445,
           "stop_loss": 170.88,
           "take_profit": 187.84,
           "opened_at": "2026-11-27T16:04:41Z",
           "entry_reasoning": "Congress Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Technology' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $188.7B >= $50.0B floor; 30-day price move -0.9% within learned [-8.0%, +9.6%]. Stop at $170.88, target $187.84 (typical hold ~59d).",
-          "unrealized_pnl": 12.81,
-          "unrealized_pnl_pct": 0.66,
-          "market_value": 1966.91
+          "unrealized_pnl": 21.11,
+          "unrealized_pnl_pct": 1.08,
+          "market_value": 1975.21
         }
       },
       "pending_orders": [],
@@ -6424,6 +6710,15 @@
           "positions_value": 10131.32,
           "drawdown_pct": -0.11,
           "daily_return_pct": 1.06
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10141.25,
+          "cash": 0.0,
+          "positions_value": 10141.25,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": 1.16
         }
       ],
       "daily_journal": [
@@ -6445,12 +6740,12 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10024.92,
-          "end_equity": 10131.32,
-          "daily_pnl": 106.4,
-          "daily_pnl_pct": 1.06,
+          "end_equity": 10141.25,
+          "daily_pnl": 116.33,
+          "daily_pnl_pct": 1.16,
           "trades_count": 4,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,131.32 (+$106.40, +1.06%). Executed 4 trade(s) — Buys: WFC ($2,006), TSLA ($2,015), TMO ($2,023), QCOM ($1,954); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,141.25 (+$116.33, +1.16%). Executed 4 trade(s) — Buys: WFC ($2,006), TSLA ($2,015), TMO ($2,023), QCOM ($1,954); Sells: none.",
           "highlights": [
             "BUY 24.7712 WFC @ $81.00 ($2006.39, stop $79.32) — Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d).",
             "BUY 5.1500 TSLA @ $391.29 ($2015.16, stop $382.68) — Congress Style buy on TSLA (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Consumer Discretionary' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $1545.6B >= $50.0B floor; 30-day price move +1.2% within learned [-8.0%, +9.6%]. Stop at $382.68, target $416.44 (typical hold ~59d).",
@@ -6459,7 +6754,7 @@
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "claude_rmp": {
       "agent_id": "claude_rmp",
@@ -6624,6 +6919,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -6652,7 +6956,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "kiro_pair_reversion": {
       "agent_id": "kiro_pair_reversion",
@@ -6661,17 +6965,54 @@
       "status": "ACTIVE",
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
-      "cash": 10000.0,
-      "equity": 10000.0,
+      "cash": 8885.95,
+      "equity": 9999.22,
       "peak_equity": 10000.0,
-      "max_drawdown_pct": 0.0,
-      "current_drawdown_pct": 0.0,
+      "max_drawdown_pct": -0.01,
+      "current_drawdown_pct": -0.01,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
-      "daily_pnl_pct": 0.0,
-      "positions": {},
+      "daily_pnl_pct": -0.01,
+      "positions": {
+        "XOM": {
+          "ticker": "XOM",
+          "shares": 6.9242,
+          "avg_entry_price": 160.8926,
+          "current_price": 160.78,
+          "stop_loss": 155.0354,
+          "take_profit": 166.0298,
+          "opened_at": "2026-11-27T16:31:14Z",
+          "entry_reasoning": "ENTRY_PAIR_LAGGARD pair=P03 leg=A lz=-2.18 rho60=0.93 beta=1.00 g_bps=162.2 cost_bps=14.0 stop_pct=3.59% tp_pct=3.24%",
+          "unrealized_pnl": -0.78,
+          "unrealized_pnl_pct": -0.07,
+          "market_value": 1113.27
+        }
+      },
       "pending_orders": [],
-      "trades": [],
+      "trades": [
+        {
+          "trade_id": "trd_dcd5295bdf37",
+          "agent_id": "kiro_pair_reversion",
+          "side": "BUY",
+          "ticker": "XOM",
+          "shares": 6.9242,
+          "decision_timestamp": "2026-11-27T16:30:56Z",
+          "fill_timestamp": "2026-11-27T16:31:14Z",
+          "reference_price": 160.78,
+          "fill_price": 160.8926,
+          "spread_cost_dollars": 0.223,
+          "slippage_cost_dollars": 0.5567,
+          "commission_dollars": 0.0,
+          "notional_dollars": 1114.05,
+          "stop_loss": 155.0354,
+          "take_profit": 166.0298,
+          "realized_pnl": null,
+          "realized_pnl_pct": null,
+          "exit_reason": "",
+          "reasoning": "ENTRY_PAIR_LAGGARD pair=P03 leg=A lz=-2.18 rho60=0.93 beta=1.00 g_bps=162.2 cost_bps=14.0 stop_pct=3.59% tp_pct=3.24%",
+          "confidence": 0.58
+        }
+      ],
       "rejections": [],
       "equity_curve": [
         {
@@ -6817,6 +7158,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 9999.22,
+          "cash": 8885.95,
+          "positions_value": 1113.27,
+          "drawdown_pct": -0.01,
+          "daily_return_pct": -0.01
         }
       ],
       "daily_journal": [
@@ -6836,16 +7186,18 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10000.0,
-          "daily_pnl": 0.0,
-          "daily_pnl_pct": 0.0,
-          "trades_count": 0,
+          "end_equity": 9999.22,
+          "daily_pnl": -0.78,
+          "daily_pnl_pct": -0.01,
+          "trades_count": 1,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,000.00 (+$0.00, +0.00%). Stayed in 100% cash with no trades executed.",
-          "highlights": []
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,999.22 ($-0.78, -0.01%). Executed 1 trade(s) — Buys: XOM ($1,114); Sells: none.",
+          "highlights": [
+            "BUY 6.9242 XOM @ $160.89 ($1114.05, stop $155.04) — ENTRY_PAIR_LAGGARD pair=P03 leg=A lz=-2.18 rho60=0.93 beta=1.00 g_bps=162.2 cost_bps=14.0 stop_pct=3.59% tp_pct=3.24%"
+          ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "overnight_drift": {
       "agent_id": "overnight_drift",
@@ -7010,6 +7362,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -7038,7 +7399,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "eod_loser_overnight": {
       "agent_id": "eod_loser_overnight",
@@ -7203,6 +7564,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -7231,7 +7601,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "intraday_momentum": {
       "agent_id": "intraday_momentum",
@@ -7396,6 +7766,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -7424,7 +7803,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "turn_of_month": {
       "agent_id": "turn_of_month",
@@ -7589,6 +7968,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -7617,7 +8005,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "gap_down_fill": {
       "agent_id": "gap_down_fill",
@@ -7782,6 +8170,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -7810,7 +8207,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "dual_momentum_macro": {
       "agent_id": "dual_momentum_macro",
@@ -7975,6 +8372,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -8003,7 +8409,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "risk_parity_3": {
       "agent_id": "risk_parity_3",
@@ -8013,52 +8419,52 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 6402.53,
-      "equity": 10028.33,
+      "equity": 10028.2,
       "peak_equity": 10045.16,
       "max_drawdown_pct": -0.17,
       "current_drawdown_pct": -0.17,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10025.78,
-      "daily_pnl_pct": 0.03,
+      "daily_pnl_pct": 0.02,
       "positions": {
         "TLT": {
           "ticker": "TLT",
           "shares": 23.5934,
           "avg_entry_price": 82.7078,
-          "current_price": 81.385,
+          "current_price": 81.32,
           "stop_loss": 78.9308,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=19.5%, stop=-4.5%",
-          "unrealized_pnl": -31.21,
-          "unrealized_pnl_pct": -1.6,
-          "market_value": 1920.15
+          "unrealized_pnl": -32.74,
+          "unrealized_pnl_pct": -1.68,
+          "market_value": 1918.62
         },
         "SPY": {
           "ticker": "SPY",
           "shares": 1.2134,
           "avg_entry_price": 703.4572,
-          "current_price": 724.92,
+          "current_price": 725.56,
           "stop_loss": 671.3316,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=8.5%, stop=-4.5%",
-          "unrealized_pnl": 26.05,
-          "unrealized_pnl_pct": 3.05,
-          "market_value": 879.62
+          "unrealized_pnl": 26.82,
+          "unrealized_pnl_pct": 3.14,
+          "market_value": 880.39
         },
         "GLD": {
           "ticker": "GLD",
           "shares": 2.4895,
           "avg_entry_price": 318.3527,
-          "current_price": 331.805,
+          "current_price": 332.06,
           "stop_loss": 303.8141,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_RISK_PARITY: target_weight=7.9%, stop=-4.5%",
-          "unrealized_pnl": 33.49,
-          "unrealized_pnl_pct": 4.23,
-          "market_value": 826.03
+          "unrealized_pnl": 34.12,
+          "unrealized_pnl_pct": 4.31,
+          "market_value": 826.66
         }
       },
       "pending_orders": [],
@@ -8275,6 +8681,15 @@
           "positions_value": 3625.8,
           "drawdown_pct": -0.17,
           "daily_return_pct": 0.03
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10028.2,
+          "cash": 6402.53,
+          "positions_value": 3625.67,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.02
         }
       ],
       "daily_journal": [
@@ -8298,16 +8713,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10025.78,
-          "end_equity": 10028.33,
-          "daily_pnl": 2.55,
-          "daily_pnl_pct": 0.03,
+          "end_equity": 10028.2,
+          "daily_pnl": 2.42,
+          "daily_pnl_pct": 0.02,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.78 to $10,028.33 (+$2.55, +0.03%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.60%), SPY (1.21 sh, +3.05%), GLD (2.49 sh, +4.23%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.78 to $10,028.20 (+$2.42, +0.02%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.68%), SPY (1.21 sh, +3.14%), GLD (2.49 sh, +4.31%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "min_variance_etf": {
       "agent_id": "min_variance_etf",
@@ -8317,26 +8732,26 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 2697.91,
-      "equity": 10055.88,
+      "equity": 10057.23,
       "peak_equity": 10069.63,
       "max_drawdown_pct": -0.15,
-      "current_drawdown_pct": -0.14,
+      "current_drawdown_pct": -0.12,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10018.46,
-      "daily_pnl_pct": 0.37,
+      "daily_pnl_pct": 0.39,
       "positions": {
         "TLT": {
           "ticker": "TLT",
           "shares": 23.5934,
           "avg_entry_price": 82.7078,
-          "current_price": 81.385,
+          "current_price": 81.32,
           "stop_loss": 78.9308,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=19.5%, stop=-4.5%",
-          "unrealized_pnl": -31.21,
-          "unrealized_pnl_pct": -1.6,
-          "market_value": 1920.15
+          "unrealized_pnl": -32.74,
+          "unrealized_pnl_pct": -1.68,
+          "market_value": 1918.62
         },
         "XLE": {
           "ticker": "XLE",
@@ -8355,40 +8770,40 @@
           "ticker": "XLC",
           "shares": 12.3492,
           "avg_entry_price": 103.7225,
-          "current_price": 107.17,
+          "current_price": 107.26,
           "stop_loss": 98.9857,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=12.8%, stop=-4.5%",
-          "unrealized_pnl": 42.57,
-          "unrealized_pnl_pct": 3.32,
-          "market_value": 1323.46
+          "unrealized_pnl": 43.69,
+          "unrealized_pnl_pct": 3.41,
+          "market_value": 1324.58
         },
         "XLU": {
           "ticker": "XLU",
           "shares": 25.9608,
           "avg_entry_price": 43.4804,
-          "current_price": 43.6,
+          "current_price": 43.645,
           "stop_loss": 41.4948,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=11.3%, stop=-4.5%",
-          "unrealized_pnl": 3.1,
-          "unrealized_pnl_pct": 0.28,
-          "market_value": 1131.89
+          "unrealized_pnl": 4.27,
+          "unrealized_pnl_pct": 0.38,
+          "market_value": 1133.06
         },
         "XLP": {
           "ticker": "XLP",
           "shares": 10.6953,
           "avg_entry_price": 92.5347,
-          "current_price": 92.33,
+          "current_price": 92.385,
           "stop_loss": 88.3088,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MIN_VAR_ETF: target_weight=9.9%, stop=-4.5%",
-          "unrealized_pnl": -2.19,
-          "unrealized_pnl_pct": -0.22,
-          "market_value": 987.5
+          "unrealized_pnl": -1.6,
+          "unrealized_pnl_pct": -0.16,
+          "market_value": 988.09
         }
       },
       "pending_orders": [],
@@ -8649,6 +9064,15 @@
           "positions_value": 7357.97,
           "drawdown_pct": -0.14,
           "daily_return_pct": 0.37
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10057.23,
+          "cash": 2697.91,
+          "positions_value": 7359.32,
+          "drawdown_pct": -0.12,
+          "daily_return_pct": 0.39
         }
       ],
       "daily_journal": [
@@ -8674,16 +9098,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10018.46,
-          "end_equity": 10055.88,
-          "daily_pnl": 37.42,
-          "daily_pnl_pct": 0.37,
+          "end_equity": 10057.23,
+          "daily_pnl": 38.77,
+          "daily_pnl_pct": 0.39,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.46 to $10,055.88 (+$37.42, +0.37%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.60%), XLE (32.24 sh, +2.24%), XLC (12.35 sh, +3.32%), XLU (25.96 sh, +0.28%), XLP (10.70 sh, -0.22%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.46 to $10,057.23 (+$38.77, +0.39%). No new trades executed; held existing position(s): TLT (23.59 sh, -1.68%), XLE (32.24 sh, +2.24%), XLC (12.35 sh, +3.41%), XLU (25.96 sh, +0.38%), XLP (10.70 sh, -0.16%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "low_vol_anomaly": {
       "agent_id": "low_vol_anomaly",
@@ -8693,78 +9117,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.49,
-      "equity": 9977.02,
+      "equity": 9983.09,
       "peak_equity": 10000.0,
       "max_drawdown_pct": -0.36,
-      "current_drawdown_pct": -0.23,
+      "current_drawdown_pct": -0.17,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 9982.24,
-      "daily_pnl_pct": -0.05,
+      "daily_pnl_pct": 0.01,
       "positions": {
         "ABBV": {
           "ticker": "ABBV",
           "shares": 6.4035,
           "avg_entry_price": 296.9177,
-          "current_price": 291.62,
+          "current_price": 292.025,
           "stop_loss": 281.8745,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -33.92,
-          "unrealized_pnl_pct": -1.78,
-          "market_value": 1867.39
+          "unrealized_pnl": -31.33,
+          "unrealized_pnl_pct": -1.65,
+          "market_value": 1869.98
         },
         "BRK.B": {
           "ticker": "BRK.B",
           "shares": 3.2941,
           "avg_entry_price": 577.1889,
-          "current_price": 580.295,
+          "current_price": 580.525,
           "stop_loss": 547.9457,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 10.23,
-          "unrealized_pnl_pct": 0.54,
-          "market_value": 1911.55
+          "unrealized_pnl": 10.99,
+          "unrealized_pnl_pct": 0.58,
+          "market_value": 1912.31
         },
         "COST": {
           "ticker": "COST",
           "shares": 1.7417,
           "avg_entry_price": 1091.5937,
-          "current_price": 1094.48,
+          "current_price": 1094.575,
           "stop_loss": 1036.2885,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 5.03,
-          "unrealized_pnl_pct": 0.26,
-          "market_value": 1906.26
+          "unrealized_pnl": 5.19,
+          "unrealized_pnl_pct": 0.27,
+          "market_value": 1906.42
         },
         "KO": {
           "ticker": "KO",
           "shares": 19.3541,
           "avg_entry_price": 98.2387,
-          "current_price": 97.32,
+          "current_price": 97.4,
           "stop_loss": 93.2615,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -17.78,
-          "unrealized_pnl_pct": -0.94,
-          "market_value": 1883.54
+          "unrealized_pnl": -16.23,
+          "unrealized_pnl_pct": -0.85,
+          "market_value": 1885.09
         },
         "PFE": {
           "ticker": "PFE",
           "shares": 67.2328,
           "avg_entry_price": 28.2798,
-          "current_price": 28.48,
+          "current_price": 28.495,
           "stop_loss": 26.847,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 13.46,
-          "unrealized_pnl_pct": 0.71,
-          "market_value": 1914.79
+          "unrealized_pnl": 14.47,
+          "unrealized_pnl_pct": 0.76,
+          "market_value": 1915.8
         }
       },
       "pending_orders": [],
@@ -9025,6 +9449,15 @@
           "positions_value": 9483.53,
           "drawdown_pct": -0.23,
           "daily_return_pct": -0.05
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 9983.09,
+          "cash": 493.49,
+          "positions_value": 9489.6,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.01
         }
       ],
       "daily_journal": [
@@ -9050,16 +9483,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 9982.24,
-          "end_equity": 9977.02,
-          "daily_pnl": -5.22,
-          "daily_pnl_pct": -0.05,
+          "end_equity": 9983.09,
+          "daily_pnl": 0.85,
+          "daily_pnl_pct": 0.01,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,982.24 to $9,977.02 ($-5.22, -0.05%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.78%), BRK.B (3.29 sh, +0.54%), COST (1.74 sh, +0.26%), KO (19.35 sh, -0.94%), PFE (67.23 sh, +0.71%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,982.24 to $9,983.09 (+$0.85, +0.01%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.65%), BRK.B (3.29 sh, +0.58%), COST (1.74 sh, +0.27%), KO (19.35 sh, -0.85%), PFE (67.23 sh, +0.76%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "megacap5_hold": {
       "agent_id": "megacap5_hold",
@@ -9069,78 +9502,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.42,
-      "equity": 10285.77,
+      "equity": 10296.72,
       "peak_equity": 10412.13,
       "max_drawdown_pct": -1.99,
-      "current_drawdown_pct": -1.21,
+      "current_drawdown_pct": -1.11,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10220.64,
-      "daily_pnl_pct": 0.64,
+      "daily_pnl_pct": 0.74,
       "positions": {
         "AAPL": {
           "ticker": "AAPL",
           "shares": 5.4382,
           "avg_entry_price": 349.6246,
-          "current_price": 357.385,
+          "current_price": 357.42,
           "stop_loss": 331.911,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 42.2,
-          "unrealized_pnl_pct": 2.22,
-          "market_value": 1943.53
+          "unrealized_pnl": 42.39,
+          "unrealized_pnl_pct": 2.23,
+          "market_value": 1943.72
         },
         "AMZN": {
           "ticker": "AMZN",
           "shares": 7.8915,
           "avg_entry_price": 240.9336,
-          "current_price": 254.2,
+          "current_price": 253.88,
           "stop_loss": 228.7267,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 104.69,
-          "unrealized_pnl_pct": 5.51,
-          "market_value": 2006.02
+          "unrealized_pnl": 102.16,
+          "unrealized_pnl_pct": 5.37,
+          "market_value": 2003.49
         },
         "GOOGL": {
           "ticker": "GOOGL",
           "shares": 7.1235,
           "avg_entry_price": 266.9067,
-          "current_price": 272.495,
+          "current_price": 273.32,
           "stop_loss": 253.384,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 39.81,
-          "unrealized_pnl_pct": 2.09,
-          "market_value": 1941.12
+          "unrealized_pnl": 45.69,
+          "unrealized_pnl_pct": 2.4,
+          "market_value": 1947.0
         },
         "MSFT": {
           "ticker": "MSFT",
           "shares": 3.934,
           "avg_entry_price": 483.2981,
-          "current_price": 489.73,
+          "current_price": 490.38,
           "stop_loss": 458.812,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 25.31,
-          "unrealized_pnl_pct": 1.33,
-          "market_value": 1926.6
+          "unrealized_pnl": 27.86,
+          "unrealized_pnl_pct": 1.47,
+          "market_value": 1929.15
         },
         "NVDA": {
           "ticker": "NVDA",
           "shares": 13.3132,
           "avg_entry_price": 142.8149,
-          "current_price": 148.355,
+          "current_price": 148.72,
           "stop_loss": 135.5793,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_MEGACAP5: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 73.76,
-          "unrealized_pnl_pct": 3.88,
-          "market_value": 1975.08
+          "unrealized_pnl": 78.62,
+          "unrealized_pnl_pct": 4.13,
+          "market_value": 1979.94
         }
       },
       "pending_orders": [],
@@ -9401,6 +9834,15 @@
           "positions_value": 9792.35,
           "drawdown_pct": -1.21,
           "daily_return_pct": 0.64
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10296.72,
+          "cash": 493.42,
+          "positions_value": 9803.3,
+          "drawdown_pct": -1.11,
+          "daily_return_pct": 0.74
         }
       ],
       "daily_journal": [
@@ -9426,16 +9868,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10220.64,
-          "end_equity": 10285.77,
-          "daily_pnl": 65.13,
-          "daily_pnl_pct": 0.64,
+          "end_equity": 10296.72,
+          "daily_pnl": 76.08,
+          "daily_pnl_pct": 0.74,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,220.64 to $10,285.77 (+$65.13, +0.64%). No new trades executed; held existing position(s): AAPL (5.44 sh, +2.22%), AMZN (7.89 sh, +5.51%), GOOGL (7.12 sh, +2.09%), MSFT (3.93 sh, +1.33%), NVDA (13.31 sh, +3.88%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,220.64 to $10,296.72 (+$76.08, +0.74%). No new trades executed; held existing position(s): AAPL (5.44 sh, +2.23%), AMZN (7.89 sh, +5.37%), GOOGL (7.12 sh, +2.40%), MSFT (3.93 sh, +1.47%), NVDA (13.31 sh, +4.13%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "xs_short_reversal": {
       "agent_id": "xs_short_reversal",
@@ -9445,78 +9887,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.57,
-      "equity": 10087.92,
-      "peak_equity": 10087.92,
+      "equity": 10093.99,
+      "peak_equity": 10093.99,
       "max_drawdown_pct": -0.14,
       "current_drawdown_pct": 0.0,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10000.0,
-      "daily_pnl_pct": 0.88,
+      "daily_pnl_pct": 0.94,
       "positions": {
         "AMD": {
           "ticker": "AMD",
           "shares": 4.6634,
           "avg_entry_price": 407.7053,
-          "current_price": 416.46,
+          "current_price": 417.7,
           "stop_loss": 387.049,
           "take_profit": null,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 40.83,
-          "unrealized_pnl_pct": 2.15,
-          "market_value": 1942.12
+          "unrealized_pnl": 46.61,
+          "unrealized_pnl_pct": 2.45,
+          "market_value": 1947.9
         },
         "AMZN": {
           "ticker": "AMZN",
           "shares": 7.5507,
           "avg_entry_price": 251.8061,
-          "current_price": 254.2,
+          "current_price": 253.88,
           "stop_loss": 239.0485,
           "take_profit": null,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 18.08,
-          "unrealized_pnl_pct": 0.95,
-          "market_value": 1919.39
+          "unrealized_pnl": 15.66,
+          "unrealized_pnl_pct": 0.82,
+          "market_value": 1916.97
         },
         "GE": {
           "ticker": "GE",
           "shares": 5.922,
           "avg_entry_price": 321.0596,
-          "current_price": 322.65,
+          "current_price": 322.495,
           "stop_loss": 304.7932,
           "take_profit": null,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 9.42,
-          "unrealized_pnl_pct": 0.5,
-          "market_value": 1910.73
+          "unrealized_pnl": 8.51,
+          "unrealized_pnl_pct": 0.45,
+          "market_value": 1909.82
         },
         "GOOGL": {
           "ticker": "GOOGL",
           "shares": 7.002,
           "avg_entry_price": 271.54,
-          "current_price": 272.495,
+          "current_price": 273.32,
           "stop_loss": 257.7825,
           "take_profit": null,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 6.69,
-          "unrealized_pnl_pct": 0.35,
-          "market_value": 1908.01
+          "unrealized_pnl": 12.47,
+          "unrealized_pnl_pct": 0.66,
+          "market_value": 1913.79
         },
         "GS": {
           "ticker": "GS",
           "shares": 2.3485,
           "avg_entry_price": 809.5364,
-          "current_price": 815.03,
+          "current_price": 814.11,
           "stop_loss": 768.5215,
           "take_profit": null,
           "opened_at": "2026-11-27T15:33:41Z",
           "entry_reasoning": "ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 12.9,
-          "unrealized_pnl_pct": 0.68,
-          "market_value": 1914.1
+          "unrealized_pnl": 10.74,
+          "unrealized_pnl_pct": 0.56,
+          "market_value": 1911.94
         }
       },
       "pending_orders": [],
@@ -9777,6 +10219,15 @@
           "positions_value": 9594.35,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.88
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10093.99,
+          "cash": 493.57,
+          "positions_value": 9600.42,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.94
         }
       ],
       "daily_journal": [
@@ -9796,12 +10247,12 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10000.0,
-          "end_equity": 10087.92,
-          "daily_pnl": 87.92,
-          "daily_pnl_pct": 0.88,
+          "end_equity": 10093.99,
+          "daily_pnl": 93.99,
+          "daily_pnl_pct": 0.94,
           "trades_count": 5,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,087.92 (+$87.92, +0.88%). Executed 5 trade(s) — Buys: AMD ($1,901), AMZN ($1,901), GE ($1,901), GOOGL ($1,901), GS ($1,901); Sells: none.",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,093.99 (+$93.99, +0.94%). Executed 5 trade(s) — Buys: AMD ($1,901), AMZN ($1,901), GE ($1,901), GOOGL ($1,901), GS ($1,901); Sells: none.",
           "highlights": [
             "BUY 4.6634 AMD @ $407.71 ($1901.29, stop $387.05) — ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
             "BUY 7.5507 AMZN @ $251.81 ($1901.31, stop $239.05) — ENTRY_XS_REVERSAL: target_weight=19.0%, stop=-5.0%",
@@ -9811,7 +10262,7 @@
           ]
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "high52_anchor": {
       "agent_id": "high52_anchor",
@@ -9821,78 +10272,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.39,
-      "equity": 9981.36,
+      "equity": 9982.08,
       "peak_equity": 10000.0,
       "max_drawdown_pct": -0.29,
-      "current_drawdown_pct": -0.19,
+      "current_drawdown_pct": -0.18,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 9996.42,
-      "daily_pnl_pct": -0.15,
+      "daily_pnl_pct": -0.14,
       "positions": {
         "ABBV": {
           "ticker": "ABBV",
           "shares": 6.4035,
           "avg_entry_price": 296.9177,
-          "current_price": 291.62,
+          "current_price": 292.025,
           "stop_loss": 281.8745,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -33.92,
-          "unrealized_pnl_pct": -1.78,
-          "market_value": 1867.39
+          "unrealized_pnl": -31.33,
+          "unrealized_pnl_pct": -1.65,
+          "market_value": 1869.98
         },
         "DIS": {
           "ticker": "DIS",
           "shares": 15.4083,
           "avg_entry_price": 123.3964,
-          "current_price": 126.95,
+          "current_price": 126.945,
           "stop_loss": 117.1445,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 54.75,
+          "unrealized_pnl": 54.68,
           "unrealized_pnl_pct": 2.88,
-          "market_value": 1956.08
+          "market_value": 1956.01
         },
         "MCD": {
           "ticker": "MCD",
           "shares": 6.6546,
           "avg_entry_price": 285.7149,
-          "current_price": 282.02,
+          "current_price": 281.875,
           "stop_loss": 271.2392,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -24.59,
-          "unrealized_pnl_pct": -1.29,
-          "market_value": 1876.73
+          "unrealized_pnl": -25.55,
+          "unrealized_pnl_pct": -1.34,
+          "market_value": 1875.77
         },
         "PG": {
           "ticker": "PG",
           "shares": 10.9365,
           "avg_entry_price": 173.8516,
-          "current_price": 172.56,
+          "current_price": 172.43,
           "stop_loss": 165.0435,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -14.13,
-          "unrealized_pnl_pct": -0.74,
-          "market_value": 1887.2
+          "unrealized_pnl": -15.55,
+          "unrealized_pnl_pct": -0.82,
+          "market_value": 1885.78
         },
         "WMT": {
           "ticker": "WMT",
           "shares": 14.3939,
           "avg_entry_price": 132.0924,
-          "current_price": 132.04,
+          "current_price": 132.08,
           "stop_loss": 125.4,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -0.75,
-          "unrealized_pnl_pct": -0.04,
-          "market_value": 1900.57
+          "unrealized_pnl": -0.17,
+          "unrealized_pnl_pct": -0.01,
+          "market_value": 1901.15
         }
       },
       "pending_orders": [],
@@ -10153,6 +10604,15 @@
           "positions_value": 9487.97,
           "drawdown_pct": -0.19,
           "daily_return_pct": -0.15
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 9982.08,
+          "cash": 493.39,
+          "positions_value": 9488.69,
+          "drawdown_pct": -0.18,
+          "daily_return_pct": -0.14
         }
       ],
       "daily_journal": [
@@ -10178,16 +10638,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 9996.42,
-          "end_equity": 9981.36,
-          "daily_pnl": -15.06,
-          "daily_pnl_pct": -0.15,
+          "end_equity": 9982.08,
+          "daily_pnl": -14.34,
+          "daily_pnl_pct": -0.14,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,996.42 to $9,981.36 ($-15.06, -0.15%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.78%), DIS (15.41 sh, +2.88%), MCD (6.65 sh, -1.29%), PG (10.94 sh, -0.74%), WMT (14.39 sh, -0.04%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $9,996.42 to $9,982.08 ($-14.34, -0.14%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.65%), DIS (15.41 sh, +2.88%), MCD (6.65 sh, -1.34%), PG (10.94 sh, -0.82%), WMT (14.39 sh, -0.01%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "value_momentum": {
       "agent_id": "value_momentum",
@@ -10197,78 +10657,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.41,
-      "equity": 10172.7,
+      "equity": 10177.56,
       "peak_equity": 10189.04,
       "max_drawdown_pct": -0.28,
-      "current_drawdown_pct": -0.16,
+      "current_drawdown_pct": -0.11,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10093.83,
-      "daily_pnl_pct": 0.78,
+      "daily_pnl_pct": 0.83,
       "positions": {
         "BRK.B": {
           "ticker": "BRK.B",
           "shares": 3.2941,
           "avg_entry_price": 577.1889,
-          "current_price": 580.295,
+          "current_price": 580.525,
           "stop_loss": 547.9457,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 10.23,
-          "unrealized_pnl_pct": 0.54,
-          "market_value": 1911.55
+          "unrealized_pnl": 10.99,
+          "unrealized_pnl_pct": 0.58,
+          "market_value": 1912.31
         },
         "CVX": {
           "ticker": "CVX",
           "shares": 9.051,
           "avg_entry_price": 210.067,
-          "current_price": 213.9,
+          "current_price": 213.87,
           "stop_loss": 199.424,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 34.69,
-          "unrealized_pnl_pct": 1.82,
-          "market_value": 1936.01
+          "unrealized_pnl": 34.42,
+          "unrealized_pnl_pct": 1.81,
+          "market_value": 1935.74
         },
         "DIS": {
           "ticker": "DIS",
           "shares": 15.4083,
           "avg_entry_price": 123.3964,
-          "current_price": 126.95,
+          "current_price": 126.945,
           "stop_loss": 117.1445,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 54.75,
+          "unrealized_pnl": 54.68,
           "unrealized_pnl_pct": 2.88,
-          "market_value": 1956.08
+          "market_value": 1956.01
         },
         "HON": {
           "ticker": "HON",
           "shares": 8.5577,
           "avg_entry_price": 222.1754,
-          "current_price": 227.49,
+          "current_price": 227.915,
           "stop_loss": 210.919,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 45.48,
-          "unrealized_pnl_pct": 2.39,
-          "market_value": 1946.79
+          "unrealized_pnl": 49.12,
+          "unrealized_pnl_pct": 2.58,
+          "market_value": 1950.43
         },
         "LMT": {
           "ticker": "LMT",
           "shares": 3.2051,
           "avg_entry_price": 593.2151,
-          "current_price": 601.81,
+          "current_price": 602.06,
           "stop_loss": 563.16,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 27.55,
-          "unrealized_pnl_pct": 1.45,
-          "market_value": 1928.86
+          "unrealized_pnl": 28.35,
+          "unrealized_pnl_pct": 1.49,
+          "market_value": 1929.66
         }
       },
       "pending_orders": [],
@@ -10529,6 +10989,15 @@
           "positions_value": 9679.29,
           "drawdown_pct": -0.16,
           "daily_return_pct": 0.78
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10177.56,
+          "cash": 493.41,
+          "positions_value": 9684.15,
+          "drawdown_pct": -0.11,
+          "daily_return_pct": 0.83
         }
       ],
       "daily_journal": [
@@ -10554,16 +11023,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10093.83,
-          "end_equity": 10172.7,
-          "daily_pnl": 78.87,
-          "daily_pnl_pct": 0.78,
+          "end_equity": 10177.56,
+          "daily_pnl": 83.73,
+          "daily_pnl_pct": 0.83,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,093.83 to $10,172.70 (+$78.87, +0.78%). No new trades executed; held existing position(s): BRK.B (3.29 sh, +0.54%), CVX (9.05 sh, +1.82%), DIS (15.41 sh, +2.88%), HON (8.56 sh, +2.39%), LMT (3.21 sh, +1.45%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,093.83 to $10,177.56 (+$83.73, +0.83%). No new trades executed; held existing position(s): BRK.B (3.29 sh, +0.58%), CVX (9.05 sh, +1.81%), DIS (15.41 sh, +2.88%), HON (8.56 sh, +2.58%), LMT (3.21 sh, +1.49%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "volume_accumulation": {
       "agent_id": "volume_accumulation",
@@ -10573,78 +11042,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.48,
-      "equity": 10071.37,
+      "equity": 10074.93,
       "peak_equity": 10092.52,
       "max_drawdown_pct": -0.21,
-      "current_drawdown_pct": -0.21,
+      "current_drawdown_pct": -0.17,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10025.81,
-      "daily_pnl_pct": 0.45,
+      "daily_pnl_pct": 0.49,
       "positions": {
         "COST": {
           "ticker": "COST",
           "shares": 1.7417,
           "avg_entry_price": 1091.5937,
-          "current_price": 1094.48,
+          "current_price": 1094.575,
           "stop_loss": 1036.2885,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 5.03,
-          "unrealized_pnl_pct": 0.26,
-          "market_value": 1906.26
+          "unrealized_pnl": 5.19,
+          "unrealized_pnl_pct": 0.27,
+          "market_value": 1906.42
         },
         "HON": {
           "ticker": "HON",
           "shares": 8.5577,
           "avg_entry_price": 222.1754,
-          "current_price": 227.49,
+          "current_price": 227.915,
           "stop_loss": 210.919,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 45.48,
-          "unrealized_pnl_pct": 2.39,
-          "market_value": 1946.79
+          "unrealized_pnl": 49.12,
+          "unrealized_pnl_pct": 2.58,
+          "market_value": 1950.43
         },
         "MA": {
           "ticker": "MA",
           "shares": 2.9209,
           "avg_entry_price": 650.9354,
-          "current_price": 666.9,
+          "current_price": 667.19,
           "stop_loss": 617.956,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 46.63,
-          "unrealized_pnl_pct": 2.45,
-          "market_value": 1947.95
+          "unrealized_pnl": 47.48,
+          "unrealized_pnl_pct": 2.5,
+          "market_value": 1948.8
         },
         "PEP": {
           "ticker": "PEP",
           "shares": 13.1315,
           "avg_entry_price": 144.7913,
-          "current_price": 143.905,
+          "current_price": 143.93,
           "stop_loss": 137.4555,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -11.64,
-          "unrealized_pnl_pct": -0.61,
-          "market_value": 1889.69
+          "unrealized_pnl": -11.31,
+          "unrealized_pnl_pct": -0.59,
+          "market_value": 1890.02
         },
         "PG": {
           "ticker": "PG",
           "shares": 10.9365,
           "avg_entry_price": 173.8516,
-          "current_price": 172.56,
+          "current_price": 172.43,
           "stop_loss": 165.0435,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -14.13,
-          "unrealized_pnl_pct": -0.74,
-          "market_value": 1887.2
+          "unrealized_pnl": -15.55,
+          "unrealized_pnl_pct": -0.82,
+          "market_value": 1885.78
         }
       },
       "pending_orders": [],
@@ -10905,6 +11374,15 @@
           "positions_value": 9577.89,
           "drawdown_pct": -0.21,
           "daily_return_pct": 0.45
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10074.93,
+          "cash": 493.48,
+          "positions_value": 9581.45,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.49
         }
       ],
       "daily_journal": [
@@ -10930,16 +11408,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10025.81,
-          "end_equity": 10071.37,
-          "daily_pnl": 45.56,
-          "daily_pnl_pct": 0.45,
+          "end_equity": 10074.93,
+          "daily_pnl": 49.12,
+          "daily_pnl_pct": 0.49,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.81 to $10,071.37 (+$45.56, +0.45%). No new trades executed; held existing position(s): COST (1.74 sh, +0.26%), HON (8.56 sh, +2.39%), MA (2.92 sh, +2.45%), PEP (13.13 sh, -0.61%), PG (10.94 sh, -0.74%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.81 to $10,074.93 (+$49.12, +0.49%). No new trades executed; held existing position(s): COST (1.74 sh, +0.27%), HON (8.56 sh, +2.58%), MA (2.92 sh, +2.50%), PEP (13.13 sh, -0.59%), PG (10.94 sh, -0.82%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "regime_beta_switch": {
       "agent_id": "regime_beta_switch",
@@ -10949,78 +11427,78 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 493.41,
-      "equity": 10016.57,
+      "equity": 10022.31,
       "peak_equity": 10035.67,
       "max_drawdown_pct": -0.28,
-      "current_drawdown_pct": -0.19,
+      "current_drawdown_pct": -0.13,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10018.82,
-      "daily_pnl_pct": -0.02,
+      "daily_pnl_pct": 0.03,
       "positions": {
         "ABBV": {
           "ticker": "ABBV",
           "shares": 6.4035,
           "avg_entry_price": 296.9177,
-          "current_price": 291.62,
+          "current_price": 292.025,
           "stop_loss": 281.8745,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -33.92,
-          "unrealized_pnl_pct": -1.78,
-          "market_value": 1867.39
+          "unrealized_pnl": -31.33,
+          "unrealized_pnl_pct": -1.65,
+          "market_value": 1869.98
         },
         "BRK.B": {
           "ticker": "BRK.B",
           "shares": 3.2941,
           "avg_entry_price": 577.1889,
-          "current_price": 580.295,
+          "current_price": 580.525,
           "stop_loss": 547.9457,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 10.23,
-          "unrealized_pnl_pct": 0.54,
-          "market_value": 1911.55
+          "unrealized_pnl": 10.99,
+          "unrealized_pnl_pct": 0.58,
+          "market_value": 1912.31
         },
         "LMT": {
           "ticker": "LMT",
           "shares": 3.2051,
           "avg_entry_price": 593.2151,
-          "current_price": 601.81,
+          "current_price": 602.06,
           "stop_loss": 563.16,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 27.55,
-          "unrealized_pnl_pct": 1.45,
-          "market_value": 1928.86
+          "unrealized_pnl": 28.35,
+          "unrealized_pnl_pct": 1.49,
+          "market_value": 1929.66
         },
         "PFE": {
           "ticker": "PFE",
           "shares": 67.2328,
           "avg_entry_price": 28.2798,
-          "current_price": 28.48,
+          "current_price": 28.495,
           "stop_loss": 26.847,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": 13.46,
-          "unrealized_pnl_pct": 0.71,
-          "market_value": 1914.79
+          "unrealized_pnl": 14.47,
+          "unrealized_pnl_pct": 0.76,
+          "market_value": 1915.8
         },
         "WMT": {
           "ticker": "WMT",
           "shares": 14.3939,
           "avg_entry_price": 132.0924,
-          "current_price": 132.04,
+          "current_price": 132.08,
           "stop_loss": 125.4,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-          "unrealized_pnl": -0.75,
-          "unrealized_pnl_pct": -0.04,
-          "market_value": 1900.57
+          "unrealized_pnl": -0.17,
+          "unrealized_pnl_pct": -0.01,
+          "market_value": 1901.15
         }
       },
       "pending_orders": [],
@@ -11281,6 +11759,15 @@
           "positions_value": 9523.16,
           "drawdown_pct": -0.19,
           "daily_return_pct": -0.02
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10022.31,
+          "cash": 493.41,
+          "positions_value": 9528.9,
+          "drawdown_pct": -0.13,
+          "daily_return_pct": 0.03
         }
       ],
       "daily_journal": [
@@ -11306,16 +11793,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10018.82,
-          "end_equity": 10016.57,
-          "daily_pnl": -2.25,
-          "daily_pnl_pct": -0.02,
+          "end_equity": 10022.31,
+          "daily_pnl": 3.49,
+          "daily_pnl_pct": 0.03,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.82 to $10,016.57 ($-2.25, -0.02%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.78%), BRK.B (3.29 sh, +0.54%), LMT (3.21 sh, +1.45%), PFE (67.23 sh, +0.71%), WMT (14.39 sh, -0.04%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.82 to $10,022.31 (+$3.49, +0.03%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.65%), BRK.B (3.29 sh, +0.58%), LMT (3.21 sh, +1.49%), PFE (67.23 sh, +0.76%), WMT (14.39 sh, -0.01%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "breadth_timing": {
       "agent_id": "breadth_timing",
@@ -11480,6 +11967,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -11508,7 +12004,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "panic_dip_index": {
       "agent_id": "panic_dip_index",
@@ -11673,6 +12169,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -11701,7 +12206,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "risk_appetite_ratio": {
       "agent_id": "risk_appetite_ratio",
@@ -11711,65 +12216,65 @@
       "status_reason": "Trading active",
       "initial_cash": 10000.0,
       "cash": 3995.83,
-      "equity": 10040.23,
+      "equity": 10042.69,
       "peak_equity": 10059.64,
       "max_drawdown_pct": -0.19,
-      "current_drawdown_pct": -0.19,
+      "current_drawdown_pct": -0.17,
       "current_trading_date_et": "2026-11-27",
       "day_start_equity": 10033.17,
-      "daily_pnl_pct": 0.07,
+      "daily_pnl_pct": 0.09,
       "positions": {
         "GLD": {
           "ticker": "GLD",
           "shares": 4.715,
           "avg_entry_price": 318.3527,
-          "current_price": 331.805,
+          "current_price": 332.06,
           "stop_loss": 303.8141,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-          "unrealized_pnl": 63.43,
-          "unrealized_pnl_pct": 4.23,
-          "market_value": 1564.46
+          "unrealized_pnl": 64.63,
+          "unrealized_pnl_pct": 4.31,
+          "market_value": 1565.66
         },
         "TLT": {
           "ticker": "TLT",
           "shares": 18.1488,
           "avg_entry_price": 82.7078,
-          "current_price": 81.385,
+          "current_price": 81.32,
           "stop_loss": 78.9308,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-          "unrealized_pnl": -24.01,
-          "unrealized_pnl_pct": -1.6,
-          "market_value": 1477.04
+          "unrealized_pnl": -25.19,
+          "unrealized_pnl_pct": -1.68,
+          "market_value": 1475.86
         },
         "XLP": {
           "ticker": "XLP",
           "shares": 16.2214,
           "avg_entry_price": 92.5347,
-          "current_price": 92.33,
+          "current_price": 92.385,
           "stop_loss": 88.3088,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-          "unrealized_pnl": -3.32,
-          "unrealized_pnl_pct": -0.22,
-          "market_value": 1497.72
+          "unrealized_pnl": -2.43,
+          "unrealized_pnl_pct": -0.16,
+          "market_value": 1498.61
         },
         "XLU": {
           "ticker": "XLU",
           "shares": 34.5224,
           "avg_entry_price": 43.4804,
-          "current_price": 43.6,
+          "current_price": 43.645,
           "stop_loss": 41.4948,
           "take_profit": null,
           "opened_at": "2026-11-25T17:03:17Z",
           "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-          "unrealized_pnl": 4.13,
-          "unrealized_pnl_pct": 0.28,
-          "market_value": 1505.18
+          "unrealized_pnl": 5.68,
+          "unrealized_pnl_pct": 0.38,
+          "market_value": 1506.73
         }
       },
       "pending_orders": [],
@@ -12008,6 +12513,15 @@
           "positions_value": 6044.4,
           "drawdown_pct": -0.19,
           "daily_return_pct": 0.07
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10042.69,
+          "cash": 3995.83,
+          "positions_value": 6046.86,
+          "drawdown_pct": -0.17,
+          "daily_return_pct": 0.09
         }
       ],
       "daily_journal": [
@@ -12032,16 +12546,16 @@
           "trading_date_et": "2026-11-27",
           "trading_day_number": 2,
           "start_equity": 10033.17,
-          "end_equity": 10040.23,
-          "daily_pnl": 7.06,
-          "daily_pnl_pct": 0.07,
+          "end_equity": 10042.69,
+          "daily_pnl": 9.52,
+          "daily_pnl_pct": 0.09,
           "trades_count": 0,
           "rejections_count": 0,
-          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,040.23 (+$7.06, +0.07%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.23%), TLT (18.15 sh, -1.60%), XLP (16.22 sh, -0.22%), XLU (34.52 sh, +0.28%).",
+          "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,042.69 (+$9.52, +0.09%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.31%), TLT (18.15 sh, -1.68%), XLP (16.22 sh, -0.16%), XLU (34.52 sh, +0.38%).",
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "vwap_reversion": {
       "agent_id": "vwap_reversion",
@@ -12206,6 +12720,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -12234,7 +12757,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     },
     "squeeze_breakout": {
       "agent_id": "squeeze_breakout",
@@ -12399,6 +12922,15 @@
           "positions_value": 0,
           "drawdown_pct": 0.0,
           "daily_return_pct": 0.0
+        },
+        {
+          "timestamp": "2026-11-27T16:31:14Z",
+          "trading_date_et": "2026-11-27",
+          "equity": 10000.0,
+          "cash": 10000.0,
+          "positions_value": 0,
+          "drawdown_pct": 0.0,
+          "daily_return_pct": 0.0
         }
       ],
       "daily_journal": [
@@ -12427,7 +12959,7 @@
           "highlights": []
         }
       ],
-      "last_updated": "2026-11-27T16:25:53Z"
+      "last_updated": "2026-11-27T16:31:14Z"
     }
   }
 }
