@@ -6,65 +6,65 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 1987.92,
-  "equity": 10037.49,
-  "peak_equity": 10045.98,
+  "equity": 10051.0,
+  "peak_equity": 10051.0,
   "max_drawdown_pct": -0.12,
-  "current_drawdown_pct": -0.08,
+  "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 9994.49,
-  "daily_pnl_pct": 0.43,
+  "daily_pnl_pct": 0.57,
   "positions": {
     "XLP": {
       "ticker": "XLP",
       "shares": 21.6286,
       "avg_entry_price": 92.5347,
-      "current_price": 92.565,
+      "current_price": 92.7,
       "stop_loss": 91.08,
       "take_profit": 96.17,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLP (rank #1 of 11, composite RS score +2.03%, RS vs SPY +2.77%, 5d change +0.92%) trading at $92.47 above 20-SMA ($91.97). Stop at $91.08, target at $96.17.",
-      "unrealized_pnl": 0.65,
-      "unrealized_pnl_pct": 0.03,
-      "market_value": 2002.05
+      "unrealized_pnl": 3.57,
+      "unrealized_pnl_pct": 0.18,
+      "market_value": 2004.97
     },
     "XLB": {
       "ticker": "XLB",
       "shares": 39.0409,
       "avg_entry_price": 51.2358,
-      "current_price": 52.1,
+      "current_price": 52.17,
       "stop_loss": 50.43,
       "take_profit": 53.25,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLB (rank #3 of 11, composite RS score +0.36%, RS vs SPY -1.00%, 5d change +2.40%) trading at $51.20 above 20-SMA ($50.58). Stop at $50.43, target at $53.25.",
-      "unrealized_pnl": 33.74,
-      "unrealized_pnl_pct": 1.69,
-      "market_value": 2034.03
+      "unrealized_pnl": 36.47,
+      "unrealized_pnl_pct": 1.82,
+      "market_value": 2036.76
     },
     "XLF": {
       "ticker": "XLF",
       "shares": 35.1467,
       "avg_entry_price": 57.0199,
-      "current_price": 57.1,
+      "current_price": 57.18,
       "stop_loss": 56.13,
       "take_profit": 59.26,
       "opened_at": "2026-11-27T15:02:10Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLF (rank #4 of 11, composite RS score +0.93%, RS vs SPY -0.04%, 5d change +2.39%) trading at $56.98 above 20-SMA ($56.19). Stop at $56.13, target at $59.26.",
-      "unrealized_pnl": 2.82,
-      "unrealized_pnl_pct": 0.14,
-      "market_value": 2006.88
+      "unrealized_pnl": 5.63,
+      "unrealized_pnl_pct": 0.28,
+      "market_value": 2009.69
     },
     "XLC": {
       "ticker": "XLC",
       "shares": 18.7131,
       "avg_entry_price": 107.215,
-      "current_price": 107.23,
+      "current_price": 107.5,
       "stop_loss": 105.53,
       "take_profit": 111.43,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "Rotating into top-ranked sector ETF XLC (rank #5 of 11, composite RS score +0.63%, RS vs SPY -0.29%, 5d change +2.01%) trading at $107.14 above 20-SMA ($104.65). Stop at $105.53, target at $111.43.",
-      "unrealized_pnl": 0.28,
-      "unrealized_pnl_pct": 0.01,
-      "market_value": 2006.61
+      "unrealized_pnl": 5.33,
+      "unrealized_pnl_pct": 0.27,
+      "market_value": 2011.66
     }
   },
   "pending_orders": [],
@@ -393,6 +393,15 @@
       "positions_value": 8049.57,
       "drawdown_pct": -0.08,
       "daily_return_pct": 0.43
+    },
+    {
+      "timestamp": "2026-11-27T18:04:37Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10051.0,
+      "cash": 1987.92,
+      "positions_value": 8063.08,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.57
     }
   ],
   "daily_journal": [
@@ -414,12 +423,12 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 9994.49,
-      "end_equity": 10037.49,
-      "daily_pnl": 43.0,
-      "daily_pnl_pct": 0.43,
+      "end_equity": 10051.0,
+      "daily_pnl": 56.51,
+      "daily_pnl_pct": 0.57,
       "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,994.49 to $10,037.49 (+$43.00, +0.43%). Executed 3 trade(s) \u2014 Buys: XLB ($2,000), XLF ($2,004), XLC ($2,006); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,994.49 to $10,051.00 (+$56.51, +0.57%). Executed 3 trade(s) \u2014 Buys: XLB ($2,000), XLF ($2,004), XLC ($2,006); Sells: none.",
       "highlights": [
         "BUY 39.0409 XLB @ $51.24 ($2000.29, stop $50.43) \u2014 Rotating into top-ranked sector ETF XLB (rank #3 of 11, composite RS score +0.36%, RS vs SPY -1.00%, 5d change +2.40%) trading at $51.20 above 20-SMA ($50.58). Stop at $50.43, target at $53.25.",
         "BUY 35.1467 XLF @ $57.02 ($2004.06, stop $56.13) \u2014 Rotating into top-ranked sector ETF XLF (rank #4 of 11, composite RS score +0.93%, RS vs SPY -0.04%, 5d change +2.39%) trading at $56.98 above 20-SMA ($56.19). Stop at $56.13, target at $59.26.",
@@ -427,5 +436,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:59:33Z"
+  "last_updated": "2026-11-27T18:04:37Z"
 }

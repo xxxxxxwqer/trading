@@ -6,65 +6,65 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 3995.83,
-  "equity": 10057.52,
-  "peak_equity": 10059.64,
+  "equity": 10062.1,
+  "peak_equity": 10062.1,
   "max_drawdown_pct": -0.19,
-  "current_drawdown_pct": -0.02,
+  "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10033.17,
-  "daily_pnl_pct": 0.24,
+  "daily_pnl_pct": 0.29,
   "positions": {
     "GLD": {
       "ticker": "GLD",
       "shares": 4.715,
       "avg_entry_price": 318.3527,
-      "current_price": 334.15,
+      "current_price": 334.35,
       "stop_loss": 303.8141,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 74.49,
-      "unrealized_pnl_pct": 4.96,
-      "market_value": 1575.52
+      "unrealized_pnl": 75.43,
+      "unrealized_pnl_pct": 5.03,
+      "market_value": 1576.46
     },
     "TLT": {
       "ticker": "TLT",
       "shares": 18.1488,
       "avg_entry_price": 82.7078,
-      "current_price": 81.395,
+      "current_price": 81.37,
       "stop_loss": 78.9308,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": -23.83,
-      "unrealized_pnl_pct": -1.59,
-      "market_value": 1477.22
+      "unrealized_pnl": -24.28,
+      "unrealized_pnl_pct": -1.62,
+      "market_value": 1476.77
     },
     "XLP": {
       "ticker": "XLP",
       "shares": 16.2214,
       "avg_entry_price": 92.5347,
-      "current_price": 92.565,
+      "current_price": 92.7,
       "stop_loss": 88.3088,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 0.49,
-      "unrealized_pnl_pct": 0.03,
-      "market_value": 1501.53
+      "unrealized_pnl": 2.68,
+      "unrealized_pnl_pct": 0.18,
+      "market_value": 1503.72
     },
     "XLU": {
       "ticker": "XLU",
       "shares": 34.5224,
       "avg_entry_price": 43.4804,
-      "current_price": 43.665,
+      "current_price": 43.72,
       "stop_loss": 41.4948,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 6.37,
-      "unrealized_pnl_pct": 0.42,
-      "market_value": 1507.42
+      "unrealized_pnl": 8.27,
+      "unrealized_pnl_pct": 0.55,
+      "market_value": 1509.32
     }
   },
   "pending_orders": [],
@@ -393,6 +393,15 @@
       "positions_value": 6061.69,
       "drawdown_pct": -0.02,
       "daily_return_pct": 0.24
+    },
+    {
+      "timestamp": "2026-11-27T18:04:37Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10062.1,
+      "cash": 3995.83,
+      "positions_value": 6066.27,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.29
     }
   ],
   "daily_journal": [
@@ -417,14 +426,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10033.17,
-      "end_equity": 10057.52,
-      "daily_pnl": 24.35,
-      "daily_pnl_pct": 0.24,
+      "end_equity": 10062.1,
+      "daily_pnl": 28.93,
+      "daily_pnl_pct": 0.29,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,057.52 (+$24.35, +0.24%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.96%), TLT (18.15 sh, -1.59%), XLP (16.22 sh, +0.03%), XLU (34.52 sh, +0.42%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,062.10 (+$28.93, +0.29%). No new trades executed; held existing position(s): GLD (4.71 sh, +5.03%), TLT (18.15 sh, -1.62%), XLP (16.22 sh, +0.18%), XLU (34.52 sh, +0.55%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T17:59:33Z"
+  "last_updated": "2026-11-27T18:04:37Z"
 }
