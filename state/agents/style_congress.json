@@ -6,52 +6,52 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 3977.08,
-  "equity": 10080.84,
-  "peak_equity": 10080.84,
+  "equity": 10092.68,
+  "peak_equity": 10092.68,
   "max_drawdown_pct": -0.09,
   "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10024.92,
-  "daily_pnl_pct": 0.56,
+  "daily_pnl_pct": 0.68,
   "positions": {
     "V": {
       "ticker": "V",
       "shares": 4.7732,
       "avg_entry_price": 419.2933,
-      "current_price": 429.1,
+      "current_price": 430.22,
       "stop_loss": 410.62,
       "take_profit": 446.23,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Congress Style buy on V (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $722.6B >= $50.0B floor; 30-day price move +2.9% within learned [-8.0%, +9.6%]. Stop at $410.62, target $446.23 (typical hold ~59d).",
-      "unrealized_pnl": 46.81,
-      "unrealized_pnl_pct": 2.34,
-      "market_value": 2048.18
+      "unrealized_pnl": 52.16,
+      "unrealized_pnl_pct": 2.61,
+      "market_value": 2053.53
     },
     "WFC": {
       "ticker": "WFC",
       "shares": 24.7712,
       "avg_entry_price": 80.9967,
-      "current_price": 81.99,
+      "current_price": 81.92,
       "stop_loss": 79.32,
       "take_profit": 86.2,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d).",
-      "unrealized_pnl": 24.6,
-      "unrealized_pnl_pct": 1.23,
-      "market_value": 2030.99
+      "unrealized_pnl": 22.87,
+      "unrealized_pnl_pct": 1.14,
+      "market_value": 2029.26
     },
     "TSLA": {
       "ticker": "TSLA",
       "shares": 5.15,
       "avg_entry_price": 391.2937,
-      "current_price": 393.125,
+      "current_price": 394.72,
       "stop_loss": 382.68,
       "take_profit": 416.44,
       "opened_at": "2026-11-27T15:02:10Z",
       "entry_reasoning": "Congress Style buy on TSLA (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Consumer Discretionary' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $1545.6B >= $50.0B floor; 30-day price move +1.2% within learned [-8.0%, +9.6%]. Stop at $382.68, target $416.44 (typical hold ~59d).",
-      "unrealized_pnl": 9.43,
-      "unrealized_pnl_pct": 0.47,
-      "market_value": 2024.59
+      "unrealized_pnl": 17.65,
+      "unrealized_pnl_pct": 0.88,
+      "market_value": 2032.81
     }
   },
   "pending_orders": [],
@@ -198,13 +198,22 @@
       "daily_return_pct": 0.55
     },
     {
-      "timestamp": "2026-11-27T15:13:13Z",
+      "timestamp": "2026-11-27T15:18:17Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10080.84,
+      "equity": 10090.89,
       "cash": 3977.08,
-      "positions_value": 6103.76,
+      "positions_value": 6113.81,
       "drawdown_pct": 0.0,
-      "daily_return_pct": 0.56
+      "daily_return_pct": 0.66
+    },
+    {
+      "timestamp": "2026-11-27T15:23:19Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10092.68,
+      "cash": 3977.08,
+      "positions_value": 6115.6,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.68
     }
   ],
   "daily_journal": [
@@ -226,17 +235,17 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10024.92,
-      "end_equity": 10080.84,
-      "daily_pnl": 55.92,
-      "daily_pnl_pct": 0.56,
+      "end_equity": 10092.68,
+      "daily_pnl": 67.76,
+      "daily_pnl_pct": 0.68,
       "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,080.84 (+$55.92, +0.56%). Executed 2 trade(s) \u2014 Buys: WFC ($2,006), TSLA ($2,015); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,092.68 (+$67.76, +0.68%). Executed 2 trade(s) \u2014 Buys: WFC ($2,006), TSLA ($2,015); Sells: none.",
       "highlights": [
         "BUY 24.7712 WFC @ $81.00 ($2006.39, stop $79.32) \u2014 Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d).",
         "BUY 5.1500 TSLA @ $391.29 ($2015.16, stop $382.68) \u2014 Congress Style buy on TSLA (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Consumer Discretionary' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $1545.6B >= $50.0B floor; 30-day price move +1.2% within learned [-8.0%, +9.6%]. Stop at $382.68, target $416.44 (typical hold ~59d)."
       ]
     }
   ],
-  "last_updated": "2026-11-27T15:13:13Z"
+  "last_updated": "2026-11-27T15:23:19Z"
 }
