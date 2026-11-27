@@ -6,52 +6,52 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 4091.69,
-  "equity": 10155.53,
+  "equity": 10156.24,
   "peak_equity": 10179.74,
   "max_drawdown_pct": -0.27,
-  "current_drawdown_pct": -0.24,
+  "current_drawdown_pct": -0.23,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10112.65,
-  "daily_pnl_pct": 0.42,
+  "daily_pnl_pct": 0.43,
   "positions": {
     "ABBV": {
       "ticker": "ABBV",
       "shares": 6.8679,
       "avg_entry_price": 294.6962,
-      "current_price": 291.68,
+      "current_price": 291.96,
       "stop_loss": 289.19,
       "take_profit": 301.85,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
-      "unrealized_pnl": -20.71,
-      "unrealized_pnl_pct": -1.02,
-      "market_value": 2003.23
+      "unrealized_pnl": -18.79,
+      "unrealized_pnl_pct": -0.93,
+      "market_value": 2005.15
     },
     "TLT": {
       "ticker": "TLT",
       "shares": 24.8505,
       "avg_entry_price": 81.7872,
-      "current_price": 81.55,
+      "current_price": 81.51,
       "stop_loss": 80.26,
       "take_profit": 83.77,
       "opened_at": "2026-11-27T15:02:10Z",
       "entry_reasoning": "Buying oversold dip in TLT: RSI(14) is 12.6 with price $81.73 near lower Bollinger Band ($81.76) while holding structural support above 94% of 30-SMA ($82.12). Stop at $80.26, mean-reversion target at $83.77.",
-      "unrealized_pnl": -5.89,
-      "unrealized_pnl_pct": -0.29,
-      "market_value": 2026.56
+      "unrealized_pnl": -6.89,
+      "unrealized_pnl_pct": -0.34,
+      "market_value": 2025.56
     },
     "KO": {
       "ticker": "KO",
       "shares": 20.8899,
       "avg_entry_price": 97.3231,
-      "current_price": 97.37,
+      "current_price": 97.36,
       "stop_loss": 95.5,
       "take_profit": 99.69,
       "opened_at": "2026-11-27T15:33:41Z",
       "entry_reasoning": "Buying oversold dip in KO: RSI(14) is 34.4 with price $97.25 near lower Bollinger Band ($96.83) while holding structural support above 94% of 30-SMA ($97.90). Stop at $95.50, mean-reversion target at $99.69.",
-      "unrealized_pnl": 0.98,
-      "unrealized_pnl_pct": 0.05,
-      "market_value": 2034.05
+      "unrealized_pnl": 0.77,
+      "unrealized_pnl_pct": 0.04,
+      "market_value": 2033.84
     }
   },
   "pending_orders": [],
@@ -269,13 +269,22 @@
       "daily_return_pct": 0.39
     },
     {
-      "timestamp": "2026-11-27T15:44:12Z",
+      "timestamp": "2026-11-27T15:49:17Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10155.53,
+      "equity": 10155.41,
       "cash": 4091.69,
-      "positions_value": 6063.84,
+      "positions_value": 6063.72,
       "drawdown_pct": -0.24,
       "daily_return_pct": 0.42
+    },
+    {
+      "timestamp": "2026-11-27T15:54:19Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10156.24,
+      "cash": 4091.69,
+      "positions_value": 6064.55,
+      "drawdown_pct": -0.23,
+      "daily_return_pct": 0.43
     }
   ],
   "daily_journal": [
@@ -297,12 +306,12 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10112.65,
-      "end_equity": 10155.53,
-      "daily_pnl": 42.88,
-      "daily_pnl_pct": 0.42,
+      "end_equity": 10156.24,
+      "daily_pnl": 43.59,
+      "daily_pnl_pct": 0.43,
       "trades_count": 4,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,112.65 to $10,155.53 (+$42.88, +0.42%). Executed 4 trade(s) \u2014 Buys: ABBV ($2,024), TLT ($2,032), KO ($2,033); Sells: AVGO (TAKE_PROFIT, +$181.15).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,112.65 to $10,156.24 (+$43.59, +0.43%). Executed 4 trade(s) \u2014 Buys: ABBV ($2,024), TLT ($2,032), KO ($2,033); Sells: AVGO (TAKE_PROFIT, +$181.15).",
       "highlights": [
         "BUY 6.8679 ABBV @ $294.70 ($2023.94, stop $289.19) \u2014 Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
         "BUY 24.8505 TLT @ $81.79 ($2032.45, stop $80.26) \u2014 Buying oversold dip in TLT: RSI(14) is 12.6 with price $81.73 near lower Bollinger Band ($81.76) while holding structural support above 94% of 30-SMA ($82.12). Stop at $80.26, mean-reversion target at $83.77.",
@@ -311,5 +320,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-27T15:44:12Z"
+  "last_updated": "2026-11-27T15:54:19Z"
 }
