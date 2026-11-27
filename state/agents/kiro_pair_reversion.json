@@ -6,7 +6,7 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 8885.95,
-  "equity": 9998.67,
+  "equity": 9998.81,
   "peak_equity": 10001.47,
   "max_drawdown_pct": -0.03,
   "current_drawdown_pct": -0.03,
@@ -18,14 +18,14 @@
       "ticker": "XOM",
       "shares": 6.9242,
       "avg_entry_price": 160.8926,
-      "current_price": 160.7,
+      "current_price": 160.72,
       "stop_loss": 155.0354,
       "take_profit": 166.0298,
       "opened_at": "2026-11-27T16:31:14Z",
       "entry_reasoning": "ENTRY_PAIR_LAGGARD pair=P03 leg=A lz=-2.18 rho60=0.93 beta=1.00 g_bps=162.2 cost_bps=14.0 stop_pct=3.59% tp_pct=3.24%",
-      "unrealized_pnl": -1.33,
-      "unrealized_pnl_pct": -0.12,
-      "market_value": 1112.72
+      "unrealized_pnl": -1.19,
+      "unrealized_pnl_pct": -0.11,
+      "market_value": 1112.86
     }
   },
   "pending_orders": [],
@@ -252,6 +252,15 @@
       "positions_value": 1112.72,
       "drawdown_pct": -0.03,
       "daily_return_pct": -0.01
+    },
+    {
+      "timestamp": "2026-11-27T17:28:48Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9998.81,
+      "cash": 8885.95,
+      "positions_value": 1112.86,
+      "drawdown_pct": -0.03,
+      "daily_return_pct": -0.01
     }
   ],
   "daily_journal": [
@@ -271,16 +280,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 9998.67,
-      "daily_pnl": -1.33,
+      "end_equity": 9998.81,
+      "daily_pnl": -1.19,
       "daily_pnl_pct": -0.01,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,998.67 ($-1.33, -0.01%). Executed 1 trade(s) \u2014 Buys: XOM ($1,114); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,998.81 ($-1.19, -0.01%). Executed 1 trade(s) \u2014 Buys: XOM ($1,114); Sells: none.",
       "highlights": [
         "BUY 6.9242 XOM @ $160.89 ($1114.05, stop $155.04) \u2014 ENTRY_PAIR_LAGGARD pair=P03 leg=A lz=-2.18 rho60=0.93 beta=1.00 g_bps=162.2 cost_bps=14.0 stop_pct=3.59% tp_pct=3.24%"
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:23:27Z"
+  "last_updated": "2026-11-27T17:28:48Z"
 }

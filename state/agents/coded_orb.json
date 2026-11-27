@@ -5,29 +5,15 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.05,
-  "equity": 10005.1,
+  "cash": 10004.44,
+  "equity": 10004.44,
   "peak_equity": 10005.1,
   "max_drawdown_pct": -0.05,
-  "current_drawdown_pct": 0.0,
+  "current_drawdown_pct": -0.01,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.05,
-  "positions": {
-    "AMZN": {
-      "ticker": "AMZN",
-      "shares": 7.8799,
-      "avg_entry_price": 254.0578,
-      "current_price": 254.705,
-      "stop_loss": 251.02,
-      "take_profit": 259.39,
-      "opened_at": "2026-11-27T16:31:14Z",
-      "entry_reasoning": "Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
-      "unrealized_pnl": 5.1,
-      "unrealized_pnl_pct": 0.25,
-      "market_value": 2007.05
-    }
-  },
+  "daily_pnl_pct": 0.04,
+  "positions": {},
   "pending_orders": [],
   "trades": [
     {
@@ -51,6 +37,28 @@
       "exit_reason": "",
       "reasoning": "Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
       "confidence": 0.75
+    },
+    {
+      "trade_id": "trd_86e82199efbd",
+      "agent_id": "coded_orb",
+      "side": "SELL",
+      "ticker": "AMZN",
+      "shares": 7.8799,
+      "decision_timestamp": "2026-11-27T17:28:30Z",
+      "fill_timestamp": "2026-11-27T17:28:48Z",
+      "reference_price": 254.8,
+      "fill_price": 254.6216,
+      "spread_cost_dollars": 0.4019,
+      "slippage_cost_dollars": 1.0039,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2006.39,
+      "stop_loss": 251.02,
+      "take_profit": 259.39,
+      "realized_pnl": 4.44,
+      "realized_pnl_pct": 0.22,
+      "exit_reason": "EOD_FLAT",
+      "reasoning": "End-of-day mandatory flatten for AMZN (7.8799 shares)",
+      "confidence": 1.0
     }
   ],
   "rejections": [],
@@ -252,6 +260,15 @@
       "positions_value": 2007.05,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.05
+    },
+    {
+      "timestamp": "2026-11-27T17:28:48Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10004.44,
+      "cash": 10004.44,
+      "positions_value": 0,
+      "drawdown_pct": -0.01,
+      "daily_return_pct": 0.04
     }
   ],
   "daily_journal": [
@@ -271,16 +288,17 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10005.1,
-      "daily_pnl": 5.1,
-      "daily_pnl_pct": 0.05,
-      "trades_count": 1,
+      "end_equity": 10004.44,
+      "daily_pnl": 4.44,
+      "daily_pnl_pct": 0.04,
+      "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,005.10 (+$5.10, +0.05%). Executed 1 trade(s) \u2014 Buys: AMZN ($2,002); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,004.44 (+$4.44, +0.04%). Executed 2 trade(s) \u2014 Buys: AMZN ($2,002); Sells: AMZN (EOD_FLAT, +$4.44).",
       "highlights": [
-        "BUY 7.8799 AMZN @ $254.06 ($2001.95, stop $251.02) \u2014 Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39."
+        "BUY 7.8799 AMZN @ $254.06 ($2001.95, stop $251.02) \u2014 Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
+        "SELL 7.8799 AMZN @ $254.62 [EOD_FLAT: +$4.44 (+0.22%)] \u2014 End-of-day mandatory flatten for AMZN (7.8799 shares)"
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:23:27Z"
+  "last_updated": "2026-11-27T17:28:48Z"
 }

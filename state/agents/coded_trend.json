@@ -5,27 +5,40 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.6,
-  "equity": 10022.67,
+  "cash": 5992.67,
+  "equity": 10021.94,
   "peak_equity": 10035.71,
-  "max_drawdown_pct": -0.13,
-  "current_drawdown_pct": -0.13,
+  "max_drawdown_pct": -0.14,
+  "current_drawdown_pct": -0.14,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.23,
+  "daily_pnl_pct": 0.22,
   "positions": {
     "CVX": {
       "ticker": "CVX",
       "shares": 9.4791,
       "avg_entry_price": 211.1377,
-      "current_price": 213.53,
+      "current_price": 213.6,
       "stop_loss": 207.83,
       "take_profit": 217.32,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32.",
-      "unrealized_pnl": 22.67,
-      "unrealized_pnl_pct": 1.13,
-      "market_value": 2024.07
+      "unrealized_pnl": 23.34,
+      "unrealized_pnl_pct": 1.17,
+      "market_value": 2024.74
+    },
+    "XLU": {
+      "ticker": "XLU",
+      "shares": 45.9386,
+      "avg_entry_price": 43.6655,
+      "current_price": 43.635,
+      "stop_loss": 42.98,
+      "take_profit": 44.94,
+      "opened_at": "2026-11-27T17:28:48Z",
+      "entry_reasoning": "Buying XLU on momentum breakout: price $43.63 is at/near 20-bar high ($43.78) with 10-SMA ($43.64) > 30-SMA ($43.55), RSI(14) at 63.4, and volume ratio 2.64x. Stop set at $42.98 and target at $44.94.",
+      "unrealized_pnl": -1.4,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2004.53
     }
   },
   "pending_orders": [],
@@ -50,6 +63,28 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32.",
+      "confidence": 0.92
+    },
+    {
+      "trade_id": "trd_f2d22cad0048",
+      "agent_id": "coded_trend",
+      "side": "BUY",
+      "ticker": "XLU",
+      "shares": 45.9386,
+      "decision_timestamp": "2026-11-27T17:28:30Z",
+      "fill_timestamp": "2026-11-27T17:28:48Z",
+      "reference_price": 43.635,
+      "fill_price": 43.6655,
+      "spread_cost_dollars": 0.3997,
+      "slippage_cost_dollars": 1.0015,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2005.93,
+      "stop_loss": 42.98,
+      "take_profit": 44.94,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying XLU on momentum breakout: price $43.63 is at/near 20-bar high ($43.78) with 10-SMA ($43.64) > 30-SMA ($43.55), RSI(14) at 63.4, and volume ratio 2.64x. Stop set at $42.98 and target at $44.94.",
       "confidence": 0.92
     }
   ],
@@ -252,6 +287,15 @@
       "positions_value": 2024.07,
       "drawdown_pct": -0.13,
       "daily_return_pct": 0.23
+    },
+    {
+      "timestamp": "2026-11-27T17:28:48Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10021.94,
+      "cash": 5992.67,
+      "positions_value": 4029.27,
+      "drawdown_pct": -0.14,
+      "daily_return_pct": 0.22
     }
   ],
   "daily_journal": [
@@ -271,16 +315,17 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10022.67,
-      "daily_pnl": 22.67,
-      "daily_pnl_pct": 0.23,
-      "trades_count": 1,
+      "end_equity": 10021.94,
+      "daily_pnl": 21.94,
+      "daily_pnl_pct": 0.22,
+      "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,022.67 (+$22.67, +0.23%). Executed 1 trade(s) \u2014 Buys: CVX ($2,001); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,021.94 (+$21.94, +0.22%). Executed 2 trade(s) \u2014 Buys: CVX ($2,001), XLU ($2,006); Sells: none.",
       "highlights": [
-        "BUY 9.4791 CVX @ $211.14 ($2001.40, stop $207.83) \u2014 Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32."
+        "BUY 9.4791 CVX @ $211.14 ($2001.40, stop $207.83) \u2014 Buying CVX on momentum breakout: price $210.99 is at/near 20-bar high ($211.91) with 10-SMA ($210.91) > 30-SMA ($209.77), RSI(14) at 62.7, and volume ratio 5.49x. Stop set at $207.83 and target at $217.32.",
+        "BUY 45.9386 XLU @ $43.67 ($2005.93, stop $42.98) \u2014 Buying XLU on momentum breakout: price $43.63 is at/near 20-bar high ($43.78) with 10-SMA ($43.64) > 30-SMA ($43.55), RSI(14) at 63.4, and volume ratio 2.64x. Stop set at $42.98 and target at $44.94."
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:23:27Z"
+  "last_updated": "2026-11-27T17:28:48Z"
 }

@@ -8,5 +8,15 @@
     "relative_path": "reports/daily/2026-11-25_day01.md",
     "generator": "gemini-flash (gemini-3.8-flash)",
     "generated_at_utc": "2026-11-26T01:00:14Z"
+  },
+  {
+    "trading_date_et": "2026-11-27",
+    "trading_day_number": 2,
+    "is_final_day": false,
+    "is_post_close_final": false,
+    "filename": "2026-11-27_day02.md",
+    "relative_path": "reports/daily/2026-11-27_day02.md",
+    "generator": "deterministic-python",
+    "generated_at_utc": "2026-11-27T17:29:09Z"
   }
 ]

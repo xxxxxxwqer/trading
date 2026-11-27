@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.48,
-  "equity": 10097.34,
-  "peak_equity": 10097.34,
+  "equity": 10099.21,
+  "peak_equity": 10099.21,
   "max_drawdown_pct": -0.22,
   "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10025.81,
-  "daily_pnl_pct": 0.71,
+  "daily_pnl_pct": 0.73,
   "positions": {
     "COST": {
       "ticker": "COST",
       "shares": 1.7417,
       "avg_entry_price": 1091.5937,
-      "current_price": 1097.845,
+      "current_price": 1098.27,
       "stop_loss": 1036.2885,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 10.89,
-      "unrealized_pnl_pct": 0.57,
-      "market_value": 1912.12
+      "unrealized_pnl": 11.63,
+      "unrealized_pnl_pct": 0.61,
+      "market_value": 1912.86
     },
     "HON": {
       "ticker": "HON",
       "shares": 8.5577,
       "avg_entry_price": 222.1754,
-      "current_price": 228.17,
+      "current_price": 228.05,
       "stop_loss": 210.919,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 51.3,
-      "unrealized_pnl_pct": 2.7,
-      "market_value": 1952.61
+      "unrealized_pnl": 50.27,
+      "unrealized_pnl_pct": 2.64,
+      "market_value": 1951.58
     },
     "MA": {
       "ticker": "MA",
       "shares": 2.9209,
       "avg_entry_price": 650.9354,
-      "current_price": 667.9,
+      "current_price": 668.34,
       "stop_loss": 617.956,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 49.55,
-      "unrealized_pnl_pct": 2.61,
-      "market_value": 1950.87
+      "unrealized_pnl": 50.83,
+      "unrealized_pnl_pct": 2.67,
+      "market_value": 1952.15
     },
     "PEP": {
       "ticker": "PEP",
       "shares": 13.1315,
       "avg_entry_price": 144.7913,
-      "current_price": 144.4,
+      "current_price": 144.43,
       "stop_loss": 137.4555,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -5.14,
-      "unrealized_pnl_pct": -0.27,
-      "market_value": 1896.19
+      "unrealized_pnl": -4.75,
+      "unrealized_pnl_pct": -0.25,
+      "market_value": 1896.58
     },
     "PG": {
       "ticker": "PG",
       "shares": 10.9365,
       "avg_entry_price": 173.8516,
-      "current_price": 173.005,
+      "current_price": 173.05,
       "stop_loss": 165.0435,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_VOL_ACCUM: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -9.26,
-      "unrealized_pnl_pct": -0.49,
-      "market_value": 1892.07
+      "unrealized_pnl": -8.77,
+      "unrealized_pnl_pct": -0.46,
+      "market_value": 1892.56
     }
   },
   "pending_orders": [],
@@ -392,6 +392,15 @@
       "positions_value": 9603.86,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.71
+    },
+    {
+      "timestamp": "2026-11-27T17:28:48Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10099.21,
+      "cash": 493.48,
+      "positions_value": 9605.73,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.73
     }
   ],
   "daily_journal": [
@@ -417,14 +426,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10025.81,
-      "end_equity": 10097.34,
-      "daily_pnl": 71.53,
-      "daily_pnl_pct": 0.71,
+      "end_equity": 10099.21,
+      "daily_pnl": 73.4,
+      "daily_pnl_pct": 0.73,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.81 to $10,097.34 (+$71.53, +0.71%). No new trades executed; held existing position(s): COST (1.74 sh, +0.57%), HON (8.56 sh, +2.70%), MA (2.92 sh, +2.61%), PEP (13.13 sh, -0.27%), PG (10.94 sh, -0.49%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,025.81 to $10,099.21 (+$73.40, +0.73%). No new trades executed; held existing position(s): COST (1.74 sh, +0.61%), HON (8.56 sh, +2.64%), MA (2.92 sh, +2.67%), PEP (13.13 sh, -0.25%), PG (10.94 sh, -0.46%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T17:23:27Z"
+  "last_updated": "2026-11-27T17:28:48Z"
 }
