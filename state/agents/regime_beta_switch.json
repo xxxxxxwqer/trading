@@ -6,78 +6,78 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.41,
-  "equity": 10013.1,
+  "equity": 10024.64,
   "peak_equity": 10035.67,
   "max_drawdown_pct": -0.25,
-  "current_drawdown_pct": -0.22,
+  "current_drawdown_pct": -0.11,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10018.82,
-  "daily_pnl_pct": -0.06,
+  "daily_pnl_pct": 0.06,
   "positions": {
     "ABBV": {
       "ticker": "ABBV",
       "shares": 6.4035,
       "avg_entry_price": 296.9177,
-      "current_price": 291.875,
+      "current_price": 291.68,
       "stop_loss": 281.8745,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -32.29,
-      "unrealized_pnl_pct": -1.7,
-      "market_value": 1869.02
+      "unrealized_pnl": -33.54,
+      "unrealized_pnl_pct": -1.76,
+      "market_value": 1867.77
     },
     "BRK.B": {
       "ticker": "BRK.B",
       "shares": 3.2941,
       "avg_entry_price": 577.1889,
-      "current_price": 579.94,
+      "current_price": 580.735,
       "stop_loss": 547.9457,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 9.06,
-      "unrealized_pnl_pct": 0.48,
-      "market_value": 1910.38
+      "unrealized_pnl": 11.68,
+      "unrealized_pnl_pct": 0.61,
+      "market_value": 1913.0
     },
     "LMT": {
       "ticker": "LMT",
       "shares": 3.2051,
       "avg_entry_price": 593.2151,
-      "current_price": 601.43,
+      "current_price": 603.59,
       "stop_loss": 563.16,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 26.33,
-      "unrealized_pnl_pct": 1.38,
-      "market_value": 1927.64
+      "unrealized_pnl": 33.26,
+      "unrealized_pnl_pct": 1.75,
+      "market_value": 1934.57
     },
     "PFE": {
       "ticker": "PFE",
       "shares": 67.2328,
       "avg_entry_price": 28.2798,
-      "current_price": 28.43,
+      "current_price": 28.46,
       "stop_loss": 26.847,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": 10.1,
-      "unrealized_pnl_pct": 0.53,
-      "market_value": 1911.43
+      "unrealized_pnl": 12.12,
+      "unrealized_pnl_pct": 0.64,
+      "market_value": 1913.45
     },
     "WMT": {
       "ticker": "WMT",
       "shares": 14.3939,
       "avg_entry_price": 132.0924,
-      "current_price": 132.085,
+      "current_price": 132.17,
       "stop_loss": 125.4,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_BETA_RISK_OFF: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -0.1,
-      "unrealized_pnl_pct": -0.01,
-      "market_value": 1901.22
+      "unrealized_pnl": 1.12,
+      "unrealized_pnl_pct": 0.06,
+      "market_value": 1902.44
     }
   },
   "pending_orders": [],
@@ -286,13 +286,22 @@
       "daily_return_pct": 0.05
     },
     {
-      "timestamp": "2026-11-27T15:33:41Z",
+      "timestamp": "2026-11-27T15:39:10Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10013.1,
+      "equity": 10017.47,
       "cash": 493.41,
-      "positions_value": 9519.69,
-      "drawdown_pct": -0.22,
-      "daily_return_pct": -0.06
+      "positions_value": 9524.06,
+      "drawdown_pct": -0.18,
+      "daily_return_pct": -0.01
+    },
+    {
+      "timestamp": "2026-11-27T15:44:12Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10024.64,
+      "cash": 493.41,
+      "positions_value": 9531.23,
+      "drawdown_pct": -0.11,
+      "daily_return_pct": 0.06
     }
   ],
   "daily_journal": [
@@ -318,14 +327,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10018.82,
-      "end_equity": 10013.1,
-      "daily_pnl": -5.72,
-      "daily_pnl_pct": -0.06,
+      "end_equity": 10024.64,
+      "daily_pnl": 5.82,
+      "daily_pnl_pct": 0.06,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.82 to $10,013.10 ($-5.72, -0.06%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.70%), BRK.B (3.29 sh, +0.48%), LMT (3.21 sh, +1.38%), PFE (67.23 sh, +0.53%), WMT (14.39 sh, -0.01%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,018.82 to $10,024.64 (+$5.82, +0.06%). No new trades executed; held existing position(s): ABBV (6.40 sh, -1.76%), BRK.B (3.29 sh, +0.61%), LMT (3.21 sh, +1.75%), PFE (67.23 sh, +0.64%), WMT (14.39 sh, +0.06%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T15:33:41Z"
+  "last_updated": "2026-11-27T15:44:12Z"
 }
