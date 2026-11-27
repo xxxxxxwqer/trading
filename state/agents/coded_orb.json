@@ -271,7 +271,16 @@
       "daily_return_pct": 0.04
     },
     {
-      "timestamp": "2026-11-27T17:39:17Z",
+      "timestamp": "2026-11-27T17:44:22Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10004.44,
+      "cash": 10004.44,
+      "positions_value": 0,
+      "drawdown_pct": -0.01,
+      "daily_return_pct": 0.04
+    },
+    {
+      "timestamp": "2026-11-27T17:49:25Z",
       "trading_date_et": "2026-11-27",
       "equity": 10004.44,
       "cash": 10004.44,
@@ -309,5 +318,5 @@
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:39:17Z"
+  "last_updated": "2026-11-27T17:49:25Z"
 }

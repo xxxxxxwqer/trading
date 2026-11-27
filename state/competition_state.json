@@ -29,7 +29,7 @@
   "strategy_integrity_verified": true,
   "started_at_utc": "2026-11-25T17:03:15Z",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-27T17:39:17Z",
+  "last_updated_utc": "2026-11-27T17:49:25Z",
   "last_decision_timestamp_utc": "2026-11-27T17:28:30Z",
   "current_trading_date_et": "2026-11-27",
   "regime_summary": "RISK-ON / BULLISH MOMENTUM \u2014 SPY 726.88 (+1.43% 1D, +4.57% 5D, UPTREND, RSI 67.6); QQQ (+2.06% 1D); Bonds (TLT -1.03%) lower (yields firming); Gold (GLD +1.77%).",
@@ -42,7 +42,7 @@
     "gemini_configured": true,
     "checked_at_utc": "2026-11-27T17:28:48Z"
   },
-  "last_monitor_tick_utc": "2026-11-27T17:39:17Z",
-  "monitor_ticks_run": 30,
+  "last_monitor_tick_utc": "2026-11-27T17:49:25Z",
+  "monitor_ticks_run": 32,
   "last_near_close_cycle_date_et": "2026-11-27"
 }
