@@ -6,39 +6,39 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 5992.24,
-  "equity": 10016.28,
-  "peak_equity": 10024.92,
+  "equity": 10064.66,
+  "peak_equity": 10064.66,
   "max_drawdown_pct": -0.09,
-  "current_drawdown_pct": -0.09,
+  "current_drawdown_pct": 0.0,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10024.92,
-  "daily_pnl_pct": -0.09,
+  "daily_pnl_pct": 0.4,
   "positions": {
     "V": {
       "ticker": "V",
       "shares": 4.7732,
       "avg_entry_price": 419.2933,
-      "current_price": 423.0,
+      "current_price": 426.31,
       "stop_loss": 410.62,
       "take_profit": 446.23,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Congress Style buy on V (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $722.6B >= $50.0B floor; 30-day price move +2.9% within learned [-8.0%, +9.6%]. Stop at $410.62, target $446.23 (typical hold ~59d).",
-      "unrealized_pnl": 17.69,
-      "unrealized_pnl_pct": 0.88,
-      "market_value": 2019.06
+      "unrealized_pnl": 33.49,
+      "unrealized_pnl_pct": 1.67,
+      "market_value": 2034.86
     },
     "WFC": {
       "ticker": "WFC",
       "shares": 24.7712,
       "avg_entry_price": 80.9967,
-      "current_price": 80.94,
+      "current_price": 82.255,
       "stop_loss": 79.32,
       "take_profit": 86.2,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d).",
-      "unrealized_pnl": -1.41,
-      "unrealized_pnl_pct": -0.07,
-      "market_value": 2004.98
+      "unrealized_pnl": 31.17,
+      "unrealized_pnl_pct": 1.55,
+      "market_value": 2037.56
     }
   },
   "pending_orders": [],
@@ -125,6 +125,15 @@
       "positions_value": 4024.04,
       "drawdown_pct": -0.09,
       "daily_return_pct": -0.09
+    },
+    {
+      "timestamp": "2026-11-27T14:41:43Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10064.66,
+      "cash": 5992.24,
+      "positions_value": 4072.42,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.4
     }
   ],
   "daily_journal": [
@@ -146,16 +155,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10024.92,
-      "end_equity": 10016.28,
-      "daily_pnl": -8.64,
-      "daily_pnl_pct": -0.09,
+      "end_equity": 10064.66,
+      "daily_pnl": 39.74,
+      "daily_pnl_pct": 0.4,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,016.28 ($-8.64, -0.09%). Executed 1 trade(s) \u2014 Buys: WFC ($2,006); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.92 to $10,064.66 (+$39.74, +0.40%). Executed 1 trade(s) \u2014 Buys: WFC ($2,006); Sells: none.",
       "highlights": [
         "BUY 24.7712 WFC @ $81.00 ($2006.39, stop $79.32) \u2014 Congress Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from PTR trades): Sector 'Financials' matches learned Congress sectors (Technology, Health Care, Consumer Discretionary, Financials, Industrials); Market cap $243.0B >= $50.0B floor; 30-day price move -1.2% within learned [-8.0%, +9.6%]. Stop at $79.32, target $86.20 (typical hold ~59d)."
       ]
     }
   ],
-  "last_updated": "2026-11-27T14:30:47Z"
+  "last_updated": "2026-11-27T14:41:43Z"
 }
