@@ -5,17 +5,89 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 10000.0,
-  "equity": 10000.0,
+  "cash": 6097.36,
+  "equity": 9997.28,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": 0.0,
-  "current_drawdown_pct": 0.0,
+  "max_drawdown_pct": -0.03,
+  "current_drawdown_pct": -0.03,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.0,
-  "positions": {},
+  "daily_pnl_pct": -0.03,
+  "positions": {
+    "QQQ": {
+      "ticker": "QQQ",
+      "shares": 3.0144,
+      "avg_entry_price": 647.3429,
+      "current_price": 646.89,
+      "stop_loss": 637.1866,
+      "take_profit": null,
+      "opened_at": "2026-11-27T17:02:22Z",
+      "entry_reasoning": "ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%",
+      "unrealized_pnl": -1.36,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1949.99
+    },
+    "SPY": {
+      "ticker": "SPY",
+      "shares": 2.6826,
+      "avg_entry_price": 727.3889,
+      "current_price": 726.88,
+      "stop_loss": 715.9768,
+      "take_profit": null,
+      "opened_at": "2026-11-27T17:02:22Z",
+      "entry_reasoning": "ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%",
+      "unrealized_pnl": -1.36,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 1949.93
+    }
+  },
   "pending_orders": [],
-  "trades": [],
+  "trades": [
+    {
+      "trade_id": "trd_1bdd5544a812",
+      "agent_id": "intraday_momentum",
+      "side": "BUY",
+      "ticker": "QQQ",
+      "shares": 3.0144,
+      "decision_timestamp": "2026-11-27T17:02:06Z",
+      "fill_timestamp": "2026-11-27T17:02:22Z",
+      "reference_price": 646.89,
+      "fill_price": 647.3429,
+      "spread_cost_dollars": 0.3901,
+      "slippage_cost_dollars": 0.9752,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1951.35,
+      "stop_loss": 637.1866,
+      "take_profit": null,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%",
+      "confidence": 0.75
+    },
+    {
+      "trade_id": "trd_daba1f34ba87",
+      "agent_id": "intraday_momentum",
+      "side": "BUY",
+      "ticker": "SPY",
+      "shares": 2.6826,
+      "decision_timestamp": "2026-11-27T17:02:06Z",
+      "fill_timestamp": "2026-11-27T17:02:22Z",
+      "reference_price": 726.88,
+      "fill_price": 727.3889,
+      "spread_cost_dollars": 0.3901,
+      "slippage_cost_dollars": 0.9751,
+      "commission_dollars": 0.0,
+      "notional_dollars": 1951.29,
+      "stop_loss": 715.9768,
+      "take_profit": null,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%",
+      "confidence": 0.75
+    }
+  ],
   "rejections": [],
   "equity_curve": [
     {
@@ -181,13 +253,22 @@
       "daily_return_pct": 0.0
     },
     {
-      "timestamp": "2026-11-27T16:52:00Z",
+      "timestamp": "2026-11-27T16:57:05Z",
       "trading_date_et": "2026-11-27",
       "equity": 10000.0,
       "cash": 10000.0,
       "positions_value": 0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
+    },
+    {
+      "timestamp": "2026-11-27T17:02:22Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9997.28,
+      "cash": 6097.36,
+      "positions_value": 3899.92,
+      "drawdown_pct": -0.03,
+      "daily_return_pct": -0.03
     }
   ],
   "daily_journal": [
@@ -207,14 +288,17 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10000.0,
-      "daily_pnl": 0.0,
-      "daily_pnl_pct": 0.0,
-      "trades_count": 0,
+      "end_equity": 9997.28,
+      "daily_pnl": -2.72,
+      "daily_pnl_pct": -0.03,
+      "trades_count": 2,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,000.00 (+$0.00, +0.00%). Stayed in 100% cash with no trades executed.",
-      "highlights": []
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,997.28 ($-2.72, -0.03%). Executed 2 trade(s) \u2014 Buys: QQQ ($1,951), SPY ($1,951); Sells: none.",
+      "highlights": [
+        "BUY 3.0144 QQQ @ $647.34 ($1951.35, stop $637.19) \u2014 ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%",
+        "BUY 2.6826 SPY @ $727.39 ($1951.29, stop $715.98) \u2014 ENTRY_INTRADAY_MOM: target_weight=19.5%, stop=-1.5%"
+      ]
     }
   ],
-  "last_updated": "2026-11-27T16:52:00Z"
+  "last_updated": "2026-11-27T17:02:22Z"
 }

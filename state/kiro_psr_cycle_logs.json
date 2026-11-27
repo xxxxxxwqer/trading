@@ -266,5 +266,37 @@
         "shares": 6.9242
       }
     ]
+  },
+  {
+    "timestamp": "2026-11-27T17:02:06Z",
+    "trading_date_et": "2026-11-27",
+    "regime": "RISK_OFF",
+    "spy_intraday_pct": 1.42,
+    "m_dd": 1.0,
+    "active_pairs_count": 12,
+    "pair_z_live": {
+      "P01": -0.2124,
+      "P02": 0.1947,
+      "P03": -2.1147,
+      "P04": -1.2301,
+      "P05": 0.0125,
+      "P06": -0.7569,
+      "P07": 1.3337,
+      "P08": -0.6812,
+      "P09": 0.4476,
+      "P10": -1.6749,
+      "P11": -1.4859,
+      "P12": 0.8575
+    },
+    "top_candidates": [],
+    "actions": [
+      {
+        "code": "REGIME_RISK_OFF",
+        "spy_intraday_pct": 1.42
+      },
+      {
+        "code": "SKIP_OUT_OF_WINDOW"
+      }
+    ]
   }
 ]

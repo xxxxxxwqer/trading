@@ -238,5 +238,45 @@
     "confidence": 0.95,
     "is_fallback": false,
     "reasoning": "Capital preservation is paramount with many stocks exhibiting overbought RSI conditions and lacking A+ setup criteria matching the 2.5:1 risk-reward profile, hence remaining entirely in cash."
+  },
+  {
+    "timestamp_utc": "2026-11-27T17:02:06Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_technical",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "Many potential long candidates show extended vertical moves or RSI readings above 80 with unfavorable reward-to-risk ratios relative to recent resistance levels, requiring patience under strict CMT playbook guidelines."
+  },
+  {
+    "timestamp_utc": "2026-11-27T17:02:06Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_catalyst",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Existing PLTR position is already performing well with strong positive news catalysts (+2.18% unrealized PnL), and current market conditions do not present an immediate need to add or trim positions."
+  },
+  {
+    "timestamp_utc": "2026-11-27T17:02:06Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_macro",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Regime is RISK-ON with strong broad equity momentum (SPY +1.42%, QQQ +2.05%), and we currently maintain an active position in NVDA. Holding current exposure as market consolidates recent gains."
+  },
+  {
+    "timestamp_utc": "2026-11-27T17:02:06Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_cautious",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.95,
+    "is_fallback": false,
+    "reasoning": "Capital preservation is paramount with 100% in cash and many candidate stocks showing overbought conditions (RSI > 70-80). Waiting patiently for an A+ pullback setup with a favorable reward-to-risk ratio."
   }
 ]
