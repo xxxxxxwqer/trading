@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 8498.95,
-  "equity": 9955.19,
+  "equity": 9958.2,
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.59,
-  "current_drawdown_pct": -0.45,
+  "current_drawdown_pct": -0.42,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.45,
+  "daily_pnl_pct": -0.42,
   "positions": {
     "NVDA": {
       "ticker": "NVDA",
       "shares": 9.8691,
       "avg_entry_price": 152.0964,
-      "current_price": 147.555,
+      "current_price": 147.86,
       "stop_loss": 145.0,
       "take_profit": 165.0,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "The market regime is firmly RISK-ON with SPY and QQQ showing strong bullish momentum, and NVDA is a top macro leader demonstrating exceptional relative strength (+5.09 vs SPY) and robust 5-day gains.",
-      "unrealized_pnl": -44.81,
-      "unrealized_pnl_pct": -2.99,
-      "market_value": 1456.24
+      "unrealized_pnl": -41.8,
+      "unrealized_pnl_pct": -2.79,
+      "market_value": 1459.25
     }
   },
   "pending_orders": [],
@@ -164,13 +164,22 @@
       "daily_return_pct": -0.4
     },
     {
-      "timestamp": "2026-11-27T15:54:19Z",
+      "timestamp": "2026-11-27T15:59:24Z",
       "trading_date_et": "2026-11-27",
-      "equity": 9955.19,
+      "equity": 9953.41,
       "cash": 8498.95,
-      "positions_value": 1456.24,
-      "drawdown_pct": -0.45,
-      "daily_return_pct": -0.45
+      "positions_value": 1454.46,
+      "drawdown_pct": -0.47,
+      "daily_return_pct": -0.47
+    },
+    {
+      "timestamp": "2026-11-27T16:04:41Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9958.2,
+      "cash": 8498.95,
+      "positions_value": 1459.25,
+      "drawdown_pct": -0.42,
+      "daily_return_pct": -0.42
     }
   ],
   "daily_journal": [
@@ -190,16 +199,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 9955.19,
-      "daily_pnl": -44.81,
-      "daily_pnl_pct": -0.45,
+      "end_equity": 9958.2,
+      "daily_pnl": -41.8,
+      "daily_pnl_pct": -0.42,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,955.19 ($-44.81, -0.45%). Executed 1 trade(s) \u2014 Buys: NVDA ($1,501); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,958.20 ($-41.80, -0.42%). Executed 1 trade(s) \u2014 Buys: NVDA ($1,501); Sells: none.",
       "highlights": [
         "BUY 9.8691 NVDA @ $152.10 ($1501.05, stop $145.00) \u2014 The market regime is firmly RISK-ON with SPY and QQQ showing strong bullish momentum, and NVDA is a top macro leader demonstrating exceptional relative strength (+5.09 vs SPY) and robust 5-day gains."
       ]
     }
   ],
-  "last_updated": "2026-11-27T15:54:19Z"
+  "last_updated": "2026-11-27T16:04:41Z"
 }

@@ -5,40 +5,53 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 5994.5,
-  "equity": 10018.17,
+  "cash": 3989.22,
+  "equity": 10013.58,
   "peak_equity": 10020.17,
   "max_drawdown_pct": -0.15,
-  "current_drawdown_pct": -0.02,
+  "current_drawdown_pct": -0.07,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.18,
+  "daily_pnl_pct": 0.14,
   "positions": {
     "ADBE": {
       "ticker": "ADBE",
       "shares": 8.5927,
       "avg_entry_price": 232.918,
-      "current_price": 234.72,
+      "current_price": 234.13,
       "stop_loss": 228.61,
       "take_profit": 241.04,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
-      "unrealized_pnl": 15.49,
-      "unrealized_pnl_pct": 0.77,
-      "market_value": 2016.88
+      "unrealized_pnl": 10.42,
+      "unrealized_pnl_pct": 0.52,
+      "market_value": 2011.81
     },
     "XLI": {
       "ticker": "XLI",
       "shares": 12.1819,
       "avg_entry_price": 164.5151,
-      "current_price": 164.735,
+      "current_price": 164.89,
       "stop_loss": 161.42,
       "take_profit": 170.36,
       "opened_at": "2026-11-27T15:02:10Z",
       "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
-      "unrealized_pnl": 2.68,
-      "unrealized_pnl_pct": 0.13,
-      "market_value": 2006.79
+      "unrealized_pnl": 4.56,
+      "unrealized_pnl_pct": 0.23,
+      "market_value": 2008.67
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "shares": 7.8778,
+      "avg_entry_price": 254.5481,
+      "current_price": 254.37,
+      "stop_loss": 248.66,
+      "take_profit": 265.79,
+      "opened_at": "2026-11-27T16:04:41Z",
+      "entry_reasoning": "Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79).",
+      "unrealized_pnl": -1.4,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2003.88
     }
   },
   "pending_orders": [],
@@ -85,6 +98,28 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
+      "confidence": 0.5
+    },
+    {
+      "trade_id": "trd_1497bf5568a3",
+      "agent_id": "ctrl_random",
+      "side": "BUY",
+      "ticker": "AMZN",
+      "shares": 7.8778,
+      "decision_timestamp": "2026-11-27T16:04:25Z",
+      "fill_timestamp": "2026-11-27T16:04:41Z",
+      "reference_price": 254.37,
+      "fill_price": 254.5481,
+      "spread_cost_dollars": 0.401,
+      "slippage_cost_dollars": 1.0021,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2005.28,
+      "stop_loss": 248.66,
+      "take_profit": 265.79,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79).",
       "confidence": 0.5
     }
   ],
@@ -199,13 +234,22 @@
       "daily_return_pct": 0.14
     },
     {
-      "timestamp": "2026-11-27T15:54:19Z",
+      "timestamp": "2026-11-27T15:59:24Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10018.17,
+      "equity": 10019.39,
       "cash": 5994.5,
-      "positions_value": 4023.67,
-      "drawdown_pct": -0.02,
-      "daily_return_pct": 0.18
+      "positions_value": 4024.89,
+      "drawdown_pct": -0.01,
+      "daily_return_pct": 0.19
+    },
+    {
+      "timestamp": "2026-11-27T16:04:41Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10013.58,
+      "cash": 3989.22,
+      "positions_value": 6024.36,
+      "drawdown_pct": -0.07,
+      "daily_return_pct": 0.14
     }
   ],
   "daily_journal": [
@@ -225,17 +269,18 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 10018.17,
-      "daily_pnl": 18.17,
-      "daily_pnl_pct": 0.18,
-      "trades_count": 2,
+      "end_equity": 10013.58,
+      "daily_pnl": 13.58,
+      "daily_pnl_pct": 0.14,
+      "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,018.17 (+$18.17, +0.18%). Executed 2 trade(s) \u2014 Buys: ADBE ($2,001), XLI ($2,004); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,013.58 (+$13.58, +0.14%). Executed 3 trade(s) \u2014 Buys: ADBE ($2,001), XLI ($2,004), AMZN ($2,005); Sells: none.",
       "highlights": [
         "BUY 8.5927 ADBE @ $232.92 ($2001.39, stop $228.61) \u2014 Null-hypothesis random control: deterministic cycle seed (19b3db5a) rolled 0.299 to randomly buy ADBE at $232.75 with a 1.78% stop ($228.61) and 2R target ($241.04).",
-        "BUY 12.1819 XLI @ $164.52 ($2004.11, stop $161.42) \u2014 Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36)."
+        "BUY 12.1819 XLI @ $164.52 ($2004.11, stop $161.42) \u2014 Null-hypothesis random control: deterministic cycle seed (164c15e4) rolled 0.341 to randomly buy XLI at $164.40 with a 1.81% stop ($161.42) and 2R target ($170.36).",
+        "BUY 7.8778 AMZN @ $254.55 ($2005.28, stop $248.66) \u2014 Null-hypothesis random control: deterministic cycle seed (261fb1d4) rolled 0.533 to randomly buy AMZN at $254.37 with a 2.25% stop ($248.66) and 2R target ($265.79)."
       ]
     }
   ],
-  "last_updated": "2026-11-27T15:54:19Z"
+  "last_updated": "2026-11-27T16:04:41Z"
 }
