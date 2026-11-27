@@ -30,5 +30,37 @@
         "code": "SKIP_REGIME_CRASH"
       }
     ]
+  },
+  {
+    "timestamp": "2026-11-27T14:30:30Z",
+    "trading_date_et": "2026-11-27",
+    "regime": "RISK_OFF",
+    "spy_intraday_pct": 1.33,
+    "m_dd": 1.0,
+    "active_pairs_count": 12,
+    "pair_z_live": {
+      "P01": -0.5729,
+      "P02": -0.3654,
+      "P03": -2.3245,
+      "P04": -1.0897,
+      "P05": -0.0546,
+      "P06": -0.4266,
+      "P07": 1.4312,
+      "P08": -0.7542,
+      "P09": 0.5656,
+      "P10": -1.3747,
+      "P11": -1.4122,
+      "P12": 1.2088
+    },
+    "top_candidates": [],
+    "actions": [
+      {
+        "code": "REGIME_RISK_OFF",
+        "spy_intraday_pct": 1.33
+      },
+      {
+        "code": "SKIP_OUT_OF_WINDOW"
+      }
+    ]
   }
 ]

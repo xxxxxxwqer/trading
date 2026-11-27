@@ -10,7 +10,7 @@
   "peak_equity": 10000.0,
   "max_drawdown_pct": 0.0,
   "current_drawdown_pct": 0.0,
-  "current_trading_date_et": "2026-11-25",
+  "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
   "daily_pnl_pct": 0.0,
   "positions": {},
@@ -44,6 +44,15 @@
       "positions_value": 0,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.0
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10000.0,
+      "cash": 10000.0,
+      "positions_value": 0,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
     }
   ],
   "daily_journal": [
@@ -58,7 +67,19 @@
       "rejections_count": 0,
       "summary_text": "Day 1 (2026-11-25): Equity moved from $10,000.00 to $10,000.00 (+$0.00, +0.00%). Stayed in 100% cash with no trades executed.",
       "highlights": []
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 10000.0,
+      "end_equity": 10000.0,
+      "daily_pnl": 0.0,
+      "daily_pnl_pct": 0.0,
+      "trades_count": 0,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $10,000.00 (+$0.00, +0.00%). Stayed in 100% cash with no trades executed.",
+      "highlights": []
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

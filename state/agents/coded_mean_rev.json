@@ -5,27 +5,27 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.6,
-  "equity": 10112.65,
-  "peak_equity": 10112.65,
+  "cash": 8157.21,
+  "equity": 10179.74,
+  "peak_equity": 10179.74,
   "max_drawdown_pct": -0.01,
   "current_drawdown_pct": 0.0,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": 1.13,
+  "current_trading_date_et": "2026-11-27",
+  "day_start_equity": 10112.65,
+  "daily_pnl_pct": 0.66,
   "positions": {
-    "AVGO": {
-      "ticker": "AVGO",
-      "shares": 7.0232,
-      "avg_entry_price": 284.9694,
-      "current_price": 301.01,
-      "stop_loss": 277.77,
-      "take_profit": 294.75,
-      "opened_at": "2026-11-25T17:03:17Z",
-      "entry_reasoning": "Buying oversold dip in AVGO: RSI(14) is 19.7 with price $284.77 near lower Bollinger Band ($277.05) while holding structural support above 94% of 30-SMA ($298.15). Stop at $277.77, mean-reversion target at $294.75.",
-      "unrealized_pnl": 112.65,
-      "unrealized_pnl_pct": 5.63,
-      "market_value": 2114.05
+    "ABBV": {
+      "ticker": "ABBV",
+      "shares": 6.8679,
+      "avg_entry_price": 294.6962,
+      "current_price": 294.49,
+      "stop_loss": 289.19,
+      "take_profit": 301.85,
+      "opened_at": "2026-11-27T14:30:47Z",
+      "entry_reasoning": "Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
+      "unrealized_pnl": -1.41,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2022.53
     }
   },
   "pending_orders": [],
@@ -50,6 +50,50 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Buying oversold dip in AVGO: RSI(14) is 19.7 with price $284.77 near lower Bollinger Band ($277.05) while holding structural support above 94% of 30-SMA ($298.15). Stop at $277.77, mean-reversion target at $294.75.",
+      "confidence": 0.9
+    },
+    {
+      "trade_id": "trd_b7f509af5674",
+      "agent_id": "coded_mean_rev",
+      "side": "SELL",
+      "ticker": "AVGO",
+      "shares": 7.0232,
+      "decision_timestamp": "2026-11-27T14:30:30Z",
+      "fill_timestamp": "2026-11-27T14:30:47Z",
+      "reference_price": 310.98,
+      "fill_price": 310.7623,
+      "spread_cost_dollars": 0.4368,
+      "slippage_cost_dollars": 1.0921,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2182.55,
+      "stop_loss": 277.77,
+      "take_profit": 294.75,
+      "realized_pnl": 181.15,
+      "realized_pnl_pct": 9.05,
+      "exit_reason": "TAKE_PROFIT",
+      "reasoning": "Take-profit triggered at $310.98 (intrabar high $311.04 >= target $294.75)",
+      "confidence": 1.0
+    },
+    {
+      "trade_id": "trd_132876fd5b18",
+      "agent_id": "coded_mean_rev",
+      "side": "BUY",
+      "ticker": "ABBV",
+      "shares": 6.8679,
+      "decision_timestamp": "2026-11-27T14:30:30Z",
+      "fill_timestamp": "2026-11-27T14:30:47Z",
+      "reference_price": 294.49,
+      "fill_price": 294.6962,
+      "spread_cost_dollars": 0.4045,
+      "slippage_cost_dollars": 1.0116,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2023.94,
+      "stop_loss": 289.19,
+      "take_profit": 301.85,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
       "confidence": 0.9
     }
   ],
@@ -81,6 +125,15 @@
       "positions_value": 2114.05,
       "drawdown_pct": 0.0,
       "daily_return_pct": 1.13
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10179.74,
+      "cash": 8157.21,
+      "positions_value": 2022.53,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.66
     }
   ],
   "daily_journal": [
@@ -97,7 +150,22 @@
       "highlights": [
         "BUY 7.0232 AVGO @ $284.97 ($2001.40, stop $277.77) \u2014 Buying oversold dip in AVGO: RSI(14) is 19.7 with price $284.77 near lower Bollinger Band ($277.05) while holding structural support above 94% of 30-SMA ($298.15). Stop at $277.77, mean-reversion target at $294.75."
       ]
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 10112.65,
+      "end_equity": 10179.74,
+      "daily_pnl": 67.09,
+      "daily_pnl_pct": 0.66,
+      "trades_count": 2,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,112.65 to $10,179.74 (+$67.09, +0.66%). Executed 2 trade(s) \u2014 Buys: ABBV ($2,024); Sells: AVGO (TAKE_PROFIT, +$181.15).",
+      "highlights": [
+        "BUY 6.8679 ABBV @ $294.70 ($2023.94, stop $289.19) \u2014 Buying oversold dip in ABBV: RSI(14) is 15.5 with price $294.49 near lower Bollinger Band ($293.23) while holding structural support above 94% of 30-SMA ($296.47). Stop at $289.19, mean-reversion target at $301.85.",
+        "SELL 7.0232 AVGO @ $310.76 [TAKE_PROFIT: +$181.15 (+9.05%)] \u2014 Take-profit triggered at $310.98 (intrabar high $311.04 >= target $294.75)"
+      ]
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

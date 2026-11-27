@@ -10,9 +10,9 @@
   "peak_equity": 10093.83,
   "max_drawdown_pct": -0.07,
   "current_drawdown_pct": 0.0,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.94,
+  "current_trading_date_et": "2026-11-27",
+  "day_start_equity": 10093.83,
+  "daily_pnl_pct": 0.0,
   "positions": {
     "BRK.B": {
       "ticker": "BRK.B",
@@ -221,6 +221,15 @@
       "positions_value": 9600.42,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.94
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10093.83,
+      "cash": 493.41,
+      "positions_value": 9600.42,
+      "drawdown_pct": 0.0,
+      "daily_return_pct": 0.0
     }
   ],
   "daily_journal": [
@@ -241,7 +250,19 @@
         "BUY 8.5577 HON @ $222.18 ($1901.31, stop $210.92) \u2014 ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%",
         "BUY 3.2051 LMT @ $593.22 ($1901.31, stop $563.16) \u2014 ENTRY_VAL_MOM: target_weight=19.0%, stop=-5.0%"
       ]
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 10093.83,
+      "end_equity": 10093.83,
+      "daily_pnl": 0.0,
+      "daily_pnl_pct": 0.0,
+      "trades_count": 0,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,093.83 to $10,093.83 (+$0.00, +0.00%). No new trades executed; held existing position(s): BRK.B (3.29 sh, +0.34%), CVX (9.05 sh, +0.44%), DIS (15.41 sh, +1.82%), HON (8.56 sh, +1.33%), LMT (3.21 sh, +1.01%).",
+      "highlights": []
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

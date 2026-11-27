@@ -10,9 +10,9 @@
   "peak_equity": 10000.0,
   "max_drawdown_pct": -0.07,
   "current_drawdown_pct": -0.04,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.04,
+  "current_trading_date_et": "2026-11-27",
+  "day_start_equity": 9996.42,
+  "daily_pnl_pct": 0.0,
   "positions": {
     "ABBV": {
       "ticker": "ABBV",
@@ -221,6 +221,15 @@
       "positions_value": 9503.03,
       "drawdown_pct": -0.04,
       "daily_return_pct": -0.04
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9996.42,
+      "cash": 493.39,
+      "positions_value": 9503.03,
+      "drawdown_pct": -0.04,
+      "daily_return_pct": 0.0
     }
   ],
   "daily_journal": [
@@ -241,7 +250,19 @@
         "BUY 10.9365 PG @ $173.85 ($1901.33, stop $165.04) \u2014 ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%",
         "BUY 14.3939 WMT @ $132.09 ($1901.32, stop $125.40) \u2014 ENTRY_HIGH70_ANCHOR: target_weight=19.0%, stop=-5.0%"
       ]
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 9996.42,
+      "end_equity": 9996.42,
+      "daily_pnl": 0.0,
+      "daily_pnl_pct": 0.0,
+      "trades_count": 0,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,996.42 to $9,996.42 (+$0.00, +0.00%). No new trades executed; held existing position(s): ABBV (6.40 sh, -0.82%), DIS (15.41 sh, +1.82%), MCD (6.65 sh, -0.69%), PG (10.94 sh, -0.36%), WMT (14.39 sh, -0.14%).",
+      "highlights": []
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

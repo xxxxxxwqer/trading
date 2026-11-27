@@ -1,12 +1,13 @@
 {
   "status": "LIVE",
   "mode": "LIVE",
-  "trading_days_completed": 1,
+  "trading_days_completed": 2,
   "total_trading_days": 30,
   "active_trading_dates": [
-    "2026-11-25"
+    "2026-11-25",
+    "2026-11-27"
   ],
-  "cycles_run": 1,
+  "cycles_run": 2,
   "strategy_hashes": {
     "coded_agents.py": "7fad8b61dbc9fd516125203b7d3157050df7901d2a968c3f534ad66c6a28b62d",
     "llm_agents.py": "e39a377759d775bcb241c264ec7ad1ae31785858a2a84f2fe731cbf2bfdfbda0",
@@ -28,16 +29,17 @@
   "strategy_integrity_verified": true,
   "started_at_utc": "2026-11-25T17:03:15Z",
   "completed_at_utc": "",
-  "last_updated_utc": "2026-11-27T14:00:27Z",
-  "last_decision_timestamp_utc": "2026-11-25T17:03:15Z",
-  "current_trading_date_et": "2026-11-25",
-  "regime_summary": "RISK-OFF / DEFENSIVE \u2014 SPY 702.97 (-2.04% 1D, -1.93% 5D, PULLBACK/DOWNTREND, RSI 28.4); QQQ (-3.56% 1D); Bonds (TLT +1.43%) steady/rising (yields easing); Gold (GLD -2.25%).",
+  "last_updated_utc": "2026-11-27T14:30:47Z",
+  "last_decision_timestamp_utc": "2026-11-27T14:30:30Z",
+  "current_trading_date_et": "2026-11-27",
+  "regime_summary": "RISK-ON / BULLISH MOMENTUM \u2014 SPY 726.25 (+1.34% 1D, +3.13% 5D, UPTREND, RSI 88.5); QQQ (+2.01% 1D); Bonds (TLT -0.43%) lower (yields firming); Gold (GLD +1.96%).",
   "cycles_by_date": {
-    "2026-11-25": 1
+    "2026-11-25": 1,
+    "2026-11-27": 1
   },
   "api_keys_status": {
     "alpaca_paper_configured": true,
     "gemini_configured": true,
-    "checked_at_utc": "2026-11-27T14:00:27Z"
+    "checked_at_utc": "2026-11-27T14:30:47Z"
   }
 }

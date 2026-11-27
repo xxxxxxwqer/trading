@@ -38,5 +38,45 @@
     "confidence": 0.5,
     "is_fallback": true,
     "reasoning": "HOLD fallback: gemini-3.8-flash HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later) | gemini-3.5-flash-lite HTTP 503 ({ \"error\": { \"code\": 503, \"message\": \"This model is currently experienci"
+  },
+  {
+    "timestamp_utc": "2026-11-27T14:30:30Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_technical",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "Current market leaders show extended vertical moves with RSI levels well above 80 (e.g., META, MU, NVDA), violating our rules against chasing extended moves. Waiting for a proper pullback and structural support confluence."
+  },
+  {
+    "timestamp_utc": "2026-11-27T14:30:30Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_catalyst",
+    "action": "BUY",
+    "ticker": "PLTR",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Palantir secured a major catalyst contract to supply the Maven Smart System to Poland's Defence Ministry, supported by strong relative strength (+4.35 vs SPY) and a 1D gain of 3.11%."
+  },
+  {
+    "timestamp_utc": "2026-11-27T14:30:30Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_macro",
+    "action": "BUY",
+    "ticker": "NVDA",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "The market regime is firmly RISK-ON with SPY and QQQ showing strong bullish momentum, and NVDA is a top macro leader demonstrating exceptional relative strength (+5.09 vs SPY) and robust 5-day gains."
+  },
+  {
+    "timestamp_utc": "2026-11-27T14:30:30Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_cautious",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.9,
+    "is_fallback": false,
+    "reasoning": "As an ultra-cautious risk-first trader, market indices like SPY and QQQ are showing extremely high RSI levels above 80, indicating short-term overbought conditions and elevated volatility risk. Preserving capital is paramount, so I am remaining in 100% cash until a lower-risk pullback presents an A+"
   }
 ]

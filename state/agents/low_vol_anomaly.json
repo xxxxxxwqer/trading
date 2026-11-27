@@ -6,12 +6,12 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 493.49,
-  "equity": 9982.24,
+  "equity": 9964.05,
   "peak_equity": 10000.0,
-  "max_drawdown_pct": -0.18,
-  "current_drawdown_pct": -0.18,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 10000.0,
+  "max_drawdown_pct": -0.36,
+  "current_drawdown_pct": -0.36,
+  "current_trading_date_et": "2026-11-27",
+  "day_start_equity": 9982.24,
   "daily_pnl_pct": -0.18,
   "positions": {
     "ABBV": {
@@ -57,14 +57,14 @@
       "ticker": "KO",
       "shares": 19.3541,
       "avg_entry_price": 98.2387,
-      "current_price": 97.65,
+      "current_price": 96.71,
       "stop_loss": 93.2615,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
-      "unrealized_pnl": -11.39,
-      "unrealized_pnl_pct": -0.6,
-      "market_value": 1889.93
+      "unrealized_pnl": -29.58,
+      "unrealized_pnl_pct": -1.56,
+      "market_value": 1871.74
     },
     "PFE": {
       "ticker": "PFE",
@@ -221,6 +221,15 @@
       "positions_value": 9488.75,
       "drawdown_pct": -0.18,
       "daily_return_pct": -0.18
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9964.05,
+      "cash": 493.49,
+      "positions_value": 9470.56,
+      "drawdown_pct": -0.36,
+      "daily_return_pct": -0.18
     }
   ],
   "daily_journal": [
@@ -241,7 +250,19 @@
         "BUY 19.3541 KO @ $98.24 ($1901.32, stop $93.26) \u2014 ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%",
         "BUY 67.2328 PFE @ $28.28 ($1901.33, stop $26.85) \u2014 ENTRY_LOW_VOL: target_weight=19.0%, stop=-5.0%"
       ]
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 9982.24,
+      "end_equity": 9964.05,
+      "daily_pnl": -18.19,
+      "daily_pnl_pct": -0.18,
+      "trades_count": 0,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $9,982.24 to $9,964.05 ($-18.19, -0.18%). No new trades executed; held existing position(s): ABBV (6.40 sh, -0.82%), BRK.B (3.29 sh, +0.34%), COST (1.74 sh, -0.46%), KO (19.35 sh, -1.56%), PFE (67.23 sh, +0.60%).",
+      "highlights": []
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

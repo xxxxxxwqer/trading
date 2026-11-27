@@ -5,14 +5,14 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 7998.25,
-  "equity": 10024.02,
+  "cash": 5992.05,
+  "equity": 10022.61,
   "peak_equity": 10024.02,
   "max_drawdown_pct": -0.03,
-  "current_drawdown_pct": 0.0,
-  "current_trading_date_et": "2026-11-25",
-  "day_start_equity": 10000.0,
-  "daily_pnl_pct": 0.24,
+  "current_drawdown_pct": -0.01,
+  "current_trading_date_et": "2026-11-27",
+  "day_start_equity": 10024.02,
+  "daily_pnl_pct": -0.01,
   "positions": {
     "WFC": {
       "ticker": "WFC",
@@ -26,6 +26,19 @@
       "unrealized_pnl": 24.02,
       "unrealized_pnl_pct": 1.2,
       "market_value": 2025.77
+    },
+    "QCOM": {
+      "ticker": "QCOM",
+      "shares": 11.8859,
+      "avg_entry_price": 168.7881,
+      "current_price": 168.67,
+      "stop_loss": 160.88,
+      "take_profit": 182.16,
+      "opened_at": "2026-11-27T14:30:47Z",
+      "entry_reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
+      "unrealized_pnl": -1.41,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2004.79
     }
   },
   "pending_orders": [],
@@ -50,6 +63,28 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24.",
+      "confidence": 0.92
+    },
+    {
+      "trade_id": "trd_8fa5cce0e79c",
+      "agent_id": "style_berkshire",
+      "side": "BUY",
+      "ticker": "QCOM",
+      "shares": 11.8859,
+      "decision_timestamp": "2026-11-27T14:30:30Z",
+      "fill_timestamp": "2026-11-27T14:30:47Z",
+      "reference_price": 168.67,
+      "fill_price": 168.7881,
+      "spread_cost_dollars": 0.4006,
+      "slippage_cost_dollars": 1.0032,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2006.2,
+      "stop_loss": 160.88,
+      "take_profit": 182.16,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
       "confidence": 0.92
     }
   ],
@@ -81,6 +116,15 @@
       "positions_value": 2025.77,
       "drawdown_pct": 0.0,
       "daily_return_pct": 0.24
+    },
+    {
+      "timestamp": "2026-11-27T14:30:47Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10022.61,
+      "cash": 5992.05,
+      "positions_value": 4030.56,
+      "drawdown_pct": -0.01,
+      "daily_return_pct": -0.01
     }
   ],
   "daily_journal": [
@@ -97,7 +141,21 @@
       "highlights": [
         "BUY 25.0281 WFC @ $79.98 ($2001.75, stop $77.85) \u2014 Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24."
       ]
+    },
+    {
+      "trading_date_et": "2026-11-27",
+      "trading_day_number": 2,
+      "start_equity": 10024.02,
+      "end_equity": 10022.61,
+      "daily_pnl": -1.41,
+      "daily_pnl_pct": -0.01,
+      "trades_count": 1,
+      "rejections_count": 0,
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.02 to $10,022.61 ($-1.41, -0.01%). Executed 1 trade(s) \u2014 Buys: QCOM ($2,006); Sells: none.",
+      "highlights": [
+        "BUY 11.8859 QCOM @ $168.79 ($2006.20, stop $160.88) \u2014 Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16."
+      ]
     }
   ],
-  "last_updated": "2026-11-26T01:00:02Z"
+  "last_updated": "2026-11-27T14:30:47Z"
 }

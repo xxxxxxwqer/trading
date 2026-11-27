@@ -1,150 +1,151 @@
 {
   "trading_dates_seen": [
-    "2026-11-25"
+    "2026-11-25",
+    "2026-11-27"
   ],
-  "daily_cache_date": "2026-11-25",
+  "daily_cache_date": "2026-11-27",
   "daily_cache": {
     "valid": true,
-    "trading_date_et": "2026-11-25",
+    "trading_date_et": "2026-11-27",
     "spy": {
-      "prev_close": 718.91,
-      "sma20": 743.206,
-      "rv20": 0.312619,
-      "ret5": -0.018432,
-      "last_bar_date": "2026-11-24"
+      "prev_close": 716.735,
+      "sma20": 740.4288,
+      "rv20": 0.311608,
+      "ret5": -0.018615,
+      "last_bar_date": "2026-11-25"
     },
     "stocks": {
       "ADBE": {
-        "prev_close": 231.97,
-        "atr14_d": 8.7336,
-        "adv20": 35261702.31,
-        "bars_count": 99
+        "prev_close": 232.755,
+        "atr14_d": 8.741,
+        "adv20": 35641144.09,
+        "bars_count": 98
       },
       "AMD": {
-        "prev_close": 413.11,
-        "atr14_d": 46.5027,
-        "adv20": 622772852.5,
-        "bars_count": 99
+        "prev_close": 405.76,
+        "atr14_d": 46.2311,
+        "adv20": 633126022.25,
+        "bars_count": 98
       },
       "AVGO": {
-        "prev_close": 301.27,
-        "atr14_d": 19.4589,
-        "adv20": 368941833.09,
-        "bars_count": 99
+        "prev_close": 300.61,
+        "atr14_d": 19.731,
+        "adv20": 375071384.21,
+        "bars_count": 98
       },
       "BAC": {
-        "prev_close": 48.58,
-        "atr14_d": 1.1894,
-        "adv20": 137497252.61,
-        "bars_count": 99
+        "prev_close": 48.52,
+        "atr14_d": 1.2306,
+        "adv20": 139846676.37,
+        "bars_count": 98
       },
       "COST": {
-        "prev_close": 1091.44,
-        "atr14_d": 19.4257,
-        "adv20": 109257255.79,
-        "bars_count": 99
+        "prev_close": 1086.625,
+        "atr14_d": 18.7996,
+        "adv20": 108518143.27,
+        "bars_count": 98
       },
       "CRM": {
-        "prev_close": 193.25,
-        "atr14_d": 8.7479,
-        "adv20": 74109815.97,
-        "bars_count": 99
+        "prev_close": 197.17,
+        "atr14_d": 8.9174,
+        "adv20": 73221194.67,
+        "bars_count": 98
       },
       "CVX": {
-        "prev_close": 208.74,
-        "atr14_d": 4.7211,
-        "adv20": 55395864.37,
-        "bars_count": 99
+        "prev_close": 210.99,
+        "atr14_d": 4.7164,
+        "adv20": 55356750.27,
+        "bars_count": 98
       },
       "GS": {
-        "prev_close": 806.05,
-        "atr14_d": 30.9207,
-        "adv20": 94523814.86,
-        "bars_count": 99
+        "prev_close": 800.54,
+        "atr14_d": 31.075,
+        "adv20": 97353031.29,
+        "bars_count": 98
       },
       "JPM": {
-        "prev_close": 317.14,
-        "atr14_d": 7.6928,
-        "adv20": 82691811.84,
-        "bars_count": 99
+        "prev_close": 316.66,
+        "atr14_d": 7.7588,
+        "adv20": 83408812.7,
+        "bars_count": 98
       },
       "KO": {
-        "prev_close": 97.73,
-        "atr14_d": 1.7959,
-        "adv20": 113591715.99,
-        "bars_count": 99
+        "prev_close": 97.65,
+        "atr14_d": 1.7578,
+        "adv20": 115053058.12,
+        "bars_count": 98
       },
       "MA": {
-        "prev_close": 647.32,
-        "atr14_d": 13.3746,
-        "adv20": 134791506.27,
-        "bars_count": 99
+        "prev_close": 660.29,
+        "atr14_d": 14.1095,
+        "adv20": 131693171.37,
+        "bars_count": 98
       },
       "MRK": {
-        "prev_close": 141.64,
-        "atr14_d": 4.4231,
-        "adv20": 73654381.65,
-        "bars_count": 99
+        "prev_close": 140.44,
+        "atr14_d": 4.3621,
+        "adv20": 73004894.49,
+        "bars_count": 98
       },
       "MS": {
-        "prev_close": 168.715,
-        "atr14_d": 6.1572,
-        "adv20": 77217378.1,
-        "bars_count": 99
+        "prev_close": 167.485,
+        "atr14_d": 6.1535,
+        "adv20": 77864257.59,
+        "bars_count": 98
       },
       "NVDA": {
-        "prev_close": 155.48,
-        "atr14_d": 13.2545,
-        "adv20": 1922626047.02,
-        "bars_count": 99
+        "prev_close": 149.32,
+        "atr14_d": 13.329,
+        "adv20": 2014116515.98,
+        "bars_count": 98
       },
       "PEP": {
-        "prev_close": 142.74,
-        "atr14_d": 3.3029,
-        "adv20": 54963363.11,
-        "bars_count": 99
+        "prev_close": 143.93,
+        "atr14_d": 3.2561,
+        "adv20": 54299744.63,
+        "bars_count": 98
       },
       "PFE": {
-        "prev_close": 28.48,
-        "atr14_d": 0.6814,
-        "adv20": 65665868.93,
-        "bars_count": 99
+        "prev_close": 28.45,
+        "atr14_d": 0.6649,
+        "adv20": 64696297.79,
+        "bars_count": 98
       },
       "PG": {
-        "prev_close": 172.54,
-        "atr14_d": 3.124,
-        "adv20": 80215632.87,
-        "bars_count": 99
+        "prev_close": 173.22,
+        "atr14_d": 3.0447,
+        "adv20": 82189329.06,
+        "bars_count": 98
       },
       "QCOM": {
-        "prev_close": 164.95,
-        "atr14_d": 9.3263,
-        "adv20": 85861582.94,
-        "bars_count": 99
+        "prev_close": 168.67,
+        "atr14_d": 9.6023,
+        "adv20": 88482098.5,
+        "bars_count": 98
       },
       "V": {
-        "prev_close": 416.76,
-        "atr14_d": 8.7226,
-        "adv20": 175608595.57,
-        "bars_count": 99
+        "prev_close": 424.515,
+        "atr14_d": 9.0404,
+        "adv20": 173356153.54,
+        "bars_count": 98
       },
       "WFC": {
-        "prev_close": 81.21,
-        "atr14_d": 2.0784,
-        "adv20": 62048701.3,
-        "bars_count": 99
+        "prev_close": 80.94,
+        "atr14_d": 2.0773,
+        "adv20": 58290294.89,
+        "bars_count": 98
       },
       "WMT": {
-        "prev_close": 132.33,
-        "atr14_d": 2.9237,
-        "adv20": 127818604.67,
-        "bars_count": 99
+        "prev_close": 131.91,
+        "atr14_d": 2.8543,
+        "adv20": 128946899.49,
+        "bars_count": 98
       },
       "XOM": {
-        "prev_close": 158.41,
-        "atr14_d": 3.943,
-        "adv20": 96493761.84,
-        "bars_count": 99
+        "prev_close": 158.17,
+        "atr14_d": 3.8512,
+        "adv20": 96612972.32,
+        "bars_count": 98
       }
     },
     "pairs": {
@@ -153,96 +154,96 @@
         "a": "KO",
         "b": "PEP",
         "active": true,
-        "beta": 0.552962,
-        "sigma_e": 0.00751565,
-        "rho60": 0.743397,
-        "s_9": 0.00662641,
-        "shock_max": 1.2131,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.546491,
+        "sigma_e": 0.00751605,
+        "rho60": 0.739936,
+        "s_9": -0.00394298,
+        "shock_max": 1.2305,
+        "last_bar_date": "2026-11-25"
       },
       "P02": {
         "pair_id": "P02",
         "a": "V",
         "b": "MA",
         "active": true,
-        "beta": 0.959212,
-        "sigma_e": 0.00418782,
-        "rho60": 0.956622,
-        "s_9": -0.00224986,
-        "shock_max": 1.5685,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.952162,
+        "sigma_e": 0.00414211,
+        "rho60": 0.957181,
+        "s_9": -0.00121143,
+        "shock_max": 1.6297,
+        "last_bar_date": "2026-11-25"
       },
       "P03": {
         "pair_id": "P03",
         "a": "XOM",
         "b": "CVX",
         "active": true,
-        "beta": 1.007946,
-        "sigma_e": 0.00591538,
-        "rho60": 0.93875,
-        "s_9": -0.02917184,
-        "shock_max": 2.3073,
-        "last_bar_date": "2026-11-24"
+        "beta": 1.000973,
+        "sigma_e": 0.00610791,
+        "rho60": 0.932614,
+        "s_9": -0.04489771,
+        "shock_max": 2.2307,
+        "last_bar_date": "2026-11-25"
       },
       "P04": {
         "pair_id": "P04",
         "a": "JPM",
         "b": "BAC",
         "active": true,
-        "beta": 0.661645,
-        "sigma_e": 0.00985476,
-        "rho60": 0.725434,
-        "s_9": -0.05163862,
-        "shock_max": 1.6652,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.663061,
+        "sigma_e": 0.0098371,
+        "rho60": 0.72656,
+        "s_9": -0.05214164,
+        "shock_max": 1.6663,
+        "last_bar_date": "2026-11-25"
       },
       "P05": {
         "pair_id": "P05",
         "a": "BAC",
         "b": "WFC",
         "active": true,
-        "beta": 0.667776,
-        "sigma_e": 0.01144238,
-        "rho60": 0.684617,
-        "s_9": -0.00513215,
-        "shock_max": 1.276,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.667564,
+        "sigma_e": 0.01145573,
+        "rho60": 0.683201,
+        "s_9": -0.00197948,
+        "shock_max": 1.275,
+        "last_bar_date": "2026-11-25"
       },
       "P06": {
         "pair_id": "P06",
         "a": "GS",
         "b": "MS",
         "active": true,
-        "beta": 1.004714,
-        "sigma_e": 0.0076804,
-        "rho60": 0.936339,
-        "s_9": -0.01741635,
-        "shock_max": 1.9686,
-        "last_bar_date": "2026-11-24"
+        "beta": 1.001044,
+        "sigma_e": 0.00747113,
+        "rho60": 0.938984,
+        "s_9": -0.01007915,
+        "shock_max": 2.0506,
+        "last_bar_date": "2026-11-25"
       },
       "P07": {
         "pair_id": "P07",
         "a": "WMT",
         "b": "COST",
         "active": true,
-        "beta": 0.80109,
-        "sigma_e": 0.01093361,
-        "rho60": 0.655151,
-        "s_9": 0.04811091,
-        "shock_max": 2.3605,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.811812,
+        "sigma_e": 0.01082344,
+        "rho60": 0.663958,
+        "s_9": 0.04898591,
+        "shock_max": 2.3903,
+        "last_bar_date": "2026-11-25"
       },
       "P08": {
         "pair_id": "P08",
         "a": "MRK",
         "b": "PFE",
         "active": true,
-        "beta": 0.965926,
-        "sigma_e": 0.01370629,
-        "rho60": 0.688685,
-        "s_9": -0.00615297,
-        "shock_max": 1.9039,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.962771,
+        "sigma_e": 0.01364324,
+        "rho60": 0.688997,
+        "s_9": -0.03253765,
+        "shock_max": 1.916,
+        "last_bar_date": "2026-11-25"
       },
       "P09": {
         "pair_id": "P09",
@@ -250,51 +251,51 @@
         "b": "AMD",
         "active": true,
         "beta": 0.5,
-        "sigma_e": 0.04144048,
-        "rho60": 0.521311,
-        "s_9": 0.03398352,
-        "shock_max": 5.8117,
-        "last_bar_date": "2026-11-24"
+        "sigma_e": 0.04158297,
+        "rho60": 0.521591,
+        "s_9": 0.07719666,
+        "shock_max": 5.7918,
+        "last_bar_date": "2026-11-25"
       },
       "P10": {
         "pair_id": "P10",
         "a": "AVGO",
         "b": "QCOM",
         "active": true,
-        "beta": 0.510807,
-        "sigma_e": 0.03057892,
-        "rho60": 0.531179,
-        "s_9": -0.10241514,
-        "shock_max": 2.9815,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.51176,
+        "sigma_e": 0.03055628,
+        "rho60": 0.532154,
+        "s_9": -0.1667516,
+        "shock_max": 2.9813,
+        "last_bar_date": "2026-11-25"
       },
       "P11": {
         "pair_id": "P11",
         "a": "CRM",
         "b": "ADBE",
         "active": true,
-        "beta": 0.665649,
-        "sigma_e": 0.01830551,
-        "rho60": 0.676602,
-        "s_9": -0.1041271,
-        "shock_max": 3.8015,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.679541,
+        "sigma_e": 0.01831228,
+        "rho60": 0.68243,
+        "s_9": -0.08177992,
+        "shock_max": 3.7665,
+        "last_bar_date": "2026-11-25"
       },
       "P12": {
         "pair_id": "P12",
         "a": "PG",
         "b": "KO",
         "active": true,
-        "beta": 0.850764,
-        "sigma_e": 0.00966721,
-        "rho60": 0.703143,
-        "s_9": 0.02724188,
-        "shock_max": 1.6885,
-        "last_bar_date": "2026-11-24"
+        "beta": 0.865762,
+        "sigma_e": 0.0095371,
+        "rho60": 0.712108,
+        "s_9": 0.02808083,
+        "shock_max": 1.7059,
+        "last_bar_date": "2026-11-25"
       }
     }
   },
-  "entries_today_date": "2026-11-25",
+  "entries_today_date": "2026-11-27",
   "entries_today_count": 0,
   "position_meta": {},
   "ticker_cooldown_until": {},
