@@ -6,26 +6,26 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 7998.05,
-  "equity": 9998.36,
+  "equity": 9998.52,
   "peak_equity": 10001.67,
   "max_drawdown_pct": -0.05,
   "current_drawdown_pct": -0.03,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10000.0,
-  "daily_pnl_pct": -0.02,
+  "daily_pnl_pct": -0.01,
   "positions": {
     "AMZN": {
       "ticker": "AMZN",
       "shares": 7.8799,
       "avg_entry_price": 254.0578,
-      "current_price": 253.85,
+      "current_price": 253.87,
       "stop_loss": 251.02,
       "take_profit": 259.39,
       "opened_at": "2026-11-27T16:31:14Z",
       "entry_reasoning": "Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39.",
-      "unrealized_pnl": -1.64,
-      "unrealized_pnl_pct": -0.08,
-      "market_value": 2000.31
+      "unrealized_pnl": -1.48,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2000.47
     }
   },
   "pending_orders": [],
@@ -227,13 +227,22 @@
       "daily_return_pct": -0.01
     },
     {
-      "timestamp": "2026-11-27T17:02:22Z",
+      "timestamp": "2026-11-27T17:08:17Z",
       "trading_date_et": "2026-11-27",
-      "equity": 9998.36,
+      "equity": 9997.93,
       "cash": 7998.05,
-      "positions_value": 2000.31,
-      "drawdown_pct": -0.03,
+      "positions_value": 1999.88,
+      "drawdown_pct": -0.04,
       "daily_return_pct": -0.02
+    },
+    {
+      "timestamp": "2026-11-27T17:13:20Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 9998.52,
+      "cash": 7998.05,
+      "positions_value": 2000.47,
+      "drawdown_pct": -0.03,
+      "daily_return_pct": -0.01
     }
   ],
   "daily_journal": [
@@ -253,16 +262,16 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10000.0,
-      "end_equity": 9998.36,
-      "daily_pnl": -1.64,
-      "daily_pnl_pct": -0.02,
+      "end_equity": 9998.52,
+      "daily_pnl": -1.48,
+      "daily_pnl_pct": -0.01,
       "trades_count": 1,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,998.36 ($-1.64, -0.02%). Executed 1 trade(s) \u2014 Buys: AMZN ($2,002); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,000.00 to $9,998.52 ($-1.48, -0.01%). Executed 1 trade(s) \u2014 Buys: AMZN ($2,002); Sells: none.",
       "highlights": [
         "BUY 7.8799 AMZN @ $254.06 ($2001.95, stop $251.02) \u2014 Buying AMZN on 30-min Opening Range Breakout: price $253.81 cleared ORH $251.17 (ORL $250.88) on 1.14x relative volume. Stop placed at opening range midpoint ($251.02) with 2R intraday target at $259.39."
       ]
     }
   ],
-  "last_updated": "2026-11-27T17:02:22Z"
+  "last_updated": "2026-11-27T17:13:20Z"
 }
