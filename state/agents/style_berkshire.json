@@ -5,53 +5,66 @@
   "status": "ACTIVE",
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
-  "cash": 3965.62,
-  "equity": 10121.51,
+  "cash": 1938.78,
+  "equity": 10129.79,
   "peak_equity": 10140.4,
   "max_drawdown_pct": -0.19,
-  "current_drawdown_pct": -0.19,
+  "current_drawdown_pct": -0.1,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10024.02,
-  "daily_pnl_pct": 0.97,
+  "daily_pnl_pct": 1.06,
   "positions": {
     "WFC": {
       "ticker": "WFC",
       "shares": 25.0281,
       "avg_entry_price": 79.98,
-      "current_price": 81.92,
+      "current_price": 82.1,
       "stop_loss": 77.85,
       "take_profit": 86.24,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "Berkshire Style buy on WFC (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Financials' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $239.7B >= $10.0B floor; Valuation P/E 11.2x is within [4.0x, 33.6x]; Distance from 52w high -18.3% within [-38.6%, +0.0%]. Risk-managed stop at $77.85, target $86.24.",
-      "unrealized_pnl": 48.55,
-      "unrealized_pnl_pct": 2.43,
-      "market_value": 2050.3
+      "unrealized_pnl": 53.06,
+      "unrealized_pnl_pct": 2.65,
+      "market_value": 2054.81
     },
     "QCOM": {
       "ticker": "QCOM",
       "shares": 11.8859,
       "avg_entry_price": 168.7881,
-      "current_price": 175.09,
+      "current_price": 175.59,
       "stop_loss": 160.88,
       "take_profit": 182.16,
       "opened_at": "2026-11-27T14:30:47Z",
       "entry_reasoning": "Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
-      "unrealized_pnl": 74.9,
-      "unrealized_pnl_pct": 3.73,
-      "market_value": 2081.1
+      "unrealized_pnl": 80.85,
+      "unrealized_pnl_pct": 4.03,
+      "market_value": 2087.05
     },
     "PG": {
       "ticker": "PG",
       "shares": 11.7168,
       "avg_entry_price": 172.951,
-      "current_price": 172.785,
+      "current_price": 172.72,
       "stop_loss": 168.33,
       "take_profit": 186.46,
       "opened_at": "2026-11-27T15:02:10Z",
       "entry_reasoning": "Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46.",
-      "unrealized_pnl": -1.94,
-      "unrealized_pnl_pct": -0.1,
-      "market_value": 2024.49
+      "unrealized_pnl": -2.7,
+      "unrealized_pnl_pct": -0.13,
+      "market_value": 2023.73
+    },
+    "PEP": {
+      "ticker": "PEP",
+      "shares": 14.0459,
+      "avg_entry_price": 144.3009,
+      "current_price": 144.2,
+      "stop_loss": 140.59,
+      "take_profit": 155.74,
+      "opened_at": "2026-11-27T15:33:41Z",
+      "entry_reasoning": "Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $196.5B >= $10.0B floor; Valuation P/E 18.0x is within [4.0x, 33.6x]; Distance from 52w high -15.9% within [-38.6%, +0.0%]. Risk-managed stop at $140.59, target $155.74.",
+      "unrealized_pnl": -1.42,
+      "unrealized_pnl_pct": -0.07,
+      "market_value": 2025.42
     }
   },
   "pending_orders": [],
@@ -120,6 +133,28 @@
       "realized_pnl_pct": null,
       "exit_reason": "",
       "reasoning": "Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46.",
+      "confidence": 0.92
+    },
+    {
+      "trade_id": "trd_4258c140ef45",
+      "agent_id": "style_berkshire",
+      "side": "BUY",
+      "ticker": "PEP",
+      "shares": 14.0459,
+      "decision_timestamp": "2026-11-27T15:33:25Z",
+      "fill_timestamp": "2026-11-27T15:33:41Z",
+      "reference_price": 144.2,
+      "fill_price": 144.3009,
+      "spread_cost_dollars": 0.4045,
+      "slippage_cost_dollars": 1.0127,
+      "commission_dollars": 0.0,
+      "notional_dollars": 2026.84,
+      "stop_loss": 140.59,
+      "take_profit": 155.74,
+      "realized_pnl": null,
+      "realized_pnl_pct": null,
+      "exit_reason": "",
+      "reasoning": "Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $196.5B >= $10.0B floor; Valuation P/E 18.0x is within [4.0x, 33.6x]; Distance from 52w high -15.9% within [-38.6%, +0.0%]. Risk-managed stop at $140.59, target $155.74.",
       "confidence": 0.92
     }
   ],
@@ -207,13 +242,22 @@
       "daily_return_pct": 1.16
     },
     {
-      "timestamp": "2026-11-27T15:23:19Z",
+      "timestamp": "2026-11-27T15:28:24Z",
       "trading_date_et": "2026-11-27",
-      "equity": 10121.51,
+      "equity": 10127.14,
       "cash": 3965.62,
-      "positions_value": 6155.89,
-      "drawdown_pct": -0.19,
-      "daily_return_pct": 0.97
+      "positions_value": 6161.52,
+      "drawdown_pct": -0.13,
+      "daily_return_pct": 1.03
+    },
+    {
+      "timestamp": "2026-11-27T15:33:41Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10129.79,
+      "cash": 1938.78,
+      "positions_value": 8191.01,
+      "drawdown_pct": -0.1,
+      "daily_return_pct": 1.06
     }
   ],
   "daily_journal": [
@@ -235,17 +279,18 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10024.02,
-      "end_equity": 10121.51,
-      "daily_pnl": 97.49,
-      "daily_pnl_pct": 0.97,
-      "trades_count": 2,
+      "end_equity": 10129.79,
+      "daily_pnl": 105.77,
+      "daily_pnl_pct": 1.06,
+      "trades_count": 3,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.02 to $10,121.51 (+$97.49, +0.97%). Executed 2 trade(s) \u2014 Buys: QCOM ($2,006), PG ($2,026); Sells: none.",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,024.02 to $10,129.79 (+$105.77, +1.06%). Executed 3 trade(s) \u2014 Buys: QCOM ($2,006), PG ($2,026), PEP ($2,027); Sells: none.",
       "highlights": [
         "BUY 11.8859 QCOM @ $168.79 ($2006.20, stop $160.88) \u2014 Berkshire Style buy on QCOM (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Technology' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $180.5B >= $10.0B floor; Valuation P/E 12.1x is within [4.0x, 33.6x]; Distance from 52w high -35.1% within [-38.6%, +0.0%]. Risk-managed stop at $160.88, target $182.16.",
-        "BUY 11.7168 PG @ $172.95 ($2026.43, stop $168.33) \u2014 Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46."
+        "BUY 11.7168 PG @ $172.95 ($2026.43, stop $168.33) \u2014 Berkshire Style buy on PG (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $400.2B >= $10.0B floor; Valuation P/E 23.6x is within [4.0x, 33.6x]; Distance from 52w high -0.5% within [-38.6%, +0.0%]. Risk-managed stop at $168.33, target $186.46.",
+        "BUY 14.0459 PEP @ $144.30 ($2026.84, stop $140.59) \u2014 Berkshire Style buy on PEP (pattern score 100.0/100, selected strictly from normal market data, NOT copied from filings): Sector 'Consumer Staples' is in learned Berkshire sectors (Financials, Technology, Communication Services, Consumer Discretionary, Consumer Staples); Market cap $196.5B >= $10.0B floor; Valuation P/E 18.0x is within [4.0x, 33.6x]; Distance from 52w high -15.9% within [-38.6%, +0.0%]. Risk-managed stop at $140.59, target $155.74."
       ]
     }
   ],
-  "last_updated": "2026-11-27T15:23:19Z"
+  "last_updated": "2026-11-27T15:33:41Z"
 }

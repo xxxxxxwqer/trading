@@ -118,5 +118,45 @@
     "confidence": 0.9,
     "is_fallback": false,
     "reasoning": "As a cautious, risk-first trader focusing on capital preservation, current market RSI levels across major indices are elevated (SPY RSI 73.9) with stretched valuations, presenting an unfavorable risk-reward environment. Maintaining 100% cash until a high-conviction, low-volatility A+ setup materiali"
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:33:25Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_technical",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "Market conditions show widespread overbought conditions across potential candidates (RSI > 70/80) with extended vertical moves, offering unfavorable reward-to-risk setups below the required 2:1 ratio."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:33:25Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_catalyst",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Current open position PLTR is performing well with positive news catalyst confirming supply agreement with Poland, and no urgent bearish triggers or better catalyst setups warrant changing exposure right now."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:33:25Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_macro",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.85,
+    "is_fallback": false,
+    "reasoning": "Market regime remains strongly risk-on with SPY and QQQ making new highs, and our existing NVDA position is currently held while we monitor momentum and risk parameters."
+  },
+  {
+    "timestamp_utc": "2026-11-27T15:33:25Z",
+    "trading_date_et": "2026-11-27",
+    "agent_id": "llm_cautious",
+    "action": "HOLD",
+    "ticker": "",
+    "confidence": 0.0,
+    "is_fallback": false,
+    "reasoning": "Capital preservation is the absolute priority with no open positions and high RSI readings across major indices, signaling potential overbought conditions and a lack of pristine A+ risk-reward setups."
   }
 ]
