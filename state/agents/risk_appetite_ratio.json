@@ -6,65 +6,65 @@
   "status_reason": "Trading active",
   "initial_cash": 10000.0,
   "cash": 3995.83,
-  "equity": 10052.95,
-  "peak_equity": 10057.13,
+  "equity": 10058.08,
+  "peak_equity": 10059.64,
   "max_drawdown_pct": -0.04,
-  "current_drawdown_pct": -0.04,
+  "current_drawdown_pct": -0.02,
   "current_trading_date_et": "2026-11-27",
   "day_start_equity": 10033.17,
-  "daily_pnl_pct": 0.2,
+  "daily_pnl_pct": 0.25,
   "positions": {
     "GLD": {
       "ticker": "GLD",
       "shares": 4.715,
       "avg_entry_price": 318.3527,
-      "current_price": 332.17,
+      "current_price": 333.59,
       "stop_loss": 303.8141,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 65.15,
-      "unrealized_pnl_pct": 4.34,
-      "market_value": 1566.18
+      "unrealized_pnl": 71.85,
+      "unrealized_pnl_pct": 4.79,
+      "market_value": 1572.88
     },
     "TLT": {
       "ticker": "TLT",
       "shares": 18.1488,
       "avg_entry_price": 82.7078,
-      "current_price": 81.89,
+      "current_price": 81.81,
       "stop_loss": 78.9308,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": -14.84,
-      "unrealized_pnl_pct": -0.99,
-      "market_value": 1486.21
+      "unrealized_pnl": -16.3,
+      "unrealized_pnl_pct": -1.09,
+      "market_value": 1484.75
     },
     "XLP": {
       "ticker": "XLP",
       "shares": 16.2214,
       "avg_entry_price": 92.5347,
-      "current_price": 92.23,
+      "current_price": 92.33,
       "stop_loss": 88.3088,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": -4.94,
-      "unrealized_pnl_pct": -0.33,
-      "market_value": 1496.1
+      "unrealized_pnl": -3.32,
+      "unrealized_pnl_pct": -0.22,
+      "market_value": 1497.72
     },
     "XLU": {
       "ticker": "XLU",
       "shares": 34.5224,
       "avg_entry_price": 43.4804,
-      "current_price": 43.7,
+      "current_price": 43.65,
       "stop_loss": 41.4948,
       "take_profit": null,
       "opened_at": "2026-11-25T17:03:17Z",
       "entry_reasoning": "ENTRY_APPETITE_DEFENSIVE_1OF3: target_weight=15.0%, stop=-4.5%",
-      "unrealized_pnl": 7.58,
-      "unrealized_pnl_pct": 0.51,
-      "market_value": 1508.63
+      "unrealized_pnl": 5.85,
+      "unrealized_pnl_pct": 0.39,
+      "market_value": 1506.9
     }
   },
   "pending_orders": [],
@@ -204,6 +204,15 @@
       "positions_value": 6057.12,
       "drawdown_pct": -0.04,
       "daily_return_pct": 0.2
+    },
+    {
+      "timestamp": "2026-11-27T14:51:49Z",
+      "trading_date_et": "2026-11-27",
+      "equity": 10058.08,
+      "cash": 3995.83,
+      "positions_value": 6062.25,
+      "drawdown_pct": -0.02,
+      "daily_return_pct": 0.25
     }
   ],
   "daily_journal": [
@@ -228,14 +237,14 @@
       "trading_date_et": "2026-11-27",
       "trading_day_number": 2,
       "start_equity": 10033.17,
-      "end_equity": 10052.95,
-      "daily_pnl": 19.78,
-      "daily_pnl_pct": 0.2,
+      "end_equity": 10058.08,
+      "daily_pnl": 24.91,
+      "daily_pnl_pct": 0.25,
       "trades_count": 0,
       "rejections_count": 0,
-      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,052.95 (+$19.78, +0.20%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.34%), TLT (18.15 sh, -0.99%), XLP (16.22 sh, -0.33%), XLU (34.52 sh, +0.51%).",
+      "summary_text": "Day 2 (2026-11-27): Equity moved from $10,033.17 to $10,058.08 (+$24.91, +0.25%). No new trades executed; held existing position(s): GLD (4.71 sh, +4.79%), TLT (18.15 sh, -1.09%), XLP (16.22 sh, -0.22%), XLU (34.52 sh, +0.39%).",
       "highlights": []
     }
   ],
-  "last_updated": "2026-11-27T14:41:43Z"
+  "last_updated": "2026-11-27T14:51:49Z"
 }
